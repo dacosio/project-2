@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
-    "paths": {
-      "@utils/*": ["src/utils/*"]
-    },
+    "baseUrl": "./src",
+    // "paths": {
+    //   "utils/*": ["src/utils/*"]
+    // },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -18,7 +18,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "rootDir": "."
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["build", "node_modules"]
 }
