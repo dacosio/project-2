@@ -1,0 +1,38 @@
+Use it like so
+
+export const api = createApi({
+  baseQuery: fetchBaseQuery({ baseUrl: "/" }),
+  tagTypes: ["Posts"],
+  endpoints: (build) => ({
+ getPosts: build.query({
+      query: () => `posts`,
+      providesTags: (result) => providesList(result, 'Post', 'LIST),
+    }),
+    getUsers: build.query({
+      query: () => `users`,
+      providesTags: (result) => providesList(result, 'User', 'LIST'),
+    }),
+    addPost: build.mutation<Post, Partial<Post>>({
+      query: (body) => ({
+        url: `post`,
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: [{ type: 'Posts', id: 'LIST' }],
+    }),
+ editPost: build.mutation<Post, Partial<Post> & Pick<Post, 'id'>>({
+      query: (body) => ({
+        url: `post/${body.id}`,
+        method: 'POST',
+        body,
+      }),
+      invalidatesTags: (result, error, arg) => [{ type: 'Post', id: arg.id }],
+    }),
+    getPost: build.query<Post, number>({
+      query: (id) => `post/${id}`,
+      providesTags: (result, error, id) => [{ type: "Posts", id }],
+    }),
+  }),
+});
+
+export const { useGetPostsQuery, useGetPostQuery, useAddPostMutation } = api;

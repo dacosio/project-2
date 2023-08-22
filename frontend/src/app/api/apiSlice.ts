@@ -2,6 +2,8 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "../store";
 import { setCredentials } from "../../features/auth/authSlice";
 import type { BaseQueryFn } from "@reduxjs/toolkit/query";
+import { TAG_TYPE } from "const/tags";
+
 const baseUrl =
   process.env.NODE_ENV === "production"
     ? process.env.REACT_APP_BACKEND
@@ -57,6 +59,6 @@ const baseQueryWithReauth: BaseQueryFn = async (args, api, extraOptions) => {
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: baseQueryWithReauth,
-  tagTypes: ["User"],
+  tagTypes: [TAG_TYPE.TODO],
   endpoints: (builder) => ({}),
 });

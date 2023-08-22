@@ -8,20 +8,20 @@ const getAllTodos = async (req, res) => {
     if (!todos?.length) {
       return res.status(400).json({ message: "No todos found." });
     }
-    const todosWithUser = await Promise.all(
-      todos.map(async (todo) => {
-        const user = await User.findById(todo.user).lean().exec();
-        return { ...todo, email: user.email };
-      })
-    );
+    // const todosWithUser = await Promise.all(
+    //   todos.map(async (todo) => {
+    //     const user = await User.findById(todo.user).lean().exec();
+    //     return { ...todo, email: user.email };
+    //   })
+    // );
 
     // This is another way to get the todos with mongoose syntax
-    // const todoSample = await Todo.find({ user: req.id })
-    //   .populate({ path: "user", select: "-password -roles -isActive" })
-    //   .lean()
-    //   .exec();
+    const todoSample = await Todo.find({ user: req.id })
+      .populate({ path: "user", select: "-password -roles -isActive" })
+      .lean()
+      .exec();
 
-    res.status(200).json(todosWithUser);
+    res.status(200).json(todoSample);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -29,11 +29,14 @@ const getAllTodos = async (req, res) => {
 
 const createTodo = async (req, res) => {
   try {
+    console.log("test");
     // user is an objectId
     // or you can use the logged in user id thru req.locals.id
     // check verifyJWT from middleware as it is embedded in the token
     let { user, title, text } = req.body;
     user = req.id;
+    console.log(req.user, req.roles, req.id);
+
     // Confirm data
     if (!user || !title || !text) {
       return res.status(400).json({ message: "All fields are required" });
