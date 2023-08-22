@@ -4,7 +4,6 @@ const Todo = require("../models/Todo");
 const getAllTodos = async (req, res) => {
   try {
     const todos = await Todo.find().lean();
-    console.log(req.user, req.roles, req.id);
     if (!todos?.length) {
       return res.status(400).json({ message: "No todos found." });
     }
@@ -29,14 +28,12 @@ const getAllTodos = async (req, res) => {
 
 const createTodo = async (req, res) => {
   try {
-    console.log("test");
     // user is an objectId
     // or you can use the logged in user id thru req.locals.id
     // check verifyJWT from middleware as it is embedded in the token
     let { user, title, text } = req.body;
     user = req.id;
-    console.log(req.user, req.roles, req.id);
-
+    console.log(title, text);
     // Confirm data
     if (!user || !title || !text) {
       return res.status(400).json({ message: "All fields are required" });
@@ -103,24 +100,24 @@ const updateTodo = async (req, res) => {
 const deleteTodo = async (req, res) => {
   try {
     const { id } = req.body;
-
+    console.log(req.body);
     // Confirm data
     if (!id) {
-      return res.status(400).json({ message: "Note ID required" });
+      return res.status(400).json({ message: "Todo ID required" });
     }
 
     // Confirm todo exists to delete
     const todo = await Todo.findById(id).exec();
 
     if (!todo) {
-      return res.status(400).json({ message: "Note not found" });
+      return res.status(400).json({ message: "Todo not found" });
     }
 
     const result = await todo.deleteOne();
 
     const response = `Todo '${result.title}' with ID ${result._id} deleted`;
 
-    res.status(200).json(response);
+    res.status(200).json({ message: response });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

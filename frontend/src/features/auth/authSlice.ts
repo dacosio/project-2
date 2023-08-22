@@ -1,6 +1,6 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "app/store";
-import { AccessTokenProps, TokenProps } from "./authProps";
+import { TokenProps } from "types/store/AuthState";
 
 const initialState: TokenProps = {
   token: null,

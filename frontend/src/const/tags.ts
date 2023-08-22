@@ -1,4 +1,8 @@
-import { TagTypeProps } from "types/tags";
+// has to be string liter instead of general string
+export interface TagTypeProps {
+  USER: "USER";
+  TODO: "TODO";
+}
 
 export const TAG_TYPE: TagTypeProps = {
   USER: "USER",

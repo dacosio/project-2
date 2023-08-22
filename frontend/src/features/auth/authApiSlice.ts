@@ -1,6 +1,6 @@
 import { apiSlice } from "../../app/api/apiSlice";
 import { logOut, setCredentials } from "./authSlice";
-import { AccessTokenProps, LoginProps } from "./authProps";
+import { AccessTokenProps, LoginProps } from "types/store/AuthState";
 
 export const authApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
