@@ -5,9 +5,13 @@ import { store } from "./app/store";
 import App from "./App";
 import "./index.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { todosApiSlice } from "features/todos/todosApiSlice";
 
 const container = document.getElementById("root")!;
 const root = createRoot(container);
+
+// this is for future prefetch necessities
+// store.dispatch(todosApiSlice.endpoints.getTodos.initiate());
 
 root.render(
   <React.StrictMode>

@@ -14,6 +14,7 @@ const baseQuery = fetchBaseQuery({
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const state = getState() as RootState;
+    // this is the accessToken from the store and then we pass it to the Authorization Headers for all requests automatically
     const token = state.auth.token;
 
     if (token) {
@@ -35,7 +36,7 @@ const baseQueryWithReauth: BaseQueryFn = async (args, api, extraOptions) => {
 
     // send refresh token to get new access token
     const refreshResult = await baseQuery("/auth/refresh", api, extraOptions);
-
+    console.log(refreshResult?.data);
     if (refreshResult?.data) {
       // store the new token
       api.dispatch(

@@ -28,8 +28,8 @@ const Login = (): JSX.Element => {
       setEmail("");
       setPassword("");
       navigate("/");
-    } catch (err) {
-      console.log(err);
+    } catch (err: any) {
+      console.log(err.data?.message);
     }
   };
 

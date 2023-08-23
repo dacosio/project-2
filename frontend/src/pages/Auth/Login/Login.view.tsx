@@ -2,15 +2,8 @@ import { LoginGeneratedProps } from "./Login.props";
 import { Form, Input, Label } from "./Login.style";
 
 const LoginView = (props: LoginGeneratedProps): JSX.Element => {
-  const {
-    email,
-    password,
-    handleUserInput,
-    handlePwdInput,
-    handleSubmit,
-    isActive,
-    roles,
-  } = props;
+  const { email, password, handleUserInput, handlePwdInput, handleSubmit } =
+    props;
 
   return (
     <div>

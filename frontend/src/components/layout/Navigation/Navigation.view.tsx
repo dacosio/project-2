@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavigationProps } from "./Navigation.props";
 import { Container, LogOUtBtn, LoginBtn } from "./Navigation.style";
 import { Link } from "react-router-dom";
@@ -9,6 +9,10 @@ const Navigation = (props: NavigationProps): JSX.Element => {
   const navigate = useNavigate();
   const [sendLogout, { isLoading, isSuccess, isError, error }] =
     useSendLogoutMutation();
+
+  // useEffect(() => {
+  //   if (isSuccess) navigate("/");
+  // }, [isSuccess, navigate]);
 
   return (
     <Container>

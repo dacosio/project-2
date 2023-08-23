@@ -15,6 +15,7 @@ const getAllTodos = async (req, res) => {
     // );
 
     // This is another way to get the todos with mongoose syntax
+    console.log(req.id, "<---- this is the user id");
     const todoSample = await Todo.find({ user: req.id })
       .populate({ path: "user", select: "-password -roles -isActive" })
       .lean()

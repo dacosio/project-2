@@ -8,7 +8,7 @@ import {
 } from "features/todos/todosApiSlice";
 
 const Private = (): JSX.Element => {
-  const { data, isLoading } = useGetTodosQuery();
+  const { data, isLoading } = useGetTodosQuery("");
   const [title, setTitle] = useState<string>("");
   const [text, setText] = useState<string>("");
 
@@ -21,6 +21,7 @@ const Private = (): JSX.Element => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
+      console.log({ title, text }, "<------ from private container");
       const response = await addTodo({ title, text }).unwrap();
       console.log("New Todo: ", response);
     } catch (err) {

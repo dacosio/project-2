@@ -6,7 +6,7 @@ import { METHOD } from "const/methods";
 
 export const todosApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getTodos: builder.query<any[], void>({
+    getTodos: builder.query<any[], void | any>({
       query: () => "/api/todos",
       providesTags: (result) => {
         console.log(result);
