@@ -3,6 +3,9 @@ export interface TokenProps {
 }
 export interface AccessTokenProps {
   accessToken: string | null;
+  data?: {
+    accessToken?: string;
+  };
 }
 
 export interface LoginProps {

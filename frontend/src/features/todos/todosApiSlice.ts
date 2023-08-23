@@ -9,7 +9,6 @@ export const todosApiSlice = apiSlice.injectEndpoints({
     getTodos: builder.query<any[], void | any>({
       query: () => "/api/todos",
       providesTags: (result) => {
-        console.log(result);
         if (result) {
           return [
             ...result.map(({ _id }: { _id: string | number }) => ({

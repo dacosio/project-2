@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useLoginMutation } from "features/auth/authApiSlice";
 import { useAppDispatch } from "app/hooks";
 import { setCredentials } from "features/auth/authSlice";
+import usePersist from "hooks/usePersist";
 const Login = (): JSX.Element => {
   const roles = ["admin", "employee"];
   const isActive = true;
@@ -11,6 +12,8 @@ const Login = (): JSX.Element => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [login] = useLoginMutation();
+
+  const [persist, setPersist] = usePersist();
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();

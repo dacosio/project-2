@@ -4,6 +4,7 @@ import Layout from "./components/layout/Layout";
 import Login from "./pages/Auth/Login";
 import Home from "./pages/Home";
 import Private from "./pages/Private";
+import PersistAuth from "components/layout/PersistAuth";
 
 function App() {
   return (
@@ -11,7 +12,9 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="login" element={<Login />} />
-        <Route path="private" element={<Private />} />
+        <Route element={<PersistAuth />}>
+          <Route path="private" element={<Private />} />
+        </Route>
       </Route>
     </Routes>
   );
