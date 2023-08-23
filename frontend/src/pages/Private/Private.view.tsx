@@ -1,6 +1,14 @@
 import React from "react";
 import { PrivateGeneratedProps } from "./Private.props";
-import { Container, Form, Input, Label } from "./Private.style";
+import {
+  Cell,
+  Container,
+  Form,
+  Input,
+  Label,
+  Table,
+  Header,
+} from "./Private.style";
 
 const PrivateView = (props: PrivateGeneratedProps) => {
   const {
@@ -41,16 +49,26 @@ const PrivateView = (props: PrivateGeneratedProps) => {
       <div style={{ paddingTop: "1rem" }}>Here are the list of todos</div>
       <div style={{ color: "black", fontWeight: "normal" }}>
         {!isLoading ? (
-          data?.map((d) => {
-            return (
-              <div key={d._id}>
-                <ul key={d._id}>
-                  <li>{d.text}</li>
-                </ul>
-                <button onClick={() => handleDelete(d._id)}>Delete</button>
-              </div>
-            );
-          })
+          <Table>
+            <thead>
+              <tr>
+                <Header>Title</Header>
+                <Header>Description</Header>
+                <Header>Actions</Header>
+              </tr>
+            </thead>
+            <tbody>
+              {data?.map((d) => (
+                <tr key={d._id}>
+                  <Cell>{d.title}</Cell>
+                  <Cell>{d.text}</Cell>
+                  <Cell>
+                    <button onClick={() => handleDelete(d._id)}>Delete</button>
+                  </Cell>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
         ) : (
           <>Loading...</>
         )}
