@@ -15,19 +15,17 @@ const PersistAuth = (props: PersistAuthProps): JSX.Element => {
     useRefreshMutation();
 
   useEffect((): any => {
-    if (effectRan.current === true) {
-      const verifyRefreshToken = async () => {
-        console.log("verifying refresh token");
-        try {
-          const response = await refresh();
-          console.log(response, "response from verify token");
-          setTrueSuccess(true);
-        } catch (error) {
-          console.log(error);
-        }
-      };
-      if (!token) verifyRefreshToken();
-    }
+    const verifyRefreshToken = async () => {
+      console.log("verifying refresh token");
+      try {
+        const response = await refresh();
+        console.log(response, "response from verify token");
+        setTrueSuccess(true);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    if (!token) verifyRefreshToken();
     return () => (effectRan.current = true);
     // eslint-disable-next-line
   }, []);
