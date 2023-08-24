@@ -15,7 +15,7 @@ const PersistAuth = (props: PersistAuthProps): JSX.Element => {
     useRefreshMutation();
 
   useEffect((): any => {
-    if (effectRan.current === true || process.env.NODE_ENV === "development") {
+    if (effectRan.current === true) {
       const verifyRefreshToken = async () => {
         console.log("verifying refresh token");
         try {
