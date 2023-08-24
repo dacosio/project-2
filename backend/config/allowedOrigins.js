@@ -2,7 +2,7 @@
 const allowedOrigins = [
   "http://localhost:3000",
   "http://127.0.0.1:3000",
-  "https://project-2.onrender.com",
+  "https://project-2-dacosio.vercel.app",
 ];
 
 module.exports = allowedOrigins;
