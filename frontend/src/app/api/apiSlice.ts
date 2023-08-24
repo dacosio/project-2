@@ -14,7 +14,7 @@ const baseUrl =
     : "http://localhost:3500";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:3500",
+  baseUrl,
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const state = getState() as RootState;
