@@ -19,7 +19,14 @@ const Navigation = (props: NavigationProps): JSX.Element => {
       <Link to="/">Home</Link>
       <Link to="/private">Private</Link>
       <LoginBtn onClick={() => navigate("/login")}>Login</LoginBtn>
-      <LogOUtBtn onClick={() => sendLogout()}>Logout</LogOUtBtn>
+      <LogOUtBtn
+        onClick={() => {
+          sendLogout();
+          navigate("/", { replace: true });
+        }}
+      >
+        Logout
+      </LogOUtBtn>
     </Container>
   );
 };
