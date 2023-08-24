@@ -10,10 +10,8 @@ const cors = require("cors");
 const corsOptions = require("./config/corsOptions");
 const connectDB = require("./config/dbConn");
 const mongoose = require("mongoose");
-const morgan = require("morgan");
 
 const PORT = process.env.PORT || 3500;
-// app.use(morgan("combined"));
 connectDB();
 app.use(logger);
 app.use(cors(corsOptions));
