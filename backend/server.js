@@ -1,5 +1,5 @@
-require("dotenv").config();
-require("./services/scheduler");
+const dotenv = require("dotenv");
+// require("./services/scheduler");
 const express = require("express");
 const app = express();
 const path = require("path");
@@ -10,7 +10,7 @@ const cors = require("cors");
 const corsOptions = require("./config/corsOptions");
 const connectDB = require("./config/dbConn");
 const mongoose = require("mongoose");
-
+dotenv.config();
 const PORT = process.env.PORT || 3500;
 connectDB();
 app.use(logger);
@@ -54,3 +54,5 @@ mongoose.connection.on("error", (err) => {
     "mongoErrLog.log"
   );
 });
+
+module.exports = app;
