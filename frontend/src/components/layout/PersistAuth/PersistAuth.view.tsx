@@ -54,7 +54,6 @@ const PersistAuth = (props: PersistAuthProps): JSX.Element => {
   } else if (isSuccess && trueSuccess) {
     content = <Outlet />;
   } else if (token && isUninitialized) {
-    console.log(isUninitialized);
     content = <Outlet />;
   }
 
