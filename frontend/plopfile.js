@@ -29,6 +29,11 @@ module.exports = (plop) => {
         path: "src/components/base/{{pascalCase name}}/{{pascalCase name}}.view.tsx",
         templateFile: "plop-templates/base/base.view.tsx.hbs",
       },
+      {
+        type: "add",
+        path: ".storybook/stories/base/{{pascalCase name}}.stories.tsx",
+        templateFile: "plop-templates/base/base.story.tsx.hbs",
+      },
     ],
   });
   plop.setGenerator("module", {
@@ -61,6 +66,11 @@ module.exports = (plop) => {
         path: "src/components/module/{{pascalCase name}}/{{pascalCase name}}.view.tsx",
         templateFile: "plop-templates/module/module.view.tsx.hbs",
       },
+      {
+        type: "add",
+        path: ".storybook/stories/module/{{pascalCase name}}.stories.tsx",
+        templateFile: "plop-templates/module/module.story.tsx.hbs",
+      },
     ],
   });
   plop.setGenerator("layout", {
@@ -92,6 +102,11 @@ module.exports = (plop) => {
         type: "add",
         path: "src/components/layout/{{pascalCase name}}/{{pascalCase name}}.view.tsx",
         templateFile: "plop-templates/layout/layout.view.tsx.hbs",
+      },
+      {
+        type: "add",
+        path: ".storybook/stories/layout/{{pascalCase name}}.stories.tsx",
+        templateFile: "plop-templates/layout/layout.story.tsx.hbs",
       },
     ],
   });

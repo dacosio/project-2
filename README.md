@@ -28,6 +28,13 @@ cd backend
 npm run dev
 ```
 
+## How to run storybook
+
+```bash
+cd frontend
+npm run storybook
+```
+
 ## How to generate a component
 
 This will automatically generate a base, layout, module or a page depending on what you choose.
