@@ -1,4 +1,4 @@
-import styled from "utils/styled";
+import styled from "@emotion/styled";
 import { theme } from "utils/Theme";
 
 export const Container = styled.div`
@@ -23,7 +23,7 @@ export const LoginBtn = styled.button`
   }
 `;
 export const LogOUtBtn = styled.button`
-  background-color: ${theme.brand.tertiary};
+  background-color: ${theme.brand.info};
   cursor: pointer;
   font-size: 1.1rem;
   border-radius: 8px;

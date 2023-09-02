@@ -1,4 +1,4 @@
-import styled from "utils/styled";
+import styled from "@emotion/styled";
 
 export const Container = styled.footer``;
 
@@ -22,3 +22,7 @@ export const Left = styled.div`
   color: green;
   font-weight: bold;
 `;
+
+export const Test = styled.div((props) => ({
+  display: "flex",
+}));

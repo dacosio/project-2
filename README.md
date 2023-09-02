@@ -40,8 +40,8 @@ npm run generate
 
 - [Don Apollo Cosio](https://github.com/dacosio)
 - [Yuhwan Ban](https://github.com/laubana)
-- [Guia Chavez]
-- [Philippe Hernandez ]
+- [Guia Chavez](https://github.com/guiachavez)
+- [Philippe Hernandez](https://github.com/jbhern-34)
 
 ## License
 
