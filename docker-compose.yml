@@ -1,0 +1,27 @@
+version: "3"
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3500:3500"
+    env_file:
+      - ./backend/.env
+    volumes:
+      - ./backend:/app/backend
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./frontend/.env
+    environment:
+      - CHOKIDAR_POLLING=1
+    volumes:
+      - ./frontend:/app/frontend
+    depends_on:
+      - backend

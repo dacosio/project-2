@@ -43,6 +43,12 @@ This will automatically generate a base, layout, module or a page depending on w
 npm run generate
 ```
 
+## How to run docker compose
+
+```bash
+docker-compose up
+```
+
 ## Authors
 
 - [Don Apollo Cosio](https://github.com/dacosio)
