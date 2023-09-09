@@ -1,20 +1,37 @@
+import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import Typography from "../../../src/components/base/Typography";
+import Container from "../../components/Container";
+import Wrapper from "../../components/Wrapper";
 
-const meta: Meta<typeof Typography> = {
+const meta: Meta = {
   title: "Base/Typography",
-  component: Typography,
+  component: () => {
+    return (
+      <Container
+        background="white"
+        style={{ display: "flex", flexDirection: "column" }}
+      >
+        <Wrapper>
+          <Typography variant="title1">title1</Typography>
+          <Typography variant="title2">title2</Typography>
+          <Typography variant="title3">title3</Typography>
+          <Typography variant="title4">title4</Typography>
+          <Typography variant="title5">title5</Typography>
+          <Typography variant="body">body</Typography>
+          <Typography variant="label">label</Typography>
+          <Typography variant="caption">caption</Typography>
+          <Typography variant="small">small</Typography>
+          <Typography variant="overline">overline</Typography>
+        </Wrapper>
+      </Container>
+    );
+  },
 };
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Text: Story = {
-  args: {
-    children: "Title1",
-    variant: "title2",
-    textColor: "primary",
-  },
-};
+export const Text: Story = {};
