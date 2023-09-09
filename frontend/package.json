@@ -31,7 +31,6 @@
     "generate": "plop",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "serve-storybook": "serve storybook-static"
   },
   "eslintConfig": {
     "extends": [
