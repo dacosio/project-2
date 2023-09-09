@@ -3,6 +3,6 @@
   "buildCommand": "npm run build-storybook && npm run build",
   "devCommand": "npm run storybook",
   "installCommand": "npm install",
-  "framework": "react",
+  "framework": "create-react-app",
   "outputDirectory": "build"
 }
