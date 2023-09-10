@@ -3,11 +3,10 @@ import { theme } from "utils/Theme";
 
 export const Container = styled.div`
   margin: 1rem auto;
-  width: 50%;
+  // width: 50%;
 
-  border: 3px solid green;
   padding: 10px;
-  text-align: center;
+  // text-align: center;
 `;
 export const Header = styled.div``;
 

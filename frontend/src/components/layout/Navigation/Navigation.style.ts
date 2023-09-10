@@ -2,11 +2,11 @@ import styled from "@emotion/styled";
 import { theme } from "utils/Theme";
 
 export const Container = styled.div`
-  display: flex;
-  gap: 4rem;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+  // display: flex;
+  // gap: 4rem;
+  // justify-content: center;
+  // align-items: center;
+  // flex-wrap: wrap;
 `;
 
 export const Wrapper = styled.div``;
