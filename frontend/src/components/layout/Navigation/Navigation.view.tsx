@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavigationProps } from "./Navigation.props";
-import { Container, LogOUtBtn, LoginBtn } from "./Navigation.style";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useSendLogoutMutation } from "features/auth/authApiSlice";
@@ -14,88 +13,112 @@ import {
 import Typography from "components/base/Typography";
 import SidebarHeader from "../SidebarHeader";
 import Button from "components/base/Button";
+import { Smile } from "components/base/SVG";
+import theme from "utils/Theme";
+import { useAppDispatch, useAppSelector } from "app/hooks";
+import {
+  selectCollapse,
+  selectToggle,
+  sendBroken,
+  sendCollapse,
+  sendToggle,
+} from "features/sidebar/sidebarSlice";
 
 const Navigation = (props: NavigationProps): JSX.Element => {
   const navigate = useNavigate();
-  const [sendLogout, { isLoading, isSuccess, isError, error }] =
-    useSendLogoutMutation();
+  const dispatch = useAppDispatch();
+  const [sendLogout] = useSendLogoutMutation();
+  const collapseState = useAppSelector(selectCollapse);
+  const toggleState = useAppSelector(selectToggle);
 
   // useEffect(() => {
   //   if (isSuccess) navigate("/");
   // }, [isSuccess, navigate]);
-  const [collapsed, setCollapsed] = useState<boolean>(false);
+
   const [toggled, setToggled] = useState<boolean>(false);
+
   const [broken, setBroken] = useState<boolean>(false);
-  const [rtl, setRtl] = useState<boolean>(false);
-  const [hasImage, setHasImage] = useState<boolean>(false);
+
+  useEffect(() => {
+    dispatch(sendBroken(broken));
+  }, [broken, dispatch]);
 
   const menuItemStyles: MenuItemStyles = {
     root: {
       fontSize: "13px",
-      fontWeight: 400,
-      padding: "0 25px",
     },
-
     SubMenuExpandIcon: {
-      color: "#b6b7b9",
+      color: theme.brand.primary,
+    },
+    subMenuContent: {
+      backgroundColor: "white",
     },
     button: {
       [`&.active`]: {
         backgroundColor: "#13395e",
         color: "#b6c8d9",
       },
+      margin: "0 10px",
+      justifyContent: "center",
     },
   };
 
   return (
-    <Container>
-      <Sidebar
-        collapsed={collapsed}
-        toggled={toggled}
-        onBackdropClick={() => setToggled(false)}
-        onBreakPoint={setBroken}
-        breakPoint="md"
-        width="300px"
+    <Sidebar
+      collapsed={collapseState}
+      toggled={toggleState}
+      onBackdropClick={() => dispatch(sendToggle(false))}
+      onBreakPoint={setBroken}
+      breakPoint="md"
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          height: "100%",
+        }}
       >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            height: "100%",
-            border: "1px solid red",
-          }}
-        >
-          <SidebarHeader style={{ marginBottom: "24px", marginTop: "16px" }} />
-          <div style={{ flex: 1, marginBottom: "32px" }}>
-            <div style={{ padding: "0 24px", marginBottom: "8px" }}>
-              <Typography variant="overline">General</Typography>
-            </div>
-            <Menu menuItemStyles={menuItemStyles}>
-              <SubMenu label={<Typography variant="label">Pages</Typography>}>
-                <MenuItem component={<Link to="/" />}>
-                  <Typography variant="caption">Home</Typography>
-                </MenuItem>
-                <MenuItem component={<Link to="/private" />}>
-                  <Typography variant="caption">Private</Typography>
-                </MenuItem>
-                <MenuItem component={<Link to="/login" />}>
-                  <Typography variant="caption">Login</Typography>
-                </MenuItem>
-              </SubMenu>
-            </Menu>
+        <SidebarHeader style={{ marginBottom: "24px", marginTop: "16px" }} />
+        <div style={{ flex: 1, marginBottom: "32px" }}>
+          <div style={{ padding: "0 24px", marginBottom: "8px" }}>
+            <Typography
+              variant="overline"
+              style={{
+                opacity: collapseState ? 0 : 0.7,
+                letterSpacing: "0.5px",
+              }}
+            >
+              General
+            </Typography>
           </div>
-          <Button
-            onClick={() => {
-              sendLogout();
-              navigate("/", { replace: true });
-            }}
-            variant="outline"
-            text="Logout"
-            size="md"
-          />
+          <Menu menuItemStyles={menuItemStyles}>
+            <SubMenu
+              icon={<Smile width={25} height={25} />}
+              label={<Typography variant="label">Pages</Typography>}
+            >
+              <MenuItem component={<Link to="/" />}>
+                <Typography variant="caption">Home</Typography>
+              </MenuItem>
+              <MenuItem component={<Link to="/private" />}>
+                <Typography variant="caption">Private</Typography>
+              </MenuItem>
+              <MenuItem component={<Link to="/login" />}>
+                <Typography variant="caption">Login</Typography>
+              </MenuItem>
+            </SubMenu>
+          </Menu>
         </div>
-      </Sidebar>
-    </Container>
+        <Button
+          onClick={() => {
+            sendLogout();
+            navigate("/", { replace: true });
+          }}
+          variant="outline"
+          text="Logout"
+          size="md"
+        />
+      </div>
+    </Sidebar>
   );
 };
 

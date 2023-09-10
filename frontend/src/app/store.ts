@@ -2,11 +2,14 @@ import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import { apiSlice } from "./api/apiSlice";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
 import authReducer from "../features/auth/authSlice";
+import sidebarReducer from "../features/sidebar/sidebarSlice";
+
 
 export const store = configureStore({
   reducer: {
     [apiSlice.reducerPath]: apiSlice.reducer,
     auth: authReducer,
+    sidebar: sidebarReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(apiSlice.middleware),

@@ -29,4 +29,5 @@ export const StyledLogo = styled.div`
   background-color: #009fdb;
   background: linear-gradient(45deg, #ecdbc3 0%, #c58d40 100%);
   margin-right: 12px;
+  cursor: pointer;
 `;
