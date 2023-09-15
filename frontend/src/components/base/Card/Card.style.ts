@@ -5,12 +5,13 @@ export const CardWrapper = styled.div`
   flex-direction: column;
   gap: 20px;
   width: 300px;
-  height: 500px;
+  height: 380px;
   border: 1px solid gray;
   box-shadow: 5px 5px 5px gray;
 //   justify-content: center;
 //   align-items: center;
 //   margin-left: 8px;
+
 `;
 
 export const CardHeader = styled.div`

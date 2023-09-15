@@ -12,6 +12,7 @@ import {
   CardFooter,
 } from "./Card.style";
 import Button from "../Button";
+import TypographyView from "../Typography/Typography.view";
 
 const Card = (props: CardProps): JSX.Element => {
   // const theme = useTheme();
@@ -24,13 +25,13 @@ const Card = (props: CardProps): JSX.Element => {
       <CardHeader>
         <CardHeaderImg alt="certain name" src={image} />
         <CardHeaderText>
-          <p>{headerText}</p>
-          <p>{subText}</p>
+          <TypographyView variant="title5">{headerText}</TypographyView>
+          <TypographyView variant="label">{subText}</TypographyView>
         </CardHeaderText>
       </CardHeader>
       <CardContent>
         <CardContentImg alt="certain name" src={image} />
-        <p>{description}</p>
+        <TypographyView variant="body">{description}</TypographyView>
       </CardContent>
       <CardFooter>
         <Button text="Button" />
