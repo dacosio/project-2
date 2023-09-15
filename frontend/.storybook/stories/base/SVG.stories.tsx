@@ -4,6 +4,7 @@ import {
   /* PLOP_INJECT_IMPORT */
   Bell,
   Heart,
+  Smile,
   Close,
   EyeOff,
   Eye,
@@ -33,15 +34,18 @@ const meta: Meta = {
   component: () => (
     <Container background="white">
       {/* PLOP_INJECT_INSTANCE*/}
-        <Wrapper label="Bell">
-          <Bell width={30} height={30} />
-        </Wrapper>
-        <Wrapper label="Heart">
-          <Heart width={30} height={30} />
-        </Wrapper>
-        <Wrapper label="Close">
-          <Close width={30} height={30} />
-        </Wrapper>
+      <Wrapper label="Bell">
+        <Bell width={30} height={30} />
+      </Wrapper>
+      <Wrapper label="Heart">
+        <Heart width={30} height={30} />
+      </Wrapper>
+      <Wrapper label="Smile">
+        <Smile width={30} height={30} />
+      </Wrapper>
+      <Wrapper label="Close">
+        <Close width={30} height={30} />
+      </Wrapper>
       <Wrapper label="EyeOff">
         <EyeOff width={30} height={30} />
       </Wrapper>

@@ -1,25 +1,32 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import { LayoutProps } from "./Layout.props";
-import { Container, Header, Wrapper } from "./Layout.style";
+import { Container, Main, Side } from "./Layout.style";
 import Navigation from "../Navigation";
-import Footer from "../Footer";
+import { useAppDispatch, useAppSelector } from "app/hooks";
+import {
+  selectBroken,
+  selectToggle,
+  sendToggle,
+} from "features/sidebar/sidebarSlice";
 
 const Layout = (props: LayoutProps): JSX.Element => {
-  const date: Date = new Date();
-  const today = new Intl.DateTimeFormat("en-CA", {
-    dateStyle: "full",
-    timeStyle: "short",
-  }).format(date);
+  const broken = useAppSelector(selectBroken);
+  const dispatch = useAppDispatch();
+  const toggleState = useAppSelector(selectToggle);
+  const handleToggle = () => {
+    dispatch(sendToggle(!toggleState));
+  };
+
   return (
     <Container>
-      <Header>
+      <Side>
         <Navigation />
-      </Header>
-      <Wrapper>
+      </Side>
+      <Main>
+        {broken && <button onClick={handleToggle}>Toggle</button>}
         <Outlet />
-      </Wrapper>
-      <Footer today={today} />
+      </Main>
     </Container>
   );
 };

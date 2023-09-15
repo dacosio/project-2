@@ -4,5 +4,14 @@
   "[handlebars]": {
     "editor.formatOnSave": false
   },
-  "cSpell.words": ["deeppink", "hotpink", "Reauth", "whitesmoke"]
+  "cSpell.words": [
+    "deeppink",
+    "hotpink",
+    "Reauth",
+    "whitesmoke",
+    "Xtest",
+    "Xtrain",
+    "Ytest",
+    "Ytrain"
+  ]
 }

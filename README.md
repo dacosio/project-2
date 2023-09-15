@@ -55,6 +55,7 @@ docker-compose up
 - [Yuhwan Ban](https://github.com/laubana)
 - [Guia Chavez](https://github.com/guiachavez)
 - [Philippe Hernandez](https://github.com/jbhern-34)
+- [Pujan Shakya](https://github.com/puzannshakya)
 
 ## License
 
