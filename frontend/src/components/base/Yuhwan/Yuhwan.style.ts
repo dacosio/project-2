@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import { theme } from "../../../utils/Theme";
 
-import { YuhwanProps } from "./Yuhwan.props";
 import { ImgHTMLAttributes } from "react";
 
 export const HeadContainer = styled.div`
