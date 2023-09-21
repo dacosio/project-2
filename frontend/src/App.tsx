@@ -5,6 +5,7 @@ import Login from "./pages/Auth/Login";
 import Home from "./pages/Home";
 import Private from "./pages/Private";
 import PersistAuth from "components/layout/PersistAuth";
+import Yuhwan from "pages/Test/Yuhwan";
 
 function App() {
   return (
@@ -14,6 +15,9 @@ function App() {
         <Route path="login" element={<Login />} />
         <Route element={<PersistAuth />}>
           <Route path="private" element={<Private />} />
+        </Route>
+        <Route path="test">
+          <Route path="yuhwan" element={<Yuhwan />} />
         </Route>
       </Route>
     </Routes>
