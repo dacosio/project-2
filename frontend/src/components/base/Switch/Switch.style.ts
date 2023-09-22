@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { theme } from "../../../utils/Theme";
-import { SwitchSizes, SwitchStyleProps } from "./Switch.props";
+import { SwitchSizes } from "./Switch.props";
 
 const slider: Record<SwitchSizes, string> = {
   sm: "width: 52px; height: 28px;",
@@ -20,14 +20,14 @@ const transform: Record<SwitchSizes, string> = {
   lg: "translateX(32px);",
 };
 
-export const Label = styled.label<SwitchStyleProps>`
-  ${({ _size }) => slider[_size]}
+export const Label = styled.label<{ sizing: SwitchSizes }>`
+  ${({ sizing }) => slider[sizing]}
   position: relative;
   display: inline-block;
   border-radius: 100px;
 `;
 
-export const Checkbox = styled.input<SwitchStyleProps>`
+export const Checkbox = styled.input<{ sizing: SwitchSizes }>`
   display: none;
 
   &:checked + * {
@@ -35,7 +35,7 @@ export const Checkbox = styled.input<SwitchStyleProps>`
   }
 
   &:checked + * > * {
-    transform: ${({ _size }) => transform[_size]};
+    transform: ${({ sizing }) => transform[sizing]};
   }
 `;
 
@@ -48,9 +48,9 @@ export const Slider = styled.div`
   border-radius: 100px;
 `;
 
-export const Button = styled.div<SwitchStyleProps>`
-  width: ${({ _size }) => button[_size]}
-  height: ${({ _size }) => button[_size]}
+export const Button = styled.div<{ sizing: SwitchSizes }>`
+  width: ${({ sizing }) => button[sizing]}
+  height: ${({ sizing }) => button[sizing]}
   left: 5px;
   bottom: 5px;
   position: absolute;
