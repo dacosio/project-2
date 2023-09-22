@@ -6,17 +6,17 @@ const Switch = (props: SwitchProps): JSX.Element => {
   const { size = "md", value, setValue, style } = props;
 
   return (
-    <Label _size={size} style={style}>
+    <Label sizing={size} style={style}>
       <Checkbox
         type="checkbox"
-        _size={size}
+        sizing={size}
         checked={value}
         onChange={(event: ChangeEvent<HTMLInputElement>) =>
           setValue(event.target.checked)
         }
       />
       <Slider>
-        <Button _size={size} />
+        <Button sizing={size} />
       </Slider>
     </Label>
   );

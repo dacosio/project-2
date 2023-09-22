@@ -13,15 +13,11 @@ const meta: Meta<typeof Switch> = {
       console.log(`isChecked :: ${isChecked}`);
     }, [isChecked]);
 
-    const handleOnChange = (value: boolean) => {
-      setIsChecked(value);
-    };
-
     return (
       <div style={{ display: "grid", gap: "32px" }}>
-        <Switch size="sm" value={isChecked} setValue={handleOnChange} />
-        <Switch value={isChecked} setValue={handleOnChange} />
-        <Switch size="lg" value={isChecked} setValue={handleOnChange} />
+        <Switch value={isChecked} setValue={setIsChecked} size="sm" />
+        <Switch value={isChecked} setValue={setIsChecked} />
+        <Switch value={isChecked} setValue={setIsChecked} size="lg" />
       </div>
     );
   },
