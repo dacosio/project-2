@@ -15,9 +15,9 @@ const meta: Meta<typeof Switch> = {
 
     return (
       <div style={{ display: "grid", gap: "32px" }}>
-        <Switch size="sm" value={isChecked} setValue={setIsChecked} />
+        <Switch value={isChecked} setValue={setIsChecked} size="sm" />
         <Switch value={isChecked} setValue={setIsChecked} />
-        <Switch size="lg" value={isChecked} setValue={setIsChecked} />
+        <Switch value={isChecked} setValue={setIsChecked} size="lg" />
       </div>
     );
   },
