@@ -1,8 +1,9 @@
 import React from 'react';
 import { JbCardProps } from './JbCard.props';
-import { Container, Button, Card, ButtonsDiv } from './JbCard.style';
+import { Container, Button, Card, ButtonsDiv, CheckBoxWrapper, CheckBox} from './JbCard.style';
 
 const JbCard = (props: JbCardProps): JSX.Element => {
+
 
 
   return <Container> JbCard
@@ -18,9 +19,7 @@ const JbCard = (props: JbCardProps): JSX.Element => {
       </ButtonsDiv>
     </Card>
 
-    <div className="checkbox">
-      <input type="checkbox" className="checkbox" />
-    </div>
+      <CheckBox type="checkbox" className="checkbox" style={{border: "1px solid red"}} />
 
   </Container >;
 

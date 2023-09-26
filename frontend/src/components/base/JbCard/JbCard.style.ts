@@ -14,6 +14,7 @@ border: none;
 `;
 
 export const Card = styled.div`
+text-align: left;
 max-width: 300px;
 padding: 2em;
 display: grid;
@@ -27,4 +28,14 @@ export const ButtonsDiv = styled.div`
 display: flex;
 gap: 1em;
 justify-content: flex-end;
+`;
+
+export const CheckBoxWrapper = styled.div`
+color: blue;
+border: 1px solid red;
+`;
+
+export const CheckBox = styled.input`
+border: 1px solid red;
+background-color: hotpink;
 `;
