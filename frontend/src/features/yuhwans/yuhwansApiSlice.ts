@@ -7,6 +7,7 @@ export const yuhwansApiSlice = apiSlice.injectEndpoints({
     getAllYuhwans: builder.query<any[], void | any>({
       query: () => "/api/yuhwans",
       providesTags: (result) => {
+        console.log(result);
         if (result) {
           return [
             ...result.map(({ _id }: { _id: string | number }) => ({

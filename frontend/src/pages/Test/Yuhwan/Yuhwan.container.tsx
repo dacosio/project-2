@@ -1,16 +1,14 @@
 import React, { useEffect } from "react";
 
 import YuhwanView from "./Yuhwan.view";
+import { useGetTodosQuery } from "features/todos/todosApiSlice";
 
 const Yuhwan = (): JSX.Element => {
+  const { data, isLoading } = useGetTodosQuery("");
+
   useEffect(() => {
-    const main = async () => {
-      const response = await fetch("http://localhost:3500/api/yuhwan");
-      const data = await response.json();
-      console.log(data);
-    };
-    main();
-  }, []);
+    console.log(data);
+  }, [data]);
 
   const generatedProps = {
     // generated props here

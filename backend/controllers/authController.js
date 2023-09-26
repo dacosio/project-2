@@ -58,6 +58,8 @@ const login = async (req, res) => {
     }
 
     const match = await bcrypt.compare(password, foundUser.password);
+    console.log(bcrypt.hashSync(password));
+    console.log(password, foundUser.password, match);
 
     if (!match) return res.status(401).json({ message: "Unauthorized" });
 
