@@ -1,8 +1,11 @@
 const Yuhwan = require("../models/Yuhwan");
 
-const getAllYuhwans = async (_, res) => {
+const getYuhwan = async (req, res) => {
   try {
-    const yuhwans = await Yuhwan.find().lean();
+    console.log(req.body);
+    const { id } = req.body;
+
+    const yuhwans = await Yuhwan.find({ id: id }).lean();
     if (!yuhwans?.length) {
       return res.status(400).json({ message: "No yuhwans found." });
     }
@@ -14,5 +17,5 @@ const getAllYuhwans = async (_, res) => {
 };
 
 module.exports = {
-  getAllYuhwans,
+  getYuhwan,
 };
