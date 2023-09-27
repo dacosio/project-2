@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import YuhwanView from "./Yuhwan.view";
 import {
@@ -19,56 +19,50 @@ const Yuhwan = (): JSX.Element => {
   const [subtitle, setSubtitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
 
-  const handleOnSubmit = useCallback(
-    async (event: React.FormEvent<HTMLFormElement>) => {
-      event.preventDefault();
-      try {
-        if ([title, subtitle, description].every(Boolean)) {
-          const response = await addYuhwan({
-            title,
-            subtitle,
-            description,
-          }).unwrap();
+  const handleOnSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    try {
+      if ([title, subtitle, description].every(Boolean)) {
+        const response = await addYuhwan({
+          title,
+          subtitle,
+          description,
+        }).unwrap();
 
-          setTitle("");
-          setSubtitle("");
-          setDescription("");
-        }
-      } catch (err) {
-        console.error(err);
+        setTitle("");
+        setSubtitle("");
+        setDescription("");
       }
-    },
-    [title, subtitle, description]
-  );
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
-  const handleOnDelete = useCallback(async (id: string) => {
+  const handleOnDelete = async (id: string) => {
     try {
       const response = await deleteYuhwan({ id }).unwrap();
     } catch (err) {
       console.error(err);
     }
-  }, []);
+  };
 
-  const handleOnUpdate = useCallback(
-    async (
-      id: string,
-      title: string,
-      subtitle: string,
-      description: string
-    ) => {
-      try {
-        const response = await updateYuhwan({
-          id,
-          title,
-          subtitle,
-          description,
-        }).unwrap();
-      } catch (err) {
-        console.error(err);
-      }
-    },
-    []
-  );
+  const handleOnUpdate = async (
+    id: string,
+    title: string,
+    subtitle: string,
+    description: string
+  ) => {
+    try {
+      const response = await updateYuhwan({
+        id,
+        title,
+        subtitle,
+        description,
+      }).unwrap();
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   const generatedProps: YuhwanGeneratedProps = {
     data,
