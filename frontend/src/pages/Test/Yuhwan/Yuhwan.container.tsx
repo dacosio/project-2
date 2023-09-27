@@ -5,12 +5,14 @@ import {
   useGetAllYuhwansQuery,
   useAddYuhwanMutation,
   useDeleteYuhwanMutation,
+  useUpdateYuhwanMutation,
 } from "features/yuhwans/yuhwansApiSlice";
 import { YuhwanGeneratedProps } from "./Yuhwan.props";
 
 const Yuhwan = (): JSX.Element => {
   const { data } = useGetAllYuhwansQuery("");
   const [addYuhwan] = useAddYuhwanMutation();
+  const [updateYuhwan] = useUpdateYuhwanMutation();
   const [deleteYuhwan] = useDeleteYuhwanMutation();
 
   const [title, setTitle] = useState<string>("");
@@ -47,6 +49,27 @@ const Yuhwan = (): JSX.Element => {
     }
   }, []);
 
+  const handleOnUpdate = useCallback(
+    async (
+      id: string,
+      title: string,
+      subtitle: string,
+      description: string
+    ) => {
+      try {
+        const response = await updateYuhwan({
+          id,
+          title,
+          subtitle,
+          description,
+        }).unwrap();
+      } catch (err) {
+        console.error(err);
+      }
+    },
+    []
+  );
+
   const generatedProps: YuhwanGeneratedProps = {
     data,
     title,
@@ -57,6 +80,7 @@ const Yuhwan = (): JSX.Element => {
     setDescription,
     handleOnSubmit,
     handleOnDelete,
+    handleOnUpdate,
   };
   return <YuhwanView {...generatedProps} />;
 };

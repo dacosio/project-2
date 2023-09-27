@@ -2,9 +2,11 @@
 export interface TagTypeProps {
   USER: "USER";
   TODO: "TODO";
+  YUHWAN: "YUHWAN";
 }
 
 export const TAG_TYPE: TagTypeProps = {
   USER: "USER",
   TODO: "TODO",
+  YUHWAN: "YUHWAN",
 };

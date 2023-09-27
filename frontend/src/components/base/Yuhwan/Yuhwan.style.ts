@@ -8,6 +8,7 @@ export const HeadContainer = styled.div`
   grid-template-columns: 2fr 8fr;
   padding: 16px;
   gap: 16px;
+  align-items: center;
 `;
 
 export const Avatar = styled.img<ImgHTMLAttributes<HTMLImageElement>>`
@@ -19,7 +20,7 @@ export const Avatar = styled.img<ImgHTMLAttributes<HTMLImageElement>>`
 
 export const TitleContainer = styled.div`
   display: grid;
-  align-content: center;
+  gap: 8px;
 `;
 
 export const Image = styled.img<ImgHTMLAttributes<HTMLImageElement>>`
@@ -46,7 +47,7 @@ export const ButtonContainer = styled.div`
 
 export const IconContainer = styled.div`
   display: flex;
-  gap: 32px;
+  gap: 16px;
   align-items: center;
 `;
 
@@ -59,9 +60,19 @@ export const YuhwanContainer = styled.div`
 
 export const Input = styled.input`
   width: 100%;
+  border: 1px solid ${theme.grey.shade3};
+  box-sizing: border-box;
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const Textarea = styled.textarea`
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
+  border: 1px solid ${theme.grey.shade3};
+  &:focus {
+    outline: none;
+  }
 `;

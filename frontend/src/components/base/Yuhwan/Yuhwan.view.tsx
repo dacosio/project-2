@@ -19,12 +19,28 @@ import {
 } from "./Yuhwan.style";
 
 const Yuhwan = (props: YuhwanProps): JSX.Element => {
-  const { id, avatar, title, subtitle, image, description, onDelete } = props;
+  const {
+    id,
+    avatar,
+    title,
+    subtitle,
+    image,
+    description,
+    onDelete,
+    onUpdate,
+  } = props;
 
-  const [isEditing, setIsEditing] = useState<boolean>(true);
+  const [isEditing, setIsEditing] = useState<boolean>(false);
   const [inputTitle, setInputTitle] = useState<string>(title);
-  const [inputSubitle, setInputSubtitle] = useState<string>(title);
-  const [inputDescription, setInputDescription] = useState<string>(title);
+  const [inputSubtitle, setInputSubtitle] = useState<string>(subtitle);
+  const [inputDescription, setInputDescription] = useState<string>(description);
+
+  const handleOnUpdate = () => {
+    if ([inputTitle, inputSubtitle, inputDescription].every(Boolean)) {
+      onUpdate(id, inputTitle, inputSubtitle, inputDescription);
+    }
+    setIsEditing(false);
+  };
 
   return (
     <YuhwanContainer>
@@ -47,7 +63,7 @@ const Yuhwan = (props: YuhwanProps): JSX.Element => {
           {isEditing ? (
             <Input
               type="text"
-              value={inputSubitle}
+              value={inputSubtitle}
               onChange={(event: ChangeEvent<HTMLInputElement>) =>
                 setInputSubtitle(event.target.value)
               }
@@ -79,10 +95,26 @@ const Yuhwan = (props: YuhwanProps): JSX.Element => {
             style={{ padding: "4px 8px", backgroundColor: "transparent" }}
             onClick={() => onDelete(id)}
           />
-          <Button
-            text="Button"
-            style={{ padding: "4px 8px", backgroundColor: "transparent" }}
-          />
+          {isEditing ? (
+            <>
+              <Button
+                text="Confirm"
+                onClick={handleOnUpdate}
+                style={{ padding: "4px 8px", backgroundColor: "transparent" }}
+              />
+              <Button
+                text="Cancel"
+                onClick={() => setIsEditing(false)}
+                style={{ padding: "4px 8px", backgroundColor: "transparent" }}
+              />
+            </>
+          ) : (
+            <Button
+              text="Update"
+              onClick={() => setIsEditing(true)}
+              style={{ padding: "4px 8px", backgroundColor: "transparent" }}
+            />
+          )}
         </ButtonContainer>
         <IconContainer>
           <Heart width={24} height={24} fill="#565A6A" />

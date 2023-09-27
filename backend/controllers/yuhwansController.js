@@ -1,21 +1,11 @@
 const Yuhwan = require("../models/Yuhwan");
 
-const getAllYuhwans = async (req, res) => {
-  try {
-    const yuhwans = await Yuhwan.find({}).lean();
-
-    res.status(200).json(yuhwans);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
-
 const createYuhwan = async (req, res) => {
   try {
     const { title, subtitle, description } = req.body;
 
     if (![title, subtitle, description].every(Boolean)) {
-      return res.status(400).json({ message: "All fields are required" });
+      return res.status(400).json({ message: "All fields are required." });
     }
 
     const yuhwan = await Yuhwan.create({
@@ -29,10 +19,49 @@ const createYuhwan = async (req, res) => {
     if (yuhwan) {
       return res
         .status(201)
-        .json({ message: "New yuhwan created", data: yuhwan });
+        .json({ message: "New yuhwan created.", data: yuhwan });
     } else {
-      return res.status(400).json({ message: "Invalid yuhwan data received" });
+      return res.status(400).json({ message: "Invalid yuhwan data received." });
     }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+const getAllYuhwans = async (req, res) => {
+  try {
+    const yuhwans = await Yuhwan.find({}).lean();
+
+    res.status(200).json(yuhwans);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+const updateYuhwan = async (req, res) => {
+  try {
+    const { id, title, subtitle, description } = req.body;
+
+    if (![id, title, subtitle, description].every(Boolean)) {
+      return res.status(400).json({ message: "All fields are required." });
+    }
+
+    const yuhwan = await Yuhwan.findById(id).exec();
+
+    if (!yuhwan) {
+      return res.status(400).json({ message: "Yuhwan not found." });
+    }
+
+    yuhwan.id = id;
+    yuhwan.title = title;
+    yuhwan.subtitle = subtitle;
+    yuhwan.description = description;
+
+    const result = await yuhwan.save();
+
+    const response = `Yuhwan '${result.title}' with ID ${result._id} updated.`;
+
+    res.status(200).json({ message: response });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -43,18 +72,18 @@ const deleteYuhwan = async (req, res) => {
     const { id } = req.body;
 
     if (!id) {
-      return res.status(400).json({ message: "Yuhwan ID required" });
+      return res.status(400).json({ message: "Yuhwan ID required." });
     }
 
     const yuhwan = await Yuhwan.findById(id).exec();
 
     if (!yuhwan) {
-      return res.status(400).json({ message: "Yuhwan not found" });
+      return res.status(400).json({ message: "Yuhwan not found." });
     }
 
     const result = await yuhwan.deleteOne();
 
-    const response = `Yuhwan '${result.title}' with ID ${result._id} deleted`;
+    const response = `Yuhwan '${result.title}' with ID ${result._id} deleted.`;
 
     res.status(200).json({ message: response });
   } catch (error) {
@@ -65,5 +94,6 @@ const deleteYuhwan = async (req, res) => {
 module.exports = {
   getAllYuhwans,
   createYuhwan,
+  updateYuhwan,
   deleteYuhwan,
 };

@@ -6,6 +6,7 @@ router
   .route("/yuhwans")
   .post(yuhwansController.createYuhwan)
   .get(yuhwansController.getAllYuhwans)
+  .put(yuhwansController.updateYuhwan)
   .delete(yuhwansController.deleteYuhwan);
 
 module.exports = router;

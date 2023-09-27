@@ -8,4 +8,10 @@ export interface YuhwanGeneratedProps {
   setDescription: React.Dispatch<React.SetStateAction<string>>;
   handleOnSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
   handleOnDelete: (id: string) => void;
+  handleOnUpdate: (
+    id: string,
+    title: string,
+    subtitle: string,
+    description: string
+  ) => void;
 }

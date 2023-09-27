@@ -14,6 +14,7 @@ const YuhwanView = (props: YuhwanGeneratedProps) => {
     setDescription,
     handleOnSubmit,
     handleOnDelete,
+    handleOnUpdate,
   } = props;
   return (
     <Container>
@@ -70,6 +71,7 @@ const YuhwanView = (props: YuhwanGeneratedProps) => {
               description={yuhwan.description}
               key={index}
               onDelete={handleOnDelete}
+              onUpdate={handleOnUpdate}
             />
           )
         )}
