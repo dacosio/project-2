@@ -19,5 +19,6 @@ export type Theme = {
     shade8: string;
     shade9: string;
     noshade: string;
+    shade10: string;
   };
 };

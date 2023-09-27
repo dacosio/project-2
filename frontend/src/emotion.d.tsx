@@ -21,6 +21,7 @@ declare module "@emotion/react" {
       shade8: string;
       shade9: string;
       noshade: string;
+      shade10: string;
     };
   }
 }

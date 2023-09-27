@@ -34,6 +34,8 @@ const Button = (props: ButtonProps): JSX.Element => {
     textColor = "noshade";
   } else if (variant === "unselected") {
     textColor = "noshade";
+  } else if (variant === "purple") {
+    textColor = "shade10";
   } else {
     textColor = "shade5";
   }
@@ -47,6 +49,8 @@ const Button = (props: ButtonProps): JSX.Element => {
     textWeight = "500";
   } else if (size === "md") {
     textVariant = "overline";
+    textWeight = "900";
+  } else if (size === "lg") {
     textWeight = "900";
   }
 
@@ -69,7 +73,7 @@ const Button = (props: ButtonProps): JSX.Element => {
       )}
 
       {text && (
-        <Typography variant={textVariant} color={textColor} weight={textWeight}>
+        <Typography variant={textVariant} textColor={textColor} weight={textWeight}>
           {text}
         </Typography>
       )}
