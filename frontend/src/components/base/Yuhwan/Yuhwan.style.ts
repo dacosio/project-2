@@ -56,3 +56,12 @@ export const YuhwanContainer = styled.div`
   border: 1px solid ${theme.grey.shade3};
   border-radius: 4px;
 `;
+
+export const Input = styled.input`
+  width: 100%;
+`;
+
+export const Textarea = styled.textarea`
+  width: 100%;
+  height: 100%;
+`;

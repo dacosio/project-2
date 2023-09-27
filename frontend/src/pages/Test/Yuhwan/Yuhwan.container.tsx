@@ -1,17 +1,62 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import YuhwanView from "./Yuhwan.view";
-import { useGetTodosQuery } from "features/todos/todosApiSlice";
+import {
+  useGetAllYuhwansQuery,
+  useAddYuhwanMutation,
+  useDeleteYuhwanMutation,
+} from "features/yuhwans/yuhwansApiSlice";
+import { YuhwanGeneratedProps } from "./Yuhwan.props";
 
 const Yuhwan = (): JSX.Element => {
-  const { data, isLoading } = useGetTodosQuery("");
+  const { data } = useGetAllYuhwansQuery("");
+  const [addYuhwan] = useAddYuhwanMutation();
+  const [deleteYuhwan] = useDeleteYuhwanMutation();
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+  const [title, setTitle] = useState<string>("");
+  const [subtitle, setSubtitle] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
 
-  const generatedProps = {
-    // generated props here
+  const handleOnSubmit = useCallback(
+    async (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      try {
+        if ([title, subtitle, description].every(Boolean)) {
+          const response = await addYuhwan({
+            title,
+            subtitle,
+            description,
+          }).unwrap();
+
+          setTitle("");
+          setSubtitle("");
+          setDescription("");
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    },
+    [title, subtitle, description]
+  );
+
+  const handleOnDelete = useCallback(async (id: string) => {
+    try {
+      const response = await deleteYuhwan({ id }).unwrap();
+    } catch (err) {
+      console.error(err);
+    }
+  }, []);
+
+  const generatedProps: YuhwanGeneratedProps = {
+    data,
+    title,
+    setTitle,
+    subtitle,
+    setSubtitle,
+    description,
+    setDescription,
+    handleOnSubmit,
+    handleOnDelete,
   };
   return <YuhwanView {...generatedProps} />;
 };

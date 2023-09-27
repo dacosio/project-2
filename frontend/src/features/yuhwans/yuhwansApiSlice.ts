@@ -7,7 +7,6 @@ export const yuhwansApiSlice = apiSlice.injectEndpoints({
     getAllYuhwans: builder.query<any[], void | any>({
       query: () => "/api/yuhwans",
       providesTags: (result) => {
-        console.log(result);
         if (result) {
           return [
             ...result.map(({ _id }: { _id: string | number }) => ({
@@ -21,7 +20,27 @@ export const yuhwansApiSlice = apiSlice.injectEndpoints({
         }
       },
     }),
+    addYuhwan: builder.mutation({
+      query: ({ title, subtitle, description }) => ({
+        url: `api/yuhwans`,
+        method: METHOD.POST,
+        body: { title, subtitle, description },
+      }),
+      invalidatesTags: [{ type: TAG_TYPE.TODO, id: "LIST" }],
+    }),
+    deleteYuhwan: builder.mutation({
+      query: ({ id }) => ({
+        url: `api/yuhwans`,
+        method: METHOD.DELETE,
+        body: { id },
+      }),
+      invalidatesTags: [{ type: TAG_TYPE.TODO, id: "LIST" }],
+    }),
   }),
 });
 
-export const { useGetAllYuhwansQuery } = yuhwansApiSlice;
+export const {
+  useGetAllYuhwansQuery,
+  useAddYuhwanMutation,
+  useDeleteYuhwanMutation,
+} = yuhwansApiSlice;

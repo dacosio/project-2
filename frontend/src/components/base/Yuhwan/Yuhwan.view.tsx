@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEvent, useState } from "react";
 import { YuhwanProps } from "./Yuhwan.props";
 import Button from "../Button";
 import Typography from "../Typography";
@@ -14,33 +14,70 @@ import {
   FootContainer,
   ButtonContainer,
   IconContainer,
+  Input,
+  Textarea,
 } from "./Yuhwan.style";
 
 const Yuhwan = (props: YuhwanProps): JSX.Element => {
-  const { avatar, title, subtitle, image, description } = props;
+  const { id, avatar, title, subtitle, image, description, onDelete } = props;
+
+  const [isEditing, setIsEditing] = useState<boolean>(true);
+  const [inputTitle, setInputTitle] = useState<string>(title);
+  const [inputSubitle, setInputSubtitle] = useState<string>(title);
+  const [inputDescription, setInputDescription] = useState<string>(title);
 
   return (
     <YuhwanContainer>
       <HeadContainer>
         <Avatar src={avatar} />
         <TitleContainer>
-          <Typography variant="title5" weight="700">
-            {title}
-          </Typography>
-          <Typography variant="body">{subtitle}</Typography>
+          {isEditing ? (
+            <Input
+              type="text"
+              value={inputTitle}
+              onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                setInputTitle(event.target.value)
+              }
+            />
+          ) : (
+            <Typography variant="title5" weight="700">
+              {title}
+            </Typography>
+          )}
+          {isEditing ? (
+            <Input
+              type="text"
+              value={inputSubitle}
+              onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                setInputSubtitle(event.target.value)
+              }
+            />
+          ) : (
+            <Typography variant="body">{subtitle}</Typography>
+          )}
         </TitleContainer>
       </HeadContainer>
       <Image src={image} />
       <BodyContainer>
-        <Typography variant="body" textColor="shade7">
-          {description}
-        </Typography>
+        {isEditing ? (
+          <Textarea
+            value={inputDescription}
+            onChange={(event: ChangeEvent<HTMLTextAreaElement>) =>
+              setInputDescription(event.target.value)
+            }
+          />
+        ) : (
+          <Typography variant="body" textColor="shade7">
+            {description}
+          </Typography>
+        )}
       </BodyContainer>
       <FootContainer>
         <ButtonContainer>
           <Button
-            text="Button"
+            text="Delete"
             style={{ padding: "4px 8px", backgroundColor: "transparent" }}
+            onClick={() => onDelete(id)}
           />
           <Button
             text="Button"

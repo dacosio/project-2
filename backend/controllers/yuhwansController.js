@@ -2,12 +2,7 @@ const Yuhwan = require("../models/Yuhwan");
 
 const getAllYuhwans = async (req, res) => {
   try {
-    console.log(req.body);
-
     const yuhwans = await Yuhwan.find({}).lean();
-    if (!yuhwans?.length) {
-      return res.status(400).json({ message: "No yuhwans found." });
-    }
 
     res.status(200).json(yuhwans);
   } catch (error) {
@@ -15,17 +10,53 @@ const getAllYuhwans = async (req, res) => {
   }
 };
 
-const getYuhwan = async (req, res) => {
+const createYuhwan = async (req, res) => {
   try {
-    console.log(req.body);
-    const { id } = req.body;
+    const { title, subtitle, description } = req.body;
 
-    const yuhwans = await Yuhwan.find({ id: id }).lean();
-    if (!yuhwans?.length) {
-      return res.status(400).json({ message: "No yuhwans found." });
+    if (![title, subtitle, description].every(Boolean)) {
+      return res.status(400).json({ message: "All fields are required" });
     }
 
-    res.status(200).json(yuhwans);
+    const yuhwan = await Yuhwan.create({
+      avatar: "https://picsum.photos/300/300?random=",
+      title,
+      subtitle,
+      image: "https://picsum.photos/200/300?random=",
+      description,
+    });
+
+    if (yuhwan) {
+      return res
+        .status(201)
+        .json({ message: "New yuhwan created", data: yuhwan });
+    } else {
+      return res.status(400).json({ message: "Invalid yuhwan data received" });
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+const deleteYuhwan = async (req, res) => {
+  try {
+    const { id } = req.body;
+
+    if (!id) {
+      return res.status(400).json({ message: "Yuhwan ID required" });
+    }
+
+    const yuhwan = await Yuhwan.findById(id).exec();
+
+    if (!yuhwan) {
+      return res.status(400).json({ message: "Yuhwan not found" });
+    }
+
+    const result = await yuhwan.deleteOne();
+
+    const response = `Yuhwan '${result.title}' with ID ${result._id} deleted`;
+
+    res.status(200).json({ message: response });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -33,5 +64,6 @@ const getYuhwan = async (req, res) => {
 
 module.exports = {
   getAllYuhwans,
-  getYuhwan,
+  createYuhwan,
+  deleteYuhwan,
 };
