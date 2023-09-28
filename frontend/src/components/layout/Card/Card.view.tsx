@@ -1,8 +1,8 @@
 import React from 'react';
 import { CardProps } from './Card.props';
 import { Container, Buttons } from './Card.style';
-import Typography from 'components/base/Typography';
-import Button from 'components/base/Button/Button.view';
+import Typography from '../../../components/base/Typography';
+import Button from '../../../components/base/Button/Button.view';
 
 const Card = (props: CardProps): JSX.Element => {
   return (
