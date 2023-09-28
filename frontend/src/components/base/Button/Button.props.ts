@@ -8,7 +8,7 @@ export type Variants =
   | 'disabled'
   | 'success'
   | 'unselected'
-  | 'purple';
+  | 'accent';
 export type IconPosition = 'before' | 'after';
 export type ButtonSizes = 'lg' | 'md' | 'sm';
 

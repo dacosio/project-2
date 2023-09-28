@@ -10,6 +10,7 @@ declare module "@emotion/react" {
       success: string;
       warning: string;
       error: string;
+      accent: string;
     };
     grey: {
       shade1: string;
@@ -21,7 +22,6 @@ declare module "@emotion/react" {
       shade8: string;
       shade9: string;
       noshade: string;
-      shade10: string;
     };
   }
 }

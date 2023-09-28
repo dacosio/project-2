@@ -8,7 +8,7 @@ const backgroundColor: Record<Variants, string> = {
   disabled: theme.grey.shade3,
   success: theme.brand.success,
   unselected: theme.grey.shade9,
-  purple: theme.grey.shade10
+  accent: theme.brand.accent
 };
 
 const border: Record<Variants, string> = {
@@ -17,13 +17,13 @@ const border: Record<Variants, string> = {
   disabled: `1px solid ${theme.grey.shade5}`,
   success: "none",
   unselected: "none",
-  purple: "none"
+  accent: "none"
 };
 
 const padding: Record<ButtonSizes, string> = {
   sm: "8px 12px",
   md: "18px 36px",
-  lg: "42",
+  lg: "42px 72px",
 };
 
 export const ButtonContainer = styled.button<

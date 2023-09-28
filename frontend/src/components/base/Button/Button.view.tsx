@@ -34,8 +34,8 @@ const Button = (props: ButtonProps): JSX.Element => {
     textColor = "noshade";
   } else if (variant === "unselected") {
     textColor = "noshade";
-  } else if (variant === "purple") {
-    textColor = "shade10";
+  } else if (variant === "accent") {
+    textColor = "accent";
   } else {
     textColor = "shade5";
   }

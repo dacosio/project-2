@@ -8,6 +8,7 @@ export type Theme = {
     success: string;
     warning: string;
     error: string;
+    accent: string;
   };
   grey: {
     shade1: string;
@@ -19,6 +20,5 @@ export type Theme = {
     shade8: string;
     shade9: string;
     noshade: string;
-    shade10: string;
   };
 };

@@ -14,8 +14,8 @@ const Card = (props: CardProps): JSX.Element => {
         Body 2: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
       </Typography>
       <Buttons>
-        <Button text='Button' variant="purple" size='lg' style={{ backgroundColor: "transparent", padding: "1rem 0", textTransform: "uppercase" }} />
-        <Button text='Button' variant="purple" size='lg' style={{ backgroundColor: "transparent", padding: "1rem 0", textTransform: "uppercase" }} />
+        <Button text='Button' variant="accent" size='lg' style={{ backgroundColor: "transparent", padding: "1rem 0", textTransform: "uppercase" }} />
+        <Button text='Button' variant="accent" size='lg' style={{ backgroundColor: "transparent", padding: "1rem 0", textTransform: "uppercase" }} />
       </Buttons>
     </Container>)
 };
