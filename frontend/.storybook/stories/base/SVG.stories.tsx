@@ -2,6 +2,7 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import {
   /* PLOP_INJECT_IMPORT */
+  Cloudy,
   Smile,
   Close,
   EyeOff,
@@ -32,6 +33,9 @@ const meta: Meta = {
   component: () => (
     <Container background="white">
       {/* PLOP_INJECT_INSTANCE*/}
+        <Wrapper label="Cloudy">
+          <Cloudy width={30} height={30} />
+        </Wrapper>
         <Wrapper label="Smile">
           <Smile width={30} height={30} />
         </Wrapper>
