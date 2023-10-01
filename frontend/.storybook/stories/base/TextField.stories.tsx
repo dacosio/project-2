@@ -11,10 +11,8 @@ const meta: Meta = {
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState("");
     return (
-      <Container
-        background="white"
-      >
-        <Wrapper>
+      <Container background="white">
+        <div style={{ marginRight: "2rem" }}>
           <TextField
             label="Email"
             value={email}
@@ -22,9 +20,9 @@ const meta: Meta = {
             placeholder="user@nomail.com"
             error="Please enter your email"
           />
-        </Wrapper>
+        </div>
 
-        <Wrapper>
+        <div>
           <TextField
             label="Password"
             value={password}
@@ -32,7 +30,7 @@ const meta: Meta = {
             secured
             placeholder="******"
           />
-        </Wrapper>
+        </div>
       </Container>
     );
   },
