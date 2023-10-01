@@ -105,6 +105,9 @@ const Navigation = (props: NavigationProps): JSX.Element => {
               <MenuItem component={<Link to="/login" />}>
                 <Typography variant="caption">Login</Typography>
               </MenuItem>
+              <MenuItem component={<Link to="/cardpage" />}>
+                <Typography variant="caption">Cardpage</Typography>
+              </MenuItem>
             </SubMenu>
           </Menu>
         </div>

@@ -28,6 +28,7 @@ app.use("/", require("./routes/root"));
 app.use("/auth", require("./routes/authRoutes"));
 app.use("/api", require("./routes/userRoutes"));
 app.use("/api", require("./routes/todoRoutes"));
+app.use("/api", require("./routes/cardRoutes"));
 
 app.all("*", (req, res) => {
   res.status(404);

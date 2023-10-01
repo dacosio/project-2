@@ -20,6 +20,10 @@ const Card = (props: CardProps): JSX.Element => {
 
   let textColor: keyof Theme["brand"] | keyof Theme["grey"];
 
+  const handleClick = () => {
+    console.log("Hello Hello");
+  };
+
   return (
     <CardWrapper>
       <CardHeader>
@@ -34,8 +38,8 @@ const Card = (props: CardProps): JSX.Element => {
         <TypographyView variant="body">{description}</TypographyView>
       </CardContent>
       <CardFooter>
-        <Button text="Button" />
-        <Button text="Button" />
+        <Button text="Button" onClick={handleClick} />
+        <Button text="Button" onClick={handleClick} />
       </CardFooter>
     </CardWrapper>
   );

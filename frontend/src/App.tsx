@@ -4,6 +4,7 @@ import Layout from "./components/layout/Layout";
 import Login from "./pages/Auth/Login";
 import Home from "./pages/Home";
 import Private from "./pages/Private";
+import CardPage from "./pages/CardPage";
 import PersistAuth from "components/layout/PersistAuth";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route element={<PersistAuth />}>
           <Route path="private" element={<Private />} />
         </Route>
+        <Route path="cardpage" element={<CardPage />} />
       </Route>
     </Routes>
   );
