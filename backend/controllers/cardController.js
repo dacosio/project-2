@@ -1,34 +1,37 @@
 const Card = require('../models/Card');
 
-const cardController = {
-  createCard: async (req, res) => {
-    try {
-      const { title, body } = req.body;
 
-      const newCard = new Card({
-        title,
-        body
-      });
+const createCard = async (req, res) => {
+  try {
+    const { title, body } = req.body;
 
-      console.log('Request Body:', req.body);
-      await newCard.save();
+    const newCard = new Card({
+      title,
+      body
+    });
 
-      res.status(201).json({ message: 'Card record created successfully', data: newCard });
-    } catch (error) {
-      res.status(500).json({ error: 'Failed to create card record', details: error.message });
-    }
-  },
+    console.log('Request Body:', req.body);
+    await newCard.create({});
 
-  getCardDetails: async (req, res) => {
-    try {
-      console.log("INSIDE Get Card Details-->");
-      const cardData = await Card.find({}).lean();
-      console.log("DATA-->", cardData);
-      res.status(200).json(cardData);
-    } catch (error) {
-      res.status(500).json({ error: 'Failed to retrieve card data', details: error.message });
-    }
+    res.status(201).json({ message: 'Card record created successfully', data: newCard });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to create card record', details: error.message });
   }
-};
+}
 
-module.exports = cardController;
+const getCardDetails = async (req, res) => {
+  try {
+    console.log("INSIDE Get Card Details-->");
+    const cardData = await Card.find({}).lean();
+    console.log("DATA-->", cardData);
+    res.status(200).json(cardData);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to retrieve card data', details: error.message });
+  }
+}
+
+
+module.exports = {
+  createCard,
+  getCardDetails
+};
