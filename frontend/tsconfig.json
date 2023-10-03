@@ -22,6 +22,6 @@
     "jsxImportSource": "@emotion/react",
     "rootDir": "."
   },
-  "include": ["src", "src/emotion.d.tsx"],
+  "include": [".eslintrc.cjs","src", "src/emotion.d.tsx"],
   "exclude": ["build", "node_modules"]
 }
