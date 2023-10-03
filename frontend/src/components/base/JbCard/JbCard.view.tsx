@@ -1,28 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { JbCardProps } from './JbCard.props';
-import { Container, Button, Card, ButtonsDiv, CheckBoxWrapper, CheckBox} from './JbCard.style';
+import Button from '../Button';
+import Typography from '../Typography';
+import { Container, ButtonDiv } from './JbCard.style';
 
 const JbCard = (props: JbCardProps): JSX.Element => {
+  const [cardDetails, setCardDetails] = useState([
+    { title: 'Subtitle 1', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam', id: 4 }
+  ]);
 
+  const title = cardDetails[0]?.title || '';
+  const description = cardDetails[0]?.description || '';
 
+  return <Container>
+    <Typography variant="title5" weight="700">
+      {title}
+    </Typography>
 
-  return <Container> JbCard
+    <Typography variant="body">
+      { description }
+    </Typography>
 
-    <Card>
-      <div className="cardContent">
-        <h3>Subtitle 1</h3>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis dolorem reiciendis ab rem sunt architecto officia nemo. Consequuntur commodi tenetur beatae iure, aut placeat.</p>
-      </div>
-      <ButtonsDiv>
-        <Button>Hello</Button>
-        <Button>Hello</Button>
-      </ButtonsDiv>
-    </Card>
+    <ButtonDiv>
 
-      <CheckBox type="checkbox" className="checkbox" style={{border: "1px solid red"}} />
+    <Button text='Button' variant='primary' size='sm' takeFullWidth={false} style={{color: "purple", backgroundColor: "transparent", textTransform: "uppercase"}} ></Button>
+    
+    <Button text='Button' variant='primary' size='sm' takeFullWidth={false} style={{color: "purple", backgroundColor: "transparent", textTransform: "uppercase"}} ></Button>
+
+    </ButtonDiv>
+
 
   </Container >;
-
 
 };
 
