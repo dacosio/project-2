@@ -17,15 +17,15 @@ const TestPageView = (props: TestPageGeneratedProps) => {
     cards.map(
       (
         card: {
-          id: string;
+          _id: string;
           title: string;
           body: string;
         },
         index
       ) => (
         <CardView
-          key={card.id}
-          id={card.id}
+          key={card._id}
+          id={card._id}
           title={card.title}
           body={card.body}
         />
