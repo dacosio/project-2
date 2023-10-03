@@ -11,7 +11,7 @@ import { TAG_TYPE } from "const/tags";
 const baseUrl =
   process.env.NODE_ENV === "production"
     ? process.env.REACT_APP_BACKEND
-    : "http://localhost:3500";
+    : "http://localhost:3501";
 
 const baseQuery = fetchBaseQuery({
   baseUrl,
@@ -65,6 +65,6 @@ const baseQueryWithReauth: BaseQueryFn<
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: baseQueryWithReauth,
-  tagTypes: [TAG_TYPE.TODO],
+  tagTypes: [TAG_TYPE.TODO, TAG_TYPE.TESTPAGE],
   endpoints: (builder) => ({}),
 });

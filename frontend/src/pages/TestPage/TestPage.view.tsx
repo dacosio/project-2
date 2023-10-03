@@ -4,7 +4,37 @@ import { Container } from './TestPage.style';
 import CardView from 'components/layout/Card/Card.view';
 
 const TestPageView = (props: TestPageGeneratedProps) => {
-  return <Container> <CardView /> </Container>;
+  const {
+    data: cards,
+    title,
+    body,
+    ...TestPageGeneratedProps
+  } = props;
+
+  console.log(cards)
+
+  const cardItems = Array.isArray(cards) ? (
+    cards.map(
+      (
+        card: {
+          id: string;
+          title: string;
+          body: string;
+        },
+        index
+      ) => (
+        <CardView
+          key={card.id}
+          id={card.id}
+          title={card.title}
+          body={card.body}
+        />
+      )
+    )
+  ) : null;
+
+  return <Container>{cardItems}</Container>;
+
 };
 
 export default TestPageView;

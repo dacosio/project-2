@@ -10,8 +10,9 @@ const cors = require("cors");
 const corsOptions = require("./config/corsOptions");
 const connectDB = require("./config/dbConn");
 const mongoose = require("mongoose");
-dotenv.config();
-const PORT = process.env.PORT || 3500;
+
+dotenv.config({ path: '.env.development' });
+const PORT = process.env.PORT || 3501;
 connectDB();
 app.use(logger);
 app.use(cors(corsOptions));
@@ -25,9 +26,10 @@ app.use(cookieParser());
 app.use("/", express.static(path.join(__dirname, "public")));
 
 app.use("/", require("./routes/root"));
-app.use("/auth", require("./routes/authRoutes"));
-app.use("/api", require("./routes/userRoutes"));
-app.use("/api", require("./routes/todoRoutes"));
+// app.use("/auth", require("./routes/authRoutes"));
+// app.use("/api", require("./routes/userRoutes"));
+// app.use("/api", require("./routes/todoRoutes"));
+app.use("/api", require("./routes/cardRoutes"));
 
 app.all("*", (req, res) => {
   res.status(404);
@@ -45,7 +47,9 @@ app.use(errorHandler);
 mongoose.connection.once("open", () => {
   console.log("Connected to Database");
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+  console.log(mongoose.connection.readyState);
 });
+
 
 mongoose.connection.on("error", (err) => {
   console.log(err);
