@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { HomeGeneratedProps } from "./Home.props";
 import { Container } from "./Home.style";
 import Typography from "components/base/Typography";
+import WeatherCard from "components/base/WeatherCard";
 import axios from "axios";
 
 const HomeView = (props: HomeGeneratedProps) => {
@@ -42,6 +43,7 @@ const HomeView = (props: HomeGeneratedProps) => {
         <button onClick={onPredict}>predict</button>
         <div>Recommended Crop: {responseData.prediction[0]}</div>
       </div>
+      <WeatherCard />
     </Container>
   );
 };
