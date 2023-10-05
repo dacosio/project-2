@@ -3,10 +3,9 @@ import { CheckboxProps } from './Checkbox.props';
 import { Container, CustomCheckbox, Label } from './Checkbox.style';
 
 const Checkbox = (props: CheckboxProps): JSX.Element => {
-  const [checkboxStatus, setCheckboxStatus] = useState(false);
+  const { checkboxStatus, setCheckboxStatus } = props;
 
   const answerBox = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.checked);
     setCheckboxStatus(e.target.checked)
   }
 
