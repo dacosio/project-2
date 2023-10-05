@@ -33,6 +33,4 @@ export const CustomCheckbox = styled.input`
   
 `;
 
-export const Label = styled.label`
-`;
 
