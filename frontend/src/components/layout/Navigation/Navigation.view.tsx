@@ -94,14 +94,16 @@ const Navigation = (props: NavigationProps): JSX.Element => {
           <Menu menuItemStyles={menuItemStyles}>
             <SubMenu
               icon={<Smile width={25} height={25} />}
-              label={<Typography variant="subtitle"">Pages</Typography>}
+              label={<Typography variant="subtitle">Pages</Typography>}
             >
               <MenuItem component={<Link to="/" />}>
                 <Typography variant="subtitle">Home</Typography>
               </MenuItem>
+
               <MenuItem component={<Link to="/private" />}>
                 <Typography variant="subtitle">Private</Typography>
               </MenuItem>
+
               <MenuItem component={<Link to="/login" />}>
                 <Typography variant="subtitle">Login</Typography>
               </MenuItem>
