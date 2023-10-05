@@ -16,38 +16,44 @@ const Button = (props: ButtonProps): JSX.Element => {
     icon,
     text,
     color,
-    iconPosition = "after",
+    iconPosition = null,
     variant = "primary",
     takeFullWidth = false,
     size = "md",
     ...buttonProps
   } = props;
 
-  let textColor: keyof Theme["brand"] | keyof Theme["grey"];
+  let textColor:
+    | keyof Theme["btn"]["text"]
+    | keyof Theme["grey"]
+    | keyof Theme["brand"]
+    | keyof Theme["btn"]["color"];
 
   // this is design specific, amend base on the design
   if (variant === "primary") {
-    textColor = "noshade";
+    textColor = "white";
   } else if (variant === "outline") {
-    textColor = "primary";
-  } else if (variant === "success") {
-    textColor = "noshade";
-  } else if (variant === "unselected") {
-    textColor = "noshade";
+    textColor = "pressed";
+  } else if (variant === "elevated") {
+    textColor = "outline";
+  } else if (variant === "tonal") {
+    textColor = "invert";
+  } else if (variant === "disabled") {
+    textColor = "disabled";
   } else {
-    textColor = "shade5";
+    textColor = "white";
   }
 
   // this is design specific, amend base on the design
   let textVariant: TypographyProps["variant"];
-  let textWeight = "500";
+  let textWeight = "400";
 
   if (size === "sm") {
     textVariant = "btn";
     textWeight = "500";
   } else if (size === "md") {
     textVariant = "btn";
-    textWeight = "700";
+    textWeight = "400";
   }
 
   const hasText = text && text?.length > 0 ? true : false;
@@ -69,15 +75,13 @@ const Button = (props: ButtonProps): JSX.Element => {
       )}
 
       {text && (
-        <Typography variant={textVariant} color={textColor} weight={textWeight}>
+        <Typography
+          variant={textVariant}
+          textColor={textColor}
+          weight={textWeight}
+        >
           {text}
         </Typography>
-      )}
-      {loading && (
-        <LoadingContainer>
-          {/* <Spinner width={24} height={24} /> */}
-          {/* Enter the spinner here for the button */}
-        </LoadingContainer>
       )}
 
       {iconPosition === "after" && !loading && (

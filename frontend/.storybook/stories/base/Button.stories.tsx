@@ -11,7 +11,11 @@ const meta: Meta<typeof Button> = {
       <Container background="white">
         <div style={{ display: "flex", flexWrap: "wrap" }}>
           <div style={{ marginRight: "20px", marginBottom: "30px" }}>
-            <Button text="Primary Button" style={{ marginBottom: "5px" }} />
+            <Button
+              text="Button"
+              variant="primary"
+              style={{ marginBottom: "5px" }}
+            />
             <Button
               text="Primary Button with Icon"
               icon={<Eye fill="white" height={15} width={20} />}
@@ -26,11 +30,7 @@ const meta: Meta<typeof Button> = {
             <Button
               icon={<Eye fill="white" height={15} width={20} />}
               style={{ marginBottom: "5px" }}
-            />
-            <Button
-              text="Primary Button Loading"
-              style={{ marginBottom: "5px" }}
-              loading
+              iconPosition="after"
             />
           </div>
           <div style={{ marginRight: "20px", marginBottom: "30px" }}>
@@ -56,12 +56,7 @@ const meta: Meta<typeof Button> = {
               variant="outline"
               icon={<Eye fill="#E35D32" height={15} width={20} />}
               style={{ marginBottom: "5px" }}
-            />
-            <Button
-              loading
-              text="Outline Button Loading"
-              variant="outline"
-              style={{ marginBottom: "5px" }}
+              iconPosition="after"
             />
           </div>
           <div style={{ marginRight: "20px", marginBottom: "30px" }}>
@@ -87,62 +82,61 @@ const meta: Meta<typeof Button> = {
               variant="disabled"
               icon={<Eye fill="#BBC2DC" height={15} width={20} />}
               style={{ marginBottom: "5px" }}
+              iconPosition="after"
             />
           </div>
 
           <div style={{ marginRight: "20px" }}>
             <Button
-              text="Unselected Button"
-              variant="unselected"
+              text="Tonal"
+              variant="tonal"
               style={{ marginBottom: "5px" }}
             />
             <Button
               text="Unselected Button with Icon"
-              variant="unselected"
+              variant="tonal"
               icon={<Eye fill="#BBC2DC" height={15} width={20} />}
               style={{ marginBottom: "5px" }}
             />
             <Button
-              text="Unselected Button with Icon"
-              variant="unselected"
+              text="Tonal Button with Icon"
+              variant="tonal"
               icon={<Eye fill="#BBC2DC" height={15} width={20} />}
               iconPosition="before"
               style={{ marginBottom: "5px" }}
             />
             <Button
-              variant="unselected"
+              variant="tonal"
               icon={<Eye fill="#BBC2DC" height={15} width={20} />}
               style={{ marginBottom: "5px" }}
+              iconPosition="after"
             />
           </div>
 
           <div style={{ marginRight: "20px" }}>
             <Button
-              text="Small Button"
-              variant="unselected"
-              size="sm"
+              text="Elevated"
+              variant="elevated"
               style={{ marginBottom: "5px" }}
             />
             <Button
-              text="Small Button with Icon"
-              variant="unselected"
-              size="sm"
+              text="Elevated Button with Icon"
+              variant="elevated"
               icon={<Eye fill="#BBC2DC" height={15} width={20} />}
               style={{ marginBottom: "5px" }}
             />
             <Button
-              text="Small Button with Icon"
-              variant="unselected"
-              size="sm"
+              text="Elevated Button with Icon"
+              variant="elevated"
               icon={<Eye fill="#BBC2DC" height={15} width={20} />}
               iconPosition="before"
               style={{ marginBottom: "5px" }}
             />
             <Button
-              variant="unselected"
-              size="sm"
+              variant="elevated"
               icon={<Eye fill="#BBC2DC" height={15} width={20} />}
               style={{ marginBottom: "5px" }}
+              iconPosition="after"
             />
           </div>
         </div>
