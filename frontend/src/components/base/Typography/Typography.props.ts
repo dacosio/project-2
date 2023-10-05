@@ -10,7 +10,7 @@ export type Variants =
   | "title5"
   | "body"
   | "small"
-  | "subtitle" 
+  | "subtitle"
   | "mobile"
   | "tag"
   | "btn";
@@ -18,7 +18,11 @@ export type Variants =
 export interface TypographyProps extends HTMLAttributes<HTMLParagraphElement> {
   children: any;
   variant?: Variants;
-  textColor?: keyof Theme["brand"] | keyof Theme["grey"];
+  textColor?:
+    | keyof Theme["btn"]["text"]
+    | keyof Theme["grey"]
+    | keyof Theme["brand"]
+    | keyof Theme["btn"]["color"];
   weight?: string;
   align?: "center" | "left" | "right";
   component?: string;

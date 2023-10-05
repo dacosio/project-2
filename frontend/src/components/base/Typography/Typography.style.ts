@@ -89,7 +89,7 @@ export const P = styled.p<TypographyProps>`
   ${({ variant }) => styles[variant || "body"]};
   font-weight: ${({ variant, weight }) => weight || font[variant || "body"]};
   color: ${({ theme, textColor = "shade9" }) => {
-    const selectedColor = { ...theme.grey, ...theme.brand }[textColor]; //the color will not work on storybook since it does not run in runtime
+    const selectedColor = { ...theme.grey, ...theme.brand, ...theme.btn.text, ...theme.btn.color }[textColor]; //the color will not work on storybook since it does not run in runtime
     return selectedColor;
   }};
   text-align: ${({ align }) => align || "left"};
