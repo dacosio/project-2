@@ -85,7 +85,7 @@ export const ButtonContainer = styled.button<
   border: ${({ variant }) => border[variant]};
   border-radius: 16px;
   width: ${(props) => (props.takeFullWidth ? "100%" : "auto")};
-
+  font-family: "Inter", sans-serif;
   display: flex;
   flex-direction: row;
   align-items: center;
