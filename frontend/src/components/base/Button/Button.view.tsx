@@ -43,11 +43,11 @@ const Button = (props: ButtonProps): JSX.Element => {
   let textWeight = "500";
 
   if (size === "sm") {
-    textVariant = "label";
+    textVariant = "btn";
     textWeight = "500";
   } else if (size === "md") {
-    textVariant = "overline";
-    textWeight = "900";
+    textVariant = "btn";
+    textWeight = "700";
   }
 
   const hasText = text && text?.length > 0 ? true : false;

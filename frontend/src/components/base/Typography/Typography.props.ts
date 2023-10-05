@@ -9,10 +9,11 @@ export type Variants =
   | "title4"
   | "title5"
   | "body"
-  | "label"
-  | "caption"
   | "small"
-  | "overline";
+  | "subtitle" 
+  | "mobile"
+  | "tag"
+  | "btn";
 
 export interface TypographyProps extends HTMLAttributes<HTMLParagraphElement> {
   children: any;

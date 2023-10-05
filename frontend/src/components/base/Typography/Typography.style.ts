@@ -7,66 +7,82 @@ import { Variants, TypographyProps } from "./Typography.props";
 
 const styles: Record<Variants, string> = {
   title1: `
-        font-size: ${pxToRem(62)};
-        line-height: 72px;
+      font-size: ${pxToRem(60)};
+      line-height: 76px;
+      letter-spacing: -2%;
     `,
   title2: `
-        font-size: ${pxToRem(48)};
-        line-height: 56px;
+      font-size: ${pxToRem(36)};
+      line-height: 46px;
+      letter-spacing: -2%;
     `,
   title3: `
-        font-size: ${pxToRem(40)};
-        line-height: 48px;
+      font-size: ${pxToRem(28)};
+      line-height: 38px;
+      letter-spacing: 0;
     `,
   title4: `
-        font-size: ${pxToRem(32)};
-        line-height: 40px;
+      font-size: ${pxToRem(22)};
+      line-height: 28px;
+      letter-spacing: 0;
     `,
   title5: `
-        font-size: ${pxToRem(24)};
-        line-height: 32px;
+      font-size: ${pxToRem(20)};
+      line-height: 25px;
+      letter-spacing: 0;
+    `,
+  subtitle: `
+      font-size: ${pxToRem(20)};
+      line-height: 25px;
+      letter-spacing: 0;
     `,
   body: `
-        font-size: ${pxToRem(16)};
-        line-height: 24px;
-    `,
-  label: `
-        font-size: ${pxToRem(14)};
-        line-height: 24px;
-    `,
-  caption: `
-        font-size: ${pxToRem(12)};
-        line-height: 16px;
+      font-size: ${pxToRem(16)};
+      line-height: 22px;
+      letter-spacing: 0;
+      font-family: "Inter";
     `,
   small: `
-        font-size: ${pxToRem(10)};
-        line-height: 12px;
+      font-size: ${pxToRem(14)};
+      line-height: 20px;
+      letter-spacing: 0;
+      font-family: "Inter"; 
     `,
-  overline: `
-        font-size: ${pxToRem(11)};
-        line-height: 12px;
-        text-transform: uppercase;
-        letter-spacing: 2px;
+  mobile: `
+      font-size: ${pxToRem(12)};
+      line-height: 18px;
+      letter-spacing: 0;
+      `,
+  btn: `
+      font-size: ${pxToRem(14)};
+      line-height: 17px;
+      letter-spacing: 0;
+    `,
+  tag: `
+      font-size: ${pxToRem(12)};
+      line-height: 15px;
+      letter-spacing: 0;
     `,
 };
 
 const weights: Record<string, string> = {
   Regular: "400",
   Medium: "500",
-  Black: "900",
+  Bold: "700",
 };
 
-const font: Record<string, string> = {
-  title1: weights.Regular,
-  title2: weights.Regular,
-  title3: weights.Regular,
-  title4: weights.Regular,
-  title5: weights.Regular,
-  body: weights.Medium,
-  label: weights.Medium,
-  caption: weights.Medium,
-  small: weights.Medium,
-  overline: weights.Black,
+const font: Record<Variants, string> = {
+  title1: weights.Bold,
+  title2: weights.Bold,
+  title3: weights.Bold,
+  title4: weights.Bold,
+  title5: weights.Bold,
+  subtitle: weights.Medium,
+  body: weights.Regular,
+  btn: weights.Regular,
+  mobile: weights.Regular,
+  small: weights.Regular,
+  tag: weights.Regular,
 };
 
 export const P = styled.p<TypographyProps>`

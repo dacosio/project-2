@@ -82,7 +82,7 @@ const Navigation = (props: NavigationProps): JSX.Element => {
         <div style={{ flex: 1, marginBottom: "32px" }}>
           <div style={{ padding: "0 24px", marginBottom: "8px" }}>
             <Typography
-              variant="overline"
+              variant="title4"
               style={{
                 opacity: collapseState ? 0 : 0.7,
                 letterSpacing: "0.5px",
@@ -94,16 +94,18 @@ const Navigation = (props: NavigationProps): JSX.Element => {
           <Menu menuItemStyles={menuItemStyles}>
             <SubMenu
               icon={<Smile width={25} height={25} />}
-              label={<Typography variant="label">Pages</Typography>}
+              label={<Typography variant="subtitle">Pages</Typography>}
             >
               <MenuItem component={<Link to="/" />}>
-                <Typography variant="caption">Home</Typography>
+                <Typography variant="subtitle">Home</Typography>
               </MenuItem>
+
               <MenuItem component={<Link to="/private" />}>
-                <Typography variant="caption">Private</Typography>
+                <Typography variant="subtitle">Private</Typography>
               </MenuItem>
+
               <MenuItem component={<Link to="/login" />}>
-                <Typography variant="caption">Login</Typography>
+                <Typography variant="subtitle">Login</Typography>
               </MenuItem>
             </SubMenu>
           </Menu>

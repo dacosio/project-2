@@ -43,7 +43,7 @@ const TextField = (props: TextFieldProps): JSX.Element => {
   const defaultInputType = type || "text";
   return (
     <Container className={className} style={style}>
-      <Typography variant="overline" color={"shade6"}>
+      <Typography variant="title4" color={"shade6"}>
         {label}
       </Typography>
       <FieldContainer error={(error || "").length > 0}>
@@ -68,7 +68,7 @@ const TextField = (props: TextFieldProps): JSX.Element => {
         )}
       </FieldContainer>
       {(error || "").length > 0 && (
-        <Error variant="caption" color="error">
+        <Error variant="subtitle" color="error">
           {error}
         </Error>
       )}

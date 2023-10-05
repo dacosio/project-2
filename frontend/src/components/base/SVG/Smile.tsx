@@ -1,13 +1,10 @@
-import React from 'react';
+import React from "react";
 
 import { useTheme } from "../../../utils/Theme";
 
-import { SVGProps } from './SVG.props';
+import { SVGProps } from "./SVG.props";
 
 const Smile = (props: SVGProps): JSX.Element => {
-  const theme = useTheme();
-  const { width, height, fill="none" } = props;
-
   // Paste converted svg below
   // https://react-svgr.com/playground/?typescript=true
   return (
