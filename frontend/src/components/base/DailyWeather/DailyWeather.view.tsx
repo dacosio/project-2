@@ -6,23 +6,31 @@ import {
   WeatherContainer,
 } from "./DailyWeather.style";
 import Typography from "../Typography";
-import { Cloudy } from "../../../../src/components/base/SVG";
+import { Cloudy, Rainy, Sunny } from "../../../../src/components/base/SVG";
 
 const DailyWeather = (props: DailyWeatherProps): JSX.Element => {
+  const { day, weather, max, min } = props;
+
   return (
     <Container>
       <Typography variant="title5" weight="700" align="center">
-        Mon
+        {day}
       </Typography>
       <WeatherContainer>
-        <Cloudy width={50} height={50} />
+        {weather === "Cloudy" ? (
+          <Cloudy width={50} height={50} />
+        ) : weather === "Rainy" ? (
+          <Rainy width={50} height={50} />
+        ) : (
+          <Sunny width={50} height={50} />
+        )}
       </WeatherContainer>
       <TemperatureContainer>
         <Typography variant="body" align="center">
-          22℃
+          {max}℃
         </Typography>
         <Typography variant="body" align="center">
-          18℃
+          {min}℃
         </Typography>
       </TemperatureContainer>
     </Container>

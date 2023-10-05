@@ -9,7 +9,7 @@ export const Container = styled.div`
   justify-items: stretch;
   align-items: center;
   aspect-ratio: 0.75;
-  min-width: 100px;
+  min-width: 80px;
 
   &:hover {
     background-color: ${theme.grey.shade3};
