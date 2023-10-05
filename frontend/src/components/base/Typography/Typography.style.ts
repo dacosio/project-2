@@ -40,11 +40,13 @@ const styles: Record<Variants, string> = {
       font-size: ${pxToRem(16)};
       line-height: 22px;
       letter-spacing: 0;
+      font-family: "Inter";
     `,
   small: `
       font-size: ${pxToRem(14)};
       line-height: 20px;
       letter-spacing: 0;
+      font-family: "Inter"; 
     `,
   mobile: `
       font-size: ${pxToRem(12)};
