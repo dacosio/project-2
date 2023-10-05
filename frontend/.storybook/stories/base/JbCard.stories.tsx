@@ -6,7 +6,15 @@ import Wrapper from "../../components/Wrapper";
 
 const meta: Meta<typeof JbCard> = {
   title: "Base/JbCard",
-  component: JbCard,
+  component: () => {
+ 
+    return (
+      <div style={{ display: "grid", gap: "32px" }}>
+        <JbCard title='Headline' description='is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry'/>
+      </div>
+    );
+  },
+
 };
 
 export default meta;

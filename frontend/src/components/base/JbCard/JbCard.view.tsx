@@ -5,12 +5,8 @@ import Typography from '../Typography';
 import { Container, ButtonDiv } from './JbCard.style';
 
 const JbCard = (props: JbCardProps): JSX.Element => {
-  const [cardDetails, setCardDetails] = useState([
-    { title: 'Subtitle 1', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam', id: 4 }
-  ]);
+  const { title, description } = props;
 
-  const title = cardDetails[0]?.title || '';
-  const description = cardDetails[0]?.description || '';
 
   return <Container>
     <Typography variant="title5" weight="700">

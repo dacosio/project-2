@@ -1,2 +1,4 @@
-export interface JbCardProps {}
-
+export interface JbCardProps {
+    title: string;
+    description: string;
+}
