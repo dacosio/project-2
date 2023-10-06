@@ -1,3 +1,5 @@
+import Container from "./components/Container";
+
 /** @type { import('@storybook/react').Preview } */
 const preview = {
   parameters: {
@@ -9,6 +11,7 @@ const preview = {
       },
     },
   },
+  decorators: [(story) => <Container>{story()}</Container>],
 };
 
 export default preview;
