@@ -47,8 +47,6 @@ const Navigation = (props: NavigationProps): JSX.Element => {
 
   const [broken, setBroken] = useState<boolean>(false);
 
-  console.log(collapseState);
-
   useEffect(() => {
     dispatch(sendBroken(broken));
   }, [broken, dispatch]);
@@ -81,35 +79,29 @@ const Navigation = (props: NavigationProps): JSX.Element => {
     },
   };
 
-  const dashboardColor =
-    location.pathname === "/dashboard" ? "white" : "secondary";
-  const yourCropsColor =
-    location.pathname === "/your-crops" ? "white" : "secondary";
-  const cropGuideColor =
-    location.pathname === "/crop-guide" ? "white" : "secondary";
-  const weatherColor = location.pathname === "/weather" ? "white" : "secondary";
+  const textColor = (path: string) => {
+    if (location.pathname === path) {
+      return "white";
+    } else {
+      return "secondary";
+    }
+  };
 
-  const dashboardIconColor =
-    location.pathname === "/dashboard"
-      ? theme.btn.text.white
-      : theme.btn.text.secondary;
-  const yourCropsIconColor =
-    location.pathname === "/your-crops"
-      ? theme.btn.text.white
-      : theme.btn.text.secondary;
-  const cropGuideIconColor =
-    location.pathname === "/crop-guide"
-      ? theme.btn.text.white
-      : theme.btn.text.secondary;
-  const weatherIconColor =
-    location.pathname === "/weather"
-      ? theme.btn.text.white
-      : theme.btn.text.secondary;
+  const activeState = (path: string) => {
+    if (location.pathname === path) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
-  const dashboardActive = location.pathname === "/dashboard" ? true : false;
-  const yourCropsActive = location.pathname === "/your-crops" ? true : false;
-  const cropGuideActive = location.pathname === "/crop-guide" ? true : false;
-  const weatherActive = location.pathname === "/weather" ? true : false;
+  const iconColor = (path: string) => {
+    if (location.pathname === path) {
+      return theme.btn.text.white;
+    } else {
+      return theme.btn.text.secondary;
+    }
+  };
 
   return (
     <Sidebar
@@ -138,17 +130,17 @@ const Navigation = (props: NavigationProps): JSX.Element => {
             <MenuItem
               icon={
                 <DashboardSvg
-                  fill={dashboardColor}
-                  stroke={dashboardIconColor}
+                  fill={textColor("/dashboard")}
+                  stroke={iconColor("/dashboard")}
                 />
               }
               component={<Link to="/dashboard" />}
-              active={dashboardActive}
+              active={activeState("/dashboard")}
             >
               <Typography
                 variant="body"
                 weight="500"
-                textColor={dashboardColor}
+                textColor={textColor("/dashboard")}
               >
                 Overview
               </Typography>
@@ -170,17 +162,17 @@ const Navigation = (props: NavigationProps): JSX.Element => {
             <MenuItem
               icon={
                 <YourCropsSvg
-                  fill={yourCropsIconColor}
-                  stroke={yourCropsIconColor}
+                  fill={iconColor("/your-crops")}
+                  stroke={iconColor("/your-crops")}
                 />
               }
               component={<Link to="/your-crops" />}
-              active={yourCropsActive}
+              active={activeState("/your-crops")}
             >
               <Typography
                 variant="body"
                 weight="500"
-                textColor={yourCropsColor}
+                textColor={textColor("/your-crops")}
               >
                 Your Crops
               </Typography>
@@ -188,17 +180,17 @@ const Navigation = (props: NavigationProps): JSX.Element => {
             <MenuItem
               icon={
                 <CropGuideSvg
-                  fill={cropGuideIconColor}
-                  stroke={cropGuideIconColor}
+                  fill={iconColor("/crop-guide")}
+                  stroke={iconColor("/crop-guide")}
                 />
               }
               component={<Link to="/crop-guide" />}
-              active={cropGuideActive}
+              active={activeState("/crop-guide")}
             >
               <Typography
                 variant="body"
                 weight="500"
-                textColor={cropGuideColor}
+                textColor={textColor("/crop-guide")}
               >
                 Crop Guide
               </Typography>
@@ -219,14 +211,18 @@ const Navigation = (props: NavigationProps): JSX.Element => {
             <MenuItem
               icon={
                 <YourCropsSvg
-                  fill={weatherIconColor}
-                  stroke={weatherIconColor}
+                  fill={iconColor("/weather")}
+                  stroke={iconColor("/weather")}
                 />
               }
               component={<Link to="/weather" />}
-              active={weatherActive}
+              active={activeState("/weather")}
             >
-              <Typography variant="body" weight="500" textColor={weatherColor}>
+              <Typography
+                variant="body"
+                weight="500"
+                textColor={textColor("/weather")}
+              >
                 Weather **todo
               </Typography>
             </MenuItem>
