@@ -1,1 +1,1 @@
-export { default } from './Checkbox.view';
+export { default } from "./Checkbox.view";

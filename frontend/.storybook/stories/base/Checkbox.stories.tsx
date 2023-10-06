@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import Checkbox from "../../../src/components/base/Checkbox";
 import Container from "../../components/Container";
@@ -15,7 +15,7 @@ const meta: Meta<typeof Checkbox> = {
 
     return (
       <div style={{ display: "grid", gap: "32px" }}>
-       <Checkbox checkboxStatus={isChecked} setCheckboxStatus={setIsChecked} />
+        <Checkbox checkboxStatus={isChecked} setCheckboxStatus={setIsChecked} />
       </div>
     );
   },
