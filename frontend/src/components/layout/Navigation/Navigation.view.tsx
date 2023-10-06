@@ -13,8 +13,13 @@ import {
 import Typography from "components/base/Typography";
 import SidebarHeader from "../SidebarHeader";
 import Button from "components/base/Button";
-import { Smile } from "components/base/SVG";
-import theme from "utils/Theme";
+import {
+  CropGuideSvg,
+  DashboardSvg,
+  Smile,
+  YourCropsSvg,
+} from "components/base/SVG";
+// import theme from "utils/Theme";
 import { useAppDispatch, useAppSelector } from "app/hooks";
 import {
   selectCollapse,
@@ -23,19 +28,22 @@ import {
   sendCollapse,
   sendToggle,
 } from "features/sidebar/sidebarSlice";
+import {
+  SideBarContainer,
+  SideBarMenuTitle,
+  SideBarWrapper,
+} from "./Navigation.style";
+import { useLocation } from "react-router-dom";
+import { useTheme } from "@emotion/react";
 
 const Navigation = (props: NavigationProps): JSX.Element => {
+  const theme = useTheme();
   const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useAppDispatch();
   const [sendLogout] = useSendLogoutMutation();
   const collapseState = useAppSelector(selectCollapse);
   const toggleState = useAppSelector(selectToggle);
-
-  // useEffect(() => {
-  //   if (isSuccess) navigate("/");
-  // }, [isSuccess, navigate]);
-
-  const [toggled, setToggled] = useState<boolean>(false);
 
   const [broken, setBroken] = useState<boolean>(false);
 
@@ -45,22 +53,54 @@ const Navigation = (props: NavigationProps): JSX.Element => {
 
   const menuItemStyles: MenuItemStyles = {
     root: {
-      fontSize: "13px",
+      fontSize: "16px",
     },
-    SubMenuExpandIcon: {
-      color: theme.brand.primary,
-    },
-    subMenuContent: {
-      backgroundColor: "white",
-    },
-    button: {
-      [`&.active`]: {
-        backgroundColor: "#13395e",
-        color: "#b6c8d9",
-      },
-      margin: "0 10px",
+    icon: {
+      margin: "0px",
+      display: "flex",
+      alignItems: "center",
       justifyContent: "center",
     },
+    button: ({ active }) => {
+      return {
+        backgroundColor: active ? theme.btn.color.primary : "transparent",
+        color: active ? theme.btn.text.white : theme.btn.text.secondary,
+        margin: collapseState === true ? "0px 10px" : "0 26px",
+        justifyContent: "center",
+        borderRadius: "16px",
+        display: "flex",
+        [`&:hover`]: {
+          backgroundColor: active
+            ? theme.btn.color.hover
+            : theme.btn.color.lightest,
+          color: active ? theme.btn.text.white : theme.btn.color.pressed,
+        },
+      };
+    },
+  };
+
+  const textColor = (path: string) => {
+    if (location.pathname === path) {
+      return "white";
+    } else {
+      return "secondary";
+    }
+  };
+
+  const activeState = (path: string) => {
+    if (location.pathname === path) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const iconColor = (path: string) => {
+    if (location.pathname === path) {
+      return theme.btn.text.white;
+    } else {
+      return theme.btn.text.secondary;
+    }
   };
 
   return (
@@ -70,54 +110,134 @@ const Navigation = (props: NavigationProps): JSX.Element => {
       onBackdropClick={() => dispatch(sendToggle(false))}
       onBreakPoint={setBroken}
       breakPoint="md"
+      width="288px"
     >
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          height: "100%",
-        }}
-      >
+      <SideBarContainer>
         <SidebarHeader style={{ marginBottom: "24px", marginTop: "16px" }} />
-        <div style={{ flex: 1, marginBottom: "32px" }}>
-          <div style={{ padding: "0 24px", marginBottom: "8px" }}>
+        <SideBarWrapper>
+          <SideBarMenuTitle>
             <Typography
-              variant="overline"
+              variant="small"
+              weight="500"
               style={{
                 opacity: collapseState ? 0 : 0.7,
-                letterSpacing: "0.5px",
               }}
             >
-              General
+              DASHBOARD
             </Typography>
-          </div>
+          </SideBarMenuTitle>
           <Menu menuItemStyles={menuItemStyles}>
-            <SubMenu
-              icon={<Smile width={25} height={25} />}
-              label={<Typography variant="label">Pages</Typography>}
+            <MenuItem
+              icon={
+                <DashboardSvg
+                  fill={textColor("/dashboard")}
+                  stroke={iconColor("/dashboard")}
+                />
+              }
+              component={<Link to="/dashboard" />}
+              active={activeState("/dashboard")}
             >
-              <MenuItem component={<Link to="/" />}>
-                <Typography variant="caption">Home</Typography>
-              </MenuItem>
-              <MenuItem component={<Link to="/private" />}>
-                <Typography variant="caption">Private</Typography>
-              </MenuItem>
-              <MenuItem component={<Link to="/login" />}>
-                <Typography variant="caption">Login</Typography>
-              </MenuItem>
-            </SubMenu>
+              <Typography
+                variant="body"
+                weight="500"
+                textColor={textColor("/dashboard")}
+              >
+                Overview
+              </Typography>
+            </MenuItem>
           </Menu>
-        </div>
-        <Button
+
+          <SideBarMenuTitle style={{ marginTop: "16px" }}>
+            <Typography
+              variant="small"
+              weight="500"
+              style={{
+                opacity: collapseState ? 0 : 0.7,
+              }}
+            >
+              CROPS
+            </Typography>
+          </SideBarMenuTitle>
+          <Menu menuItemStyles={menuItemStyles}>
+            <MenuItem
+              icon={
+                <YourCropsSvg
+                  fill={iconColor("/your-crops")}
+                  stroke={iconColor("/your-crops")}
+                />
+              }
+              component={<Link to="/your-crops" />}
+              active={activeState("/your-crops")}
+            >
+              <Typography
+                variant="body"
+                weight="500"
+                textColor={textColor("/your-crops")}
+              >
+                Your Crops
+              </Typography>
+            </MenuItem>
+            <MenuItem
+              icon={
+                <CropGuideSvg
+                  fill={iconColor("/crop-guide")}
+                  stroke={iconColor("/crop-guide")}
+                />
+              }
+              component={<Link to="/crop-guide" />}
+              active={activeState("/crop-guide")}
+            >
+              <Typography
+                variant="body"
+                weight="500"
+                textColor={textColor("/crop-guide")}
+              >
+                Crop Guide
+              </Typography>
+            </MenuItem>
+          </Menu>
+          <SideBarMenuTitle style={{ marginTop: "16px" }}>
+            <Typography
+              variant="small"
+              weight="500"
+              style={{
+                opacity: collapseState ? 0 : 0.7,
+              }}
+            >
+              WEATHER
+            </Typography>
+          </SideBarMenuTitle>
+          <Menu menuItemStyles={menuItemStyles}>
+            <MenuItem
+              icon={
+                <YourCropsSvg
+                  fill={iconColor("/weather")}
+                  stroke={iconColor("/weather")}
+                />
+              }
+              component={<Link to="/weather" />}
+              active={activeState("/weather")}
+            >
+              <Typography
+                variant="body"
+                weight="500"
+                textColor={textColor("/weather")}
+              >
+                Weather **todo
+              </Typography>
+            </MenuItem>
+          </Menu>
+        </SideBarWrapper>
+        {/* <Button
           onClick={() => {
             sendLogout();
-            navigate("/", { replace: true });
+            navigate("/", { replace: true }); 
           }}
           variant="outline"
           text="Logout"
           size="md"
-        />
-      </div>
+        /> */}
+      </SideBarContainer>
     </Sidebar>
   );
 };

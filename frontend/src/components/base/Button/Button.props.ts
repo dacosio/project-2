@@ -1,19 +1,23 @@
-import { ButtonHTMLAttributes } from 'react';
+import { ButtonHTMLAttributes } from "react";
 
-import { Theme } from 'types/Theme';
+import { Theme } from "types/Theme";
 
 export type Variants =
-  | 'primary'
-  | 'outline'
-  | 'disabled'
-  | 'success'
-  | 'unselected';
-export type IconPosition = 'before' | 'after';
-export type ButtonSizes = 'lg' | 'md' | 'sm';
+  | "primary"
+  | "outline"
+  | "elevated"
+  | "tonal"
+  | "ghost"
+  | "disabled"
+  | "success"
+  | "unselected";
+
+export type IconPosition = "before" | "after" | null;
+export type ButtonSizes = "lg" | "md" | "sm";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean;
-  color?: keyof Theme['brand'];
+  color?: keyof Theme["text"];
   text?: string;
   iconPosition?: IconPosition;
   variant?: Variants;
@@ -24,7 +28,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 // Styles
 export type ButtonStyleProps = {
-  color?: keyof Theme['brand'];
+  color?: keyof Theme["text"];
   variant: Variants;
   iconPosition: IconPosition;
   takeFullWidth?: boolean;
