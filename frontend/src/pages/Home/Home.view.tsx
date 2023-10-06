@@ -43,7 +43,6 @@ const HomeView = (props: HomeGeneratedProps) => {
         <button onClick={onPredict}>predict</button>
         <div>Recommended Crop: {responseData.prediction[0]}</div>
       </div>
-      <WeatherCard />
     </Container>
   );
 };

@@ -8,12 +8,14 @@ import {
   CloudContainer
 } from './WeatherCard.style';
 import Typography from '../Typography';
-import Clouds from '../SVG/Clouds';
 import Moment from 'react-moment';
+import Rainy from '../SVG/Rainy';
+
 
 const WeatherCard = (props: WeatherCardProps): JSX.Element => {
   const [weatherData, setWeatherData] = useState(
     {
+      forecast: 'Rain & Thunderstorm',
       highTemperature: '22°C',
       lowTemperature: '18°C',
       currentTemperature: '20°C',
@@ -29,32 +31,32 @@ const WeatherCard = (props: WeatherCardProps): JSX.Element => {
   }, [])
 
   return (
-    <Container className='weather-card'>
+    <Container className={`weather-card ${weatherData.forecast.toLowerCase().replace(/ /g, '-')}`}>
       {weatherData ?
         <div className="weather-content">
           <div className="right-side-content">
             <LocationContainer>
-              <Typography variant='body' weight='700'>Vancouver, BC</Typography>
-              <Typography variant='caption'>
+              <Typography variant='subtitle' weight='700'>Vancouver, BC</Typography>
+              <Typography variant='body'>
                 <Moment format="ddd, MMM D, YYYY">{date}</Moment>
               </Typography>
             </LocationContainer>
             <TemperatureContainer>
-              <Typography variant='title5' weight='700'>Partly Cloudy</Typography>
-              <Typography variant='title2' weight='900'>{weatherData.currentTemperature}</Typography>
-              <Typography variant='label'>High <span>{weatherData.highTemperature}</span> Low <span>{weatherData.lowTemperature}</span></Typography>
+              <Typography variant='title3' weight='700'>{weatherData.forecast}</Typography>
+              <Typography variant='title1' weight='900'>{weatherData.currentTemperature}</Typography>
+              <Typography variant='body'>High <span>{weatherData.highTemperature}</span> Low <span>{weatherData.lowTemperature}</span></Typography>
             </TemperatureContainer>
           </div>
 
           <div className='left-side-content'>
             <CloudContainer>
               {/* <ImageContainer src={Clouds} alt='clouds' /> */}
-              <Clouds fill='green' />
+              <Rainy />
             </CloudContainer>
             <ForecastContainer>
-              <Typography variant='label' align='right'>Precipitation <span>{weatherData.precipitation}</span></Typography>
-              <Typography variant='label' align='right'>Humidity <span>{weatherData.humidity}</span></Typography>
-              <Typography variant='label' align='right'>Wind <span>{weatherData.windSpeed}</span></Typography>
+              <Typography variant='body' align='left'>Precipitation <span>{weatherData.precipitation}</span></Typography>
+              <Typography variant='body' align='left'>Humidity <span>{weatherData.humidity}</span></Typography>
+              <Typography variant='body' align='left'>Wind <span>{weatherData.windSpeed}</span></Typography>
             </ForecastContainer>
           </div>
         </div>
