@@ -19,11 +19,12 @@ const meta: Meta = {
           <Typography variant="title3">title3</Typography>
           <Typography variant="title4">title4</Typography>
           <Typography variant="title5">title5</Typography>
+          <Typography variant="subtitle">subtitle</Typography>
           <Typography variant="body">body</Typography>
-          <Typography variant="label">label</Typography>
-          <Typography variant="caption">caption</Typography>
+          <Typography variant="btn">btn</Typography>
+          <Typography variant="tag">tag</Typography>
           <Typography variant="small">small</Typography>
-          <Typography variant="overline">overline</Typography>
+          <Typography variant="title4">title4</Typography>
         </Wrapper>
       </Container>
     );
