@@ -8,14 +8,16 @@ const meta: Meta<typeof DailyWeather> = {
   title: "Base/DailyWeather",
   component: () => {
     return (
-      <div
-        style={{
-          display: "flex",
-          gap: "32px",
-        }}
-      >
-        <DailyWeather day="Mon" weather="Cloudy" min={18} max={22} />
-      </div>
+      <Container>
+        <div
+          style={{
+            display: "flex",
+            gap: "32px",
+          }}
+        >
+          <DailyWeather day="Mon" weather="Cloudy" min={18} max={22} />
+        </div>
+      </Container>
     );
   },
 };

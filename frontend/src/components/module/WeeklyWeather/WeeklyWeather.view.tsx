@@ -1,15 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
 import { WeeklyWeatherProps } from "./WeeklyWeather.props";
 import {
-  CardContainer,
+  DailyWeatherListContainer,
   Container,
-  GraphContainer,
-  HumidityItemContainer,
+  GraphListContainer,
+  HumidityContainer,
   HumidityListContainer,
 } from "./WeeklyWeather.style";
 import Graph from "../../base/Graph";
 import DailyWeather from "../../base/DailyWeather";
 import Typography from "../../base/Typography";
+
+interface Point {
+  start: number;
+  end: number;
+}
 
 const WeeklyWeather = (props: WeeklyWeatherProps): JSX.Element => {
   const { dailyWeathers, dayOffset } = props;
@@ -21,10 +26,7 @@ const WeeklyWeather = (props: WeeklyWeatherProps): JSX.Element => {
     ...dailyWeathers.map((dailyWeather) => dailyWeather.humidity),
     50,
   ];
-  interface Point {
-    start: number;
-    end: number;
-  }
+
   const points: Point[] = [];
   for (let i = 0; i < humidities.length - 1; i++) {
     points.push({ start: humidities[i], end: humidities[i + 1] });
@@ -34,12 +36,12 @@ const WeeklyWeather = (props: WeeklyWeatherProps): JSX.Element => {
     <Container>
       <HumidityListContainer>
         {points.slice(1).map((point, index) => (
-          <HumidityItemContainer key={index}>
+          <HumidityContainer key={index}>
             <Typography align="center">{point.start}%</Typography>
-          </HumidityItemContainer>
+          </HumidityContainer>
         ))}
       </HumidityListContainer>
-      <GraphContainer>
+      <GraphListContainer>
         {points.map((point, index) => (
           <Graph
             width={122}
@@ -49,8 +51,8 @@ const WeeklyWeather = (props: WeeklyWeatherProps): JSX.Element => {
             key={index}
           />
         ))}
-      </GraphContainer>
-      <CardContainer>
+      </GraphListContainer>
+      <DailyWeatherListContainer>
         {dailyWeathers.map((dailyWeather, index) => (
           <DailyWeather
             day={days[(dayOffset + index) % 7]}
@@ -60,7 +62,7 @@ const WeeklyWeather = (props: WeeklyWeatherProps): JSX.Element => {
             key={index}
           />
         ))}
-      </CardContainer>
+      </DailyWeatherListContainer>
     </Container>
   );
 };

@@ -4,15 +4,25 @@ import Graph from "../../../src/components/base/Graph";
 import Container from "../../components/Container";
 import Wrapper from "../../components/Wrapper";
 
+interface Point {
+  start: number;
+  end: number;
+}
+
 const meta: Meta<typeof Graph> = {
   title: "Base/Graph",
   component: () => {
     const divRef = useRef<HTMLDivElement | null>(null);
+    const [width, setWidth] = useState<number>(100);
+    const height = 100;
+    const humidities = [1, 10, 20, 30, 40, 50, 60, 70, 80, 90, 99];
 
     useEffect(() => {
       const resizeObserver = new ResizeObserver((entries) => {
         for (let entry of entries) {
-          setWidth(Math.floor(entry.contentRect.width / 9));
+          setWidth(
+            Math.floor(entry.contentRect.width / (humidities.length - 1))
+          );
         }
       });
 
@@ -25,25 +35,18 @@ const meta: Meta<typeof Graph> = {
       };
     }, []);
 
-    const [width, setWidth] = useState<number>(100);
-    const height = 100;
-
-    const humidities = [50, 65, 78, 72, 70, 56, 60, 66, 80, 50];
-    interface Point {
-      start: number;
-      end: number;
-    }
     const points: Point[] = [];
     for (let i = 0; i < humidities.length - 1; i++) {
       points.push({ start: humidities[i], end: humidities[i + 1] });
     }
 
     return (
-      <>
+      <Container>
         <div
           ref={divRef}
           style={{
             display: "flex",
+            width: "100%",
             justifyContent: "center",
             border: "1px solid #E5E9F5",
           }}
@@ -58,7 +61,7 @@ const meta: Meta<typeof Graph> = {
             />
           ))}
         </div>
-      </>
+      </Container>
     );
   },
 };

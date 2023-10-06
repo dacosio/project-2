@@ -19,7 +19,11 @@ const meta: Meta<typeof WeeklyWeather> = {
       { humidity: 82, weather: "Cloudy", max: 18, min: 16 },
     ];
 
-    return <WeeklyWeather dailyWeathers={dailyWeathers} dayOffset={0} />;
+    return (
+      <Container>
+        <WeeklyWeather dailyWeathers={dailyWeathers} dayOffset={0} />
+      </Container>
+    );
   },
 };
 

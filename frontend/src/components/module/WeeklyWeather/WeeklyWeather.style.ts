@@ -5,21 +5,22 @@ export const Container = styled.div`
   display: grid;
 `;
 
-export const GraphContainer = styled.div`
+export const GraphListContainer = styled.div`
   display: flex;
   justify-content: center;
 `;
+
 export const HumidityListContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: 16px;
 `;
 
-export const HumidityItemContainer = styled.div`
+export const HumidityContainer = styled.div`
   width: 106px;
 `;
 
-export const CardContainer = styled.div`
+export const DailyWeatherListContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: 16px;

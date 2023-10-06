@@ -1,11 +1,13 @@
 import React, { useEffect, useRef } from "react";
 import { GraphProps } from "./Graph.props";
 import { Canvas } from "./Graph.style";
+import { useTheme } from "../../../utils/Theme";
 
 const Graph = (props: GraphProps): JSX.Element => {
   const { width, height, start, end } = props;
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const theme = useTheme();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -15,7 +17,7 @@ const Graph = (props: GraphProps): JSX.Element => {
 
       if (context) {
         context.lineWidth = 3;
-        context.strokeStyle = "#50CD8A";
+        context.strokeStyle = theme.brand.accent;
         context.lineJoin = "round";
         context.lineCap = "round";
 
