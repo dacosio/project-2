@@ -1,5 +1,11 @@
+interface Card {
+    _id: string;
+    title: string;
+    body: string;
+}
+
 export interface TestPageGeneratedProps {
-    data: any[] | undefined;
+    data: Card[] | undefined;
     title: string;
     body: string;
 }
