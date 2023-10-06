@@ -5,6 +5,7 @@ import { StyledLogo, StyledSidebarHeader } from "./SidebarHeader.style";
 import Typography from "components/base/Typography";
 import { useAppDispatch } from "app/hooks";
 import { sendCollapse } from "features/sidebar/sidebarSlice";
+import { CollapsedLogo, SproutLogo } from "components/base/SVG";
 
 const SidebarHeader = ({
   children,
@@ -20,10 +21,10 @@ const SidebarHeader = ({
   return (
     <StyledSidebarHeader {...rest}>
       <div style={{ display: "flex", alignItems: "center" }}>
-        <StyledLogo onClick={handleCollapse}>L</StyledLogo>
-        <Typography variant="title4" color="shade9">
-          Lumpia
-        </Typography>
+        <StyledLogo onClick={handleCollapse}>
+          <CollapsedLogo height={52} width={40} />
+        </StyledLogo>
+        <SproutLogo width={100} height={33} />
       </div>
     </StyledSidebarHeader>
   );
