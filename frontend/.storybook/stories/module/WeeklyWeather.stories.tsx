@@ -3,11 +3,12 @@ import type { Meta, StoryObj } from "@storybook/react";
 import WeeklyWeather from "../../../src/components/module/WeeklyWeather";
 import Container from "../../components/Container";
 import Wrapper from "../../components/Wrapper";
+import { DailyWeather } from "../../../src/components/module/WeeklyWeather/WeeklyWeather.props";
 
 const meta: Meta<typeof WeeklyWeather> = {
   title: "Module/WeeklyWeather",
   component: () => {
-    const dailyWeathers = [
+    const dailyWeathers: DailyWeather[] = [
       { humidity: 71, weather: "Cloudy", max: 22, min: 18 },
       { humidity: 69, weather: "Sunny", max: 23, min: 20 },
       { humidity: 85, weather: "Rainy", max: 20, min: 17 },

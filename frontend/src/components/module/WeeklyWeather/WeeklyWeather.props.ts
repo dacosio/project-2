@@ -1,4 +1,4 @@
-import { Weather } from "const/weathers";
+export type Weather = "Sunny" | "Rainy" | "Cloudy";
 
 export type DailyWeather = {
   humidity: number;

@@ -9,7 +9,7 @@ export const Container = styled.div`
   justify-items: stretch;
   align-items: center;
   aspect-ratio: 0.75;
-  min-width: 80px;
+  width: 80px;
 
   &:hover {
     background-color: ${theme.grey.shade3};
@@ -19,12 +19,6 @@ export const Container = styled.div`
 export const WeatherContainer = styled.div`
   justify-self: center;
   line-height: 0;
-`;
-
-export const DayContainer = styled.div`
-  border: 1px solid ${theme.grey.shade3};
-  width: 100px;
-  height: 100px;
 `;
 
 export const TemperatureContainer = styled.div`
