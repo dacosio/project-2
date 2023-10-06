@@ -47,6 +47,8 @@ const Navigation = (props: NavigationProps): JSX.Element => {
 
   const [broken, setBroken] = useState<boolean>(false);
 
+  console.log(collapseState);
+
   useEffect(() => {
     dispatch(sendBroken(broken));
   }, [broken, dispatch]);
@@ -55,14 +57,26 @@ const Navigation = (props: NavigationProps): JSX.Element => {
     root: {
       fontSize: "16px",
     },
+    icon: {
+      margin: "0px",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    },
     button: ({ active }) => {
       return {
         backgroundColor: active ? theme.btn.color.primary : "transparent",
         color: active ? theme.btn.text.white : theme.btn.text.secondary,
-        margin: "0 26px",
+        margin: collapseState === true ? "0px 10px" : "0 26px",
         justifyContent: "center",
         borderRadius: "16px",
         display: "flex",
+        [`&:hover`]: {
+          backgroundColor: active
+            ? theme.btn.color.hover
+            : theme.btn.color.lightest,
+          color: active ? theme.btn.text.white : theme.btn.color.pressed,
+        },
       };
     },
   };
@@ -96,6 +110,7 @@ const Navigation = (props: NavigationProps): JSX.Element => {
   const yourCropsActive = location.pathname === "/your-crops" ? true : false;
   const cropGuideActive = location.pathname === "/crop-guide" ? true : false;
   const weatherActive = location.pathname === "/weather" ? true : false;
+
   return (
     <Sidebar
       collapsed={collapseState}
