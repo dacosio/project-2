@@ -111,6 +111,9 @@ const Navigation = (props: NavigationProps): JSX.Element => {
       onBreakPoint={setBroken}
       breakPoint="md"
       width="288px"
+      rootStyles={{
+          backgroundColor: theme.bg.primary,
+      }}
     >
       <SideBarContainer>
         <SidebarHeader style={{ marginBottom: "24px", marginTop: "16px" }} />
