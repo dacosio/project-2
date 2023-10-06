@@ -13,7 +13,6 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
     <Container>
       <CustomCheckbox
         type="checkbox"
-        id="checkboxBox"
         checked={checkboxStatus}
         onChange={answerBox}
       />
