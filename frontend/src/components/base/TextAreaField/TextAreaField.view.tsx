@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import { TextAreaFieldProps } from "./TextAreaField.props";
 import { Container, TextArea, Error } from "./TextAreaField.style";
 import { useTheme } from "../../../utils/Theme";
@@ -19,12 +19,24 @@ const TextAreaField = (props: TextAreaFieldProps): JSX.Element => {
     style,
   } = props;
 
+  const handleOnChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    onChange(event);
+    setValue(event.target.value);
+  };
+
   return (
     <Container className={className} style={style}>
-      <Typography variant="title4" color={"shade6"}>
+      <Typography variant="title4" color="shade6">
         {label}
       </Typography>
-      <TextArea>{children}</TextArea>
+      <TextArea
+        id={id}
+        placeholder={placeholder}
+        onChange={handleOnChange}
+        onBlur={onBlur}
+      >
+        {children}
+      </TextArea>
       {error && (
         <Error variant="subtitle" color="error">
           {error}
