@@ -14,11 +14,13 @@ const meta: Meta<typeof Switch> = {
     }, [isChecked]);
 
     return (
-      <div style={{ display: "grid", gap: "32px" }}>
-        <Switch value={isChecked} setValue={setIsChecked} size="sm" />
-        <Switch value={isChecked} setValue={setIsChecked} />
-        <Switch value={isChecked} setValue={setIsChecked} size="lg" />
-      </div>
+      <Container>
+        <div style={{ display: "grid", gap: "32px" }}>
+          <Switch value={isChecked} setValue={setIsChecked} size="sm" />
+          <Switch value={isChecked} setValue={setIsChecked} />
+          <Switch value={isChecked} setValue={setIsChecked} size="lg" />
+        </div>
+      </Container>
     );
   },
 };

@@ -7,6 +7,9 @@ import {
   DashboardSvg,
   CollapsedLogo,
   SproutLogo,
+  Rainy,
+  Sunny,
+  Cloudy,
   Smile,
   Close,
   EyeOff,
@@ -37,27 +40,36 @@ const meta: Meta = {
   component: () => (
     <Container background="white">
       {/* PLOP_INJECT_INSTANCE*/}
-        <Wrapper label="CropGuideSvg">
-          <CropGuideSvg width={30} height={30} />
-        </Wrapper>
-        <Wrapper label="YourCropsSvg">
-          <YourCropsSvg width={30} height={30} />
-        </Wrapper>
-        <Wrapper label="DashboardSvg">
-          <DashboardSvg width={30} height={30} />
-        </Wrapper>
-        <Wrapper label="CollapsedLogo">
-          <CollapsedLogo width={30} height={30} />
-        </Wrapper>
-        <Wrapper label="SproutLogo">
-          <SproutLogo width={30} height={30} />
-        </Wrapper>
-        <Wrapper label="Smile">
-          <Smile width={30} height={30} />
-        </Wrapper>
-        <Wrapper label="Close">
-          <Close width={30} height={30} />
-        </Wrapper>
+      <Wrapper label="CropGuideSvg">
+        <CropGuideSvg width={30} height={30} />
+      </Wrapper>
+      <Wrapper label="YourCropsSvg">
+        <YourCropsSvg width={30} height={30} />
+      </Wrapper>
+      <Wrapper label="DashboardSvg">
+        <DashboardSvg width={30} height={30} />
+      </Wrapper>
+      <Wrapper label="CollapsedLogo">
+        <CollapsedLogo width={30} height={30} />
+      </Wrapper>
+      <Wrapper label="SproutLogo">
+        <SproutLogo width={30} height={30} />
+      </Wrapper>
+      <Wrapper label="Rainy">
+        <Rainy width={30} height={30} />
+      </Wrapper>
+      <Wrapper label="Sunny">
+        <Sunny width={30} height={30} />
+      </Wrapper>
+      <Wrapper label="Cloudy">
+        <Cloudy width={30} height={30} />
+      </Wrapper>
+      <Wrapper label="Smile">
+        <Smile width={30} height={30} />
+      </Wrapper>
+      <Wrapper label="Close">
+        <Close width={30} height={30} />
+      </Wrapper>
       <Wrapper label="EyeOff">
         <EyeOff width={30} height={30} />
       </Wrapper>
