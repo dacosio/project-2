@@ -8,6 +8,7 @@ const Wrapper = ({ children, label = "" }) => {
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
+        boxSizing: "border-box",
       }}
     >
       {children}
