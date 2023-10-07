@@ -53,7 +53,9 @@ const Button = (props: ButtonProps): JSX.Element => {
     textWeight = "500";
   } else if (size === "md") {
     textVariant = "btn";
-    textWeight = "400";
+    textWeight = "700";
+  } else {
+    textWeight = "400"
   }
 
   const hasText = text && text?.length > 0 ? true : false;
