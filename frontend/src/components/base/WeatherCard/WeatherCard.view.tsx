@@ -31,7 +31,7 @@ const WeatherCard = (props: WeatherCardProps): JSX.Element => {
   }, [])
 
   return (
-    <Container className={`weather-card ${weatherData.forecast.toLowerCase().replace(/ /g, '-')}`}>
+    <Container>
       {weatherData ?
         <div className="weather-content">
           <div className="right-side-content">
