@@ -13,8 +13,8 @@ import Weather from "./pages/Weather";
 function App() {
   return (
     <Routes>
+      <Route index element={<Home />} />
       <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="your-crops" element={<YourCrop />} />
         <Route path="crop-guide" element={<CropGuide />} />

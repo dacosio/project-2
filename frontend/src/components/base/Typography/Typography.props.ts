@@ -19,6 +19,7 @@ export interface TypographyProps extends HTMLAttributes<HTMLParagraphElement> {
   children: any;
   variant?: Variants;
   textColor?:
+    | keyof Theme["neutral"]
     | keyof Theme["btn"]["text"]
     | keyof Theme["grey"]
     | keyof Theme["brand"]
