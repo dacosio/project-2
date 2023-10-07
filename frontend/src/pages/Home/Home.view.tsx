@@ -4,6 +4,8 @@ import { Container, Header, About, Details, Contact } from "./Home.style";
 import Typography from "components/base/Typography";
 import TextField from "components/base/TextField";
 import Button from "components/base/Button";
+import headerImg from "images/headerImg.png";
+import aboutimg from "images/aboutimg.png";
 import axios from "axios";
 
 const HomeView = (props: HomeGeneratedProps) => {
@@ -13,30 +15,39 @@ const HomeView = (props: HomeGeneratedProps) => {
   return (
     <Container>
       <Header>
-        <Typography variant="title1" weight="700" textColor="accent">
-          Sow and grow your farming goals
-        </Typography>
-        <div className="header-text">
-          <TextField
-            value={email}
-            onChangeText={setEmail}
-            placeholder="user@nomail.com"
-          />
-          <Button
-            text="Farm with us"
-            variant="primary"
-            size="md"
-            takeFullWidth={false}
-          ></Button>
-          <img src="{headerImg}" alt="" />
+        <div className="header-contents">
+          <Typography variant="title1" weight="700" textColor="accent">
+            Sow and grow your farming goals
+          </Typography>
+          <div className="input-landing-page">
+            <TextField
+              value={email}
+              onChangeText={setEmail}
+              placeholder="user@nomail.com"
+              style={{flexGrow: "1"}}
+            />
+            <Button
+              text="Farm with us"
+              variant="primary"
+              size="md"
+              takeFullWidth={false}
+            ></Button>
+          </div>
         </div>
-        
+        <img src={headerImg} alt="" style={{maxHeight:"70vh"}}/>
       </Header>
 
       <About>
-        <Typography variant="title1" weight="700" textColor="accent">
-          Farming simplified
-        </Typography>
+        <div className="about-header">
+          <Typography variant="title1" weight="700" textColor="accent"
+          style={{position: "relative", top:"100px", zIndex:"1"}}
+          >
+            Farming<br></br>simplified
+          </Typography>
+          <img src={aboutimg} alt="" 
+          style={{maxHeight:"70vh", position: "relative", bottom:"100px"}}/>
+        </div>
+
         <div className="about-details">
           <Details>
             <Typography variant="title2" weight="700" textColor="n90">

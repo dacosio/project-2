@@ -7,15 +7,30 @@ export const Header = styled.div`
 background-color: #FCFFEB;
 padding: 1rem;
 height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+.header-contents{
+    max-width: 500px;
+}
+.input-landing-page{
+    display: flex;
+    gap: 1rem;
+}
 `;
 
 export const About = styled.div`
 background-color: #FFFFFF;
 padding: 1rem;
-display: grid;
-grid-template-columns: 1fr 1fr;
+display: flex;
+align-items: center;
+justify-content: center;
 gap: 6rem;
 height: 100vh;
+.about-header{
+    display: flex;
+    flex-flow: column;
+}
 `;
 
 export const Details = styled.div`
