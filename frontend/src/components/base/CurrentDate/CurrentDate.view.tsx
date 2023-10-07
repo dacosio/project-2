@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CurrentDateProps } from './CurrentDate.props';
 import { Container } from './CurrentDate.style';
-import { getCurrentDate } from './../../../utils/Theme';
+import { getCurrentDate } from './../../../utils/Date';
 
 const CurrentDate = (props: CurrentDateProps): JSX.Element => {
   const [currentDate, setCurrentDate] = useState('');

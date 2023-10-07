@@ -6,11 +6,6 @@ export const useTheme = (): Theme => useThemeBase();
 const rootFontSizePx = 16;
 export const pxToRem = (n: number): string => `${n / rootFontSizePx}rem`;
 
-export const getCurrentDate = (): string => {
-  const date = new Date();
-  return date.toLocaleDateString();
-};
-
 export const theme: Theme = {
   brand: {
     primary: "#222222",
