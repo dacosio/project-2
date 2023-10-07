@@ -8,7 +8,7 @@ import {
   CloudContainer
 } from './WeatherCard.style';
 import Typography from '../Typography';
-import Moment from 'react-moment';
+import CurrentDate from '../CurrentDate/CurrentDate.view';
 import Rainy from '../SVG/Rainy';
 
 
@@ -38,7 +38,7 @@ const WeatherCard = (props: WeatherCardProps): JSX.Element => {
             <LocationContainer>
               <Typography variant='subtitle' weight='700'>Vancouver, BC</Typography>
               <Typography variant='body'>
-                <Moment format="ddd, MMM D, YYYY">{date}</Moment>
+                <CurrentDate />
               </Typography>
             </LocationContainer>
             <TemperatureContainer>
