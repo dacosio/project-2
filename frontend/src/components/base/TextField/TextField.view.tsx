@@ -17,18 +17,18 @@ import {
 const TextField = (props: TextFieldProps): JSX.Element => {
   const theme = useTheme();
   const {
-    id,
+    name,
     type,
     label,
-    value = "",
-    onChange = () => null,
-    onChangeText = () => null,
+    value,
+    setValue = () => null,
     placeholder,
     secured,
-    error = "",
+    error,
     prefix,
-    LeftComponent = null,
-    className = undefined,
+    LeftComponent,
+    className,
+    onChange = () => null,
     onBlur = () => null,
     style,
   } = props;
@@ -36,7 +36,7 @@ const TextField = (props: TextFieldProps): JSX.Element => {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onChange(event);
-    onChangeText(event.target.value);
+    setValue(event.target.value);
   };
 
   const VisibilityIcon = showSecuredText ? EyeOff : Eye;
@@ -52,7 +52,7 @@ const TextField = (props: TextFieldProps): JSX.Element => {
         )}
         {prefix && <Prefix>{prefix}</Prefix>}
         <Field
-          id={id}
+          name={name}
           type={secured && !showSecuredText ? "password" : defaultInputType}
           value={value}
           onChange={handleChange}
@@ -60,10 +60,8 @@ const TextField = (props: TextFieldProps): JSX.Element => {
           placeholder={placeholder}
         />
         {secured && (
-          <VisibilityContainer>
-            <div onClick={() => setShowSecuredText((v) => !v)}>
-              <VisibilityIcon fill={theme.grey.shade7} />
-            </div>
+          <VisibilityContainer onClick={() => setShowSecuredText((v) => !v)}>
+            <VisibilityIcon fill={theme.grey.shade7} />
           </VisibilityContainer>
         )}
       </FieldContainer>

@@ -9,11 +9,10 @@ const meta: Meta = {
   title: "Base/TextField",
   component: () => {
     const [email, setEmail] = useState<string>("");
-    const [password, setPassword] = useState("");
+    const [password, setPassword] = useState<string>("");
+
     return (
-      <Container
-        background="white"
-      >
+      <Container background="white">
         <Wrapper>
           <TextField
             label="Email"
@@ -23,7 +22,6 @@ const meta: Meta = {
             error="Please enter your email"
           />
         </Wrapper>
-
         <Wrapper>
           <TextField
             label="Password"

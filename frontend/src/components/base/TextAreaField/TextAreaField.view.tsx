@@ -5,17 +5,16 @@ import { useTheme } from "../../../utils/Theme";
 import Typography from "../Typography";
 
 const TextAreaField = (props: TextAreaFieldProps): JSX.Element => {
-  const theme = useTheme();
   const {
-    id,
+    name,
     label,
+    children,
     setValue = () => null,
     placeholder,
-    className = undefined,
+    error,
+    className,
     onChange = () => null,
     onBlur = () => null,
-    children,
-    error = "",
     style,
   } = props;
 
@@ -30,7 +29,7 @@ const TextAreaField = (props: TextAreaFieldProps): JSX.Element => {
         {label}
       </Typography>
       <TextArea
-        id={id}
+        name={name}
         placeholder={placeholder}
         onChange={handleOnChange}
         onBlur={onBlur}

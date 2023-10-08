@@ -1,7 +1,7 @@
-import { Dispatch, HTMLAttributes, SetStateAction } from "react";
+import { Dispatch, TextareaHTMLAttributes, SetStateAction } from "react";
 
 export interface TextAreaFieldProps
-  extends HTMLAttributes<HTMLTextAreaElement> {
+  extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string;
   setValue?: Dispatch<SetStateAction<string>>;
   error?: string;

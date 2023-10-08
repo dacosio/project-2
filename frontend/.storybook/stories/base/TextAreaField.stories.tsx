@@ -31,9 +31,10 @@ const meta: Meta<typeof TextAreaField> = {
           <TextAreaField
             label="TextArea"
             placeholder="textarea"
-            error="Error!"
             setValue={setValue}
-          ></TextAreaField>
+          >
+            Test
+          </TextAreaField>
         </div>
       </Container>
     );
