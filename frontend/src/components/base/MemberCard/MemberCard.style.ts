@@ -4,7 +4,7 @@ import { theme } from "../../../utils/Theme";
 export const Container = styled.div`
   display: grid;
   grid-template-rows: auto 1fr;
-  max-width: 250px;
+  width: 100%;
   gap: 16px;
   word-break: break-word;
 `;

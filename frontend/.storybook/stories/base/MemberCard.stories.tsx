@@ -21,7 +21,7 @@ const meta: Meta<typeof MemberCard> = {
 
     return (
       <Container>
-        <Row style={{ width: "100%" }} justify="center" nogutter>
+        <Row style={{ width: "100%" }} nogutter>
           {members.map((member, index) => (
             <Col
               sm={6}
@@ -30,7 +30,6 @@ const meta: Meta<typeof MemberCard> = {
               style={{
                 padding: "16px 32px",
                 display: "grid",
-                justifyContent: "center",
               }}
             >
               <MemberCard
