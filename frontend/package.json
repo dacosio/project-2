@@ -74,6 +74,7 @@
     "prop-types": "^15.8.1",
     "serve": "^14.2.1",
     "storybook": "^7.3.2",
+    "typescript": "^5.2.2",
     "webpack": "^5.88.2"
   }
 }
