@@ -1,4 +1,4 @@
-import React, { useEffect, FocusEvent } from "react";
+import React from "react";
 import { FormikTextFieldProps } from "./FormikTextField.props";
 import { Container } from "./FormikTextField.style";
 import TextField from "../TextField";

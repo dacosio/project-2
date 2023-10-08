@@ -7,7 +7,6 @@ export interface TextFieldProps
   secured?: boolean;
   error?: string;
   LeftComponent?: React.ReactNode;
-  className?: string;
   alert?: string;
   prefix?: string;
 }

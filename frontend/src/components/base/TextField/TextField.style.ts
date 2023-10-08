@@ -2,16 +2,16 @@ import styled from "@emotion/styled";
 
 import Typography from "../../base/Typography";
 
-export const Container = styled.div`
-  display: grid;
-  gap: 4px;
-`;
-
 const fontStyle = `
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 24px;  
+`;
+
+export const Container = styled.div`
+  display: grid;
+  gap: 4px;
 `;
 
 export const FieldContainer = styled.div<{ error: boolean }>`
@@ -42,6 +42,8 @@ export const Field = styled.input`
 export const LeftComponentContainer = styled.div`
   padding-right: 4px;
   border-right: 1px solid ${({ theme }) => theme.grey.shade5};
+  display: flex;
+  align-items: center;
 `;
 
 export const VisibilityContainer = styled.div`

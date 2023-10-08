@@ -39,11 +39,13 @@ const meta: Meta<typeof FormikTextField> = {
             <FormikTextField
               label="Email"
               name="email"
+              placeholder="user@nomail.com"
               validate={emailValidator}
             />
             <FormikTextField
               label="Password"
               name="password"
+              placeholder="******"
               validate={passwordValidator}
               secured
             />

@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import { FormikTextAreaProps } from "./FormikTextArea.props";
-import { Container } from "./FormikTextArea.style";
+import React from "react";
+import { FormikTextAreaProps } from "./FormikTextAreaField.props";
+import { Container } from "./FormikTextAreaField.style";
 import { useField } from "formik";
 import TextAreaField from "../TextAreaField";
 

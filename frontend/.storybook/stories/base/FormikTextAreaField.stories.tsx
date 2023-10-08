@@ -1,13 +1,13 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import FormikTextArea from "../../../src/components/base/FormikTextArea";
+import FormikTextArea from "../../../src/components/base/FormikTextAreaField";
 import Container from "../../components/Container";
 import Wrapper from "../../components/Wrapper";
 import { Form, Formik } from "formik";
 import Button from "../../../src/components/base/Button";
 
 const meta: Meta<typeof FormikTextArea> = {
-  title: "Base/FormikTextArea",
+  title: "Base/FormikTextAreaField",
   component: () => {
     const commentValidator = (value: string) => {
       if (!value) {
@@ -28,6 +28,7 @@ const meta: Meta<typeof FormikTextArea> = {
             <FormikTextArea
               label="Comment"
               name="comment"
+              placeholder="comment"
               validate={commentValidator}
             />
             <Button type="submit" text="Submit" variant="primary" />
