@@ -88,8 +88,5 @@
     "serve": "^14.2.1",
     "storybook": "^7.3.2",
     "webpack": "^5.88.2"
-  },
-  "overrides": {
-    "typescript": "^5.2.2"
   }
 }
