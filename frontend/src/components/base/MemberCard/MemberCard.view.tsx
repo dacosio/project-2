@@ -8,7 +8,7 @@ import {
   Image,
 } from "./MemberCard.style";
 import Typography from "../Typography";
-import { Eye, Leaf } from "../SVG";
+import { Leaf } from "../SVG";
 
 const MemberCard = (props: MemberCardProps): JSX.Element => {
   const { source, name, role } = props;
