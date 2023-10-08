@@ -17,7 +17,7 @@ const meta: Meta = {
           <TextField
             label="Email"
             value={email}
-            onChangeText={setEmail}
+            setValue={setEmail}
             placeholder="user@nomail.com"
             error="Please enter your email"
           />
@@ -26,7 +26,7 @@ const meta: Meta = {
           <TextField
             label="Password"
             value={password}
-            onChangeText={setPassword}
+            setValue={setPassword}
             secured
             placeholder="******"
           />
