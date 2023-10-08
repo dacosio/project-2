@@ -66,7 +66,7 @@ const TextField = (props: TextFieldProps): JSX.Element => {
         )}
       </FieldContainer>
       {(error || "").length > 0 && (
-        <Error variant="subtitle" color="error">
+        <Error variant="subtitle" textColor="error">
           {error}
         </Error>
       )}

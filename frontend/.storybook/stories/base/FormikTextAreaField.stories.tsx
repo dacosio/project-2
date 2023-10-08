@@ -5,17 +5,14 @@ import Container from "../../components/Container";
 import Wrapper from "../../components/Wrapper";
 import { Form, Formik } from "formik";
 import Button from "../../../src/components/base/Button";
+import { object, string } from "yup";
 
 const meta: Meta<typeof FormikTextArea> = {
   title: "Base/FormikTextAreaField",
   component: () => {
-    const commentValidator = (value: string) => {
-      if (!value) {
-        return "Comment is required.";
-      } else {
-        return "";
-      }
-    };
+    const validationSchema = object({
+      comment: string().required("Comment is required."),
+    });
 
     const handleOnSubtmit = (values: { comment: string }) => {
       console.log(values);
@@ -23,13 +20,16 @@ const meta: Meta<typeof FormikTextArea> = {
 
     return (
       <Container>
-        <Formik initialValues={{ comment: "" }} onSubmit={handleOnSubtmit}>
+        <Formik
+          initialValues={{ comment: "" }}
+          validationSchema={validationSchema}
+          onSubmit={handleOnSubtmit}
+        >
           <Form>
             <FormikTextArea
               label="Comment"
               name="comment"
               placeholder="comment"
-              validate={commentValidator}
             />
             <Button type="submit" text="Submit" variant="primary" />
           </Form>
