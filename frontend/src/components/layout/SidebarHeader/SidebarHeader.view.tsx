@@ -24,7 +24,7 @@ const SidebarHeader = ({
         <StyledLogo onClick={handleCollapse}>
           <CollapsedLogo height={52} width={40} />
         </StyledLogo>
-        <SproutLogo width={100} height={33} />
+        <SproutLogo width={150} height={45} />
       </div>
     </StyledSidebarHeader>
   );
