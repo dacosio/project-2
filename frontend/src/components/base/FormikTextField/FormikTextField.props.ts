@@ -4,7 +4,8 @@ export interface FormikTextFieldProps
   extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   secured?: boolean;
-  LeftComponent?: React.ReactNode;
+  leftComponent?: React.ReactNode;
+  rightComponent?: React.ReactNode;
   alert?: string;
   prefix?: string;
   name: string;

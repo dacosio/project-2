@@ -25,7 +25,7 @@ const meta: Meta<typeof FormikTextArea> = {
           validationSchema={validationSchema}
           onSubmit={handleOnSubtmit}
         >
-          <Form>
+          <Form style={{ display: "grid", gap: "32px" }}>
             <FormikTextArea
               label="Comment"
               name="comment"

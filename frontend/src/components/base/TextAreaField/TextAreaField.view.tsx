@@ -25,7 +25,7 @@ const TextAreaField = (props: TextAreaFieldProps): JSX.Element => {
 
   return (
     <Container className={className} style={style}>
-      <Typography variant="title4" color="shade6">
+      <Typography variant="small" color="shade6">
         {label}
       </Typography>
       <TextArea
@@ -37,7 +37,7 @@ const TextAreaField = (props: TextAreaFieldProps): JSX.Element => {
         {children}
       </TextArea>
       {error && (
-        <Error variant="subtitle" color="error">
+        <Error variant="small" textColor="error">
           {error}
         </Error>
       )}

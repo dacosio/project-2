@@ -2,6 +2,7 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import {
   /* PLOP_INJECT_IMPORT */
+  Info,
   CropGuideSvg,
   YourCropsSvg,
   DashboardSvg,
@@ -40,6 +41,9 @@ const meta: Meta = {
   component: () => (
     <Container background="white">
       {/* PLOP_INJECT_INSTANCE*/}
+        <Wrapper label="Info">
+          <Info width={30} height={30} />
+        </Wrapper>
       <Wrapper label="CropGuideSvg">
         <CropGuideSvg width={30} height={30} />
       </Wrapper>

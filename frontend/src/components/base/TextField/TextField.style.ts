@@ -4,25 +4,32 @@ import Typography from "../../base/Typography";
 
 const fontStyle = `
   font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;  
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  font-family: inherit;
 `;
 
 export const Container = styled.div`
   display: grid;
-  gap: 4px;
+  gap: 8px;
+`;
+
+export const LabelContainer = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 `;
 
 export const FieldContainer = styled.div<{ error: boolean }>`
-  padding: 4px 8px;
+  padding: 16px 8px;
   display: flex;
   border-radius: 4px;
-  border: 1px solid black;
+  border: 1px solid ${({ theme }) => theme.grey.shade3};
   align-items: center;
-  gap: 4px;
+  gap: 12px;
   flex-grow: 1;
-
   background-color: ${({ theme }) => {
     return theme.grey.noshade;
   }};
@@ -31,9 +38,10 @@ export const FieldContainer = styled.div<{ error: boolean }>`
 export const Field = styled.input`
   ${fontStyle};
   background-color: ${({ theme }) => theme.grey.noshade};
-  color: 1px solid ${({ theme }) => theme.grey.shade9};
   flex-grow: 1;
   border: none;
+  color: ${({ theme }) => theme.grey.shade9};
+
   :focus {
     outline: none;
   }
@@ -52,7 +60,9 @@ export const VisibilityContainer = styled.div`
   align-items: center;
 `;
 
-export const Error = styled(Typography)``;
+export const Error = styled(Typography)`
+  padding: 0 8px;
+`;
 
 export const Prefix = styled.span`
   color: ${(props) => props.theme.grey.shade8};

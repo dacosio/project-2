@@ -13,6 +13,7 @@ import {
   VisibilityContainer,
   Error,
   Prefix,
+  LabelContainer,
 } from "./TextField.style";
 const TextField = (props: TextFieldProps): JSX.Element => {
   const theme = useTheme();
@@ -25,7 +26,8 @@ const TextField = (props: TextFieldProps): JSX.Element => {
     placeholder,
     secured,
     error,
-    LeftComponent,
+    leftComponent,
+    rightComponent,
     prefix,
     className,
     onChange = () => null,
@@ -43,12 +45,15 @@ const TextField = (props: TextFieldProps): JSX.Element => {
   const defaultInputType = type || "text";
   return (
     <Container className={className} style={style}>
-      <Typography variant="title4" color={"shade6"}>
-        {label}
-      </Typography>
+      <LabelContainer>
+        <Typography variant="small" color={"shade6"}>
+          {label}
+        </Typography>
+        {rightComponent && rightComponent}
+      </LabelContainer>
       <FieldContainer error={(error || "").length > 0}>
-        {LeftComponent && (
-          <LeftComponentContainer>{LeftComponent}</LeftComponentContainer>
+        {leftComponent && (
+          <LeftComponentContainer>{leftComponent}</LeftComponentContainer>
         )}
         {prefix && <Prefix>{prefix}</Prefix>}
         <Field
@@ -61,12 +66,12 @@ const TextField = (props: TextFieldProps): JSX.Element => {
         />
         {secured && (
           <VisibilityContainer onClick={() => setShowSecuredText((v) => !v)}>
-            <VisibilityIcon fill={theme.grey.shade7} />
+            <VisibilityIcon width={24} height={24} fill={theme.grey.shade7} />
           </VisibilityContainer>
         )}
       </FieldContainer>
       {(error || "").length > 0 && (
-        <Error variant="subtitle" textColor="error">
+        <Error variant="small" textColor="error">
           {error}
         </Error>
       )}

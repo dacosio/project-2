@@ -5,9 +5,10 @@ import Typography from "../../base/Typography";
 
 const fontStyle = `
   font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;  
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  font-family: inherit;
 `;
 
 export const Container = styled.div`
@@ -19,13 +20,17 @@ export const TextArea = styled.textarea`
   ${fontStyle};
   width: 100%;
   border-radius: 4px;
-  border: 1px solid black;
+  border: 1px solid ${({ theme }) => theme.grey.shade3};
   box-sizing: border-box;
-  padding: 4px 8px;
+  padding: 8px 16px;
+  color: ${({ theme }) => theme.grey.shade9};
+  background-color: ${({ theme }) => theme.grey.noshade};
 
   :focus {
     outline: none;
   }
 `;
 
-export const Error = styled(Typography)``;
+export const Error = styled(Typography)`
+  padding: 0 16px;
+`;

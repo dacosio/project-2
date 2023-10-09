@@ -6,7 +6,8 @@ export interface TextFieldProps
   setValue?: Dispatch<SetStateAction<string>>;
   secured?: boolean;
   error?: string;
-  LeftComponent?: React.ReactNode;
+  leftComponent?: React.ReactNode;
+  rightComponent?: React.ReactNode;
   alert?: string;
   prefix?: string;
 }
