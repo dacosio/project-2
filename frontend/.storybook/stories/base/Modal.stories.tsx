@@ -2,6 +2,7 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import Modal from "../../../src/components/base/Modal";
 import TypographyView from "../../../src/components/base/Typography/Typography.view";
+import Container from "../../components/Container";
 
 const meta: Meta<typeof Modal> = {
   title: "Base/Modal",
@@ -11,7 +12,7 @@ const meta: Meta<typeof Modal> = {
     const toggleModal = () => setModalState(!isModalOpen);
 
     return (
-      <div>
+      <Container background="white">
         <button className={"app__btn"} onClick={toggleModal}>
           Start now!
         </button>
@@ -22,7 +23,7 @@ const meta: Meta<typeof Modal> = {
         >
           This is an example modal content
         </Modal>
-      </div>
+      </Container>
     );
   },
 };

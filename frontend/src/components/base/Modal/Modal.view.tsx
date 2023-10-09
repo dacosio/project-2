@@ -27,11 +27,9 @@ const Modal: FC<ModalProps> = ({ isOpen, title, onClose, children }) => {
       <ModalOverlay ref={outsideRef} onClick={handleCloseOnOverlay} />
       <ModalBox>
         <ModalClose onClick={onClose}>
-          {/* <Close width={30} height={30} /> */}X
+          <Close width={20} height={20} />
         </ModalClose>
-
-        <ModalTitle>{title}</ModalTitle>
-        {/* <TypographyView variant="title5">{title}</TypographyView> */}
+        <TypographyView variant="title4">{title}</TypographyView>
         <ModalContent>{children}</ModalContent>
       </ModalBox>
     </Container>

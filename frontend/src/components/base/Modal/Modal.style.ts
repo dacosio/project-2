@@ -46,11 +46,18 @@ font-size: 16px;
 `;
 
 export const ModalClose = styled.button`
+    width: 30px;
+    height:30px;
     position: absolute;
     top: 20px;
     right: 20px;
     transition: transform 250ms ease-in-out;
-    transform-origin: 50% 50%; 
+    transform-origin: 50% 50%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+
+
 
     :hover{
         transform: rotate(180deg); 
