@@ -6,7 +6,6 @@ import {
   Container,
   ModalOverlay,
   ModalBox,
-  ModalTitle,
   ModalContent,
   ModalClose,
 } from "./Modal.style";

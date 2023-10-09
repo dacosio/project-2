@@ -34,10 +34,6 @@ position: relative;
     cursor: auto;
 `;
 
-export const ModalTitle = styled.div`
-    font-weight: bold;
-    font-size: 30px;
-`;
 
 export const ModalContent = styled.div`
 margin-top: 30px;
