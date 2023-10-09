@@ -1,13 +1,10 @@
 import React from 'react';
 import { CropGuideGeneratedProps } from './CropGuide.props';
 import { Container, Conditions } from './CropGuide.style';
-// import { Responsive, WidthProvider } from "react-grid-layout";
 import GridLayout from "react-grid-layout";
-import styled from "styled-components";
 import CropCondition from './../../../components/base/CropCondition'
 
 const CropGuideView = (props: CropGuideGeneratedProps) => {
-  // const ResponsiveGridLayout = WidthProvider(Responsive);
   const layoutLg = [
     { i: '1', x: 0, y: 1, w: 5, h: 2 }, // col-5
     { i: '2', x: 5, y: 0, w: 3.5, h: 1 }, // col-3.5
