@@ -1,6 +1,10 @@
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
+
 
 
 export interface ModalProps extends HTMLAttributes<HTMLElement> {
-  modalTitle?: string;
+  title: string;
+  isOpen: boolean;
+  onClose: () => void;
+  children: ReactNode;
 }

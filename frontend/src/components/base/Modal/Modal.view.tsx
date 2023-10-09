@@ -1,37 +1,41 @@
-import React from "react";
+import React, { FC } from "react";
 import TypographyView from "../Typography/Typography.view";
-import { Close } from "../SVG";
+import { Close } from "../../../../src/components/base/SVG";
 import { ModalProps } from "./Modal.props";
 import {
-  ModalBackground,
-  ModalContainer,
-  ModalCloseButtonContainer,
-  ModalCloseButton,
+  Container,
+  ModalOverlay,
+  ModalBox,
   ModalTitle,
+  ModalContent,
+  ModalClose,
 } from "./Modal.style";
 
-const Modal = (props: ModalProps): JSX.Element => {
-  const { modalTitle, ...modalProps } = props;
+const Modal: FC<ModalProps> = ({ isOpen, title, onClose, children }) => {
+  const outsideRef = React.useRef(null);
 
-  const handleClick = () => {
-    console.log("Hello Hello");
+  const handleCloseOnOverlay = (
+    e: React.MouseEvent<HTMLElement, MouseEvent>
+  ) => {
+    if (e.target === outsideRef.current) {
+      onClose();
+    }
   };
 
-  return (
-    <ModalBackground>
-      <ModalContainer>
-        <ModalCloseButtonContainer>
-          <ModalCloseButton onClick={handleClick}>
-            {/* <Close width={30} height={30} /> */}X
-          </ModalCloseButton>
-        </ModalCloseButtonContainer>
-        <ModalTitle>
-          {/* <TypographyView variant="title5">{props.modalTitle}</TypographyView> */}
-          <h3>{props.modalTitle}</h3>
-        </ModalTitle>
-      </ModalContainer>
-    </ModalBackground>
-  );
+  return isOpen ? (
+    <Container>
+      <ModalOverlay ref={outsideRef} onClick={handleCloseOnOverlay} />
+      <ModalBox>
+        <ModalClose onClick={onClose}>
+          {/* <Close width={30} height={30} /> */}X
+        </ModalClose>
+
+        <ModalTitle>{title}</ModalTitle>
+        {/* <TypographyView variant="title5">{title}</TypographyView> */}
+        <ModalContent>{children}</ModalContent>
+      </ModalBox>
+    </Container>
+  ) : null;
 };
 
 export default React.memo(Modal);

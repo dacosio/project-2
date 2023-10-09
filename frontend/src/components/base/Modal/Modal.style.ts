@@ -1,45 +1,59 @@
 import styled from "@emotion/styled";
 
+  
 
-
-export const ModalBackground = styled.div`
-width: 100vw;
-    height: 100vh;
-    background-color: rgba(200, 200, 200,0.01);
+export const Container = styled.div`
     position: fixed;
+    top: 0;
+    left: 0;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
 `;
 
-export const ModalContainer = styled.div`
-width: 340px;
-    height: 200px;
-    border-radius: 12px;
+export const ModalOverlay = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .8);
+    cursor: pointer;
+`;
+
+export const ModalBox = styled.div`
+position: relative;
+    width: 80%;
+    margin: 0 10%;
+    padding: 50px;
+    box-sizing: border-box;
+    border-radius: 10px;
     background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    display: flex;
-    flex-direction: column;
-    padding: 25px;
-`;
-
-export const ModalCloseButtonContainer = styled.div`
-display: flex;
-justify-content: flex-end;
-`;
-
-export const ModalCloseButton = styled.button`
-background-color: transparent;
-border: none;
-font-size: 25px;
-cursor: pointer;
+    cursor: auto;
 `;
 
 export const ModalTitle = styled.div`
-display: inline-block;
-text-align: center;
-margin-top: 10px;
+    font-weight: bold;
+    font-size: 30px;
 `;
 
+export const ModalContent = styled.div`
+margin-top: 30px;
+color: #6B6B6B;
+font-size: 16px;
+`;
 
+export const ModalClose = styled.button`
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    transition: transform 250ms ease-in-out;
+    transform-origin: 50% 50%; 
+
+    :hover{
+        transform: rotate(180deg); 
+    }
+`;
 
