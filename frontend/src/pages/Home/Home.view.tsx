@@ -15,6 +15,9 @@ import {
   UserInfo,
   Message,
   ContactForm,
+  Nav,
+  NavOptions,
+  LoginOptions,
   Hide,
   Column,
   Sacolumn,
@@ -46,10 +49,45 @@ const HomeView = (props: HomeGeneratedProps) => {
         <Sacolumn sm={4}>One of three columns</Sacolumn>
         <Column sm={4}>One of three columns</Column>
       </Header> */}
-
-      <nav>
-      <SproutLogo width={200}/>
-      </nav>
+      <Row>
+        <Col xxl={12} xl={12} lg={12}>
+          <Nav>
+            <NavOptions>
+              <SproutLogo width={200} />
+              <ul>
+                <li>
+                  <a href="#">About</a>
+                </li>
+                <li>
+                  <a href="#">Features</a>
+                </li>
+                <li>
+                  <a href="#">Team</a>
+                </li>
+                <li>
+                  <a href="#">Contact</a>
+                </li>
+              </ul>
+            </NavOptions>
+            <LoginOptions>
+              <Button
+                text="Log in"
+                variant="outline"
+                style={{
+                  width: "160px",
+                }}
+              ></Button>
+              <Button
+                text="Sign up"
+                variant="primary"
+                style={{
+                  width: "160px",
+                }}
+              ></Button>
+            </LoginOptions>
+          </Nav>
+        </Col>
+      </Row>
 
       <Header justify="center" align="center" style={{ margin: 0 }}>
         <HeaderContents xxl={4} xl={4} lg={6} md={6}>
@@ -167,10 +205,14 @@ const HomeView = (props: HomeGeneratedProps) => {
 
       <Contact align="center">
         <Hide md sm xs>
-          <ContactImage xxl={6} xl={6} lg={6}
-          style={{
-            paddingLeft: "0"
-          }}>
+          <ContactImage
+            xxl={6}
+            xl={6}
+            lg={6}
+            style={{
+              paddingLeft: "0",
+            }}
+          >
             <img src={contact} alt="" />
           </ContactImage>
         </Hide>
@@ -183,13 +225,17 @@ const HomeView = (props: HomeGeneratedProps) => {
           </Hide>
 
           <Visible md sm xs>
-            <Typography variant="title2" weight="700" textColor="n0" align="center">
+            <Typography
+              variant="title2"
+              weight="700"
+              textColor="n0"
+              align="center"
+            >
               We’d love to hear from you!
             </Typography>
           </Visible>
 
           <Form action="">
-
             <UserInfo>
               <TextField
                 label="Name"
@@ -229,7 +275,6 @@ const HomeView = (props: HomeGeneratedProps) => {
               size="md"
               takeFullWidth={true}
             ></Button>
-
           </Form>
         </ContactForm>
       </Contact>
