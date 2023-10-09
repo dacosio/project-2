@@ -1,5 +1,5 @@
 import React from 'react';
-import { CropConditionProps } from './CropCondition.props';
+import { CropConditionProps, ConditionTitle } from './CropCondition.props';
 import { Container, ContentContainer, Logo, Temps } from './CropCondition.style';
 import Typography from './../Typography';
 import Clock from '../SVG/Clock';
@@ -11,16 +11,19 @@ import Apple from '../SVG/Apple';
 const CropCondition = (props: CropConditionProps): JSX.Element => {
   const { title, output } = props;
   const renderSVG = () => {
-    if (title === 'Temperature') {
-      return <Thermometer />;
-    } else if (title === 'Humidity') {
-      return <Hygrometer />;
-    } else if (title === 'Expected Harvest') {
-      return <Apple />
-    } else if (title.includes('Yield')) {
-      return <Clock />
+    switch (title) {
+      case ConditionTitle.Temperature:
+        return <Thermometer />;
+      case ConditionTitle.Humidity:
+        return <Hygrometer />;
+      case ConditionTitle.ExpectedHarvest:
+        return <Apple />;
+      case ConditionTitle.Yield:
+        return <Clock />;
+      default:
+        return null;
     }
-  }
+  };
   return (
     <Container>
       <Typography variant='body' weight='bold' textColor='shade8'>
