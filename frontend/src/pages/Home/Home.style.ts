@@ -1,23 +1,19 @@
 import styled from "@emotion/styled";
-import { Col } from "react-grid-system";
+import { Col, Row, Visible, Hidden } from "react-grid-system";
 import { theme } from "utils/Theme";
 
-export const Container = styled.div``;
+export const Container = styled.div`
+`;
 
-export const Header = styled.div`
-  background-color: #fcffeb;
-  padding: 1rem;
+export const Header = styled(Row)`
   height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  .header-contents {
-    max-width: 500px;
-  }
-  .input-landing-page {
-    display: flex;
-    gap: 1rem;
-  }
+
+`;
+
+export const HeaderContents = styled(Col)`
+`;
+
+export const Hide = styled(Hidden)`
 `;
 
 export const About = styled.div`
@@ -59,6 +55,7 @@ export const Contact = styled.div`
     height: 70vh;
   }
 `;
+
 export const Column = styled(Col)`
   background-color: red;
 `;
