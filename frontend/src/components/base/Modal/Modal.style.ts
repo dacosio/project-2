@@ -27,7 +27,8 @@ export const ModalOverlay = styled.div`
 
 export const ModalBox = styled.div`
     position: relative;
-    width: 40%;
+    max-width:400px;
+    width: 100%;
     margin: 0 10%;
     padding: 28px;
     box-sizing: border-box;
@@ -41,7 +42,7 @@ export const ModalContent = styled.div`
 margin-top: 30px;
 color: #6B6B6B;
 font-size: 16px;
-max-height: 240px; 
+max-height: 75vh; 
 overflow-y: auto;
 
 ::-webkit-scrollbar {
@@ -92,8 +93,8 @@ export const ModalClose = styled.div`
 
 
 
-    :hover{
-        transform: rotate(180deg); 
-    }
+    // :hover{
+    //     transform: rotate(180deg); 
+    // }
 `;
 
