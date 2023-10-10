@@ -17,7 +17,7 @@ const Search = ({ onSearch, searchResults }: SearchProps): JSX.Element => {
     if (debouncedSearchTerm) {
       onSearch(debouncedSearchTerm);
     }
-  }, [debouncedSearchTerm, onSearch]);
+  }, [debouncedSearchTerm]);
 
   return (
     <Container>

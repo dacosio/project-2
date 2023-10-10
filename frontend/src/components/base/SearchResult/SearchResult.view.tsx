@@ -1,9 +1,20 @@
 import React from 'react';
 import { SearchResultProps } from './SearchResult.props';
-import { Container } from './SearchResult.style';
+import { Container, SearchResultList, List } from './SearchResult.style';
+import Typography from './../../base/Typography'
 
 const SearchResult = ({ searchResults }: SearchResultProps): JSX.Element => {
-  return <Container> {searchResults?.map((item) => item.name)} </Container>;
+  return (
+    <Container>
+      <SearchResultList>
+        {searchResults?.map((item) =>
+          <List>{item.name}
+            <Typography variant='small'>{item.about}</Typography>
+          </List>
+        )}
+      </SearchResultList>
+    </Container>
+  )
 };
 
 export default React.memo(SearchResult);

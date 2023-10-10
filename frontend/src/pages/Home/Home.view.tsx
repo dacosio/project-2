@@ -7,6 +7,17 @@ import Search from './../../components/base/Search';
 import axios from "axios";
 
 const HomeView = (props: HomeGeneratedProps) => {
+  const {
+    data: searches,
+    name,
+    about,
+    ideal_temp,
+    humidity,
+    growing_period,
+    fertilizer_composition,
+    ...HomeGeneratedProps
+  } = props
+
   const [searchResults, setSearchResults] = useState<SearchData[]>([]);
   const [responseData, setResponseData] = useState({ prediction: [""] });
   const [error, setError] = useState(null);
@@ -39,25 +50,14 @@ const HomeView = (props: HomeGeneratedProps) => {
 
   console.log(responseData);
 
-  const {
-    data: searches,
-    name,
-    about,
-    ideal_temp,
-    humidity,
-    growing_period,
-    fertilizer_composition,
-    ...HomeGeneratedProps
-  } = props
+
 
   console.log(searches)
 
   const fetchSearchResult = async (searchTerm: any) => {
     const filteredSearches = searches?.filter((item) => {
-      console.log(item.name.toLowerCase().includes(searchTerm.toLowerCase()))
       return (
-        item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.about.toLowerCase().includes(searchTerm.toLowerCase())
+        item.name.toLowerCase().includes(searchTerm.toLowerCase())
       );
     });
 
