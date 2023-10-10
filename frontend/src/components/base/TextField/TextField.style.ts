@@ -7,7 +7,7 @@ const fontStyle = `
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
-  font-family: inherit;
+  font-family: "Inter";
 `;
 
 export const Container = styled.div`
@@ -23,16 +23,20 @@ export const LabelContainer = styled.div`
 `;
 
 export const FieldContainer = styled.div<{ error: boolean }>`
-  padding: 16px 8px;
+  padding: 12px 8px 12px 8px;
   display: flex;
   border-radius: 4px;
   border: 1px solid ${({ theme }) => theme.grey.shade3};
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   flex-grow: 1;
   background-color: ${({ theme }) => {
     return theme.grey.noshade;
   }};
+
+  :focus-within {
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
+  }
 `;
 
 export const Field = styled.input`
@@ -48,7 +52,7 @@ export const Field = styled.input`
 `;
 
 export const LeftComponentContainer = styled.div`
-  padding-right: 4px;
+  padding-right: 8px;
   border-right: 1px solid ${({ theme }) => theme.grey.shade5};
   display: flex;
   align-items: center;

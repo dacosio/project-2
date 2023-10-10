@@ -25,7 +25,7 @@ const TextAreaField = (props: TextAreaFieldProps): JSX.Element => {
 
   return (
     <Container className={className} style={style}>
-      <Typography variant="small" color="shade6">
+      <Typography variant="small" textColor="shade9">
         {label}
       </Typography>
       <TextArea

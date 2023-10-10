@@ -46,7 +46,7 @@ const TextField = (props: TextFieldProps): JSX.Element => {
   return (
     <Container className={className} style={style}>
       <LabelContainer>
-        <Typography variant="small" color={"shade6"}>
+        <Typography variant="small" textColor="shade9">
           {label}
         </Typography>
         {rightComponent && rightComponent}
@@ -66,7 +66,7 @@ const TextField = (props: TextFieldProps): JSX.Element => {
         />
         {secured && (
           <VisibilityContainer onClick={() => setShowSecuredText((v) => !v)}>
-            <VisibilityIcon width={24} height={24} fill={theme.grey.shade7} />
+            <VisibilityIcon width={24} height={24} fill={theme.grey.shade9} />
           </VisibilityContainer>
         )}
       </FieldContainer>
