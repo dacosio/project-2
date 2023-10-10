@@ -9,14 +9,14 @@ const meta: Meta<typeof MemberCard> = {
   title: "Base/MemberCard",
   component: () => {
     const members: { name: string; role: string }[] = [
-      { name: "Don Apollo Cosio", role: "Developer" },
+      { name: "Guia Chavez", role: "Project Manager, Developer" },
+      { name: "Don Apollo Cosio", role: "Lead Developer" },
+      { name: "Monica Esquivel", role: "Lead UX/UI Designer" },
       { name: "Yuhwan Ban", role: "Developer" },
-      { name: "Guia Chavez", role: "Developer" },
-      { name: "Philippe Gabriel Hernandez", role: "Developer" },
       { name: "Pujan Shakya", role: "Developer" },
-      { name: "Monica Esquivel", role: "Designer" },
-      { name: "Mugdha Gupta", role: "Designer" },
-      { name: "Kanin Phuvanatnaranubala", role: "Designer" },
+      { name: "Philippe Gabriel Hernandez", role: "Developer" },
+      { name: "Kanin Phuvanatnaranubala", role: "UX/UI Designer" },
+      { name: "Mugdha Gupta", role: "UX/UI Designer" },
     ];
 
     return (
