@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { SignupGeneratedProps } from "./Signup.props";
+import { SigninGeneratedProps } from "./Signin.props";
 import {
   Container,
   Modalbox,
@@ -7,12 +7,12 @@ import {
   SingupDetails,
   SingupForm,
   SubmitButton,
-} from "./Signup.style";
+} from "./Signin.style";
 import Typography from "components/base/Typography";
 import TextField from "components/base/TextField";
 import { Col, Row, Visible, Hidden } from "react-grid-system";
 
-const SignupView = (props: SignupGeneratedProps) => {
+const SigninView = (props: SigninGeneratedProps) => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState("");
 
@@ -26,7 +26,7 @@ const SignupView = (props: SignupGeneratedProps) => {
             textColor="primary"
             align="center"
           >
-            Sign up for free and start farming!
+            Welcome back, let’s farm!
           </Typography>
         </Header>
         <SingupDetails>
@@ -47,6 +47,7 @@ const SignupView = (props: SignupGeneratedProps) => {
               style={{width: "100%"}}
             />
             <SubmitButton type="button" value="submit" />
+            <a href="">Forgot Password?</a>
           </SingupForm>
           <Typography
             variant="small"
@@ -54,7 +55,7 @@ const SignupView = (props: SignupGeneratedProps) => {
             textColor="n90"
             align="center"
           >
-            Already a member? <a href="">Log In</a>
+            Don’t have an account? <a href="">Sign Up</a>
           </Typography>
         </SingupDetails>
       </Modalbox>
@@ -62,4 +63,4 @@ const SignupView = (props: SignupGeneratedProps) => {
   );
 };
 
-export default SignupView;
+export default SigninView;
