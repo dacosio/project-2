@@ -9,6 +9,7 @@ import PersistAuth from "components/layout/PersistAuth";
 import YourCrop from "./pages/Crops/YourCrop";
 import CropGuide from "./pages/Crops/CropGuide";
 import Weather from "./pages/Weather";
+import Signup from "pages/Signup";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="private" element={<Private />} />
         </Route>
       </Route>
+      <Route path="signup" element={<Signup />} />
     </Routes>
   );
 }
