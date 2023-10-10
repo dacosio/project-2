@@ -1,4 +1,5 @@
 /* PLOP_INJECT_IMPORT */
+export { default as Leaf } from './Leaf';
 export { default as CropGuideSvg } from "./CropGuideSvg";
 export { default as YourCropsSvg } from "./YourCropsSvg";
 export { default as DashboardSvg } from "./DashboardSvg";
