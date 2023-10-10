@@ -11,17 +11,9 @@ const meta: Meta<typeof Chips> = {
   component: () => {
     return (
       <Container background="white">
-        <Chips
-          label="Button"
-          variant="filled"
-          onDelete={() => console.log("Delete clicked!")}
-        />
+        <Chips label="Button" variant="filled" />
 
-        <Chips
-          label="Button"
-          variant="outlined"
-          onDelete={() => console.log("Delete clicked!")}
-        />
+        <Chips label="Button" variant="outlined" />
       </Container>
     );
   },
