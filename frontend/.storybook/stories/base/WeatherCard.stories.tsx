@@ -6,7 +6,10 @@ import Wrapper from "../../components/Wrapper";
 
 const meta: Meta<typeof WeatherCard> = {
   title: "Base/WeatherCard",
-  component: WeatherCard,
+  component: () =>
+    <Container>
+      <WeatherCard />
+    </Container>
 };
 
 export default meta;
