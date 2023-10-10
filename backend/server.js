@@ -16,6 +16,11 @@ connectDB();
 app.use(logger);
 app.use(cors(corsOptions));
 
+// const Temperature = require("./models/Temperature.js");
+// const Precipitation = require("./models/Precipitation.js");
+
+// const { temperature, precipitation } = require("./data/index.js");
+
 // gives the ability to process json data from the frontend
 app.use(express.json());
 
@@ -44,7 +49,11 @@ app.use(errorHandler);
 
 mongoose.connection.once("open", () => {
   console.log("Connected to Database");
-  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+    // Temperature.insertMany(temperature);
+    // Precipitation.insertMany(precipitation);
+  });
 });
 
 mongoose.connection.on("error", (err) => {
