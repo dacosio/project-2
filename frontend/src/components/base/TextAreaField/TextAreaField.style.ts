@@ -22,7 +22,7 @@ export const TextArea = styled.textarea`
   border-radius: 4px;
   border: 1px solid ${({ theme }) => theme.grey.shade3};
   box-sizing: border-box;
-  padding: 12px 20px 12px 8px;
+  padding: 8px;
   color: ${({ theme }) => theme.grey.shade9};
   background-color: ${({ theme }) => theme.grey.noshade};
   resize: none;
@@ -34,5 +34,5 @@ export const TextArea = styled.textarea`
 `;
 
 export const Error = styled(Typography)`
-  padding: 0 16px;
+  padding: 0 8px;
 `;

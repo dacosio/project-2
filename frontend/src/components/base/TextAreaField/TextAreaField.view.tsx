@@ -33,6 +33,7 @@ const TextAreaField = (props: TextAreaFieldProps): JSX.Element => {
         placeholder={placeholder}
         onChange={handleOnChange}
         onBlur={onBlur}
+        rows={8}
       >
         {children}
       </TextArea>

@@ -23,7 +23,7 @@ export const LabelContainer = styled.div`
 `;
 
 export const FieldContainer = styled.div<{ error: boolean }>`
-  padding: 12px 8px 12px 8px;
+  padding: 8px;
   display: flex;
   border-radius: 4px;
   border: 1px solid ${({ theme }) => theme.grey.shade3};
