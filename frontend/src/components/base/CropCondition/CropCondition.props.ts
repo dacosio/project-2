@@ -7,5 +7,5 @@ export enum ConditionTitle {
     Temperature = 'Temperature',
     Humidity = 'Humidity',
     ExpectedHarvest = 'Expected Harvest',
-    Yield = 'Yield',
+    Yield = 'Yield Prediction (fruits per crop)',
 }

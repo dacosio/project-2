@@ -1,16 +1,9 @@
 import React from 'react';
 import { CropGuideGeneratedProps } from './CropGuide.props';
-import { Container, Conditions } from './CropGuide.style';
-import GridLayout from "react-grid-layout";
+import { Container, Conditions, GridLayout } from './CropGuide.style';
 import CropCondition from './../../../components/base/CropCondition'
 
 const CropGuideView = (props: CropGuideGeneratedProps) => {
-  const layoutLg = [
-    { i: '1', x: 0, y: 1, w: 5, h: 2 }, // col-5
-    { i: '2', x: 5, y: 0, w: 3.5, h: 1 }, // col-3.5
-    { i: '3', x: 8.5, y: 0, w: 3.5, h: 1 }, // col-3.5
-  ];
-
   const conditions = [
     {
       title: "Temperature",
@@ -37,12 +30,7 @@ const CropGuideView = (props: CropGuideGeneratedProps) => {
   }
 
   return (
-    <GridLayout
-      layout={layoutLg}
-      cols={12}
-      rowHeight={400}
-      width={1200}
-    >
+    <GridLayout>
       <Container key="1" className="col-lg-5">
         <div style={{ height: '400px' }}></div>
         <Conditions>
