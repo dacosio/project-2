@@ -1,19 +1,14 @@
-export interface SearchData {
-    _id: string;
-    name: string;
-    about: string;
-    ideal_temp: string;
-    humidity: string;
-    growing_period: string;
-    fertilizer_composition: string;
+export interface HomeGeneratedProps {
+
 }
 
-export interface HomeGeneratedProps {
-    data: SearchData[] | undefined;
+export type YourSearchItemType = {
+    _id: number;
     name: string;
     about: string;
     ideal_temp: string;
     humidity: string;
     growing_period: string;
     fertilizer_composition: string;
-}
+};
+

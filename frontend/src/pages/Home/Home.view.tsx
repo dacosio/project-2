@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { HomeGeneratedProps, SearchData } from "./Home.props";
+import { HomeGeneratedProps, YourSearchItemType } from "./Home.props";
 import { Container } from "./Home.style";
 import Typography from "./../../components/base/Typography";
 import WeatherCard from "./../../components/base/WeatherCard";
@@ -7,18 +7,7 @@ import Search from './../../components/base/Search';
 import axios from "axios";
 
 const HomeView = (props: HomeGeneratedProps) => {
-  const {
-    data: searches,
-    name,
-    about,
-    ideal_temp,
-    humidity,
-    growing_period,
-    fertilizer_composition,
-    ...HomeGeneratedProps
-  } = props
-
-  const [searchResults, setSearchResults] = useState<SearchData[]>([]);
+  const [searchResults, setSearchResults] = useState<Array<YourSearchItemType>>([]);
   const [responseData, setResponseData] = useState({ prediction: [""] });
   const [error, setError] = useState(null);
   const apiUrl = "http://localhost:5000/predict-crop";
@@ -31,6 +20,27 @@ const HomeView = (props: HomeGeneratedProps) => {
     ph: 2227.0,
     rainfall: 1230.9,
   };
+
+  const searches = [
+    {
+      _id: 1,
+      name: 'Carrot',
+      about: 'Carrots are root vegetables known for their orange color and sweet taste.',
+      ideal_temp: '60-70°F (15-24°C)',
+      humidity: '70-80%',
+      growing_period: '70-80 days"',
+      fertilizer_composition: 'N-P-K: 10-20-20'
+    },
+    {
+      _id: 2,
+      name: 'Tomato',
+      about: 'Tomatoes are a popular vegetable used in various culinary dishes.',
+      ideal_temp: '70-85°F (21-29°C)',
+      humidity: '40-60%',
+      growing_period: '60-85 days',
+      fertilizer_composition: 'N-P-K: 5-10-5'
+    },
+  ]
 
   const onPredict = () =>
     axios
@@ -51,8 +61,6 @@ const HomeView = (props: HomeGeneratedProps) => {
   console.log(responseData);
 
 
-
-  console.log(searches)
 
   const fetchSearchResult = async (searchTerm: any) => {
     const filteredSearches = searches?.filter((item) => {

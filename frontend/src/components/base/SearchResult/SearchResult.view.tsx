@@ -7,8 +7,9 @@ const SearchResult = ({ searchResults }: SearchResultProps): JSX.Element => {
   return (
     <Container>
       <SearchResultList>
-        {searchResults?.map((item) =>
-          <List>{item.name}
+        {searchResults?.map((item, i) =>
+          <List key={i}>
+            {item.name}
             <Typography variant='small'>{item.about}</Typography>
           </List>
         )}
