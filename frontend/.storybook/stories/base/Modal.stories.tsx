@@ -20,8 +20,54 @@ const meta: Meta<typeof Modal> = {
           title={"This is my modal"}
           isOpen={isModalOpen}
           onClose={toggleModal}
+          onBack={toggleModal}
         >
-          This is an example modal content
+          <TypographyView variant="title4">This is a modal</TypographyView>
+          <TypographyView variant="body">
+            This is an example modal content This is an example modal content
+            This is an example modal content This is an example modal content
+            This is an example modal content This is an example modal content
+            This is an example modal content This is an example modal content
+            This is an example modal content This is an example modal content
+            This is an example modal content This is an example modal content
+            This is an example modal content This is an example modal content
+            This is an example modal content This is an example modal content
+            This is an example modal content This is an example modal content
+            This is an example modal content This is an example modal content
+            This is an example modal content This is an example modal content
+            This is an example modal content This is an example modal content
+            This is an example modal content This is an example modal content
+            This is an example modal content
+          </TypographyView>
+          {/* <TypographyView variant="body">
+            This is an example modal content This is an example modal
+            contentThis is an example modal contentThis is an example modal
+            content This is an example modal contentThis is an example modal
+            content This is an example modal contentThis is an example modal
+            contentThis is an example modal contentThis is an example modal
+            content This is an example modal contentThis is an example modal
+            contentThis is an example modal contentThis is an example modal
+            content This is an example modal contentThis is an example modal
+            contentThis is an example modal contentThis is an example modal
+            content This is an example modal contentThis is an example modal
+            contentThis is an example modal contentThis is an example modal
+            content This is an example modal contentThis is an example modal
+            contentThis is an example modal contentThis is an example modal
+            content This is an example modal contentThis is an example modal
+            contentThis is an example modal contentThis is an example modal
+            contentThis is an example modal contentThis is an example modal
+            contentThis is an example modal contentThis is an example modal
+            content This is an example modal contentThis is an example modal
+            contentThis is an example modal contentThis is an example modal
+            contentThis is an example modal contentThis is an example modal
+            content This is an example modal contentThis is an example modal
+            contentThis is an example modal contentThis is an example modal
+            contentThis is an example modal contentThis is an example modal
+            contentThis is an example modal contentThis is an example modal
+            content This is an example modal contentThis is an example modal
+            contentThis is an example modal contentThis is an example modal
+            contentThis is an example modal content
+          </TypographyView> */}
         </Modal>
       </Container>
     );

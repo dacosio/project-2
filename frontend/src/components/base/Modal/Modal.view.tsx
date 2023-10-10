@@ -8,9 +8,10 @@ import {
   ModalBox,
   ModalContent,
   ModalClose,
+  ModalBack,
 } from "./Modal.style";
 
-const Modal: FC<ModalProps> = ({ isOpen, title, onClose, children }) => {
+const Modal: FC<ModalProps> = ({ isOpen, onClose, onBack, children }) => {
   const outsideRef = React.useRef(null);
 
   const handleCloseOnOverlay = (
@@ -24,11 +25,15 @@ const Modal: FC<ModalProps> = ({ isOpen, title, onClose, children }) => {
   return isOpen ? (
     <Container>
       <ModalOverlay ref={outsideRef} onClick={handleCloseOnOverlay} />
+
       <ModalBox>
+        {onBack && ( // Render back button only if onBack function is provided
+          <ModalBack onClick={onBack}>Back</ModalBack>
+        )}
         <ModalClose onClick={onClose}>
           <Close width={20} height={20} />
         </ModalClose>
-        <TypographyView variant="title4">{title}</TypographyView>
+
         <ModalContent>{children}</ModalContent>
       </ModalBox>
     </Container>
