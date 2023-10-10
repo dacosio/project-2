@@ -34,14 +34,19 @@ const backgroundColor: Record<Variants, string> = {
 
 
 export const ChipContainer = styled.div<ChipsStyleProps>`
-max-height: 28px;
-  display: inline-flex;
+  max-height: 28px;
+  width: 107px;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  padding: 4px 16px;
+  text-align:center;
+  padding:  4px, 8px, 4px, 8px;
   border-radius: 6px;
   font-family: "Inter", sans-serif;
   background-color: ${({ variant }) => backgroundColor[variant]};
   border: ${({ variant }) => border[variant]};
+  gap:8px;
+  
 
   :focus {
     outline: none;
@@ -60,11 +65,13 @@ max-height: 28px;
 `;
 
 export const Label = styled.span`
-//   margin-right: 8px;
+     font-size: 14px;
+     font-weight: 500;
+     line-height: 17px;
+     font-family: "Inter", sans-serif;
 `;
 
 export const DeleteIcon = styled.span`
   cursor: pointer;
   margin-left: 4px;
-  /* More styles for delete icon */
 `;
