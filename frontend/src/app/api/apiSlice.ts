@@ -6,7 +6,7 @@ import type {
   FetchArgs,
   FetchBaseQueryError,
 } from "@reduxjs/toolkit/query";
-import { TAG_TYPE } from "const/tags";
+import { TAG_TYPE } from "./../../const/tags";
 
 const baseUrl =
   process.env.NODE_ENV === "production"
@@ -65,6 +65,6 @@ const baseQueryWithReauth: BaseQueryFn<
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: baseQueryWithReauth,
-  tagTypes: [TAG_TYPE.TODO],
+  tagTypes: [TAG_TYPE.TODO, TAG_TYPE.SEARCH],
   endpoints: (builder) => ({}),
 });
