@@ -18,8 +18,9 @@ app.use(cors(corsOptions));
 
 // const Temperature = require("./models/Temperature.js");
 // const Precipitation = require("./models/Precipitation.js");
+const Humidity = require("./models/Humidity.js");
 
-// const { temperature, precipitation } = require("./data/index.js");
+const { temperature, precipitation, humidity } = require("./data/index.js");
 
 // gives the ability to process json data from the frontend
 app.use(express.json());
@@ -53,6 +54,7 @@ mongoose.connection.once("open", () => {
     console.log(`Server running on port ${PORT}`);
     // Temperature.insertMany(temperature);
     // Precipitation.insertMany(precipitation);
+    // Humidity.insertMany(humidity);
   });
 });
 

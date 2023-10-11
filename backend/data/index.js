@@ -7636,4 +7636,3186 @@ const precipitation = [
   },
 ];
 
-module.exports = { temperature, precipitation };
+const humidity = [
+  {
+    month: "January",
+    humidity: 70,
+    city: "brampton",
+  },
+  {
+    month: "February",
+    humidity: 70,
+    city: "brampton",
+  },
+  {
+    month: "March",
+    humidity: 70,
+    city: "brampton",
+  },
+  {
+    month: "April",
+    humidity: 70,
+    city: "brampton",
+  },
+  {
+    month: "May",
+    humidity: 70,
+    city: "brampton",
+  },
+  {
+    month: "June",
+    humidity: 70,
+    city: "brampton",
+  },
+  {
+    month: "July",
+    humidity: 70,
+    city: "brampton",
+  },
+  {
+    month: "August",
+    humidity: 70,
+    city: "brampton",
+  },
+  {
+    month: "September",
+    humidity: 70,
+    city: "brampton",
+  },
+  {
+    month: "October",
+    humidity: 70,
+    city: "brampton",
+  },
+  {
+    month: "November",
+    humidity: 70,
+    city: "brampton",
+  },
+  {
+    month: "December",
+    humidity: 70,
+    city: "brampton",
+  },
+  {
+    month: "January",
+    humidity: 74,
+    city: "brandon",
+  },
+  {
+    month: "February",
+    humidity: 74,
+    city: "brandon",
+  },
+  {
+    month: "March",
+    humidity: 74,
+    city: "brandon",
+  },
+  {
+    month: "April",
+    humidity: 74,
+    city: "brandon",
+  },
+  {
+    month: "May",
+    humidity: 74,
+    city: "brandon",
+  },
+  {
+    month: "June",
+    humidity: 74,
+    city: "brandon",
+  },
+  {
+    month: "July",
+    humidity: 74,
+    city: "brandon",
+  },
+  {
+    month: "August",
+    humidity: 74,
+    city: "brandon",
+  },
+  {
+    month: "September",
+    humidity: 74,
+    city: "brandon",
+  },
+  {
+    month: "October",
+    humidity: 74,
+    city: "brandon",
+  },
+  {
+    month: "November",
+    humidity: 74,
+    city: "brandon",
+  },
+  {
+    month: "December",
+    humidity: 74,
+    city: "brandon",
+  },
+  {
+    month: "January",
+    humidity: 80,
+    city: "burnaby",
+  },
+  {
+    month: "February",
+    humidity: 80,
+    city: "burnaby",
+  },
+  {
+    month: "March",
+    humidity: 80,
+    city: "burnaby",
+  },
+  {
+    month: "April",
+    humidity: 80,
+    city: "burnaby",
+  },
+  {
+    month: "May",
+    humidity: 80,
+    city: "burnaby",
+  },
+  {
+    month: "June",
+    humidity: 80,
+    city: "burnaby",
+  },
+  {
+    month: "July",
+    humidity: 80,
+    city: "burnaby",
+  },
+  {
+    month: "August",
+    humidity: 80,
+    city: "burnaby",
+  },
+  {
+    month: "September",
+    humidity: 80,
+    city: "burnaby",
+  },
+  {
+    month: "October",
+    humidity: 80,
+    city: "burnaby",
+  },
+  {
+    month: "November",
+    humidity: 80,
+    city: "burnaby",
+  },
+  {
+    month: "December",
+    humidity: 80,
+    city: "burnaby",
+  },
+  {
+    month: "January",
+    humidity: 62,
+    city: "calgary",
+  },
+  {
+    month: "February",
+    humidity: 62,
+    city: "calgary",
+  },
+  {
+    month: "March",
+    humidity: 62,
+    city: "calgary",
+  },
+  {
+    month: "April",
+    humidity: 62,
+    city: "calgary",
+  },
+  {
+    month: "May",
+    humidity: 62,
+    city: "calgary",
+  },
+  {
+    month: "June",
+    humidity: 62,
+    city: "calgary",
+  },
+  {
+    month: "July",
+    humidity: 62,
+    city: "calgary",
+  },
+  {
+    month: "August",
+    humidity: 62,
+    city: "calgary",
+  },
+  {
+    month: "September",
+    humidity: 62,
+    city: "calgary",
+  },
+  {
+    month: "October",
+    humidity: 62,
+    city: "calgary",
+  },
+  {
+    month: "November",
+    humidity: 62,
+    city: "calgary",
+  },
+  {
+    month: "December",
+    humidity: 62,
+    city: "calgary",
+  },
+  {
+    month: "January",
+    humidity: 78,
+    city: "charlottetown",
+  },
+  {
+    month: "February",
+    humidity: 78,
+    city: "charlottetown",
+  },
+  {
+    month: "March",
+    humidity: 78,
+    city: "charlottetown",
+  },
+  {
+    month: "April",
+    humidity: 78,
+    city: "charlottetown",
+  },
+  {
+    month: "May",
+    humidity: 78,
+    city: "charlottetown",
+  },
+  {
+    month: "June",
+    humidity: 78,
+    city: "charlottetown",
+  },
+  {
+    month: "July",
+    humidity: 78,
+    city: "charlottetown",
+  },
+  {
+    month: "August",
+    humidity: 78,
+    city: "charlottetown",
+  },
+  {
+    month: "September",
+    humidity: 78,
+    city: "charlottetown",
+  },
+  {
+    month: "October",
+    humidity: 78,
+    city: "charlottetown",
+  },
+  {
+    month: "November",
+    humidity: 78,
+    city: "charlottetown",
+  },
+  {
+    month: "December",
+    humidity: 78,
+    city: "charlottetown",
+  },
+  {
+    month: "January",
+    humidity: 81,
+    city: "corner-brook",
+  },
+  {
+    month: "February",
+    humidity: 81,
+    city: "corner-brook",
+  },
+  {
+    month: "March",
+    humidity: 81,
+    city: "corner-brook",
+  },
+  {
+    month: "April",
+    humidity: 81,
+    city: "corner-brook",
+  },
+  {
+    month: "May",
+    humidity: 81,
+    city: "corner-brook",
+  },
+  {
+    month: "June",
+    humidity: 81,
+    city: "corner-brook",
+  },
+  {
+    month: "July",
+    humidity: 81,
+    city: "corner-brook",
+  },
+  {
+    month: "August",
+    humidity: 81,
+    city: "corner-brook",
+  },
+  {
+    month: "September",
+    humidity: 81,
+    city: "corner-brook",
+  },
+  {
+    month: "October",
+    humidity: 81,
+    city: "corner-brook",
+  },
+  {
+    month: "November",
+    humidity: 81,
+    city: "corner-brook",
+  },
+  {
+    month: "December",
+    humidity: 81,
+    city: "corner-brook",
+  },
+  {
+    month: "January",
+    humidity: 70,
+    city: "edmonton",
+  },
+  {
+    month: "February",
+    humidity: 70,
+    city: "edmonton",
+  },
+  {
+    month: "March",
+    humidity: 70,
+    city: "edmonton",
+  },
+  {
+    month: "April",
+    humidity: 70,
+    city: "edmonton",
+  },
+  {
+    month: "May",
+    humidity: 70,
+    city: "edmonton",
+  },
+  {
+    month: "June",
+    humidity: 70,
+    city: "edmonton",
+  },
+  {
+    month: "July",
+    humidity: 70,
+    city: "edmonton",
+  },
+  {
+    month: "August",
+    humidity: 70,
+    city: "edmonton",
+  },
+  {
+    month: "September",
+    humidity: 70,
+    city: "edmonton",
+  },
+  {
+    month: "October",
+    humidity: 70,
+    city: "edmonton",
+  },
+  {
+    month: "November",
+    humidity: 70,
+    city: "edmonton",
+  },
+  {
+    month: "December",
+    humidity: 70,
+    city: "edmonton",
+  },
+  {
+    month: "January",
+    humidity: 73,
+    city: "fredericton",
+  },
+  {
+    month: "February",
+    humidity: 73,
+    city: "fredericton",
+  },
+  {
+    month: "March",
+    humidity: 73,
+    city: "fredericton",
+  },
+  {
+    month: "April",
+    humidity: 73,
+    city: "fredericton",
+  },
+  {
+    month: "May",
+    humidity: 73,
+    city: "fredericton",
+  },
+  {
+    month: "June",
+    humidity: 73,
+    city: "fredericton",
+  },
+  {
+    month: "July",
+    humidity: 73,
+    city: "fredericton",
+  },
+  {
+    month: "August",
+    humidity: 73,
+    city: "fredericton",
+  },
+  {
+    month: "September",
+    humidity: 73,
+    city: "fredericton",
+  },
+  {
+    month: "October",
+    humidity: 73,
+    city: "fredericton",
+  },
+  {
+    month: "November",
+    humidity: 73,
+    city: "fredericton",
+  },
+  {
+    month: "December",
+    humidity: 73,
+    city: "fredericton",
+  },
+  {
+    month: "January",
+    humidity: 71,
+    city: "gatineau",
+  },
+  {
+    month: "February",
+    humidity: 71,
+    city: "gatineau",
+  },
+  {
+    month: "March",
+    humidity: 71,
+    city: "gatineau",
+  },
+  {
+    month: "April",
+    humidity: 71,
+    city: "gatineau",
+  },
+  {
+    month: "May",
+    humidity: 71,
+    city: "gatineau",
+  },
+  {
+    month: "June",
+    humidity: 71,
+    city: "gatineau",
+  },
+  {
+    month: "July",
+    humidity: 71,
+    city: "gatineau",
+  },
+  {
+    month: "August",
+    humidity: 71,
+    city: "gatineau",
+  },
+  {
+    month: "September",
+    humidity: 71,
+    city: "gatineau",
+  },
+  {
+    month: "October",
+    humidity: 71,
+    city: "gatineau",
+  },
+  {
+    month: "November",
+    humidity: 71,
+    city: "gatineau",
+  },
+  {
+    month: "December",
+    humidity: 71,
+    city: "gatineau",
+  },
+  {
+    month: "January",
+    humidity: 69,
+    city: "grande-prairie",
+  },
+  {
+    month: "February",
+    humidity: 69,
+    city: "grande-prairie",
+  },
+  {
+    month: "March",
+    humidity: 69,
+    city: "grande-prairie",
+  },
+  {
+    month: "April",
+    humidity: 69,
+    city: "grande-prairie",
+  },
+  {
+    month: "May",
+    humidity: 69,
+    city: "grande-prairie",
+  },
+  {
+    month: "June",
+    humidity: 69,
+    city: "grande-prairie",
+  },
+  {
+    month: "July",
+    humidity: 69,
+    city: "grande-prairie",
+  },
+  {
+    month: "August",
+    humidity: 69,
+    city: "grande-prairie",
+  },
+  {
+    month: "September",
+    humidity: 69,
+    city: "grande-prairie",
+  },
+  {
+    month: "October",
+    humidity: 69,
+    city: "grande-prairie",
+  },
+  {
+    month: "November",
+    humidity: 69,
+    city: "grande-prairie",
+  },
+  {
+    month: "December",
+    humidity: 69,
+    city: "grande-prairie",
+  },
+  {
+    month: "January",
+    humidity: 79,
+    city: "halifax",
+  },
+  {
+    month: "February",
+    humidity: 79,
+    city: "halifax",
+  },
+  {
+    month: "March",
+    humidity: 79,
+    city: "halifax",
+  },
+  {
+    month: "April",
+    humidity: 79,
+    city: "halifax",
+  },
+  {
+    month: "May",
+    humidity: 79,
+    city: "halifax",
+  },
+  {
+    month: "June",
+    humidity: 79,
+    city: "halifax",
+  },
+  {
+    month: "July",
+    humidity: 79,
+    city: "halifax",
+  },
+  {
+    month: "August",
+    humidity: 79,
+    city: "halifax",
+  },
+  {
+    month: "September",
+    humidity: 79,
+    city: "halifax",
+  },
+  {
+    month: "October",
+    humidity: 79,
+    city: "halifax",
+  },
+  {
+    month: "November",
+    humidity: 79,
+    city: "halifax",
+  },
+  {
+    month: "December",
+    humidity: 79,
+    city: "halifax",
+  },
+  {
+    month: "January",
+    humidity: 76,
+    city: "hamilton",
+  },
+  {
+    month: "February",
+    humidity: 76,
+    city: "hamilton",
+  },
+  {
+    month: "March",
+    humidity: 76,
+    city: "hamilton",
+  },
+  {
+    month: "April",
+    humidity: 76,
+    city: "hamilton",
+  },
+  {
+    month: "May",
+    humidity: 76,
+    city: "hamilton",
+  },
+  {
+    month: "June",
+    humidity: 76,
+    city: "hamilton",
+  },
+  {
+    month: "July",
+    humidity: 76,
+    city: "hamilton",
+  },
+  {
+    month: "August",
+    humidity: 76,
+    city: "hamilton",
+  },
+  {
+    month: "September",
+    humidity: 76,
+    city: "hamilton",
+  },
+  {
+    month: "October",
+    humidity: 76,
+    city: "hamilton",
+  },
+  {
+    month: "November",
+    humidity: 76,
+    city: "hamilton",
+  },
+  {
+    month: "December",
+    humidity: 76,
+    city: "hamilton",
+  },
+  {
+    month: "January",
+    humidity: 75,
+    city: "iqaluit",
+  },
+  {
+    month: "February",
+    humidity: 75,
+    city: "iqaluit",
+  },
+  {
+    month: "March",
+    humidity: 75,
+    city: "iqaluit",
+  },
+  {
+    month: "April",
+    humidity: 75,
+    city: "iqaluit",
+  },
+  {
+    month: "May",
+    humidity: 75,
+    city: "iqaluit",
+  },
+  {
+    month: "June",
+    humidity: 75,
+    city: "iqaluit",
+  },
+  {
+    month: "July",
+    humidity: 75,
+    city: "iqaluit",
+  },
+  {
+    month: "August",
+    humidity: 75,
+    city: "iqaluit",
+  },
+  {
+    month: "September",
+    humidity: 75,
+    city: "iqaluit",
+  },
+  {
+    month: "October",
+    humidity: 75,
+    city: "iqaluit",
+  },
+  {
+    month: "November",
+    humidity: 75,
+    city: "iqaluit",
+  },
+  {
+    month: "December",
+    humidity: 75,
+    city: "iqaluit",
+  },
+  {
+    month: "January",
+    humidity: 62,
+    city: "kamloops",
+  },
+  {
+    month: "February",
+    humidity: 62,
+    city: "kamloops",
+  },
+  {
+    month: "March",
+    humidity: 62,
+    city: "kamloops",
+  },
+  {
+    month: "April",
+    humidity: 62,
+    city: "kamloops",
+  },
+  {
+    month: "May",
+    humidity: 62,
+    city: "kamloops",
+  },
+  {
+    month: "June",
+    humidity: 62,
+    city: "kamloops",
+  },
+  {
+    month: "July",
+    humidity: 62,
+    city: "kamloops",
+  },
+  {
+    month: "August",
+    humidity: 62,
+    city: "kamloops",
+  },
+  {
+    month: "September",
+    humidity: 62,
+    city: "kamloops",
+  },
+  {
+    month: "October",
+    humidity: 62,
+    city: "kamloops",
+  },
+  {
+    month: "November",
+    humidity: 62,
+    city: "kamloops",
+  },
+  {
+    month: "December",
+    humidity: 62,
+    city: "kamloops",
+  },
+  {
+    month: "January",
+    humidity: 67,
+    city: "kelowna",
+  },
+  {
+    month: "February",
+    humidity: 67,
+    city: "kelowna",
+  },
+  {
+    month: "March",
+    humidity: 67,
+    city: "kelowna",
+  },
+  {
+    month: "April",
+    humidity: 67,
+    city: "kelowna",
+  },
+  {
+    month: "May",
+    humidity: 67,
+    city: "kelowna",
+  },
+  {
+    month: "June",
+    humidity: 67,
+    city: "kelowna",
+  },
+  {
+    month: "July",
+    humidity: 67,
+    city: "kelowna",
+  },
+  {
+    month: "August",
+    humidity: 67,
+    city: "kelowna",
+  },
+  {
+    month: "September",
+    humidity: 67,
+    city: "kelowna",
+  },
+  {
+    month: "October",
+    humidity: 67,
+    city: "kelowna",
+  },
+  {
+    month: "November",
+    humidity: 67,
+    city: "kelowna",
+  },
+  {
+    month: "December",
+    humidity: 67,
+    city: "kelowna",
+  },
+  {
+    month: "January",
+    humidity: 73,
+    city: "kingston",
+  },
+  {
+    month: "February",
+    humidity: 73,
+    city: "kingston",
+  },
+  {
+    month: "March",
+    humidity: 73,
+    city: "kingston",
+  },
+  {
+    month: "April",
+    humidity: 73,
+    city: "kingston",
+  },
+  {
+    month: "May",
+    humidity: 73,
+    city: "kingston",
+  },
+  {
+    month: "June",
+    humidity: 73,
+    city: "kingston",
+  },
+  {
+    month: "July",
+    humidity: 73,
+    city: "kingston",
+  },
+  {
+    month: "August",
+    humidity: 73,
+    city: "kingston",
+  },
+  {
+    month: "September",
+    humidity: 73,
+    city: "kingston",
+  },
+  {
+    month: "October",
+    humidity: 73,
+    city: "kingston",
+  },
+  {
+    month: "November",
+    humidity: 73,
+    city: "kingston",
+  },
+  {
+    month: "December",
+    humidity: 73,
+    city: "kingston",
+  },
+  {
+    month: "January",
+    humidity: 63,
+    city: "lethbridge",
+  },
+  {
+    month: "February",
+    humidity: 63,
+    city: "lethbridge",
+  },
+  {
+    month: "March",
+    humidity: 63,
+    city: "lethbridge",
+  },
+  {
+    month: "April",
+    humidity: 63,
+    city: "lethbridge",
+  },
+  {
+    month: "May",
+    humidity: 63,
+    city: "lethbridge",
+  },
+  {
+    month: "June",
+    humidity: 63,
+    city: "lethbridge",
+  },
+  {
+    month: "July",
+    humidity: 63,
+    city: "lethbridge",
+  },
+  {
+    month: "August",
+    humidity: 63,
+    city: "lethbridge",
+  },
+  {
+    month: "September",
+    humidity: 63,
+    city: "lethbridge",
+  },
+  {
+    month: "October",
+    humidity: 63,
+    city: "lethbridge",
+  },
+  {
+    month: "November",
+    humidity: 63,
+    city: "lethbridge",
+  },
+  {
+    month: "December",
+    humidity: 63,
+    city: "lethbridge",
+  },
+  {
+    month: "January",
+    humidity: 77,
+    city: "kitchener",
+  },
+  {
+    month: "February",
+    humidity: 77,
+    city: "kitchener",
+  },
+  {
+    month: "March",
+    humidity: 77,
+    city: "kitchener",
+  },
+  {
+    month: "April",
+    humidity: 77,
+    city: "kitchener",
+  },
+  {
+    month: "May",
+    humidity: 77,
+    city: "kitchener",
+  },
+  {
+    month: "June",
+    humidity: 77,
+    city: "kitchener",
+  },
+  {
+    month: "July",
+    humidity: 77,
+    city: "kitchener",
+  },
+  {
+    month: "August",
+    humidity: 77,
+    city: "kitchener",
+  },
+  {
+    month: "September",
+    humidity: 77,
+    city: "kitchener",
+  },
+  {
+    month: "October",
+    humidity: 77,
+    city: "kitchener",
+  },
+  {
+    month: "November",
+    humidity: 77,
+    city: "kitchener",
+  },
+  {
+    month: "December",
+    humidity: 77,
+    city: "kitchener",
+  },
+  {
+    month: "January",
+    humidity: 70,
+    city: "laval",
+  },
+  {
+    month: "February",
+    humidity: 70,
+    city: "laval",
+  },
+  {
+    month: "March",
+    humidity: 70,
+    city: "laval",
+  },
+  {
+    month: "April",
+    humidity: 70,
+    city: "laval",
+  },
+  {
+    month: "May",
+    humidity: 70,
+    city: "laval",
+  },
+  {
+    month: "June",
+    humidity: 70,
+    city: "laval",
+  },
+  {
+    month: "July",
+    humidity: 70,
+    city: "laval",
+  },
+  {
+    month: "August",
+    humidity: 70,
+    city: "laval",
+  },
+  {
+    month: "September",
+    humidity: 70,
+    city: "laval",
+  },
+  {
+    month: "October",
+    humidity: 70,
+    city: "laval",
+  },
+  {
+    month: "November",
+    humidity: 70,
+    city: "laval",
+  },
+  {
+    month: "December",
+    humidity: 70,
+    city: "laval",
+  },
+  {
+    month: "January",
+    humidity: 76,
+    city: "london",
+  },
+  {
+    month: "February",
+    humidity: 76,
+    city: "london",
+  },
+  {
+    month: "March",
+    humidity: 76,
+    city: "london",
+  },
+  {
+    month: "April",
+    humidity: 76,
+    city: "london",
+  },
+  {
+    month: "May",
+    humidity: 76,
+    city: "london",
+  },
+  {
+    month: "June",
+    humidity: 76,
+    city: "london",
+  },
+  {
+    month: "July",
+    humidity: 76,
+    city: "london",
+  },
+  {
+    month: "August",
+    humidity: 76,
+    city: "london",
+  },
+  {
+    month: "September",
+    humidity: 76,
+    city: "london",
+  },
+  {
+    month: "October",
+    humidity: 76,
+    city: "london",
+  },
+  {
+    month: "November",
+    humidity: 76,
+    city: "london",
+  },
+  {
+    month: "December",
+    humidity: 76,
+    city: "london",
+  },
+  {
+    month: "January",
+    humidity: 67,
+    city: "longueuil",
+  },
+  {
+    month: "February",
+    humidity: 67,
+    city: "longueuil",
+  },
+  {
+    month: "March",
+    humidity: 67,
+    city: "longueuil",
+  },
+  {
+    month: "April",
+    humidity: 67,
+    city: "longueuil",
+  },
+  {
+    month: "May",
+    humidity: 67,
+    city: "longueuil",
+  },
+  {
+    month: "June",
+    humidity: 67,
+    city: "longueuil",
+  },
+  {
+    month: "July",
+    humidity: 67,
+    city: "longueuil",
+  },
+  {
+    month: "August",
+    humidity: 67,
+    city: "longueuil",
+  },
+  {
+    month: "September",
+    humidity: 67,
+    city: "longueuil",
+  },
+  {
+    month: "October",
+    humidity: 67,
+    city: "longueuil",
+  },
+  {
+    month: "November",
+    humidity: 67,
+    city: "longueuil",
+  },
+  {
+    month: "December",
+    humidity: 67,
+    city: "longueuil",
+  },
+  {
+    month: "January",
+    humidity: 72,
+    city: "markham",
+  },
+  {
+    month: "February",
+    humidity: 72,
+    city: "markham",
+  },
+  {
+    month: "March",
+    humidity: 72,
+    city: "markham",
+  },
+  {
+    month: "April",
+    humidity: 72,
+    city: "markham",
+  },
+  {
+    month: "May",
+    humidity: 72,
+    city: "markham",
+  },
+  {
+    month: "June",
+    humidity: 72,
+    city: "markham",
+  },
+  {
+    month: "July",
+    humidity: 72,
+    city: "markham",
+  },
+  {
+    month: "August",
+    humidity: 72,
+    city: "markham",
+  },
+  {
+    month: "September",
+    humidity: 72,
+    city: "markham",
+  },
+  {
+    month: "October",
+    humidity: 72,
+    city: "markham",
+  },
+  {
+    month: "November",
+    humidity: 72,
+    city: "markham",
+  },
+  {
+    month: "December",
+    humidity: 72,
+    city: "markham",
+  },
+  {
+    month: "January",
+    humidity: 63,
+    city: "medicine-hat",
+  },
+  {
+    month: "February",
+    humidity: 63,
+    city: "medicine-hat",
+  },
+  {
+    month: "March",
+    humidity: 63,
+    city: "medicine-hat",
+  },
+  {
+    month: "April",
+    humidity: 63,
+    city: "medicine-hat",
+  },
+  {
+    month: "May",
+    humidity: 63,
+    city: "medicine-hat",
+  },
+  {
+    month: "June",
+    humidity: 63,
+    city: "medicine-hat",
+  },
+  {
+    month: "July",
+    humidity: 63,
+    city: "medicine-hat",
+  },
+  {
+    month: "August",
+    humidity: 63,
+    city: "medicine-hat",
+  },
+  {
+    month: "September",
+    humidity: 63,
+    city: "medicine-hat",
+  },
+  {
+    month: "October",
+    humidity: 63,
+    city: "medicine-hat",
+  },
+  {
+    month: "November",
+    humidity: 63,
+    city: "medicine-hat",
+  },
+  {
+    month: "December",
+    humidity: 63,
+    city: "medicine-hat",
+  },
+  {
+    month: "January",
+    humidity: 71,
+    city: "mississauga",
+  },
+  {
+    month: "February",
+    humidity: 71,
+    city: "mississauga",
+  },
+  {
+    month: "March",
+    humidity: 71,
+    city: "mississauga",
+  },
+  {
+    month: "April",
+    humidity: 71,
+    city: "mississauga",
+  },
+  {
+    month: "May",
+    humidity: 71,
+    city: "mississauga",
+  },
+  {
+    month: "June",
+    humidity: 71,
+    city: "mississauga",
+  },
+  {
+    month: "July",
+    humidity: 71,
+    city: "mississauga",
+  },
+  {
+    month: "August",
+    humidity: 71,
+    city: "mississauga",
+  },
+  {
+    month: "September",
+    humidity: 71,
+    city: "mississauga",
+  },
+  {
+    month: "October",
+    humidity: 71,
+    city: "mississauga",
+  },
+  {
+    month: "November",
+    humidity: 71,
+    city: "mississauga",
+  },
+  {
+    month: "December",
+    humidity: 71,
+    city: "mississauga",
+  },
+  {
+    month: "January",
+    humidity: 77,
+    city: "moncton",
+  },
+  {
+    month: "February",
+    humidity: 77,
+    city: "moncton",
+  },
+  {
+    month: "March",
+    humidity: 77,
+    city: "moncton",
+  },
+  {
+    month: "April",
+    humidity: 77,
+    city: "moncton",
+  },
+  {
+    month: "May",
+    humidity: 77,
+    city: "moncton",
+  },
+  {
+    month: "June",
+    humidity: 77,
+    city: "moncton",
+  },
+  {
+    month: "July",
+    humidity: 77,
+    city: "moncton",
+  },
+  {
+    month: "August",
+    humidity: 77,
+    city: "moncton",
+  },
+  {
+    month: "September",
+    humidity: 77,
+    city: "moncton",
+  },
+  {
+    month: "October",
+    humidity: 77,
+    city: "moncton",
+  },
+  {
+    month: "November",
+    humidity: 77,
+    city: "moncton",
+  },
+  {
+    month: "December",
+    humidity: 77,
+    city: "moncton",
+  },
+  {
+    month: "January",
+    humidity: 70,
+    city: "montreal",
+  },
+  {
+    month: "February",
+    humidity: 70,
+    city: "montreal",
+  },
+  {
+    month: "March",
+    humidity: 70,
+    city: "montreal",
+  },
+  {
+    month: "April",
+    humidity: 70,
+    city: "montreal",
+  },
+  {
+    month: "May",
+    humidity: 70,
+    city: "montreal",
+  },
+  {
+    month: "June",
+    humidity: 70,
+    city: "montreal",
+  },
+  {
+    month: "July",
+    humidity: 70,
+    city: "montreal",
+  },
+  {
+    month: "August",
+    humidity: 70,
+    city: "montreal",
+  },
+  {
+    month: "September",
+    humidity: 70,
+    city: "montreal",
+  },
+  {
+    month: "October",
+    humidity: 70,
+    city: "montreal",
+  },
+  {
+    month: "November",
+    humidity: 70,
+    city: "montreal",
+  },
+  {
+    month: "December",
+    humidity: 70,
+    city: "montreal",
+  },
+  {
+    month: "January",
+    humidity: 68,
+    city: "moose-jaw",
+  },
+  {
+    month: "February",
+    humidity: 68,
+    city: "moose-jaw",
+  },
+  {
+    month: "March",
+    humidity: 68,
+    city: "moose-jaw",
+  },
+  {
+    month: "April",
+    humidity: 68,
+    city: "moose-jaw",
+  },
+  {
+    month: "May",
+    humidity: 68,
+    city: "moose-jaw",
+  },
+  {
+    month: "June",
+    humidity: 68,
+    city: "moose-jaw",
+  },
+  {
+    month: "July",
+    humidity: 68,
+    city: "moose-jaw",
+  },
+  {
+    month: "August",
+    humidity: 68,
+    city: "moose-jaw",
+  },
+  {
+    month: "September",
+    humidity: 68,
+    city: "moose-jaw",
+  },
+  {
+    month: "October",
+    humidity: 68,
+    city: "moose-jaw",
+  },
+  {
+    month: "November",
+    humidity: 68,
+    city: "moose-jaw",
+  },
+  {
+    month: "December",
+    humidity: 68,
+    city: "moose-jaw",
+  },
+  {
+    month: "January",
+    humidity: 80,
+    city: "mount-pearl",
+  },
+  {
+    month: "February",
+    humidity: 80,
+    city: "mount-pearl",
+  },
+  {
+    month: "March",
+    humidity: 80,
+    city: "mount-pearl",
+  },
+  {
+    month: "April",
+    humidity: 80,
+    city: "mount-pearl",
+  },
+  {
+    month: "May",
+    humidity: 80,
+    city: "mount-pearl",
+  },
+  {
+    month: "June",
+    humidity: 80,
+    city: "mount-pearl",
+  },
+  {
+    month: "July",
+    humidity: 80,
+    city: "mount-pearl",
+  },
+  {
+    month: "August",
+    humidity: 80,
+    city: "mount-pearl",
+  },
+  {
+    month: "September",
+    humidity: 80,
+    city: "mount-pearl",
+  },
+  {
+    month: "October",
+    humidity: 80,
+    city: "mount-pearl",
+  },
+  {
+    month: "November",
+    humidity: 80,
+    city: "mount-pearl",
+  },
+  {
+    month: "December",
+    humidity: 80,
+    city: "mount-pearl",
+  },
+  {
+    month: "January",
+    humidity: 80,
+    city: "nanaimo",
+  },
+  {
+    month: "February",
+    humidity: 80,
+    city: "nanaimo",
+  },
+  {
+    month: "March",
+    humidity: 80,
+    city: "nanaimo",
+  },
+  {
+    month: "April",
+    humidity: 80,
+    city: "nanaimo",
+  },
+  {
+    month: "May",
+    humidity: 80,
+    city: "nanaimo",
+  },
+  {
+    month: "June",
+    humidity: 80,
+    city: "nanaimo",
+  },
+  {
+    month: "July",
+    humidity: 80,
+    city: "nanaimo",
+  },
+  {
+    month: "August",
+    humidity: 80,
+    city: "nanaimo",
+  },
+  {
+    month: "September",
+    humidity: 80,
+    city: "nanaimo",
+  },
+  {
+    month: "October",
+    humidity: 80,
+    city: "nanaimo",
+  },
+  {
+    month: "November",
+    humidity: 80,
+    city: "nanaimo",
+  },
+  {
+    month: "December",
+    humidity: 80,
+    city: "nanaimo",
+  },
+  {
+    month: "January",
+    humidity: 71,
+    city: "ottawa",
+  },
+  {
+    month: "February",
+    humidity: 71,
+    city: "ottawa",
+  },
+  {
+    month: "March",
+    humidity: 71,
+    city: "ottawa",
+  },
+  {
+    month: "April",
+    humidity: 71,
+    city: "ottawa",
+  },
+  {
+    month: "May",
+    humidity: 71,
+    city: "ottawa",
+  },
+  {
+    month: "June",
+    humidity: 71,
+    city: "ottawa",
+  },
+  {
+    month: "July",
+    humidity: 71,
+    city: "ottawa",
+  },
+  {
+    month: "August",
+    humidity: 71,
+    city: "ottawa",
+  },
+  {
+    month: "September",
+    humidity: 71,
+    city: "ottawa",
+  },
+  {
+    month: "October",
+    humidity: 71,
+    city: "ottawa",
+  },
+  {
+    month: "November",
+    humidity: 71,
+    city: "ottawa",
+  },
+  {
+    month: "December",
+    humidity: 71,
+    city: "ottawa",
+  },
+  {
+    month: "January",
+    humidity: 72,
+    city: "portage-la-prairie",
+  },
+  {
+    month: "February",
+    humidity: 72,
+    city: "portage-la-prairie",
+  },
+  {
+    month: "March",
+    humidity: 72,
+    city: "portage-la-prairie",
+  },
+  {
+    month: "April",
+    humidity: 72,
+    city: "portage-la-prairie",
+  },
+  {
+    month: "May",
+    humidity: 72,
+    city: "portage-la-prairie",
+  },
+  {
+    month: "June",
+    humidity: 72,
+    city: "portage-la-prairie",
+  },
+  {
+    month: "July",
+    humidity: 72,
+    city: "portage-la-prairie",
+  },
+  {
+    month: "August",
+    humidity: 72,
+    city: "portage-la-prairie",
+  },
+  {
+    month: "September",
+    humidity: 72,
+    city: "portage-la-prairie",
+  },
+  {
+    month: "October",
+    humidity: 72,
+    city: "portage-la-prairie",
+  },
+  {
+    month: "November",
+    humidity: 72,
+    city: "portage-la-prairie",
+  },
+  {
+    month: "December",
+    humidity: 72,
+    city: "portage-la-prairie",
+  },
+  {
+    month: "January",
+    humidity: 70,
+    city: "prince-albert",
+  },
+  {
+    month: "February",
+    humidity: 70,
+    city: "prince-albert",
+  },
+  {
+    month: "March",
+    humidity: 70,
+    city: "prince-albert",
+  },
+  {
+    month: "April",
+    humidity: 70,
+    city: "prince-albert",
+  },
+  {
+    month: "May",
+    humidity: 70,
+    city: "prince-albert",
+  },
+  {
+    month: "June",
+    humidity: 70,
+    city: "prince-albert",
+  },
+  {
+    month: "July",
+    humidity: 70,
+    city: "prince-albert",
+  },
+  {
+    month: "August",
+    humidity: 70,
+    city: "prince-albert",
+  },
+  {
+    month: "September",
+    humidity: 70,
+    city: "prince-albert",
+  },
+  {
+    month: "October",
+    humidity: 70,
+    city: "prince-albert",
+  },
+  {
+    month: "November",
+    humidity: 70,
+    city: "prince-albert",
+  },
+  {
+    month: "December",
+    humidity: 70,
+    city: "prince-albert",
+  },
+  {
+    month: "January",
+    humidity: 72,
+    city: "prince-george",
+  },
+  {
+    month: "February",
+    humidity: 72,
+    city: "prince-george",
+  },
+  {
+    month: "March",
+    humidity: 72,
+    city: "prince-george",
+  },
+  {
+    month: "April",
+    humidity: 72,
+    city: "prince-george",
+  },
+  {
+    month: "May",
+    humidity: 72,
+    city: "prince-george",
+  },
+  {
+    month: "June",
+    humidity: 72,
+    city: "prince-george",
+  },
+  {
+    month: "July",
+    humidity: 72,
+    city: "prince-george",
+  },
+  {
+    month: "August",
+    humidity: 72,
+    city: "prince-george",
+  },
+  {
+    month: "September",
+    humidity: 72,
+    city: "prince-george",
+  },
+  {
+    month: "October",
+    humidity: 72,
+    city: "prince-george",
+  },
+  {
+    month: "November",
+    humidity: 72,
+    city: "prince-george",
+  },
+  {
+    month: "December",
+    humidity: 72,
+    city: "prince-george",
+  },
+  {
+    month: "January",
+    humidity: 69,
+    city: "red-deer",
+  },
+  {
+    month: "February",
+    humidity: 69,
+    city: "red-deer",
+  },
+  {
+    month: "March",
+    humidity: 69,
+    city: "red-deer",
+  },
+  {
+    month: "April",
+    humidity: 69,
+    city: "red-deer",
+  },
+  {
+    month: "May",
+    humidity: 69,
+    city: "red-deer",
+  },
+  {
+    month: "June",
+    humidity: 69,
+    city: "red-deer",
+  },
+  {
+    month: "July",
+    humidity: 69,
+    city: "red-deer",
+  },
+  {
+    month: "August",
+    humidity: 69,
+    city: "red-deer",
+  },
+  {
+    month: "September",
+    humidity: 69,
+    city: "red-deer",
+  },
+  {
+    month: "October",
+    humidity: 69,
+    city: "red-deer",
+  },
+  {
+    month: "November",
+    humidity: 69,
+    city: "red-deer",
+  },
+  {
+    month: "December",
+    humidity: 69,
+    city: "red-deer",
+  },
+  {
+    month: "January",
+    humidity: 72,
+    city: "regina",
+  },
+  {
+    month: "February",
+    humidity: 72,
+    city: "regina",
+  },
+  {
+    month: "March",
+    humidity: 72,
+    city: "regina",
+  },
+  {
+    month: "April",
+    humidity: 72,
+    city: "regina",
+  },
+  {
+    month: "May",
+    humidity: 72,
+    city: "regina",
+  },
+  {
+    month: "June",
+    humidity: 72,
+    city: "regina",
+  },
+  {
+    month: "July",
+    humidity: 72,
+    city: "regina",
+  },
+  {
+    month: "August",
+    humidity: 72,
+    city: "regina",
+  },
+  {
+    month: "September",
+    humidity: 72,
+    city: "regina",
+  },
+  {
+    month: "October",
+    humidity: 72,
+    city: "regina",
+  },
+  {
+    month: "November",
+    humidity: 72,
+    city: "regina",
+  },
+  {
+    month: "December",
+    humidity: 72,
+    city: "regina",
+  },
+  {
+    month: "January",
+    humidity: 80,
+    city: "richmond",
+  },
+  {
+    month: "February",
+    humidity: 80,
+    city: "richmond",
+  },
+  {
+    month: "March",
+    humidity: 80,
+    city: "richmond",
+  },
+  {
+    month: "April",
+    humidity: 80,
+    city: "richmond",
+  },
+  {
+    month: "May",
+    humidity: 80,
+    city: "richmond",
+  },
+  {
+    month: "June",
+    humidity: 80,
+    city: "richmond",
+  },
+  {
+    month: "July",
+    humidity: 80,
+    city: "richmond",
+  },
+  {
+    month: "August",
+    humidity: 80,
+    city: "richmond",
+  },
+  {
+    month: "September",
+    humidity: 80,
+    city: "richmond",
+  },
+  {
+    month: "October",
+    humidity: 80,
+    city: "richmond",
+  },
+  {
+    month: "November",
+    humidity: 80,
+    city: "richmond",
+  },
+  {
+    month: "December",
+    humidity: 80,
+    city: "richmond",
+  },
+  {
+    month: "January",
+    humidity: 76,
+    city: "saint-john",
+  },
+  {
+    month: "February",
+    humidity: 76,
+    city: "saint-john",
+  },
+  {
+    month: "March",
+    humidity: 76,
+    city: "saint-john",
+  },
+  {
+    month: "April",
+    humidity: 76,
+    city: "saint-john",
+  },
+  {
+    month: "May",
+    humidity: 76,
+    city: "saint-john",
+  },
+  {
+    month: "June",
+    humidity: 76,
+    city: "saint-john",
+  },
+  {
+    month: "July",
+    humidity: 76,
+    city: "saint-john",
+  },
+  {
+    month: "August",
+    humidity: 76,
+    city: "saint-john",
+  },
+  {
+    month: "September",
+    humidity: 76,
+    city: "saint-john",
+  },
+  {
+    month: "October",
+    humidity: 76,
+    city: "saint-john",
+  },
+  {
+    month: "November",
+    humidity: 76,
+    city: "saint-john",
+  },
+  {
+    month: "December",
+    humidity: 76,
+    city: "saint-john",
+  },
+  {
+    month: "January",
+    humidity: 72,
+    city: "saskatoon",
+  },
+  {
+    month: "February",
+    humidity: 72,
+    city: "saskatoon",
+  },
+  {
+    month: "March",
+    humidity: 72,
+    city: "saskatoon",
+  },
+  {
+    month: "April",
+    humidity: 72,
+    city: "saskatoon",
+  },
+  {
+    month: "May",
+    humidity: 72,
+    city: "saskatoon",
+  },
+  {
+    month: "June",
+    humidity: 72,
+    city: "saskatoon",
+  },
+  {
+    month: "July",
+    humidity: 72,
+    city: "saskatoon",
+  },
+  {
+    month: "August",
+    humidity: 72,
+    city: "saskatoon",
+  },
+  {
+    month: "September",
+    humidity: 72,
+    city: "saskatoon",
+  },
+  {
+    month: "October",
+    humidity: 72,
+    city: "saskatoon",
+  },
+  {
+    month: "November",
+    humidity: 72,
+    city: "saskatoon",
+  },
+  {
+    month: "December",
+    humidity: 72,
+    city: "saskatoon",
+  },
+  {
+    month: "January",
+    humidity: 65,
+    city: "st-albert",
+  },
+  {
+    month: "February",
+    humidity: 65,
+    city: "st-albert",
+  },
+  {
+    month: "March",
+    humidity: 65,
+    city: "st-albert",
+  },
+  {
+    month: "April",
+    humidity: 65,
+    city: "st-albert",
+  },
+  {
+    month: "May",
+    humidity: 65,
+    city: "st-albert",
+  },
+  {
+    month: "June",
+    humidity: 65,
+    city: "st-albert",
+  },
+  {
+    month: "July",
+    humidity: 65,
+    city: "st-albert",
+  },
+  {
+    month: "August",
+    humidity: 65,
+    city: "st-albert",
+  },
+  {
+    month: "September",
+    humidity: 65,
+    city: "st-albert",
+  },
+  {
+    month: "October",
+    humidity: 65,
+    city: "st-albert",
+  },
+  {
+    month: "November",
+    humidity: 65,
+    city: "st-albert",
+  },
+  {
+    month: "December",
+    humidity: 65,
+    city: "st-albert",
+  },
+  {
+    month: "February",
+    humidity: 67,
+    city: "steinbach",
+  },
+  {
+    month: "January",
+    humidity: 67,
+    city: "steinbach",
+  },
+  {
+    month: "December",
+    humidity: 67,
+    city: "steinbach",
+  },
+  {
+    month: "November",
+    humidity: 67,
+    city: "steinbach",
+  },
+  {
+    month: "April",
+    humidity: 67,
+    city: "steinbach",
+  },
+  {
+    month: "March",
+    humidity: 67,
+    city: "steinbach",
+  },
+  {
+    month: "October",
+    humidity: 67,
+    city: "steinbach",
+  },
+  {
+    month: "September",
+    humidity: 67,
+    city: "steinbach",
+  },
+  {
+    month: "July",
+    humidity: 67,
+    city: "steinbach",
+  },
+  {
+    month: "August",
+    humidity: 67,
+    city: "steinbach",
+  },
+  {
+    month: "May",
+    humidity: 67,
+    city: "steinbach",
+  },
+  {
+    month: "June",
+    humidity: 67,
+    city: "steinbach",
+  },
+  {
+    month: "January",
+    humidity: 83,
+    city: "st-johns",
+  },
+  {
+    month: "February",
+    humidity: 83,
+    city: "st-johns",
+  },
+  {
+    month: "March",
+    humidity: 83,
+    city: "st-johns",
+  },
+  {
+    month: "April",
+    humidity: 83,
+    city: "st-johns",
+  },
+  {
+    month: "May",
+    humidity: 83,
+    city: "st-johns",
+  },
+  {
+    month: "June",
+    humidity: 83,
+    city: "st-johns",
+  },
+  {
+    month: "July",
+    humidity: 83,
+    city: "st-johns",
+  },
+  {
+    month: "August",
+    humidity: 83,
+    city: "st-johns",
+  },
+  {
+    month: "September",
+    humidity: 83,
+    city: "st-johns",
+  },
+  {
+    month: "October",
+    humidity: 83,
+    city: "st-johns",
+  },
+  {
+    month: "November",
+    humidity: 83,
+    city: "st-johns",
+  },
+  {
+    month: "December",
+    humidity: 83,
+    city: "st-johns",
+  },
+  {
+    month: "January",
+    humidity: 79,
+    city: "summerside",
+  },
+  {
+    month: "February",
+    humidity: 79,
+    city: "summerside",
+  },
+  {
+    month: "March",
+    humidity: 79,
+    city: "summerside",
+  },
+  {
+    month: "April",
+    humidity: 79,
+    city: "summerside",
+  },
+  {
+    month: "May",
+    humidity: 79,
+    city: "summerside",
+  },
+  {
+    month: "June",
+    humidity: 79,
+    city: "summerside",
+  },
+  {
+    month: "July",
+    humidity: 79,
+    city: "summerside",
+  },
+  {
+    month: "August",
+    humidity: 79,
+    city: "summerside",
+  },
+  {
+    month: "September",
+    humidity: 79,
+    city: "summerside",
+  },
+  {
+    month: "October",
+    humidity: 79,
+    city: "summerside",
+  },
+  {
+    month: "November",
+    humidity: 79,
+    city: "summerside",
+  },
+  {
+    month: "December",
+    humidity: 79,
+    city: "summerside",
+  },
+  {
+    month: "August",
+    humidity: 80,
+    city: "surrey",
+  },
+  {
+    month: "July",
+    humidity: 80,
+    city: "surrey",
+  },
+  {
+    month: "September",
+    humidity: 80,
+    city: "surrey",
+  },
+  {
+    month: "June",
+    humidity: 80,
+    city: "surrey",
+  },
+  {
+    month: "May",
+    humidity: 80,
+    city: "surrey",
+  },
+  {
+    month: "February",
+    humidity: 80,
+    city: "surrey",
+  },
+  {
+    month: "April",
+    humidity: 80,
+    city: "surrey",
+  },
+  {
+    month: "October",
+    humidity: 80,
+    city: "surrey",
+  },
+  {
+    month: "March",
+    humidity: 80,
+    city: "surrey",
+  },
+  {
+    month: "December",
+    humidity: 80,
+    city: "surrey",
+  },
+  {
+    month: "January",
+    humidity: 80,
+    city: "surrey",
+  },
+  {
+    month: "November",
+    humidity: 80,
+    city: "surrey",
+  },
+  {
+    month: "January",
+    humidity: 70,
+    city: "thompson",
+  },
+  {
+    month: "February",
+    humidity: 70,
+    city: "thompson",
+  },
+  {
+    month: "March",
+    humidity: 70,
+    city: "thompson",
+  },
+  {
+    month: "April",
+    humidity: 70,
+    city: "thompson",
+  },
+  {
+    month: "May",
+    humidity: 70,
+    city: "thompson",
+  },
+  {
+    month: "June",
+    humidity: 70,
+    city: "thompson",
+  },
+  {
+    month: "July",
+    humidity: 70,
+    city: "thompson",
+  },
+  {
+    month: "August",
+    humidity: 70,
+    city: "thompson",
+  },
+  {
+    month: "September",
+    humidity: 70,
+    city: "thompson",
+  },
+  {
+    month: "October",
+    humidity: 70,
+    city: "thompson",
+  },
+  {
+    month: "November",
+    humidity: 70,
+    city: "thompson",
+  },
+  {
+    month: "December",
+    humidity: 70,
+    city: "thompson",
+  },
+  {
+    month: "January",
+    humidity: 71,
+    city: "toronto",
+  },
+  {
+    month: "February",
+    humidity: 71,
+    city: "toronto",
+  },
+  {
+    month: "March",
+    humidity: 71,
+    city: "toronto",
+  },
+  {
+    month: "April",
+    humidity: 71,
+    city: "toronto",
+  },
+  {
+    month: "May",
+    humidity: 71,
+    city: "toronto",
+  },
+  {
+    month: "June",
+    humidity: 71,
+    city: "toronto",
+  },
+  {
+    month: "July",
+    humidity: 71,
+    city: "toronto",
+  },
+  {
+    month: "August",
+    humidity: 71,
+    city: "toronto",
+  },
+  {
+    month: "September",
+    humidity: 71,
+    city: "toronto",
+  },
+  {
+    month: "October",
+    humidity: 71,
+    city: "toronto",
+  },
+  {
+    month: "November",
+    humidity: 71,
+    city: "toronto",
+  },
+  {
+    month: "December",
+    humidity: 71,
+    city: "toronto",
+  },
+  {
+    month: "January",
+    humidity: 80,
+    city: "vancouver",
+  },
+  {
+    month: "February",
+    humidity: 80,
+    city: "vancouver",
+  },
+  {
+    month: "March",
+    humidity: 80,
+    city: "vancouver",
+  },
+  {
+    month: "April",
+    humidity: 80,
+    city: "vancouver",
+  },
+  {
+    month: "May",
+    humidity: 80,
+    city: "vancouver",
+  },
+  {
+    month: "June",
+    humidity: 80,
+    city: "vancouver",
+  },
+  {
+    month: "July",
+    humidity: 80,
+    city: "vancouver",
+  },
+  {
+    month: "August",
+    humidity: 80,
+    city: "vancouver",
+  },
+  {
+    month: "September",
+    humidity: 80,
+    city: "vancouver",
+  },
+  {
+    month: "October",
+    humidity: 80,
+    city: "vancouver",
+  },
+  {
+    month: "November",
+    humidity: 80,
+    city: "vancouver",
+  },
+  {
+    month: "December",
+    humidity: 80,
+    city: "vancouver",
+  },
+  {
+    month: "January",
+    humidity: 72,
+    city: "vaughan",
+  },
+  {
+    month: "February",
+    humidity: 72,
+    city: "vaughan",
+  },
+  {
+    month: "March",
+    humidity: 72,
+    city: "vaughan",
+  },
+  {
+    month: "April",
+    humidity: 72,
+    city: "vaughan",
+  },
+  {
+    month: "May",
+    humidity: 72,
+    city: "vaughan",
+  },
+  {
+    month: "June",
+    humidity: 72,
+    city: "vaughan",
+  },
+  {
+    month: "July",
+    humidity: 72,
+    city: "vaughan",
+  },
+  {
+    month: "August",
+    humidity: 72,
+    city: "vaughan",
+  },
+  {
+    month: "September",
+    humidity: 72,
+    city: "vaughan",
+  },
+  {
+    month: "October",
+    humidity: 72,
+    city: "vaughan",
+  },
+  {
+    month: "November",
+    humidity: 72,
+    city: "vaughan",
+  },
+  {
+    month: "December",
+    humidity: 72,
+    city: "vaughan",
+  },
+  {
+    month: "January",
+    humidity: 78,
+    city: "victoria",
+  },
+  {
+    month: "February",
+    humidity: 78,
+    city: "victoria",
+  },
+  {
+    month: "March",
+    humidity: 78,
+    city: "victoria",
+  },
+  {
+    month: "April",
+    humidity: 78,
+    city: "victoria",
+  },
+  {
+    month: "May",
+    humidity: 78,
+    city: "victoria",
+  },
+  {
+    month: "June",
+    humidity: 78,
+    city: "victoria",
+  },
+  {
+    month: "July",
+    humidity: 78,
+    city: "victoria",
+  },
+  {
+    month: "August",
+    humidity: 78,
+    city: "victoria",
+  },
+  {
+    month: "September",
+    humidity: 78,
+    city: "victoria",
+  },
+  {
+    month: "October",
+    humidity: 78,
+    city: "victoria",
+  },
+  {
+    month: "November",
+    humidity: 78,
+    city: "victoria",
+  },
+  {
+    month: "December",
+    humidity: 78,
+    city: "victoria",
+  },
+  {
+    month: "January",
+    humidity: 66,
+    city: "whitehorse",
+  },
+  {
+    month: "February",
+    humidity: 66,
+    city: "whitehorse",
+  },
+  {
+    month: "March",
+    humidity: 66,
+    city: "whitehorse",
+  },
+  {
+    month: "April",
+    humidity: 66,
+    city: "whitehorse",
+  },
+  {
+    month: "May",
+    humidity: 66,
+    city: "whitehorse",
+  },
+  {
+    month: "June",
+    humidity: 66,
+    city: "whitehorse",
+  },
+  {
+    month: "July",
+    humidity: 66,
+    city: "whitehorse",
+  },
+  {
+    month: "August",
+    humidity: 66,
+    city: "whitehorse",
+  },
+  {
+    month: "September",
+    humidity: 66,
+    city: "whitehorse",
+  },
+  {
+    month: "October",
+    humidity: 66,
+    city: "whitehorse",
+  },
+  {
+    month: "November",
+    humidity: 66,
+    city: "whitehorse",
+  },
+  {
+    month: "December",
+    humidity: 66,
+    city: "whitehorse",
+  },
+  {
+    month: "January",
+    humidity: 71,
+    city: "windsor",
+  },
+  {
+    month: "February",
+    humidity: 71,
+    city: "windsor",
+  },
+  {
+    month: "March",
+    humidity: 71,
+    city: "windsor",
+  },
+  {
+    month: "April",
+    humidity: 71,
+    city: "windsor",
+  },
+  {
+    month: "May",
+    humidity: 71,
+    city: "windsor",
+  },
+  {
+    month: "June",
+    humidity: 71,
+    city: "windsor",
+  },
+  {
+    month: "July",
+    humidity: 71,
+    city: "windsor",
+  },
+  {
+    month: "August",
+    humidity: 71,
+    city: "windsor",
+  },
+  {
+    month: "September",
+    humidity: 71,
+    city: "windsor",
+  },
+  {
+    month: "October",
+    humidity: 71,
+    city: "windsor",
+  },
+  {
+    month: "November",
+    humidity: 71,
+    city: "windsor",
+  },
+  {
+    month: "December",
+    humidity: 71,
+    city: "windsor",
+  },
+  {
+    month: "January",
+    humidity: 67,
+    city: "winnipeg",
+  },
+  {
+    month: "February",
+    humidity: 67,
+    city: "winnipeg",
+  },
+  {
+    month: "March",
+    humidity: 67,
+    city: "winnipeg",
+  },
+  {
+    month: "April",
+    humidity: 67,
+    city: "winnipeg",
+  },
+  {
+    month: "May",
+    humidity: 67,
+    city: "winnipeg",
+  },
+  {
+    month: "June",
+    humidity: 67,
+    city: "winnipeg",
+  },
+  {
+    month: "July",
+    humidity: 67,
+    city: "winnipeg",
+  },
+  {
+    month: "August",
+    humidity: 67,
+    city: "winnipeg",
+  },
+  {
+    month: "September",
+    humidity: 67,
+    city: "winnipeg",
+  },
+  {
+    month: "October",
+    humidity: 67,
+    city: "winnipeg",
+  },
+  {
+    month: "November",
+    humidity: 67,
+    city: "winnipeg",
+  },
+  {
+    month: "December",
+    humidity: 67,
+    city: "winnipeg",
+  },
+  {
+    month: "January",
+    humidity: 68,
+    city: "wood-buffalo",
+  },
+  {
+    month: "February",
+    humidity: 68,
+    city: "wood-buffalo",
+  },
+  {
+    month: "March",
+    humidity: 68,
+    city: "wood-buffalo",
+  },
+  {
+    month: "April",
+    humidity: 68,
+    city: "wood-buffalo",
+  },
+  {
+    month: "May",
+    humidity: 68,
+    city: "wood-buffalo",
+  },
+  {
+    month: "June",
+    humidity: 68,
+    city: "wood-buffalo",
+  },
+  {
+    month: "July",
+    humidity: 68,
+    city: "wood-buffalo",
+  },
+  {
+    month: "August",
+    humidity: 68,
+    city: "wood-buffalo",
+  },
+  {
+    month: "September",
+    humidity: 68,
+    city: "wood-buffalo",
+  },
+  {
+    month: "October",
+    humidity: 68,
+    city: "wood-buffalo",
+  },
+  {
+    month: "November",
+    humidity: 68,
+    city: "wood-buffalo",
+  },
+  {
+    month: "December",
+    humidity: 68,
+    city: "wood-buffalo",
+  },
+  {
+    month: "January",
+    humidity: 67,
+    city: "yellowknife",
+  },
+  {
+    month: "February",
+    humidity: 67,
+    city: "yellowknife",
+  },
+  {
+    month: "March",
+    humidity: 67,
+    city: "yellowknife",
+  },
+  {
+    month: "April",
+    humidity: 67,
+    city: "yellowknife",
+  },
+  {
+    month: "May",
+    humidity: 67,
+    city: "yellowknife",
+  },
+  {
+    month: "June",
+    humidity: 67,
+    city: "yellowknife",
+  },
+  {
+    month: "July",
+    humidity: 67,
+    city: "yellowknife",
+  },
+  {
+    month: "August",
+    humidity: 67,
+    city: "yellowknife",
+  },
+  {
+    month: "September",
+    humidity: 67,
+    city: "yellowknife",
+  },
+  {
+    month: "October",
+    humidity: 67,
+    city: "yellowknife",
+  },
+  {
+    month: "November",
+    humidity: 67,
+    city: "yellowknife",
+  },
+  {
+    month: "December",
+    humidity: 67,
+    city: "yellowknife",
+  },
+];
+module.exports = { temperature, precipitation, humidity };
