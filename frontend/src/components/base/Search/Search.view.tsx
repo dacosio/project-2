@@ -7,7 +7,8 @@ import SearchResult from './../SearchResult'
 
 const Search = ({ onSearch, searchResults }: SearchProps): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState('');
-  const debouncedSearchTerm = useDebounce(searchTerm, 500);
+  const delay = 500;
+  const debouncedSearchTerm = useDebounce(searchTerm, delay);
 
   const handleSearch = (e: { target: { value: string } }) => {
     setSearchTerm(e.target.value);
@@ -28,7 +29,7 @@ const Search = ({ onSearch, searchResults }: SearchProps): JSX.Element => {
         onChange={handleSearch}
         placeholder="Input Text Here">
       </TextField>
-      {searchTerm && <SearchResult searchResults={searchResults} />}
+      {searchTerm && <SearchResult searchResults={searchResults} delay={delay} />}
     </Container>
   )
 };
