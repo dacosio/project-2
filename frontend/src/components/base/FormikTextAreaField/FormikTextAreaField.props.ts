@@ -6,5 +6,4 @@ export interface FormikTextAreaProps
   setValue?: Dispatch<SetStateAction<string>>;
   error?: string;
   name: string;
-  validate: (value: string) => string | undefined;
 }
