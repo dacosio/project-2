@@ -11,6 +11,7 @@ const Chips = (props: ChipsProps): JSX.Element => {
     color,
     variant = "filled",
     size = "md",
+    active = false,
     ...chipsProps
   } = props;
   let textColor:
@@ -34,10 +35,10 @@ const Chips = (props: ChipsProps): JSX.Element => {
 
   if (size === "sm") {
     textVariant = "btn";
-    textWeight = "300";
+    textWeight = "500";
   } else if (size === "md") {
     textVariant = "btn";
-    textWeight = "400";
+    textWeight = "700";
   } else {
     textWeight = "400";
   }
@@ -45,7 +46,13 @@ const Chips = (props: ChipsProps): JSX.Element => {
   const hasText = label && label?.length > 0 ? true : false;
 
   return (
-    <ChipContainer size={"lg"} variant={variant} color={color} {...props}>
+    <ChipContainer
+      size={"lg"}
+      variant={variant}
+      color={color}
+      active={active}
+      {...props}
+    >
       {label && (
         <Typography
           variant={textVariant}

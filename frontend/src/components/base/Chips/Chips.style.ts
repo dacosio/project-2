@@ -14,7 +14,7 @@ const backgroundColor: Record<Variants, string> = {
   };
   
   //active or pressed
-  const active: Record<Variants, string> = {
+  const activeTheme: Record<Variants, string> = {
     outlined: theme.btn.color.outlineBg,
     filled: theme.btn.color.tokenPressed,
   };
@@ -40,10 +40,10 @@ export const ChipContainer = styled.div<ChipsStyleProps>`
   justify-content: center;
   align-items: center;
   text-align:center;
-  padding:  4px, 8px, 4px, 8px;
+  padding:  4px 8px 4px 8px;
   border-radius: 6px;
-  font-family: "Inter", sans-serif;
-  background-color: ${({ variant }) => backgroundColor[variant]};
+ 
+  
   border: ${({ variant }) => border[variant]};
   gap:8px;
   
@@ -52,17 +52,30 @@ export const ChipContainer = styled.div<ChipsStyleProps>`
     outline: none;
   }
 
-  :active {
-    background-color: ${({ variant }) => active[variant]};
+  ${({ active, variant }) => active ? `
+ 
+    background-color: ${activeTheme[variant]};
     transform: scale(0.95);
     transition: transform 0.1s ease-in-out;
   }
+` : `background-color: ${backgroundColor[variant]};`};
+
+
+ 
 
   :hover {
     background-color: ${({ variant }) => hoverBgColor[variant]};
   }
   cursor: pointer;
 `;
+
+// background-color: ${({ variant }) => backgroundColor[variant]};
+
+ // :active {
+  //   background-color: ${({ variant }) => activeTheme[variant]};
+  //   transform: scale(0.95);
+  //   transition: transform 0.1s ease-in-out;
+  // }
 
 export const Label = styled.span`
      font-size: 14px;
