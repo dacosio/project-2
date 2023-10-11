@@ -30,6 +30,8 @@ const TextField = (props: TextFieldProps): JSX.Element => {
     className,
     onChange = () => null,
     onBlur = () => null,
+    labelVariant,
+    labelWeight,
     style,
   } = props;
   const [showSecuredText, setShowSecuredText] = useState(false);
@@ -43,7 +45,7 @@ const TextField = (props: TextFieldProps): JSX.Element => {
   const defaultInputType = type || "text";
   return (
     <Container className={className} style={style}>
-      <Typography variant="title4" color={"shade6"}>
+      <Typography variant={labelVariant || "title4"} color={"shade6"} weight={labelWeight || "400"}>
         {label}
       </Typography>
       <FieldContainer error={(error || "").length > 0}>

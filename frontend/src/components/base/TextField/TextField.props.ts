@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
+import { Variants } from "../Typography/Typography.props";
 
-export interface TextFieldProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   setValue?: Dispatch<SetStateAction<string>>;
   secured?: boolean;
@@ -9,4 +9,6 @@ export interface TextFieldProps
   LeftComponent?: React.ReactNode;
   alert?: string;
   prefix?: string;
+  labelVariant?: Variants;
+  labelWeight?: string;
 }

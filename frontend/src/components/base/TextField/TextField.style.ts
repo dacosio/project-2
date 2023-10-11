@@ -40,8 +40,8 @@ export const Field = styled.input`
 `;
 
 export const LeftComponentContainer = styled.div`
-  padding-right: 4px;
-  border-right: 1px solid ${({ theme }) => theme.grey.shade5};
+  padding-right: 1.5px;
+  // border-right: 1px solid ${({ theme }) => theme.grey.shade5};
   display: flex;
   align-items: center;
 `;
