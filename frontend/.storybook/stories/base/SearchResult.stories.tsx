@@ -6,7 +6,13 @@ import Wrapper from "../../components/Wrapper";
 
 const meta: Meta<typeof SearchResult> = {
   title: "Base/SearchResult",
-  component: SearchResult,
+  component: () => {
+    return (
+      <Container>
+        <SearchResult delay={500} searchResults={undefined} />
+      </Container>
+    )
+  },
 };
 
 export default meta;
