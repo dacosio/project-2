@@ -16,7 +16,7 @@ export const theme: Theme = {
     alert: "#FFCF5C",
     success: "#00C48C",
     warning: "#FFA26B",
-    error: "#F23742",
+    error: "#FF4D03",
   },
   grey: {
     shade1: "#F9FAFF",
