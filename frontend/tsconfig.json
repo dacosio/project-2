@@ -20,7 +20,8 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "jsxImportSource": "@emotion/react",
-    "rootDir": "."
+    "rootDir": ".",
+    "types": ["google.maps"]
   },
   "include": ["src", "src/emotion.d.tsx"],
   "exclude": ["build", "node_modules"]
