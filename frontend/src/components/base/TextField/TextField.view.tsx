@@ -14,7 +14,6 @@ import {
   VisibilityContainer,
   Error,
   Prefix,
-  RightComponentContainer,
 } from "./TextField.style";
 
 const TextField = (props: TextFieldProps): JSX.Element => {
