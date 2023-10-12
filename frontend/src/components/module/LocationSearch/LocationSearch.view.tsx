@@ -12,25 +12,30 @@ const LocationSearch = (props: LocationSearchProps): JSX.Element => {
     getPlacePredictions,
     isPlacePredictionsLoading,
   } = useGoogle({
-    apiKey: process.env.REACT_APP_MAPS_API_KEY,
+    apiKey: process.env.REACT_APP_GOOGLE_PLACES_AUTOCOMPLETE_API_KEY,
   });
 
-  console.log(process.env.REACT_APP_MAPS_API_KEY);
+  console.log(process.env.REACT_APP_GOOGLE_PLACES_AUTOCOMPLETE_API_KEY!);
   const [value, setValue] = useState("");
-  const handleSelectPlace = (item: any) => {
+  const handleSelectPlace = (item: {
+    description: string;
+    place_id: string;
+  }) => {
     getPlacePredictions({ input: "" });
     setValue(item.description);
-    placesService?.getDetails(
-      {
-        placeId: item.place_id,
-      },
-      (placeDetails: any) => console.log(placeDetails)
-    );
+    if (placesService && item.place_id) {
+      placesService.getDetails(
+        {
+          placeId: item.place_id,
+        },
+        (placeDetails) => console.log(placeDetails)
+      );
+    }
   };
 
   return (
     <Container>
-      <TextField
+      {/* <TextField
         onChange={(evt) => {
           getPlacePredictions({ input: evt.target.value });
           setValue(evt.target.value);
@@ -45,7 +50,7 @@ const LocationSearch = (props: LocationSearchProps): JSX.Element => {
               </Typography>
             </div>
           ))}
-      </ResultsContainer>
+      </ResultsContainer> */}
     </Container>
   );
 };
