@@ -8,6 +8,7 @@ import { TextFieldProps } from "./TextField.props";
 import {
   Container,
   LeftComponentContainer,
+  RightComponentContainer,
   FieldContainer,
   Field,
   VisibilityContainer,
@@ -26,6 +27,7 @@ const TextField = (props: TextFieldProps): JSX.Element => {
     secured,
     error,
     LeftComponent,
+    RightComponent,
     prefix,
     className,
     onChange = () => null,
@@ -59,6 +61,9 @@ const TextField = (props: TextFieldProps): JSX.Element => {
           onBlur={onBlur}
           placeholder={placeholder}
         />
+        {RightComponent && (
+          <RightComponentContainer>{RightComponent}</RightComponentContainer>
+        )}
         {secured && (
           <VisibilityContainer onClick={() => setShowSecuredText((v) => !v)}>
             <VisibilityIcon fill={theme.grey.shade7} />

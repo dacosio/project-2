@@ -46,6 +46,12 @@ export const LeftComponentContainer = styled.div`
   align-items: center;
 `;
 
+export const RightComponentContainer = styled.div`
+  padding-left: 4px;
+  border-left: 1px solid ${({ theme }) => theme.grey.shade5};
+  display: flex;
+  align-items: center;
+`
 export const VisibilityContainer = styled.div`
   display: flex;
   cursor: pointer;
