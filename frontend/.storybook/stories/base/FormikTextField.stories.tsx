@@ -26,7 +26,8 @@ const meta: Meta<typeof FormikTextField> = {
         <Formik
           initialValues={{ email: "", password: "" }}
           validationSchema={validationSchema}
-          onSubmit={handleOnSubtmit}>
+          onSubmit={handleOnSubtmit}
+        >
           <Form>
             <FormikTextField
               label="Email"

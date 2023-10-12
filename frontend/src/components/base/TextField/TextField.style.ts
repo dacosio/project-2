@@ -28,6 +28,9 @@ export const FieldContainer = styled.div<{ error: boolean }>`
     return theme.grey.noshade;
   }};
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
+  :focus-within {
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
+  }
 `;
 
 export const Field = styled.input`
@@ -67,7 +70,9 @@ export const VisibilityContainer = styled.div`
   align-items: center;
 `;
 
-export const Error = styled(Typography)``;
+export const Error = styled(Typography)`
+  padding: 0 8px;
+`;
 
 export const Prefix = styled.span`
   color: ${(props) => props.theme.grey.shade8};
