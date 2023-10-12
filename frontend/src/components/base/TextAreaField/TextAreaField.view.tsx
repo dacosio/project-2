@@ -25,7 +25,7 @@ const TextAreaField = (props: TextAreaFieldProps): JSX.Element => {
 
   return (
     <Container className={className} style={style}>
-      <Typography variant="title4" color="shade6">
+      <Typography variant="small" textColor="shade9">
         {label}
       </Typography>
       <TextArea
@@ -33,11 +33,12 @@ const TextAreaField = (props: TextAreaFieldProps): JSX.Element => {
         placeholder={placeholder}
         onChange={handleOnChange}
         onBlur={onBlur}
+        rows={8}
       >
         {children}
       </TextArea>
       {error && (
-        <Error variant="subtitle" color="error">
+        <Error variant="small" textColor="error">
           {error}
         </Error>
       )}

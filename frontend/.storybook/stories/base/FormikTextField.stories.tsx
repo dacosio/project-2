@@ -5,48 +5,38 @@ import Container from "../../components/Container";
 import Wrapper from "../../components/Wrapper";
 import { Form, Formik } from "formik";
 import Button from "../../../src/components/base/Button";
+import * as Yup from "yup";
 
 const meta: Meta<typeof FormikTextField> = {
   title: "Base/FormikTextField",
   component: () => {
-    const emailValidator = (value: string) => {
-      if (!value) {
-        return "Email is required.";
-      } else {
-        return "";
-      }
-    };
-
-    const passwordValidator = (value: string) => {
-      if (!value) {
-        return "Password is required.";
-      } else {
-        return "";
-      }
-    };
-
     const handleOnSubtmit = (values: { email: string }) => {
       console.log(values);
     };
+
+    const validationSchema = Yup.object({
+      email: Yup.string()
+        .email("Invalid email format")
+        .required("Your email is required"),
+      password: Yup.string().required("Your password is required"),
+    });
 
     return (
       <Container>
         <Formik
           initialValues={{ email: "", password: "" }}
-          onSubmit={handleOnSubtmit}
-        >
+          validationSchema={validationSchema}
+          onSubmit={handleOnSubtmit}>
           <Form>
             <FormikTextField
               label="Email"
               name="email"
               placeholder="user@nomail.com"
-              validate={emailValidator}
             />
             <FormikTextField
               label="Password"
               name="password"
               placeholder="******"
-              validate={passwordValidator}
               secured
             />
             <Button type="submit" text="Submit" variant="primary" />

@@ -5,6 +5,7 @@ import Typography from "./../../components/base/Typography";
 import WeatherCard from "./../../components/base/WeatherCard";
 import Search from './../../components/base/Search';
 import axios from "axios";
+import LocationSearch from "components/module/LocationSearch";
 
 const HomeView = (props: HomeGeneratedProps) => {
   const [responseData, setResponseData] = useState({ prediction: [""] });
@@ -47,6 +48,7 @@ const HomeView = (props: HomeGeneratedProps) => {
         <button onClick={onPredict}>predict</button>
         <div>Recommended Crop: {responseData.prediction[0]}</div>
       </div>
+      <LocationSearch />
     </Container>
   );
 };

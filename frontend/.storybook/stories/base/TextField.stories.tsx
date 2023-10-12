@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import TextField from "../../../src/components/base/TextField";
 import Container from "../../components/Container";
 import Wrapper from "../../components/Wrapper";
-import { Eye, EyeOff } from "../../../src/components/base/SVG";
+import { Eye, EyeOff, LocationSvg } from "../../../src/components/base/SVG";
 
 const meta: Meta = {
   title: "Base/TextField",
@@ -78,6 +78,15 @@ const meta: Meta = {
               placeholder="******"
             />
           </div>
+          <TextField
+            LeftComponent={<LocationSvg />}
+            labelVariant="body"
+            labelWeight="500"
+            label="Email"
+            value={email}
+            setValue={setEmail}
+            placeholder="Search location"
+          />
         </Wrapper>
       </Container>
     );

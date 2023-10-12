@@ -14,7 +14,9 @@ import {
   VisibilityContainer,
   Error,
   Prefix,
+  RightComponentContainer,
 } from "./TextField.style";
+
 const TextField = (props: TextFieldProps): JSX.Element => {
   const theme = useTheme();
   const {
@@ -31,8 +33,11 @@ const TextField = (props: TextFieldProps): JSX.Element => {
     prefix,
     className,
     onChange = () => null,
-    onBlur = () => null,
+    onBlur,
+    labelVariant,
+    labelWeight,
     style,
+    onKeyUp,
   } = props;
   const [showSecuredText, setShowSecuredText] = useState(false);
 
@@ -43,14 +48,29 @@ const TextField = (props: TextFieldProps): JSX.Element => {
 
   const VisibilityIcon = showSecuredText ? EyeOff : Eye;
   const defaultInputType = type || "text";
+
+  const [focus, setFocus] = useState(false);
+  const handleFocus = () => {
+    setFocus(true);
+  };
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    setFocus(false);
+  };
   return (
     <Container className={className} style={style}>
-      <Typography variant="title4" color={"shade6"}>
+      <Typography
+        variant={labelVariant || "body"}
+        color={"shade6"}
+        weight={labelWeight || "500"}
+        style={{ marginBottom: "4px" }}
+      >
         {label}
       </Typography>
-      <FieldContainer error={(error || "").length > 0}>
+      <FieldContainer error={(error || "").length > 0} onFocus={handleFocus}>
         {LeftComponent && (
-          <LeftComponentContainer>{LeftComponent}</LeftComponentContainer>
+          <LeftComponentContainer focus={focus}>
+            {LeftComponent}
+          </LeftComponentContainer>
         )}
         {prefix && <Prefix>{prefix}</Prefix>}
         <Field
@@ -58,8 +78,9 @@ const TextField = (props: TextFieldProps): JSX.Element => {
           type={secured && !showSecuredText ? "password" : defaultInputType}
           value={value}
           onChange={handleChange}
-          onBlur={onBlur}
+          onBlur={handleBlur}
           placeholder={placeholder}
+          onKeyUp={onKeyUp}
         />
         {RightComponent && (
           <RightComponentContainer>{RightComponent}</RightComponentContainer>
@@ -71,7 +92,7 @@ const TextField = (props: TextFieldProps): JSX.Element => {
         )}
       </FieldContainer>
       {(error || "").length > 0 && (
-        <Error variant="subtitle" color="error">
+        <Error variant="small" color="error">
           {error}
         </Error>
       )}
