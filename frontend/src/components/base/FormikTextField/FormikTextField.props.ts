@@ -8,5 +8,4 @@ export interface FormikTextFieldProps
   alert?: string;
   prefix?: string;
   name: string;
-  validate: (value: string) => string | undefined;
 }

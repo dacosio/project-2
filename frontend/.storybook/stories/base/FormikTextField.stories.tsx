@@ -5,25 +5,15 @@ import Container from "../../components/Container";
 import Wrapper from "../../components/Wrapper";
 import { Form, Formik } from "formik";
 import Button from "../../../src/components/base/Button";
+import { object, string } from "yup";
 
 const meta: Meta<typeof FormikTextField> = {
   title: "Base/FormikTextField",
   component: () => {
-    const emailValidator = (value: string) => {
-      if (!value) {
-        return "Email is required.";
-      } else {
-        return "";
-      }
-    };
-
-    const passwordValidator = (value: string) => {
-      if (!value) {
-        return "Password is required.";
-      } else {
-        return "";
-      }
-    };
+    const validationSchema = object({
+      email: string().required("Email is required."),
+      password: string().required("Password is required."),
+    });
 
     const handleOnSubtmit = (values: { email: string }) => {
       console.log(values);
@@ -33,6 +23,7 @@ const meta: Meta<typeof FormikTextField> = {
       <Container>
         <Formik
           initialValues={{ email: "", password: "" }}
+          validationSchema={validationSchema}
           onSubmit={handleOnSubtmit}
         >
           <Form>
@@ -40,13 +31,11 @@ const meta: Meta<typeof FormikTextField> = {
               label="Email"
               name="email"
               placeholder="user@nomail.com"
-              validate={emailValidator}
             />
             <FormikTextField
               label="Password"
               name="password"
               placeholder="******"
-              validate={passwordValidator}
               secured
             />
             <Button type="submit" text="Submit" variant="primary" />
