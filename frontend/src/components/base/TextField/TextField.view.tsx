@@ -8,12 +8,12 @@ import { TextFieldProps } from "./TextField.props";
 import {
   Container,
   LeftComponentContainer,
+  RightComponentContainer,
   FieldContainer,
   Field,
   VisibilityContainer,
   Error,
   Prefix,
-  RightComponentContainer,
 } from "./TextField.style";
 
 const TextField = (props: TextFieldProps): JSX.Element => {
@@ -27,8 +27,8 @@ const TextField = (props: TextFieldProps): JSX.Element => {
     placeholder,
     secured,
     error,
-    LeftComponent = null,
-    RightComponent = null,
+    LeftComponent,
+    RightComponent,
     prefix,
     className,
     onChange = () => null,

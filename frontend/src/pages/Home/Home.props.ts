@@ -1,1 +1,3 @@
-export interface HomeGeneratedProps {}
+export interface HomeGeneratedProps {
+
+}

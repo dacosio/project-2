@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { HomeGeneratedProps } from "./Home.props";
 import { Container } from "./Home.style";
-import Typography from "components/base/Typography";
-import WeatherCard from "components/base/WeatherCard";
+import Typography from "./../../components/base/Typography";
+import WeatherCard from "./../../components/base/WeatherCard";
+import Search from './../../components/base/Search';
 import axios from "axios";
 import LocationSearch from "components/module/LocationSearch";
 
@@ -37,6 +38,9 @@ const HomeView = (props: HomeGeneratedProps) => {
       });
 
   console.log(responseData);
+
+
+
   return (
     <Container>
       I am Home Screen and I can be viewed by the public
