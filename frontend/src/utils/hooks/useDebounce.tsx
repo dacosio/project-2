@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 // this is used for search fields
-const useDebounce = (value: any, delay: number) => {
+function useDebounce<T>(value: T, delay: number): T {
     const [debouncedValue, setDebouncedValue] = useState(value);
     useEffect(() => {
         const timer = setTimeout(() => setDebouncedValue(value), delay || 500);
