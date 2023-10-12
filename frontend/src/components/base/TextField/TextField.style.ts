@@ -51,13 +51,8 @@ export const LeftComponentContainer = styled.div<{ focus?: boolean }>`
   align-items: center;
   & > svg > path {
     fill: ${({ theme, focus }) =>
-      focus ? theme.btn.color.primary : theme.text.disabled};
+    focus ? theme.btn.color.primary : theme.text.disabled};
   }
-`;
-export const RightComponentContainer = styled.div`
-  padding-right: 1.5px;
-  display: flex;
-  align-items: center;
 `;
 
 export const RightComponentContainer = styled.div`
