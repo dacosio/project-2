@@ -35,7 +35,7 @@ const LocationSearch = (props: LocationSearchProps): JSX.Element => {
 
   return (
     <Container>
-      {/* <TextField
+      <TextField
         onChange={(evt) => {
           getPlacePredictions({ input: evt.target.value });
           setValue(evt.target.value);
@@ -50,7 +50,7 @@ const LocationSearch = (props: LocationSearchProps): JSX.Element => {
               </Typography>
             </div>
           ))}
-      </ResultsContainer> */}
+      </ResultsContainer>
     </Container>
   );
 };
