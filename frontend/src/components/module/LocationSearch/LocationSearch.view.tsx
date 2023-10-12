@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { LocationSearchProps } from "./LocationSearch.props";
-import { Container } from "./LocationSearch.style";
+import { Container, ResultsContainer } from "./LocationSearch.style";
 import TextField from "../../base/TextField";
 import useGoogle from "react-google-autocomplete/lib/usePlacesAutocompleteService";
+import Typography from "components/base/Typography";
 
 const LocationSearch = (props: LocationSearchProps): JSX.Element => {
   const {
@@ -35,12 +36,16 @@ const LocationSearch = (props: LocationSearchProps): JSX.Element => {
           setValue(evt.target.value);
         }}
       />
-      {!isPlacePredictionsLoading &&
-        placePredictions.map((item) => (
-          <div key={item.description} onClick={() => handleSelectPlace(item)}>
-            {item.description}
-          </div>
-        ))}
+      <ResultsContainer>
+        {!isPlacePredictionsLoading &&
+          placePredictions.map((item) => (
+            <div key={item.description} onClick={() => handleSelectPlace(item)}>
+              <Typography variant="body" style={{ padding: "8px" }}>
+                {item.description}
+              </Typography>
+            </div>
+          ))}
+      </ResultsContainer>
     </Container>
   );
 };

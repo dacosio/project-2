@@ -5,19 +5,21 @@ import Container from "../../components/Container";
 import Wrapper from "../../components/Wrapper";
 import { Form, Formik } from "formik";
 import Button from "../../../src/components/base/Button";
-import { object, string } from "yup";
+import * as Yup from "yup";
 
 const meta: Meta<typeof FormikTextField> = {
   title: "Base/FormikTextField",
   component: () => {
-    const validationSchema = object({
-      email: string().required("Email is required."),
-      password: string().required("Password is required."),
-    });
-
     const handleOnSubtmit = (values: { email: string }) => {
       console.log(values);
     };
+
+    const validationSchema = Yup.object({
+      email: Yup.string()
+        .email("Invalid email format")
+        .required("Your email is required"),
+      password: Yup.string().required("Your password is required"),
+    });
 
     return (
       <Container>
