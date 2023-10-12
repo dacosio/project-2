@@ -4,6 +4,7 @@ import { Container } from './Search.style';
 import TextField from './../TextField'
 import useDebounce from './../../../utils/hooks/useDebounce'
 import SearchResult from './../SearchResult'
+import { AiOutlineCloseCircle, AiOutlineSearch } from 'react-icons/ai'
 
 const Search = ({ onSearch, searchResults }: SearchProps): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -23,6 +24,18 @@ const Search = ({ onSearch, searchResults }: SearchProps): JSX.Element => {
   return (
     <Container>
       <TextField
+        RightComponent={
+          searchTerm ?
+            <AiOutlineCloseCircle
+              size="20px"
+              style={{ cursor: "pointer" }}
+              onClick={() => setSearchTerm('')}
+            /> :
+            <AiOutlineSearch
+              size="20px"
+              style={{ cursor: "pointer" }}
+            />
+        }
         type='search'
         label='Search'
         value={searchTerm}
