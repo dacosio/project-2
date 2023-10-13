@@ -24,11 +24,7 @@ export const ListColumnContainer = styled(Col)`
   }
 `;
 
-export const ColumnHeaderContainer = styled.div`
-  height: 50px;
-  display: grid;
-  align-items: center;
-`;
+export const ColumnHeaderContainer = styled.div``;
 
 export const ColumnBodyContainer = styled.div`
   background-color: white;
@@ -36,9 +32,10 @@ export const ColumnBodyContainer = styled.div`
   gap: 16px;
 
   > div {
-    display: grid;
+    display: flex;
     gap: 16px;
     overflow-y: auto;
+    flex-direction: column;
 
     ::-webkit-scrollbar {
       width: 8px;
@@ -68,11 +65,16 @@ export const ColumnBodyContainer = styled.div`
 
 export const CropItemContainer = styled.div`
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
-  margin: 1px;
   border-radius: 16px;
   padding: 20px 28px;
   display: flex;
   justify-content: space-between;
+  margin: 1px;
+  box-sizing: border-box;
+
+  :hover {
+    background-color: ${({ theme }) => theme.btn.color.outlineBg};
+  }
 `;
 
 export const ButtonContainer = styled.div`
@@ -86,7 +88,7 @@ export const DetailColumnContainer = styled(Col)`
   width: 100%;
 
   @media (min-width: 768px) {
-    max-width: 600px;
+    max-width: 650px;
     padding: 0 8px;
   }
 `;

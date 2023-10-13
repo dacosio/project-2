@@ -34,6 +34,7 @@ import Button from "components/base/Button";
 import CircleProgress from "components/base/CircleProgress";
 import CropCondition from "components/base/CropCondition";
 import { Add, Delete, Favorite } from "components/base/SVG";
+import "react-circular-progressbar/dist/styles.css";
 import theme from "utils/Theme";
 
 const YourCropView = (props: YourCropGeneratedProps) => (
@@ -59,46 +60,112 @@ const YourCropView = (props: YourCropGeneratedProps) => (
               <Typography variant="body" weight="700">
                 Crop Name
               </Typography>
-              <Typography variant="body">PLANTED</Typography>
+              <Typography
+                variant="body"
+                weight="700"
+                style={{ color: theme.btn.color.token }}
+              >
+                PLANTED
+              </Typography>
             </CropItemContainer>
             <CropItemContainer>
-              <Typography variant="body">Crop Name</Typography>
-              <Typography variant="body">Planted</Typography>
+              <Typography variant="body" weight="700">
+                Crop Name
+              </Typography>
+              <Typography
+                variant="body"
+                weight="700"
+                style={{ color: theme.btn.color.tokenHover }}
+              >
+                SAVED
+              </Typography>
             </CropItemContainer>
             <CropItemContainer>
-              <Typography variant="body">Crop Name</Typography>
-              <Typography variant="body">Planted</Typography>
+              <Typography variant="body" weight="700">
+                Crop Name
+              </Typography>
+              <Typography
+                variant="body"
+                weight="700"
+                style={{ color: "#1DAEFF" }}
+              >
+                SAVED
+              </Typography>
             </CropItemContainer>
             <CropItemContainer>
-              <Typography variant="body">Crop Name</Typography>
-              <Typography variant="body">Planted</Typography>
+              <Typography variant="body" weight="700">
+                Crop Name
+              </Typography>
+              <Typography
+                variant="body"
+                weight="700"
+                style={{ color: "#1DAEFF" }}
+              >
+                SAVED
+              </Typography>
             </CropItemContainer>
             <CropItemContainer>
-              <Typography variant="body">Crop Name</Typography>
-              <Typography variant="body">Planted</Typography>
+              <Typography variant="body" weight="700">
+                Crop Name
+              </Typography>
+              <Typography
+                variant="body"
+                weight="700"
+                style={{ color: "#1DAEFF" }}
+              >
+                SAVED
+              </Typography>
             </CropItemContainer>
             <CropItemContainer>
-              <Typography variant="body">Crop Name</Typography>
-              <Typography variant="body">Planted</Typography>
+              <Typography variant="body" weight="700">
+                Crop Name
+              </Typography>
+              <Typography
+                variant="body"
+                weight="700"
+                style={{ color: "#1DAEFF" }}
+              >
+                SAVED
+              </Typography>
             </CropItemContainer>
             <CropItemContainer>
-              <Typography variant="body">Crop Name</Typography>
-              <Typography variant="body">Planted</Typography>
+              <Typography variant="body" weight="700">
+                Crop Name
+              </Typography>
+              <Typography
+                variant="body"
+                weight="700"
+                style={{ color: "#1DAEFF" }}
+              >
+                SAVED
+              </Typography>
             </CropItemContainer>
             <CropItemContainer>
-              <Typography variant="body">Crop Name</Typography>
-              <Typography variant="body">Planted</Typography>
+              <Typography variant="body" weight="700">
+                Crop Name
+              </Typography>
+              <Typography
+                variant="body"
+                weight="700"
+                style={{ color: "#1DAEFF" }}
+              >
+                SAVED
+              </Typography>
             </CropItemContainer>
             <CropItemContainer>
-              <Typography variant="body">Crop Name</Typography>
-              <Typography variant="body">Planted</Typography>
-            </CropItemContainer>
-            <CropItemContainer>
-              <Typography variant="body">Crop Name</Typography>
-              <Typography variant="body">Planted</Typography>
+              <Typography variant="body" weight="700">
+                Crop Name
+              </Typography>
+              <Typography
+                variant="body"
+                weight="700"
+                style={{ color: "#1DAEFF" }}
+              >
+                SAVED
+              </Typography>
             </CropItemContainer>
           </div>
-          <div>
+          <div style={{ display: "grid" }}>
             <Button
               iconPosition="before"
               icon={<Add fill={theme.btn.text.white} />}
@@ -120,24 +187,42 @@ const YourCropView = (props: YourCropGeneratedProps) => (
           <div>
             <DescriptionHeaderContainer>
               <DescriptionHeaderLeftContainer>
-                <Typography variant="small" textColor="primary">
+                <Typography
+                  variant="small"
+                  weight="700"
+                  style={{ color: theme.btn.color.token }}
+                >
                   PLANTED
                 </Typography>
                 <Typography variant="title3">Tomato</Typography>
               </DescriptionHeaderLeftContainer>
               <DescriptionHeaderRightContainer>
-                <Button
-                  variant="outline"
-                  iconPosition="before"
-                  icon={<Favorite fill={theme.btn.color.primary} />}
-                  text="Favorite"
-                />
-                <Button
-                  variant="outline"
-                  iconPosition="before"
-                  icon={<Delete fill={theme.btn.color.primary} />}
-                  text="Delete"
-                />
+                <Hidden xs sm md lg>
+                  <Button
+                    variant="outline"
+                    iconPosition="before"
+                    icon={<Favorite fill={theme.btn.color.primary} />}
+                    text="Favorite"
+                  />
+                  <Button
+                    variant="outline"
+                    iconPosition="before"
+                    icon={<Delete fill={theme.btn.color.primary} />}
+                    text="Delete"
+                  />
+                </Hidden>
+                <Visible xs sm md lg>
+                  <Button
+                    variant="outline"
+                    iconPosition="before"
+                    icon={<Favorite fill={theme.btn.color.primary} />}
+                  />
+                  <Button
+                    variant="outline"
+                    iconPosition="before"
+                    icon={<Delete fill={theme.btn.color.primary} />}
+                  />
+                </Visible>
               </DescriptionHeaderRightContainer>
             </DescriptionHeaderContainer>
           </div>
@@ -165,15 +250,28 @@ const YourCropView = (props: YourCropGeneratedProps) => (
                   </div>
                 </DescriptionFooterLeftContainer>
                 <DescriptionFooterRightContainer>
-                  <CircleProgress
-                    value={40}
-                    maxValue={55}
-                    size="desktop"
-                    title="40"
-                    subtitle="days"
-                    id="progress"
-                    style={{ height: 145, width: 145 }}
-                  />
+                  <Hidden xs sm md lg>
+                    <CircleProgress
+                      value={40}
+                      maxValue={55}
+                      size="desktop"
+                      title="40"
+                      subtitle="days"
+                      id="progress"
+                      style={{ height: 145, width: 145 }}
+                    />
+                  </Hidden>
+                  <Visible xs sm md lg>
+                    <CircleProgress
+                      value={40}
+                      maxValue={55}
+                      size="mobile"
+                      title="40"
+                      subtitle="days"
+                      id="progress"
+                      style={{ height: 96, width: 96 }}
+                    />
+                  </Visible>
                   <Hidden xs sm md lg>
                     <Typography variant="body" align="center">
                       Before Estimated Harvest
@@ -198,13 +296,16 @@ const YourCropView = (props: YourCropGeneratedProps) => (
               <InformationFooterContainer>
                 <Hidden xs sm md lg>
                   <div>
-                    <CropCondition title="Temperature" output="s" />
+                    <CropCondition
+                      title="Temperature"
+                      output="0.0 - 0.0°C 0.0 - 0.0°F"
+                    />
                   </div>
                   <div>
-                    <CropCondition title="Temperature" output="s" />
+                    <CropCondition title="Temperature" output="00 - 00%" />
                   </div>
                   <div>
-                    <CropCondition title="Temperature" output="s" />
+                    <CropCondition title="Temperature" output="0 - 0 months" />
                   </div>
                 </Hidden>
                 <Visible xs sm md lg>
