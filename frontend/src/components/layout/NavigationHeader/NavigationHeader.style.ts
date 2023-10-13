@@ -10,3 +10,35 @@ export const Container = styled.div`
   align-items: center;
 }
 `;
+
+export const AvatarWrapper = styled.div`
+  text-align: right;
+  cursor: pointer;
+`;
+
+export const LogOutContainer = styled.div`
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  background-color: ${({ theme }) => theme.bg.primary};
+  margin-top: 6px;
+  padding: 8px 16px;
+  position: absolute;
+  right: 20%;
+  cursor: pointer;
+  // top: 120%;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    border-width: 0 10px 10px 10px;
+    border-style: solid;
+    border-color: transparent transparent ${({ theme }) => theme.bg.primary}
+      transparent;
+  }
+
+  :hover {
+    background-color: ${({ theme }) => theme.btn.color.lightest};
+  }
+`;

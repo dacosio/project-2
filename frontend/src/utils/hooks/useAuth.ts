@@ -1,4 +1,4 @@
-import { selectCurrentToken } from "../features/auth/authSlice";
+import { selectCurrentToken } from "../../features/auth/authSlice";
 import jwtDecode from "jwt-decode";
 import { useAppSelector } from "app/hooks";
 

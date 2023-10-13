@@ -1,7 +1,7 @@
 import React from "react";
 import { FooterProps } from "./Footer.props";
 import { Container, User, Date, Left, Test } from "./Footer.style";
-import useAuth from "hooks/useAuth";
+import useAuth from "utils/hooks/useAuth";
 import Typography from "components/base/Typography";
 import { useTheme } from "@emotion/react";
 // /** @jsxImportSource @emotion/react */
