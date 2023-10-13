@@ -15,7 +15,6 @@ const LocationSearch = (props: LocationSearchProps): JSX.Element => {
     apiKey: process.env.REACT_APP_GOOGLE_PLACES_AUTOCOMPLETE_API_KEY,
   });
 
-  console.log(process.env.REACT_APP_GOOGLE_PLACES_AUTOCOMPLETE_API_KEY!);
   const [value, setValue] = useState("");
   const handleSelectPlace = (item: {
     description: string;
