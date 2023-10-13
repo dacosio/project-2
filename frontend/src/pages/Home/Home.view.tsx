@@ -27,6 +27,8 @@ import TextField from "components/base/TextField";
 import Button from "components/base/Button";
 import axios from "axios";
 import { Col, Row, Visible, Hidden } from "react-grid-system";
+import HomeNavigation from "components/layout/HomeNavigation";
+import HomeNavigationMobile from "components/layout/HomeNavigationMobile";
 
 //Images
 import headerImg from "images/headerImg.png";
@@ -50,44 +52,11 @@ const HomeView = (props: HomeGeneratedProps) => {
         <Column sm={4}>One of three columns</Column>
       </Header> */}
       <Row>
-        <Col xxl={12} xl={12} lg={12}>
-          <Nav>
-            <NavOptions>
-              <SproutLogo width={200} />
-              <ul>
-                <li>
-                  <a href="#">About</a>
-                </li>
-                <li>
-                  <a href="#">Features</a>
-                </li>
-                <li>
-                  <a href="#">Team</a>
-                </li>
-                <li>
-                  <a href="#">Contact</a>
-                </li>
-              </ul>
-            </NavOptions>
-            <LoginOptions>
-              <Button
-                text="Log in"
-                variant="outline"
-                style={{
-                  width: "160px",
-                }}
-              ></Button>
-              <Button
-                text="Sign up"
-                variant="primary"
-                style={{
-                  width: "160px",
-                }}
-              ></Button>
-            </LoginOptions>
-          </Nav>
-        </Col>
+        <HomeNavigation />
+
       </Row>
+
+      <HomeNavigationMobile />
 
       <Header justify="center" align="center" style={{ margin: 0 }}>
         <HeaderContents xxl={4} xl={4} lg={6} md={6}>
