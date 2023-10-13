@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { NavigationHeaderProps } from "./NavigationHeader.props";
 import {
   AvatarWrapper,
+  BellWrapper,
   Container,
   LogOutContainer,
 } from "./NavigationHeader.style";
@@ -19,6 +20,7 @@ import Typography from "components/base/Typography";
 import { logOut } from "features/auth/authSlice";
 import { useSendLogoutMutation } from "features/auth/authApiSlice";
 import { useNavigate } from "react-router";
+import { Bell } from "components/base/SVG";
 
 const NavigationHeader = (props: NavigationHeaderProps): JSX.Element => {
   const broken = useAppSelector(selectBroken);
@@ -64,6 +66,9 @@ const NavigationHeader = (props: NavigationHeaderProps): JSX.Element => {
 
       <div style={{ position: "relative" }}>
         <AvatarWrapper onClick={handleClickInside}>
+          <BellWrapper>
+            <Bell />
+          </BellWrapper>
           <UserAvatar
             email="sprout@langara.ca"
             size="56"

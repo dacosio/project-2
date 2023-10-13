@@ -14,6 +14,9 @@ export const Container = styled.div`
 export const AvatarWrapper = styled.div`
   text-align: right;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 16px;
 `;
 
 export const LogOutContainer = styled.div`
@@ -41,4 +44,10 @@ export const LogOutContainer = styled.div`
   :hover {
     background-color: ${({ theme }) => theme.btn.color.lightest};
   }
+`;
+
+export const BellWrapper = styled.div`
+  padding: 14px 16px;
+  border: 1px solid #d1d1d9;
+  border-radius: 16px;
 `;

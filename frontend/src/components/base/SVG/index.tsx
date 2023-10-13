@@ -1,4 +1,5 @@
 /* PLOP_INJECT_IMPORT */
+export { default as Bell } from './Bell';
 export { default as MagnifierSvg } from './MagnifierSvg';
 export { default as LocationSvg } from './LocationSvg';
 export { default as Leaf } from './Leaf';
