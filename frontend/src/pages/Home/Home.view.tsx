@@ -15,9 +15,6 @@ import {
   UserInfo,
   Message,
   ContactForm,
-  Nav,
-  NavOptions,
-  LoginOptions,
   Hide,
   Column,
   Sacolumn,
@@ -51,10 +48,7 @@ const HomeView = (props: HomeGeneratedProps) => {
         <Sacolumn sm={4}>One of three columns</Sacolumn>
         <Column sm={4}>One of three columns</Column>
       </Header> */}
-      <Row>
         <HomeNavigation />
-
-      </Row>
 
       <HomeNavigationMobile />
 

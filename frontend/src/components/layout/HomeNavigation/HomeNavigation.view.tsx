@@ -5,8 +5,10 @@ import {
   Nav,
   NavOptions,
   LoginOptions,
+  Hidebutton
 } from "./HomeNavigation.style";
 
+import Hamburger from "components/base/Hamburger";
 import { SproutLogo } from "components/base/SVG";
 import Button from "components/base/Button";
 
@@ -14,6 +16,7 @@ const HomeNavigation = (props: HomeNavigationProps): JSX.Element => {
   return (
     <Container>
       <Nav>
+        <Hamburger />
         <NavOptions>
           <SproutLogo width={200} />
           <ul>
@@ -32,13 +35,13 @@ const HomeNavigation = (props: HomeNavigationProps): JSX.Element => {
           </ul>
         </NavOptions>
         <LoginOptions>
-          <Button
+          <Hidebutton
             text="Log in"
             variant="outline"
             style={{
               width: "160px",
             }}
-          ></Button>
+          ></Hidebutton>
           <Button
             text="Sign up"
             variant="primary"

@@ -7,18 +7,17 @@ margin-top: 10rem;
 
 export const NavOptions = styled.div`
 display: flex;
-gap: 2rem;
-padding: 1rem;
+padding: 1rem 2rem;
 ul {
   list-style: none;
   display: flex;
-  gap: 3rem;
+  gap: 2rem;
   flex-flow: column;
   padding: 0;
 }
 a{
   text-decoration: none;
-  color: #57CB62;
+  color: ${theme.brand.primary};
   justify-content: center;
 }
 `;
