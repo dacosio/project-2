@@ -5,7 +5,6 @@ import {
   CropItemContainer,
   ColumnBodyContainer,
   ListColumnContainer,
-  ButtonContainer,
   ColumnHeaderContainer,
   DescriptionContainer,
   DetailColumnContainer,
@@ -13,37 +12,54 @@ import {
   FertilizerContainer,
   SuggestionContainer,
   TipContainer,
+  DescriptionHeaderContainer,
+  DescriptionHeaderLeftContainer,
+  DescriptionHeaderRightContainer,
+  DescriptionFooterContainer,
+  DescriptionFooterLeftContainer,
+  DescriptionFooterRightContainer,
+  InformationHeaderContainer,
+  InformationFooterContainer,
+  SuggestionHeaderContainer,
+  SuggestionFooterContainer,
+  FertilizerHeaderContainer,
+  TipHeaderContainer,
+  TipFooterContainer,
+  FertilizerFooterContainer,
+  TipCircleContainer,
 } from "./YourCrop.style";
 import Typography from "components/base/Typography";
-import { Row } from "react-grid-system";
-import theme from "utils/Theme";
+import { Hidden, Row, Visible } from "react-grid-system";
 import Button from "components/base/Button";
+import CircleProgress from "components/base/CircleProgress";
+import CropCondition from "components/base/CropCondition";
+import { Add, Delete, Favorite } from "components/base/SVG";
+import theme from "utils/Theme";
 
-const YourCropView = (props: YourCropGeneratedProps) => {
-  return (
-    <Container>
-      <Row
-        nogutter
-        style={{
-          width: "100%",
-          gap: "16px",
-          justifyContent: "center",
-          alignItems: "flex-start",
-        }}
+const YourCropView = (props: YourCropGeneratedProps) => (
+  <Container>
+    <Row
+      nogutter
+      style={{
+        width: "100%",
+        justifyContent: "center",
+        alignItems: "flex-end",
+      }}
+    >
+      <ListColumnContainer
+        md={6}
+        style={{ padding: undefined, width: undefined, maxWidth: undefined }}
       >
-        <ListColumnContainer
-          sm={6}
-          style={{ width: undefined, maxWidth: undefined }}
-        >
-          <ColumnHeaderContainer>
-            <Typography variant="title2">Your Crops</Typography>
-          </ColumnHeaderContainer>
-          <ColumnBodyContainer>
+        <ColumnHeaderContainer>
+          <Typography variant="title2">Your Crops</Typography>
+        </ColumnHeaderContainer>
+        <ColumnBodyContainer style={{ gridTemplateRows: "1fr auto" }}>
+          <div>
             <CropItemContainer>
               <Typography variant="body" weight="700">
                 Crop Name
               </Typography>
-              <Typography variant="body">Planted</Typography>
+              <Typography variant="body">PLANTED</Typography>
             </CropItemContainer>
             <CropItemContainer>
               <Typography variant="body">Crop Name</Typography>
@@ -73,24 +89,254 @@ const YourCropView = (props: YourCropGeneratedProps) => {
               <Typography variant="body">Crop Name</Typography>
               <Typography variant="body">Planted</Typography>
             </CropItemContainer>
-            <Button text="New Crop" style={{ justifySelf: "end" }} />
-          </ColumnBodyContainer>
-        </ListColumnContainer>
-        <DetailColumnContainer
-          sm={6}
-          style={{ width: undefined, maxWidth: undefined }}
-        >
-          <ColumnBodyContainer>
-            <DescriptionContainer>h</DescriptionContainer>
-            <InformationContainer>wef</InformationContainer>
-            <FertilizerContainer>ewf</FertilizerContainer>
-            <SuggestionContainer>e</SuggestionContainer>
-            <TipContainer>w</TipContainer>
-          </ColumnBodyContainer>
-        </DetailColumnContainer>
-      </Row>
-    </Container>
-  );
-};
+            <CropItemContainer>
+              <Typography variant="body">Crop Name</Typography>
+              <Typography variant="body">Planted</Typography>
+            </CropItemContainer>
+            <CropItemContainer>
+              <Typography variant="body">Crop Name</Typography>
+              <Typography variant="body">Planted</Typography>
+            </CropItemContainer>
+          </div>
+          <div>
+            <Button
+              iconPosition="before"
+              icon={<Add fill={theme.btn.text.white} />}
+              text="New Crop"
+              style={{ justifySelf: "end" }}
+            />
+          </div>
+        </ColumnBodyContainer>
+      </ListColumnContainer>
+      <DetailColumnContainer
+        md={6}
+        style={{
+          padding: undefined,
+          width: undefined,
+          maxWidth: undefined,
+        }}
+      >
+        <ColumnBodyContainer style={{ gridTemplateRows: "auto 1fr" }}>
+          <div>
+            <DescriptionHeaderContainer>
+              <DescriptionHeaderLeftContainer>
+                <Typography variant="small" textColor="primary">
+                  PLANTED
+                </Typography>
+                <Typography variant="title3">Tomato</Typography>
+              </DescriptionHeaderLeftContainer>
+              <DescriptionHeaderRightContainer>
+                <Button
+                  variant="outline"
+                  iconPosition="before"
+                  icon={<Favorite fill={theme.btn.color.primary} />}
+                  text="Favorite"
+                />
+                <Button
+                  variant="outline"
+                  iconPosition="before"
+                  icon={<Delete fill={theme.btn.color.primary} />}
+                  text="Delete"
+                />
+              </DescriptionHeaderRightContainer>
+            </DescriptionHeaderContainer>
+          </div>
+          <div>
+            <DescriptionContainer>
+              <DescriptionFooterContainer>
+                <DescriptionFooterLeftContainer>
+                  <div>
+                    <Typography variant="body" weight="700">
+                      Estimated Harvest
+                    </Typography>
+                    <Typography variant="body">February 9, 2023</Typography>
+                  </div>
+                  <div>
+                    <Typography variant="body" weight="700">
+                      Date Planted
+                    </Typography>
+                    <Typography variant="body">January 1, 2023</Typography>
+                  </div>
+                  <div>
+                    <Typography variant="body" weight="700">
+                      Estimated Yield
+                    </Typography>
+                    <Typography variant="body">XX</Typography>
+                  </div>
+                </DescriptionFooterLeftContainer>
+                <DescriptionFooterRightContainer>
+                  <CircleProgress
+                    value={40}
+                    maxValue={55}
+                    size="desktop"
+                    title="40"
+                    subtitle="days"
+                    id="progress"
+                    style={{ height: 145, width: 145 }}
+                  />
+                  <Hidden xs sm md lg>
+                    <Typography variant="body" align="center">
+                      Before Estimated Harvest
+                    </Typography>
+                  </Hidden>
+                  <Visible xs sm md lg>
+                    <Typography variant="body">
+                      Before
+                      <br />
+                      Estimated
+                      <br />
+                      Harvest
+                    </Typography>
+                  </Visible>
+                </DescriptionFooterRightContainer>
+              </DescriptionFooterContainer>
+            </DescriptionContainer>
+            <InformationContainer>
+              <InformationHeaderContainer>
+                <Typography variant="title3">Crop Information</Typography>
+              </InformationHeaderContainer>
+              <InformationFooterContainer>
+                <Hidden xs sm md lg>
+                  <div>
+                    <CropCondition title="Temperature" output="s" />
+                  </div>
+                  <div>
+                    <CropCondition title="Temperature" output="s" />
+                  </div>
+                  <div>
+                    <CropCondition title="Temperature" output="s" />
+                  </div>
+                </Hidden>
+                <Visible xs sm md lg>
+                  <div>
+                    <Typography variant="body" weight="700">
+                      Ideal Temperature
+                    </Typography>
+                    <div>
+                      <Typography variant="body">0.0 - 0.0°C</Typography>
+                      <Typography variant="body">0.0 - 0.0°F</Typography>
+                    </div>
+                  </div>
+                  <div>
+                    <Typography variant="body" weight="700">
+                      Ideal Humidity
+                    </Typography>
+                    <div>
+                      <Typography variant="body">00 - 00%</Typography>
+                    </div>
+                  </div>
+                  <div>
+                    <Typography variant="body" weight="700">
+                      Growth Duration
+                    </Typography>
+                    <div>
+                      <Typography variant="body">0 - 0 months</Typography>
+                    </div>
+                  </div>
+                </Visible>
+              </InformationFooterContainer>
+            </InformationContainer>
+            <FertilizerContainer>
+              <FertilizerHeaderContainer>
+                <Typography variant="title3">Fertilizer Composition</Typography>
+              </FertilizerHeaderContainer>
+              <FertilizerFooterContainer>
+                <div>
+                  <Typography variant="body" weight="700">
+                    pH Level
+                  </Typography>
+                  <div>
+                    <Typography variant="body">0.0 - 0.0</Typography>
+                  </div>
+                </div>
+                <div>
+                  <Typography variant="body" weight="700">
+                    Nitrogen (N)
+                  </Typography>
+                  <div>
+                    <Typography variant="body">0</Typography>
+                  </div>
+                </div>
+                <div>
+                  <Typography variant="body" weight="700">
+                    Phosphorus (P)
+                  </Typography>
+                  <div>
+                    <Typography variant="body">0</Typography>
+                  </div>
+                </div>
+                <div>
+                  <Typography variant="body" weight="700">
+                    Potassium (K)
+                  </Typography>
+                  <div>
+                    <Typography variant="body">0</Typography>
+                  </div>
+                </div>
+              </FertilizerFooterContainer>
+            </FertilizerContainer>
+            <SuggestionContainer>
+              <SuggestionHeaderContainer>
+                <Typography variant="title3">You Will Need</Typography>
+              </SuggestionHeaderContainer>
+              <SuggestionFooterContainer>
+                <div>
+                  <Typography variant="body" weight="700">
+                    Organic Compost
+                  </Typography>
+                </div>
+                <div>
+                  <Typography variant="body" weight="700">
+                    Organic Compost
+                  </Typography>
+                </div>
+              </SuggestionFooterContainer>
+            </SuggestionContainer>
+            <TipContainer>
+              <TipHeaderContainer>
+                <Typography variant="title3">Growing Tips</Typography>
+              </TipHeaderContainer>
+              <TipFooterContainer>
+                <div>
+                  <TipCircleContainer>
+                    <Typography variant="title5" weight="700">
+                      1
+                    </Typography>
+                  </TipCircleContainer>
+                  <Typography variant="body">
+                    Grow this produce in the ground, in raised beds, or opt for
+                    container gardening.
+                  </Typography>
+                </div>
+                <div>
+                  <TipCircleContainer>
+                    <Typography variant="title5" weight="700">
+                      2
+                    </Typography>
+                  </TipCircleContainer>
+                  <Typography variant="body">
+                    Choose a spot with at least six to eight hours of sun each
+                    day.
+                  </Typography>
+                </div>
+                <div>
+                  <TipCircleContainer>
+                    <Typography variant="title5" weight="700">
+                      3
+                    </Typography>
+                  </TipCircleContainer>
+                  <Typography variant="body">
+                    Choose a spot with at least six to eight hours of sun each
+                    day.
+                  </Typography>
+                </div>
+              </TipFooterContainer>
+            </TipContainer>
+          </div>
+        </ColumnBodyContainer>
+      </DetailColumnContainer>
+    </Row>
+  </Container>
+);
 
 export default YourCropView;

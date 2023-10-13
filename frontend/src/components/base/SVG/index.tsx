@@ -1,4 +1,7 @@
 /* PLOP_INJECT_IMPORT */
+export { default as Add } from './Add';
+export { default as Delete } from './Delete';
+export { default as Favorite } from './Favorite';
 export { default as Bell } from './Bell';
 export { default as MagnifierSvg } from './MagnifierSvg';
 export { default as LocationSvg } from './LocationSvg';
