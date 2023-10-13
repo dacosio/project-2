@@ -88,7 +88,7 @@ export const DetailColumnContainer = styled(Col)`
   width: 100%;
 
   @media (min-width: 768px) {
-    max-width: 650px;
+    max-width: 600px;
     padding: 0 8px;
   }
 `;
@@ -169,7 +169,8 @@ export const InformationFooterContainer = styled.div`
   }
 
   @media (min-width: 1200px) {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
 
     > div {
