@@ -8,12 +8,12 @@ import { TextFieldProps } from "./TextField.props";
 import {
   Container,
   LeftComponentContainer,
+  RightComponentContainer,
   FieldContainer,
   Field,
   VisibilityContainer,
   Error,
   Prefix,
-  RightComponentContainer,
 } from "./TextField.style";
 
 const TextField = (props: TextFieldProps): JSX.Element => {
@@ -27,12 +27,12 @@ const TextField = (props: TextFieldProps): JSX.Element => {
     placeholder,
     secured,
     error,
-    LeftComponent = null,
-    RightComponent = null,
+    LeftComponent,
+    RightComponent,
     prefix,
     className,
     onChange = () => null,
-    onBlur,
+    onBlur = () => null,
     labelVariant,
     labelWeight,
     style,
@@ -54,12 +54,13 @@ const TextField = (props: TextFieldProps): JSX.Element => {
   };
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     setFocus(false);
+    onBlur(e);
   };
   return (
     <Container className={className} style={style}>
       <Typography
         variant={labelVariant || "body"}
-        color={"shade6"}
+        textColor={"shade6"}
         weight={labelWeight || "500"}
         style={{ marginBottom: "4px" }}
       >
@@ -91,7 +92,7 @@ const TextField = (props: TextFieldProps): JSX.Element => {
         )}
       </FieldContainer>
       {(error || "").length > 0 && (
-        <Error variant="small" color="error">
+        <Error variant="small" textColor="error">
           {error}
         </Error>
       )}

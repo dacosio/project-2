@@ -6,5 +6,5 @@ export interface TagTypeProps {
 
 export const TAG_TYPE: TagTypeProps = {
   USER: "USER",
-  TODO: "TODO",
+  TODO: "TODO"
 };

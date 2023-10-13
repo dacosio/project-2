@@ -6,7 +6,7 @@ import type {
   FetchArgs,
   FetchBaseQueryError,
 } from "@reduxjs/toolkit/query";
-import { TAG_TYPE } from "const/tags";
+import { TAG_TYPE } from "./../../const/tags";
 
 const baseUrl =
   process.env.NODE_ENV === "production"
