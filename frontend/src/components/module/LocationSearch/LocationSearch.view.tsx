@@ -15,7 +15,6 @@ const LocationSearch = (props: LocationSearchProps): JSX.Element => {
     apiKey: process.env.REACT_APP_GOOGLE_PLACES_AUTOCOMPLETE_API_KEY,
   });
 
-  console.log(process.env.REACT_APP_GOOGLE_PLACES_AUTOCOMPLETE_API_KEY!);
   const [value, setValue] = useState("");
   const handleSelectPlace = (item: {
     description: string;
@@ -35,7 +34,7 @@ const LocationSearch = (props: LocationSearchProps): JSX.Element => {
 
   return (
     <Container>
-      {/* <TextField
+      <TextField
         onChange={(evt) => {
           getPlacePredictions({ input: evt.target.value });
           setValue(evt.target.value);
@@ -50,7 +49,7 @@ const LocationSearch = (props: LocationSearchProps): JSX.Element => {
               </Typography>
             </div>
           ))}
-      </ResultsContainer> */}
+      </ResultsContainer>
     </Container>
   );
 };

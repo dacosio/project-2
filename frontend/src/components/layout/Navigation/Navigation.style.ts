@@ -5,6 +5,7 @@ export const SideBarContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
+  background-color: #ffffff;
 `;
 export const SideBarMenuTitle = styled.div`
   padding: 0 26px;
@@ -14,4 +15,5 @@ export const SideBarMenuTitle = styled.div`
 export const SideBarWrapper = styled.div`
   flex: 1;
   margin-bottom: 32px;
+  background-color: #ffffff;
 `;
