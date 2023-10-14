@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { HomeGeneratedProps } from "./Home.props";
 import {
   Container,
@@ -38,6 +38,23 @@ import { SproutLogo } from "components/base/SVG";
 import WeatherCard from "./../../components/base/WeatherCard";
 import Search from "./../../components/base/Search";
 import LocationSearch from "components/module/LocationSearch";
+
+import emailjs from '@emailjs/browser';
+
+export const ContactUs = () => {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_buhpmve', 'template_caubnyp', form.current, 'XjkLA79uvMpAgWV9B')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
+  };
+
 
 const HomeView = (props: HomeGeneratedProps) => {
   const [email, setEmail] = useState<string>("");
@@ -199,7 +216,7 @@ const HomeView = (props: HomeGeneratedProps) => {
             </Typography>
           </Visible>
 
-          <Form action="">
+          <Form ref={form} onSubmit={sendEmail}>
             <UserInfo>
               <TextField
                 label="Name"
