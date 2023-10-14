@@ -11,6 +11,7 @@ const BaseContainer = styled.div`
   // flex-direction: column;
   padding: 10px;
   width: 100%;
+  box-sizing: border-box;
 `;
 
 const CenterContainer = styled(BaseContainer)`
@@ -20,6 +21,7 @@ const CenterContainer = styled(BaseContainer)`
   width: 100%;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
 `;
 
 /**

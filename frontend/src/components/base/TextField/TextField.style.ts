@@ -1,73 +1,80 @@
 import styled from "@emotion/styled";
+import { theme } from "../../../utils/Theme";
 
 import Typography from "../../base/Typography";
-
-export const Container = styled.div``;
 
 const fontStyle = `
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
-  line-height: 24px;
-  
+  line-height: 24px;  
+`;
+
+export const Container = styled.div`
+  display: grid;
+  gap: 4px;
 `;
 
 export const FieldContainer = styled.div<{ error: boolean }>`
+  padding: 12px 8px;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-top: 4px;
-  width: 100%;
-  height: 48px;
-  box-sizing: border-box;
   border-radius: 4px;
-  border: 1px solid black;
+  // border: 1px solid black;
+  align-items: center;
+  gap: 4px;
+  flex-grow: 1;
 
   background-color: ${({ theme }) => {
     return theme.grey.noshade;
   }};
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
+  :focus-within {
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
+  }
 `;
 
 export const Field = styled.input`
+  ${fontStyle};
   background-color: ${({ theme }) => theme.grey.noshade};
-  display: flex;
-  flex: 1;
-  border-radius: 4px;
-  // padding: 12px 16px;
-  border: 0;
-  // height: 100%;
-  color: 1px solid ${({ theme }) => theme.grey.shade9};
+  color: ${({ theme }) => theme.text.primary};
+  flex-grow: 1;
+  border: none;
   :focus {
     outline: none;
   }
-  ${fontStyle};
+  :placeholder {
+    color: ${({ theme }) => theme.text.disabled};
+  }
 `;
 
-export const LeftComponentContainer = styled.div`
+export const LeftComponentContainer = styled.div<{ focus?: boolean }>`
+  padding-right: 1.5px;
+  // border-right: 1px solid ${({ theme }) => theme.grey.shade5};
   display: flex;
-  width: 48px;
-  height: 100%;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  border-right: 1px solid ${({ theme }) => theme.grey.shade5};
+  & > svg > path {
+    fill: ${({ theme, focus }) =>
+    focus ? theme.btn.color.primary : theme.text.disabled};
+  }
 `;
 
+export const RightComponentContainer = styled.div`
+  padding-left: 4px;
+  border-left: 1px solid ${({ theme }) => theme.grey.shade5};
+  display: flex;
+  align-items: center;
+`
 export const VisibilityContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: center;
-  padding-right: 10px;
-  padding-left: 4px;
+  cursor: pointer;
+  align-items: center;
 `;
 
 export const Error = styled(Typography)`
-  margin-top: 4px;
+  padding: 0 8px;
 `;
 
 export const Prefix = styled.span`
-  padding-left: 12px;
   color: ${(props) => props.theme.grey.shade8};
   ${fontStyle};
 `;

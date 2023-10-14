@@ -61,7 +61,7 @@ const disabled: Record<Variants, string> = {
 
 const border: Record<Variants, string> = {
   primary: "none",
-  outline: `1px solid ${theme.btn.color.pressed}`,
+  outline: `1.5px solid ${theme.btn.color.pressed}`,
   elevated: "none",
   tonal: "none",
   ghost: "none",

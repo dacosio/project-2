@@ -5,4 +5,5 @@
 /backend/logs/
 **/*.env
 .vscode
-.DS_Store`
+.DS_Store
+.github/

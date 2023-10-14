@@ -22,7 +22,6 @@ import {
   Column,
   Sacolumn,
 } from "./Home.style";
-import Typography from "components/base/Typography";
 import TextField from "components/base/TextField";
 import Button from "components/base/Button";
 import axios from "axios";
@@ -37,6 +36,10 @@ import icon3 from "images/icon3.png";
 import contact from "images/contact.png";
 import Footer from "components/layout/Footer";
 import { SproutLogo } from "components/base/SVG";
+import Typography from "./../../components/base/Typography";
+import WeatherCard from "./../../components/base/WeatherCard";
+import Search from "./../../components/base/Search";
+import LocationSearch from "components/module/LocationSearch";
 
 const HomeView = (props: HomeGeneratedProps) => {
   const [email, setEmail] = useState<string>("");
