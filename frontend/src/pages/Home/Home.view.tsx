@@ -36,6 +36,9 @@ import icon3 from "images/icon3.png";
 import contact from "images/contact.png";
 import Footer from "components/layout/Footer";
 import { SproutLogo } from "components/base/SVG";
+import WeatherCard from "./../../components/base/WeatherCard";
+import Search from "./../../components/base/Search";
+import LocationSearch from "components/module/LocationSearch";
 
 const HomeView = (props: HomeGeneratedProps) => {
   const [email, setEmail] = useState<string>("");
@@ -48,7 +51,7 @@ const HomeView = (props: HomeGeneratedProps) => {
         <Sacolumn sm={4}>One of three columns</Sacolumn>
         <Column sm={4}>One of three columns</Column>
       </Header> */}
-        <HomeNavigation />
+      <HomeNavigation />
 
       <HomeNavigationMobile />
 
@@ -67,7 +70,7 @@ const HomeView = (props: HomeGeneratedProps) => {
           >
             <TextField
               value={email}
-              onChangeText={setEmail}
+              setValue={setEmail}
               placeholder="user@nomail.com"
               style={{ flexGrow: "1" }}
             />
@@ -203,14 +206,14 @@ const HomeView = (props: HomeGeneratedProps) => {
               <TextField
                 label="Name"
                 value={name}
-                onChangeText={setName}
+                setValue={setName}
                 placeholder="Juan Dela Cruz"
                 style={{ flexGrow: "1", flexBasis: "0" }}
               />
               <TextField
                 label="Email"
                 value={email}
-                onChangeText={setEmail}
+                setValue={setEmail}
                 placeholder="user@nomail.com"
                 style={{ flexGrow: "1", flexBasis: "0" }}
               />

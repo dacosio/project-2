@@ -38,10 +38,8 @@ import { useTheme } from "@emotion/react";
 
 const Navigation = (props: NavigationProps): JSX.Element => {
   const theme = useTheme();
-  const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useAppDispatch();
-  const [sendLogout] = useSendLogoutMutation();
   const collapseState = useAppSelector(selectCollapse);
   const toggleState = useAppSelector(selectToggle);
 
@@ -112,7 +110,7 @@ const Navigation = (props: NavigationProps): JSX.Element => {
       breakPoint="md"
       width="288px"
       rootStyles={{
-          backgroundColor: theme.bg.primary,
+        backgroundColor: theme.bg.primary,
       }}
     >
       <SideBarContainer>
@@ -231,15 +229,6 @@ const Navigation = (props: NavigationProps): JSX.Element => {
             </MenuItem>
           </Menu>
         </SideBarWrapper>
-        {/* <Button
-          onClick={() => {
-            sendLogout();
-            navigate("/", { replace: true }); 
-          }}
-          variant="outline"
-          text="Logout"
-          size="md"
-        /> */}
       </SideBarContainer>
     </Sidebar>
   );
