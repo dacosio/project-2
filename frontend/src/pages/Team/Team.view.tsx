@@ -1,6 +1,6 @@
 import React from "react";
 import { TeamGeneratedProps } from "./Team.props";
-import { Container, Wrapper } from "./Team.style";
+import { Container, ListContainer, Wrapper } from "./Team.style";
 import Typography from "components/base/Typography";
 import { Row, Col } from "react-grid-system";
 import MemberCard from "components/base/MemberCard";
@@ -18,7 +18,10 @@ const TeamView = (props: TeamGeneratedProps) => {
           Check out these passionate developers, designers, and creative problem
           solvers
         </Typography>
-        <Row style={{ width: "100%" }} nogutter>
+        <ListContainer
+          style={{ width: "100%", justifyContent: undefined }}
+          nogutter
+        >
           {members.map((member, index) => (
             <Col
               sm={6}
@@ -27,6 +30,7 @@ const TeamView = (props: TeamGeneratedProps) => {
               style={{
                 padding: "16px",
                 display: "grid",
+                maxWidth: "300px",
               }}
             >
               <MemberCard
@@ -37,7 +41,7 @@ const TeamView = (props: TeamGeneratedProps) => {
               />
             </Col>
           ))}
-        </Row>
+        </ListContainer>
       </Wrapper>
     </Container>
   );
