@@ -2,6 +2,10 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import {
   /* PLOP_INJECT_IMPORT */
+  IconSoil,
+  IconClock,
+  IconHumidity,
+  IconTemperature,
   AddImage,
   Bell,
   MagnifierSvg,
@@ -45,6 +49,18 @@ const meta: Meta = {
   component: () => (
     <Container background="white">
       {/* PLOP_INJECT_INSTANCE*/}
+        <Wrapper label="IconSoil">
+          <IconSoil width={30} height={30} />
+        </Wrapper>
+        <Wrapper label="IconClock">
+          <IconClock width={30} height={30} />
+        </Wrapper>
+        <Wrapper label="IconHumidity">
+          <IconHumidity width={30} height={30} />
+        </Wrapper>
+        <Wrapper label="IconTemperature">
+          <IconTemperature width={30} height={30} />
+        </Wrapper>
         <Wrapper label="AddImage">
           <AddImage width={30} height={30} />
         </Wrapper>

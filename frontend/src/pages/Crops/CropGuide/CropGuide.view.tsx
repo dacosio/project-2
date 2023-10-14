@@ -6,19 +6,19 @@ import CropCondition from './../../../components/base/CropCondition'
 const CropGuideView = (props: CropGuideGeneratedProps) => {
   const conditions = [
     {
-      title: "Temperature",
+      title: "Ideal Temperature",
       output: "21-27°C"
     },
     {
-      title: "Humidity",
+      title: "Ideal Humidity",
       output: "65-85%"
     },
     {
-      title: "Expected Harvest",
+      title: "Growth Duration",
       output: "50-65 days"
     },
     {
-      title: "Yield Prediction (fruits per crop)",
+      title: "Soil pH",
       output: "150-200"
     }
   ]

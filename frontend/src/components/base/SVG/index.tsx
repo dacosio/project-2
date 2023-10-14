@@ -1,4 +1,8 @@
 /* PLOP_INJECT_IMPORT */
+export { default as IconSoil } from './IconSoil';
+export { default as IconClock } from './IconClock';
+export { default as IconHumidity } from './IconHumidity';
+export { default as IconTemperature } from './IconTemperature';
 export { default as AddImage } from './AddImage';
 export { default as Bell } from './Bell';
 export { default as MagnifierSvg } from './MagnifierSvg';

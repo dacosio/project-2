@@ -2,10 +2,10 @@ import React from 'react';
 import { CropConditionProps, ConditionTitle } from './CropCondition.props';
 import { Container, ContentContainer, Logo, Temps } from './CropCondition.style';
 import Typography from './../Typography';
-import Clock from '../SVG/Clock';
-import Thermometer from '../SVG/Thermometer';
-import Hygrometer from '../SVG/Hygrometer';
-import Apple from '../SVG/Apple';
+import IconClock from '../SVG/IconClock';
+import IconTemperature from '../SVG/IconTemperature';
+import IconHumidity from '../SVG/IconHumidity';
+import IconSoil from '../SVG/IconSoil';
 
 
 const CropCondition = (props: CropConditionProps): JSX.Element => {
@@ -13,13 +13,13 @@ const CropCondition = (props: CropConditionProps): JSX.Element => {
   const renderSVG = () => {
     switch (title) {
       case ConditionTitle.Temperature:
-        return <Thermometer />;
+        return <IconTemperature />;
       case ConditionTitle.Humidity:
-        return <Hygrometer />;
-      case ConditionTitle.ExpectedHarvest:
-        return <Apple />;
+        return <IconHumidity />;
       case ConditionTitle.Yield:
-        return <Clock />;
+        return <IconClock />;
+      case ConditionTitle.SoilPh:
+        return <IconSoil />;
       default:
         return null;
     }
