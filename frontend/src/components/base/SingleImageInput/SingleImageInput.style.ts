@@ -11,10 +11,12 @@ export const InputContainer = styled.div`
   display: grid;
   align-items: center;
   justify-items: center;
+  cursor: pointer;
 `;
 
 export const Image = styled.img`
   width: 100%;
   border-radius: 50%;
   aspect-ratio: 1;
+  cursor: pointer;
 `;

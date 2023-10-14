@@ -8,23 +8,53 @@ import { ImageType } from "react-images-uploading";
 const meta: Meta<typeof SingleImageInput> = {
   title: "Base/SingleImageInput",
   component: () => {
-    const [image, setImage] = useState<ImageType | undefined>(undefined);
+    const [image1, setImage1] = useState<ImageType | undefined>(undefined);
+    const [image2, setImage2] = useState<ImageType | undefined>(undefined);
 
     useEffect(() => {
-      console.log(image?.dataURL);
-    }, [image]);
+      console.log(image1);
+    }, [image1]);
+
+    useEffect(() => {
+      console.log(image2);
+    }, [image2]);
+
+    useEffect(() => {
+      const main = async () => {
+        const response = await fetch("https://picsum.photos/300/300");
+        const blob = await response.blob();
+        const file = new File([blob], "image.jpg");
+        const fileReader = new FileReader();
+        fileReader.onload = () => {
+          setImage2({ dataURL: fileReader.result?.toString(), file: file });
+        };
+        fileReader.readAsDataURL(blob);
+      };
+      main();
+    }, []);
 
     return (
       <Container>
         <SingleImageInput
-          image={image}
-          setImage={setImage}
+          image={image1}
+          setImage={setImage1}
           style={{ width: "300px" }}
         />
         <SingleImageInput
-          image={image}
+          image={image1}
           sizing="mobile"
-          setImage={setImage}
+          setImage={setImage1}
+          style={{ width: "150px" }}
+        />
+        <SingleImageInput
+          image={image2}
+          setImage={setImage2}
+          style={{ width: "300px" }}
+        />
+        <SingleImageInput
+          image={image2}
+          sizing="mobile"
+          setImage={setImage2}
           style={{ width: "150px" }}
         />
       </Container>

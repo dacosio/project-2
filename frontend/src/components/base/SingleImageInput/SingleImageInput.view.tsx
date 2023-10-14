@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SingleImageInputProps } from "./SingleImageInput.props";
 import { Container, Image, InputContainer } from "./SingleImageInput.style";
 import ImageUploading, {
   ErrorsType,
   ImageListType,
-  ImageType,
 } from "react-images-uploading";
 import { AddImage } from "../SVG";
 
@@ -15,6 +14,10 @@ const SingleImageInput = (props: SingleImageInputProps): JSX.Element => {
     image ? [image] : []
   );
 
+  useEffect(() => {
+    setInputImages(image ? [image] : []);
+  }, [image]);
+
   const onChange = async (value: ImageListType) => {
     setInputImages(value);
     setImage(value[0]);
@@ -23,8 +26,10 @@ const SingleImageInput = (props: SingleImageInputProps): JSX.Element => {
   const handleOnError = (error: ErrorsType) => {
     if (error?.maxNumber) {
     }
+
     if (error?.acceptType) {
     }
+
     if (error?.maxFileSize) {
     }
   };
