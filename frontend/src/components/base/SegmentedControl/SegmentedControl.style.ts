@@ -1,15 +1,10 @@
 import styled from "@emotion/styled";
-import { theme } from "../../../utils/Theme";
-
-
 
 export const Container = styled.div`
-  height: 40px;
+  height: 38px;
   width: 100%;
-  // box-shadow: 0px 12px 24px rgba(41, 43, 50, 0.25);
-  box-shadow: 0px 6px 12px rgba(41, 43, 50, 0.12);
-  background: ${(props) => props.theme.grey.shade9};
-  border-radius: 4px;
+  background: ${(props) => props.theme.bg.primary};
+  border-radius: 8px;
 
   display: inline-flex;
   flex-direction: row;
@@ -19,59 +14,14 @@ export const Container = styled.div`
   }
 `;
 
-const ControlButtonColor: Record<'buyer' | 'seller', string> = {
-  buyer: theme.grey.shade8,
-  seller: theme.grey.noshade,
-};
-
-const ControlButtonTextColor = (
-  active: boolean,
-): string => {
-
-    return active ? theme.grey.shade9 : theme.grey.noshade;
-};
-
 export const ControlButton = styled.button<{ active: boolean }>`
   height: 100%;
   min-width: 90px;
   width: 100%;
-  border-radius: 4px;
+  border-radius: 8px;
   border: none;
-  background: ${(props) => (props.active ? props.theme.grey.shade9 : "none")};
-
-  /* Text Properties */
-  font-size: 14px;
-  color: ${(props) =>
-    ControlButtonTextColor(props.active)};
-  font-weight: 500;
-  line-height: 24px;
-
+  background: ${(props) => (props.active ? props.theme.brand.green : "none")};
   display: flex;
-  justify-content: center;
   align-items: center;
-
-  :focus {
-    outline: none;
-  }
-
-  .tooltip {
-    margin-left: 6px;
-    margin-bottom: 4px;
-  }
-
-  .tooltip .tooltip-text {
-    visibility: hidden;
-    width: 320px;
-    background-color: black;
-    color: ${() => theme.grey.noshade};
-    text-align: center;
-    border-radius: 6px;
-    padding: 8px;
-    position: absolute;
-    z-index: 1;
-  }
-
-  .tooltip:hover .tooltip-text {
-    visibility: visible;
-  }
+  justify-content: center;
 `;

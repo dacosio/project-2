@@ -2,6 +2,7 @@ import React from "react";
 import { Row, Col } from "react-grid-system";
 import { SegmentedControlProps } from "./SegmentedControl.props";
 import { Container, ControlButton } from "./SegmentedControl.style";
+import Typography from "../Typography";
 
 const SegmentedControl = (props: SegmentedControlProps): JSX.Element => {
   const { options, selectedOption, onClickControl, tooltips } = props;
@@ -17,14 +18,18 @@ const SegmentedControl = (props: SegmentedControlProps): JSX.Element => {
             <Col key={option}>
               <ControlButton
                 active={option === selectedOption}
-                onClick={() => onClickControl(option)}
-              >
-                {option}
+                onClick={() => onClickControl(option)}>
+                <Typography
+                  variant="body"
+                  weight="500"
+                  textColor={option === selectedOption ? "invert" : "shade9"}>
+                  {option}
+                </Typography>
               </ControlButton>
             </Col>
           );
         })}
-      </Row>{" "}
+      </Row>
     </Container>
   );
 };

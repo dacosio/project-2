@@ -7,7 +7,7 @@ import Wrapper from "../../components/Wrapper";
 const meta: Meta<typeof SegmentedControl> = {
   title: "Base/SegmentedControl",
   component: () => {
-    const MOCK_OPTIONS = ["Today", "7-day", "15-day"];
+    const MOCK_OPTIONS = ["Today", "15-day"];
     const [state, setState] = useState(MOCK_OPTIONS[0]);
     return (
       <Container>

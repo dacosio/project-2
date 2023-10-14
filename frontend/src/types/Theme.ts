@@ -10,6 +10,7 @@ export type Theme = {
     success: string;
     warning: string;
     error: string;
+    green: string;
   };
   grey: {
     shade1: string;
