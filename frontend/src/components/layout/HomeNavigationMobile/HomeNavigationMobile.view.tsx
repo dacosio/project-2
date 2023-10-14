@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { HomeNavigationMobileProps } from "./HomeNavigationMobile.props";
 import { 
   Container,
@@ -8,8 +8,9 @@ import {
 const HomeNavigationMobile = (
   props: HomeNavigationMobileProps
 ): JSX.Element => {
+
   return (
-    <Container>
+    <Container className={props.open ? "visible" : "hidden"}>
         <NavOptions>
           <ul>
             <li>

@@ -1,24 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { HomeNavigationProps } from "./HomeNavigation.props";
 import {
   Container,
   Nav,
   NavOptions,
   LoginOptions,
-  Hidebutton
+  Hidebutton,
+  Logo
 } from "./HomeNavigation.style";
 
 import Hamburger from "components/base/Hamburger";
 import { SproutLogo } from "components/base/SVG";
 import Button from "components/base/Button";
+import { useMediaQuery } from "utils/hooks/useMediaQuery";
+import HomeNavigationMobile from "../HomeNavigationMobile";
 
 const HomeNavigation = (props: HomeNavigationProps): JSX.Element => {
+  const [open, setOpen] = useState(false);
+  
+  const matches = useMediaQuery("(min-width: 992px)");
+  
+  console.log(matches)
+
   return (
     <Container>
       <Nav>
-        <Hamburger />
+        <Hamburger open={open} toggleOpen={() => setOpen(!open)} />
         <NavOptions>
-          <SproutLogo width={200} />
+          <Logo width={ matches? 200 : 99}/>
           <ul>
             <li>
               <a href="#">About</a>
@@ -38,16 +47,12 @@ const HomeNavigation = (props: HomeNavigationProps): JSX.Element => {
           <Hidebutton
             text="Log in"
             variant="outline"
-            style={{
-              width: "160px",
-            }}
+            style={matches? {width: "160px"} : {width: "100px"}}
           ></Hidebutton>
           <Button
             text="Sign up"
             variant="primary"
-            style={{
-              width: "160px",
-            }}
+            style={matches? {width: "160px"} : {width: "100px"}}
           ></Button>
         </LoginOptions>
       </Nav>

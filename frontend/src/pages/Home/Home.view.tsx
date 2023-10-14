@@ -25,7 +25,6 @@ import Button from "components/base/Button";
 import axios from "axios";
 import { Col, Row, Visible, Hidden } from "react-grid-system";
 import HomeNavigation from "components/layout/HomeNavigation";
-import HomeNavigationMobile from "components/layout/HomeNavigationMobile";
 
 //Images
 import headerImg from "images/headerImg.png";
@@ -53,7 +52,6 @@ const HomeView = (props: HomeGeneratedProps) => {
       </Header> */}
       <HomeNavigation />
 
-      <HomeNavigationMobile />
 
       <Header justify="center" align="center" style={{ margin: 0 }}>
         <HeaderContents xxl={4} xl={4} lg={6} md={6}>

@@ -1,8 +1,13 @@
 import styled from "@emotion/styled";
 import { theme } from "../../../utils/Theme";
 import Button from "components/base/Button";
+import { SproutLogo } from "components/base/SVG";
 
-export const Container = styled.div``;
+export const Container = styled.div`
+position: fixed;
+width: 100%;
+z-index: 1000;
+`;
 
 export const Nav = styled.nav`
   display: flex;
@@ -14,28 +19,27 @@ export const Nav = styled.nav`
   background-color: #f4f6f9
   
   @media (min-width: 768px) {
-    justify-content: space-around;
+
     align-items: center;
     overflow: hidden;
-    position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1000;
   }
 `;
 
 export const NavOptions = styled.div`
   ul {
     display: none;
+    padding-left: 0;
   }
   @media (min-width: 768px) {
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
     align-items: center;
     ul {
       list-style: none;
       display: flex;
-      gap: 3rem;
+      gap: 2rem;
     }
     a {
       text-decoration: none;
@@ -58,3 +62,6 @@ display:none;
     display: flex;   
   }
 `;
+
+export const Logo = styled(SproutLogo)``;
+
