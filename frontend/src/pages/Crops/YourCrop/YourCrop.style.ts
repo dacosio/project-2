@@ -7,6 +7,7 @@ export const Container = styled.div`
   margin: auto;
   padding: 16px;
   background-color: white;
+  gap: 32px;
 
   @media (min-width: 768px) {
     background-color: inherit;
@@ -14,8 +15,6 @@ export const Container = styled.div`
 `;
 
 export const ListColumnContainer = styled(Col)`
-  display: grid;
-  gap: 16px;
   width: 100%;
 
   @media (min-width: 768px) {
@@ -23,8 +22,6 @@ export const ListColumnContainer = styled(Col)`
     padding: 0 8px;
   }
 `;
-
-export const ColumnHeaderContainer = styled.div``;
 
 export const ColumnBodyContainer = styled.div`
   background-color: white;
@@ -93,24 +90,19 @@ export const DetailColumnContainer = styled(Col)`
   }
 `;
 
-export const DescriptionContainer = styled.div`
-  display: grid;
-  gap: 16px;
-`;
-
-export const DescriptionHeaderContainer = styled.div`
+export const TitleContainer = styled.div`
   display: flex;
   justify-content: space-between;
 `;
 
-export const DescriptionHeaderLeftContainer = styled.div``;
+export const TitleLeftContainer = styled.div``;
 
-export const DescriptionHeaderRightContainer = styled.div`
+export const TitleRightContainer = styled.div`
   display: flex;
   gap: 16px;
 `;
 
-export const DescriptionFooterContainer = styled.div`
+export const DescriptionContainer = styled.div`
   display: flex;
   gap: 16px;
   flex-direction: column-reverse;
@@ -121,7 +113,7 @@ export const DescriptionFooterContainer = styled.div`
   }
 `;
 
-export const DescriptionFooterLeftContainer = styled.div`
+export const DescriptionLeftContainer = styled.div`
   flex-grow: 1;
   display: grid;
 
@@ -137,7 +129,7 @@ export const DescriptionFooterLeftContainer = styled.div`
   }
 `;
 
-export const DescriptionFooterRightContainer = styled.div`
+export const DescriptionRightContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;

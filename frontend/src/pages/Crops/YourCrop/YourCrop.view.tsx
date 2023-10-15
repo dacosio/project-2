@@ -5,19 +5,17 @@ import {
   CropItemContainer,
   ColumnBodyContainer,
   ListColumnContainer,
-  ColumnHeaderContainer,
   DescriptionContainer,
   DetailColumnContainer,
   InformationContainer,
   FertilizerContainer,
   SuggestionContainer,
   TipContainer,
-  DescriptionHeaderContainer,
-  DescriptionHeaderLeftContainer,
-  DescriptionHeaderRightContainer,
-  DescriptionFooterContainer,
-  DescriptionFooterLeftContainer,
-  DescriptionFooterRightContainer,
+  TitleContainer,
+  TitleLeftContainer,
+  TitleRightContainer,
+  DescriptionLeftContainer,
+  DescriptionRightContainer,
   InformationHeaderContainer,
   InformationFooterContainer,
   SuggestionHeaderContainer,
@@ -43,6 +41,7 @@ const YourCropView = (props: YourCropGeneratedProps) => {
 
   return (
     <Container>
+      <Typography variant="title2">Your Crops</Typography>
       <Row
         nogutter
         style={{
@@ -55,9 +54,6 @@ const YourCropView = (props: YourCropGeneratedProps) => {
           md={6}
           style={{ padding: undefined, width: undefined, maxWidth: undefined }}
         >
-          <ColumnHeaderContainer>
-            <Typography variant="title2">Your Crops</Typography>
-          </ColumnHeaderContainer>
           <ColumnBodyContainer style={{ gridTemplateRows: "auto 1fr auto" }}>
             <div>
               <Tab
@@ -74,7 +70,7 @@ const YourCropView = (props: YourCropGeneratedProps) => {
                     {crop.name}
                   </Typography>
                   <Typography
-                    variant="body"
+                    variant="small"
                     weight="700"
                     style={{
                       color: crop.isPlanted
@@ -107,8 +103,8 @@ const YourCropView = (props: YourCropGeneratedProps) => {
         >
           <ColumnBodyContainer style={{ gridTemplateRows: "auto 1fr" }}>
             <div>
-              <DescriptionHeaderContainer>
-                <DescriptionHeaderLeftContainer>
+              <TitleContainer>
+                <TitleLeftContainer>
                   <Typography
                     variant="small"
                     weight="700"
@@ -117,8 +113,8 @@ const YourCropView = (props: YourCropGeneratedProps) => {
                     PLANTED
                   </Typography>
                   <Typography variant="title3">Tomato</Typography>
-                </DescriptionHeaderLeftContainer>
-                <DescriptionHeaderRightContainer>
+                </TitleLeftContainer>
+                <TitleRightContainer>
                   <Hidden xs sm md lg>
                     <Button
                       variant="outline"
@@ -145,71 +141,69 @@ const YourCropView = (props: YourCropGeneratedProps) => {
                       icon={<Delete fill={theme.btn.color.primary} />}
                     />
                   </Visible>
-                </DescriptionHeaderRightContainer>
-              </DescriptionHeaderContainer>
+                </TitleRightContainer>
+              </TitleContainer>
             </div>
             <div>
               <DescriptionContainer>
-                <DescriptionFooterContainer>
-                  <DescriptionFooterLeftContainer>
-                    <div>
-                      <Typography variant="body" weight="700">
-                        Estimated Harvest
-                      </Typography>
-                      <Typography variant="body">February 9, 2023</Typography>
-                    </div>
-                    <div>
-                      <Typography variant="body" weight="700">
-                        Date Planted
-                      </Typography>
-                      <Typography variant="body">January 1, 2023</Typography>
-                    </div>
-                    <div>
-                      <Typography variant="body" weight="700">
-                        Estimated Yield
-                      </Typography>
-                      <Typography variant="body">XX</Typography>
-                    </div>
-                  </DescriptionFooterLeftContainer>
-                  <DescriptionFooterRightContainer>
-                    <Hidden xs sm md lg>
-                      <CircleProgress
-                        value={40}
-                        maxValue={55}
-                        size="desktop"
-                        title="40"
-                        subtitle="days"
-                        id="progress"
-                        style={{ height: 145, width: 145 }}
-                      />
-                    </Hidden>
-                    <Visible xs sm md lg>
-                      <CircleProgress
-                        value={40}
-                        maxValue={55}
-                        size="mobile"
-                        title="40"
-                        subtitle="days"
-                        id="progress"
-                        style={{ height: 96, width: 96 }}
-                      />
-                    </Visible>
-                    <Hidden xs sm md lg>
-                      <Typography variant="body" align="center">
-                        Before Estimated Harvest
-                      </Typography>
-                    </Hidden>
-                    <Visible xs sm md lg>
-                      <Typography variant="body">
-                        Before
-                        <br />
-                        Estimated
-                        <br />
-                        Harvest
-                      </Typography>
-                    </Visible>
-                  </DescriptionFooterRightContainer>
-                </DescriptionFooterContainer>
+                <DescriptionLeftContainer>
+                  <div>
+                    <Typography variant="body" weight="700">
+                      Estimated Harvest
+                    </Typography>
+                    <Typography variant="body">February 9, 2023</Typography>
+                  </div>
+                  <div>
+                    <Typography variant="body" weight="700">
+                      Date Planted
+                    </Typography>
+                    <Typography variant="body">January 1, 2023</Typography>
+                  </div>
+                  <div>
+                    <Typography variant="body" weight="700">
+                      Estimated Yield
+                    </Typography>
+                    <Typography variant="body">XX</Typography>
+                  </div>
+                </DescriptionLeftContainer>
+                <DescriptionRightContainer>
+                  <Hidden xs sm md lg>
+                    <CircleProgress
+                      value={40}
+                      maxValue={55}
+                      size="desktop"
+                      title="40"
+                      subtitle="days"
+                      id="progress"
+                      style={{ height: 145, width: 145 }}
+                    />
+                  </Hidden>
+                  <Visible xs sm md lg>
+                    <CircleProgress
+                      value={40}
+                      maxValue={55}
+                      size="mobile"
+                      title="40"
+                      subtitle="days"
+                      id="progress"
+                      style={{ height: 96, width: 96 }}
+                    />
+                  </Visible>
+                  <Hidden xs sm md lg>
+                    <Typography variant="body" align="center">
+                      Before Estimated Harvest
+                    </Typography>
+                  </Hidden>
+                  <Visible xs sm md lg>
+                    <Typography variant="body">
+                      Before
+                      <br />
+                      Estimated
+                      <br />
+                      Harvest
+                    </Typography>
+                  </Visible>
+                </DescriptionRightContainer>
               </DescriptionContainer>
               <InformationContainer>
                 <InformationHeaderContainer>
