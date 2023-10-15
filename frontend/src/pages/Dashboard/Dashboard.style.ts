@@ -1,5 +1,8 @@
 import styled from "@emotion/styled";
-import { theme } from "utils/Theme";
+import { Container, Row, Col } from "react-grid-system";
 
+export const Wrapper = styled(Container)``;
 
-export const Container = styled.div``;
+export const RowTitle = styled(Row)`
+  margin-bottom: 31px;
+`;
