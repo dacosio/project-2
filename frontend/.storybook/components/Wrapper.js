@@ -1,14 +1,14 @@
-const Wrapper = ({ children, label = "" }) => {
+const Wrapper = ({ children, label = "", ...rest }) => {
   return (
     <div
       style={{
-        marginLeft: 16,
-        marginTop: 16,
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
         boxSizing: "border-box",
+        gap: 20,
+        ...rest
       }}
     >
       {children}

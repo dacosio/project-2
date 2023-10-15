@@ -9,16 +9,35 @@ const meta: Meta<typeof HarvestCard> = {
   component: () => {
     return (
       <Container>
-        <HarvestCard
-          cropName="Carrot"
-          maxValue={100}
-          value={65}
-          title="65"
-          subtitle="days"
-          style={{ height: 145, width: 145 }}
-          size="desktop"
-          id="1"
-        />
+        <Wrapper>
+          <HarvestCard
+            cropName="Carrot"
+            maxValue={100}
+            value={65}
+            title="65"
+            subtitle="days"
+            size="desktop"
+            id="1"
+            datePlanted="Jan 1, 2023"
+            estYield="xx lb/plant"
+            height={137}
+            width={137}
+          />
+          <HarvestCard
+            cropName="Carrot"
+            maxValue={100}
+            value={25}
+            title="25"
+            subtitle="days"
+            size="desktop"
+            id="2"
+            datePlanted="Jan 1, 2023"
+            estYield="xx lb/plant"
+            height={82}
+            width={82}
+            mobile
+          />
+        </Wrapper>
       </Container>
     );
   },

@@ -2,4 +2,9 @@ import { CircleProgressProps } from "../../base/CircleProgress/CircleProgress.pr
 
 export interface HarvestCardProps extends CircleProgressProps {
   cropName: string;
+  datePlanted: string;
+  estYield: string;
+  height: number;
+  width: number;
+  mobile?: boolean;
 }
