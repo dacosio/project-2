@@ -80,6 +80,11 @@ export const theme: Theme = {
       tokenPressed: "#242236",
     },
   },
+  prog: {
+    quarter: "#5DE3B3",
+    half: "#78CFFF",
+    full: "#6C57ED",
+  },
 };
 
 export default theme;

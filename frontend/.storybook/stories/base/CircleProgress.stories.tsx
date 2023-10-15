@@ -10,26 +10,74 @@ const meta: Meta<typeof CircleProgress> = {
     return (
       <Container>
         <Wrapper>
-          <CircleProgress
-            maxValue={100}
-            value={90}
-            title="90"
-            subtitle="days"
-            style={{ height: 145, width: 145 }}
-            size="desktop"
-            id="desktop"
-          />
+          <Wrapper>
+            <CircleProgress
+              maxValue={100}
+              value={100}
+              title="90"
+              subtitle="days"
+              style={{ height: 145, width: 145 }}
+              size="desktop"
+              id="1"
+            />
+          </Wrapper>
+          <Wrapper>
+            <CircleProgress
+              maxValue={100}
+              value={51}
+              title="51"
+              subtitle="days"
+              style={{ height: 145, width: 145 }}
+              size="desktop"
+              id="2"
+            />
+          </Wrapper>
+          <Wrapper>
+            <CircleProgress
+              maxValue={100}
+              value={25}
+              title="25"
+              subtitle="days"
+              style={{ height: 145, width: 145 }}
+              size="desktop"
+              id="3"
+            />
+          </Wrapper>
         </Wrapper>
         <Wrapper>
-          <CircleProgress
-            maxValue={100}
-            value={65}
-            title="65"
-            subtitle="days"
-            style={{ height: 96, width: 96 }}
-            size="mobile"
-            id="mobile"
-          />
+          <Wrapper>
+            <CircleProgress
+              maxValue={100}
+              value={100}
+              title="90"
+              subtitle="days"
+              style={{ height: 96, width: 96 }}
+              size="desktop"
+              id="4"
+            />
+          </Wrapper>
+          <Wrapper>
+            <CircleProgress
+              maxValue={100}
+              value={51}
+              title="51"
+              subtitle="days"
+              style={{ height: 96, width: 96 }}
+              size="desktop"
+              id="5"
+            />
+          </Wrapper>
+          <Wrapper>
+            <CircleProgress
+              maxValue={100}
+              value={25}
+              title="25"
+              subtitle="days"
+              style={{ height: 96, width: 96 }}
+              size="desktop"
+              id="6"
+            />
+          </Wrapper>
         </Wrapper>
       </Container>
     );
