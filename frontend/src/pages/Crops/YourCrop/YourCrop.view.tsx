@@ -217,8 +217,9 @@ const YourCropView = (props: YourCropGeneratedProps) => {
                 </InformationHeaderContainer>
                 <InformationFooterContainer>
                   <Hidden xs sm md lg>
-                    <div>
+                    {/* <div>
                       <CropCondition
+
                         variant="temperature"
                         description="0.0 - 0.0°C"
                       />
@@ -234,7 +235,7 @@ const YourCropView = (props: YourCropGeneratedProps) => {
                         variant="duration"
                         description="0 - 0 months"
                       />
-                    </div>
+                    </div> */}
                   </Hidden>
                   <Visible xs sm md lg>
                     <div>
