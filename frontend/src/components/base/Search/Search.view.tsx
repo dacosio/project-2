@@ -6,7 +6,13 @@ import useDebounce from './../../../utils/hooks/useDebounce'
 import SearchResult from './../SearchResult'
 import { AiOutlineCloseCircle, AiOutlineSearch } from 'react-icons/ai'
 
-const Search = ({ onSearch, searchResults }: SearchProps): JSX.Element => {
+const Search = (props: SearchProps): JSX.Element => {
+  const {
+    onSearch,
+    searchResults,
+    dynamicPlaceholder
+  } = props
+
   const [searchTerm, setSearchTerm] = useState('');
   const delay = 500;
   const debouncedSearchTerm = useDebounce(searchTerm, delay);
@@ -37,10 +43,9 @@ const Search = ({ onSearch, searchResults }: SearchProps): JSX.Element => {
             />
         }
         type='search'
-        label='Search'
         value={searchTerm}
         onChange={handleSearch}
-        placeholder="Input Text Here">
+        placeholder={dynamicPlaceholder}>
       </TextField>
       {searchTerm && <SearchResult searchResults={searchResults} delay={delay} />}
     </Container>

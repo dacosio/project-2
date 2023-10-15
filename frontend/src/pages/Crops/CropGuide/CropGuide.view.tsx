@@ -2,6 +2,8 @@ import React from 'react';
 import { CropGuideGeneratedProps } from './CropGuide.props';
 import { Container, Conditions, GridLayout } from './CropGuide.style';
 import CropCondition from './../../../components/base/CropCondition'
+import Typography from 'components/base/Typography';
+import Search from 'components/base/Search';
 
 const CropGuideView = (props: CropGuideGeneratedProps) => {
   const conditions = [
@@ -29,18 +31,20 @@ const CropGuideView = (props: CropGuideGeneratedProps) => {
     )
   }
 
-  return (
-    <GridLayout>
-      <Container key="1" className="col-lg-5">
-        <div style={{ height: '400px' }}></div>
-        <Conditions>
+  {/* <Conditions>
           {getCondition()}
-        </Conditions>
-      </Container>
-      <Container key="2" className="col-lg-3-5">Content 2</Container>
-      <Container key="3" className="col-lg-3-5">Content 3</Container>
+        </Conditions> */}
 
-    </GridLayout>
+  return (
+    <Container>
+      <div>
+        <Typography variant='title2'>Crop Guide</Typography>
+        <Typography variant='subtitle'>Have a crop or two you want to plant?<br />Get tips on growing them from us!</Typography>
+        <Search dynamicPlaceholder='Search for crop, plants, fruits etc...' onSearch={function (searchTerm: string): void {
+          throw new Error('Function not implemented.');
+        }} searchResults={undefined} />
+      </div>
+    </Container>
   );
 };
 
