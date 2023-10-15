@@ -13,30 +13,7 @@ import Rainy from "../SVG/Rainy";
 import axios from "axios";
 
 const WeatherCard = (props: WeatherCardProps): JSX.Element => {
-  const [weatherData, setWeatherData] = useState<{ [key: string]: any }>({});
-
-  const date = new Date();
-  const apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/vancouver?unitGroup=metric&key=${process.env.REACT_APP_WEATHER_API_KEY}&contentType=json`;
-
-  useEffect(() => {
-    // get data from weather API and use the data on setWeatherData
-    const onFetchWeather = () =>
-      axios
-        .get(apiUrl)
-        .then((response) => {
-          // Set the response data in the component's state
-          setWeatherData(response.data);
-          console.log(weatherData);
-        })
-        .catch((error) => {
-          // Handle any errors and set the error in the component's state
-          setWeatherData({});
-          console.log(error);
-        });
-
-    onFetchWeather();
-  }, []);
-
+  const { weatherData, ...weatherCardProps } = props;
   return (
     <Container>
       {weatherData && weatherData.days && weatherData.days.length > 0 ? (
