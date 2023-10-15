@@ -1,11 +1,10 @@
-export interface CropConditionProps {
-    title: string,
-    output: string
-}
+export type Variant = "temperature" | "humidity" | "duration" | "yield" | "ph";
 
-export enum ConditionTitle {
-    Temperature = 'Temperature',
-    Humidity = 'Humidity',
-    ExpectedHarvest = 'Expected Harvest',
-    Yield = 'Yield Prediction (fruits per crop)',
+export type Sizing = "mobile" | "desktop";
+
+export interface CropConditionProps {
+  variant: Variant;
+  sizing?: Sizing;
+  title?: string;
+  description: string;
 }

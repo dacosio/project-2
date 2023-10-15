@@ -65,8 +65,8 @@ export const ColumnBodyContainer = styled.div`
 
 export const CropItemContainer = styled.div`
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
-  border-radius: 16px;
-  padding: 20px 28px;
+  border-radius: 8px;
+  padding: 8px 28px;
   display: flex;
   justify-content: space-between;
   margin: 1px;
@@ -177,6 +177,7 @@ export const InformationFooterContainer = styled.div`
       display: block;
       margin: 1px;
       flex-grow: 1;
+      padding: unset;
     }
 
     > div:not(:last-child) {
