@@ -73,4 +73,9 @@ export type Theme = {
       tokenPressed: string;
     };
   };
+  prog: {
+    quarter: string;
+    half: string;
+    full:string;
+  }
 };

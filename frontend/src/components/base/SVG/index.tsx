@@ -1,4 +1,5 @@
 /* PLOP_INJECT_IMPORT */
+export { default as ThreeDots } from "./ThreeDots";
 export { default as AddImage } from "./AddImage";
 export { default as Add } from "./Add";
 export { default as Delete } from "./Delete";

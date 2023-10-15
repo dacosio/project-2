@@ -1,1 +1,3 @@
-export interface NavigationHeaderProps {}
+export interface NavigationHeaderProps {
+  sectionName: string;
+}

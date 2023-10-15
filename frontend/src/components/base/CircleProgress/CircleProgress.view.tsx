@@ -10,13 +10,22 @@ const CircleProgress = (props: CircleProgressProps): JSX.Element => {
   const { value, title, subtitle, size, maxValue, id, ...rest } = props;
   const theme = useTheme();
   useCountUp({ ref: id, end: Number(title) });
+
+  const strokeColor = () => {
+    let stroke: string = "";
+    const res = value / maxValue;
+    if (res <= 0.25) stroke = theme.prog.quarter;
+    else if (res >= 0.5 && res < 1) stroke = theme.prog.half;
+    else if (res === 1) stroke = theme.prog.full;
+    return stroke;
+  };
   return (
     <Container {...rest}>
       <CircularProgressbarWithChildren
         styles={{
           path: {
             strokeWidth: 8,
-            stroke: theme.text.accent,
+            stroke: strokeColor(),
           },
         }}
         value={value}
@@ -26,16 +35,16 @@ const CircleProgress = (props: CircleProgressProps): JSX.Element => {
       >
         <Wrapper>
           <Typography
-            variant={size === "mobile" ? "title3" : "title2"}
-            weight="500"
+            variant={size === "mobile" ? "title4" : "title3"}
+            weight="700"
             textColor="secondary"
             id={id}
           >
             {title}
           </Typography>
           <Typography
-            variant={size === "mobile" ? "title5" : "title4"}
-            weight="500"
+            variant={size === "mobile" ? "body" : "title5"}
+            weight="700"
             textColor="secondary"
             style={{ marginTop: "-10px" }}
           >
