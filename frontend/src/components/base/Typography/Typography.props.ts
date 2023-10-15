@@ -13,7 +13,8 @@ export type Variants =
   | "subtitle"
   | "mobile"
   | "tag"
-  | "btn";
+  | "btn"
+  | "crop";
 
 export interface TypographyProps extends HTMLAttributes<HTMLParagraphElement> {
   children: any;

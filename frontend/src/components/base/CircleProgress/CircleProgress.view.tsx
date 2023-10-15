@@ -35,16 +35,16 @@ const CircleProgress = (props: CircleProgressProps): JSX.Element => {
       >
         <Wrapper>
           <Typography
-            variant={size === "mobile" ? "title3" : "title2"}
-            weight="500"
+            variant={size === "mobile" ? "title4" : "title3"}
+            weight="700"
             textColor="secondary"
             id={id}
           >
             {title}
           </Typography>
           <Typography
-            variant={size === "mobile" ? "title5" : "title4"}
-            weight="500"
+            variant={size === "mobile" ? "body" : "title5"}
+            weight="700"
             textColor="secondary"
             style={{ marginTop: "-10px" }}
           >
