@@ -9,14 +9,12 @@ import { disableReactDevTools } from "@fvilers/disable-react-devtools";
 import { ThemeProvider } from "@emotion/react";
 import theme from "./utils/Theme";
 import { Theme } from "types/Theme";
-import { register } from "swiper/element/bundle";
 // import { Theme } from "@emotion/react";
 
 // if (process.env.NODE_ENV === "production") disableReactDevTools();
 
 const container = document.getElementById("root")!;
 const root = createRoot(container);
-register();
 
 // this is for future prefetch necessities
 // store.dispatch(todosApiSlice.endpoints.getTodos.initiate());

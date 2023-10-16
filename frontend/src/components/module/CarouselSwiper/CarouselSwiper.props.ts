@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 
 export interface CarouselSwiperProps {
-  component: ReactNode[];
+  slides: any[];
   slidesPerView: number;
+  spaceBetween: number;
 }

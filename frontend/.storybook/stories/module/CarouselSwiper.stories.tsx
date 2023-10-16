@@ -7,13 +7,13 @@ import HarvestCard from "../../../src/components/module/HarvestCard";
 
 const meta: Meta<typeof CarouselSwiper> = {
   title: "Module/CarouselSwiper",
-
   component: () => {
     return (
       <Container>
         <CarouselSwiper
-          slidesPerView={4}
-          component={[
+          slidesPerView={2}
+          spaceBetween={16}
+          slides={[
             <HarvestCard
               cropName="Carrot"
               maxValue={100}

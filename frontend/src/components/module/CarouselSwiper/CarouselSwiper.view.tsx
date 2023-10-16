@@ -1,33 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+import { register } from "swiper/element/bundle";
 import { CarouselSwiperProps } from "./CarouselSwiper.props";
-/* eslint-disable jsx-a11y/alt-text */
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { Pagination } from "swiper/modules";
 
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
-// import "swiper/css/free-mode";
-// import "swiper/css/navigation";
-// import "swiper/css/thumbs";
 
 const CarouselSwiper = (props: CarouselSwiperProps): JSX.Element => {
+  useEffect(() => {
+    // Register Swiper web component
+    register();
+  }, []);
+
   return (
     <Swiper
       modules={[Pagination]}
-      // spaceBetween={50}
+      spaceBetween={props.spaceBetween}
       slidesPerView={props.slidesPerView}
       pagination={{ clickable: true }}
       scrollbar={{ draggable: true }}
+      autoplay={{ delay: 2500 }}
+      loop
     >
-      {props.component.map((c, idx) => {
+      {props.slides.map((c, idx) => {
         return (
           <>
-            <SwiperSlide key={idx} virtualIndex={idx}>
-              {c}
-            </SwiperSlide>
+            <SwiperSlide key={idx}>{c}</SwiperSlide>
           </>
         );
       })}
