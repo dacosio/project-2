@@ -58,9 +58,16 @@ const YourCropView = (props: YourCropGeneratedProps) => {
         }}
       >
         <ListColumnContainer
-          md={5}
+          md={crop ? 5 : 8}
           style={{ padding: undefined, width: undefined, maxWidth: undefined }}
         >
+          <Visible xs sm>
+            <div style={{ paddingBottom: "48px" }}>
+              <Typography variant="title3" weight="700">
+                Your Crops
+              </Typography>
+            </div>
+          </Visible>
           <CropList
             crops={crops}
             handleOnClickCrop={handleOnClickCrop}
