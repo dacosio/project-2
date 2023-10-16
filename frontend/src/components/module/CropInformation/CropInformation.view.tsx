@@ -54,8 +54,8 @@ const CropInformation = (props: CropInformationProps): JSX.Element => {
 
   const Suggestions = (
     <>
-      {suggestions.map((suggestion) => (
-        <div>
+      {suggestions.map((suggestion, index) => (
+        <div key={index}>
           <Typography variant="body" weight="700">
             {suggestion}
           </Typography>
@@ -67,7 +67,7 @@ const CropInformation = (props: CropInformationProps): JSX.Element => {
   const Tips = (
     <>
       {tips.map((tip, index) => (
-        <div>
+        <div key={index}>
           <TipCircleContainer>
             <Typography variant="title5" weight="700">
               {index + 1}
