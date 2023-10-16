@@ -9,7 +9,7 @@ export const Container = styled.div`
 
   > div {
     display: flex;
-    gap: 16px;
+    gap: 8px;
     overflow-y: auto;
     flex-direction: column;
 
@@ -35,7 +35,7 @@ export const Container = styled.div`
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
     padding: 32px 20px;
     border-radius: 20px;
-    height: 600px;
+    height: 700px;
   }
 `;
 

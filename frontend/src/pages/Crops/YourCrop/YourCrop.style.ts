@@ -5,7 +5,7 @@ import { theme } from "utils/Theme";
 export const Container = styled.div`
   display: grid;
   margin: auto;
-  padding: 16px;
+  padding: 32px;
   background-color: white;
   gap: 32px;
 
@@ -18,7 +18,6 @@ export const ListColumnContainer = styled(Col)`
   width: 100%;
 
   @media (min-width: 768px) {
-    max-width: 600px;
     padding: 0 8px;
   }
 `;
@@ -85,7 +84,6 @@ export const DetailColumnContainer = styled(Col)`
   width: 100%;
 
   @media (min-width: 768px) {
-    max-width: 600px;
     padding: 0 8px;
   }
 `;

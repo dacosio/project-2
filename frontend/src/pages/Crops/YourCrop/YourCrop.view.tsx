@@ -49,17 +49,16 @@ const YourCropView = (props: YourCropGeneratedProps) => {
 
   return (
     <Container>
-      <Typography variant="title2">Your Crops</Typography>
       <Row
         nogutter
         style={{
           width: "100%",
           justifyContent: "center",
-          alignItems: "flex-end",
+          justifySelf: "center",
         }}
       >
         <ListColumnContainer
-          md={6}
+          md={5}
           style={{ padding: undefined, width: undefined, maxWidth: undefined }}
         >
           <CropList
@@ -70,7 +69,7 @@ const YourCropView = (props: YourCropGeneratedProps) => {
         </ListColumnContainer>
         {crop && (
           <DetailColumnContainer
-            md={6}
+            md={7}
             style={{
               padding: undefined,
               width: undefined,
