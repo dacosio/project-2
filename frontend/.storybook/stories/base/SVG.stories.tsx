@@ -2,6 +2,9 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import {
   /* PLOP_INJECT_IMPORT */
+  ThreeDots,
+  AddImage,
+  Bell,
   MagnifierSvg,
   LocationSvg,
   Leaf,
@@ -43,6 +46,15 @@ const meta: Meta = {
   component: () => (
     <Container background="white">
       {/* PLOP_INJECT_INSTANCE*/}
+        <Wrapper label="ThreeDots">
+          <ThreeDots width={30} height={30} />
+        </Wrapper>
+        <Wrapper label="AddImage">
+          <AddImage width={30} height={30} />
+        </Wrapper>
+        <Wrapper label="Bell">
+          <Bell width={30} height={30} />
+        </Wrapper>
       <Wrapper label="MagnifierSvg">
         <MagnifierSvg width={30} height={30} fill="green" />
       </Wrapper>
