@@ -1,31 +1,10 @@
 import styled from "@emotion/styled";
-import { Col, Hidden } from "react-grid-system";
-import { theme } from "utils/Theme";
+import { theme } from "../../../utils/Theme";
 
 export const Container = styled.div`
-  display: grid;
-  margin: auto;
-  padding: 16px;
-  background-color: white;
-  gap: 32px;
-
-  @media (min-width: 768px) {
-    background-color: inherit;
-  }
-`;
-
-export const ListColumnContainer = styled(Col)`
-  width: 100%;
-
-  @media (min-width: 768px) {
-    max-width: 600px;
-    padding: 0 8px;
-  }
-`;
-
-export const ColumnBodyContainer = styled.div`
   background-color: white;
   display: grid;
+  grid-template-rows: auto 1fr;
   gap: 16px;
 
   > div {
@@ -57,36 +36,6 @@ export const ColumnBodyContainer = styled.div`
     padding: 32px 20px;
     border-radius: 20px;
     height: 600px;
-  }
-`;
-
-// export const CropItemContainer = styled.div`
-//   box-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
-//   border-radius: 8px;
-//   padding: 8px 28px;
-//   display: flex;
-//   justify-content: space-between;
-//   margin: 1px;
-//   box-sizing: border-box;
-
-//   :hover {
-//     background-color: ${({ theme }) => theme.btn.color.outlineBg};
-//   }
-// `;
-
-// export const ButtonContainer = styled.div`
-//   display: grid;
-//   justify-items: end;
-// `;
-
-export const DetailColumnContainer = styled(Col)`
-  display: grid;
-  gap: 16px;
-  width: 100%;
-
-  @media (min-width: 768px) {
-    max-width: 600px;
-    padding: 0 8px;
   }
 `;
 

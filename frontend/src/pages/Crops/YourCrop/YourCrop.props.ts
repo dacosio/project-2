@@ -2,8 +2,10 @@ import { Option } from "components/base/Tab/Tab.props";
 import { Dispatch, SetStateAction } from "react";
 
 export interface YourCropGeneratedProps {
-  options: Option[];
-  value: string | undefined;
-  setValue: Dispatch<SetStateAction<string | undefined>>;
-  crops: { name: string; isPlanted: boolean }[];
+  crops: { id: string; name: string; isPlanted: boolean }[];
+  crop?: { id: string; name: string; isPlanted: boolean };
+  handleOnClickCrop: (id: string) => void;
+  handleOnCreateCrop: () => void;
+  handleOnFavorite: (id: string) => void;
+  handleOnDelete: (id: string) => void;
 }
