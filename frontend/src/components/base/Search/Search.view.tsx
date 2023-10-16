@@ -8,18 +8,15 @@ import { AiOutlineCloseCircle, AiOutlineSearch } from 'react-icons/ai'
 
 const Search = (props: SearchProps): JSX.Element => {
   const {
+    dynamicPlaceholder,
     onSearch,
-    searchResults,
-    dynamicPlaceholder
+    delay,
+    searchTerm,
+    handleSearch,
+    setSearchTerm
   } = props
-
-  const [searchTerm, setSearchTerm] = useState('');
-  const delay = 500;
+  console.log(searchTerm)
   const debouncedSearchTerm = useDebounce(searchTerm, delay);
-
-  const handleSearch = (e: { target: { value: string } }) => {
-    setSearchTerm(e.target.value);
-  };
 
   useEffect(() => {
     if (debouncedSearchTerm) {
@@ -47,7 +44,6 @@ const Search = (props: SearchProps): JSX.Element => {
         onChange={handleSearch}
         placeholder={dynamicPlaceholder}>
       </TextField>
-      {searchTerm && <SearchResult searchResults={searchResults} delay={delay} />}
     </Container>
   )
 };
