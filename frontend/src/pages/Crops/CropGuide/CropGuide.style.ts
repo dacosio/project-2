@@ -25,6 +25,22 @@ export const Body = styled.div`
 
 `
 
+export const AllCrop = styled.div`
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    row-gap: 1rem;
+    margin: 2rem 0;
+
+    @media screen and (min-width: 768px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media screen and (min-width: 1200px) {
+        grid-template-columns: repeat(5, 1fr);
+    }
+`
+
 export const Conditions = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
