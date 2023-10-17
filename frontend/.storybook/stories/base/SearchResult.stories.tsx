@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import SearchResult from "../../../src/components/base/SearchResult";
 import Container from "../../components/Container";
@@ -9,9 +9,13 @@ const meta: Meta<typeof SearchResult> = {
   component: () => {
     return (
       <Container>
-        <SearchResult delay={500} searchResults={undefined} />
+        <SearchResult
+          delay={500}
+          searchResults={undefined}
+          searchTerm="Tomato"
+        />
       </Container>
-    )
+    );
   },
 };
 
