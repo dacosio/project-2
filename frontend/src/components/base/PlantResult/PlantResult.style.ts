@@ -8,6 +8,9 @@ export const Container = styled.div`
     width: fit-content;
     overflow: hidden;
 `
+export const AnchorTag = styled.a`
+    text-decoration: none;
+`
 
 export const ImageHolder = styled.div`
     img {

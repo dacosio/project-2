@@ -15,6 +15,7 @@ const meta: Meta<typeof PlantResult> = {
           imgWidth="190px"
           imgHeight="190px"
           cropName="Plant"
+          link="http://localhost:3000/crop-guide/#"
         />
       </Container>
     );
