@@ -1,4 +1,6 @@
 /* PLOP_INJECT_IMPORT */
+export { default as ArrowDown } from './ArrowDown';
+export { default as ArrowUp } from './ArrowUp';
 export { default as ThreeDots } from './ThreeDots';
 export { default as AddImage } from './AddImage';
 export { default as Bell } from './Bell';
