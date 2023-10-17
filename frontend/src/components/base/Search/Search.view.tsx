@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { SearchProps } from './Search.props';
-import { Container } from './Search.style';
-import TextField from './../TextField'
-import useDebounce from './../../../utils/hooks/useDebounce'
-import SearchResult from './../SearchResult'
-import { AiOutlineCloseCircle, AiOutlineSearch } from 'react-icons/ai'
+import React, { useState, useEffect } from "react";
+import { SearchProps } from "./Search.props";
+import { Container } from "./Search.style";
+import TextField from "./../TextField";
+import useDebounce from "./../../../utils/hooks/useDebounce";
+import SearchResult from "./../SearchResult";
+import { AiOutlineCloseCircle, AiOutlineSearch } from "react-icons/ai";
+import { MagnifierSvg } from "../SVG";
 
 const Search = (props: SearchProps): JSX.Element => {
   const {
@@ -13,9 +14,9 @@ const Search = (props: SearchProps): JSX.Element => {
     delay,
     searchTerm,
     handleSearch,
-    setSearchTerm
-  } = props
-  console.log(searchTerm)
+    setSearchTerm,
+  } = props;
+  console.log(searchTerm);
   const debouncedSearchTerm = useDebounce(searchTerm, delay);
 
   useEffect(() => {
@@ -28,24 +29,23 @@ const Search = (props: SearchProps): JSX.Element => {
     <Container>
       <TextField
         RightComponent={
-          searchTerm ?
+          searchTerm ? (
             <AiOutlineCloseCircle
               size="20px"
               style={{ cursor: "pointer" }}
-              onClick={() => setSearchTerm('')}
-            /> :
-            <AiOutlineSearch
-              size="20px"
-              style={{ cursor: "pointer" }}
+              onClick={() => setSearchTerm("")}
             />
+          ) : (
+            <MagnifierSvg width={20} />
+          )
         }
-        type='search'
+        type="search"
         value={searchTerm}
         onChange={handleSearch}
-        placeholder={dynamicPlaceholder}>
-      </TextField>
+        placeholder={dynamicPlaceholder}
+      ></TextField>
     </Container>
-  )
+  );
 };
 
 export default React.memo(Search);

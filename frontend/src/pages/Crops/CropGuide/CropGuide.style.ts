@@ -4,7 +4,8 @@ import { theme } from "utils/Theme";
 
 export const Container = styled.div`
    max-width: 1021px;
-   margin: 1.5rem auto;
+   margin: auto;
+   padding: 1.5rem;
 `;
 
 export const Header = styled.div`
