@@ -36,6 +36,7 @@ import theme from "utils/Theme";
 import Tab from "components/base/Tab";
 import CropList from "components/module/CropList";
 import CropDetail from "components/module/CropDetail";
+import CropInformation from "components/module/CropInformation";
 
 const YourCropView = (props: YourCropGeneratedProps) => {
   const {

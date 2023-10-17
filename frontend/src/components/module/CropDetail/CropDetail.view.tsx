@@ -5,19 +5,6 @@ import {
   DescriptionContainer,
   DescriptionLeftContainer,
   DescriptionRightContainer,
-  FertilizerContainer,
-  FertilizerFooterContainer,
-  FertilizerHeaderContainer,
-  InformationContainer,
-  InformationFooterContainer,
-  InformationHeaderContainer,
-  SuggestionContainer,
-  SuggestionFooterContainer,
-  SuggestionHeaderContainer,
-  TipCircleContainer,
-  TipContainer,
-  TipFooterContainer,
-  TipHeaderContainer,
   TitleContainer,
   TitleLeftContainer,
   TitleRightContainer,
@@ -28,6 +15,7 @@ import { useTheme } from "../../../utils/Theme";
 import { Hidden, Visible } from "react-grid-system";
 import { Delete, Favorite } from "../../base/SVG";
 import CircleProgress from "../../base/CircleProgress";
+import CropInformation from "../CropInformation";
 
 const CropDetail = (props: CropDetailProps): JSX.Element => {
   const { crop, handleOnFavorite, handleOnDelete } = props;
@@ -151,154 +139,22 @@ const CropDetail = (props: CropDetailProps): JSX.Element => {
             </Visible>
           </DescriptionRightContainer>
         </DescriptionContainer>
-        <InformationContainer>
-          <InformationHeaderContainer>
-            <Typography variant="title3">Crop Information</Typography>
-          </InformationHeaderContainer>
-          <InformationFooterContainer>
-            <Hidden xs sm md lg>
-              {/* <div>
-          <CropCondition
-
-            variant="temperature"
-            description="0.0 - 0.0°C"
-          />
-        </div>
-        <div>
-          <CropCondition
-            variant="humidity"
-            description="00 - 00%"
-          />
-        </div>
-        <div>
-          <CropCondition
-            variant="duration"
-            description="0 - 0 months"
-          />
-        </div> */}
-            </Hidden>
-            <Visible xs sm md lg>
-              <div>
-                <Typography variant="body" weight="700">
-                  Ideal Temperature
-                </Typography>
-                <div>
-                  <Typography variant="body">0.0 - 0.0°C</Typography>
-                </div>
-              </div>
-              <div>
-                <Typography variant="body" weight="700">
-                  Ideal Humidity
-                </Typography>
-                <div>
-                  <Typography variant="body">00 - 00%</Typography>
-                </div>
-              </div>
-              <div>
-                <Typography variant="body" weight="700">
-                  Growth Duration
-                </Typography>
-                <div>
-                  <Typography variant="body">0 - 0 months</Typography>
-                </div>
-              </div>
-            </Visible>
-          </InformationFooterContainer>
-        </InformationContainer>
-        <FertilizerContainer>
-          <FertilizerHeaderContainer>
-            <Typography variant="title3">Fertilizer Composition</Typography>
-          </FertilizerHeaderContainer>
-          <FertilizerFooterContainer>
-            <div>
-              <Typography variant="body" weight="700">
-                pH Level
-              </Typography>
-              <div>
-                <Typography variant="body">0.0 - 0.0</Typography>
-              </div>
-            </div>
-            <div>
-              <Typography variant="body" weight="700">
-                Nitrogen (N)
-              </Typography>
-              <div>
-                <Typography variant="body">0</Typography>
-              </div>
-            </div>
-            <div>
-              <Typography variant="body" weight="700">
-                Phosphorus (P)
-              </Typography>
-              <div>
-                <Typography variant="body">0</Typography>
-              </div>
-            </div>
-            <div>
-              <Typography variant="body" weight="700">
-                Potassium (K)
-              </Typography>
-              <div>
-                <Typography variant="body">0</Typography>
-              </div>
-            </div>
-          </FertilizerFooterContainer>
-        </FertilizerContainer>
-        <SuggestionContainer>
-          <SuggestionHeaderContainer>
-            <Typography variant="title3">You Will Need</Typography>
-          </SuggestionHeaderContainer>
-          <SuggestionFooterContainer>
-            <div>
-              <Typography variant="body" weight="700">
-                Organic Compost
-              </Typography>
-            </div>
-            <div>
-              <Typography variant="body" weight="700">
-                Organic Compost
-              </Typography>
-            </div>
-          </SuggestionFooterContainer>
-        </SuggestionContainer>
-        <TipContainer>
-          <TipHeaderContainer>
-            <Typography variant="title3">Growing Tips</Typography>
-          </TipHeaderContainer>
-          <TipFooterContainer>
-            <div>
-              <TipCircleContainer>
-                <Typography variant="title5" weight="700">
-                  1
-                </Typography>
-              </TipCircleContainer>
-              <Typography variant="body">
-                Grow this produce in the ground, in raised beds, or opt for
-                container gardening.
-              </Typography>
-            </div>
-            <div>
-              <TipCircleContainer>
-                <Typography variant="title5" weight="700">
-                  2
-                </Typography>
-              </TipCircleContainer>
-              <Typography variant="body">
-                Choose a spot with at least six to eight hours of sun each day.
-              </Typography>
-            </div>
-            <div>
-              <TipCircleContainer>
-                <Typography variant="title5" weight="700">
-                  3
-                </Typography>
-              </TipCircleContainer>
-              <Typography variant="body">
-                Choose a spot with at least six to eight hours of sun each day.
-              </Typography>
-            </div>
-          </TipFooterContainer>
-        </TipContainer>
+        <CropInformation
+          ph="0.0 - 0.0"
+          nitrogen="0"
+          phosphorus="0"
+          potassium="0"
+          suggestions={[
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "Phasellus aliquam metus nec nulla ullamcorper tempor.",
+            "Pellentesque vitae urna ut lectus mattis ullamcorper et ac felis.",
+          ]}
+          tips={[
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "Phasellus aliquam metus nec nulla ullamcorper tempor.",
+            "Pellentesque vitae urna ut lectus mattis ullamcorper et ac felis.",
+          ]}
+        />
       </div>
     </Container>
   );

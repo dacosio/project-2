@@ -5,12 +5,13 @@ import { theme } from "utils/Theme";
 export const Container = styled.div`
   display: grid;
   margin: auto;
-  padding: 32px;
+  padding: 16px;
   background-color: white;
   gap: 32px;
 
   @media (min-width: 768px) {
     background-color: inherit;
+    padding: 32px;
   }
 `;
 

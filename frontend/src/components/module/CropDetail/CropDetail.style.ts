@@ -36,6 +36,10 @@ export const Container = styled.div`
     padding: 32px 20px;
     border-radius: 20px;
     height: 700px;
+
+    > div:last-of-type {
+      padding-right: 16px;
+    }
   }
 `;
 
@@ -88,106 +92,4 @@ export const DescriptionRightContainer = styled.div`
   @media (min-width: 1200px) {
     flex-direction: column;
   }
-`;
-
-export const InformationContainer = styled.div`
-  display: grid;
-  gap: 16px;
-`;
-
-export const InformationHeaderContainer = styled.div``;
-
-export const InformationFooterContainer = styled.div`
-  > div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 0;
-  }
-
-  > div:not(:last-child) {
-    border-bottom: 1px solid ${({ theme }) => theme.neutral.n20};
-  }
-
-  @media (min-width: 1200px) {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-
-    > div {
-      display: block;
-      margin: 1px;
-      flex-grow: 1;
-      padding: unset;
-    }
-
-    > div:not(:last-child) {
-      border-bottom: none;
-    }
-  }
-`;
-
-export const FertilizerContainer = styled.div``;
-
-export const FertilizerHeaderContainer = styled.div``;
-
-export const FertilizerFooterContainer = styled.div`
-  > div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 0;
-  }
-
-  > div:not(:last-child) {
-    border-bottom: 1px solid ${({ theme }) => theme.neutral.n20};
-  }
-
-  @media (min-width: 1200px) {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 16px;
-
-    > div:nth-last-child(2) {
-      border-bottom: none;
-    }
-  }
-`;
-
-export const SuggestionContainer = styled.div`
-  display: grid;
-  gap: 16px;
-`;
-
-export const SuggestionHeaderContainer = styled.div``;
-
-export const SuggestionFooterContainer = styled.div`
-  > div {
-    border-bottom: 1px solid ${({ theme }) => theme.neutral.n20};
-    padding: 16px 0;
-  }
-`;
-
-export const TipContainer = styled.div``;
-
-export const TipHeaderContainer = styled.div``;
-
-export const TipFooterContainer = styled.div`
-  > div {
-    border-bottom: 1px solid ${({ theme }) => theme.neutral.n20};
-    padding: 16px 0;
-    display: flex;
-    gap: 16px;
-  }
-`;
-
-export const TipCircleContainer = styled.div`
-  background-color: ${({ theme }) => theme.neutral.n20};
-  width: 30px;
-  height: 30px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  display: grid;
-  justify-items: center;
-  align-items: center;
 `;
