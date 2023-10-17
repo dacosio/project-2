@@ -1,4 +1,8 @@
 /* PLOP_INJECT_IMPORT */
+export { default as Soil } from './Soil';
+export { default as Clock } from './Clock';
+export { default as Temperature } from './Temperature';
+export { default as Humidity } from './Humidity';
 export { default as ArrowDown } from "./ArrowDown";
 export { default as ArrowUp } from "./ArrowUp";
 export { default as ThreeDots } from "./ThreeDots";
