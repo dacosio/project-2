@@ -6,14 +6,15 @@ import useGoogle from "react-google-autocomplete/lib/usePlacesAutocompleteServic
 import Typography from "components/base/Typography";
 
 const LocationSearch = (props: LocationSearchProps): JSX.Element => {
+  const apiKey: string | undefined = process.env.REACT_APP_PLACES_API;
+
   const {
     placesService,
     placePredictions,
     getPlacePredictions,
     isPlacePredictionsLoading,
   } = useGoogle({
-    apiKey: "AIzaSyCNOhz4j0j5jbKFbxMlOzbghKxfVAOOnNE",
-    // apiKey: process.env.REACT_APP_GOOGLE_PLACES_AUTOCOMPLETE_API_KEY,
+    apiKey,
   });
 
   const [value, setValue] = useState("");
