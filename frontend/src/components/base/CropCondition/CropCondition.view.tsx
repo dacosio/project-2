@@ -1,46 +1,40 @@
-import React from 'react';
-import { CropConditionProps, ConditionTitle } from './CropCondition.props';
-import { Container, ContentContainer, Logo, Temps } from './CropCondition.style';
-import Typography from './../Typography';
-import Clock from '../SVG/Clock';
-import Thermometer from '../SVG/Thermometer';
-import Hygrometer from '../SVG/Hygrometer';
-import Apple from '../SVG/Apple';
-
+import React from "react";
+import { CropConditionProps, ConditionTitle } from "./CropCondition.props";
+import { Container, Body, Logo, Header } from "./CropCondition.style";
+import Typography from "./../Typography";
+import { Clock, Humidity, Soil, Temperature } from "../SVG";
 
 const CropCondition = (props: CropConditionProps): JSX.Element => {
   const { title, output } = props;
   const renderSVG = () => {
     switch (title) {
       case ConditionTitle.Temperature:
-        return <Thermometer />;
+        return <Temperature />;
       case ConditionTitle.Humidity:
-        return <Hygrometer />;
-      case ConditionTitle.ExpectedHarvest:
-        return <Apple />;
-      case ConditionTitle.Yield:
+        return <Humidity />;
+      case ConditionTitle.Growth:
         return <Clock />;
+      case ConditionTitle.Soil:
+        return <Soil />;
       default:
         return null;
     }
   };
   return (
     <Container>
-      <Typography variant='body' weight='bold' textColor='shade8'>
-        {title}
-      </Typography>
-      <ContentContainer>
-        <Logo>
-          {renderSVG()}
-        </Logo>
-        <Temps>
-          <Typography variant='title5' textColor='shade8'>
-            {output}
-          </Typography>
-        </Temps>
-      </ContentContainer>
+      <Header>
+        <Logo>{renderSVG()}</Logo>
+        <Typography variant="small" textColor="shade8">
+          {title}
+        </Typography>
+      </Header>
+      <Body>
+        <Typography variant="small" weight="bold" textColor="shade8">
+          {output}
+        </Typography>
+      </Body>
     </Container>
-  )
+  );
 };
 
 export default React.memo(CropCondition);
