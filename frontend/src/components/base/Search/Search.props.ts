@@ -1,4 +1,8 @@
 export interface SearchProps {
+    dynamicPlaceholder: string;
     onSearch: (searchTerm: string) => void;
-    searchResults: any[] | undefined;
-}
+    delay: number;
+    searchTerm: string;
+    handleSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    setSearchTerm: (newSearchTerm: string) => void;
+} 

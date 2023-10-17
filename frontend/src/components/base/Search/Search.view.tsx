@@ -1,19 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { SearchProps } from './Search.props';
-import { Container } from './Search.style';
-import TextField from './../TextField'
-import useDebounce from './../../../utils/hooks/useDebounce'
-import SearchResult from './../SearchResult'
-import { AiOutlineCloseCircle, AiOutlineSearch } from 'react-icons/ai'
+import React, { useState, useEffect } from "react";
+import { SearchProps } from "./Search.props";
+import { Container } from "./Search.style";
+import TextField from "./../TextField";
+import useDebounce from "./../../../utils/hooks/useDebounce";
+import SearchResult from "./../SearchResult";
+import { AiOutlineCloseCircle, AiOutlineSearch } from "react-icons/ai";
+import { MagnifierSvg } from "../SVG";
 
-const Search = ({ onSearch, searchResults }: SearchProps): JSX.Element => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const delay = 500;
+const Search = (props: SearchProps): JSX.Element => {
+  const {
+    dynamicPlaceholder,
+    onSearch,
+    delay,
+    searchTerm,
+    handleSearch,
+    setSearchTerm,
+  } = props;
+  console.log(searchTerm);
   const debouncedSearchTerm = useDebounce(searchTerm, delay);
-
-  const handleSearch = (e: { target: { value: string } }) => {
-    setSearchTerm(e.target.value);
-  };
 
   useEffect(() => {
     if (debouncedSearchTerm) {
@@ -25,26 +29,23 @@ const Search = ({ onSearch, searchResults }: SearchProps): JSX.Element => {
     <Container>
       <TextField
         RightComponent={
-          searchTerm ?
+          searchTerm ? (
             <AiOutlineCloseCircle
               size="20px"
               style={{ cursor: "pointer" }}
-              onClick={() => setSearchTerm('')}
-            /> :
-            <AiOutlineSearch
-              size="20px"
-              style={{ cursor: "pointer" }}
+              onClick={() => setSearchTerm("")}
             />
+          ) : (
+            <MagnifierSvg width={20} />
+          )
         }
-        type='search'
-        label='Search'
+        type="search"
         value={searchTerm}
         onChange={handleSearch}
-        placeholder="Input Text Here">
-      </TextField>
-      {searchTerm && <SearchResult searchResults={searchResults} delay={delay} />}
+        placeholder={dynamicPlaceholder}
+      ></TextField>
     </Container>
-  )
+  );
 };
 
 export default React.memo(Search);
