@@ -2,13 +2,14 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const { validateEmail, validateLength } = require("../helpers/validation");
 const jwt = require("jsonwebtoken");
+const cloudinary = require('../config/cloudinary');
 
 const register = async (req, res) => {
   try {
     // remove roles if we do not need role base access system
-    const { email, password, roles } = req.body;
-
-    if (!email || !password || !Array.isArray(roles) || !roles.length) {
+    const { email, password, firstName, lastName, img } = req.body;
+    console.log(email,password,firstName,lastName, img)
+    if (!email || !password || !firstName || !lastName) {
       return res.status(400).json({ message: "Please provide all fields" });
     }
 
@@ -31,12 +32,18 @@ const register = async (req, res) => {
         .json({ message: "Password must be at least 6 characters" });
     }
 
+    const imageUrl = await cloudinary.uploader.upload(img, {
+      folder: 'users',
+    });
+
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
     const newUser = await User.create({
       email,
       password: hashedPassword,
-      roles,
+      firstName,
+      lastName,
+      imageUrl: imageUrl.secure_url
     });
 
     if (newUser) res.status(201).json({ message: `New user ${email} created` });

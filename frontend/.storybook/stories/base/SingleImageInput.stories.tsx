@@ -4,6 +4,7 @@ import SingleImageInput from "../../../src/components/base/SingleImageInput";
 import Container from "../../components/Container";
 import Wrapper from "../../components/Wrapper";
 import { ImageType } from "react-images-uploading";
+import axios from "axios";
 
 const meta: Meta<typeof SingleImageInput> = {
   title: "Base/SingleImageInput",
@@ -12,7 +13,7 @@ const meta: Meta<typeof SingleImageInput> = {
     const [image2, setImage2] = useState<ImageType | undefined>(undefined);
 
     useEffect(() => {
-      console.log(image1);
+      console.log(image1?.file);
     }, [image1]);
 
     useEffect(() => {
@@ -33,6 +34,14 @@ const meta: Meta<typeof SingleImageInput> = {
       main();
     }, []);
 
+    const handleSubmit = () => {
+      const formData = new FormData();
+      formData.append("firstName", "firstName")
+      formData.append("lastName", "lastName")
+      formData.append("email", "email")
+      formData.append("password","password")
+    }
+
     return (
       <Container>
         <SingleImageInput
@@ -40,6 +49,7 @@ const meta: Meta<typeof SingleImageInput> = {
           setImage={setImage1}
           style={{ width: "300px" }}
         />
+        <button onClick={handleSubmit}>Submit</button>
         <SingleImageInput
           image={image1}
           sizing="mobile"
