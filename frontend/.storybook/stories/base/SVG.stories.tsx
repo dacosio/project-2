@@ -2,7 +2,13 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import {
   /* PLOP_INJECT_IMPORT */
+  ArrowDown,
+  ArrowUp,
+  ThreeDots,
   AddImage,
+  Add,
+  Delete,
+  Favorite,
   Bell,
   MagnifierSvg,
   LocationSvg,
@@ -45,12 +51,30 @@ const meta: Meta = {
   component: () => (
     <Container background="white">
       {/* PLOP_INJECT_INSTANCE*/}
-        <Wrapper label="AddImage">
-          <AddImage width={30} height={30} />
-        </Wrapper>
-        <Wrapper label="Bell">
-          <Bell width={30} height={30} />
-        </Wrapper>
+      <Wrapper label="ArrowDown">
+        <ArrowDown width={30} height={30} />
+      </Wrapper>
+      <Wrapper label="ArrowUp">
+        <ArrowUp width={30} height={30} />
+      </Wrapper>
+      <Wrapper label="Add">
+        <Add width={30} height={30} />
+      </Wrapper>
+      <Wrapper label="Delete">
+        <Delete width={30} height={30} />
+      </Wrapper>
+      <Wrapper label="Favorite">
+        <Favorite width={30} height={30} />
+      </Wrapper>
+      <Wrapper label="ThreeDots">
+        <ThreeDots width={30} height={30} />
+      </Wrapper>
+      <Wrapper label="AddImage">
+        <AddImage width={30} height={30} />
+      </Wrapper>
+      <Wrapper label="Bell">
+        <Bell width={30} height={30} />
+      </Wrapper>
       <Wrapper label="MagnifierSvg">
         <MagnifierSvg width={30} height={30} fill="green" />
       </Wrapper>

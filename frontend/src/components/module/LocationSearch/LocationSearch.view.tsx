@@ -12,7 +12,8 @@ const LocationSearch = (props: LocationSearchProps): JSX.Element => {
     getPlacePredictions,
     isPlacePredictionsLoading,
   } = useGoogle({
-    apiKey: process.env.REACT_APP_GOOGLE_PLACES_AUTOCOMPLETE_API_KEY,
+    apiKey: "AIzaSyCNOhz4j0j5jbKFbxMlOzbghKxfVAOOnNE",
+    // apiKey: process.env.REACT_APP_GOOGLE_PLACES_AUTOCOMPLETE_API_KEY,
   });
 
   const [value, setValue] = useState("");

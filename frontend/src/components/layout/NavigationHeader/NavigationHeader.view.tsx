@@ -22,7 +22,9 @@ import { useSendLogoutMutation } from "features/auth/authApiSlice";
 import { useNavigate } from "react-router";
 import { Bell } from "components/base/SVG";
 
-const NavigationHeader = (props: NavigationHeaderProps): JSX.Element => {
+const NavigationHeader = ({
+  sectionName,
+}: NavigationHeaderProps): JSX.Element => {
   const broken = useAppSelector(selectBroken);
   const dispatch = useAppDispatch();
   const toggleState = useAppSelector(selectToggle);
@@ -55,12 +57,16 @@ const NavigationHeader = (props: NavigationHeaderProps): JSX.Element => {
   return (
     <Container>
       <div>
-        {broken && (
+        {broken ? (
           <RxHamburgerMenu
             size="24px"
             style={{ cursor: "pointer" }}
             onClick={handleToggle}
           />
+        ) : (
+          <Typography variant="title2" weight="700">
+            {sectionName}
+          </Typography>
         )}
       </div>
 

@@ -46,28 +46,27 @@ export const ChipContainer = styled.div<ChipsStyleProps>`
   
   border: ${({ variant }) => border[variant]};
   gap:8px;
-  
 
+  background-color: ${({active, variant }) => active ? activeTheme[variant] : backgroundColor[variant]};
   :focus {
     outline: none;
   }
 
-  ${({ active, variant }) => active ? `
- 
-    background-color: ${activeTheme[variant]};
-    transform: scale(0.95);
-    transition: transform 0.1s ease-in-out;
-  }
-` : `background-color: ${backgroundColor[variant]};`};
-
-
- 
-
   :hover {
-    background-color: ${({ variant }) => hoverBgColor[variant]};
-  }
+      background-color: ${({ variant }) => hoverBgColor[variant]};
+    }
+
+  
   cursor: pointer;
 `;
+
+ 
+// background-color: ${activeTheme[variant]};
+// transform: scale(0.95);
+// transition: transform 0.1s ease-in-out;
+// }
+// ` : `background-color: ${backgroundColor[variant]};`};
+
 
 // background-color: ${({ variant }) => backgroundColor[variant]};
 
