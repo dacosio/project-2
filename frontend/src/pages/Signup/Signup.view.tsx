@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { SignupGeneratedProps } from "./Signup.props";
 import {
   Container,
-  Modalbox,
+  DivStyling,
   Header,
   SingupDetails,
   SingupForm,
@@ -18,46 +18,46 @@ const SignupView = (props: SignupGeneratedProps) => {
 
   return (
     <Container>
-      <Modalbox>
-        <Header>
-          <Typography
-            variant="title2"
-            weight="700"
-            textColor="primary"
-            align="center"
-          >
-            Sign up for free and start farming!
-          </Typography>
-        </Header>
-        <SingupDetails>
-          <SingupForm>
-            <TextField
-              label="Email"
-              value={email}
-              onChangeText={setEmail}
-              placeholder="user@nomail.com"
-              style={{width: "100%"}}
-            />
-            <TextField
-              label="Password"
-              value={password}
-              onChangeText={setPassword}
-              secured
-              placeholder="******"
-              style={{width: "100%"}}
-            />
-            <SubmitButton type="button" value="submit" />
-          </SingupForm>
-          <Typography
-            variant="small"
-            weight="400"
-            textColor="n90"
-            align="center"
-          >
-            Already a member? <a href="">Log In</a>
-          </Typography>
-        </SingupDetails>
-      </Modalbox>
+        <DivStyling>
+          <Header>
+            <Typography
+              variant="title2"
+              weight="700"
+              textColor="primary"
+              align="center"
+            >
+              Sign up for free and start farming!
+            </Typography>
+          </Header>
+          <SingupDetails>
+            <SingupForm>
+              <TextField
+                label="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="user@nomail.com"
+                style={{ width: "100%" }}
+              />
+              <TextField
+                label="Password"
+                value={password}
+                onChange={(e) => setEmail(e.target.value)}
+                secured
+                placeholder="******"
+                style={{ width: "100%" }}
+              />
+              <SubmitButton type="button" value="submit" />
+            </SingupForm>
+            <Typography
+              variant="small"
+              weight="400"
+              textColor="n90"
+              align="center"
+            >
+              Already a member? <a href="">Log In</a>
+            </Typography>
+          </SingupDetails>
+        </DivStyling>
     </Container>
   );
 };

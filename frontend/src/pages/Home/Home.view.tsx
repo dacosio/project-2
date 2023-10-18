@@ -107,7 +107,6 @@ const HomeView = (props: HomeGeneratedProps) => {
           >
             <TextField
               value={email}
-              onChangeText={setEmail}
               placeholder="user@nomail.com"
               style={{ flexGrow: "1" }}
             />
@@ -243,14 +242,12 @@ const HomeView = (props: HomeGeneratedProps) => {
               <TextField
                 label="Name"
                 value={name}
-                onChangeText={setName}
                 placeholder="Juan Dela Cruz"
                 style={{ flexGrow: "1", flexBasis: "0" }}
               />
               <TextField
                 label="Email"
                 value={email}
-                onChangeText={setEmail}
                 placeholder="user@nomail.com"
                 style={{ flexGrow: "1", flexBasis: "0" }}
               />

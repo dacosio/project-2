@@ -1,28 +1,22 @@
 import styled from "@emotion/styled";
-import { Col, Row, Visible, Hidden } from "react-grid-system";
-import { theme } from "utils/Theme";
+import { theme } from "../../../utils/Theme";
+
 
 export const Container = styled.div`
-  // background-color: ${theme.brand.primary};
-  display: flex;
-  justify-content: center;
-  margin: 1rem;
-`;
+width: 300px;
+border-radius: 24px;
+overflow: hidden;
+display: flex;
+flex-flow: column;
 
-export const Modalbox = styled.div`
-  width: 300px;
-  border-radius: 24px;
-  overflow: hidden;
-  display: flex;
-  flex-flow: column;
-  @media (min-width: 768px) {
-    flex-flow: row;
-    width: 725px;
-  }
+@media (min-width: 768px) {
+  flex-flow: row;
+  width: 725px;
+}
 `;
 
 export const Header = styled.div`
-  padding: 2rem 2rem 0 2rem;
+  padding: 4rem 2rem 0 2rem;
   display: flex;
   align-items: center;
   @media (min-width: 768px) {
@@ -59,7 +53,7 @@ export const SingupForm = styled.form`
 `;
 
 export const SingupDetails = styled.form`
-  padding: 2rem;
+  padding: 4rem 2rem 2rem 2rem;
   flex-grow: 1;
   display: flex;
   flex-flow: column;

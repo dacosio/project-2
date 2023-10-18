@@ -11,6 +11,7 @@ import CropGuide from "./pages/Crops/CropGuide";
 import Weather from "./pages/Weather";
 import Signup from "pages/Signup";
 import Signin from "pages/Signin";
+import ModalViewPage from "pages/ModalViewPage";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
       </Route>
       <Route path="signup" element={<Signup />} />
       <Route path="signin" element={<Signin />} />
+      <Route path="modal" element={<ModalViewPage />} />
     </Routes>
   );
 }

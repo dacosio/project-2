@@ -9,7 +9,7 @@ export const Container = styled.div`
   margin: 1rem;
 `;
 
-export const Modalbox = styled.div`
+export const DivStyling = styled.div`
   width: 300px;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.292);
   border-radius: 24px;

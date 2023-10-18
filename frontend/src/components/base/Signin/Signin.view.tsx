@@ -1,24 +1,21 @@
-import React, { useState } from "react";
-import { SigninGeneratedProps } from "./Signin.props";
-import {
+import React, { useState } from 'react';
+import { SigninProps } from './Signin.props';
+import { 
   Container,
-  Modalbox,
   Header,
   SingupDetails,
   SingupForm,
   SubmitButton,
-} from "./Signin.style";
-import Typography from "components/base/Typography";
-import TextField from "components/base/TextField";
-import { Col, Row, Visible, Hidden } from "react-grid-system";
+ } from './Signin.style';
+import Typography from '../Typography';
+import TextField from '../TextField';
 
-const SigninView = (props: SigninGeneratedProps) => {
+const Signin = (props: SigninProps): JSX.Element => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState("");
 
   return (
     <Container>
-      <Modalbox>
         <Header>
           <Typography
             variant="title2"
@@ -59,9 +56,8 @@ const SigninView = (props: SigninGeneratedProps) => {
             Don’t have an account? <a href="">Sign Up</a>
           </Typography>
         </SingupDetails>
-      </Modalbox>
     </Container>
   );
 };
 
-export default SigninView;
+export default React.memo(Signin);
