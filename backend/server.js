@@ -25,8 +25,9 @@ const { temperature, precipitation, humidity, crop } = require("./data/index.js"
 
 // gives the ability to process json data from the frontend
 app.use(express.json());
-
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
 
 // this is to make the public static file accessible globally, ex. public/css/style.css can be called with css/styles.css
 app.use("/", express.static(path.join(__dirname, "public")));
