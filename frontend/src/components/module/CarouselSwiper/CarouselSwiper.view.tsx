@@ -11,7 +11,6 @@ import "swiper/css/pagination";
 
 const CarouselSwiper = (props: CarouselSwiperProps): JSX.Element => {
   useEffect(() => {
-    // Register Swiper web component
     register();
   }, []);
 
@@ -24,6 +23,7 @@ const CarouselSwiper = (props: CarouselSwiperProps): JSX.Element => {
       scrollbar={{ draggable: true }}
       autoplay={{ delay: 2500 }}
       loop
+      breakpoints={props.breakpoints}
     >
       {props.slides.map((c, idx) => {
         return (

@@ -14,7 +14,7 @@ import Typography from "components/base/Typography";
 import SegmentedControl from "../../components/base/SegmentedControl";
 import { useNavigate } from "react-router-dom";
 import HarvestCard from "../../components/module/HarvestCard";
-import CarouselSwiper from "components/module/CarouselSwiper";
+import CarouselSwiper from "../../components/module/CarouselSwiper";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -28,8 +28,8 @@ const DashboardView = (props: DashboardGeneratedProps) => {
         Hello Wade, let's farm!
       </Typography>
       <Top>
-        <Weather>Weather Card</Weather>
-        <Segment>
+        <Weather lg={6}>Weather Card</Weather>
+        <Segment lg={6}>
           <SegmentedControl
             options={MOCK_OPTIONS}
             selectedOption={state}
@@ -50,15 +50,30 @@ const DashboardView = (props: DashboardGeneratedProps) => {
             weight="700"
             textColor="shade5"
             onClick={() => navigate("/your-crops")}
-            style={{ cursor: "pointer" }}
-          >
+            style={{ cursor: "pointer" }}>
             see more
           </Typography>
         </Title>
         <Carousel>
           <CarouselSwiper
-            slidesPerView={4}
-            spaceBetween={16}
+            breakpoints={{
+              '@0.00': {
+                slidesPerView: 1,
+                spaceBetween: 10,
+              },
+              '@0.75': {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              '@1.00': {
+                slidesPerView: 3,
+                spaceBetween: 40,
+              },
+              '@1.50': {
+                slidesPerView: 4,
+                spaceBetween: 50,
+              },
+            }}
             slides={[
               <HarvestCard
                 cropName="Carrot"
