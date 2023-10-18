@@ -10,9 +10,14 @@ const register = async (req, res) => {
     // remove roles if we do not need role base access system
     const { email, password, firstName, lastName } = req.body;
     const file = req.file
-    const fileUri = getDataUri(file)
-    const myCloud = await cloudinary.v2.uploader.upload(fileUri.content, {folder: 'users'})
+    let myCloud;
+    let fileUri;
+    if(file) {
+      fileUri = getDataUri(file)
+      myCloud = await cloudinary.v2.uploader.upload(fileUri.content, {folder: 'users'})
 
+    }
+   
     if (!email || !password || !firstName || !lastName) {
       return res.status(400).json({ message: "Please provide all fields" });
     }
@@ -44,7 +49,7 @@ const register = async (req, res) => {
       password: hashedPassword,
       firstName,
       lastName,
-      imageUrl: myCloud.secure_url
+      imageUrl: myCloud ? myCloud.secure_url : ""
     });
 
     if (newUser) res.status(201).json({ message: `New user ${email} created` });
