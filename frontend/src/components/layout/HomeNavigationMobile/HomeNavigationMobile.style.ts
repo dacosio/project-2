@@ -6,7 +6,7 @@ position: fixed;
 top: 0;
 left: 0;
 width: 100%;
-background-color: ${theme.brand.accent};
+background-color: ${theme.bg.tertiary};
 z-index: 5;
 transition: transform .7s ease-in-out;
 
