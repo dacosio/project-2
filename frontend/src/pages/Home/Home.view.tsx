@@ -39,21 +39,21 @@ import WeatherCard from "./../../components/base/WeatherCard";
 import Search from "./../../components/base/Search";
 import LocationSearch from "components/module/LocationSearch";
 
-import emailjs from '@emailjs/browser';
+// import emailjs from '@emailjs/browser';
 
-export const ContactUs = () => {
-  const form = useRef();
+// export const ContactUs = () => {
+//   const form = useRef();
 
-  const sendEmail = (e) => {
-    e.preventDefault();
+//   const sendEmail = (e) => {
+//     e.preventDefault();
 
-    emailjs.sendForm('service_buhpmve', 'template_caubnyp', form.current, 'XjkLA79uvMpAgWV9B')
-      .then((result) => {
-          console.log(result.text);
-      }, (error) => {
-          console.log(error.text);
-      });
-  };
+//     emailjs.sendForm('service_buhpmve', 'template_caubnyp', form.current, 'XjkLA79uvMpAgWV9B')
+//       .then((result) => {
+//           console.log(result.text);
+//       }, (error) => {
+//           console.log(error.text);
+//       });
+//   };
 
 
 const HomeView = (props: HomeGeneratedProps) => {
@@ -184,7 +184,7 @@ const HomeView = (props: HomeGeneratedProps) => {
         </AboutDetails>
       </About>
 
-      <Contact align="center">
+      {/* <Contact align="center">
         <Hide md sm xs>
           <ContactImage
             xxl={6}
@@ -258,7 +258,7 @@ const HomeView = (props: HomeGeneratedProps) => {
             ></Button>
           </Form>
         </ContactForm>
-      </Contact>
+      </Contact> */}
       {/* <Footer today=""></Footer> */}
     </Container>
   );

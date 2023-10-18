@@ -56,6 +56,7 @@ const HomeNavigation = (props: HomeNavigationProps): JSX.Element => {
           ></Button>
         </LoginOptions>
       </Nav>
+      <HomeNavigationMobile open={open} />
     </Container>
   );
 };

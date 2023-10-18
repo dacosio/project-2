@@ -21,6 +21,7 @@ const Hamburger = (props: HamburgerProps): JSX.Element => {
         <div></div>
       </StyledBurger>
     </Container>
+
   );
 };
 

@@ -8,7 +8,7 @@ left: 0;
 width: 100%;
 background-color: ${theme.brand.accent};
 z-index: 5;
-transition: transform 5s ease-in-out;
+transition: transform .7s ease-in-out;
 
 &.visible {
   z-index: 5;
