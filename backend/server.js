@@ -1,5 +1,4 @@
 const dotenv = require("dotenv");
-const bodyParser = require('body-parser');
 // require("./services/scheduler");
 const express = require("express");
 const app = express();
@@ -15,7 +14,7 @@ dotenv.config();
 const PORT = process.env.PORT || 3500;
 connectDB();
 app.use(logger);
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 // const Temperature = require("./models/Temperature.js");
 // const Precipitation = require("./models/Precipitation.js");
@@ -26,10 +25,8 @@ const { temperature, precipitation, humidity, crop } = require("./data/index.js"
 
 // gives the ability to process json data from the frontend
 app.use(express.json());
-
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }));
 
 
 // this is to make the public static file accessible globally, ex. public/css/style.css can be called with css/styles.css

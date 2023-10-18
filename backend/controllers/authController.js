@@ -1,14 +1,18 @@
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const { validateEmail, validateLength } = require("../helpers/validation");
+const getDataUri = require("../helpers/dataUri");
 const jwt = require("jsonwebtoken");
 const cloudinary = require('../config/cloudinary');
 
 const register = async (req, res) => {
   try {
     // remove roles if we do not need role base access system
-    const { email, password, firstName, lastName, img } = req.body;
-    console.log(email,password,firstName,lastName, img)
+    const { email, password, firstName, lastName } = req.body;
+    const file = req.file
+    const fileUri = getDataUri(file)
+    const myCloud = await cloudinary.v2.uploader.upload(fileUri.content, {folder: 'users'})
+
     if (!email || !password || !firstName || !lastName) {
       return res.status(400).json({ message: "Please provide all fields" });
     }
@@ -32,9 +36,6 @@ const register = async (req, res) => {
         .json({ message: "Password must be at least 6 characters" });
     }
 
-    const imageUrl = await cloudinary.uploader.upload(img, {
-      folder: 'users',
-    });
 
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
@@ -43,7 +44,7 @@ const register = async (req, res) => {
       password: hashedPassword,
       firstName,
       lastName,
-      imageUrl: imageUrl.secure_url
+      imageUrl: myCloud.secure_url
     });
 
     if (newUser) res.status(201).json({ message: `New user ${email} created` });
