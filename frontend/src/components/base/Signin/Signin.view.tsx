@@ -38,7 +38,7 @@ const Signin = (props: SigninProps): JSX.Element => {
             <TextField
               label="Password"
               value={password}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
               secured
               placeholder="******"
               style={{ width: "100%" }}
