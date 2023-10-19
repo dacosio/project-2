@@ -10,6 +10,7 @@ export type Theme = {
     success: string;
     warning: string;
     error: string;
+    green: string;
   };
   grey: {
     shade1: string;
@@ -72,4 +73,9 @@ export type Theme = {
       tokenPressed: string;
     };
   };
+  prog: {
+    quarter: string;
+    half: string;
+    full:string;
+  }
 };

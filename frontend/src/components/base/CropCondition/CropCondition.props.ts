@@ -6,6 +6,6 @@ export interface CropConditionProps {
 export enum ConditionTitle {
     Temperature = 'Temperature',
     Humidity = 'Humidity',
-    ExpectedHarvest = 'Expected Harvest',
-    Yield = 'Yield Prediction (fruits per crop)',
+    Growth = 'Growth',
+    Soil = 'Soil pH',
 }

@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import Search from "../../../src/components/base/Search";
 import Container from "../../components/Container";
 import Wrapper from "../../components/Wrapper";
+import SearchResult from '../../../src/components/base/SearchResult';
 
 const meta: Meta<typeof Search> = {
   title: "Base/Search",
@@ -39,6 +40,12 @@ const meta: Meta<typeof Search> = {
     ]
 
     const [searchResults, setSearchResults] = useState<Array<YourSearchItemType>>([]);
+    const [searchTerm, setSearchTerm] = useState('');
+    const delay = 500;
+
+    const handleSearch = (e: { target: { value: string } }) => {
+      setSearchTerm(e.target.value);
+    };
 
     const fetchSearchResult = async (searchTerm: any) => {
       const filteredSearches = searches?.filter((item) => {
@@ -50,8 +57,16 @@ const meta: Meta<typeof Search> = {
       setSearchResults(filteredSearches || []);
     }
     return (
-      <Container>
-        <Search onSearch={fetchSearchResult} searchResults={searchResults} />
+      <Container style={{ flexDirection: 'column' }}>
+        <Search
+          dynamicPlaceholder='Input text here'
+          onSearch={fetchSearchResult}
+          delay={delay}
+          searchTerm={searchTerm}
+          handleSearch={handleSearch}
+          setSearchTerm={setSearchTerm}
+        />
+        {searchTerm && <SearchResult searchTerm={searchTerm} searchResults={searchResults} delay={delay} />}
       </Container>
     )
   }

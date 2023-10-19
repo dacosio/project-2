@@ -2,8 +2,10 @@ const express = require("express");
 const router = express.Router();
 const authController = require("../controllers/authController");
 const loginLimiter = require("../middleware/loginLimiter");
+const singleUpload = require("../middleware/singleUpload");
 
-router.route("/register").post(authController.register);
+
+router.route("/register").post(singleUpload, authController.register);
 
 router.route("/forgot-password").put(authController.forgotPassword);
 

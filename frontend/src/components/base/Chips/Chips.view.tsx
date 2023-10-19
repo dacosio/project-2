@@ -42,8 +42,11 @@ const Chips = (props: ChipsProps): JSX.Element => {
   } else {
     textWeight = "400";
   }
-
-  const hasText = label && label?.length > 0 ? true : false;
+  console.log("label" + label);
+  console.log("variant" + variant);
+  console.log("color" + color);
+  console.log("active" + active);
+  console.log(props);
 
   return (
     <ChipContainer

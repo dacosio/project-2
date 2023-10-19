@@ -12,6 +12,7 @@ declare module "@emotion/react" {
       success: string;
       warning: string;
       error: string;
+      green: string;
     };
     grey: {
       shade1: string;
@@ -73,6 +74,11 @@ declare module "@emotion/react" {
         tokenHover: string;
         tokenPressed: string;
       };
+    };
+    prog: {
+      quarter: string;
+      half: string;
+      full: string;
     };
   }
 }

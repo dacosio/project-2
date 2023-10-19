@@ -18,14 +18,16 @@ app.use(cors(corsOptions));
 
 // const Temperature = require("./models/Temperature.js");
 // const Precipitation = require("./models/Precipitation.js");
-const Humidity = require("./models/Humidity.js");
+// const Humidity = require("./models/Humidity.js");
+// const Crop = require("./models/Crop");
 
-const { temperature, precipitation, humidity } = require("./data/index.js");
+const { temperature, precipitation, humidity, crop } = require("./data/index.js");
 
 // gives the ability to process json data from the frontend
 app.use(express.json());
-
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
 
 // this is to make the public static file accessible globally, ex. public/css/style.css can be called with css/styles.css
 app.use("/", express.static(path.join(__dirname, "public")));
@@ -55,6 +57,7 @@ mongoose.connection.once("open", () => {
     // Temperature.insertMany(temperature);
     // Precipitation.insertMany(precipitation);
     // Humidity.insertMany(humidity);
+    // Crop.insertMany(crop);
   });
 });
 
