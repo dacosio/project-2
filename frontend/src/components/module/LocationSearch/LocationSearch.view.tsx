@@ -3,7 +3,7 @@ import { LocationSearchProps } from "./LocationSearch.props";
 import { Container, ResultsContainer } from "./LocationSearch.style";
 import TextField from "../../base/TextField";
 import useGoogle from "react-google-autocomplete/lib/usePlacesAutocompleteService";
-import Typography from "components/base/Typography";
+import Typography from "../../base/Typography";
 
 const LocationSearch = (props: LocationSearchProps): JSX.Element => {
   const apiKey: string | undefined = process.env.REACT_APP_PLACES_API;
@@ -41,6 +41,7 @@ const LocationSearch = (props: LocationSearchProps): JSX.Element => {
           getPlacePredictions({ input: evt.target.value });
           setValue(evt.target.value);
         }}
+        placeholder="City, Province, etc"
       />
       <ResultsContainer>
         {!isPlacePredictionsLoading &&
