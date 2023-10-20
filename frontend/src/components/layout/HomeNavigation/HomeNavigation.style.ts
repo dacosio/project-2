@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { theme } from "../../../utils/Theme";
-import Button from "components/base/Button";
-import { SproutLogo } from "components/base/SVG";
+import Button from "../../base/Button";
+import { SproutLogo } from "../../base/SVG";
 
 export const Container = styled.div`
   position: fixed;
@@ -17,7 +17,7 @@ export const Nav = styled.nav`
   padding: 1rem;
   align-items: center;
 
-  border-bottom: 1px solid #d1d1d9;
+  border-bottom: 1px solid ${theme.neutral.n10};
   background-color: #f4f6f9;
 
   @media (min-width: 768px) {

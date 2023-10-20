@@ -9,10 +9,9 @@ import {
   Logo
 } from "./HomeNavigation.style";
 
-import Hamburger from "components/base/Hamburger";
-import { SproutLogo } from "components/base/SVG";
-import Button from "components/base/Button";
-import { useMediaQuery } from "utils/hooks/useMediaQuery";
+import Hamburger from "../../base/Hamburger";
+import Button from "../../base/Button";
+import { useMediaQuery } from "../../../utils/hooks/useMediaQuery";
 import HomeNavigationMobile from "../HomeNavigationMobile";
 
 const HomeNavigation = (props: HomeNavigationProps): JSX.Element => {
