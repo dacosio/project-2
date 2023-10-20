@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { SearchResultProps } from "./SearchResult.props";
 import {
   Container,
@@ -83,15 +84,20 @@ const SearchResult = ({
 
             <SearchResultList>
               {searchResults.map((item, i) => (
-                <PlantResult
+                <Link
                   key={i}
-                  link="http://localhost:3000/crop-guide/#"
-                  imageUrl="https://picsum.photos/300/300?random=${i}"
-                  imageAlt="Test"
-                  cropName={item.name}
-                  imgWidth="100%"
-                  imgHeight="100%"
-                />
+                  to={`/crop-guide/${item._id}`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <PlantResult
+                    key={i}
+                    imageUrl={item.img_url}
+                    imageAlt="Test"
+                    cropName={item.name}
+                    imgWidth="100%"
+                    imgHeight="100%"
+                  />
+                </Link>
               ))}
             </SearchResultList>
           </Body>
