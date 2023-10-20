@@ -3,4 +3,6 @@ import { theme } from "utils/Theme";
 
 
 export const Container = styled.div`
-padding: 10px 2rem`;
+max-width: 1021px;
+   margin: auto;
+   padding: 1.5rem;`
