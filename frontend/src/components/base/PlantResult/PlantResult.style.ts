@@ -5,17 +5,16 @@ import { theme } from "../../../utils/Theme";
 export const Container = styled.div`
     background-color: ${theme.grey.noshade};
     border-radius: 1rem;
-    width: fit-content;
+    width: fit-content; 
     overflow: hidden;
-`
-export const AnchorTag = styled.a`
-    text-decoration: none;
+    cursor: pointer;
 `
 
 export const ImageHolder = styled.div`
     img {
-        object-fit-cover;
         border-radius: inherit;
+        height: 184px;
+        object-fit: cover;
     }
 `
 
