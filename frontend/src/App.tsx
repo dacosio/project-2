@@ -9,7 +9,7 @@ import PersistAuth from "components/layout/PersistAuth";
 import YourCrop from "./pages/Crops/YourCrop";
 import CropGuide from "./pages/Crops/CropGuide";
 import Weather from "./pages/Weather";
-import CropAbout from "./../src/pages/Crops/CropAbout/CropAbout.container";
+import CropAbout from "./pages/Crops/CropAbout";
 
 function App() {
   return (
