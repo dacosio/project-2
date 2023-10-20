@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import { TabProps } from "./Tab.props";
 import { Container, Label, Radio } from "./Tab.style";
-import Chips from "../Chips";
+import Chips from "./../Chips";
 
 const Tab = (props: TabProps): JSX.Element => {
   const { options, value, setValue, name } = props;

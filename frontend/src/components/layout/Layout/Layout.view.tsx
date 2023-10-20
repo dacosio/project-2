@@ -19,6 +19,7 @@ const Layout = (props: LayoutProps): JSX.Element => {
     return path;
   };
   const formattedPath = formatPath(currentUrl);
+  const modifiedPath = formattedPath.split("/")[0];
 
   return (
     <Container>
@@ -26,7 +27,7 @@ const Layout = (props: LayoutProps): JSX.Element => {
         <Navigation />
       </Side>
       <Main>
-        <NavigationHeader sectionName={formattedPath} />
+        <NavigationHeader sectionName={modifiedPath} />
         <Outlet />
       </Main>
     </Container>

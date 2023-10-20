@@ -10,7 +10,7 @@ import {
 } from "./CropInformation.style";
 import Typography from "../../../components/base/Typography";
 import { Hidden, Visible } from "react-grid-system";
-import Accordion from "../../../components/base/Accordion";
+import Accordion from "./../../base/Accordion";
 
 const CropInformation = (props: CropInformationProps): JSX.Element => {
   const { ph, nitrogen, phosphorus, potassium, suggestions, tips } = props;

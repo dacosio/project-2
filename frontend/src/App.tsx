@@ -9,6 +9,7 @@ import PersistAuth from "components/layout/PersistAuth";
 import YourCrop from "./pages/Crops/YourCrop";
 import CropGuide from "./pages/Crops/CropGuide";
 import Weather from "./pages/Weather";
+import CropAbout from "./../src/pages/Crops/CropAbout/CropAbout.container";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="your-crops" element={<YourCrop />} />
         <Route path="crop-guide" element={<CropGuide />} />
+        <Route path="crop-guide/:id" element={<CropAbout />} />
         <Route path="weather" element={<Weather />} />
         <Route path="login" element={<Login />} />
         <Route element={<PersistAuth />}>

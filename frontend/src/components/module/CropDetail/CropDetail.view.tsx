@@ -14,7 +14,7 @@ import Button from "../../base/Button";
 import { useTheme } from "../../../utils/Theme";
 import { Hidden, Visible } from "react-grid-system";
 import { Delete, Favorite } from "../../base/SVG";
-import CircleProgress from "../../base/CircleProgress";
+import CircleProgress from "./../../base/CircleProgress";
 import CropInformation from "../CropInformation";
 
 const CropDetail = (props: CropDetailProps): JSX.Element => {
