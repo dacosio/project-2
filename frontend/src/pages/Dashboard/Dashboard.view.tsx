@@ -20,17 +20,59 @@ import HarvestCard from "../../components/module/HarvestCard";
 import CarouselSwiper from "../../components/module/CarouselSwiper";
 
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useAppSelector } from "app/hooks";
+import {
+  selectBroken,
+  selectCollapse,
+  selectToggle,
+} from "features/sidebar/sidebarSlice";
+import { useMediaQuery } from "utils/hooks/useMediaQuery";
 
 const DashboardView = (props: DashboardGeneratedProps) => {
   const MOCK_OPTIONS = ["Today", "15-day"];
   const [state, setState] = useState(MOCK_OPTIONS[0]);
   const navigate = useNavigate();
 
+  const sl = [];
+
+  for (let i = 0; i < 6; i++) {
+    sl.push(
+      <HarvestCard
+        cropName="Carrot"
+        maxValue={100}
+        value={50}
+        title="50"
+        subtitle="days"
+        size="desktop"
+        id="1"
+        datePlanted="Jan 1, 2023"
+        estYield="xx lb/plant"
+        height={137}
+        width={137}
+      />
+    );
+  }
+
+  const broken = useAppSelector(selectBroken);
+  const toggleState = useAppSelector(selectToggle);
+  const collapse = useAppSelector(selectCollapse);
+
+  const sm = useMediaQuery("(min-width: 360px) and (max-width:576px)");
+  const md = useMediaQuery("(min-width: 577px) and (max-width:768px)");
+  const lg = useMediaQuery("(min-width: 769px) and (max-width:1270px)");
+  const xl = useMediaQuery("(min-width: 1271px)");
+
+  console.log(collapse);
+  const carouselWidth = "80vw";
+  const collapseCalc = !collapse
+    ? `calc(${carouselWidth} - 288px)`
+    : carouselWidth;
+  // TODO
+
   return (
     <Wrapper>
-      <Top>
+      {/* <Top>
         <Weather lg={6}>Weather Card</Weather>
-        {/* <Segment lg={6}> */}
         <Segment>
           <SegmentedControl
             options={MOCK_OPTIONS}
@@ -41,9 +83,9 @@ const DashboardView = (props: DashboardGeneratedProps) => {
             }}
           />
         </Segment>
-      </Top>
+      </Top> */}
       <Middle>
-        <Title>
+        {/* <Title>
           <Typography variant="title3" weight="700">
             Your Planted Crops
           </Typography>
@@ -56,161 +98,30 @@ const DashboardView = (props: DashboardGeneratedProps) => {
           >
             see more
           </Typography>
-        </Title>
-        <Carousel>
-          {/* <CarouselSwiper
-            breakpoints={{
-              "@0.00": {
-                slidesPerView: 1,
-                spaceBetween: 10,
-              },
-              "@0.75": {
-                slidesPerView: 2,
-                spaceBetween: 20,
-              },
-              "@1.00": {
-                slidesPerView: 3,
-                spaceBetween: 40,
-              },
-              "@1.50": {
-                slidesPerView: 4,
-                spaceBetween: 50,
-              },
-            }}
-            slides={[
-              <HarvestCard
-                cropName="Carrot"
-                maxValue={100}
-                value={50}
-                title="50"
-                subtitle="days"
-                size="desktop"
-                id="1"
-                datePlanted="Jan 1, 2023"
-                estYield="xx lb/plant"
-                height={137}
-                width={137}
-              />,
-              <HarvestCard
-                cropName="Carrot"
-                maxValue={100}
-                value={25}
-                title="25"
-                subtitle="days"
-                size="desktop"
-                id="2"
-                datePlanted="Jan 1, 2023"
-                estYield="xx lb/plant"
-                height={137}
-                width={137}
-              />,
-              <HarvestCard
-                cropName="Carrot"
-                maxValue={100}
-                value={100}
-                title="100"
-                subtitle="days"
-                size="desktop"
-                id="3"
-                datePlanted="Jan 1, 2023"
-                estYield="xx lb/plant"
-                height={137}
-                width={137}
-              />,
-              <HarvestCard
-                cropName="Carrot"
-                maxValue={100}
-                value={65}
-                title="65"
-                subtitle="days"
-                size="desktop"
-                id="4"
-                datePlanted="Jan 1, 2023"
-                estYield="xx lb/plant"
-                height={137}
-                width={137}
-              />,
-              <HarvestCard
-                cropName="Carrot"
-                maxValue={100}
-                value={25}
-                title="25"
-                subtitle="days"
-                size="desktop"
-                id="5"
-                datePlanted="Jan 1, 2023"
-                estYield="xx lb/plant"
-                height={137}
-                width={137}
-              />,
-              <HarvestCard
-                cropName="Carrot"
-                maxValue={100}
-                value={50}
-                title="50"
-                subtitle="days"
-                size="desktop"
-                id="1"
-                datePlanted="Jan 1, 2023"
-                estYield="xx lb/plant"
-                height={137}
-                width={137}
-              />,
-              <HarvestCard
-                cropName="Carrot"
-                maxValue={100}
-                value={25}
-                title="25"
-                subtitle="days"
-                size="desktop"
-                id="2"
-                datePlanted="Jan 1, 2023"
-                estYield="xx lb/plant"
-                height={137}
-                width={137}
-              />,
-              <HarvestCard
-                cropName="Carrot"
-                maxValue={100}
-                value={100}
-                title="100"
-                subtitle="days"
-                size="desktop"
-                id="3"
-                datePlanted="Jan 1, 2023"
-                estYield="xx lb/plant"
-                height={137}
-                width={137}
-              />,
-              <HarvestCard
-                cropName="Carrot"
-                maxValue={100}
-                value={65}
-                title="65"
-                subtitle="days"
-                size="desktop"
-                id="4"
-                datePlanted="Jan 1, 2023"
-                estYield="xx lb/plant"
-                height={137}
-                width={137}
-              />,
-              <HarvestCard
-                cropName="Carrot"
-                maxValue={100}
-                value={25}
-                title="25"
-                subtitle="days"
-                size="desktop"
-                id="5"
-                datePlanted="Jan 1, 2023"
-                estYield="xx lb/plant"
-                height={137}
-                width={137}
-              />,
-            ]}
-          /> */}
-        </Carousel>
+        </Title> */}
+        {/* <Carousel> */}
+        <CarouselSwiper
+          breakpoints={{
+            "@0.00": {
+              slidesPerView: 1,
+              spaceBetween: 10,
+            },
+            "@0.5": {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            "@0.75": {
+              slidesPerView: 4,
+              spaceBetween: 40,
+            },
+            // "@1.00": {
+            //   slidesPerView: 4,
+            //   spaceBetween: 50,
+            // },
+          }}
+          slides={sl}
+        />
+        {/* </Carousel> */}
       </Middle>
       {/* <Bottom>
         <Title>
