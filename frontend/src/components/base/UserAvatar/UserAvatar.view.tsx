@@ -5,7 +5,15 @@ import Avatar from "react-avatar";
 import { useTheme } from "../../../utils/Theme";
 
 const UserAvatar = (props: UserAvatarProps): JSX.Element => {
-  const { email, displayName, size, imageUrl, round = true, ...rest } = props;
+  const {
+    email,
+    displayName,
+    size,
+    imageUrl,
+    round = true,
+    onClick,
+    ...rest
+  } = props;
   const theme = useTheme();
   return (
     <Container>
@@ -16,6 +24,7 @@ const UserAvatar = (props: UserAvatarProps): JSX.Element => {
         size={size}
         src={imageUrl}
         round={round}
+        onClick={onClick}
         {...rest}
       />
     </Container>

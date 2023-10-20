@@ -28,7 +28,7 @@ import {
 import Typography from "components/base/Typography";
 import { Hidden, Row, Visible } from "react-grid-system";
 import Button from "components/base/Button";
-import CircleProgress from "components/base/CircleProgress";
+import CircleProgress from "./../../../components/base/CircleProgress";
 import CropCondition from "components/base/CropCondition";
 import { Delete, Favorite } from "components/base/SVG";
 import "react-circular-progressbar/dist/styles.css";

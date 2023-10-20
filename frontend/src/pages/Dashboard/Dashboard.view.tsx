@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DashboardGeneratedProps } from "./Dashboard.props";
 import {
   Wrapper,
@@ -10,7 +10,10 @@ import {
   Bottom,
   Carousel,
 } from "./Dashboard.style";
+import WeatherCard from "../../components/base/WeatherCard";
+import axios from "axios";
 import Typography from "components/base/Typography";
+
 import SegmentedControl from "../../components/base/SegmentedControl";
 import { useNavigate } from "react-router-dom";
 import HarvestCard from "../../components/module/HarvestCard";
@@ -22,14 +25,13 @@ const DashboardView = (props: DashboardGeneratedProps) => {
   const MOCK_OPTIONS = ["Today", "15-day"];
   const [state, setState] = useState(MOCK_OPTIONS[0]);
   const navigate = useNavigate();
+
   return (
     <Wrapper>
-      <Typography variant="title2" weight="700">
-        Hello Wade, let's farm!
-      </Typography>
       <Top>
         <Weather lg={6}>Weather Card</Weather>
-        <Segment lg={6}>
+        {/* <Segment lg={6}> */}
+        <Segment>
           <SegmentedControl
             options={MOCK_OPTIONS}
             selectedOption={state}
@@ -50,26 +52,27 @@ const DashboardView = (props: DashboardGeneratedProps) => {
             weight="700"
             textColor="shade5"
             onClick={() => navigate("/your-crops")}
-            style={{ cursor: "pointer" }}>
+            style={{ cursor: "pointer" }}
+          >
             see more
           </Typography>
         </Title>
         <Carousel>
-          <CarouselSwiper
+          {/* <CarouselSwiper
             breakpoints={{
-              '@0.00': {
+              "@0.00": {
                 slidesPerView: 1,
                 spaceBetween: 10,
               },
-              '@0.75': {
+              "@0.75": {
                 slidesPerView: 2,
                 spaceBetween: 20,
               },
-              '@1.00': {
+              "@1.00": {
                 slidesPerView: 3,
                 spaceBetween: 40,
               },
-              '@1.50': {
+              "@1.50": {
                 slidesPerView: 4,
                 spaceBetween: 50,
               },
@@ -206,7 +209,7 @@ const DashboardView = (props: DashboardGeneratedProps) => {
                 width={137}
               />,
             ]}
-          />
+          /> */}
         </Carousel>
       </Middle>
       {/* <Bottom>

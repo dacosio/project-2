@@ -34,6 +34,8 @@ export const Title = styled.div`
   margin-bottom: 24px;
 `;
 
-export const Carousel = styled.div``;
+export const Carousel = styled.div`
+  border: 1px solid red;
+`;
 
 export const Bottom = styled.div``;

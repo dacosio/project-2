@@ -19,14 +19,21 @@ const Layout = (props: LayoutProps): JSX.Element => {
     return path;
   };
   const formattedPath = formatPath(currentUrl);
-
+  const modifiedPath = formattedPath.split("/")[0];
+  console.log(modifiedPath);
   return (
     <Container>
       <Side>
         <Navigation />
       </Side>
       <Main>
-        <NavigationHeader sectionName={formattedPath} />
+        <NavigationHeader
+          sectionName={
+            modifiedPath === "Dashboard"
+              ? "Hello User, let's farm!"
+              : modifiedPath
+          }
+        />
         <Outlet />
       </Main>
     </Container>

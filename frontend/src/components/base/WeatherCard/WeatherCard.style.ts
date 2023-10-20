@@ -3,8 +3,8 @@ import { theme } from "../../../utils/Theme";
 
 export const Container = styled.div`
     position: relative;
-    width: 50%;
-    max-width: 388px;
+    width: 100%;
+    max-width: 450px;
     padding: 7rem 1.5rem 1.5rem 1.5rem;
     background-color: ${theme.btn.color.outlineBg};
     border-radius: 1.5rem;
