@@ -9,8 +9,6 @@ import PersistAuth from "components/layout/PersistAuth";
 import YourCrop from "./pages/Crops/YourCrop";
 import CropGuide from "./pages/Crops/CropGuide";
 import Weather from "./pages/Weather";
-import Signup from "pages/Signup";
-import Signin from "pages/Signin";
 import ModalViewPage from "pages/ModalViewPage";
 
 function App() {
@@ -27,8 +25,6 @@ function App() {
           <Route path="private" element={<Private />} />
         </Route>
       </Route>
-      <Route path="signup" element={<Signup />} />
-      <Route path="signin" element={<Signin />} />
       <Route path="modal" element={<ModalViewPage />} />
     </Routes>
   );

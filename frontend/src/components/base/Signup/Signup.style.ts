@@ -1,37 +1,31 @@
 import styled from "@emotion/styled";
-import { Col, Row, Visible, Hidden } from "react-grid-system";
-import { theme } from "utils/Theme";
+import { theme } from "../../../utils/Theme";
 
 export const Container = styled.div`
-  // background-color: ${theme.brand.primary};
-  display: flex;
-  justify-content: center;
-  margin: 1rem;
-`;
-
-export const Modalbox = styled.div`
-  width: 300px;
+  min-width: 300px;
   border-radius: 24px;
   overflow: hidden;
   display: flex;
   flex-flow: column;
+  gap: 2rem;
+
   @media (min-width: 768px) {
+    gap: 0;
     flex-flow: row;
-    width: 725px;
+    max-width: 725px;
   }
 `;
 
 export const Header = styled.div`
-  padding: 2rem 2rem 0 2rem;
+  padding: 4rem 2rem 0 2rem;
   display: flex;
-  align-items: center;
   @media (min-width: 768px) {
     padding: 2rem;
     width: 25.5%;
     background-color: ${theme.brand.accent};
     p {
-        font-size: 36px;
-        line-height: 46px;
+      font-size: 36px;
+      line-height: 46px;
       color: ${theme.text.invert};
       text-align: left;
     }
@@ -39,33 +33,45 @@ export const Header = styled.div`
 `;
 
 export const SingupForm = styled.form`
-  p {
-    font-size: 16px;
-    font-weight: 400;
-  }
+  padding: 0 1rem 2rem 1rem;
   flex-grow: 1;
   display: flex;
   flex-flow: column;
-  gap: 0.5rem;
+  gap: 1rem;
   justify-content: center;
-  align-items: center;
-
   @media (min-width: 768px) {
-    p {
-      font-size: 20px;
-      font-weight: 400;
-    }
+    padding: 4rem 2rem 2rem 2rem;
   }
 `;
 
 export const SingupDetails = styled.form`
-  padding: 2rem;
+  padding: 0 1rem 2rem 1rem;
   flex-grow: 1;
   display: flex;
   flex-flow: column;
   gap: 1rem;
   justify-content: center;
 `;
+
+// export const SingupForm = styled.form`
+//   p {
+//     font-size: 16px;
+//     font-weight: 400;
+//   }
+//   flex-grow: 1;
+//   display: flex;
+//   flex-flow: column;
+//   gap: 0.5rem;
+//   justify-content: center;
+//   align-items: center;
+
+//   @media (min-width: 768px) {
+//     p {
+//       font-size: 20px;
+//       font-weight: 400;
+//     }
+//   }
+// `;
 
 export const SubmitButton = styled.input`
   font-size: 14px;

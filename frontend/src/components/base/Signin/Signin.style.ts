@@ -3,7 +3,7 @@ import { theme } from "../../../utils/Theme";
 
 
 export const Container = styled.div`
-width: 300px;
+min-width: 300px;
 border-radius: 24px;
 overflow: hidden;
 display: flex;
@@ -11,7 +11,7 @@ flex-flow: column;
 
 @media (min-width: 768px) {
   flex-flow: row;
-  width: 725px;
+  max-width: 725px;
 }
 `;
 

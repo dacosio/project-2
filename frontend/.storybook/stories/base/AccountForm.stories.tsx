@@ -1,14 +1,12 @@
-import React from "react";
+import React from 'react';
 import type { Meta, StoryObj } from "@storybook/react";
-import Signin from "../../../src/components/base/Signin";
+import AccountForm from "../../../src/components/base/AccountForm";
 import Container from "../../components/Container";
 import Wrapper from "../../components/Wrapper";
 
-const meta: Meta<typeof Signin> = {
-  title: "Base/Signin",
-  component: () => {
-    return <Signin />;
-  },
+const meta: Meta<typeof AccountForm> = {
+  title: "Base/AccountForm",
+  component: AccountForm,
 };
 
 export default meta;
