@@ -4,5 +4,4 @@ export interface PlantResultProps {
     cropName: string;
     imgWidth: string;
     imgHeight: string;
-    link: string;
 }
