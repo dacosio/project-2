@@ -36,6 +36,7 @@ export const Wrapper = styled.div`
         margin-right: 0;
         padding-left: 0;
         padding-right: 0;
+        padding-top: 1rem;
 
         > div {
             padding-top: 10px;

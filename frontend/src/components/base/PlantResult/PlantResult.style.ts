@@ -8,13 +8,20 @@ export const Container = styled.div`
     width: fit-content; 
     overflow: hidden;
     cursor: pointer;
+    width: 100%;
 `
 
 export const ImageHolder = styled.div`
     img {
         border-radius: inherit;
-        height: 184px;
+        height: 160px;
         object-fit: cover;
+    }
+
+    @media screen and (min-width: 560px) {
+        img {
+            height: 184px;
+        }
     }
 `
 
