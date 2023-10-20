@@ -19,6 +19,7 @@ export const Container = styled.div`
 export const Header = styled.div`
   padding: 4rem 2rem 0 2rem;
   display: flex;
+  align-items: center;
   @media (min-width: 768px) {
     padding: 2rem;
     width: 25.5%;
@@ -37,7 +38,7 @@ export const SingupForm = styled.form`
   flex-grow: 1;
   display: flex;
   flex-flow: column;
-  gap: 1rem;
+  gap: 2rem;
   justify-content: center;
   @media (min-width: 768px) {
     padding: 4rem 2rem 2rem 2rem;
@@ -73,7 +74,7 @@ export const SingupDetails = styled.form`
 //   }
 // `;
 
-export const SubmitButton = styled.input`
+export const SubmitButton = styled.button`
   font-size: 14px;
   font-weight: 700;
   background-color: ${theme.brand.accent};
@@ -81,6 +82,26 @@ export const SubmitButton = styled.input`
   border-radius: 1rem;
   padding: 1rem;
   color: ${theme.text.invert};
-  margin-top: 0.5rem;
   width: 100%;
+`;
+
+export const BackButton = styled.button`
+  font-size: 14px;
+  font-weight: 700;
+  background-color: white;
+  border: solid ${theme.brand.accent};
+  border-radius: 1rem;
+  padding: 1rem;
+  color: ${theme.text.accent};
+  width: 100%;
+
+  &:hover {
+    background-color: ${theme.brand.accent};
+    color: white;
+  }
+`;
+
+export const ButtonDivs = styled.div`
+  display: flex;
+  gap: 1rem;
 `;

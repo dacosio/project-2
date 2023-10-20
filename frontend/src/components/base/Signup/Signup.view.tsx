@@ -5,7 +5,9 @@ import {
   Header,
   SingupDetails,
   SingupForm,
+  ButtonDivs,
   SubmitButton,
+  BackButton,
 } from "./Signup.style";
 import Typography from "../Typography";
 import TextField from "../TextField";
@@ -33,17 +35,16 @@ const Signup = (props: SignupProps): JSX.Element => {
 
       <SingupForm action="">
         {step}
-        <div>
+        <ButtonDivs>
           {!isFirstStep && (
-            <button type="button" onClick={back}>
-              {" "}
-              Back{" "}
-            </button>
+            <BackButton type="button" onClick={back}>
+              Back
+            </BackButton>
           )}
-          <button type="button" onClick={next}>
+          <SubmitButton type="button" onClick={next}>
             {isLastStep ? "Finish" : "Next"}
-          </button>
-        </div>
+          </SubmitButton>
+        </ButtonDivs>
       </SingupForm>
 
       {/* <Header>
