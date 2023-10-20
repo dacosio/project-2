@@ -1,14 +1,20 @@
 import styled from "@emotion/styled";
 import { theme } from "../../../utils/Theme";
+import { CurrentWeatherStyleProps } from "./CurrentWeather.props";
 
-export const Container = styled.div`
-    max-width: 80vw;
+export const Container = styled.div<CurrentWeatherStyleProps>`
+    max-width: 70vw;
     width: 100%;
-    background-color: #8ECCEF;
+    background-image: linear-gradient(to right, ${({ gradientColor1 }) => gradientColor1}, ${({ gradientColor2 }) => gradientColor2});
     border-radius: 12px;
     color: white;
     padding: 20px 36px ;
-    height: 210px;
+    
+    height: 252px;
+
+    @media screen and (min-width: 1200px) {
+      height: 210px;
+    }
 
     
 `
@@ -20,28 +26,28 @@ export const AddressDateForecastSVGContainer = styled.div`
 export const AddressDateForecastContainer = styled.div`
 display:flex;
 flex-direction: column;
-// border: 1px solid black;
 gap:1rem;
 `;
 
 export const AddressContainer = styled.div`
-// border: 1px solid black;
-display: flex:
-column-gap: 1rem;
+display: flex;
+column-gap: 6px;
+align-items:center;
 `;
 
+
 export const DateForecastContainer = styled.div`
+margin-left:3px;
 @media screen and (min-width: 1200px) {
   display:flex; 
-// border: 1px solid black;
 }
 `;
 
 export const DateContainer = styled.div`
- 
 `;
 
 export const ForecastContainer = styled.div`
+display:flex;
 @media screen and (min-width: 1200px) {
   ::before {
     content: "|";
@@ -52,16 +58,18 @@ export const ForecastContainer = styled.div`
 `;
 
 export const SVGContainer = styled.div`
-// border: 1px solid black;
+ position: relative;
 `;
 
 export const SearchTemperatureLowHighContainer = styled.div`
-   
+position : relative;
+bottom: -30px;
 
 
    @media screen and (min-width: 1200px) {
     max-width: 84%;
-  //  border: 1px solid black;
+  position : relative;
+  bottom: 40px;
    display:grid;
    grid-template-columns : 70% 30%;
    column-gap: 2rem;
@@ -78,6 +86,15 @@ display: none;
 
 @media screen and (min-width: 1200px) {
     display: inline;
+}
+
+`;
+
+
+export const TemperatureLowHighMTContainer = styled.div`
+
+@media screen and (min-width: 1200px) {
+    display: none;
 }
 
 `;
