@@ -12,14 +12,14 @@ const SignupForm = (props: SignupFormProps): JSX.Element => {
       <TextField
         label="Email"
         value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        setValue={setEmail}
         placeholder="user@nomail.com"
         style={{ width: "100%" }}
       />
       <TextField
         label="Password"
         value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        setValue={setPassword}
         secured
         placeholder="******"
         style={{ width: "100%" }}
@@ -27,7 +27,7 @@ const SignupForm = (props: SignupFormProps): JSX.Element => {
       <TextField
         label="Confirm Password"
         value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        setValue={setPassword}
         secured
         placeholder="******"
         style={{ width: "100%" }}
