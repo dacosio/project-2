@@ -24,34 +24,38 @@ const meta: Meta<typeof CurrentWeather> = {
     return (
       <Container>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "4rem" }}>
-          <CurrentWeather
-            currentLocation="Vancouver"
-            forecast="Clear"
-            currentTemperature={24}
-            lowTemparature={18}
-            highTemparature={26}
-            gradientColor1={gradientObject.clear[0]}
-            gradientColor2={gradientObject.clear[1]}
-            currentCondition="clear"
-          />
-
-          <CurrentWeather
-            currentLocation="Vancouver"
-            forecast="Partially cloudy"
-            currentTemperature={24}
-            lowTemparature={18}
-            highTemparature={26}
-            gradientColor1={gradientObject.partiallyCloudy[0]}
-            gradientColor2={gradientObject.partiallyCloudy[1]}
-            currentCondition="partiallyCloudy"
-          />
-
+          <div style={{display: 'flex'}}>
+            <div>
+              <CurrentWeather
+                currentLocation="Vancouver"
+                forecast="Clear"
+                currentTemperature={24}
+                lowTemperature={18}
+                highTemperature={26}
+                gradientColor1={gradientObject.clear[0]}
+                gradientColor2={gradientObject.clear[1]}
+                currentCondition="clear"
+              />
+            </div>
+            <div>
+              <CurrentWeather
+                currentLocation="Vancouver"
+                forecast="Partially cloudy"
+                currentTemperature={24}
+                lowTemperature={18}
+                highTemperature={26}
+                gradientColor1={gradientObject.partiallyCloudy[0]}
+                gradientColor2={gradientObject.partiallyCloudy[1]}
+                currentCondition="partiallyCloudy"
+              />
+            </div>
+          </div>
           <CurrentWeather
             currentLocation="Vancouver"
             forecast="Overcast"
             currentTemperature={24}
-            lowTemparature={18}
-            highTemparature={26}
+            lowTemperature={18}
+            highTemperature={26}
             gradientColor1={gradientObject.overcast[0]}
             gradientColor2={gradientObject.overcast[1]}
             currentCondition="overcast"
@@ -61,8 +65,8 @@ const meta: Meta<typeof CurrentWeather> = {
             currentLocation="Vancouver"
             forecast="Rain"
             currentTemperature={24}
-            lowTemparature={18}
-            highTemparature={26}
+            lowTemperature={18}
+            highTemperature={26}
             gradientColor1={gradientObject.rain[0]}
             gradientColor2={gradientObject.rain[1]}
             currentCondition="rain"
@@ -72,8 +76,8 @@ const meta: Meta<typeof CurrentWeather> = {
             currentLocation="Vancouver"
             forecast="Thunderstorm"
             currentTemperature={24}
-            lowTemparature={18}
-            highTemparature={26}
+            lowTemperature={18}
+            highTemperature={26}
             gradientColor1={gradientObject.thunderStorm[0]}
             gradientColor2={gradientObject.thunderStorm[1]}
             currentCondition="thunderStorm"
@@ -83,8 +87,8 @@ const meta: Meta<typeof CurrentWeather> = {
             currentLocation="Vancouver"
             forecast="Snow"
             currentTemperature={24}
-            lowTemparature={18}
-            highTemparature={26}
+            lowTemperature={18}
+            highTemperature={26}
             gradientColor1={gradientObject.snow[0]}
             gradientColor2={gradientObject.snow[1]}
             currentCondition="snow"
@@ -94,8 +98,8 @@ const meta: Meta<typeof CurrentWeather> = {
             currentLocation="Vancouver"
             forecast="Heavy Rain and Snow"
             currentTemperature={24}
-            lowTemparature={18}
-            highTemparature={26}
+            lowTemperature={18}
+            highTemperature={26}
             gradientColor1={gradientObject.snowRain[0]}
             gradientColor2={gradientObject.snowRain[1]}
             currentCondition="snowRain"
@@ -105,8 +109,8 @@ const meta: Meta<typeof CurrentWeather> = {
             currentLocation="Vancouver"
             forecast="Thunderstorm and rain"
             currentTemperature={24}
-            lowTemparature={18}
-            highTemparature={26}
+            lowTemperature={18}
+            highTemperature={26}
             gradientColor1={gradientObject.thunderStormRain[0]}
             gradientColor2={gradientObject.thunderStormRain[1]}
             currentCondition="thunderStormRain"

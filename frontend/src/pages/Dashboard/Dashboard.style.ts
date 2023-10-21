@@ -16,12 +16,10 @@ export const Top = styled(Row)`
 export const Segment = styled(Col)`
   // flex: 0.5;
   height: 300px;
-  border: 1px solid hotpink;
 `;
 export const Weather = styled(Col)`
   // flex: 0.5;
   height: 300px;
-  border: 1px solid hotpink;
 `;
 
 export const Middle = styled.div`
@@ -38,4 +36,3 @@ export const Carousel = styled.div`
   border: 1px solid red;
 `;
 
-export const Bottom = styled.div``;

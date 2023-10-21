@@ -7,7 +7,6 @@ import {
   Segment,
   Weather,
   Title,
-  Bottom,
   Carousel,
 } from "./Dashboard.style";
 import WeatherCard from "../../components/base/WeatherCard";
@@ -27,6 +26,7 @@ import {
   selectToggle,
 } from "features/sidebar/sidebarSlice";
 import { useMediaQuery } from "utils/hooks/useMediaQuery";
+import CurrentWeather from "components/module/CurrentWeather";
 
 const DashboardView = (props: DashboardGeneratedProps) => {
   const MOCK_OPTIONS = ["Today", "15-day"];
@@ -35,7 +35,7 @@ const DashboardView = (props: DashboardGeneratedProps) => {
 
   const sl = [];
 
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < 9; i++) {
     sl.push(
       <HarvestCard
         cropName="Carrot"
@@ -47,33 +47,39 @@ const DashboardView = (props: DashboardGeneratedProps) => {
         id="1"
         datePlanted="Jan 1, 2023"
         estYield="xx lb/plant"
-        height={137}
-        width={137}
+        height={82}
+        width={82}
       />
     );
   }
 
-  const broken = useAppSelector(selectBroken);
-  const toggleState = useAppSelector(selectToggle);
-  const collapse = useAppSelector(selectCollapse);
-
-  const sm = useMediaQuery("(min-width: 360px) and (max-width:576px)");
-  const md = useMediaQuery("(min-width: 577px) and (max-width:768px)");
-  const lg = useMediaQuery("(min-width: 769px) and (max-width:1270px)");
-  const xl = useMediaQuery("(min-width: 1271px)");
-
-  console.log(collapse);
-  const carouselWidth = "80vw";
-  const collapseCalc = !collapse
-    ? `calc(${carouselWidth} - 288px)`
-    : carouselWidth;
-  // TODO
+  const [gradientObject, setGradientObject] = useState({
+    clear: ["#1DAEFF", "#8ECCEF"],
+    partiallyCloudy: ["#6DDFFC", "#89B4E7"],
+    overcast: ["#83D3EF", "#4A629B"],
+    rain: ["#37528C", "#9BACD0"],
+    thunderStorm: ["#7148D5", "#C9A6C7"],
+    snow: ["#1DACF0", "#202C4C"],
+    snowRain: ["#524E8B", "#2A3259"],
+    thunderStormRain: ["#4D54D5", "#C29EC9"],
+  });
 
   return (
     <Wrapper>
-      {/* <Top>
-        <Weather lg={6}>Weather Card</Weather>
-        <Segment>
+      <Top>
+        <Weather md={6}>
+          <CurrentWeather
+            currentLocation="Vancouver"
+            forecast="Clear"
+            currentTemperature={24}
+            lowTemperature={18}
+            highTemperature={26}
+            gradientColor1={gradientObject.clear[0]}
+            gradientColor2={gradientObject.clear[1]}
+            currentCondition="clear"
+          />
+        </Weather>
+        <Segment md={6}>
           <SegmentedControl
             options={MOCK_OPTIONS}
             selectedOption={state}
@@ -83,9 +89,9 @@ const DashboardView = (props: DashboardGeneratedProps) => {
             }}
           />
         </Segment>
-      </Top> */}
+      </Top>
       <Middle>
-        {/* <Title>
+        <Title>
           <Typography variant="title3" weight="700">
             Your Planted Crops
           </Typography>
@@ -98,38 +104,26 @@ const DashboardView = (props: DashboardGeneratedProps) => {
           >
             see more
           </Typography>
-        </Title> */}
+        </Title>
         {/* <Carousel> */}
         <CarouselSwiper
+          slidesPerView={1}
           breakpoints={{
-            "@0.00": {
-              slidesPerView: 1,
-              spaceBetween: 10,
-            },
-            "@0.5": {
+            500: {
+              width: 500,
               slidesPerView: 2,
               spaceBetween: 20,
             },
-            "@0.75": {
+            1024: {
+              width: 1024,
               slidesPerView: 4,
-              spaceBetween: 40,
+              spaceBetween: 20,
             },
-            // "@1.00": {
-            //   slidesPerView: 4,
-            //   spaceBetween: 50,
-            // },
           }}
           slides={sl}
         />
         {/* </Carousel> */}
       </Middle>
-      {/* <Bottom>
-        <Title>
-          <Typography variant="title3" weight="700">
-            Amazing crops to plant this season
-          </Typography>
-        </Title>
-      </Bottom> */}
     </Wrapper>
   );
 };
