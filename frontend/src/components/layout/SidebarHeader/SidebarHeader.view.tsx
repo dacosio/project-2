@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 
 import { SidebarHeaderProps } from "./SidebarHeader.props";
-import { StyledLogo, StyledSidebarHeader } from "./SidebarHeader.style";
+import {
+  StyledLogo,
+  StyledSidebarHeader,
+  TitleWrapper,
+} from "./SidebarHeader.style";
 import Typography from "components/base/Typography";
 import { useAppDispatch } from "app/hooks";
 import { sendCollapse } from "features/sidebar/sidebarSlice";
@@ -20,12 +24,14 @@ const SidebarHeader = ({
   };
   return (
     <StyledSidebarHeader {...rest}>
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <StyledLogo onClick={handleCollapse}>
+      <TitleWrapper
+        onClick={handleCollapse}
+      >
+        <StyledLogo>
           <CollapsedLogo height={52} width={40} />
         </StyledLogo>
         <SproutLogo width={150} height={45} />
-      </div>
+      </TitleWrapper>
     </StyledSidebarHeader>
   );
 };

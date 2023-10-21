@@ -1,4 +1,7 @@
 /* PLOP_INJECT_IMPORT */
+export { default as Snow } from './Snow';
+export { default as Overcast } from './Overcast';
+export { default as Clear } from './Clear';
 export { default as Soil } from './Soil';
 export { default as Clock } from './Clock';
 export { default as Temperature } from './Temperature';
