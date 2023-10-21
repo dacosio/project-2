@@ -31,7 +31,6 @@ export const Wrapper = styled.div`
     }
 
     .container {
-        max-width: 100% !important;
         margin-left: 1rem;
         margin-right: 0;
         padding-left: 0;
@@ -53,6 +52,10 @@ export const Wrapper = styled.div`
     }    
 
     @media screen and (min-width: 578px) {
+        .container {
+            max-width: 1021px !important;
+        }
+        
         .box-container {
             background-color: ${theme.neutral.n0};
             border: 1px solid ${theme.neutral.n20};
