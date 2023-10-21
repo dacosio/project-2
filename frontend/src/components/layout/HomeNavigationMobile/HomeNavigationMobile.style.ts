@@ -4,7 +4,7 @@ import { theme } from "../../../utils/Theme";
 export const Container = styled.div``;
 
 export const NavBackground = styled.div`
-  transition: opacity 0.7s ease-in-out;
+  transition: opacity 0s ease-in-out;
   height: 100vh;
   background-color: ${theme.neutral.n100};
 
@@ -14,6 +14,7 @@ export const NavBackground = styled.div`
 
   &.hidden {
     opacity: 0;
+    display:none;
   }
   @media (min-width: 768px) {
     display: none;
