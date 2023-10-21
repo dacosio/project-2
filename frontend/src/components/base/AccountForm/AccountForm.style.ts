@@ -16,4 +16,5 @@ export const Form = styled.div`
   }
   display: grid;
   gap: 1rem;
+  justify-items: center
 `;

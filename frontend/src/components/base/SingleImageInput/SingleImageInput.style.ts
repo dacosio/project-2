@@ -5,7 +5,7 @@ export const Container = styled.div``;
 
 export const InputContainer = styled.div`
   width: 100%;
-  border-radius: 50%;
+  border-radius: 1rem;
   aspect-ratio: 1;
   background-color: ${({ theme }) => theme.neutral.n20};
   display: grid;
