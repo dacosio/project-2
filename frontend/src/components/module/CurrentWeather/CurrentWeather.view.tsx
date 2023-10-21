@@ -86,7 +86,9 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
           </TemperatureLowHighMTContainer>
         </AddressDateForecastContainer>
         <SVGContainer>
-          {currentCondition === "partiallyCloudy" ? (
+          {currentCondition === "clear" ? (
+            <Clear width={160} height={160} />
+          ) : currentCondition === "partiallyCloudy" ? (
             <Clear width={160} height={160} />
           ) : currentCondition === "snow" ? (
             <Snow width={160} height={160} />

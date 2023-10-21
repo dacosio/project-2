@@ -3,8 +3,8 @@ import { theme } from "../../../utils/Theme";
 import { CurrentWeatherStyleProps } from "./CurrentWeather.props";
 
 export const Container = styled.div<CurrentWeatherStyleProps>`
-    max-width: 70vw;
-    width: 100%;
+    max-width: 1021px;
+     width: 100%;
     background-image: linear-gradient(to right, ${({ gradientColor1 }) => gradientColor1}, ${({ gradientColor2 }) => gradientColor2});
     border-radius: 12px;
     color: white;
@@ -69,7 +69,7 @@ bottom: -30px;
    @media screen and (min-width: 1200px) {
     max-width: 84%;
   position : relative;
-  bottom: 40px;
+  bottom: 48px;
    display:grid;
    grid-template-columns : 70% 30%;
    column-gap: 2rem;

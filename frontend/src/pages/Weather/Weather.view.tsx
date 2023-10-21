@@ -27,7 +27,7 @@ const WeatherView = (props: WeatherGeneratedProps) => {
   const { currentCity, errorMessage } = useCurrentCity();
   console.log(`currentCity : ${currentCity}`);
   const apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${currentCity}?unitGroup=metric&key=${process.env.REACT_APP_WEATHER_API_KEY}&contentType=json`;
-  console.log(`apiUrl : ${apiUrl}`);
+  // console.log(`apiUrl : ${apiUrl}`);
   useEffect(() => {
     // get data from weather API and use the data on setWeatherData
     const onFetchWeather = () =>

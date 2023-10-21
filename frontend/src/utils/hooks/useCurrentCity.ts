@@ -36,21 +36,21 @@ const getCurrentCity = (): Promise<LocationData> => {
         (error) => {
           switch (error.code) {
             case error.PERMISSION_DENIED:
-              resolve({ currentCity: null, errorMessage: "User denied the request for Geolocation." });
+              resolve({ currentCity: "Vancouver", errorMessage: "User denied the request for Geolocation." });
               break;
             case error.POSITION_UNAVAILABLE:
-              resolve({ currentCity: null, errorMessage: "Location information is unavailable." });
+              resolve({ currentCity: "Vancouver", errorMessage: "Location information is unavailable." });
               break;
             case error.TIMEOUT:
-              resolve({ currentCity: null, errorMessage: "The request to get user location timed out." });
+              resolve({ currentCity: "Vancouver", errorMessage: "The request to get user location timed out." });
               break;
             default:
-              resolve({ currentCity: null, errorMessage: "An error occurred while fetching location." });
+              resolve({ currentCity: "Vancouver", errorMessage: "An error occurred while fetching location." });
           }
         }
       );
     } else {
-      resolve({ currentCity: null, errorMessage: "Geolocation is not available in your browser." });
+      resolve({ currentCity: "Vancouver", errorMessage: "Geolocation is not available in your browser." });
     }
   });
 };
