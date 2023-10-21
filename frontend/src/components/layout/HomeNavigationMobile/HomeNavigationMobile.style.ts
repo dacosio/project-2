@@ -1,11 +1,10 @@
 import styled from "@emotion/styled";
 import { theme } from "../../../utils/Theme";
 
-export const Container = styled.div`
-`;
+export const Container = styled.div``;
 
 export const NavBackground = styled.div`
-  transition: opacity .7s ease-in-out;
+  transition: opacity 0.7s ease-in-out;
   height: 100vh;
   background-color: ${theme.neutral.n100};
 
@@ -16,8 +15,10 @@ export const NavBackground = styled.div`
   &.hidden {
     opacity: 0;
   }
+  @media (min-width: 768px) {
+    display: none;
+  }
 `;
-
 
 export const NavContainer = styled.div`
   position: fixed;
@@ -37,6 +38,9 @@ export const NavContainer = styled.div`
   &.hidden {
     z-index: 5;
     transform: translateY(-100%);
+  }
+  @media (min-width: 768px) {
+    display: none;
   }
 `;
 
