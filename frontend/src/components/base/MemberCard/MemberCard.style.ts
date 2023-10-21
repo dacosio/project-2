@@ -13,10 +13,30 @@ export const HeaderContainer = styled.div`
   position: relative;
 `;
 
-export const Image = styled.img`
-  aspect-ratio: 1;
+export const ImageContainer = styled.div`
   width: 100%;
+  aspect-ratio: 1;
+`;
+
+export const Background = styled.div`
+  position: absolute;
+  top: 0;
+  width: 100%;
+  aspect-ratio: 1;
   border-radius: 50%;
+`;
+
+export const Image = styled.img`
+  position: absolute;
+  top: 0;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: ${({ theme }) => theme.bg.secondary};
+
+  :hover {
+    background-color: ${({ theme }) => theme.btn.color.token};
+  }
 `;
 
 export const IconContainer = styled.div`

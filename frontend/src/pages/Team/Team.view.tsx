@@ -11,7 +11,7 @@ const TeamView = (props: TeamGeneratedProps) => {
 
   return (
     <Container>
-      <HomeNavigation />
+      {/* <HomeNavigation /> */}
       <Wrapper>
         <Typography variant="title1" textColor="accent" weight="700">
           Meet the team that made this platform sprout
@@ -36,7 +36,7 @@ const TeamView = (props: TeamGeneratedProps) => {
               }}
             >
               <MemberCard
-                source={`https://picsum.photos/300/300?random=${index + 1}`}
+                source={member.source}
                 name={member.name}
                 role={member.role}
                 key={index}
