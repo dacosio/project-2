@@ -10,12 +10,10 @@ import {
   GridLayout,
   AllCrop,
 } from "./CropGuide.style";
-import CropCondition from "./../../../components/base/CropCondition";
 import PlantResult from "components/base/PlantResult";
 import Typography from "components/base/Typography";
 import Search from "components/base/Search";
 import SearchResult from "components/base/SearchResult";
-import CropAbout from "./../CropAbout";
 import { Link } from "react-router-dom";
 
 const CropGuideView = (props: CropGuideGeneratedProps) => {

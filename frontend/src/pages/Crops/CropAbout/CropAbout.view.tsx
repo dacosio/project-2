@@ -16,7 +16,7 @@ import { Container, Row, Col, Hidden, Visible } from "react-grid-system";
 import CropCondition from "components/base/CropCondition";
 import Accordion from "../../../components/base/Accordion";
 
-const CropAboutView = (props: CropAboutProps): JSX.Element => {
+const CropAboutView = (props: CropAboutProps) => {
   const { crops, handlePlantLater, handlePlantNow } = props;
 
   const { id } = useParams();
