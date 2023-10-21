@@ -23,5 +23,10 @@ export const StyledLogo = styled.div`
   justify-content: center;
   font-size: 33px;
   margin-right: 12px;
+`;
+
+export const TitleWrapper = styled.div`
+  display: flex;
+  align-items: center;
   cursor: pointer;
 `;
