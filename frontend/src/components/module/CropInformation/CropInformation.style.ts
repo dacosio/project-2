@@ -7,6 +7,8 @@ export const Container = styled.div`
 `;
 
 export const InformationContainer = styled.div`
+  display: grid;
+
   > div {
     padding-top: 16px;
     display: grid;
@@ -18,10 +20,17 @@ export const InformationContainer = styled.div`
     margin: 1px;
   }
 
+  @media (min-width: 768px) {
+    gap: 8px;
+
+    > div {
+      padding-top: unset;
+    }
+  }
+
   @media (min-width: 1200px) {
     > div {
       grid-template-columns: repeat(4, 1fr);
-      padding-top: unset;
     }
   }
 `;

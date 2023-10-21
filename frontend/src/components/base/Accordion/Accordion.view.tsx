@@ -16,7 +16,7 @@ const Accordion = (props: AccordionProps): JSX.Element => {
   return (
     <Container>
       <HeaderContainer onClick={handleOnToggle}>
-        {visibility ? <ArrowUp /> : <ArrowDown />}
+        {visibility ? <ArrowDown /> : <ArrowUp />}
         <Typography variant="title5">{label}</Typography>
       </HeaderContainer>
       <FooterContainer className={visibility ? "expand" : undefined}>
