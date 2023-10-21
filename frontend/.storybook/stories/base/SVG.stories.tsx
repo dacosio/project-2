@@ -2,6 +2,9 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import {
   /* PLOP_INJECT_IMPORT */
+  Snow,
+  Overcast,
+  Clear,
   Soil,
   Clock,
   Temperature,
@@ -55,6 +58,15 @@ const meta: Meta = {
   component: () => (
     <Container background="white">
       {/* PLOP_INJECT_INSTANCE*/}
+        <Wrapper label="Snow">
+          <Snow width={30} height={30} />
+        </Wrapper>
+        <Wrapper label="Overcast">
+          <Overcast width={30} height={30} />
+        </Wrapper>
+      <Wrapper label="Clear">
+        <Clear width={30} height={30} />
+      </Wrapper>
       <Wrapper label="Soil">
         <Soil width={30} height={30} />
       </Wrapper>
