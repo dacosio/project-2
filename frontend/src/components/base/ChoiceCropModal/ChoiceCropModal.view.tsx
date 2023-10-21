@@ -52,34 +52,6 @@ const ChoiceCropModal = (props: ChoiceCropModalProps): JSX.Element => {
               the size of a golf ball.
             </Typography>
           </Description>
-          {/* <CropInformation>
-            <Typography
-              variant="title3"
-              weight="700"
-              textColor="n90"
-              align="left"
-            >
-              Tomato
-            </Typography>
-
-            <CropInfoDetails>
-              <Temperature></Temperature>
-              <Humidity></Humidity>
-              <Growth></Growth>
-              <Yield></Yield>
-            </CropInfoDetails>
-            <Typography
-              variant="body"
-              weight="400"
-              textColor="n70"
-              align="left"
-            >
-              Small round tomato believed to be an intermediate genetic
-              admixture between wild currant-type tomatoes and domesticated
-              garden tomatoes. Cherry tomatoes range in size from a thumb tip to
-              the size of a golf ball.
-            </Typography>
-          </CropInformation> */}
 
           <Composition>
             <Typography
