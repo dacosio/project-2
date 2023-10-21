@@ -42,7 +42,7 @@ const Signup = (props: SignupProps): JSX.Element => {
             </BackButton>
           )}
           <SubmitButton type="button" onClick={next}>
-            {isLastStep ? "Finish" : "Next"}
+            {isLastStep ? "Signup" : "Next"}
           </SubmitButton>
         </ButtonDivs>
       </SingupForm>

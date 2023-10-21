@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { AccountFormProps } from "./AccountForm.props";
 import { Container, Form } from "./AccountForm.style";
 import TextField from "../TextField";
+import PhotoUpload from "../PhotoUpload";
+import Button from "../Button";
 
 const AccountForm = (props: AccountFormProps): JSX.Element => {
   const [firstName, setFirstName] = useState<string>("");
@@ -9,6 +11,7 @@ const AccountForm = (props: AccountFormProps): JSX.Element => {
 
   return (
     <Form>
+      <PhotoUpload />
       <TextField
         label="First Name"
         value={firstName}
@@ -23,6 +26,7 @@ const AccountForm = (props: AccountFormProps): JSX.Element => {
         placeholder="Shanghai"
         style={{ width: "100%" }}
       />
+      
     </Form>
   );
 };
