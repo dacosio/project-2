@@ -11,7 +11,7 @@ const TeamView = (props: TeamGeneratedProps) => {
 
   return (
     <Container>
-      {/* <HomeNavigation /> */}
+      <HomeNavigation />
       <Wrapper>
         <Typography variant="title1" textColor="accent" weight="700">
           Meet the team that made this platform sprout
