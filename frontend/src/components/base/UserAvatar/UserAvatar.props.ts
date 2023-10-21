@@ -7,4 +7,5 @@ export interface UserAvatarProps {
   imageUrl?: string;
   style?: CSSProperties;
   round?: boolean | string | undefined;
+  onClick?: () => void;
 }

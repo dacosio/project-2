@@ -46,7 +46,9 @@ export const LogOutContainer = styled.div`
 `;
 
 export const BellWrapper = styled.div`
-  padding: 14px 16px;
+  padding: 8px 9px;
   border: 1px solid #d1d1d9;
-  border-radius: 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
 `;

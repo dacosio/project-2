@@ -28,8 +28,8 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
     currentLocation,
     forecast,
     currentTemperature,
-    lowTemparature,
-    highTemparature,
+    lowTemperature,
+    highTemperature,
     gradientColor1,
     gradientColor2,
     currentCondition,
@@ -71,7 +71,7 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
                   Low
                 </Typography>{" "}
                 <Typography variant="title5" textColor="white">
-                  {lowTemparature}°C
+                  {lowTemperature}°C
                 </Typography>{" "}
               </LowContainer>
               <HighContainer>
@@ -79,7 +79,7 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
                   High
                 </Typography>{" "}
                 <Typography variant="title5" textColor="white">
-                  {highTemparature}°C
+                  {highTemperature}°C
                 </Typography>{" "}
               </HighContainer>
             </LowHighContainer>
@@ -115,7 +115,7 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
                 Low
               </Typography>{" "}
               <Typography variant="title4" textColor="white">
-                {lowTemparature}°C
+                {lowTemperature}°C
               </Typography>{" "}
             </LowContainer>
             <HighContainer>
@@ -123,7 +123,7 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
                 High
               </Typography>{" "}
               <Typography variant="title4" textColor="white">
-                {highTemparature}°C
+                {highTemperature}°C
               </Typography>{" "}
             </HighContainer>
           </LowHighContainer>

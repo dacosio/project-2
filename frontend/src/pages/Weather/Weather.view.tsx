@@ -131,8 +131,8 @@ const WeatherView = (props: WeatherGeneratedProps) => {
           currentLocation={currentCity}
           forecast={weatherData.currentConditions.conditions}
           currentTemperature={weatherData.currentConditions.temp}
-          lowTemparature={weatherData.days[0]?.tempmin}
-          highTemparature={weatherData.days[0]?.tempmax}
+          lowTemperature={weatherData.days[0]?.tempmin}
+          highTemperature={weatherData.days[0]?.tempmax}
           gradientColor1={gradientColor1}
           gradientColor2={gradientColor2}
           currentCondition={currentCondition}
