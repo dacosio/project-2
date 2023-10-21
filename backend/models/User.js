@@ -10,17 +10,15 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    roles: [
-      {
-        type: String,
-        default: "employee",
-        enum: ["employee", "admin", "manager"],
-      },
-    ],
-    isActive: {
-      type: Boolean,
-      default: true,
+    imageUrl: {
+      type: String,
     },
+    firstName: {
+      type: String,
+    },
+    lastName: {
+      type: String
+    }
   },
   {
     timestamps: true,

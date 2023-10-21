@@ -63,6 +63,11 @@ const styles: Record<Variants, string> = {
       line-height: 15px;
       letter-spacing: 0;
     `,
+  crop: `
+      font-size: ${pxToRem(10)};
+      line-height: 15px;
+      letter-spacing: 0;
+    `,
 };
 
 const weights: Record<string, string> = {
@@ -83,6 +88,7 @@ const font: Record<Variants, string> = {
   mobile: weights.Regular,
   small: weights.Regular,
   tag: weights.Regular,
+  crop: weights.Regular,
 };
 
 export const P = styled.p<TypographyProps>`
@@ -90,6 +96,7 @@ export const P = styled.p<TypographyProps>`
   font-weight: ${({ variant, weight }) => weight || font[variant || "body"]};
   color: ${({ theme, textColor = "shade9" }) => {
     const selectedColor = {
+      ...theme.neutral,
       ...theme.grey,
       ...theme.brand,
       ...theme.btn.text,

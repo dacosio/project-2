@@ -1,46 +1,89 @@
-import React from 'react';
-import { CropGuideGeneratedProps } from './CropGuide.props';
-import { Container, Conditions, GridLayout } from './CropGuide.style';
-import CropCondition from './../../../components/base/CropCondition'
+import React, { useState } from "react";
+import { CropGuideGeneratedProps } from "./CropGuide.props";
+import {
+  Wrapper,
+  Container,
+  Header,
+  SearchContainer,
+  Body,
+  Conditions,
+  GridLayout,
+  AllCrop,
+} from "./CropGuide.style";
+import PlantResult from "components/base/PlantResult";
+import Typography from "components/base/Typography";
+import Search from "components/base/Search";
+import SearchResult from "components/base/SearchResult";
+import { Link } from "react-router-dom";
 
 const CropGuideView = (props: CropGuideGeneratedProps) => {
-  const conditions = [
-    {
-      title: "Temperature",
-      output: "21-27°C"
-    },
-    {
-      title: "Humidity",
-      output: "65-85%"
-    },
-    {
-      title: "Expected Harvest",
-      output: "50-65 days"
-    },
-    {
-      title: "Yield Prediction (fruits per crop)",
-      output: "150-200"
-    }
-  ]
+  const {
+    searches,
+    searchResults,
+    setSearchResults,
+    searchTerm,
+    setSearchTerm,
+    delay,
+    handleSearch,
+    fetchSearchResult,
+  } = props;
 
-  const getCondition = () => {
-    return conditions.map((con, i) =>
-      <CropCondition key={i} title={con.title} output={con.output} />
-    )
-  }
+  const displayAllCrop = () => {
+    return searches.map((con, i) => (
+      <Link
+        key={i}
+        to={`/crop-guide/${con._id}`}
+        style={{ textDecoration: "none" }}
+      >
+        <PlantResult
+          key={i}
+          imageUrl={con.img_url}
+          imageAlt="random image"
+          imgWidth="100%"
+          imgHeight="100%"
+          cropName={con.name}
+        />
+      </Link>
+    ));
+  };
 
   return (
-    <GridLayout>
-      <Container key="1" className="col-lg-5">
-        <div style={{ height: '400px' }}></div>
-        <Conditions>
-          {getCondition()}
-        </Conditions>
-      </Container>
-      <Container key="2" className="col-lg-3-5">Content 2</Container>
-      <Container key="3" className="col-lg-3-5">Content 3</Container>
+    <Wrapper>
+      <Container>
+        <Header>
+          <Typography variant="title2" textColor="noshade">
+            Crop Guide
+          </Typography>
+          <Typography variant="subtitle" weight="200" textColor="noshade">
+            Have a crop or two you want to plant?
+            <br />
+            Get tips on growing them from us!
+          </Typography>
 
-    </GridLayout>
+          <SearchContainer>
+            <Search
+              dynamicPlaceholder="Search for crop, plants, fruits etc..."
+              onSearch={fetchSearchResult}
+              delay={delay}
+              searchTerm={searchTerm}
+              handleSearch={handleSearch}
+              setSearchTerm={setSearchTerm}
+            />
+          </SearchContainer>
+        </Header>
+        <Body>
+          {searchTerm ? (
+            <SearchResult
+              searchTerm={searchTerm}
+              searchResults={searchResults}
+              delay={delay}
+            />
+          ) : (
+            <AllCrop>{displayAllCrop()}</AllCrop>
+          )}
+        </Body>
+      </Container>
+    </Wrapper>
   );
 };
 

@@ -17,6 +17,7 @@ export const theme: Theme = {
     success: "#00C48C",
     warning: "#FFA26B",
     error: "#FF4D03",
+    green: "#57CB62",
   },
   grey: {
     shade1: "#F9FAFF",
@@ -26,7 +27,7 @@ export const theme: Theme = {
     shade6: "#7F8498",
     shade7: "#565A6A",
     shade8: "#111E2B",
-    shade9: "#09131D",
+    shade9: "#222",
     noshade: "#FFFFFF",
   },
   neutral: {
@@ -78,6 +79,11 @@ export const theme: Theme = {
       tokenHover: "#1DAEFF",
       tokenPressed: "#242236",
     },
+  },
+  prog: {
+    quarter: "#5DE3B3",
+    half: "#78CFFF",
+    full: "#6C57ED",
   },
 };
 
