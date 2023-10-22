@@ -47,7 +47,7 @@ const Team = (): JSX.Element => {
   ];
 
   const generatedProps = {
-    members: members,
+    members,
   };
   return <TeamView {...generatedProps} />;
 };

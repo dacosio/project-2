@@ -24,25 +24,26 @@ const TeamView = (props: TeamGeneratedProps) => {
           style={{ width: "100%", justifyContent: undefined }}
           nogutter
         >
-          {members.map((member, index) => (
-            <Col
-              sm={6}
-              md={4}
-              lg={3}
-              style={{
-                padding: "16px",
-                display: "grid",
-                maxWidth: "300px",
-              }}
-            >
-              <MemberCard
-                source={member.source}
-                name={member.name}
-                role={member.role}
-                key={index}
-              />
-            </Col>
-          ))}
+          {members &&
+            members.map((member, index) => (
+              <Col
+                sm={6}
+                md={4}
+                lg={3}
+                style={{
+                  padding: "16px",
+                  display: "grid",
+                  maxWidth: "300px",
+                }}
+              >
+                <MemberCard
+                  source={member.source}
+                  name={member.name}
+                  role={member.role}
+                  key={index}
+                />
+              </Col>
+            ))}
         </ListContainer>
       </Wrapper>
     </Container>
