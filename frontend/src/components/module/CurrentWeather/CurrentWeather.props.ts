@@ -4,9 +4,13 @@ export interface CurrentWeatherProps {
   currentTemperature: number;
   lowTemperature: number;
   highTemperature: number;
+  precipitation: number;
+  humidity : number;
+  wind : number;
   gradientColor1: string;
   gradientColor2: string;
   currentCondition: string;
+  page : string;
 }
 
 // Styles
