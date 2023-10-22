@@ -1,63 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { YourCropGeneratedProps } from "./YourCrop.props";
 import {
   Container,
-  ColumnBodyContainer,
   ListColumnContainer,
-  DescriptionContainer,
   DetailColumnContainer,
-  InformationContainer,
-  FertilizerContainer,
-  SuggestionContainer,
-  TipContainer,
-  TitleContainer,
-  TitleLeftContainer,
-  TitleRightContainer,
-  DescriptionLeftContainer,
-  DescriptionRightContainer,
-  InformationHeaderContainer,
-  InformationFooterContainer,
-  SuggestionHeaderContainer,
-  SuggestionFooterContainer,
-  FertilizerHeaderContainer,
-  TipHeaderContainer,
-  TipFooterContainer,
-  FertilizerFooterContainer,
-  TipCircleContainer,
+  Wrapper,
 } from "./YourCrop.style";
 import Typography from "components/base/Typography";
-import { Hidden, Row, Visible } from "react-grid-system";
-import Button from "components/base/Button";
-import CircleProgress from "./../../../components/base/CircleProgress";
-import CropCondition from "components/base/CropCondition";
-import { Delete, Favorite } from "components/base/SVG";
+import { Visible } from "react-grid-system";
 import "react-circular-progressbar/dist/styles.css";
-import theme from "utils/Theme";
-import Tab from "components/base/Tab";
-import CropList from "components/module/CropList";
-import CropDetail from "components/module/CropDetail";
-import CropInformation from "components/module/CropInformation";
+import CropList from "../../../components/module/CropList";
+import CropDetail from "../../../components/module/CropDetail";
+import Modal from "../../../components/base/Modal";
 
 const YourCropView = (props: YourCropGeneratedProps) => {
   const {
     crops,
     crop,
     handleOnClickCrop,
-    handleOnCreateCrop,
+    handleOnClickChoice,
+    handleOnClickSuggestion,
     handleOnFavorite,
     handleOnDelete,
   } = props;
 
   return (
     <Container>
-      <Row
-        nogutter
-        style={{
-          width: "100%",
-          justifyContent: "center",
-          justifySelf: "center",
-        }}
-      >
+      <Wrapper nogutter style={{ justifyContent: undefined }}>
         <ListColumnContainer
           md={crop ? 5 : 8}
           style={{ padding: undefined, width: undefined, maxWidth: undefined }}
@@ -73,7 +42,8 @@ const YourCropView = (props: YourCropGeneratedProps) => {
             crops={crops}
             crop={crop}
             handleOnClickCrop={handleOnClickCrop}
-            handleOnCreateCrop={handleOnCreateCrop}
+            handleOnClickChoice={handleOnClickChoice}
+            handleOnClickSuggestion={handleOnClickSuggestion}
           />
         </ListColumnContainer>
         {crop && (
@@ -92,7 +62,7 @@ const YourCropView = (props: YourCropGeneratedProps) => {
             />
           </DetailColumnContainer>
         )}
-      </Row>
+      </Wrapper>
     </Container>
   );
 };

@@ -15,8 +15,12 @@ const YourCrop = (): JSX.Element => {
     setCrop(crops.find((crop) => id === crop.id));
   };
 
-  const handleOnCreateCrop = () => {
-    console.log("Create");
+  const handleOnClickChoice = () => {
+    console.log("Choice");
+  };
+
+  const handleOnClickSuggestion = () => {
+    console.log("Suggestion");
   };
 
   const handleOnFavorite = (id: string) => {
@@ -55,7 +59,8 @@ const YourCrop = (): JSX.Element => {
     crops,
     crop,
     handleOnClickCrop,
-    handleOnCreateCrop,
+    handleOnClickChoice,
+    handleOnClickSuggestion,
     handleOnFavorite,
     handleOnDelete,
   };

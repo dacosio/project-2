@@ -1,4 +1,6 @@
 /* PLOP_INJECT_IMPORT */
+export { default as Suggestion } from './Suggestion';
+export { default as Choice } from './Choice';
 export { default as Snow } from './Snow';
 export { default as Overcast } from './Overcast';
 export { default as Clear } from './Clear';
