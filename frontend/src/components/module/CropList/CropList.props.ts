@@ -6,6 +6,7 @@ export type Crop = {
 
 export interface CropListProps {
   crops: Crop[];
+  crop?: Crop;
   handleOnClickCrop: (id: string) => void;
   handleOnCreateCrop: () => void;
 }

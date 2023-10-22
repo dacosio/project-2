@@ -39,6 +39,19 @@ export const Container = styled.div`
   }
 `;
 
+export const TabContainer = styled.div`
+  > div > label {
+    flex-grow: 1;
+  }
+
+  @media (min-width: 1200px) {
+    > div > label {
+      flex-grow: unset;
+      min-width: 100px;
+    }
+  }
+`;
+
 export const List = styled.div`
   @media (min-width: 768px) {
     padding-right: 16px;

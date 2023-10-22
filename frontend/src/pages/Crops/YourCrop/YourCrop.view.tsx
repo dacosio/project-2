@@ -71,6 +71,7 @@ const YourCropView = (props: YourCropGeneratedProps) => {
           </Visible>
           <CropList
             crops={crops}
+            crop={crop}
             handleOnClickCrop={handleOnClickCrop}
             handleOnCreateCrop={handleOnCreateCrop}
           />

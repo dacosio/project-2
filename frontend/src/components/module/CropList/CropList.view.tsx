@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { CropListProps } from "./CropList.props";
-import { Container, Item, List } from "./CropList.style";
+import { Container, Item, List, TabContainer } from "./CropList.style";
 import Tab from "../../base/Tab";
 import Typography from "../../base/Typography";
 import Button from "../../base/Button";
@@ -8,7 +8,7 @@ import { Add } from "../../base/SVG";
 import { useTheme } from "../../../utils/Theme";
 
 const CropList = (props: CropListProps): JSX.Element => {
-  const { crops, handleOnClickCrop, handleOnCreateCrop } = props;
+  const { crops, crop, handleOnClickCrop, handleOnCreateCrop } = props;
 
   const theme = useTheme();
 
@@ -16,7 +16,7 @@ const CropList = (props: CropListProps): JSX.Element => {
 
   return (
     <Container>
-      <div>
+      <TabContainer>
         <Tab
           options={[
             { value: "all", label: "All" },
@@ -27,7 +27,7 @@ const CropList = (props: CropListProps): JSX.Element => {
           setValue={setOption}
           name="category"
         />
-      </div>
+      </TabContainer>
       <List>
         {crops
           .filter((crop) =>
@@ -37,20 +37,29 @@ const CropList = (props: CropListProps): JSX.Element => {
               ? !crop.isPlanted
               : true
           )
-          .map((crop) => (
-            <Item onClick={() => handleOnClickCrop(crop.id)}>
+          .map((cropItem, index) => (
+            <Item
+              onClick={() => handleOnClickCrop(cropItem.id)}
+              key={index}
+              style={{
+                backgroundColor:
+                  cropItem.id === crop?.id
+                    ? theme.btn.color.outlineBg
+                    : undefined,
+              }}
+            >
               <Typography variant="body" weight="700">
-                {crop.name}
+                {cropItem.name}
               </Typography>
               <Typography
                 variant="small"
                 style={{
-                  color: crop.isPlanted
+                  color: cropItem.isPlanted
                     ? theme.btn.color.token
                     : theme.btn.color.tokenHover,
                 }}
               >
-                {crop.isPlanted ? "PLANTED" : "TO PLANT"}
+                {cropItem.isPlanted ? "PLANTED" : "TO PLANT"}
               </Typography>
             </Item>
           ))}

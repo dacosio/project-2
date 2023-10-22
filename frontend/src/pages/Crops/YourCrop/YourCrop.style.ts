@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Col, Hidden } from "react-grid-system";
+import { Col } from "react-grid-system";
 import { theme } from "utils/Theme";
 
 export const Container = styled.div`
