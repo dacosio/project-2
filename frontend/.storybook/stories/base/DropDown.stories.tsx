@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import SelectDown from "../../../src/components/base/DropDown";
+import DropDown from "../../../src/components/base/DropDown";
 import Container from "../../components/Container";
 import Wrapper from "../../components/Wrapper";
 import { Option } from "../../../src/components/base/DropDown/DropDown.props";
 
-const meta: Meta<typeof SelectDown> = {
+const meta: Meta<typeof DropDown> = {
   title: "Base/DropDown",
   component: () => {
     const options: Option[] = [
@@ -34,14 +34,14 @@ const meta: Meta<typeof SelectDown> = {
 
     return (
       <Container>
-        <SelectDown value={value1} setValue={setValue1} options={options} />
-        <SelectDown
+        <DropDown value={value1} setValue={setValue1} options={options} />
+        <DropDown
           placeholder="Select"
           value={value3}
           setValue={setValue3}
           options={options}
         />
-        <SelectDown
+        <DropDown
           placeholder="Select"
           value={value2}
           setValue={setValue2}
