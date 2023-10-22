@@ -73,6 +73,15 @@ const CropList = (props: CropListProps): JSX.Element => {
           onClick={handleOnCreateCrop}
         />
       </div>
+      <div
+        style={{
+          position: "absolute",
+          bottom: "98px",
+          width: "100%",
+        }}
+      >
+        <div style={{ paddingRight: "16px" }}>wef</div>
+      </div>
     </Container>
   );
 };
