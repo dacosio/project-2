@@ -3,26 +3,23 @@ import { theme } from "../../../utils/Theme";
 
 
 export const Container = styled.div`
-  display: grid;
-  border: 1px solid ${theme.grey.shade3};
+  display: flex;
+  flex-direction: column;
   padding: 12px;
-  border-radius: 16px;
   justify-items: stretch;
   align-items: center;
-  aspect-ratio: 0.75;
   width: 80px;
+  background-color: #8ECCEF;
+  color: white !important; 
+  row-gap:1rem;
 
   &:hover {
-    background-color: ${theme.grey.shade3};
+    background-color: #FFFFFF;
   }
 `;
 
 export const WeatherContainer = styled.div`
-  justify-self: center;
-  line-height: 0;
 `;
 
 export const TemperatureContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
 `;

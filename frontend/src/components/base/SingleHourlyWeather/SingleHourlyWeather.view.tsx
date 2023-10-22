@@ -12,7 +12,7 @@ const SingleHourlyWeather = (props: SingleHourlyWeatherProps): JSX.Element => {
   const { time, dayName, dayDate, condition, temperature, hourlyFlag } = props;
   return (
     <Container>
-      <Typography variant="title5" weight="700" align="center">
+      <Typography variant="body" align="center" textColor="white">
         {time}
       </Typography>
       <WeatherContainer>
@@ -25,8 +25,8 @@ const SingleHourlyWeather = (props: SingleHourlyWeatherProps): JSX.Element => {
         )}
       </WeatherContainer>
       <TemperatureContainer>
-        <Typography variant="body" align="center">
-          {temperature}℃
+        <Typography variant="body" align="center" textColor="white">
+          {temperature}°
         </Typography>
       </TemperatureContainer>
     </Container>
