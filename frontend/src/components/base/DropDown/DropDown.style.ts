@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { theme } from "../../../utils/Theme";
+import Typography from "../Typography";
 
 const fontStyle = `
   font-style: normal;
@@ -9,7 +10,10 @@ const fontStyle = `
   font-family: "Inter";
 `;
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  display: grid;
+  gap: 8px;
+`;
 
 export const Select = styled.select`
   border-radius: 4px;
@@ -29,3 +33,7 @@ export const Select = styled.select`
 `;
 
 export const Option = styled.option``;
+
+export const Error = styled(Typography)`
+  padding: 0 8px;
+`;
