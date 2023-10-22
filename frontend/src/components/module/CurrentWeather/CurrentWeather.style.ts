@@ -2,9 +2,16 @@ import styled from "@emotion/styled";
 import { theme } from "../../../utils/Theme";
 import { CurrentWeatherStyleProps } from "./CurrentWeather.props";
 
+
+//default state
+const widthSize: Record<string, string> = {
+  "dashboard" : "100%",
+  "weather" : "50%",
+  
+};
 export const Container = styled.div<CurrentWeatherStyleProps>`
-  max-width: 1021px;
-  width: 100%;
+max-width: 70vw;
+width: 100%;
   background-image: linear-gradient(
     to right,
     ${({ gradientColor1 }) => gradientColor1},
@@ -109,4 +116,51 @@ export const HighContainer = styled.div`
   display: flex;
   gap: 4px;
   align-items: center;
+`;
+
+
+
+/* For Dashboard Only */
+export const DashboardContainer = styled.div<CurrentWeatherStyleProps>`
+max-width: 500px;
+  background-image: linear-gradient(
+    to right,
+    ${({ gradientColor1 }) => gradientColor1},
+    ${({ gradientColor2 }) => gradientColor2}
+  );
+  border-radius: 12px;
+  color: white;
+  padding: 20px 20px;
+
+  height: 294px;
+  margin-bottom:
+`;
+
+
+export const DashboardTemperatureLowHighWindContainer = styled.div`
+display : flex;
+justify-content : space-between;
+align-item : center;
+column-gap :2px;
+`;
+
+export const DashboardTemperatureLowHighContainer = styled.div`
+`;
+
+export const DashboardPrecipitationContainer = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: end;
+`;
+
+export const DashboardHumidityContainer = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: end;
+`;
+
+export const DashboardWindContainer = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: end;
 `;

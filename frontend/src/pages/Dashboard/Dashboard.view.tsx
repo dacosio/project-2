@@ -74,9 +74,13 @@ const DashboardView = (props: DashboardGeneratedProps) => {
             currentTemperature={24}
             lowTemperature={18}
             highTemperature={26}
+            precipitation={0}
+            humidity={65}
+            wind={18}
             gradientColor1={gradientObject.clear[0]}
             gradientColor2={gradientObject.clear[1]}
             currentCondition="clear"
+            page="dashboard"
           />
         </Weather>
         <Segment md={6}>
