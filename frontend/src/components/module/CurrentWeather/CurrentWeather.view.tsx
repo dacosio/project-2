@@ -32,7 +32,9 @@ import {
   PartiallyCloudy,
   Rain,
   Snow,
+  SnowRain,
   ThunderStorm,
+  ThunderStormRain,
 } from "../../base/SVG";
 import LocationSearch from "../LocationSearch";
 import Typography from "../../base/Typography";
@@ -102,9 +104,9 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
               ) : currentCondition === "snow" ? (
                 <Snow width={160} height={160} />
               ) : currentCondition === "snowRain" ? (
-                <PartiallyCloudy width={160} height={160} />
+                <SnowRain width={160} height={160} />
               ) : currentCondition === "thunderStormRain" ? (
-                <Snow width={160} height={160} />
+                <ThunderStormRain width={160} height={160} />
               ) : (
                 <Cloudy width={160} height={160} />
               )}
@@ -229,9 +231,9 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
               ) : currentCondition === "snow" ? (
                 <Snow width={160} height={160} />
               ) : currentCondition === "snowRain" ? (
-                <PartiallyCloudy width={160} height={160} />
+                <SnowRain width={160} height={160} />
               ) : currentCondition === "thunderStormRain" ? (
-                <Snow width={160} height={160} />
+                <ThunderStormRain width={160} height={160} />
               ) : (
                 <Cloudy width={160} height={160} />
               )}
