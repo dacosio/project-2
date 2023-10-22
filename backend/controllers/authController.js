@@ -61,12 +61,13 @@ const register = async (req, res) => {
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
+    console.log(email, password);
     if (!email || !password) {
       return res.status(400).json({ message: "All fields are required" });
     }
 
     const foundUser = await User.findOne({ email }).exec();
-    if (!foundUser || !foundUser.isActive) {
+    if (!foundUser) {
       return res.status(401).json({ message: "Unauthorized" });
     }
 
