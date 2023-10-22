@@ -10,6 +10,10 @@ const cors = require("cors");
 const corsOptions = require("./config/corsOptions");
 const connectDB = require("./config/dbConn");
 const mongoose = require("mongoose");
+const swaggerUi  = require('swagger-ui-express');
+const swaggerJsdoc = require('swagger-jsdoc');
+
+
 dotenv.config();
 const PORT = process.env.PORT || 3500;
 connectDB();
@@ -25,18 +29,32 @@ const { temperature, precipitation, humidity, crop } = require("./data/index.js"
 
 // gives the ability to process json data from the frontend
 app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-
+const options = {
+  failOnErrors: true, 
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'Sprout API',
+      version: '1.0.0',
+    },
+  },
+  apis: ['./controllers/*.js','./routes/*.js'],
+};
+const specs = swaggerJsdoc(options);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 // this is to make the public static file accessible globally, ex. public/css/style.css can be called with css/styles.css
 app.use("/", express.static(path.join(__dirname, "public")));
+app.use("/api", require("./routes/cropRoutes"));
 
 app.use("/", require("./routes/root"));
 app.use("/auth", require("./routes/authRoutes"));
 app.use("/api", require("./routes/userRoutes"));
 app.use("/api", require("./routes/todoRoutes"));
-app.use("/api", require("./routes/cropRoutes"));
+
+
 
 app.all("*", (req, res) => {
   res.status(404);

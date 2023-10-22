@@ -1,5 +1,44 @@
 const Crops = require("../models/Crop")
 
+/**
+ * @swagger
+ * /api/crops:
+ *   get:
+ *     summary: Get all crops for a user
+ *     description: Retrieve all crops for the authenticated user.
+ *     tags:
+ *       - Crops
+ *     parameters:
+ *       - in: header
+ *         name: Authorization
+ *         required: true
+ *         description: Bearer JWT authorization header
+ *         type: string
+ *         format: "Bearer {token}"
+ *     security:
+ *       - BearerAuth: []
+ *     responses:
+ *       200:
+ *         description: A list of crops for the user.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Crop'
+ *       400:
+ *         description: No crops found for the user.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *       500:
+ *         description: Internal server error.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ */
 const getAllCrops = async (req,res ) => {
     try {
         const userId = req.id

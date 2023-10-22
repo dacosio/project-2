@@ -58,6 +58,45 @@ const register = async (req, res) => {
   }
 };
 
+/**
+ * @swagger
+ * /auth/login:
+ *   post:
+ *     summary: Log in and obtain an access token
+ *     description: Authenticate a user and generate an access token while setting a JWT cookie.
+ *     tags:
+ *       - Authentication
+ *     consumes:
+ *       - application/json
+ *     parameters:
+ *       - in: body
+ *         name: loginDetails
+ *         description: Login credentials
+ *         required: true
+ *         schema:
+ *           type: object
+ *           properties:
+ *             email:
+ *               type: string
+ *               format: email
+ *             password:
+ *               type: string
+ *           example:
+ *             email: example@email.com
+ *             password: your_password
+ *     responses:
+ *       200:
+ *         description: Successfully logged in. Access token is set as a cookie.
+ *         headers:
+ *           Set-Cookie:
+ *             schema:
+ *               type: string
+ *             description: JWT cookie containing the refresh token
+ *       401:
+ *         description: Unauthorized. Invalid credentials.
+ *       500:
+ *         description: Internal server error.
+ */
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
