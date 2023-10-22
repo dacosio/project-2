@@ -26,6 +26,21 @@ const meta: Meta<typeof CurrentWeather> = {
         <div style={{ display: "flex", flexWrap: "wrap", gap: "4rem" }}>
           <CurrentWeather
             currentLocation="Vancouver"
+            forecast="Thunderstorm and rain"
+            currentTemperature={24}
+            lowTemperature={18}
+            highTemperature={26}
+            precipitation={0}
+            humidity={65}
+            wind={18}
+            gradientColor1={gradientObject.thunderStormRain[0]}
+            gradientColor2={gradientObject.thunderStormRain[1]}
+            currentCondition="thunderStormRain"
+            page="dashboard"
+          />
+
+          <CurrentWeather
+            currentLocation="Vancouver"
             forecast="Clear"
             currentTemperature={24}
             lowTemperature={18}
