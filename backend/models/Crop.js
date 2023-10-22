@@ -11,6 +11,10 @@ const CropSchema = new mongoose.Schema(
             type: String,
             required: true
         },
+        status: {
+            type: String,
+            required: true,
+        },
         idealTemperature: {
             fahrenheit: {
                 min: {
@@ -73,7 +77,11 @@ const CropSchema = new mongoose.Schema(
         },
         imageURL: {
             type: String
-        }
+        },
+        userId: {
+            type: ObjectId,
+            required: true
+        },
     },
     {
         timestamps: true
