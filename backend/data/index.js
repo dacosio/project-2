@@ -10853,8 +10853,11 @@ const crop = [
     growingTips: ["Find a garden location that will have at least six to eight hours of sun per day for optimum plant growth.", "Till the bed to a depth of 8 to 10 inches and remove any sticks and stones.", " In the absence of a soil test, incorporate 3 to 4 pounds of 5-10-10 fertilizer per 100 square feet of the garden area", "Smooth the soil with a rake and plant the seedlings 18 to 20 inches apart."],
     tools: ["Garden Spade or Shovel", "Mulch", "pH Testing Kit"],
     imageURL: "",
-    status: 'planted',
-    userId: new ObjectId('652f72ab8607599f762ec25a')
+    isPlanted: true,
+    userId: new ObjectId('65349a4182eb0199d107c4a5'),
+    datePlanted: new Date(1552261496289),
+    estimatedYield: "1000",
+    isFavorite: true
   },
   {
     cropName: "Onion",
@@ -10887,9 +10890,11 @@ const crop = [
     growingTips: ["Find a garden location that will have at least six to eight hours of sun per day for optimum plant growth.", "Till the bed to a depth of 8 to 10 inches and remove any sticks and stones.", " In the absence of a soil test, incorporate 3 to 4 pounds of 5-10-10 fertilizer per 100 square feet of the garden area", "Smooth the soil with a rake and plant the seedlings 18 to 20 inches apart."],
     tools: ["Garden Spade or Shovel", "Mulch", "pH Testing Kit"],
     imageURL: "",
-    status: 'planted',
-    userId: new ObjectId('652f72ab8607599f762ec25a')
-
+    isPlanted: false,
+    userId: new ObjectId('65349a4182eb0199d107c4a5'),
+    datePlanted: new Date(1552261496289),
+    estimatedYield: "1000",
+    isFavorite: false
   }
 ]
 module.exports = { temperature, precipitation, humidity, crop };
