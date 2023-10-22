@@ -39,10 +39,16 @@ export const Container = styled.div`
   }
 `;
 
+export const List = styled.div`
+  @media (min-width: 768px) {
+    padding-right: 16px;
+  }
+`;
+
 export const Item = styled.div`
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
-  padding: 8px 28px;
+  padding: 8px 12px;
   display: flex;
   justify-content: space-between;
   margin: 1px;

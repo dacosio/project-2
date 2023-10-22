@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { CropListProps } from "./CropList.props";
-import { Container, Item } from "./CropList.style";
+import { Container, Item, List } from "./CropList.style";
 import Tab from "../../base/Tab";
 import Typography from "../../base/Typography";
 import Button from "../../base/Button";
@@ -28,7 +28,7 @@ const CropList = (props: CropListProps): JSX.Element => {
           name="category"
         />
       </div>
-      <div>
+      <List>
         {crops
           .filter((crop) =>
             option === "planted"
@@ -44,7 +44,6 @@ const CropList = (props: CropListProps): JSX.Element => {
               </Typography>
               <Typography
                 variant="small"
-                weight="700"
                 style={{
                   color: crop.isPlanted
                     ? theme.btn.color.token
@@ -55,7 +54,7 @@ const CropList = (props: CropListProps): JSX.Element => {
               </Typography>
             </Item>
           ))}
-      </div>
+      </List>
       <div style={{ alignItems: "flex-end" }}>
         <Button
           iconPosition="before"
