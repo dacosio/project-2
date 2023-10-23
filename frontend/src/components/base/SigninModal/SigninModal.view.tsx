@@ -1,12 +1,12 @@
 import React from "react";
-import { SignupModalProps } from "./SignupModal.props";
-import { Container } from "./SignupModal.style";
+import { SigninModalProps } from "./SigninModal.props";
+import { Container } from "./SigninModal.style";
 import Button from "../Button";
 import Modal from "../Modal";
-import Signup from "../Signup";
+import Signin from "../Signin";
 import { useMediaQuery } from "../../../utils/hooks/useMediaQuery";
 
-const SignupModal = (props: SignupModalProps): JSX.Element => {
+const SigninModal = (props: SigninModalProps): JSX.Element => {
   const [isModalOpen, setModalState] = React.useState(false);
   const matches = useMediaQuery("(min-width: 992px)");
 
@@ -15,8 +15,8 @@ const SignupModal = (props: SignupModalProps): JSX.Element => {
   return (
     <Container>
       <Button
-        text="Sign up"
-        variant="primary"
+        text="Sign in"
+        variant="outline"
         onClick={toggleModal}
         style={matches ? { width: "160px" } : { width: "100px" }}
       />
@@ -25,10 +25,10 @@ const SignupModal = (props: SignupModalProps): JSX.Element => {
         isOpen={isModalOpen}
         onClose={toggleModal}
       >
-        <Signup />
+        <Signin />
       </Modal>
     </Container>
   );
 };
 
-export default React.memo(SignupModal);
+export default React.memo(SigninModal);

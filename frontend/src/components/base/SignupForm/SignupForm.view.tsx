@@ -1,38 +1,51 @@
 import React, { useState } from "react";
 import { SignupFormProps } from "./SignupForm.props";
-import { Container, Form } from "./SignupForm.style";
+import { Container, FormStyle } from "./SignupForm.style";
 import TextField from "../TextField";
+import { Form, Formik } from "formik";
+import * as Yup from "yup";
+import FormikTextField from "../FormikTextField";
 
 const SignupForm = (props: SignupFormProps): JSX.Element => {
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState("");
+  const handleOnSubtmit = (values: { email: string }) => {
+    console.log(values);
+  };
+
+  const validationSchema = Yup.object({
+    email: Yup.string()
+      .email("Invalid email format")
+      .required("Your email is required"),
+    password: Yup.string().required("Your password is required"),
+  });
 
   return (
-    <Form>
-      <TextField
-        label="Email"
-        value={email}
-        setValue={setEmail}
-        placeholder="user@nomail.com"
-        style={{ width: "100%" }}
-      />
-      <TextField
-        label="Password"
-        value={password}
-        setValue={setPassword}
-        secured
-        placeholder="******"
-        style={{ width: "100%" }}
-      />
-      <TextField
-        label="Confirm Password"
-        value={password}
-        setValue={setPassword}
-        secured
-        placeholder="******"
-        style={{ width: "100%" }}
-      />
-    </Form>
+    <Formik
+      initialValues={{ email: "", password: "" }}
+      validationSchema={validationSchema}
+      onSubmit={handleOnSubtmit}
+    >
+      <Form>
+        <FormStyle>
+          <FormikTextField
+            label="Email"
+            name="email"
+            placeholder="user@nomail.com"
+          />
+          <FormikTextField
+            label="Password"
+            name="password"
+            placeholder="******"
+            secured
+          />
+          <FormikTextField
+            label="Confirm Password"
+            name="password"
+            placeholder="******"
+            secured
+          />
+        </FormStyle>
+      </Form>
+    </Formik>
   );
 };
 

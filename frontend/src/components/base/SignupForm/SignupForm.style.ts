@@ -3,7 +3,7 @@ import { theme } from "../../../utils/Theme";
 
 export const Container = styled.div``;
 
-export const Form = styled.div`
+export const FormStyle = styled.div`
   p {
     font-size: 14px;
     color: ${theme.neutral.n80};

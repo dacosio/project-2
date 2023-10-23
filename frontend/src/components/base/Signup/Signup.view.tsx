@@ -8,6 +8,7 @@ import {
   ButtonDivs,
   SubmitButton,
   BackButton,
+  Option,
 } from "./Signup.style";
 import Typography from "../Typography";
 import TextField from "../TextField";
@@ -45,6 +46,13 @@ const Signup = (props: SignupProps): JSX.Element => {
             {isLastStep ? "Signup" : "Next"}
           </SubmitButton>
         </ButtonDivs>
+        {isLastStep ? null : (
+          <Option>
+            <Typography variant="small" align="center" textColor="n70">
+              Already a member? <a href="">Login</a>?
+            </Typography>
+          </Option>
+        )}
       </SingupForm>
 
       {/* <Header>

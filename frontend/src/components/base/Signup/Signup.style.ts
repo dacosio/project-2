@@ -38,7 +38,7 @@ export const SingupForm = styled.form`
   flex-grow: 1;
   display: flex;
   flex-flow: column;
-  gap: 2rem;
+  gap: 0.5rem;
   justify-content: center;
   @media (min-width: 768px) {
     padding: 4rem 2rem 2rem 2rem;
@@ -52,6 +52,15 @@ export const SingupDetails = styled.form`
   flex-flow: column;
   gap: 1rem;
   justify-content: center;
+`;
+
+export const Option = styled.div`
+  display: grid;
+  gap: 0.5rem;
+  a {
+    color: ${theme.neutral.n70};
+    font-weight: 500;
+  }
 `;
 
 // export const SingupForm = styled.form`
@@ -102,6 +111,7 @@ export const BackButton = styled.button`
 `;
 
 export const ButtonDivs = styled.div`
+  margin-top: 0.5rem;
   display: flex;
   gap: 1rem;
 `;
