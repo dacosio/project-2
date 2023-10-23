@@ -1,13 +1,18 @@
 /* PLOP_INJECT_IMPORT */
-export { default as Suggestion } from './Suggestion';
-export { default as Choice } from './Choice';
-export { default as Snow } from './Snow';
-export { default as Overcast } from './Overcast';
-export { default as Clear } from './Clear';
-export { default as Soil } from './Soil';
-export { default as Clock } from './Clock';
-export { default as Temperature } from './Temperature';
-export { default as Humidity } from './Humidity';
+export { default as Suggestion } from "./Suggestion";
+export { default as Choice } from "./Choice";
+export { default as ThunderStormRain } from "./ThunderStormRain";
+export { default as SnowRain } from "./SnowRain";
+export { default as ThunderStorm } from "./ThunderStorm";
+export { default as Rain } from "./Rain";
+export { default as PartiallyCloudy } from "./PartiallyCloudy";
+export { default as Snow } from "./Snow";
+export { default as Overcast } from "./Overcast";
+export { default as Clear } from "./Clear";
+export { default as Soil } from "./Soil";
+export { default as Clock } from "./Clock";
+export { default as Temperature } from "./Temperature";
+export { default as Humidity } from "./Humidity";
 export { default as ArrowDown } from "./ArrowDown";
 export { default as ArrowUp } from "./ArrowUp";
 export { default as ThreeDots } from "./ThreeDots";
