@@ -13,6 +13,8 @@ import Hamburger from "../../base/Hamburger";
 import Button from "../../base/Button";
 import { useMediaQuery } from "../../../utils/hooks/useMediaQuery";
 import HomeNavigationMobile from "../HomeNavigationMobile";
+import SignupModal from "../../base/SignupModal";
+
 
 const HomeNavigation = (props: HomeNavigationProps): JSX.Element => {
   const [open, setOpen] = useState(false);
@@ -48,11 +50,7 @@ const HomeNavigation = (props: HomeNavigationProps): JSX.Element => {
             variant="outline"
             style={matches? {width: "160px"} : {width: "100px"}}
           ></Hidebutton>
-          <Button
-            text="Sign up"
-            variant="primary"
-            style={matches? {width: "160px"} : {width: "100px"}}
-          ></Button>
+          <SignupModal />
         </LoginOptions>
       </Nav>
       <HomeNavigationMobile open={open} />

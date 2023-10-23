@@ -14,6 +14,7 @@ export const NavBackground = styled.div`
   }
 
   &.hidden {
+    display: none;
     opacity: 0;
   }
 `;

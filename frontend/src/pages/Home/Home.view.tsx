@@ -38,6 +38,7 @@ import { SproutLogo } from "components/base/SVG";
 import WeatherCard from "./../../components/base/WeatherCard";
 import Search from "./../../components/base/Search";
 import LocationSearch from "components/module/LocationSearch";
+import SignupModal from "components/base/SignupModal";
 
 // import emailjs from '@emailjs/browser';
 
@@ -182,6 +183,7 @@ const HomeView = (props: HomeGeneratedProps) => {
             </div>
           </Details>
         </AboutDetails>
+        <SignupModal />
       </About>
 
       {/* <Contact align="center">
