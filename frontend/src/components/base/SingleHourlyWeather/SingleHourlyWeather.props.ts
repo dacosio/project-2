@@ -6,5 +6,8 @@ export interface SingleHourlyWeatherProps {
     dayDate : string
     condition: Weather;
     temperature: number;
-    hourlyFlag: Boolean;
+    state: string;
+    selectedIndex: number;
+    onClickControl: (newValue: number) => void;
+    index: number;
 }

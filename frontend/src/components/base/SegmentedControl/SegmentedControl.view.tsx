@@ -18,11 +18,13 @@ const SegmentedControl = (props: SegmentedControlProps): JSX.Element => {
             <Col key={option}>
               <ControlButton
                 active={option === selectedOption}
-                onClick={() => onClickControl(option)}>
+                onClick={() => onClickControl(option)}
+              >
                 <Typography
                   variant="body"
                   weight="500"
-                  textColor={option === selectedOption ? "invert" : "shade9"}>
+                  textColor={option === selectedOption ? "invert" : "shade9"}
+                >
                   {option}
                 </Typography>
               </ControlButton>

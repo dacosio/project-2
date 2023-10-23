@@ -2,6 +2,14 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import {
   /* PLOP_INJECT_IMPORT */
+  ThunderStormRainInactive,
+  SnowRainInactive,
+  SnowInactive,
+  ThunderStormInactive,
+  RainInactive,
+  OvercastInactive,
+  PartiallyCloudyInactive,
+  ClearInactive,
   Snow,
   Overcast,
   Clear,
@@ -58,6 +66,30 @@ const meta: Meta = {
   component: () => (
     <Container background="white">
       {/* PLOP_INJECT_INSTANCE*/}
+        <Wrapper label="ThunderStormRainInactive">
+          <ThunderStormRainInactive width={30} height={30} />
+        </Wrapper>
+        <Wrapper label="SnowRainInactive">
+          <SnowRainInactive width={30} height={30} />
+        </Wrapper>
+        <Wrapper label="SnowInactive">
+          <SnowInactive width={30} height={30} />
+        </Wrapper>
+        <Wrapper label="ThunderStormInactive">
+          <ThunderStormInactive width={30} height={30} />
+        </Wrapper>
+        <Wrapper label="RainInactive">
+          <RainInactive width={30} height={30} />
+        </Wrapper>
+        <Wrapper label="OvercastInactive">
+          <OvercastInactive width={30} height={30} />
+        </Wrapper>
+        <Wrapper label="PartiallyCloudyInactive">
+          <PartiallyCloudyInactive width={30} height={30} />
+        </Wrapper>
+        <Wrapper label="ClearInactive">
+          <ClearInactive width={30} height={30} />
+        </Wrapper>
         <Wrapper label="Snow">
           <Snow width={30} height={30} />
         </Wrapper>

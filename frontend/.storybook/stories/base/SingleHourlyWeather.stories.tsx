@@ -21,7 +21,7 @@ const meta: Meta<typeof SingleHourlyWeather> = {
             dayDate="20 Oct"
             condition="clear"
             temperature={18}
-            hourlyFlag={false}
+            state="Today"
           />
         </div>
       </Container>
