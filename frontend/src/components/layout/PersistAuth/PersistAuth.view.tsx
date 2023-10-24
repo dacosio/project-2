@@ -4,13 +4,13 @@ import { Container } from "./PersistAuth.style";
 import { useAppSelector } from "app/hooks";
 import { selectCurrentToken } from "features/auth/authSlice";
 import { useRefreshMutation } from "features/auth/authApiSlice";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 
 const PersistAuth = (props: PersistAuthProps): JSX.Element => {
   const token = useAppSelector(selectCurrentToken);
   const effectRan = useRef(false);
   const [trueSuccess, setTrueSuccess] = useState(false);
-
+  const navigate = useNavigate();
   const [refresh, { isUninitialized, isSuccess, isError }] =
     useRefreshMutation();
 
@@ -44,11 +44,7 @@ const PersistAuth = (props: PersistAuthProps): JSX.Element => {
 
   if (isError) {
     console.log("error");
-    content = (
-      <p className="errmsg">
-        <Link to="/login">Please login again</Link>.
-      </p>
-    );
+    navigate("/");
   } else if (isSuccess && trueSuccess) {
     content = <Outlet />;
   } else if (token && isUninitialized) {
