@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import { theme } from "../../../utils/Theme";
 
-
 export const Container = styled.div`
   min-width: 300px;
   border-radius: 24px;
@@ -39,13 +38,12 @@ export const SigninForm = styled.div`
   flex-grow: 1;
   display: flex;
   flex-flow: column;
-  gap: .5rem;
+  gap: 0.5rem;
   justify-content: center;
   @media (min-width: 768px) {
     padding: 4rem 2rem 2rem 2rem;
   }
 `;
-
 
 export const FormStyle = styled.div`
   display: grid;
@@ -53,11 +51,10 @@ export const FormStyle = styled.div`
 `;
 
 export const Option = styled.div`
-display:grid;
-gap: .5rem;
-a{
+  display: grid;
+  gap: 0.5rem;
+  a {
     color: ${theme.neutral.n70};
     font-weight: 500;
-    
-}
+  }
 `;

@@ -1,12 +1,12 @@
 import React from "react";
-import { SigninModalProps } from "./SigninModal.props";
-import { Container } from "./SigninModal.style";
+import { LoginModalProps } from "./LoginModal.props";
+import { Container } from "./LoginModal.style";
 import Button from "../Button";
 import Modal from "../Modal";
 import Signin from "../Signin";
 import { useMediaQuery } from "../../../utils/hooks/useMediaQuery";
 
-const SigninModal = (props: SigninModalProps): JSX.Element => {
+const LoginModal = (props: LoginModalProps): JSX.Element => {
   const [isModalOpen, setModalState] = React.useState(false);
   const matches = useMediaQuery("(min-width: 992px)");
 
@@ -31,4 +31,4 @@ const SigninModal = (props: SigninModalProps): JSX.Element => {
   );
 };
 
-export default React.memo(SigninModal);
+export default React.memo(LoginModal);

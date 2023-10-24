@@ -13,7 +13,6 @@ import * as Yup from "yup";
 import FormikTextField from "../FormikTextField";
 import Button from "../Button";
 import Modal from "../Modal";
-import Signup from "../Signup";
 
 const Signin = (props: SigninProps): JSX.Element => {
   const [isModalOpen, setModalState] = React.useState(false);
@@ -82,7 +81,7 @@ const Signin = (props: SigninProps): JSX.Element => {
               isOpen={isModalOpen}
               onClose={toggleModal}
             >
-              <Signup />
+              <Signin />
             </Modal>
           </Typography>
         </Option>

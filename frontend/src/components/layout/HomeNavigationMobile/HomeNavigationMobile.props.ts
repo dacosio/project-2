@@ -1,3 +1,3 @@
 export interface HomeNavigationMobileProps {
-    open: boolean; // Define the open prop
+  open: boolean; // Define the open prop
 }

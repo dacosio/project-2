@@ -5,7 +5,6 @@ import TextField from "../TextField";
 import SingleImageInput from "../SingleImageInput";
 import { ImageType } from "react-images-uploading";
 
-
 const AccountForm = (props: AccountFormProps): JSX.Element => {
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState("");
@@ -38,10 +37,10 @@ const AccountForm = (props: AccountFormProps): JSX.Element => {
   return (
     <Form>
       <SingleImageInput
-          image={image1}
-          sizing="mobile"
-          setImage={setImage1}
-          style={{ width: "150px"}}
+        image={image1}
+        sizing="mobile"
+        setImage={setImage1}
+        style={{ width: "150px" }}
       />
       <TextField
         label="First Name"

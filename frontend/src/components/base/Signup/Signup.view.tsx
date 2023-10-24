@@ -1,9 +1,8 @@
-import React, { ReactElement, useState } from "react";
+import React from "react";
 import { SignupProps } from "./Signup.props";
 import {
   Container,
   Header,
-  SingupDetails,
   SingupForm,
   ButtonDivs,
   SubmitButton,
@@ -11,15 +10,15 @@ import {
   Option,
 } from "./Signup.style";
 import Typography from "../Typography";
-import TextField from "../TextField";
-import Button from "../Button";
 import { useMultistepForm } from "../../../utils/hooks/useMultistepForm";
 import SignupForm from "../SignupForm";
 import AccountForm from "../AccountForm";
 
 const Signup = (props: SignupProps): JSX.Element => {
-  const { steps, currentStepIndex, step, isFirstStep, isLastStep, back, next } =
-    useMultistepForm([<SignupForm />, <AccountForm />]);
+  const { step, isFirstStep, isLastStep, back, next } = useMultistepForm([
+    <SignupForm />,
+    <AccountForm />,
+  ]);
 
   return (
     <Container>
@@ -49,7 +48,7 @@ const Signup = (props: SignupProps): JSX.Element => {
         {isLastStep ? null : (
           <Option>
             <Typography variant="small" align="center" textColor="n70">
-              Already a member? <a href="">Login</a>?
+              Already a member? <a href="#">Login</a>?
             </Typography>
           </Option>
         )}

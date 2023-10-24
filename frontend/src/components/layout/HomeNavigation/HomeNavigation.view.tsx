@@ -14,7 +14,7 @@ import Button from "../../base/Button";
 import { useMediaQuery } from "../../../utils/hooks/useMediaQuery";
 import HomeNavigationMobile from "../HomeNavigationMobile";
 import SignupModal from "../../base/SignupModal";
-import SigninModal from "../../base/SigninModal";
+import LoginModal from "../../base/LoginModal";
 
 const HomeNavigation = (props: HomeNavigationProps): JSX.Element => {
   const [open, setOpen] = useState(false);
@@ -46,7 +46,7 @@ const HomeNavigation = (props: HomeNavigationProps): JSX.Element => {
         </NavOptions>
         <LoginOptions>
           <Hidebutton>
-            <SigninModal />
+            <LoginModal></LoginModal>
           </Hidebutton>
           <SignupModal />
         </LoginOptions>

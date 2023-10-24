@@ -1,11 +1,10 @@
 import styled from "@emotion/styled";
 import { theme } from "../../../utils/Theme";
 
-export const Container = styled.div`
-`;
+export const Container = styled.div``;
 
 export const NavBackground = styled.div`
-  transition: opacity .7s ease-in-out;
+  transition: opacity 0.7s ease-in-out;
   height: 100vh;
   background-color: ${theme.neutral.n100};
 
@@ -18,7 +17,6 @@ export const NavBackground = styled.div`
     opacity: 0;
   }
 `;
-
 
 export const NavContainer = styled.div`
   position: fixed;
