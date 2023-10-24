@@ -13,14 +13,29 @@ import * as Yup from "yup";
 import FormikTextField from "../FormikTextField";
 import Button from "../Button";
 import Modal from "../Modal";
+import { useLoginMutation } from "../../../features/auth/authApiSlice";
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../../app/hooks";
+import { setCredentials } from "../../../features/auth/authSlice";
 
 const Signin = (props: SigninProps): JSX.Element => {
+  const [login] = useLoginMutation();
   const [isModalOpen, setModalState] = React.useState(false);
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const toggleModal = () => setModalState(!isModalOpen);
 
-  const handleOnSubtmit = (values: { email: string }) => {
-    console.log(values);
+  const handleOnSubmit = async (v: { email: string; password: string }) => {
+    const { email, password } = v;
+    try {
+      const { accessToken } = await login({ email, password }).unwrap();
+      dispatch(setCredentials({ accessToken }));
+
+      navigate("/dashboard");
+    } catch (err: any) {
+      console.log(err.data?.message);
+    }
   };
 
   const validationSchema = Yup.object({
@@ -47,7 +62,8 @@ const Signin = (props: SigninProps): JSX.Element => {
         <Formik
           initialValues={{ email: "", password: "" }}
           validationSchema={validationSchema}
-          onSubmit={handleOnSubtmit}
+          onSubmit={handleOnSubmit}
+          enableReinitialize
         >
           <Form>
             <FormStyle>
