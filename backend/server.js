@@ -19,9 +19,10 @@ app.use(cors(corsOptions));
 // const Temperature = require("./models/Temperature.js");
 // const Precipitation = require("./models/Precipitation.js");
 // const Humidity = require("./models/Humidity.js");
-const Crop = require("./models/Crop");
+// const Crop = require("./models/Crop");
+const CropEncyclopedia = require("./models/CropEncyclopedia");
 
-const { temperature, precipitation, humidity, crop } = require("./data/index.js");
+const { temperature, precipitation, humidity, crop, cropEncyclopedia } = require("./data/index.js");
 
 // gives the ability to process json data from the frontend
 app.use(express.json());
@@ -59,6 +60,7 @@ mongoose.connection.once("open", () => {
     // Precipitation.insertMany(precipitation);
     // Humidity.insertMany(humidity);
     // Crop.insertMany(crop);
+    CropEncyclopedia.insertMany(cropEncyclopedia)
   });
 });
 
