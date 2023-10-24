@@ -13,10 +13,10 @@ import * as Yup from "yup";
 import FormikTextField from "../FormikTextField";
 import Button from "../Button";
 import Modal from "../Modal";
-import { useLoginMutation } from "features/auth/authApiSlice";
+import { useLoginMutation } from "../../../features/auth/authApiSlice";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "app/hooks";
-import { setCredentials } from "features/auth/authSlice";
+import { useAppDispatch } from "../../../app/hooks";
+import { setCredentials } from "../../../features/auth/authSlice";
 
 const Signin = (props: SigninProps): JSX.Element => {
   const [login] = useLoginMutation();
