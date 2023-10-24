@@ -10,11 +10,13 @@ import YourCrop from "./pages/Crops/YourCrop";
 import CropGuide from "./pages/Crops/CropGuide";
 import Weather from "./pages/Weather";
 import CropAbout from "./pages/Crops/CropAbout";
+import Team from "./pages/Team";
 
 function App() {
   return (
     <Routes>
       <Route index element={<Home />} />
+      <Route path="team" element={<Team />} />
       <Route path="/" element={<Layout />}>
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="your-crops" element={<YourCrop />} />

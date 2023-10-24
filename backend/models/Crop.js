@@ -11,6 +11,17 @@ const CropSchema = new mongoose.Schema(
             type: String,
             required: true
         },
+        isPlanted: {
+            type: Boolean,
+            required: true,
+        },
+        datePlanted: {
+            type:Date,
+        },
+        estimatedYield: {
+            type: String,
+            required: true
+        },
         idealTemperature: {
             fahrenheit: {
                 min: {
@@ -65,7 +76,7 @@ const CropSchema = new mongoose.Schema(
             type: Number,
             required: true
         },
-        growingTips: {
+        growingTips: { 
             type: Array
         },
         tools: {
@@ -73,6 +84,13 @@ const CropSchema = new mongoose.Schema(
         },
         imageURL: {
             type: String
+        },
+        userId: {
+            type: ObjectId,
+            required: true
+        },
+        isFavorite: {
+            type: Boolean
         }
     },
     {

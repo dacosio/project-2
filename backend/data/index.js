@@ -1,3 +1,5 @@
+const { ObjectId } = require("mongodb");
+
 const temperature = [
   {
     month: "January",
@@ -10851,6 +10853,48 @@ const crop = [
     growingTips: ["Find a garden location that will have at least six to eight hours of sun per day for optimum plant growth.", "Till the bed to a depth of 8 to 10 inches and remove any sticks and stones.", " In the absence of a soil test, incorporate 3 to 4 pounds of 5-10-10 fertilizer per 100 square feet of the garden area", "Smooth the soil with a rake and plant the seedlings 18 to 20 inches apart."],
     tools: ["Garden Spade or Shovel", "Mulch", "pH Testing Kit"],
     imageURL: "",
+    isPlanted: true,
+    userId: new ObjectId('65349a4182eb0199d107c4a5'),
+    datePlanted: new Date(1552261496289),
+    estimatedYield: "1000",
+    isFavorite: true
+  },
+  {
+    cropName: "Onion",
+    description: "The Onion plant has a thick green stalk, or stem, which gives rise to thick, leathery, oblong leaves which are gray-blue to green in color. The plant produces large branching green flower heads covered with numerous white or yellow flowers. Broccoli can be annual or biennial depending on the variety and can grow to 1 m (3.3 ft) in height. Broccoli may also be referred to as sprouting broccoli and likely originates from the Mediterranean although the exact location has not been determined.",
+    idealTemperature: {
+      fahrenheit: {
+        min: 60,
+        max: 65
+      },
+      celcius: {
+        min: 15.5,
+        max: 18
+      }
+    },
+    humidity: {
+      min: 40,
+      max: 60
+    },
+    growthDuration: {
+      min: 55,
+      max: 85
+    },
+    soilPh: {
+      min: 6,
+      max: 7
+    },
+    soilN: 5,
+    soilP: 10,
+    soilK: 15,
+    growingTips: ["Find a garden location that will have at least six to eight hours of sun per day for optimum plant growth.", "Till the bed to a depth of 8 to 10 inches and remove any sticks and stones.", " In the absence of a soil test, incorporate 3 to 4 pounds of 5-10-10 fertilizer per 100 square feet of the garden area", "Smooth the soil with a rake and plant the seedlings 18 to 20 inches apart."],
+    tools: ["Garden Spade or Shovel", "Mulch", "pH Testing Kit"],
+    imageURL: "",
+    isPlanted: false,
+    userId: new ObjectId('65349a4182eb0199d107c4a5'),
+    datePlanted: new Date(1552261496289),
+    estimatedYield: "1000",
+    isFavorite: false
   }
 ]
 module.exports = { temperature, precipitation, humidity, crop };
