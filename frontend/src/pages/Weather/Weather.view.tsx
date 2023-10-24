@@ -6,9 +6,16 @@ import CurrentWeather from "components/module/CurrentWeather";
 import Typography from "components/base/Typography";
 import axios from "axios";
 import { useCurrentCity } from "utils/hooks/useCurrentCity";
+import HourlyDaily from "components/module/HourlyDaily";
+import SegmentedControl from "components/base/SegmentedControl";
 
 const WeatherView = (props: WeatherGeneratedProps) => {
   const [weatherData, setWeatherData] = useState<{ [key: string]: any }>({});
+  const [weatherDataArray, setWeatherDataArray] = useState<{
+    [key: string]: any;
+  }>({});
+  const MOCK_OPTIONS = ["Today", "15-day"];
+  const [state, setState] = useState(MOCK_OPTIONS[0]);
   let gradientColor1 = "";
   let gradientColor2 = "";
   let currentCondition = "";
@@ -66,9 +73,7 @@ const WeatherView = (props: WeatherGeneratedProps) => {
       currentCondition = "clear";
     } else if (
       weatherData.currentConditions.conditions.toLowerCase() ===
-        "Partially cloudy".toLowerCase() ||
-      weatherData.currentConditions.conditions.toLowerCase() ===
-        "rain, partially cloudy".toLowerCase()
+      "Partially cloudy".toLowerCase()
     ) {
       gradientColor1 = gradientObject.partiallyCloudy[0];
       gradientColor2 = gradientObject.partiallyCloudy[1];
@@ -82,7 +87,9 @@ const WeatherView = (props: WeatherGeneratedProps) => {
       currentCondition = "overcast";
     } else if (
       weatherData.currentConditions.conditions.toLowerCase() ===
-      "Rain".toLowerCase()
+        "Rain".toLowerCase() ||
+      weatherData.currentConditions.conditions.toLowerCase() ===
+        "rain, partially cloudy".toLowerCase()
     ) {
       gradientColor1 = gradientObject.rain[0];
       gradientColor2 = gradientObject.rain[1];
@@ -121,26 +128,62 @@ const WeatherView = (props: WeatherGeneratedProps) => {
     console.log(`gradientColor2 : ${gradientColor2}`);
     console.log(`currentCondition : ${currentCondition}`);
   }
+
+  const handleSegmentedState = (value: string) => {
+    if (value === MOCK_OPTIONS[0]) {
+      setWeatherDataArray(weatherData.days[0]);
+    }
+
+    if (value === MOCK_OPTIONS[1]) {
+      setWeatherDataArray(weatherData.days);
+    }
+
+    console.log(weatherDataArray);
+  };
+
+  const handleSelectedWeatherIndex = (value: number) => {
+    console.log("Weather " + value);
+  };
+
   return (
     <Container>
       {currentCity &&
       weatherData &&
       weatherData.days &&
       weatherData.days.length > 0 ? (
-        <CurrentWeather
-          currentLocation={currentCity}
-          forecast={weatherData.currentConditions.conditions}
-          currentTemperature={weatherData.currentConditions.temp}
-          lowTemperature={weatherData.days[0]?.tempmin}
-          highTemperature={weatherData.days[0]?.tempmax}
-          precipitation={weatherData.currentConditions.precip}
-          humidity={weatherData.currentConditions.humidity}
-          wind={weatherData.currentConditions.windspeed}
-          gradientColor1={gradientColor1}
-          gradientColor2={gradientColor2}
-          currentCondition={currentCondition}
-          page="weather"
-        />
+        <>
+          <CurrentWeather
+            currentLocation={currentCity}
+            forecast={weatherData.currentConditions.conditions}
+            currentTemperature={weatherData.currentConditions.temp}
+            lowTemperature={weatherData.days[0]?.tempmin}
+            highTemperature={weatherData.days[0]?.tempmax}
+            precipitation={weatherData.currentConditions.precip}
+            humidity={weatherData.currentConditions.humidity}
+            wind={weatherData.currentConditions.windspeed}
+            gradientColor1={gradientColor1}
+            gradientColor2={gradientColor2}
+            currentCondition={currentCondition}
+            page="weather"
+          />
+          <SegmentedControl
+            options={MOCK_OPTIONS}
+            selectedOption={state}
+            onClickControl={(value: string) => {
+              console.log(value);
+              setState(value);
+              handleSegmentedState(value);
+              console.log(state);
+            }}
+          />
+          <HourlyDaily
+            weatherDataArray={
+              state === MOCK_OPTIONS[0] ? weatherData.days[0] : weatherData
+            }
+            state={state}
+            onSelectedWeatherIndex={handleSelectedWeatherIndex}
+          ></HourlyDaily>
+        </>
       ) : (
         <Typography>Loading weather data.</Typography>
       )}
