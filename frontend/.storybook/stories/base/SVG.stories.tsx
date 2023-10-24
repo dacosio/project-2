@@ -10,6 +10,11 @@ import {
   OvercastInactive,
   PartiallyCloudyInactive,
   ClearInactive,
+  ThunderStormRain,
+  SnowRain,
+  ThunderStorm,
+  Rain,
+  PartiallyCloudy,
   Snow,
   Overcast,
   Clear,
@@ -66,6 +71,9 @@ const meta: Meta = {
   component: () => (
     <Container background="white">
       {/* PLOP_INJECT_INSTANCE*/}
+        <Wrapper label="ThunderStormRain">
+          <ThunderStormRain width={30} height={30} />
+        </Wrapper>
         <Wrapper label="ThunderStormRainInactive">
           <ThunderStormRainInactive width={30} height={30} />
         </Wrapper>
@@ -93,9 +101,24 @@ const meta: Meta = {
         <Wrapper label="Snow">
           <Snow width={30} height={30} />
         </Wrapper>
-        <Wrapper label="Overcast">
-          <Overcast width={30} height={30} />
+        <Wrapper label="SnowRain">
+          <SnowRain width={30} height={30} />
         </Wrapper>
+        <Wrapper label="ThunderStorm">
+          <ThunderStorm width={30} height={30} />
+        </Wrapper>
+      <Wrapper label="Rain">
+        <Rain width={30} height={30} />
+      </Wrapper>
+      <Wrapper label="PartiallyCloudy">
+        <PartiallyCloudy width={30} height={30} />
+      </Wrapper>
+      <Wrapper label="Snow">
+        <Snow width={30} height={30} />
+      </Wrapper>
+      <Wrapper label="Overcast">
+        <Overcast width={30} height={30} />
+      </Wrapper>
       <Wrapper label="Clear">
         <Clear width={30} height={30} />
       </Wrapper>

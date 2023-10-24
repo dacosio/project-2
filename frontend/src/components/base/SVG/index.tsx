@@ -1,9 +1,14 @@
 /* PLOP_INJECT_IMPORT */
 export { default as ThunderStormRainInactive } from './ThunderStormRainInactive';
+export { default as ThunderStormRain } from "./ThunderStormRain";
 export { default as SnowRainInactive } from './SnowRainInactive';
+export { default as SnowRain } from "./SnowRain";
 export { default as SnowInactive } from './SnowInactive';
+export { default as ThunderStorm } from "./ThunderStorm";
 export { default as ThunderStormInactive } from './ThunderStormInactive';
+export { default as Rain } from "./Rain";
 export { default as RainInactive } from './RainInactive';
+export { default as PartiallyCloudy } from "./PartiallyCloudy";
 export { default as OvercastInactive } from './OvercastInactive';
 export { default as PartiallyCloudyInactive } from './PartiallyCloudyInactive';
 export { default as ClearInactive } from './ClearInactive';

@@ -3,40 +3,34 @@ import { theme } from "../../../utils/Theme";
 
 export const Container = styled.div`
   display: grid;
-
-  @media (min-width: 768px) {
-    gap: 32px;
-  }
+  gap: 32px;
 `;
 
 export const InformationContainer = styled.div`
-  > div > div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 0;
+  display: grid;
+
+  > div {
+    padding-top: 16px;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  > div > div:not(:last-child) {
-    border-bottom: 1px solid ${({ theme }) => theme.neutral.n20};
+  > div > div {
+    margin: 1px;
+  }
+
+  @media (min-width: 768px) {
+    gap: 8px;
+
+    > div {
+      padding-top: unset;
+    }
   }
 
   @media (min-width: 1200px) {
-    > div > {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    > div > div {
-      display: block;
-      margin: 1px;
-      flex-grow: 1;
-      padding: unset;
-    }
-
-    > div > div:not(:last-child) {
-      border-bottom: none;
+    > div {
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 `;
@@ -70,7 +64,7 @@ export const FertilizerContainer = styled.div`
     > div {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      column-gap: 16px;
+      column-gap: 52px;
     }
 
     > div > div:nth-last-child(2) {
@@ -119,8 +113,8 @@ export const TipContainer = styled.div`
 
 export const TipCircleContainer = styled.div`
   background-color: ${({ theme }) => theme.neutral.n20};
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   aspect-ratio: 1;
   border-radius: 50%;
   display: grid;

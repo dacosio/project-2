@@ -17,7 +17,6 @@ export const HeaderContainer = styled.div`
   gap: 16px;
   align-items: center;
   cursor: pointer;
-  padding: 16px 0;
 `;
 
 export const FooterContainer = styled.div`
@@ -27,8 +26,6 @@ export const FooterContainer = styled.div`
   transition: all 0.35s ease-in-out;
 
   > div {
-    border-radius: 20px;
-    padding: 16px;
-    border: 1px solid #d1d1d9;
+    padding-top: 16px;
   }
 `;

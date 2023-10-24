@@ -71,15 +71,16 @@ const NavigationHeader = ({
       </div>
 
       <div style={{ position: "relative" }}>
-        <AvatarWrapper onClick={handleClickInside}>
+        <AvatarWrapper>
           <BellWrapper>
-            <Bell />
+            <Bell height={19} width={17.88} />
           </BellWrapper>
           <UserAvatar
             email="sprout@langara.ca"
-            size="56"
-            round="16px"
+            size="36"
+            round="8px"
             imageUrl="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50"
+            onClick={handleClickInside}
           />
         </AvatarWrapper>
         {logOutOpen && (
