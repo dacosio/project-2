@@ -6,27 +6,29 @@ import {
   NavOptions,
   LoginOptions,
   Hidebutton,
-  Logo
+  Logo,
 } from "./HomeNavigation.style";
 
 import Hamburger from "../../base/Hamburger";
 import Button from "../../base/Button";
 import { useMediaQuery } from "../../../utils/hooks/useMediaQuery";
 import HomeNavigationMobile from "../HomeNavigationMobile";
+import SignupModal from "../../base/SignupModal";
+import LoginModal from "../../base/LoginModal";
 
 const HomeNavigation = (props: HomeNavigationProps): JSX.Element => {
   const [open, setOpen] = useState(false);
-  
+
   const matches = useMediaQuery("(min-width: 992px)");
-  
-  console.log(matches)
+
+  console.log(matches);
 
   return (
     <Container>
       <Nav>
         <Hamburger open={open} toggleOpen={() => setOpen(!open)} />
         <NavOptions>
-          <Logo width={ matches? 200 : 99}/>
+          <Logo width={matches ? 200 : 99} />
           <ul>
             <li>
               <a href="#">About</a>
@@ -43,16 +45,10 @@ const HomeNavigation = (props: HomeNavigationProps): JSX.Element => {
           </ul>
         </NavOptions>
         <LoginOptions>
-          <Hidebutton
-            text="Log in"
-            variant="outline"
-            style={matches? {width: "160px"} : {width: "100px"}}
-          ></Hidebutton>
-          <Button
-            text="Sign up"
-            variant="primary"
-            style={matches? {width: "160px"} : {width: "100px"}}
-          ></Button>
+          <Hidebutton>
+            <LoginModal></LoginModal>
+          </Hidebutton>
+          <SignupModal />
         </LoginOptions>
       </Nav>
       <HomeNavigationMobile open={open} />
