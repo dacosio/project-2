@@ -49,7 +49,7 @@ export const TabContainer = styled.div`
   @media (min-width: 1200px) {
     > div > label {
       flex-grow: unset;
-      min-width: 100px;
+      min-width: 80px;
     }
   }
 `;
@@ -71,7 +71,7 @@ export const Item = styled.div`
   cursor: pointer;
 
   :hover {
-    background-color: ${({ theme }) => theme.btn.color.outlineBg};
+    background-color: ${({ theme }) => theme.btn.color.lightest};
   }
 `;
 

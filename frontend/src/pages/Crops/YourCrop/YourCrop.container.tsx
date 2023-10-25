@@ -23,7 +23,7 @@ const YourCrop = (): JSX.Element => {
     console.log("Suggestion");
   };
 
-  const handleOnFavorite = (id: string) => {
+  const handlePlant = (id: string) => {
     console.log(id);
   };
 
@@ -61,7 +61,7 @@ const YourCrop = (): JSX.Element => {
     handleOnClickCrop,
     handleOnClickChoice,
     handleOnClickSuggestion,
-    handleOnFavorite,
+    handlePlant,
     handleOnDelete,
   };
   return <YourCropView {...generatedProps} />;

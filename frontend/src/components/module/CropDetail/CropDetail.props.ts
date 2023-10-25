@@ -6,6 +6,6 @@ export type Crop = {
 
 export interface CropDetailProps {
   crop: Crop;
-  handleOnFavorite: (id: string) => void;
+  handlePlant: (id: string) => void;
   handleOnDelete: (id: string) => void;
 }

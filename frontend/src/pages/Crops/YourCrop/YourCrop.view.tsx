@@ -20,7 +20,7 @@ const YourCropView = (props: YourCropGeneratedProps) => {
     handleOnClickCrop,
     handleOnClickChoice,
     handleOnClickSuggestion,
-    handleOnFavorite,
+    handlePlant,
     handleOnDelete,
   } = props;
 
@@ -57,7 +57,7 @@ const YourCropView = (props: YourCropGeneratedProps) => {
           >
             <CropDetail
               crop={crop}
-              handleOnFavorite={handleOnFavorite}
+              handlePlant={handlePlant}
               handleOnDelete={handleOnDelete}
             />
           </DetailColumnContainer>

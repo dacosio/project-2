@@ -53,7 +53,7 @@ export const TitleLeftContainer = styled.div``;
 
 export const TitleRightContainer = styled.div`
   display: flex;
-  gap: 16px;
+  gap: 8px;
 `;
 
 export const DescriptionContainer = styled.div`
