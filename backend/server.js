@@ -21,16 +21,21 @@ app.use(cors(corsOptions));
 // const Humidity = require("./models/Humidity.js");
 const Crop = require("./models/Crop");
 
-const { temperature, precipitation, humidity, crop } = require("./data/index.js");
+const {
+  temperature,
+  precipitation,
+  humidity,
+  crop,
+} = require("./data/index.js");
 
 // gives the ability to process json data from the frontend
 app.use(express.json());
 // app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-
 // this is to make the public static file accessible globally, ex. public/css/style.css can be called with css/styles.css
 app.use("/", express.static(path.join(__dirname, "public")));
+app.use("/api", require("./routes/conditionRoutes"));
 
 app.use("/", require("./routes/root"));
 app.use("/auth", require("./routes/authRoutes"));
