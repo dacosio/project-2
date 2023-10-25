@@ -18,26 +18,27 @@ import Accordion from "../../../components/base/Accordion";
 
 const CropAboutView = (props: CropAboutProps) => {
   const { crops, handlePlantLater, handlePlantNow } = props;
-
-  const { id } = useParams();
-  const crop = id ? crops.find((crop) => crop._id === parseInt(id)) : undefined;
-
+  const crop = crops[0];
   const conditions = [
     {
       title: "Temperature",
-      output: crop ? crop.idealTemperature : "N/A",
+      output: crop
+        ? `${crop.idealTemperature.celcius.min}°C - ${crop.idealTemperature.celcius.max}°C`
+        : "N/A",
     },
     {
       title: "Humidity",
-      output: crop ? crop.humidity : "N/A",
+      output: crop ? `${crop.humidity.min} - ${crop.humidity.max}%` : "N/A",
     },
     {
       title: "Growth",
-      output: crop ? crop.growthDuration : "N/A",
+      output: crop
+        ? `${crop.growthDuration.min} - ${crop.growthDuration.max} days`
+        : "N/A",
     },
     {
       title: "Soil pH",
-      output: crop ? crop.soilPh : "N/A",
+      output: crop ? `${crop.soilPh.min} - ${crop.soilPh.max}` : "N/A",
     },
   ];
 
@@ -108,7 +109,7 @@ const CropAboutView = (props: CropAboutProps) => {
       <Container className="container">
         <Row gutterWidth={20}>
           <Col>
-            <Typography variant="title3">{crop?.name}</Typography>
+            <Typography variant="title3">{crop?.cropName}</Typography>
           </Col>
           <Col>
             <Hidden xs>
@@ -129,7 +130,7 @@ const CropAboutView = (props: CropAboutProps) => {
         </Row>
         <Row gutterWidth={20} style={{ rowGap: "20px" }}>
           <Col xl={4} lg={6}>
-            <img src={crop?.img_url} />
+            <img src={crop?.imageURL} />
           </Col>
           <Col xl={4} lg={6}>
             <div className="box-container">
