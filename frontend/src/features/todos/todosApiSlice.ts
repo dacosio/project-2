@@ -1,8 +1,8 @@
 import { apiSlice } from "app/api/apiSlice";
 import providesList from "utils/providesList";
-import { TAG_TYPE } from "const/tags";
+import { TAG_TYPE } from "consts/tags";
 import { GetTodosPayload } from "types/store/TodoState";
-import { METHOD } from "const/methods";
+import { METHOD } from "consts/methods";
 
 export const todosApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
