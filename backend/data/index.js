@@ -10897,4 +10897,263 @@ const crop = [
     isFavorite: false
   }
 ]
-module.exports = { temperature, precipitation, humidity, crop };
+
+const cropEncyclopedia = [
+  {
+    cropName: "Broccoli",
+    description: "The broccoli plant has a thick green stalk, or stem, which gives rise to thick, leathery, oblong leaves which are gray-blue to green in color. The plant produces large branching green flower heads covered with numerous white or yellow flowers. Broccoli can be annual or biennial depending on the variety and can grow to 1 m (3.3 ft) in height. Broccoli may also be referred to as sprouting broccoli and likely originates from the Mediterranean although the exact location has not been determined.",
+    idealTemperature: {
+      fahrenheit: {
+        min: 60,
+        max: 65
+      },
+      celcius: {
+        min: 15.5,
+        max: 18
+      }
+    },
+    humidity: {
+      min: 40,
+      max: 60
+    },
+    growthDuration: {
+      min: 55,
+      max: 85
+    },
+    soilPh: {
+      min: 6,
+      max: 7
+    },
+    soilN: 5,
+    soilP: 10,
+    soilK: 15,
+    growingTips: ["Find a garden location that will have at least six to eight hours of sun per day for optimum plant growth.", "Till the bed to a depth of 8 to 10 inches and remove any sticks and stones.", " In the absence of a soil test, incorporate 3 to 4 pounds of 5-10-10 fertilizer per 100 square feet of the garden area", "Smooth the soil with a rake and plant the seedlings 18 to 20 inches apart."],
+    tools: ["Garden Spade or Shovel", "Mulch", "pH Testing Kit"],
+    imageURL: "https://res.cloudinary.com/dqkmua29w/image/upload/v1697606726/crops/fdli2dgryzg54dr6yxez.webp",
+  },
+  {
+    cropName: "Carrots",
+    description: "The carrot is a root vegetable, typically orange in color, though heirloom variants including purple, black, red, white, and yellow cultivars exist all of which are domesticated forms of the wild carrot, Daucus carota, native to Europe and Southwestern Asia. The plant probably originated in Persia and was originally cultivated for its leaves and seeds. The most commonly eaten part of the plant is the taproot, although the stems and leaves are also eaten. The domestic carrot has been selectively bred for its enlarged, more palatable, less woody-textured taproot.",
+    idealTemperature: {
+      fahrenheit: {
+        min: 40,
+        max: 80
+      },
+      celcius: {
+        min: 4.5,
+        max: 26
+      }
+    },
+    humidity: {
+      min: 40,
+      max: 60
+    },
+    growthDuration: {
+      min: 60,
+      max: 80
+    },
+    soilPh: {
+      min: 6,
+      max: 7
+    },
+    soilN: 5,
+    soilP: 15,
+    soilK: 15,
+    growingTips: ["Start carrot seeds outside 3-5 weeks before the last spring frost.", "After planting, soil must be kept moist for 10 days. Spray lightly twice a day in very sunny weather. Seeds will not germinate if they dry out.", "Harvest the largest carrots first to give the smaller carrots room to develop"],
+    tools: ["Trowel", "Pruning Shears", "Hose/Watering Can", "Garden Rake", "Fertilier", "Mulch"],
+    imageURL: "https://res.cloudinary.com/dqkmua29w/image/upload/v1697606726/crops/hm0bbyebfpvzlessr1n1.webp",
+  },
+  {
+    cropName: "Cucumbers",
+    description: "Creeping plant of the gourd family (Cucurbitaceae), widely cultivated for its edible fruit. The nutritional value of the cucumber is low, but its delicate flavour makes it popular for salads and relishes. Small fruits are often pickled. The cucumber can be grown in frames or on trellises in greenhouses in cool climates and is cultivated as a field crop and in home gardens in warmer areas.",
+    idealTemperature: {
+      fahrenheit: {
+        min: 73.4,
+        max: 84.92
+      },
+      celcius: {
+        min: 23,
+        max: 29.4
+      }
+    },
+    humidity: {
+      min: 60,
+      max: 70
+    },
+    growthDuration: {
+      min: 50,
+      max: 70
+    },
+    soilPh: {
+      min: 6,
+      max: 6.8
+    },
+    soilN: 5,
+    soilP: 6,
+    soilK: 8,
+    growingTips: ["Practice good cultivation and provide adequate water to moisten the soil to at least a 6 inch depth.", "It is important to provide a uniform moisture supply to the crop as this is critical during fruit set and development.", "To aid in preventing disease, water at the base of the plant in the morning and avoid wetting the foliage."],
+    tools: ["Garden Trowel", "Garden Trellis or Cages", "Well-Draining Soil", "Watering Can or Hose", "Mulch"],
+    imageURL: "https://res.cloudinary.com/dqkmua29w/image/upload/v1697606726/crops/oimgk1mnuszmk3flfxat.webp",
+  },
+  {
+    cropName: "Lettuce",
+    description: "Lettuce (Lactuca sativa) is a popular leafy vegetable known for its crisp texture and mild flavor, often cultivated globally as a staple in salads and various culinary dishes. Native to Europe and Asia, lettuce has been cultivated for over 2,000 years and has spawned numerous varieties, each with unique textures, colors, and tastes. While generally easy to grow, it demands particular care and specific conditions to thrive, varying slightly among its diverse types. However, it is cherished by gardeners for its relatively fast growth, continual harvest, and adaptability to different growing environments.",
+    idealTemperature: {
+      fahrenheit: {
+        min: 55,
+        max: 70
+      },
+      celcius: {
+        min: 13,
+        max: 21
+      }
+    },
+    humidity: {
+      min: 60,
+      max: 70
+    },
+    growthDuration: {
+      min: 30,
+      max: 80
+    },
+    soilPh: {
+      min: 6,
+      max: 7
+    },
+    soilN: 10,
+    soilP: 10,
+    soilK: 10,
+    growingTips: ["Sow seeds or transplant seedlings in well-draining soil enriched with organic matter.", "Maintain consistent moisture, avoiding both waterlogging and dry conditions.", "Provide light shade if growing in conditions where the sunlight is intense to prevent bolting and bitter leaves.", "Ensure proper spacing to avoid overcrowding and promote air circulation, reducing the risk of disease.", "For continual harvest, pick outer leaves and allow the center to keep producing or cut the entire plant at once."],
+    tools: ["Garden Trowel", "Hoe or Hand Weeder", "Shade Cloth", "Watering Can or Hose", "Mulch"],
+    imageURL: "https://res.cloudinary.com/dqkmua29w/image/upload/v1697606726/crops/yrjrll1cfgw9ooc2i8mt.webp",
+  },
+  {
+    cropName: "Potatoes",
+    description: "The potato is a vital member of the solanaceae family. As the world's third most significant food crop for human consumption, with over a billion global consumers, it boasts a crop production exceeding 300 million metric tons. Remarkably, a single hectare of potato yields two to four times the food quantity of grain crops, showcasing its water-efficient nature, outperforming other major crops by up to seven times. Potatoes are cultivated in more than 100 countries worldwide.",
+    idealTemperature: {
+      fahrenheit: {
+        min: 61,
+        max: 66
+      },
+      celcius: {
+        min: 16,
+        max: 19
+      }
+    },
+    humidity: {
+      min: 50,
+      max: 70
+    },
+    growthDuration: {
+      min: 50,
+      max: 90
+    },
+    soilPh: {
+      min: 5.8,
+      max: 6.5
+    },
+    soilN: 5,
+    soilP: 10,
+    soilK: 10,
+    growingTips: ["Start by digging a trench 6-8 inches deep.", "Plant each potato piece with the cut side down and the eyes facing up.", "Space them 12-15 inches apart within the row.", "Keep rows 3 feet apart.", "If space is limited or you aim to grow baby potatoes, you can reduce the spacing between plants."],
+    tools: ["Garden Trowel", "Gardening gloves", "Well-draining soil", "Mulch"],
+    imageURL: "https://res.cloudinary.com/dqkmua29w/image/upload/v1697606727/crops/oc6hlzto2gt3xglpzwwi.webp",
+  },
+  {
+    cropName: "Spinach",
+    description: "Spinach is fast-growing, cool-weather vegetable related to beets and Swiss chard, nutritious in vitamins A, C, K.  It is usually grown in early spring and fall, in low temperatures and short days.",
+    idealTemperature: {
+      fahrenheit: {
+        min: 45,
+        max: 70
+      },
+      celcius: {
+        min: 5,
+        max: 20
+      }
+    },
+    humidity: {
+      min: 80,
+      max: 90
+    },
+    growthDuration: {
+      min: 42,
+      max: 56
+    },
+    soilPh: {
+      min: 6.5,
+      max: 7
+    },
+    soilN: 10,
+    soilP: 10,
+    soilK: 10,
+    growingTips: ["Space spinach plants 12 inches apart.", "Plant spinach during the cool weather of spring and fall.", "Roots are shallow and easily damaged.", "Water regularly and mulch to retain moisture.", "Harvest outer leaves from each plant so that inner leaves can develop."],
+    tools: ["Garden Trowel", "Pruning Shears", "Mulch"],
+    imageURL: "https://res.cloudinary.com/dqkmua29w/image/upload/v1697606726/crops/xpsdnskowld9pjbt3sla.webp",
+  },
+  {
+    cropName: "Tomatoes",
+    description: "Tomatoes are rich in vitamins A and C, and are a good source of antioxidants. They thrive in warm climates and require well-draining soil and consistent watering to prevent cracking. Pruning, staking, or caging can help support their growth and prevent diseases.",
+    idealTemperature: {
+      fahrenheit: {
+        min: 70,
+        max: 85
+      },
+      celcius: {
+        min: 21,
+        max: 29
+      }
+    },
+    humidity: {
+      min: 40,
+      max: 70
+    },
+    growthDuration: {
+      min: 60,
+      max: 85
+    },
+    soilPh: {
+      min: 6.2,
+      max: 6.8
+    },
+    soilN: 10,
+    soilP: 10,
+    soilK: 10,
+    growingTips: ["Tomatoes needs 6 to 8 hours of sun to bring out their best flavors.", "Use stake, trellis, or cage most tomato plants to keep them off the ground."],
+    tools: ["Hand Pruners", "Trellises", "Pest control guides"],
+    imageURL: "https://res.cloudinary.com/dqkmua29w/image/upload/v1697606726/crops/wqmctunonbdbm3kqk4xt.webp",
+  },
+  {
+    cropName: "Onions",
+    description: "Onion is a biennial plant but is usually grown as an annual. Modern varieties typically grow to a height of 15 to 45 cm. In the autumn, the leaves die back, and the outer scales of the bulb become dry and brittle, so the crop is normally harvested. If left in the soil over winter, the growing point in the middle of the bulb begins to develop in the spring. New leaves appear, and a long, stout, hollow stem expands, topped by a bract protecting a developing inflorescence. The inflorescence takes the form of a rounded umbel of white flowers with parts in sixes. The seeds are glossy black and triangular in cross-section.",
+    idealTemperature: {
+      fahrenheit: {
+        min: 70,
+        max: 85
+      },
+      celcius: {
+        min: 21,
+        max: 29
+      }
+    },
+    humidity: {
+      min: 40,
+      max: 70
+    },
+    growthDuration: {
+      min: 60,
+      max: 85
+    },
+    soilPh: {
+      min: 6.2,
+      max: 6.8
+    },
+    soilN: 10,
+    soilP: 10,
+    soilK: 10,
+    growingTips: ["Tomatoes needs 6 to 8 hours of sun to bring out their best flavors.", "Use stake, trellis, or cage most tomato plants to keep them off the ground."],
+    tools: ["Hand Pruners", "Trellises", "Pest control guides"],
+    imageURL: "https://res.cloudinary.com/dqkmua29w/image/upload/v1697606727/crops/sllr15ehgc0jxdjdsddr.webp",
+  }
+]
+module.exports = { temperature, precipitation, humidity, crop, cropEncyclopedia };
