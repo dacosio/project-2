@@ -19,15 +19,21 @@ app.use(cors(corsOptions));
 // const Temperature = require("./models/Temperature.js");
 // const Precipitation = require("./models/Precipitation.js");
 // const Humidity = require("./models/Humidity.js");
-const Crop = require("./models/Crop");
+// const Crop = require("./models/Crop");
+const CropEncyclopedia = require("./models/CropEncyclopedia");
 
-const { temperature, precipitation, humidity, crop } = require("./data/index.js");
+const {
+  temperature,
+  precipitation,
+  humidity,
+  crop,
+  cropEncyclopedia,
+} = require("./data/index.js");
 
 // gives the ability to process json data from the frontend
 app.use(express.json());
 // app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-
 
 // this is to make the public static file accessible globally, ex. public/css/style.css can be called with css/styles.css
 app.use("/", express.static(path.join(__dirname, "public")));
@@ -37,6 +43,7 @@ app.use("/auth", require("./routes/authRoutes"));
 app.use("/api", require("./routes/userRoutes"));
 app.use("/api", require("./routes/todoRoutes"));
 app.use("/api", require("./routes/cropRoutes"));
+app.use("/api", require("./routes/cropEncylopediaRoutes"));
 
 app.all("*", (req, res) => {
   res.status(404);
@@ -59,6 +66,7 @@ mongoose.connection.once("open", () => {
     // Precipitation.insertMany(precipitation);
     // Humidity.insertMany(humidity);
     // Crop.insertMany(crop);
+    // CropEncyclopedia.insertMany(cropEncyclopedia)
   });
 });
 

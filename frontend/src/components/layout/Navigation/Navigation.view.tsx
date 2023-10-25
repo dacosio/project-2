@@ -107,7 +107,7 @@ const Navigation = (props: NavigationProps): JSX.Element => {
       toggled={toggleState}
       onBackdropClick={() => dispatch(sendToggle(false))}
       onBreakPoint={setBroken}
-      breakPoint="md"
+      breakPoint="lg"
       width="288px"
       rootStyles={{
         backgroundColor: theme.bg.primary,

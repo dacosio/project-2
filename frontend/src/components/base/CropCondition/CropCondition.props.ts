@@ -1,6 +1,6 @@
 export interface CropConditionProps {
     title: string,
-    output: string
+    output: string | number
 }
 
 export enum ConditionTitle {

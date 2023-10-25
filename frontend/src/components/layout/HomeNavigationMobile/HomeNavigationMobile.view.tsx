@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { HomeNavigationMobileProps } from "./HomeNavigationMobile.props";
-import { 
+import {
   Container,
   NavBackground,
   NavContainer,
@@ -10,29 +10,29 @@ import {
 const HomeNavigationMobile = (
   props: HomeNavigationMobileProps
 ): JSX.Element => {
-
   return (
     <Container>
-        <NavBackground className={props.open ? "visible" : "hidden"}>
-        </NavBackground>
-          <NavContainer className={props.open ? "visible" : "hidden"}>
-            <NavOptions>
-              <ul>
-                <li>
-                  <a href="#">About</a>
-                </li>
-                <li>
-                  <a href="#">Features</a>
-                </li>
-                <li>
-                  <a href="#">Team</a>
-                </li>
-                <li>
-                  <a href="#">Contact</a>
-                </li>
-              </ul>
-            </NavOptions>
-          </NavContainer>
+      <NavBackground
+        className={props.open ? "visible" : "hidden"}
+      ></NavBackground>
+      <NavContainer className={props.open ? "visible" : "hidden"}>
+        <NavOptions>
+          <ul>
+            <li>
+              <a href="#">About</a>
+            </li>
+            <li>
+              <a href="#">Features</a>
+            </li>
+            <li>
+              <a href="#">Team</a>
+            </li>
+            <li>
+              <a href="#">Contact</a>
+            </li>
+          </ul>
+        </NavOptions>
+      </NavContainer>
     </Container>
   );
 };

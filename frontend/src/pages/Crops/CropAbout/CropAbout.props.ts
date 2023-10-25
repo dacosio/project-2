@@ -1,18 +1,39 @@
+interface IdealTemperature {
+    fahrenheit: {
+      min: number;
+      max: number;
+    };
+    celcius: {
+      min: number;
+      max: number;
+    };
+}
+  
 export interface Crop {
-    _id: number;
-    name: string;
+    _id: string;
+    cropName: string;
     description: string;
-    idealTemperature: string;
-    humidity: string;
-    growthDuration: string;
-    soilPh: string;
-    soilN: string;
-    soilP: string;
-    soilK: string;
+    idealTemperature: IdealTemperature;
+    humidity: {
+      min: number;
+      max: number;
+    };
+    growthDuration: {
+      min: number;
+      max: number;
+    };
+    soilPh: {
+      min: number;
+      max: number;
+    };
+    soilN: number;
+    soilP: number;
+    soilK: number;
     growingTips: string[];
     tools: string[];
-    img_url: string;
+    imageURL: string;
 }
+  
 export interface CropAboutProps {
     crops: Crop[];
     handlePlantLater: () => void;

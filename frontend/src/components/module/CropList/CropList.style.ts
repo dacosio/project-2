@@ -6,6 +6,8 @@ export const Container = styled.div`
   display: grid;
   grid-template-rows: auto 1fr auto;
   gap: 16px;
+  box-sizing: border-box;
+  position: relative;
 
   > div {
     display: flex;
@@ -35,20 +37,94 @@ export const Container = styled.div`
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
     padding: 32px 20px;
     border-radius: 20px;
-    height: 700px;
+    height: 100%;
+  }
+`;
+
+export const TabContainer = styled.div`
+  > div > label {
+    flex-grow: 1;
+  }
+
+  @media (min-width: 1200px) {
+    > div > label {
+      flex-grow: unset;
+      min-width: 80px;
+    }
+  }
+`;
+
+export const List = styled.div`
+  @media (min-width: 768px) {
+    padding-right: 16px;
   }
 `;
 
 export const Item = styled.div`
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
-  padding: 8px 28px;
+  padding: 8px 12px;
   display: flex;
   justify-content: space-between;
   margin: 1px;
   box-sizing: border-box;
+  cursor: pointer;
 
   :hover {
-    background-color: ${({ theme }) => theme.btn.color.outlineBg};
+    background-color: ${({ theme }) => theme.btn.color.lightest};
+  }
+`;
+
+export const PopupContainer = styled.div`
+  position: absolute;
+  bottom: 98px;
+  right: 0;
+  width: 393.39px;
+  display: flex;
+  align-items: flex-end;
+  transform: translateX(calc(375.39px - 123.09px));
+  z-index: 1;
+  border-radius: 20px;
+
+  > div {
+    padding-right: 16px;
+  }
+
+  > div > div {
+    display: grid;
+    background-color: white;
+    margin: 1px;
+    border-radius: 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  > div > div > div {
+    cursor: pointer;
+    padding: 32px 16px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    :hover {
+      background-color: ${({ theme }) => theme.btn.color.lightest};
+    }
+  }
+
+  > div > div > div:first-of-type {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+
+  > div > div > div:last-of-type {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+
+  > div > div > div:not(:last-of-type) {
+    border-bottom: 1px solid ${({ theme }) => theme.neutral.n20};
+  }
+
+  @media (min-width: 1200px) {
+    transform: unset;
   }
 `;

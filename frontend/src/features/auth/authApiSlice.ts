@@ -13,6 +13,13 @@ export const authApiSlice = apiSlice.injectEndpoints({
         body: { email, password },
       }),
     }),
+    register: builder.mutation({
+      query: (body) => ({
+        url: "/auth/register",
+        method: "POST",
+        body,
+      }),
+    }),
     // arg type is void because we are not passing an argument to our post query method
     sendLogout: builder.mutation<{ message: string }, void>({
       query: () => ({

@@ -4,7 +4,7 @@ import { theme } from "../../../utils/Theme";
 export const Container = styled.div`
   display: flex;
   width: 100%;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 4px;
 `;
 

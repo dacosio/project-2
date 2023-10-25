@@ -24,9 +24,7 @@ const SidebarHeader = ({
   };
   return (
     <StyledSidebarHeader {...rest}>
-      <TitleWrapper
-        onClick={handleCollapse}
-      >
+      <TitleWrapper onClick={handleCollapse}>
         <StyledLogo>
           <CollapsedLogo height={52} width={40} />
         </StyledLogo>

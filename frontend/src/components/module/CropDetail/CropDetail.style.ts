@@ -6,6 +6,7 @@ export const Container = styled.div`
   display: grid;
   grid-template-rows: auto 1fr;
   gap: 16px;
+  box-sizing: border-box;
 
   > div {
     display: flex;
@@ -35,7 +36,7 @@ export const Container = styled.div`
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
     padding: 32px 20px;
     border-radius: 20px;
-    height: 700px;
+    height: 100%;
 
     > div:last-of-type {
       padding-right: 16px;
@@ -52,7 +53,7 @@ export const TitleLeftContainer = styled.div``;
 
 export const TitleRightContainer = styled.div`
   display: flex;
-  gap: 16px;
+  gap: 8px;
 `;
 
 export const DescriptionContainer = styled.div`

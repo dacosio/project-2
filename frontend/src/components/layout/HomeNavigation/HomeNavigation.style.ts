@@ -56,7 +56,7 @@ export const LoginOptions = styled.div`
   }
 `;
 
-export const Hidebutton = styled(Button)`
+export const Hidebutton = styled.div`
   display: none;
   @media (min-width: 768px) {
     display: unset;
