@@ -19,14 +19,19 @@ app.use(cors(corsOptions));
 // const Temperature = require("./models/Temperature.js");
 // const Precipitation = require("./models/Precipitation.js");
 // const Humidity = require("./models/Humidity.js");
-const Crop = require("./models/Crop");
+// const Crop = require("./models/Crop");
+const CropEncyclopedia = require("./models/CropEncyclopedia");
 
+<<<<<<< HEAD
 const {
   temperature,
   precipitation,
   humidity,
   crop,
 } = require("./data/index.js");
+=======
+const { temperature, precipitation, humidity, crop, cropEncyclopedia } = require("./data/index.js");
+>>>>>>> dev
 
 // gives the ability to process json data from the frontend
 app.use(express.json());
@@ -41,7 +46,11 @@ app.use("/auth", require("./routes/authRoutes"));
 app.use("/api", require("./routes/userRoutes"));
 app.use("/api", require("./routes/todoRoutes"));
 app.use("/api", require("./routes/cropRoutes"));
+<<<<<<< HEAD
 app.use("/api", require("./routes/conditionRoutes"));
+=======
+app.use("/api", require("./routes/cropEncylopediaRoutes"));
+>>>>>>> dev
 
 app.all("*", (req, res) => {
   res.status(404);
@@ -64,6 +73,7 @@ mongoose.connection.once("open", () => {
     // Precipitation.insertMany(precipitation);
     // Humidity.insertMany(humidity);
     // Crop.insertMany(crop);
+    // CropEncyclopedia.insertMany(cropEncyclopedia)
   });
 });
 

@@ -1,23 +1,33 @@
 export interface CropGuideGeneratedProps {
     searches: {
-        _id: number;
-        name: string;
-        about: string;
-        ideal_temp: string;
-        humidity: string;
-        growing_period: string;
-        fertilizer_composition: string;
-        img_url: string;
+        _id: string;
+        cropName: string;
+        description: string;
+        idealTemperature: object;
+        humidity: object;
+        growthDuration: object;
+        soilPh: object;
+        soilN: number;
+        soilP: number;
+        soilK: number;
+        growingTips: Array<string>;
+        tools: Array<string>;
+        imageURL: string;
     }[];
     searchResults: {
-        _id: number;
-        name: string;
-        about: string;
-        ideal_temp: string;
-        humidity: string;
-        growing_period: string;
-        fertilizer_composition: string;
-        img_url: string;
+        _id: string;
+        cropName: string;
+        description: string;
+        idealTemperature: object;
+        humidity: object;
+        growthDuration: object;
+        soilPh: object;
+        soilN: number;
+        soilP: number;
+        soilK: number;
+        growingTips: Array<string>;
+        tools: Array<string>;
+        imageURL: string;
     }[];
     setSearchResults: (results: YourSearchItemType[]) => void;
     searchTerm: string;
@@ -25,15 +35,21 @@ export interface CropGuideGeneratedProps {
     delay: number;
     handleSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
     fetchSearchResult: any;
+    data: any;
 }
 
 export type YourSearchItemType = {
-    _id: number;
-    name: string;
-    about: string;
-    ideal_temp: string;
-    humidity: string;
-    growing_period: string;
-    fertilizer_composition: string;
-    img_url: string;
+    _id: string;
+    cropName: string;
+    description: string;
+    idealTemperature: object;
+    humidity: object;
+    growthDuration: object;
+    soilPh: object;
+    soilN: number;
+    soilP: number;
+    soilK: number;
+    growingTips: Array<string>;
+    tools: Array<string>;
+    imageURL: string;
 };

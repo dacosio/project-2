@@ -91,9 +91,9 @@ const SearchResult = ({
                 >
                   <PlantResult
                     key={i}
-                    imageUrl={item.img_url}
+                    imageUrl={item.imageURL}
                     imageAlt="Test"
-                    cropName={item.name}
+                    cropName={item.cropName}
                     imgWidth="100%"
                     imgHeight="100%"
                   />
