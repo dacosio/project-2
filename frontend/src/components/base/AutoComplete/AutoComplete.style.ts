@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { theme } from "../../../utils/Theme";
+import Typography from "../Typography";
 
 const fontStyle = `
   font-style: normal;
@@ -43,6 +44,7 @@ export const ListContainer = styled.div`
   background-color: white;
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
   box-sizing: border-box;
+  z-index: 3;
 `;
 
 export const ItemContainer = styled.div`
@@ -54,3 +56,9 @@ export const ItemContainer = styled.div`
     border-bottom: 1px solid ${({ theme }) => theme.neutral.n10};
   }
 `;
+
+export const Error = styled(Typography)`
+  padding: 0 8px;
+`;
+
+export const InputHidden = styled.input``;
