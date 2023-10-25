@@ -18,6 +18,7 @@ import { Link } from "react-router-dom";
 
 const CropGuideView = (props: CropGuideGeneratedProps) => {
   const {
+    data,
     searches,
     searchResults,
     setSearchResults,
@@ -37,11 +38,11 @@ const CropGuideView = (props: CropGuideGeneratedProps) => {
       >
         <PlantResult
           key={i}
-          imageUrl={con.img_url}
+          imageUrl={con.imageURL}
           imageAlt="random image"
           imgWidth="100%"
           imgHeight="100%"
-          cropName={con.name}
+          cropName={con.cropName}
         />
       </Link>
     ));

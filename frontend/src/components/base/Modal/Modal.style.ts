@@ -24,18 +24,15 @@ export const ModalOverlay = styled.div`
 
 export const ModalBox = styled.div`
   position: relative;
-  max-width: 400px;
-  width: 100%;
   margin: 0 10%;
-  padding: 28px;
   box-sizing: border-box;
-  border-radius: 10px;
+  border-radius: 24px;
   background-color: white;
   cursor: auto;
+  overflow: hidden;
 `;
 
 export const ModalContent = styled.div`
-  margin-top: 30px;
   color: #6b6b6b;
   font-size: 16px;
   max-height: 75vh;

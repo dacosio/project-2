@@ -2,6 +2,14 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import {
   /* PLOP_INJECT_IMPORT */
+  ThunderStormRainInactive,
+  SnowRainInactive,
+  SnowInactive,
+  ThunderStormInactive,
+  RainInactive,
+  OvercastInactive,
+  PartiallyCloudyInactive,
+  ClearInactive,
   ThunderStormRain,
   SnowRain,
   ThunderStorm,
@@ -63,10 +71,37 @@ const Wrapper = ({ children, label }) => {
 const meta: Meta = {
   title: "Base/SVG",
   component: () => (
-    <Container background="white">
+    <Container background="white" style={{ flexWrap: "wrap" }}>
       {/* PLOP_INJECT_INSTANCE*/}
       <Wrapper label="ThunderStormRain">
         <ThunderStormRain width={30} height={30} />
+      </Wrapper>
+      <Wrapper label="ThunderStormRainInactive">
+        <ThunderStormRainInactive width={30} height={30} />
+      </Wrapper>
+      <Wrapper label="SnowRainInactive">
+        <SnowRainInactive width={30} height={30} />
+      </Wrapper>
+      <Wrapper label="SnowInactive">
+        <SnowInactive width={30} height={30} />
+      </Wrapper>
+      <Wrapper label="ThunderStormInactive">
+        <ThunderStormInactive width={30} height={30} />
+      </Wrapper>
+      <Wrapper label="RainInactive">
+        <RainInactive width={30} height={30} />
+      </Wrapper>
+      <Wrapper label="OvercastInactive">
+        <OvercastInactive width={30} height={30} />
+      </Wrapper>
+      <Wrapper label="PartiallyCloudyInactive">
+        <PartiallyCloudyInactive width={30} height={30} />
+      </Wrapper>
+      <Wrapper label="ClearInactive">
+        <ClearInactive width={30} height={30} />
+      </Wrapper>
+      <Wrapper label="Snow">
+        <Snow width={30} height={30} />
       </Wrapper>
       <Wrapper label="SnowRain">
         <SnowRain width={30} height={30} />

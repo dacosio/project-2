@@ -55,7 +55,6 @@ import LocationSearch from "components/module/LocationSearch";
 //       });
 //   };
 
-
 const HomeView = (props: HomeGeneratedProps) => {
   const [email, setEmail] = useState<string>("");
   const [name, setName] = useState<string>("");
@@ -68,7 +67,6 @@ const HomeView = (props: HomeGeneratedProps) => {
         <Column sm={4}>One of three columns</Column>
       </Header> */}
       <HomeNavigation />
-
 
       <Header justify="center" align="center" style={{ margin: 0 }}>
         <HeaderContents xxl={4} xl={4} lg={6} md={6}>
