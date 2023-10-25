@@ -1,12 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const cropController = require("../controllers/cropController");
-const verifyJWT = require("../middleware/verifyJWT");
-const { crop } = require("../data");
 
 router
   .route("/crops")
   .get(cropController.getAllCrops)
+  .post(cropController.addCrop)
   .put(cropController.favoriteCrop)
   .delete(cropController.removeCrop);
 
