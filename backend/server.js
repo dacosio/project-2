@@ -38,6 +38,7 @@ app.use("/auth", require("./routes/authRoutes"));
 app.use("/api", require("./routes/userRoutes"));
 app.use("/api", require("./routes/todoRoutes"));
 app.use("/api", require("./routes/cropRoutes"));
+app.use("/api", require("./routes/cropEncylopediaRoutes"));
 
 app.all("*", (req, res) => {
   res.status(404);
@@ -60,7 +61,7 @@ mongoose.connection.once("open", () => {
     // Precipitation.insertMany(precipitation);
     // Humidity.insertMany(humidity);
     // Crop.insertMany(crop);
-    CropEncyclopedia.insertMany(cropEncyclopedia)
+    // CropEncyclopedia.insertMany(cropEncyclopedia)
   });
 });
 
