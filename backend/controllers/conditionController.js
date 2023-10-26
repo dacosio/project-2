@@ -35,9 +35,11 @@ const predictCrop = async (req, res) => {
     const result = await axios.post(url, data);
     const predictedCrop = result.data.prediction;
     const cropName = capitalizeFirstLetter(predictedCrop[0]);
-    const cropId = await CropEncyclopedia.find({ cropName })
-      .select("_id")
-      .lean();
+    let cropId;
+    if (cropName) {
+      cropId = await CropEncyclopedia.find({ cropName }).select("_id").lean();
+      cropId = cropId[0]["_id"];
+    }
     res.status(200).json({ cropName, cropId });
   } catch (error) {
     res.status(500).json({ message: error.message });

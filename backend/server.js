@@ -20,7 +20,7 @@ app.use(cors(corsOptions));
 // const Precipitation = require("./models/Precipitation.js");
 // const Humidity = require("./models/Humidity.js");
 // const Crop = require("./models/Crop");
-const CropEncyclopedia = require("./models/CropEncyclopedia");
+// const CropEncyclopedia = require("./models/CropEncyclopedia");
 
 const {
   temperature,
