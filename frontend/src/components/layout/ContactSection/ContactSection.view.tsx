@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useRef } from "react";
 import { ContactSectionProps } from "./ContactSection.props";
 import { Container } from "./ContactSection.style";
-import { Form, Formik } from "formik";
 
+import { Form, Formik } from "formik";
+import emailjs from "@emailjs/browser";
 import Button from "../../base/Button";
 import FormikTextArea from "../../base/FormikTextAreaField";
 import FormikTextField from "../../base/FormikTextField";
@@ -10,9 +11,29 @@ import { string } from "yup";
 import { Col, Row, Visible, Hidden } from "react-grid-system";
 import * as Yup from "yup";
 
-
-
 const ContactSection = (props: ContactSectionProps): JSX.Element => {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "YOUR_SERVICE_ID",
+        "YOUR_TEMPLATE_ID",
+        form.current,
+        "YOUR_PUBLIC_KEY"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
+
   const handleOnSubtmit = (values: { email: string }) => {
     console.log(values);
   };
@@ -34,7 +55,20 @@ const ContactSection = (props: ContactSectionProps): JSX.Element => {
             validationSchema={validationSchema}
             onSubmit={handleOnSubtmit}
           >
-            <Form style={{ display: "grid", gap: "32px" }}>
+            {/* <form ref={form} onSubmit={sendEmail}>
+              <label>Name</label>
+              <input type="text" name="user_name" />
+              <label>Email</label>
+              <input type="email" name="user_email" />
+              <label>Message</label>
+              <textarea name="message" />
+              <input type="submit" value="Send" />
+            </form> */}
+            <Form
+              ref={form}
+              onSubmit={sendEmail}
+              style={{ display: "grid", gap: "32px" }}
+            >
               <FormikTextField
                 label="Name"
                 name="name"
@@ -47,8 +81,8 @@ const ContactSection = (props: ContactSectionProps): JSX.Element => {
               />
               <FormikTextArea
                 label="Your Message"
-                name="comment"
-                placeholder="comment"
+                name="message"
+                placeholder="message"
               />
               <Button type="submit" text="Submit" variant="primary" />
             </Form>
