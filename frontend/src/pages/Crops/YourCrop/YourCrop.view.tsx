@@ -7,21 +7,25 @@ import {
   Wrapper,
 } from "./YourCrop.style";
 import Typography from "components/base/Typography";
-import { Visible } from "react-grid-system";
+import { Visible, Hidden } from "react-grid-system";
 import "react-circular-progressbar/dist/styles.css";
 import CropList from "../../../components/module/CropList";
 import CropDetail from "../../../components/module/CropDetail";
 import Modal from "../../../components/base/Modal";
+import MobileDrawer from "./../../../components/base/MobileDrawer";
 
 const YourCropView = (props: YourCropGeneratedProps) => {
   const {
     crops,
     crop,
+    isOpenDrawer,
     handleOnClickCrop,
     handleOnClickChoice,
     handleOnClickSuggestion,
     handlePlant,
     handleOnDelete,
+    handleDrawerOpen,
+    handleDrawerClose,
   } = props;
 
   return (
@@ -55,11 +59,27 @@ const YourCropView = (props: YourCropGeneratedProps) => {
               maxWidth: undefined,
             }}
           >
-            <CropDetail
-              crop={crop}
-              handlePlant={handlePlant}
-              handleOnDelete={handleOnDelete}
-            />
+            <Hidden xs sm>
+              <CropDetail
+                crop={crop}
+                handlePlant={handlePlant}
+                handleOnDelete={handleOnDelete}
+              />
+            </Hidden>
+            <Visible xs sm>
+              <MobileDrawer
+                direction="bottom"
+                isOpenDrawer={isOpenDrawer}
+                handleDrawerClose={handleDrawerClose}
+                drawerSize="98%"
+              >
+                <CropDetail
+                  crop={crop}
+                  handlePlant={handlePlant}
+                  handleOnDelete={handleOnDelete}
+                />
+              </MobileDrawer>
+            </Visible>
           </DetailColumnContainer>
         )}
       </Wrapper>
