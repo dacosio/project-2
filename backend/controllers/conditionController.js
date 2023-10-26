@@ -5,8 +5,6 @@ const axios = require("axios");
 const CropEncyclopedia = require("./../models/CropEncyclopedia");
 const { capitalizeFirstLetter } = require("../helpers/formatter");
 
-// https://crpo-ml.onrender.com
-
 const predictCrop = async (req, res) => {
   try {
     let { city, month } = req.body;

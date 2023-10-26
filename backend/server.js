@@ -44,6 +44,7 @@ app.use("/api", require("./routes/userRoutes"));
 app.use("/api", require("./routes/todoRoutes"));
 app.use("/api", require("./routes/cropRoutes"));
 app.use("/api", require("./routes/cropEncylopediaRoutes"));
+app.use("/api", require("./routes/conditionRoutes"));
 
 app.all("*", (req, res) => {
   res.status(404);
