@@ -6,7 +6,8 @@ import { Container, Header, InnerDrawer, Body } from "./MobileDrawer.style";
 import DrawerHandle from "./../SVG/DrawerHandle";
 
 const MobileDrawer = (props: MobileDrawerProps): JSX.Element => {
-  const { isOpenDrawer, direction, children, handleDrawerClose } = props;
+  const { isOpenDrawer, direction, children, handleDrawerClose, drawerSize } =
+    props;
   const [startY, setStartY] = useState<number | null>(null);
 
   const handleTouchStart: TouchEventHandler<HTMLDivElement> = (e) => {
@@ -31,7 +32,7 @@ const MobileDrawer = (props: MobileDrawerProps): JSX.Element => {
         direction={direction}
         className="mobile-drawer"
         lockBackgroundScroll={true}
-        size="98%"
+        size={drawerSize}
       >
         <InnerDrawer
           onTouchStart={(event: React.TouchEvent<HTMLDivElement>) =>

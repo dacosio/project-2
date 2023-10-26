@@ -71,6 +71,7 @@ const YourCropView = (props: YourCropGeneratedProps) => {
                 direction="bottom"
                 isOpenDrawer={isOpenDrawer}
                 handleDrawerClose={handleDrawerClose}
+                drawerSize="98%"
               >
                 <CropDetail
                   crop={crop}

@@ -8,6 +8,7 @@ export interface MobileDrawerProps {
         | "bottom";
     children?: ReactNode;
     isOpenDrawer: boolean;
+    drawerSize: string;
     handleDrawerClose: () => void;
 }
 
