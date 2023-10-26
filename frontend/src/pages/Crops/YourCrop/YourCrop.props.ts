@@ -8,5 +8,6 @@ export interface YourCropGeneratedProps {
   handleOnClickChoice: () => void;
   handleOnClickSuggestion: () => void;
   handlePlant: (id: string) => void;
+  handleFavorite: (id: string) => void;
   handleOnDelete: (id: string) => void;
 }
