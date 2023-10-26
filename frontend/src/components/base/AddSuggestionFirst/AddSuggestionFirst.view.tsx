@@ -5,11 +5,25 @@ import Typography from "../Typography";
 import LocationSearch from "../../module/LocationSearch";
 import DropDown from "../DropDown";
 import Button from "../Button";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import {
+  selectDay,
+  selectLocation,
+  selectMonth,
+  storeDay,
+  storeMonth,
+} from "../../../features/addSuggestion/addSuggestionSlice";
 
 const AddSuggestionFirst = (props: AddSuggestionFirstProps): JSX.Element => {
+  const dispatch = useAppDispatch();
+
+  const location = useAppSelector(selectLocation);
+  const month = useAppSelector(selectMonth);
+  const day = useAppSelector(selectDay);
+
   const [year, setYear] = useState<number | undefined>(undefined);
-  const [month, setMonth] = useState<string | undefined>(undefined);
-  const [day, setDay] = useState<string | undefined>(undefined);
+  const [inputMonth, setInputMonth] = useState<string | undefined>(undefined);
+  const [inputDay, setInputDay] = useState<string | undefined>(undefined);
   const [days, setDays] = useState<{ label: string; value: string }[]>([]);
 
   const months = [
@@ -27,19 +41,46 @@ const AddSuggestionFirst = (props: AddSuggestionFirstProps): JSX.Element => {
     { value: "11", label: "December" },
   ];
 
-  useEffect(() => {
-    if (year && month) {
-      const maxDay = new Date(year, Number(month) + 1, 0).getDate();
-      const tempDays: { label: string; value: string }[] = [];
-      for (let i = 1; i <= maxDay; i++) {
-        tempDays.push({
-          label: i.toString(),
-          value: i.toString(),
-        });
-      }
-      setDays(tempDays);
+  const test = (
+    <DropDown
+      options={months}
+      placeholder="Month"
+      value={inputMonth}
+      setValue={setInputMonth}
+    />
+  );
+
+  const resetDays = (year: number, month: number) => {
+    const maxDay = new Date(year, month + 1, 0).getDate();
+    const tempDays: { label: string; value: string }[] = [];
+    for (let i = 1; i <= maxDay; i++) {
+      tempDays.push({
+        label: i.toString(),
+        value: i.toString(),
+      });
     }
-  }, [month]);
+    setDays(tempDays);
+  };
+
+  const handleNext = () => {
+    dispatch(storeMonth(inputMonth));
+    dispatch(storeDay(inputDay));
+  };
+
+  useEffect(() => {
+    if (year && inputMonth) {
+      resetDays(year, Number(inputMonth));
+    }
+  }, [year, inputMonth]);
+
+  useEffect(() => {
+    setInputMonth(month);
+    setInputDay(day);
+  }, [month, day, test]);
+
+  useEffect(() => {
+    console.log(inputMonth);
+  }, [inputMonth]);
 
   useEffect(() => {
     const date = new Date();
@@ -67,24 +108,19 @@ const AddSuggestionFirst = (props: AddSuggestionFirstProps): JSX.Element => {
         <div>
           <Typography weight="500">When are you planting the crop?</Typography>
           <div>
-            <DropDown
-              options={months}
-              placeholder="Month"
-              value={month}
-              setValue={setMonth}
-            />
+            {test}
             <DropDown
               options={days}
               placeholder="Day"
-              value={day}
-              setValue={setDay}
+              value={inputDay}
+              setValue={setInputDay}
             />
           </div>
         </div>
       </Body>
       <Footer>
-        {month && day ? (
-          <Button text="Next" />
+        {inputMonth && inputDay ? (
+          <Button text="Next" onClick={handleNext} />
         ) : (
           <Button text="Next" variant="disabled" />
         )}
