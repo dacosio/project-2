@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { SwiperOptions } from "swiper/types/swiper-options";
 
 export interface CarouselSwiperProps {
-  slides: any[];
+  slides?: any[];
   slidesPerView?: number;
   spaceBetween?: number;
   breakpoints?: {
