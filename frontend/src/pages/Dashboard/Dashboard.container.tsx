@@ -1,9 +1,15 @@
-import React from 'react';
+import React from "react";
 
-import DashboardView from './Dashboard.view';
+import DashboardView from "./Dashboard.view";
+import { useGetPlantedCropsQuery } from "features/crops/cropApiSlice";
 
 const Dashboard = (): JSX.Element => {
+  const { data, isLoading } = useGetPlantedCropsQuery({ isPlanted: true });
+
+  console.log(isLoading);
   const generatedProps = {
+    crops: data,
+    isLoading,
     // generated props here
   };
   return <DashboardView {...generatedProps} />;

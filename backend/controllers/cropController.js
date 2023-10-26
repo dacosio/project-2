@@ -6,7 +6,19 @@ const { ObjectId } = require("mongodb");
 const getAllCrops = async (req, res) => {
   try {
     const userId = req.id;
-    const crops = await Crops.find({ userId }).lean();
+    const { isPlanted } = req.query;
+    console.log(typeof isPlanted);
+    let crops;
+    if (
+      isPlanted !== undefined &&
+      isPlanted !== "" &&
+      isPlanted !== null &&
+      (isPlanted == "true" || isPlanted == "false")
+    ) {
+      crops = await Crops.find({ userId, isPlanted }).lean();
+    } else {
+      crops = await Crops.find({ userId }).lean();
+    }
 
     if (!crops?.length) {
       return res.status(400).json({ message: "No crops found." });
@@ -24,7 +36,7 @@ const addCrop = async (req, res) => {
 
     if (!ObjectId.isValid(cropId)) throw new Error("Invalid Id");
 
-    if (!cropId && plantNow === undefined && typeof plantNow !== Boolean) {
+    if (!cropId && plantNow === undefined && typeof plantNow !== "boolean") {
       throw new Error("Crop Id and plant now is required");
     }
 
