@@ -101,6 +101,7 @@ const HomeView = (props: HomeGeneratedProps) => {
           </Hide>
         </HeaderContents>
       </Header>
+      ChoiceCropM
 
       <About justify="center" align="center">
         <AboutDisplay xxl={5} xl={5} lg={5}>
