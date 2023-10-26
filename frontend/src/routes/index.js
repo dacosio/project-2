@@ -9,7 +9,7 @@ import CropGuide from "../pages/Crops/CropGuide";
 import Weather from "../pages/Weather";
 import CropAbout from "../pages/Crops/CropAbout";
 import { useRoutes } from "react-router-dom";
-import ContactPage from "pages/ContactPage";
+import ContactPage from "../pages/ContactPage";
 
 export default function Router() {
   let element = useRoutes([
