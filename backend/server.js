@@ -20,7 +20,7 @@ app.use(cors(corsOptions));
 // const Precipitation = require("./models/Precipitation.js");
 // const Humidity = require("./models/Humidity.js");
 // const Crop = require("./models/Crop");
-const CropEncyclopedia = require("./models/CropEncyclopedia");
+// const CropEncyclopedia = require("./models/CropEncyclopedia");
 
 const {
   temperature,
@@ -44,6 +44,7 @@ app.use("/api", require("./routes/userRoutes"));
 app.use("/api", require("./routes/todoRoutes"));
 app.use("/api", require("./routes/cropRoutes"));
 app.use("/api", require("./routes/cropEncylopediaRoutes"));
+app.use("/api", require("./routes/conditionRoutes"));
 
 app.all("*", (req, res) => {
   res.status(404);

@@ -33,7 +33,6 @@ const HourlyDaily = (props: HourlyDailyProps): JSX.Element => {
 
   const getTime = (datetime: string, state: string) => {
     if (state === MOCK_OPTIONS[0]) {
-      // Assuming 'time' is in HH:mm:ss format
       const [hour, minutes] = datetime.split(":");
 
       // Create a Date object at the current date with the specified time
