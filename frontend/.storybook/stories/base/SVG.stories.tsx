@@ -2,6 +2,7 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import {
   /* PLOP_INJECT_IMPORT */
+  DrawerHandle,
   ThunderStormRainInactive,
   SnowRainInactive,
   SnowInactive,
@@ -71,6 +72,9 @@ const meta: Meta = {
   component: () => (
     <Container background="white" style={{ flexWrap: "wrap" }}>
       {/* PLOP_INJECT_INSTANCE*/}
+      <Wrapper label="DrawerHandle">
+        <DrawerHandle width={30} height={30} />
+      </Wrapper>
       <Wrapper label="ThunderStormRain">
         <ThunderStormRain width={30} height={30} />
       </Wrapper>
