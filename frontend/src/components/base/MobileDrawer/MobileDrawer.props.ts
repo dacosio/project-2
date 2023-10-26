@@ -10,3 +10,5 @@ export interface MobileDrawerProps {
     isOpenDrawer: boolean;
     handleDrawerClose: () => void;
 }
+
+export type TouchEventHandler<T> = (event: React.TouchEvent<T>) => void;
