@@ -2,8 +2,8 @@ const Humidity = require("../models/Humidity");
 const Temperature = require("../models/Temperature");
 const Precipitation = require("../models/Precipitation");
 const axios = require("axios");
-
-// https://crpo-ml.onrender.com
+const CropEncyclopedia = require("./../models/CropEncyclopedia");
+const { capitalizeFirstLetter } = require("../helpers/formatter");
 
 const predictCrop = async (req, res) => {
   try {
@@ -34,8 +34,13 @@ const predictCrop = async (req, res) => {
 
     const result = await axios.post(url, data);
     const predictedCrop = result.data.prediction;
-
-    res.status(200).json({ crop: predictedCrop[0] });
+    const cropName = capitalizeFirstLetter(predictedCrop[0]);
+    let cropId;
+    if (cropName) {
+      cropId = await CropEncyclopedia.find({ cropName }).select("_id").lean();
+      cropId = cropId[0]["_id"];
+    }
+    res.status(200).json({ cropName, cropId });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

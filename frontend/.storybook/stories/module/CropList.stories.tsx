@@ -37,6 +37,7 @@ const meta: Meta<typeof CropList> = {
         <div style={{ flexGrow: "1" }}>
           <CropList
             crops={crops}
+            crop={{ id: "1", name: "Crop1", isPlanted: true }}
             handleOnClickCrop={handleOnClickCrop}
             handleOnCreateCrop={handleOnCreateCrop}
           />

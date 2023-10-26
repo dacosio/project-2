@@ -27,31 +27,13 @@ import {
 } from "features/sidebar/sidebarSlice";
 import { useMediaQuery } from "utils/hooks/useMediaQuery";
 import CurrentWeather from "components/module/CurrentWeather";
+import { calculateDaysPassed, formatDate } from "utils/Date";
 
 const DashboardView = (props: DashboardGeneratedProps) => {
+  const { crops, isLoading } = props;
   const MOCK_OPTIONS = ["Today", "15-day"];
   const [state, setState] = useState(MOCK_OPTIONS[0]);
   const navigate = useNavigate();
-
-  const sl = [];
-
-  for (let i = 0; i < 9; i++) {
-    sl.push(
-      <HarvestCard
-        cropName="Carrot"
-        maxValue={100}
-        value={50}
-        title="50"
-        subtitle="days"
-        size="desktop"
-        id="1"
-        datePlanted="Jan 1, 2023"
-        estYield="xx lb/plant"
-        height={82}
-        width={82}
-      />
-    );
-  }
 
   const [gradientObject, setGradientObject] = useState({
     clear: ["#1DAEFF", "#8ECCEF"],
@@ -104,29 +86,56 @@ const DashboardView = (props: DashboardGeneratedProps) => {
             weight="700"
             textColor="shade5"
             onClick={() => navigate("/your-crops")}
-            style={{ cursor: "pointer" }}
-          >
+            style={{ cursor: "pointer" }}>
             see more
           </Typography>
         </Title>
-        {/* <Carousel> */}
-        <CarouselSwiper
-          slidesPerView={1}
-          breakpoints={{
-            500: {
-              width: 500,
-              slidesPerView: 2,
-              spaceBetween: 20,
-            },
-            1024: {
-              width: 1024,
-              slidesPerView: 4,
-              spaceBetween: 20,
-            },
-          }}
-          slides={sl}
-        />
-        {/* </Carousel> */}
+        {isLoading ? (
+          <>Loading</>
+        ) : (
+          <>
+            <CarouselSwiper
+              slidesPerView={1}
+              breakpoints={{
+                500: {
+                  width: 500,
+                  slidesPerView: 2,
+                  spaceBetween: 20,
+                },
+                1024: {
+                  width: 1024,
+                  slidesPerView: 4,
+                  spaceBetween: 20,
+                },
+              }}
+              slides={crops?.map((crop, idx) => {
+                let maxValue =
+                  (crop.growthDuration.max + crop.growthDuration.min) / 2;
+
+                const targetDate = new Date(crop.datePlanted);
+                const daysPassed = calculateDaysPassed(targetDate);
+                const remainingDays = maxValue - daysPassed;
+                const formattedDate = formatDate(new Date(crop.datePlanted));
+                return (
+                  <HarvestCard
+                    key={idx}
+                    cropName={crop.cropName}
+                    maxValue={maxValue}
+                    value={daysPassed}
+                    title={remainingDays.toString()}
+                    subtitle="days"
+                    size="desktop"
+                    id={idx.toString()}
+                    datePlanted={formattedDate}
+                    estYield="xx lb/plant"
+                    height={82}
+                    width={82}
+                  />
+                );
+              })}
+            />
+          </>
+        )}
       </Middle>
     </Wrapper>
   );

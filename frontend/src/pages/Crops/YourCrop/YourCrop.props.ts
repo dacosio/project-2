@@ -6,8 +6,9 @@ export interface YourCropGeneratedProps {
   crop?: { id: string; name: string; isPlanted: boolean };
   isOpenDrawer: boolean;
   handleOnClickCrop: (id: string) => void;
-  handleOnCreateCrop: () => void;
-  handleOnFavorite: (id: string) => void;
+  handleOnClickChoice: () => void;
+  handleOnClickSuggestion: () => void;
+  handlePlant: (id: string) => void;
   handleOnDelete: (id: string) => void;
   handleDrawerOpen: () => void;
   handleDrawerClose: () => void;

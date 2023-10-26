@@ -20,9 +20,15 @@ app.use(cors(corsOptions));
 // const Precipitation = require("./models/Precipitation.js");
 // const Humidity = require("./models/Humidity.js");
 // const Crop = require("./models/Crop");
-const CropEncyclopedia = require("./models/CropEncyclopedia");
+// const CropEncyclopedia = require("./models/CropEncyclopedia");
 
-const { temperature, precipitation, humidity, crop, cropEncyclopedia } = require("./data/index.js");
+const {
+  temperature,
+  precipitation,
+  humidity,
+  crop,
+  cropEncyclopedia,
+} = require("./data/index.js");
 
 // gives the ability to process json data from the frontend
 app.use(express.json());
@@ -37,8 +43,8 @@ app.use("/auth", require("./routes/authRoutes"));
 app.use("/api", require("./routes/userRoutes"));
 app.use("/api", require("./routes/todoRoutes"));
 app.use("/api", require("./routes/cropRoutes"));
-app.use("/api", require("./routes/conditionRoutes"));
 app.use("/api", require("./routes/cropEncylopediaRoutes"));
+app.use("/api", require("./routes/conditionRoutes"));
 
 app.all("*", (req, res) => {
   res.status(404);

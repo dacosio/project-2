@@ -16,6 +16,8 @@ import {
   ThunderStorm,
   Rain,
   PartiallyCloudy,
+  Suggestion,
+  Choice,
   Snow,
   Overcast,
   Clear,
@@ -116,6 +118,12 @@ const meta: Meta = {
       </Wrapper>
       <Wrapper label="PartiallyCloudy">
         <PartiallyCloudy width={30} height={30} />
+      </Wrapper>
+      <Wrapper label="Suggestion">
+        <Suggestion width={30} height={30} />
+      </Wrapper>
+      <Wrapper label="Choice">
+        <Choice width={30} height={30} />
       </Wrapper>
       <Wrapper label="Snow">
         <Snow width={30} height={30} />
