@@ -8,10 +8,9 @@ import { useMediaQuery } from "../../../utils/hooks/useMediaQuery";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import {
   selectSignInModal,
-  selectSignUpModal,
   toggleSignIn,
   toggleSignUp,
-} from "features/authModal/authModalSlice";
+} from "../../../features/authModal/authModalSlice";
 
 const LoginModal = (props: LoginModalProps): JSX.Element => {
   const matches = useMediaQuery("(min-width: 992px)");

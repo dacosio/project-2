@@ -9,7 +9,7 @@ import {
   selectSignUpModal,
   toggleSignIn,
   toggleSignUp,
-} from "features/authModal/authModalSlice";
+} from "../../../features/authModal/authModalSlice";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 
 const SignupModal = (props: SignupModalProps): JSX.Element => {

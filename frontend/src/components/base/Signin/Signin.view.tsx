@@ -25,11 +25,8 @@ import {
 
 const Signin = (props: SigninProps): JSX.Element => {
   const [login] = useLoginMutation();
-  const [isModalOpen, setModalState] = React.useState(false);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-
-  const toggleModal = () => setModalState(!isModalOpen);
 
   const handleOnSubmit = async (v: { email: string; password: string }) => {
     const { email, password } = v;
