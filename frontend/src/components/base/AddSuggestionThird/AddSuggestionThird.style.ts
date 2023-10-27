@@ -16,7 +16,7 @@ export const Body = styled.div`
     gap: 16px;
   }
 
-  > div > div:first-of-type {
+  > div:first-of-type > div:first-of-type {
     display: grid;
     gap: 4px;
   }
