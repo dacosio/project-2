@@ -9,10 +9,14 @@ import { Provider } from "react-redux";
 const meta: Meta<typeof AddSuggestionThird> = {
   title: "Base/AddSuggestionThird",
   component: () => {
+    const handleLater = () => {};
+
+    const handleNow = () => {};
+
     return (
       <Container>
         <Provider store={store}>
-          <AddSuggestionThird />
+          <AddSuggestionThird onLater={handleLater} onNow={handleNow} />
         </Provider>
       </Container>
     );

@@ -4,7 +4,7 @@ import { theme } from "../../../utils/Theme";
 export const Container = styled.div`
   display: grid;
   justify-items: start;
-  gap: 36px;
+  gap: 32px;
 `;
 
 export const Header = styled.div`

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { AddSuggestionThirdProps } from "./AddSuggestionThird.props";
-import { Body, Container, Footer } from "./AddSuggestionThird.style";
+import { Body, Container, Footer, Image } from "./AddSuggestionThird.style";
 import CropInformation from "../../../components/module/CropInformation";
 import { Crop } from "../../../types/store/CropState";
 import { useAppSelector } from "../../../app/hooks";
 import { selectCrop } from "../../../features/addSuggestion/addSuggestionSlice";
 import Button from "../Button";
+import Typography from "../Typography";
 
 const AddSuggestionThird = (props: AddSuggestionThirdProps): JSX.Element => {
   const { onLater, onNow } = props;
@@ -24,17 +25,33 @@ const AddSuggestionThird = (props: AddSuggestionThirdProps): JSX.Element => {
     <Container>
       <Body>
         {crop && (
-          <CropInformation
-            temperature={`${crop.idealTemperature.celcius.min} - ${crop.idealTemperature.celcius.max}`}
-            humidity={`${crop.humidity.min} - ${crop.humidity.max}`}
-            growthDuration={`${crop.growthDuration.min} - ${crop.growthDuration.max}`}
-            ph={`${crop.soilPh.min} - ${crop.soilPh.max}`}
-            nitrogen={crop.soilN.toString()}
-            phosphorus={crop.soilP.toString()}
-            potassium={crop.soilK.toString()}
-            suggestions={crop.tools}
-            tips={crop.growingTips}
-          />
+          <>
+            <div>
+              <div>
+                <Typography variant="small">
+                  Our suggested crop is...
+                </Typography>
+                <Typography variant="title3" weight="700">
+                  {crop.cropName}
+                </Typography>
+              </div>
+              <Image src={crop.imageURL} alt="crop" />
+              <Typography>{crop.description}</Typography>
+            </div>
+            <div>
+              <CropInformation
+                temperature={`${crop.idealTemperature.celcius.min} - ${crop.idealTemperature.celcius.max}`}
+                humidity={`${crop.humidity.min} - ${crop.humidity.max}`}
+                growthDuration={`${crop.growthDuration.min} - ${crop.growthDuration.max}`}
+                ph={`${crop.soilPh.min} - ${crop.soilPh.max}`}
+                nitrogen={crop.soilN.toString()}
+                phosphorus={crop.soilP.toString()}
+                potassium={crop.soilK.toString()}
+                suggestions={crop.tools}
+                tips={crop.growingTips}
+              />
+            </div>
+          </>
         )}
       </Body>
       <Footer>

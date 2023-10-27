@@ -9,10 +9,12 @@ import { store } from "../../../src/app/store";
 const meta: Meta<typeof AddSuggestionFirst> = {
   title: "Base/AddSuggestionFirst",
   component: () => {
+    const handleNext = () => {};
+
     return (
       <Container>
         <Provider store={store}>
-          <AddSuggestionFirst onNext={() => null} />
+          <AddSuggestionFirst onNext={handleNext} />
         </Provider>
       </Container>
     );
