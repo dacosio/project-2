@@ -15,8 +15,8 @@ import Typography from "../Typography";
 import { useMultistepForm } from "../../../utils/hooks/useMultistepForm";
 import SignupForm from "../SignupForm";
 import AccountForm from "../AccountForm";
-import { useAppDispatch } from "app/hooks";
-import { toggleSignIn, toggleSignUp } from "features/authModal/authModalSlice";
+import { useAppDispatch } from "../../../app/hooks";
+import { toggleSignIn, toggleSignUp } from "../../../features/authModal/authModalSlice";
 
 const Signup = (props: SignupProps): JSX.Element => {
   const { step, isFirstStep, isLastStep, back, next } = useMultistepForm([

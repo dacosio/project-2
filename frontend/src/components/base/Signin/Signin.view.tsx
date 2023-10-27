@@ -14,13 +14,14 @@ import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import FormikTextField from "../FormikTextField";
 import Button from "../Button";
-import Modal from "../Modal";
 import { useLoginMutation } from "../../../features/auth/authApiSlice";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../../app/hooks";
 import { setCredentials } from "../../../features/auth/authSlice";
-import LoginModal from "../LoginModal";
-import { toggleSignIn, toggleSignUp } from "features/authModal/authModalSlice";
+import {
+  toggleSignIn,
+  toggleSignUp,
+} from "../../../features/authModal/authModalSlice";
 
 const Signin = (props: SigninProps): JSX.Element => {
   const [login] = useLoginMutation();
@@ -50,9 +51,9 @@ const Signin = (props: SigninProps): JSX.Element => {
   });
 
   const handleSignUpModal = () => {
-    dispatch(toggleSignUp(true))
-    dispatch(toggleSignIn(false))
-  }
+    dispatch(toggleSignUp(true));
+    dispatch(toggleSignIn(false));
+  };
 
   return (
     <Container>

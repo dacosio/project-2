@@ -5,7 +5,7 @@ import Button from "../Button";
 import Modal from "../Modal";
 import Signin from "../Signin";
 import { useMediaQuery } from "../../../utils/hooks/useMediaQuery";
-import { useAppDispatch, useAppSelector } from "app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import {
   selectSignInModal,
   selectSignUpModal,
