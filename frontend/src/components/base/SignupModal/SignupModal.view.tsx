@@ -23,6 +23,10 @@ const SignupModal = (props: SignupModalProps): JSX.Element => {
     dispatch(toggleSignUp(!signUpModalState));
     dispatch(toggleSignIn(false));
   };
+  const onClose = () => {
+    dispatch(toggleSignUp(false));
+    dispatch(toggleSignIn(false));
+  }
   return (
     <Container>
       <Button
@@ -34,7 +38,7 @@ const SignupModal = (props: SignupModalProps): JSX.Element => {
       <Modal
         title={"This is my modal"}
         isOpen={signUpModalState}
-        onClose={toggleModal}>
+        onClose={onClose}>
         <Signup />
       </Modal>
     </Container>

@@ -16,7 +16,10 @@ import { useMultistepForm } from "../../../utils/hooks/useMultistepForm";
 import SignupForm from "../SignupForm";
 import AccountForm from "../AccountForm";
 import { useAppDispatch } from "../../../app/hooks";
-import { toggleSignIn, toggleSignUp } from "../../../features/authModal/authModalSlice";
+import {
+  toggleSignIn,
+  toggleSignUp,
+} from "../../../features/authModal/authModalSlice";
 
 const Signup = (props: SignupProps): JSX.Element => {
   const { step, isFirstStep, isLastStep, back, next } = useMultistepForm([
@@ -58,7 +61,7 @@ const Signup = (props: SignupProps): JSX.Element => {
           <Option>
             <Bottom>
               <Typography variant="subtitle" align="center" textColor="n70">
-                Already have an member?
+                Already a member?
               </Typography>
               <SignUpButton
                 variant="subtitle"
