@@ -4,6 +4,8 @@ import { Dispatch, SetStateAction } from "react";
 export interface YourCropGeneratedProps {
   crops: { id: string; name: string; isPlanted: boolean }[];
   crop?: { id: string; name: string; isPlanted: boolean };
+  suggestionVisibility: boolean;
+  setSuggestionVisibility: Dispatch<SetStateAction<boolean>>;
   isOpenDrawer: boolean;
   handleOnClickCrop: (id: string) => void;
   handleOnClickChoice: () => void;

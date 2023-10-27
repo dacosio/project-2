@@ -152,6 +152,9 @@ const CropDetail = (props: CropDetailProps): JSX.Element => {
           </DescriptionContainer>
         )}
         <CropInformation
+          temperature="10 - 15"
+          humidity="66 - 76"
+          growthDuration="1 - 2"
           ph="0.0 - 0.0"
           nitrogen="0"
           phosphorus="0"

@@ -12,7 +12,7 @@ const meta: Meta<typeof AddSuggestionFirst> = {
     return (
       <Container>
         <Provider store={store}>
-          <AddSuggestionFirst />
+          <AddSuggestionFirst onNext={() => null} />
         </Provider>
       </Container>
     );

@@ -10,8 +10,10 @@ const YourCrop = (): JSX.Element => {
   const [crop, setCrop] = useState<
     { id: string; name: string; isPlanted: boolean } | undefined
   >(undefined);
-
+  const [suggestionVisibility, setSuggestionVisibility] =
+    useState<boolean>(false);
   const [isOpenDrawer, setIsOpenDrawer] = useState(false);
+
   const handleDrawerOpen = () => {
     setIsOpenDrawer(true);
   };
@@ -29,7 +31,7 @@ const YourCrop = (): JSX.Element => {
   };
 
   const handleOnClickSuggestion = () => {
-    console.log("Suggestion");
+    setSuggestionVisibility(true);
   };
 
   const handlePlant = (id: string) => {
@@ -71,6 +73,8 @@ const YourCrop = (): JSX.Element => {
   const generatedProps: YourCropGeneratedProps = {
     crops,
     crop,
+    suggestionVisibility,
+    setSuggestionVisibility,
     isOpenDrawer,
     handleOnClickCrop,
     handleOnClickChoice,

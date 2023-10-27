@@ -13,11 +13,14 @@ import CropList from "../../../components/module/CropList";
 import CropDetail from "../../../components/module/CropDetail";
 import Modal from "../../../components/base/Modal";
 import MobileDrawer from "./../../../components/base/MobileDrawer";
+import AddSuggestion from "components/module/AddSuggestionModal";
 
 const YourCropView = (props: YourCropGeneratedProps) => {
   const {
     crops,
     crop,
+    suggestionVisibility,
+    setSuggestionVisibility,
     isOpenDrawer,
     handleOnClickCrop,
     handleOnClickChoice,
@@ -86,6 +89,10 @@ const YourCropView = (props: YourCropGeneratedProps) => {
           </DetailColumnContainer>
         )}
       </Wrapper>
+      <AddSuggestion
+        visibility={suggestionVisibility}
+        setVisibility={setSuggestionVisibility}
+      />
     </Container>
   );
 };

@@ -1,18 +1,18 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import AddSuggestionSecond from "../../../src/components/base/AddSuggestionSecond";
+import AddSuggestionThird from "../../../src/components/base/AddSuggestionThird";
 import Container from "../../components/Container";
 import Wrapper from "../../components/Wrapper";
-import { Provider } from "react-redux";
 import { store } from "../../../src/app/store";
+import { Provider } from "react-redux";
 
-const meta: Meta<typeof AddSuggestionSecond> = {
-  title: "Base/AddSuggestionSecond",
+const meta: Meta<typeof AddSuggestionThird> = {
+  title: "Base/AddSuggestionThird",
   component: () => {
     return (
       <Container>
         <Provider store={store}>
-          <AddSuggestionSecond onNext={() => null} />
+          <AddSuggestionThird />
         </Provider>
       </Container>
     );

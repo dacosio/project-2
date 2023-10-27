@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "app/store";
 import { AddSuggestion } from "types/store/AddSuggestion";
+import { Crop } from "types/store/CropState";
 
 const initialState: AddSuggestion = {
   location: "",
@@ -9,6 +10,7 @@ const initialState: AddSuggestion = {
   phosphorus: "",
   potassium: "",
   ph: "",
+  crop: undefined,
 };
 
 const addSuggestionSlice = createSlice({
@@ -33,6 +35,9 @@ const addSuggestionSlice = createSlice({
     storePh: (state, action) => {
       state.ph = action.payload;
     },
+    storeCrop: (state, action) => {
+      state.crop = action.payload;
+    },
   },
 });
 
@@ -43,6 +48,7 @@ export const {
   storePhosphorus,
   storePotassium,
   storePh,
+  storeCrop,
 } = addSuggestionSlice.actions;
 
 export default addSuggestionSlice.reducer;
@@ -57,3 +63,4 @@ export const selectPhosphorus = (state: RootState) =>
 export const selectPotassium = (state: RootState) =>
   state.addSuggestion.potassium;
 export const selectPh = (state: RootState) => state.addSuggestion.ph;
+export const selectCrop = (state: RootState) => state.addSuggestion.crop;

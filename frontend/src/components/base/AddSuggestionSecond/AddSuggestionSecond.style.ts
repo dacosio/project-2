@@ -29,6 +29,7 @@ export const Body = styled.div`
     gap: 8px;
   }
 `;
+
 export const Footer = styled.div`
   justify-self: end;
   gap: 10px;

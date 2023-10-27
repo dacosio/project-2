@@ -1,1 +1,3 @@
-export interface AddSuggestionSecondProps {}
+export interface AddSuggestionSecondProps {
+  onNext: () => void;
+}

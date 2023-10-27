@@ -13,6 +13,8 @@ import {
 import DateField from "../DateField";
 
 const AddSuggestionFirst = (props: AddSuggestionFirstProps): JSX.Element => {
+  const { onNext } = props;
+
   const dispatch = useAppDispatch();
 
   const location = useAppSelector(selectLocation);
@@ -23,6 +25,7 @@ const AddSuggestionFirst = (props: AddSuggestionFirstProps): JSX.Element => {
 
   const handleNext = () => {
     dispatch(storeDate(date));
+    onNext();
   };
 
   return (
