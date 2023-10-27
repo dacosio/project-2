@@ -28,6 +28,7 @@ import {
 import { useMediaQuery } from "utils/hooks/useMediaQuery";
 import CurrentWeather from "components/module/CurrentWeather";
 import { calculateDaysPassed, formatDate } from "utils/Date";
+import Loading from "../../components/base/Loading";
 
 const DashboardView = (props: DashboardGeneratedProps) => {
   const { crops, isLoading } = props;
@@ -91,7 +92,7 @@ const DashboardView = (props: DashboardGeneratedProps) => {
           </Typography>
         </Title>
         {isLoading ? (
-          <>Loading</>
+          <Loading />
         ) : (
           <>
             <CarouselSwiper
