@@ -50,9 +50,8 @@ const CarouselSwiper = (props: CarouselSwiperProps): JSX.Element => {
         width: collapseCalc,
         transition: "width 0.3s ease-in-out",
         margin: "auto",
-      }}
-    >
-      {props.slides.map((c, idx) => {
+      }}>
+      {props.slides?.map((c, idx) => {
         return (
           <>
             <SwiperSlide key={idx}>{c}</SwiperSlide>

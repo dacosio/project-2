@@ -11,8 +11,17 @@ const YourCrop = (): JSX.Element => {
     { id: string; name: string; isPlanted: boolean } | undefined
   >(undefined);
 
+  const [isOpenDrawer, setIsOpenDrawer] = useState(false);
+  const handleDrawerOpen = () => {
+    setIsOpenDrawer(true);
+  };
+  const handleDrawerClose = () => {
+    setIsOpenDrawer(false);
+  };
+
   const handleOnClickCrop = (id: string) => {
     setCrop(crops.find((crop) => id === crop.id));
+    handleDrawerOpen();
   };
 
   const handleOnClickChoice = () => {
@@ -62,12 +71,15 @@ const YourCrop = (): JSX.Element => {
   const generatedProps: YourCropGeneratedProps = {
     crops,
     crop,
+    isOpenDrawer,
     handleOnClickCrop,
     handleOnClickChoice,
     handleOnClickSuggestion,
     handlePlant,
     handleFavorite,
     handleOnDelete,
+    handleDrawerOpen,
+    handleDrawerClose,
   };
   return <YourCropView {...generatedProps} />;
 };

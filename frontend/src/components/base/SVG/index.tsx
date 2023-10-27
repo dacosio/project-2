@@ -1,4 +1,5 @@
 /* PLOP_INJECT_IMPORT */
+export { default as DrawerHandle } from "./DrawerHandle";
 export { default as ThunderStormRainInactive } from "./ThunderStormRainInactive";
 export { default as Suggestion } from "./Suggestion";
 export { default as Choice } from "./Choice";
