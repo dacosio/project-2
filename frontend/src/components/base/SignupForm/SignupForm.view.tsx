@@ -8,7 +8,7 @@ import FormikTextField from "../FormikTextField";
 
 const SignupForm = (props: SignupFormProps): JSX.Element => {
   const handleOnSubtmit = (values: { email: string }) => {
-    console.log(values);
+    console.log("Values: ", values);
   };
 
   const validationSchema = Yup.object({
@@ -22,14 +22,13 @@ const SignupForm = (props: SignupFormProps): JSX.Element => {
     <Formik
       initialValues={{ email: "", password: "" }}
       validationSchema={validationSchema}
-      onSubmit={handleOnSubtmit}
-    >
+      onSubmit={handleOnSubtmit}>
       <Form>
         <FormStyle>
           <FormikTextField
             label="Email"
             name="email"
-            placeholder="user@nomail.com"
+            placeholder="Enter email"
           />
           <FormikTextField
             label="Password"

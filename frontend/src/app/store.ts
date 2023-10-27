@@ -3,6 +3,7 @@ import { apiSlice } from "./api/apiSlice";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
 import authReducer from "../features/auth/authSlice";
 import sidebarReducer from "../features/sidebar/sidebarSlice";
+import authModalReducer from "../features/authModal/authModalSlice";
 import addSuggestionReducer from "../features/addSuggestion/addSuggestionSlice";
 
 export const store = configureStore({
@@ -10,6 +11,7 @@ export const store = configureStore({
     [apiSlice.reducerPath]: apiSlice.reducer,
     auth: authReducer,
     sidebar: sidebarReducer,
+    authModal: authModalReducer,
     addSuggestion: addSuggestionReducer,
   },
   middleware: (getDefaultMiddleware) =>
