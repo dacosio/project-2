@@ -27,6 +27,7 @@
     "react-dom": "^18.2.0",
     "react-google-autocomplete": "^2.7.3",
     "react-grid-system": "^8.1.9",
+    "react-hot-toast": "^2.4.1",
     "react-icons": "^4.11.0",
     "react-images-uploading": "^3.1.7",
     "react-modern-drawer": "^1.2.2",

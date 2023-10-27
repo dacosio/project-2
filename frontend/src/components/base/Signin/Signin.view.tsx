@@ -1,4 +1,5 @@
 import React from "react";
+import toast, { Toaster } from "react-hot-toast";
 import { SigninProps } from "./Signin.props";
 import {
   Container,
@@ -36,7 +37,8 @@ const Signin = (props: SigninProps): JSX.Element => {
 
       navigate("/dashboard");
     } catch (err: any) {
-      console.log(err.data?.message);
+      console.log(err);
+      toast.error(err.data?.message);
     }
   };
 
@@ -104,6 +106,7 @@ const Signin = (props: SigninProps): JSX.Element => {
           </Bottom>
         </Option>
       </SigninForm>
+      <Toaster />
     </Container>
   );
 };
