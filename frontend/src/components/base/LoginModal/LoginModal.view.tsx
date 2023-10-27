@@ -5,12 +5,23 @@ import Button from "../Button";
 import Modal from "../Modal";
 import Signin from "../Signin";
 import { useMediaQuery } from "../../../utils/hooks/useMediaQuery";
+import { useAppDispatch, useAppSelector } from "app/hooks";
+import {
+  selectSignInModal,
+  selectSignUpModal,
+  toggleSignIn,
+  toggleSignUp,
+} from "features/authModal/authModalSlice";
 
 const LoginModal = (props: LoginModalProps): JSX.Element => {
-  const [isModalOpen, setModalState] = React.useState(false);
   const matches = useMediaQuery("(min-width: 992px)");
+  const dispatch = useAppDispatch();
+  const signInModalState = useAppSelector(selectSignInModal);
 
-  const toggleModal = () => setModalState(!isModalOpen);
+  const toggleModal = () => {
+    dispatch(toggleSignIn(!signInModalState));
+    dispatch(toggleSignUp(false));
+  };
 
   return (
     <Container>
@@ -22,9 +33,8 @@ const LoginModal = (props: LoginModalProps): JSX.Element => {
       />
       <Modal
         title={"This is my modal"}
-        isOpen={isModalOpen}
-        onClose={toggleModal}
-      >
+        isOpen={signInModalState}
+        onClose={toggleModal}>
         <Signin />
       </Modal>
     </Container>

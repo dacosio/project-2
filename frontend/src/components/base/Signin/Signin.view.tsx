@@ -6,6 +6,8 @@ import {
   SigninForm,
   FormStyle,
   Option,
+  Bottom,
+  SignUpButton,
 } from "./Signin.style";
 import Typography from "../Typography";
 import { Form, Formik } from "formik";
@@ -17,6 +19,8 @@ import { useLoginMutation } from "../../../features/auth/authApiSlice";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../../app/hooks";
 import { setCredentials } from "../../../features/auth/authSlice";
+import LoginModal from "../LoginModal";
+import { toggleSignIn, toggleSignUp } from "features/authModal/authModalSlice";
 
 const Signin = (props: SigninProps): JSX.Element => {
   const [login] = useLoginMutation();
@@ -45,6 +49,11 @@ const Signin = (props: SigninProps): JSX.Element => {
     password: Yup.string().required("Your password is required"),
   });
 
+  const handleSignUpModal = () => {
+    dispatch(toggleSignUp(true))
+    dispatch(toggleSignIn(false))
+  }
+
   return (
     <Container>
       <Header>
@@ -52,9 +61,8 @@ const Signin = (props: SigninProps): JSX.Element => {
           variant="title2"
           weight="700"
           textColor="primary"
-          align="center"
-        >
-          Sign up for free and start farming!
+          align="center">
+          Welcom back, Let's farm!
         </Typography>
       </Header>
 
@@ -63,8 +71,7 @@ const Signin = (props: SigninProps): JSX.Element => {
           initialValues={{ email: "", password: "" }}
           validationSchema={validationSchema}
           onSubmit={handleOnSubmit}
-          enableReinitialize
-        >
+          enableReinitialize>
           <Form>
             <FormStyle>
               <FormikTextField
@@ -86,20 +93,17 @@ const Signin = (props: SigninProps): JSX.Element => {
           <Typography variant="mobile" align="center" textColor="n70">
             <a href="">Forgot Password?</a>
           </Typography>
-          <Typography variant="small" align="center" textColor="n70">
-            Don't have an{" "}
-            <a href="" onClick={toggleModal}>
-              Account
-            </a>
-            ?
-            <Modal
-              title={"This is my modal"}
-              isOpen={isModalOpen}
-              onClose={toggleModal}
-            >
-              <Signin />
-            </Modal>
-          </Typography>
+          <Bottom>
+            <Typography variant="subtitle" align="center" textColor="n70">
+              Don't have an Account ?
+            </Typography>
+            <SignUpButton
+              variant="subtitle"
+              textColor="n90"
+              onClick={handleSignUpModal}>
+              Sign Up
+            </SignUpButton>
+          </Bottom>
         </Option>
       </SigninForm>
     </Container>

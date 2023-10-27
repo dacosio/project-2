@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { theme } from "../../../utils/Theme";
+import Typography from "../Typography";
 
 export const Container = styled.div`
   min-width: 300px;
@@ -56,5 +57,22 @@ export const Option = styled.div`
   a {
     color: ${theme.neutral.n70};
     font-weight: 500;
+  }
+`;
+
+export const Bottom = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  justify-content: center;
+`;
+
+export const SignUpButton = styled(Typography)`
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+
+  &:hover {
+    color: ${(props) => props.theme.btn.text.accent};
   }
 `;
