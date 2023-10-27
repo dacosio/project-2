@@ -1,5 +1,8 @@
 export interface AddSuggestion {
   location: string;
-  month: string;
-  day: string;
+  date: string;
+  nitrogen: string;
+  phosphorus: string;
+  potassium: string;
+  ph: string;
 }

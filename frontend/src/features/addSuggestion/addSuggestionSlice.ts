@@ -4,8 +4,11 @@ import { AddSuggestion } from "types/store/AddSuggestion";
 
 const initialState: AddSuggestion = {
   location: "",
-  month: "",
-  day: "",
+  date: "",
+  nitrogen: "",
+  phosphorus: "",
+  potassium: "",
+  ph: "",
 };
 
 const addSuggestionSlice = createSlice({
@@ -15,21 +18,42 @@ const addSuggestionSlice = createSlice({
     storeLocation: (state, action) => {
       state.location = action.payload;
     },
-    storeMonth: (state, action) => {
-      state.month = action.payload;
+    storeDate: (state, action) => {
+      state.date = action.payload;
     },
-    storeDay: (state, action) => {
-      state.day = action.payload;
+    storeNitrogen: (state, action) => {
+      state.nitrogen = action.payload;
+    },
+    storePhosphorus: (state, action) => {
+      state.phosphorus = action.payload;
+    },
+    storePotassium: (state, action) => {
+      state.potassium = action.payload;
+    },
+    storePh: (state, action) => {
+      state.ph = action.payload;
     },
   },
 });
 
-export const { storeLocation, storeMonth, storeDay } =
-  addSuggestionSlice.actions;
+export const {
+  storeLocation,
+  storeDate,
+  storeNitrogen,
+  storePhosphorus,
+  storePotassium,
+  storePh,
+} = addSuggestionSlice.actions;
 
 export default addSuggestionSlice.reducer;
 
 export const selectLocation = (state: RootState) =>
   state.addSuggestion.location;
-export const selectMonth = (state: RootState) => state.addSuggestion.month;
-export const selectDay = (state: RootState) => state.addSuggestion.day;
+export const selectDate = (state: RootState) => state.addSuggestion.date;
+export const selectNitrogen = (state: RootState) =>
+  state.addSuggestion.nitrogen;
+export const selectPhosphorus = (state: RootState) =>
+  state.addSuggestion.phosphorus;
+export const selectPotassium = (state: RootState) =>
+  state.addSuggestion.potassium;
+export const selectPh = (state: RootState) => state.addSuggestion.ph;
