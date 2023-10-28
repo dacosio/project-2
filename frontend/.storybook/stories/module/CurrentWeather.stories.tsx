@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import CurrentWeather from "../../../src/components/module/CurrentWeather";
-import Weather from "../../../src/pages/Weather";
 import Container from "../../components/Container";
 import Wrapper from "../../components/Wrapper";
 import axios from "axios";
@@ -175,7 +174,6 @@ const meta: Meta<typeof CurrentWeather> = {
             />
           </div>
         </div>
-        <Weather></Weather>
       </Container>
     );
   },
