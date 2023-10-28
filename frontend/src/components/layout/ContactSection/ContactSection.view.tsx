@@ -39,7 +39,8 @@ const ContactSection = (props: ContactSectionProps): JSX.Element => {
             console.log(result.text);
           },
           (error) => {
-            console.log(error.text);
+            console.log("error.text");\
+            toast.error("unable to send your email");
           }
         );
     }
@@ -119,9 +120,11 @@ const ContactSection = (props: ContactSectionProps): JSX.Element => {
             </Form>
           </Formik>
         </Col>
+        <Toaster />
       </Row>
     <HomeFooter></HomeFooter>
     </Container>
+    
   );
 };
 
