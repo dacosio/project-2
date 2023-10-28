@@ -14,10 +14,29 @@ const Delete = (props: SVGProps): JSX.Element => {
     <svg
       width={width || 16}
       height={height || 16}
-      viewBox="0 0 24 24"
-      fill={fill}
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
     >
-      <path d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z"></path>
+      <g clip-path="url(#clip0_2662_3677)">
+        <path
+          d="M2.375 4.25H3.625M3.625 4.25H13.625M3.625 4.25V13C3.625 13.3315 3.7567 13.6495 3.99112 13.8839C4.22554 14.1183 4.54348 14.25 4.875 14.25H11.125C11.4565 14.25 11.7745 14.1183 12.0089 13.8839C12.2433 13.6495 12.375 13.3315 12.375 13V4.25H3.625ZM5.5 4.25V3C5.5 2.66848 5.6317 2.35054 5.86612 2.11612C6.10054 1.8817 6.41848 1.75 6.75 1.75H9.25C9.58152 1.75 9.89946 1.8817 10.1339 2.11612C10.3683 2.35054 10.5 2.66848 10.5 3V4.25M6.75 7.375V11.125M9.25 7.375V11.125"
+          stroke="#31B03D"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_2662_3677">
+          <rect
+            width="15"
+            height="15"
+            fill="white"
+            transform="translate(0.5 0.5)"
+          />
+        </clipPath>
+      </defs>
     </svg>
   );
 };

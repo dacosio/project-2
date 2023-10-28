@@ -58,14 +58,16 @@ const TextField = (props: TextFieldProps): JSX.Element => {
   };
   return (
     <Container className={className} style={style}>
-      <Typography
-        variant={labelVariant || "body"}
-        textColor={"shade6"}
-        weight={labelWeight || "500"}
-        style={{ marginBottom: "4px" }}
-      >
-        {label}
-      </Typography>
+      {label && (
+        <Typography
+          variant={labelVariant || "body"}
+          textColor={"shade6"}
+          weight={labelWeight || "500"}
+          style={{ marginBottom: "4px" }}
+        >
+          {label}
+        </Typography>
+      )}
       <FieldContainer error={(error || "").length > 0} onFocus={handleFocus}>
         {LeftComponent && (
           <LeftComponentContainer focus={focus}>
