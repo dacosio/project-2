@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { YourCropGeneratedProps } from "./YourCrop.props";
 import {
   Container,
@@ -6,19 +5,21 @@ import {
   DetailColumnContainer,
   Wrapper,
 } from "./YourCrop.style";
-import Typography from "components/base/Typography";
 import { Visible, Hidden } from "react-grid-system";
 import "react-circular-progressbar/dist/styles.css";
+import Typography from "../../../components/base/Typography";
 import CropList from "../../../components/module/CropList";
 import CropDetail from "../../../components/module/CropDetail";
-import Modal from "../../../components/base/Modal";
 import MobileDrawer from "./../../../components/base/MobileDrawer";
-import AddSuggestion from "components/module/AddSuggestionModal";
+import AddSuggestionModal from "../../../components/module/AddSuggestionModal";
+import AddChoiceModal from "../../../components/module/AddChoiceModal";
 
 const YourCropView = (props: YourCropGeneratedProps) => {
   const {
     crops,
     crop,
+    choiceVisibility,
+    setChoiceVisibility,
     suggestionVisibility,
     setSuggestionVisibility,
     isOpenDrawer,
@@ -89,9 +90,13 @@ const YourCropView = (props: YourCropGeneratedProps) => {
           </DetailColumnContainer>
         )}
       </Wrapper>
-      <AddSuggestion
+      <AddSuggestionModal
         visibility={suggestionVisibility}
         setVisibility={setSuggestionVisibility}
+      />
+      <AddChoiceModal
+        visibility={choiceVisibility}
+        setVisibility={setChoiceVisibility}
       />
     </Container>
   );

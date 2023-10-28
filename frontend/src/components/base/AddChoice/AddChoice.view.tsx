@@ -1,13 +1,12 @@
 import React from "react";
-import { AddSuggestionProps } from "./AddSuggestion.props";
-import { Back, Container } from "./AddSuggestion.style";
+import { AddChoiceProps } from "./AddChoice.props";
+import { Back, Container } from "./AddChoice.style";
 import { useMultistepForm } from "../../../utils/hooks/useMultistepForm";
-import AddSuggestionFirst from "../../base/AddSuggestionFirst";
-import AddSuggestionSecond from "../../base/AddSuggestionSecond";
+import AddChoiceFirst from "../AddChoiceFirst";
 import AddCropResult from "../AddCropResult";
 import Typography from "../Typography";
 
-const AddSuggestion = (props: AddSuggestionProps): JSX.Element => {
+const AddChoice = (props: AddChoiceProps): JSX.Element => {
   const handleBack = () => {
     back();
   };
@@ -21,8 +20,7 @@ const AddSuggestion = (props: AddSuggestionProps): JSX.Element => {
   const handleNow = () => {};
 
   const { step, back, next, isFirstStep } = useMultistepForm([
-    <AddSuggestionFirst onNext={handleNext} />,
-    <AddSuggestionSecond onNext={handleNext} />,
+    <AddChoiceFirst onNext={handleNext} />,
     <AddCropResult onLater={handleLater} onNow={handleNow} />,
   ]);
 
@@ -38,4 +36,4 @@ const AddSuggestion = (props: AddSuggestionProps): JSX.Element => {
   );
 };
 
-export default React.memo(AddSuggestion);
+export default React.memo(AddChoice);

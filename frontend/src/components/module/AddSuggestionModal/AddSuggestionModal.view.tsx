@@ -7,20 +7,12 @@ import AddSuggestion from "../../../components/base/AddSuggestion";
 const AddSuggestionModal = (props: AddSuggestionModalProps): JSX.Element => {
   const { visibility, setVisibility } = props;
 
-  const handleBack = () => {
-    // back();
-  };
-
   const handleClose = () => {
     setVisibility(false);
   };
 
   return (
-    <Modal
-      isOpen={visibility}
-      onClose={handleClose}
-      // onBack={!isFirstStep ? handleBack : undefined}
-    >
+    <Modal isOpen={visibility} onClose={handleClose}>
       <Container>
         <AddSuggestion />
       </Container>

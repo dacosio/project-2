@@ -15,11 +15,6 @@ export const Header = styled.div`
 export const Body = styled.div`
   display: grid;
   gap: 36px;
-
-  > div {
-    display: grid;
-    gap: 8px;
-  }
 `;
 export const Footer = styled.div`
   justify-self: end;

@@ -8,7 +8,7 @@ import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import {
   selectDate,
   storeDate,
-} from "../../../features/addSuggestion/addSuggestionSlice";
+} from "../../../features/addSuggestion/addCropSlice";
 import DateField from "../DateField";
 import { selectLocation } from "../../../features/location/locationSlice";
 

@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import { AddSuggestionThirdProps } from "./AddSuggestionThird.props";
-import { Body, Container, Footer, Image } from "./AddSuggestionThird.style";
-import CropInformation from "../../../components/module/CropInformation";
+import { AddCropResultProps } from "./AddCropResult.props";
+import { Body, Container, Footer, Image } from "./AddCropResult.style";
+import CropInformation from "../../module/CropInformation";
 import { Crop } from "../../../types/store/CropState";
 import { useAppSelector } from "../../../app/hooks";
-import { selectCrop } from "../../../features/addSuggestion/addSuggestionSlice";
+import { selectCrop } from "../../../features/addSuggestion/addCropSlice";
 import Button from "../Button";
 import Typography from "../Typography";
 
-const AddSuggestionThird = (props: AddSuggestionThirdProps): JSX.Element => {
+const AddCropResult = (props: AddCropResultProps): JSX.Element => {
   const { onLater, onNow } = props;
 
   const [crop] = useState<Crop | undefined>(useAppSelector(selectCrop));
@@ -62,4 +62,4 @@ const AddSuggestionThird = (props: AddSuggestionThirdProps): JSX.Element => {
   );
 };
 
-export default React.memo(AddSuggestionThird);
+export default React.memo(AddCropResult);

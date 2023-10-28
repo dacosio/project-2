@@ -1,38 +1,25 @@
 import React, { useState } from "react";
-import { AddSuggestionSecondProps } from "./AddSuggestionSecond.props";
-import { Body, Container, Footer, Header } from "./AddSuggestionSecond.style";
+import { AddChoiceFirstProps } from "./AddChoiceFirst.props";
+import { Body, Container, Footer, Header } from "./AddChoiceFirst.style";
 import Typography from "../Typography";
-import TextField from "../TextField";
-import Button from "../Button";
+import AutoComplete from "../AutoComplete";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import {
-  selectNitrogen,
-  selectPh,
-  selectPhosphorus,
-  selectPotassium,
+  selectName,
   storeCrop,
-  storeNitrogen,
-  storePh,
-  storePhosphorus,
-  storePotassium,
+  storeName,
 } from "../../../features/addSuggestion/addCropSlice";
+import Button from "../Button";
 import { Crop } from "../../../types/store/CropState";
 
-const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
+const AddChoiceFirst = (props: AddChoiceFirstProps): JSX.Element => {
   const { onNext } = props;
 
   const dispatch = useAppDispatch();
 
-  const [nitrogen, setNitrogen] = useState<string>(
-    useAppSelector(selectNitrogen)
+  const [name, setName] = useState<string | undefined>(
+    useAppSelector(selectName)
   );
-  const [phosphorus, setPhosphorus] = useState<string>(
-    useAppSelector(selectPhosphorus)
-  );
-  const [potassium, setPotassium] = useState<string>(
-    useAppSelector(selectPotassium)
-  );
-  const [ph, setPh] = useState<string>(useAppSelector(selectPh));
 
   const getCrop = () => {
     const crop: Crop = {
@@ -73,16 +60,10 @@ const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
     dispatch(storeCrop(crop));
   };
 
-  const handleSkip = () => {
-    getCrop();
-    onNext();
-  };
+  const options = ["Apple", "Orange", "Strawberry", "Tomato"];
 
   const handleNext = () => {
-    dispatch(storeNitrogen(nitrogen));
-    dispatch(storePhosphorus(phosphorus));
-    dispatch(storePotassium(potassium));
-    dispatch(storePh(ph));
+    dispatch(storeName(name));
     getCrop();
     onNext();
   };
@@ -91,45 +72,23 @@ const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
     <Container>
       <Header>
         <Typography variant="title3" weight="700">
-          Your Planting Conditions
+          What crop do you want to plant?
         </Typography>
         <Typography>
-          This step is optional but we can give you a more precise crop
-          suggestion if it's done!
+          We can give you information about the crop, tips, and tools you’ll
+          need to grow it
         </Typography>
       </Header>
       <Body>
-        <div>
-          <Typography weight="500">Nitrogen (N)</Typography>
-          <div>
-            <TextField value={nitrogen} setValue={setNitrogen} />
-            <Typography weight="400">unit</Typography>
-          </div>
-        </div>
-        <div>
-          <Typography weight="500">Phosphorus (P)</Typography>
-          <div>
-            <TextField value={phosphorus} setValue={setPhosphorus} />
-            <Typography weight="400">unit</Typography>
-          </div>
-        </div>
-        <div>
-          <Typography weight="500">Potassium (K)</Typography>
-          <div>
-            <TextField value={potassium} setValue={setPotassium} />
-            <Typography weight="400">unit</Typography>
-          </div>
-        </div>
-        <div>
-          <Typography weight="500">pH</Typography>
-          <div>
-            <TextField value={ph} setValue={setPh} />
-          </div>
-        </div>
+        <AutoComplete
+          options={options}
+          value={name}
+          setValue={setName}
+          placeholder="Tomato, Potato, Carrots, etc..."
+        />
       </Body>
       <Footer>
-        <Button text="Skip" variant="outline" onClick={handleSkip} />
-        {nitrogen && phosphorus && potassium && ph ? (
+        {name ? (
           <Button text="Next" onClick={handleNext} />
         ) : (
           <Button text="Next" variant="disabled" />
@@ -139,4 +98,4 @@ const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
   );
 };
 
-export default React.memo(AddSuggestionSecond);
+export default React.memo(AddChoiceFirst);

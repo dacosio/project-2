@@ -1,4 +1,4 @@
-export interface AddSuggestionThirdProps {
+export interface AddCropResultProps {
   onLater: () => void;
   onNow: () => void;
 }

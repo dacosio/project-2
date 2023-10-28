@@ -10,9 +10,7 @@ const fontStyle = `
   font-family: "Inter";
 `;
 
-export const Container = styled.div`
-  position: relative;
-`;
+export const Container = styled.div``;
 
 export const InputContainer = styled.div`
   border-radius: 4px;
@@ -38,13 +36,12 @@ export const IconContainer = styled.div`
 `;
 
 export const ListContainer = styled.div`
-  position: absolute;
   width: 100%;
+  margin-top: 6px;
   border-radius: 4px;
   background-color: white;
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
   box-sizing: border-box;
-  z-index: 3;
 `;
 
 export const ItemContainer = styled.div`

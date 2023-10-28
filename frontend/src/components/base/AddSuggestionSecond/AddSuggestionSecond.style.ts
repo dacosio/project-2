@@ -3,8 +3,8 @@ import { theme } from "../../../utils/Theme";
 
 export const Container = styled.div`
   display: grid;
-  justify-items: start;
   gap: 32px;
+  justify-items: start;
 `;
 
 export const Header = styled.div`

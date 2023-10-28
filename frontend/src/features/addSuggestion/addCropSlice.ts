@@ -1,19 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "app/store";
-import { AddSuggestion } from "types/store/AddSuggestion";
+import { AddSuggestion as AddCrop } from "types/store/AddCrop";
 import { Crop } from "types/store/CropState";
 
-const initialState: AddSuggestion = {
+const initialState: AddCrop = {
   date: "",
   nitrogen: "",
   phosphorus: "",
   potassium: "",
   ph: "",
+  name: "",
   crop: undefined,
 };
 
-const addSuggestionSlice = createSlice({
-  name: "addSuggestion",
+const addCropSlice = createSlice({
+  name: "addCrop",
   initialState,
   reducers: {
     storeDate: (state, action) => {
@@ -31,6 +32,9 @@ const addSuggestionSlice = createSlice({
     storePh: (state, action) => {
       state.ph = action.payload;
     },
+    storeName: (state, action) => {
+      state.name = action.payload;
+    },
     storeCrop: (state, action) => {
       state.crop = action.payload;
     },
@@ -43,17 +47,16 @@ export const {
   storePhosphorus,
   storePotassium,
   storePh,
+  storeName,
   storeCrop,
-} = addSuggestionSlice.actions;
+} = addCropSlice.actions;
 
-export default addSuggestionSlice.reducer;
+export default addCropSlice.reducer;
 
-export const selectDate = (state: RootState) => state.addSuggestion.date;
-export const selectNitrogen = (state: RootState) =>
-  state.addSuggestion.nitrogen;
-export const selectPhosphorus = (state: RootState) =>
-  state.addSuggestion.phosphorus;
-export const selectPotassium = (state: RootState) =>
-  state.addSuggestion.potassium;
-export const selectPh = (state: RootState) => state.addSuggestion.ph;
-export const selectCrop = (state: RootState) => state.addSuggestion.crop;
+export const selectDate = (state: RootState) => state.addCrop.date;
+export const selectNitrogen = (state: RootState) => state.addCrop.nitrogen;
+export const selectPhosphorus = (state: RootState) => state.addCrop.phosphorus;
+export const selectPotassium = (state: RootState) => state.addCrop.potassium;
+export const selectPh = (state: RootState) => state.addCrop.ph;
+export const selectName = (state: RootState) => state.addCrop.name;
+export const selectCrop = (state: RootState) => state.addCrop.crop;

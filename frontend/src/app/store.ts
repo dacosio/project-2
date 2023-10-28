@@ -4,7 +4,7 @@ import { setupListeners } from "@reduxjs/toolkit/dist/query";
 import authReducer from "../features/auth/authSlice";
 import sidebarReducer from "../features/sidebar/sidebarSlice";
 import authModalReducer from "../features/authModal/authModalSlice";
-import addSuggestionReducer from "../features/addSuggestion/addSuggestionSlice";
+import addCropReducer from "../features/addSuggestion/addCropSlice";
 import locationReducer from "../features/location/locationSlice";
 
 export const store = configureStore({
@@ -13,7 +13,7 @@ export const store = configureStore({
     auth: authReducer,
     sidebar: sidebarReducer,
     authModal: authModalReducer,
-    addSuggestion: addSuggestionReducer,
+    addCrop: addCropReducer,
     location: locationReducer,
   },
   middleware: (getDefaultMiddleware) =>
