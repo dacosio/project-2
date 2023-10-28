@@ -6,7 +6,6 @@ import {
   Hide,
   ContactImage,
   UserInfo,
-  Footer,
 } from "./ContactSection.style";
 
 import contact from "./../../../images/contact.png";
@@ -38,9 +37,10 @@ const ContactSection = (props: ContactSectionProps): JSX.Element => {
         .then(
           (result) => {
             console.log(result.text);
+            toast.success("Message sent");
           },
           (error) => {
-            console.log("error.text");\
+            console.log("error.text");
             toast.error("unable to send your email");
           }
         );
