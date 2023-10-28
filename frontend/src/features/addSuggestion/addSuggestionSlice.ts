@@ -4,7 +4,6 @@ import { AddSuggestion } from "types/store/AddSuggestion";
 import { Crop } from "types/store/CropState";
 
 const initialState: AddSuggestion = {
-  location: "",
   date: "",
   nitrogen: "",
   phosphorus: "",
@@ -17,9 +16,6 @@ const addSuggestionSlice = createSlice({
   name: "addSuggestion",
   initialState,
   reducers: {
-    storeLocation: (state, action) => {
-      state.location = action.payload;
-    },
     storeDate: (state, action) => {
       state.date = action.payload;
     },
@@ -42,7 +38,6 @@ const addSuggestionSlice = createSlice({
 });
 
 export const {
-  storeLocation,
   storeDate,
   storeNitrogen,
   storePhosphorus,
@@ -53,8 +48,6 @@ export const {
 
 export default addSuggestionSlice.reducer;
 
-export const selectLocation = (state: RootState) =>
-  state.addSuggestion.location;
 export const selectDate = (state: RootState) => state.addSuggestion.date;
 export const selectNitrogen = (state: RootState) =>
   state.addSuggestion.nitrogen;

@@ -5,6 +5,7 @@ import authReducer from "../features/auth/authSlice";
 import sidebarReducer from "../features/sidebar/sidebarSlice";
 import authModalReducer from "../features/authModal/authModalSlice";
 import addSuggestionReducer from "../features/addSuggestion/addSuggestionSlice";
+import locationReducer from "../features/location/locationSlice";
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ export const store = configureStore({
     sidebar: sidebarReducer,
     authModal: authModalReducer,
     addSuggestion: addSuggestionReducer,
+    location: locationReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(apiSlice.middleware),

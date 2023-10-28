@@ -7,10 +7,10 @@ import Button from "../Button";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import {
   selectDate,
-  selectLocation,
   storeDate,
 } from "../../../features/addSuggestion/addSuggestionSlice";
 import DateField from "../DateField";
+import { selectLocation } from "../../../features/location/locationSlice";
 
 const AddSuggestionFirst = (props: AddSuggestionFirstProps): JSX.Element => {
   const { onNext } = props;
@@ -18,7 +18,6 @@ const AddSuggestionFirst = (props: AddSuggestionFirstProps): JSX.Element => {
   const dispatch = useAppDispatch();
 
   const location = useAppSelector(selectLocation);
-
   const [date, setDate] = useState<string | undefined>(
     useAppSelector(selectDate)
   );
@@ -52,7 +51,7 @@ const AddSuggestionFirst = (props: AddSuggestionFirstProps): JSX.Element => {
         </div>
       </Body>
       <Footer>
-        {date ? (
+        {location && date ? (
           <Button text="Next" onClick={handleNext} />
         ) : (
           <Button text="Next" variant="disabled" />
