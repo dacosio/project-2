@@ -3,13 +3,18 @@ import { apiSlice } from "./api/apiSlice";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
 import authReducer from "../features/auth/authSlice";
 import sidebarReducer from "../features/sidebar/sidebarSlice";
-
+import authModalReducer from "../features/authModal/authModalSlice";
+import addCropReducer from "../features/addSuggestion/addCropSlice";
+import locationReducer from "../features/location/locationSlice";
 
 export const store = configureStore({
   reducer: {
     [apiSlice.reducerPath]: apiSlice.reducer,
     auth: authReducer,
-    sidebar: sidebarReducer
+    sidebar: sidebarReducer,
+    authModal: authModalReducer,
+    addCrop: addCropReducer,
+    location: locationReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(apiSlice.middleware),

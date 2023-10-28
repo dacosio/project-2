@@ -8,4 +8,12 @@ export const ResultsContainer = styled.div`
   border-radius: 4px;
   background-color: ${({ theme }) => theme.bg.primary};
   margin-top: 6px;
+
+  > div {
+    cursor: pointer;
+
+    :not(:last-child) {
+      border-bottom: 1px solid ${({ theme }) => theme.neutral.n10};
+    }
+  }
 `;

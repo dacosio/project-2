@@ -54,6 +54,10 @@ export const ModalContent = styled.div`
   ::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
+
+  @media (min-width: 768px) {
+    max-width: 50vw;
+  }
 `;
 
 export const ModalBack = styled.div`
@@ -82,7 +86,7 @@ export const ModalClose = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
+  cursor: pointer;
   // :hover{
   //     transform: rotate(180deg);
   // }
