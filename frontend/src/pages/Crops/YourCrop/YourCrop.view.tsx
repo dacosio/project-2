@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { YourCropGeneratedProps } from "./YourCrop.props";
 import {
   Container,
@@ -6,23 +5,29 @@ import {
   DetailColumnContainer,
   Wrapper,
 } from "./YourCrop.style";
-import Typography from "components/base/Typography";
 import { Visible, Hidden } from "react-grid-system";
 import "react-circular-progressbar/dist/styles.css";
+import Typography from "../../../components/base/Typography";
 import CropList from "../../../components/module/CropList";
 import CropDetail from "../../../components/module/CropDetail";
-import Modal from "../../../components/base/Modal";
 import MobileDrawer from "./../../../components/base/MobileDrawer";
+import AddSuggestionModal from "../../../components/module/AddSuggestionModal";
+import AddChoiceModal from "../../../components/module/AddChoiceModal";
 
 const YourCropView = (props: YourCropGeneratedProps) => {
   const {
     crops,
     crop,
+    choiceVisibility,
+    setChoiceVisibility,
+    suggestionVisibility,
+    setSuggestionVisibility,
     isOpenDrawer,
     handleOnClickCrop,
     handleOnClickChoice,
     handleOnClickSuggestion,
     handlePlant,
+    handleFavorite,
     handleOnDelete,
     handleDrawerOpen,
     handleDrawerClose,
@@ -63,6 +68,7 @@ const YourCropView = (props: YourCropGeneratedProps) => {
               <CropDetail
                 crop={crop}
                 handlePlant={handlePlant}
+                handleFavorite={handleFavorite}
                 handleOnDelete={handleOnDelete}
               />
             </Hidden>
@@ -76,6 +82,7 @@ const YourCropView = (props: YourCropGeneratedProps) => {
                 <CropDetail
                   crop={crop}
                   handlePlant={handlePlant}
+                  handleFavorite={handleFavorite}
                   handleOnDelete={handleOnDelete}
                 />
               </MobileDrawer>
@@ -83,6 +90,14 @@ const YourCropView = (props: YourCropGeneratedProps) => {
           </DetailColumnContainer>
         )}
       </Wrapper>
+      <AddSuggestionModal
+        visibility={suggestionVisibility}
+        setVisibility={setSuggestionVisibility}
+      />
+      <AddChoiceModal
+        visibility={choiceVisibility}
+        setVisibility={setChoiceVisibility}
+      />
     </Container>
   );
 };
