@@ -62,7 +62,7 @@ const Signin = (props: SigninProps): JSX.Element => {
           weight="700"
           textColor="primary"
           align="center">
-          Welcom back, Let's farm!
+          Welcome back, Let's farm!
         </Typography>
       </Header>
 
