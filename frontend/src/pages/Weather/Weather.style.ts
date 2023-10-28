@@ -9,3 +9,9 @@ export const Container = styled.div`
    display:flex;
    flex-direction: column;
    row-gap: 2rem;`
+
+   export const BottomContainer = styled.div`
+   display:flex;`
+
+
+

@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import WeatherView from './Weather.view';
+import WeatherView from "./Weather.view";
 
 const Weather = (): JSX.Element => {
   const generatedProps = {

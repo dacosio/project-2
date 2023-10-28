@@ -14,8 +14,8 @@ export const Container = styled.button<{ active: boolean }>`
   justify-content: space-between;
   text-align: center;
   border: none;
-  border-radius: ${(props) => (props.active ? "20px" : "none")};
-   height : ${(props) => (props.active ? "160px" : "132px")};
+  // border-radius: ${(props) => (props.active ? "20px" : "none")};
+  //  height : ${(props) => (props.active ? "160px" : "132px")};
   //  position: ${(props) => (props.active ? "relative" : "none")};
   //  bottom : ${(props) => (props.active ? "100px" : "none")};
    z-index : 9999999;

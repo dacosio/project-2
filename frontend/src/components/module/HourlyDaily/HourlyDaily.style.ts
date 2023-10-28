@@ -24,7 +24,7 @@ display:flex;
 overflow-x: scroll;
  padding-bottom: 2rem;
 
-border-radius: 20px;
+//border-radius: 20px;
 // border: 1px solid red;
 
 
@@ -51,4 +51,3 @@ border-radius: 20px;
   }  
   
   `
-  

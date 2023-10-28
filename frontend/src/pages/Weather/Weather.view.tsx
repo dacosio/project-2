@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { WeatherGeneratedProps } from "./Weather.props";
-import { Container } from "./Weather.style";
+import { BottomContainer, Container } from "./Weather.style";
 import Chips from "components/base/Chips";
 import CurrentWeather from "components/module/CurrentWeather";
 import Typography from "components/base/Typography";
@@ -8,6 +8,10 @@ import axios from "axios";
 import { useCurrentCity } from "utils/hooks/useCurrentCity";
 import HourlyDaily from "components/module/HourlyDaily";
 import SegmentedControl from "components/base/SegmentedControl";
+import Wind from "components/base/Wind";
+import Precipitation from "components/base/Precipitation";
+import Humidity from "../../components/base/Humidity";
+import WeatherAlert from "components/base/WeatherAlert";
 
 const WeatherView = (props: WeatherGeneratedProps) => {
   const [weatherData, setWeatherData] = useState<{ [key: string]: any }>({});
@@ -89,7 +93,9 @@ const WeatherView = (props: WeatherGeneratedProps) => {
       weatherData.currentConditions.conditions.toLowerCase() ===
         "Rain".toLowerCase() ||
       weatherData.currentConditions.conditions.toLowerCase() ===
-        "rain, partially cloudy".toLowerCase()
+        "rain, partially cloudy".toLowerCase() ||
+      weatherData.currentConditions.conditions.toLowerCase() ===
+        "Rain, Overcast".toLowerCase()
     ) {
       gradientColor1 = gradientObject.rain[0];
       gradientColor2 = gradientObject.rain[1];
@@ -183,6 +189,16 @@ const WeatherView = (props: WeatherGeneratedProps) => {
             state={state}
             onSelectedWeatherIndex={handleSelectedWeatherIndex}
           ></HourlyDaily>
+
+          <BottomContainer>
+            <Wind windSpeed={7} gustSpeed={16} windDirection={0}></Wind>
+            <Precipitation
+              precip={2}
+              nextExpectedRainfall="monday"
+            ></Precipitation>
+            <Humidity humidity={65} dew={16}></Humidity>
+            <WeatherAlert alert="National Weather Service: SEVERE STORM WARNING in effect in this area until 6:30 PM CST for destructive 80mph winds. "></WeatherAlert>
+          </BottomContainer>
         </>
       ) : (
         <Typography>Loading weather data.</Typography>
