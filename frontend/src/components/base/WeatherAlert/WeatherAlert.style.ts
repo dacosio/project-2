@@ -4,14 +4,15 @@ import { theme } from "../../../utils/Theme";
 
 export const Container = styled.div`
     display: flex;
+    flex:0.25;
     flex-direction: column;
     gap: 1.3rem;
-    padding: 32px 16px;
+    padding: 16px 16px;
     box-shadow: 0 0 1px 1px ${theme.brand.error};
     border-radius: 1.3rem;
     background-color: ${theme.grey.noshade};
-    width: 250px;
-    height:230px;
+    width: 212px;
+    height:212px;
 `
 
 export const TitleContainer = styled.div`

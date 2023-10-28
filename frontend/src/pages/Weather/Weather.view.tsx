@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { WeatherGeneratedProps } from "./Weather.props";
-import { BottomContainer, Container } from "./Weather.style";
+import {
+  BottomContainer,
+  Container,
+  HumidityContainer,
+  PrecipitationContainer,
+  WeatherAlertContainer,
+  WindContainer,
+} from "./Weather.style";
 import Chips from "components/base/Chips";
 import CurrentWeather from "components/module/CurrentWeather";
 import Typography from "components/base/Typography";
@@ -20,6 +27,7 @@ const WeatherView = (props: WeatherGeneratedProps) => {
   }>({});
   const MOCK_OPTIONS = ["Today", "15-day"];
   const [state, setState] = useState(MOCK_OPTIONS[0]);
+  const [selectedIndex, setSelectedIndex] = useState(0);
   let gradientColor1 = "";
   let gradientColor2 = "";
   let currentCondition = "";
@@ -149,6 +157,7 @@ const WeatherView = (props: WeatherGeneratedProps) => {
 
   const handleSelectedWeatherIndex = (value: number) => {
     console.log("Weather " + value);
+    setSelectedIndex(value);
   };
 
   return (
@@ -191,13 +200,52 @@ const WeatherView = (props: WeatherGeneratedProps) => {
           ></HourlyDaily>
 
           <BottomContainer>
-            <Wind windSpeed={7} gustSpeed={16} windDirection={0}></Wind>
-            <Precipitation
-              precip={2}
-              nextExpectedRainfall="monday"
-            ></Precipitation>
-            <Humidity humidity={65} dew={16}></Humidity>
-            <WeatherAlert alert="National Weather Service: SEVERE STORM WARNING in effect in this area until 6:30 PM CST for destructive 80mph winds. "></WeatherAlert>
+            <WindContainer>
+              <Wind
+                windSpeed={
+                  state === MOCK_OPTIONS[0]
+                    ? weatherData.days[0].hours[selectedIndex].windspeed
+                    : weatherData.days[selectedIndex].windspeed
+                }
+                gustSpeed={
+                  state === MOCK_OPTIONS[0]
+                    ? weatherData.days[0].hours[selectedIndex].windgust
+                    : weatherData.days[selectedIndex].windgust
+                }
+                windDirection={
+                  state === MOCK_OPTIONS[0]
+                    ? weatherData.days[0].hours[selectedIndex].winddir
+                    : weatherData.days[selectedIndex].winddir
+                }
+              ></Wind>
+            </WindContainer>
+            <PrecipitationContainer>
+              <Precipitation
+                precip={
+                  state === MOCK_OPTIONS[0]
+                    ? weatherData.days[0].hours[selectedIndex].precip
+                    : weatherData.days[selectedIndex].precip
+                }
+                nextExpectedRainfall="monday"
+              ></Precipitation>
+            </PrecipitationContainer>
+            <HumidityContainer>
+              <Humidity
+                humidity={
+                  state === MOCK_OPTIONS[0]
+                    ? weatherData.days[0].hours[selectedIndex].humidity
+                    : weatherData.days[selectedIndex].humidity
+                }
+                dew={
+                  state === MOCK_OPTIONS[0]
+                    ? weatherData.days[0].hours[selectedIndex].dew
+                    : weatherData.days[selectedIndex].dew
+                }
+              ></Humidity>
+            </HumidityContainer>
+            <WeatherAlertContainer>
+              <WeatherAlert alert="National Weather Service: SEVERE STORM WARNING in effect in this area until 6:30 PM CST for destructive 80mph winds. "></WeatherAlert>
+            </WeatherAlertContainer>
           </BottomContainer>
         </>
       ) : (

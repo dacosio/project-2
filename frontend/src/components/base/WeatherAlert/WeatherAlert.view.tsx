@@ -12,23 +12,22 @@ import theme from "utils/Theme";
 
 const WeatherAlert = (props: WeatherAlertProps): JSX.Element => {
   const { alert } = props;
-  const myStyle: CSSProperties = {
-    fontSize: "14px",
+  const generalStyle: CSSProperties = {
+    fontSize: "16px",
     fontStyle: "normal",
-    fontWeight: "400",
     lineHeight: "22px",
   };
   return (
     <Container>
       <TitleContainer>
         <WeatherAlertSVG width={30} height={30}></WeatherAlertSVG>
-        <Typography variant="body" textColor="error">
+        <Typography variant="body" weight="700" textColor="error">
           STORM INCOMING
         </Typography>
         {/* <Typography variant="title5">STORM INCOMING</Typography> */}
       </TitleContainer>
       <ContentContainer>
-        <Typography variant="body" style={myStyle}>
+        <Typography variant="body" weight="400" style={generalStyle}>
           {alert}
         </Typography>
       </ContentContainer>

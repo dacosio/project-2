@@ -19,10 +19,6 @@ export default function Router() {
           element: <PersistAuth />,
           children: [
             {
-              path: "dashboard",
-              element: <Dashboard />,
-            },
-            {
               path: "your-crops",
               element: <YourCrop />,
             },
@@ -33,10 +29,6 @@ export default function Router() {
             {
               path: "crop-guide/:id",
               element: <CropAbout />,
-            },
-            {
-              path: "weather",
-              element: <Weather />,
             },
           ],
         },
@@ -49,6 +41,14 @@ export default function Router() {
     {
       element: <Team />,
       path: "team",
+    },
+    {
+      path: "dashboard",
+      element: <Dashboard />,
+    },
+    {
+      path: "weather",
+      element: <Weather />,
     },
   ]);
   return element;

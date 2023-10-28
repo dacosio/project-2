@@ -5,19 +5,21 @@ import { WindStyleProps } from "./Wind.props";
 
 export const Container = styled.div`
     display: flex;
+    flex:0.25;
     flex-direction: column;
     gap: 1.3rem;
-    padding: 32px 16px;
+    padding: 16px 16px;
     box-shadow: 0 0 1px 1px ${theme.neutral.n20};
     border-radius: 1.3rem;
     background-color: ${theme.grey.noshade};
-    width: 250px;
-    height:230px;
+    width: 212px;
+    height:212px;
 `
 
 export const ContentContainer = styled.div`
-display:flex;
-column-gap:2rem;
+display:grid;
+grid-template-columns : 1fr 1fr;
+
 `
 
 export const LeftContainer = styled.div`
@@ -67,9 +69,9 @@ width: 64px;
   :before {
     content: '';
     position: absolute;
-    top: -2px; 
-    left: 0; 
-    border-width: 3px;
+    top: -2.4px; 
+    left: -3.4px; 
+    border-width: 3.4px;
     border-style: solid;
     border-radius:50%;
     border-color: black black black black;

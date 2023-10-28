@@ -14,20 +14,37 @@ import { WindCompass } from "../SVG";
 
 const Wind = (props: WindProps): JSX.Element => {
   const { windSpeed, gustSpeed, windDirection } = props;
+
+  const generalStyle: CSSProperties = {
+    fontSize: "14px",
+    fontStyle: "normal",
+    lineHeight: "20px",
+  };
+
   const propsStyle: CSSProperties = {
-    fontSize: "48px",
+    fontSize: "28px",
     fontStyle: "normal",
     fontWeight: "400",
     lineHeight: "46px",
   };
   return (
     <Container>
-      <Typography variant="body" weight="600" textColor="n70">
+      <Typography
+        variant="body"
+        weight="600"
+        textColor="n70"
+        style={generalStyle}
+      >
         Wind
       </Typography>
       <ContentContainer>
         <LeftContainer>
-          <Typography variant="body" textColor="n50">
+          <Typography
+            variant="body"
+            textColor="n50"
+            weight="400"
+            style={generalStyle}
+          >
             WIND
           </Typography>
 
@@ -35,12 +52,22 @@ const Wind = (props: WindProps): JSX.Element => {
             <Typography variant="body" style={propsStyle}>
               {windSpeed}
             </Typography>
-            <Typography variant="body" textColor="n50">
+            <Typography
+              variant="body"
+              textColor="n50"
+              weight="500"
+              style={generalStyle}
+            >
               KM/H
             </Typography>
           </WindContainer>
 
-          <Typography variant="body" textColor="n50">
+          <Typography
+            variant="body"
+            textColor="n50"
+            weight="400"
+            style={generalStyle}
+          >
             GUST
           </Typography>
 
@@ -48,13 +75,18 @@ const Wind = (props: WindProps): JSX.Element => {
             <Typography variant="body" style={propsStyle}>
               {gustSpeed}
             </Typography>
-            <Typography variant="body" textColor="n50">
+            <Typography
+              variant="body"
+              textColor="n50"
+              weight="500"
+              style={generalStyle}
+            >
               KM/H
             </Typography>
           </GustContainer>
         </LeftContainer>
         <RightContainer>
-          <WindCompass></WindCompass>
+          <WindCompass width={94} height={100}></WindCompass>
           <Arrow windDirection={windDirection}></Arrow>
         </RightContainer>
       </ContentContainer>
