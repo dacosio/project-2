@@ -15,17 +15,15 @@ export const Container = styled.div`
   gap: 8px;
 `;
 
-export const Number = styled.textarea`
+export const Number = styled.input`
   ${fontStyle};
   width: 100%;
-  min-width: 300px;
   border-radius: 4px;
   border: none;
   box-sizing: border-box;
-  padding: 8px;
+  padding: 12px 8px;
   color: ${({ theme }) => theme.btn.text.primary};
   background-color: ${({ theme }) => theme.bg.primary};
-  resize: none;
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
 
   ::placeholder {
