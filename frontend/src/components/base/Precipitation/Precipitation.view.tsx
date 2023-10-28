@@ -15,16 +15,20 @@ const Precipitation = (props: PrecipitationProps): JSX.Element => {
   };
   return (
     <Container>
-      <Typography variant="small">Precipitation</Typography>
+      <Typography variant="body" weight="600" textColor="n70">
+        Precipitation
+      </Typography>
       <PrecipSvgContainer>
-        <Typography variant="body" style={titleStyle}>
+        <Typography variant="body" textColor="n90" style={titleStyle}>
           {precip}mm
         </Typography>
-        <Rain width={100} height={100}></Rain>
+        <Rain width={140} height={140}></Rain>
       </PrecipSvgContainer>
-      <Typography variant="body">In the last 24h</Typography>
+      <Typography variant="subtitle" textColor="n70">
+        In the last 24h
+      </Typography>
 
-      <Typography variant="body">
+      <Typography variant="body" textColor="n90">
         Next expected rain is on {nextExpectedRainfall}
       </Typography>
     </Container>

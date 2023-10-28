@@ -12,7 +12,7 @@ export const Container = styled.div`
     border-radius: 1.3rem;
     background-color: ${theme.grey.noshade};
     width: 250px;
-    height:230px;
+    // height:230px;
 `
 
 

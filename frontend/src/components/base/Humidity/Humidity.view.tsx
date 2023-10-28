@@ -14,7 +14,9 @@ const Humidity = (props: HumidityProps): JSX.Element => {
   return (
     <Container>
       {" "}
-      <Typography variant="small">Humidity</Typography>
+      <Typography variant="body" weight="600" textColor="n70">
+        Humidity
+      </Typography>
       <SvgContainer>
         <CircleProgressHumidity
           maxValue={100}
@@ -26,7 +28,9 @@ const Humidity = (props: HumidityProps): JSX.Element => {
           style={{ height, width }}
         />
       </SvgContainer>
-      <Typography variant="body">The dew point is {dew}° right now.</Typography>
+      <Typography variant="body" textColor="n90">
+        The dew point is {dew}° right now.
+      </Typography>
     </Container>
   );
 };

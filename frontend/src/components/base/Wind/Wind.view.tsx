@@ -22,7 +22,7 @@ const Wind = (props: WindProps): JSX.Element => {
   };
   return (
     <Container>
-      <Typography variant="small" textColor="n70">
+      <Typography variant="body" weight="600" textColor="n70">
         Wind
       </Typography>
       <ContentContainer>
