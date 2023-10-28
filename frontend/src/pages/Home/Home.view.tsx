@@ -79,20 +79,19 @@ const HomeView = (props: HomeGeneratedProps) => {
             style={{
               display: "flex",
               gap: ".5rem",
-            }}
-          >
+              alignItems: "center",
+            }}>
             <TextField
               value={email}
               setValue={setEmail}
-              placeholder="user@nomail.com"
+              placeholder="Type in your email"
               style={{ flexGrow: "1" }}
             />
             <Button
               text="Farm with us"
               variant="primary"
               size="md"
-              takeFullWidth={false}
-            ></Button>
+              takeFullWidth={false}></Button>
           </div>
         </HeaderContents>
         <HeaderContents xxl={4} xl={4} lg={6} md={6}>
@@ -113,8 +112,7 @@ const HomeView = (props: HomeGeneratedProps) => {
                 style={{
                   position: "relative",
                   zIndex: "1",
-                }}
-              >
+                }}>
                 Farming<br></br>simplified
               </Typography>
             </AboutTypography>
@@ -126,8 +124,7 @@ const HomeView = (props: HomeGeneratedProps) => {
               variant="title1"
               weight="700"
               textColor="accent"
-              align="center"
-            >
+              align="center">
               Farming simplified
             </Typography>
           </Visible>

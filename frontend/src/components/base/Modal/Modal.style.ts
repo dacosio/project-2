@@ -82,7 +82,7 @@ export const ModalClose = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
+  cursor: pointer;
   // :hover{
   //     transform: rotate(180deg);
   // }

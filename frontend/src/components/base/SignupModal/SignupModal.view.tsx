@@ -1,29 +1,46 @@
 import React from "react";
 import { SignupModalProps } from "./SignupModal.props";
-import { Container } from "./SignupModal.style";
+import { Container, Hidebutton } from "./SignupModal.style";
 import Button from "../Button";
 import Modal from "../Modal";
 import Signup from "../Signup";
 import { useMediaQuery } from "../../../utils/hooks/useMediaQuery";
+import {
+  selectSignUpModal,
+  toggleSignIn,
+  toggleSignUp,
+} from "../../../features/authModal/authModalSlice";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 
 const SignupModal = (props: SignupModalProps): JSX.Element => {
   const [isModalOpen, setModalState] = React.useState(false);
   const matches = useMediaQuery("(min-width: 992px)");
 
-  const toggleModal = () => setModalState(!isModalOpen);
+  const dispatch = useAppDispatch();
+  const signUpModalState = useAppSelector(selectSignUpModal);
 
+  const toggleModal = () => {
+    dispatch(toggleSignUp(!signUpModalState));
+    dispatch(toggleSignIn(false));
+  };
+  const onClose = () => {
+    dispatch(toggleSignUp(false));
+    dispatch(toggleSignIn(false));
+  };
   return (
     <Container>
-      <Button
-        text="Sign up"
-        variant="primary"
-        onClick={toggleModal}
-        style={matches ? { width: "160px" } : { width: "100px" }}
-      />
+      <Hidebutton>
+        <Button
+          text="Sign up"
+          variant="primary"
+          onClick={toggleModal}
+          style={matches ? { width: "160px" } : { width: "100px" }}
+        />
+      </Hidebutton>
       <Modal
         title={"This is my modal"}
-        isOpen={isModalOpen}
-        onClose={toggleModal}
+        isOpen={signUpModalState}
+        onClose={onClose}
       >
         <Signup />
       </Modal>

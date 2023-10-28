@@ -8,17 +8,30 @@ import {
   SubmitButton,
   BackButton,
   Option,
+  Bottom,
+  SignUpButton,
 } from "./Signup.style";
 import Typography from "../Typography";
 import { useMultistepForm } from "../../../utils/hooks/useMultistepForm";
 import SignupForm from "../SignupForm";
 import AccountForm from "../AccountForm";
+import { useAppDispatch } from "../../../app/hooks";
+import {
+  toggleSignIn,
+  toggleSignUp,
+} from "../../../features/authModal/authModalSlice";
 
 const Signup = (props: SignupProps): JSX.Element => {
   const { step, isFirstStep, isLastStep, back, next } = useMultistepForm([
     <SignupForm />,
     <AccountForm />,
   ]);
+
+  const dispatch = useAppDispatch();
+  const handleSignUpModal = () => {
+    dispatch(toggleSignIn(true));
+    dispatch(toggleSignUp(false));
+  };
 
   return (
     <Container>
@@ -27,8 +40,7 @@ const Signup = (props: SignupProps): JSX.Element => {
           variant="title2"
           weight="700"
           textColor="primary"
-          align="center"
-        >
+          align="center">
           Sign up for free and start farming!
         </Typography>
       </Header>
@@ -47,9 +59,17 @@ const Signup = (props: SignupProps): JSX.Element => {
         </ButtonDivs>
         {isLastStep ? null : (
           <Option>
-            <Typography variant="small" align="center" textColor="n70">
-              Already a member? <a href="#">Login</a>?
-            </Typography>
+            <Bottom>
+              <Typography variant="subtitle" align="center" textColor="n70">
+                Already a member?
+              </Typography>
+              <SignUpButton
+                variant="subtitle"
+                textColor="n90"
+                onClick={handleSignUpModal}>
+                Sign In
+              </SignUpButton>
+            </Bottom>
           </Option>
         )}
       </SingupForm>
