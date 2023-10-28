@@ -92,6 +92,7 @@ const ContactSection = (props: ContactSectionProps): JSX.Element => {
             initialValues={{ name: "", email: "", message: "" }}
             validationSchema={validationSchema}
             onSubmit={handleOnSubtmit}
+            enableReinitialize
           >
             <Form
               ref={form}
