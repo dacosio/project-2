@@ -5,6 +5,7 @@ import { Crop } from "types/store/CropState";
 
 const initialState: AddCrop = {
   date: "",
+  month: "",
   nitrogen: "",
   phosphorus: "",
   potassium: "",
@@ -20,6 +21,9 @@ const addCropSlice = createSlice({
   reducers: {
     storeDate: (state, action) => {
       state.date = action.payload;
+    },
+    storeMonth: (state, action) => {
+      state.month = action.payload;
     },
     storeNitrogen: (state, action) => {
       state.nitrogen = action.payload;
@@ -47,6 +51,7 @@ const addCropSlice = createSlice({
 
 export const {
   storeDate,
+  storeMonth,
   storeNitrogen,
   storePhosphorus,
   storePotassium,
@@ -59,6 +64,7 @@ export const {
 export default addCropSlice.reducer;
 
 export const selectDate = (state: RootState) => state.addCrop.date;
+export const selectMonth = (state: RootState) => state.addCrop.month;
 export const selectNitrogen = (state: RootState) => state.addCrop.nitrogen;
 export const selectPhosphorus = (state: RootState) => state.addCrop.phosphorus;
 export const selectPotassium = (state: RootState) => state.addCrop.potassium;

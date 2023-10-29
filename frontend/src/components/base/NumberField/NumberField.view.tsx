@@ -15,7 +15,7 @@ const NumberField = (props: NumberFieldProps): JSX.Element => {
     onBlur = () => null,
   } = props;
 
-  const [inputValue, setInputValue] = useState<string>("");
+  const [inputValue, setInputValue] = useState<string>(value || "");
   const [inputError, setInputError] = useState<string>("");
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {

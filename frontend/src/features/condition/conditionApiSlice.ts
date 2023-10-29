@@ -1,17 +1,35 @@
-import { apiSlice } from "app/api/apiSlice";
-import { METHOD } from "const/methods";
-import { TAG_TYPE } from "const/tags";
-import { Crop } from "types/store/CropState";
+import { apiSlice } from "../../app/api/apiSlice";
+import { METHOD } from "../../const/methods";
+import { TAG_TYPE } from "../../const/tags";
+import { Crop } from "../../types/store/CropState";
 
 export const conditionApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getPredictCrop: builder.query<any[], void | any>({
-      query: ({ city, month }: { city: string; month: string }) => ({
+      query: ({
+        city,
+        month,
+        N,
+        P,
+        K,
+        ph,
+      }: {
+        city: string;
+        month: string;
+        N: string;
+        P: string;
+        K: string;
+        ph: string;
+      }) => ({
         url: "/api/predict-crop",
         method: METHOD.POST,
-        params: {
+        body: {
           city,
           month,
+          N,
+          P,
+          K,
+          ph,
         },
       }),
       providesTags: (result) => {
