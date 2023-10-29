@@ -18,7 +18,7 @@ export interface YourCropGeneratedProps {
   handleLater: () => void;
   handleNow: () => void;
   handlePlant: (id: string) => void;
-  handleFavorite: (id: string) => void;
+  handleFavorite: (id: string, isFavorite: boolean) => void;
   handleOnDelete: (id: string) => void;
   handleDrawerOpen: () => void;
   handleDrawerClose: () => void;

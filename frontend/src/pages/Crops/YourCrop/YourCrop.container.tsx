@@ -66,8 +66,6 @@ const YourCrop = (): JSX.Element => {
   };
 
   const handlePlant = async (id: string) => {
-    console.log(id);
-
     await plantNow({ id })
       .then(() => toast.success("Crop successfully planted"))
       .catch(() => {
@@ -75,14 +73,15 @@ const YourCrop = (): JSX.Element => {
       });
   };
   //
-  const handleFavorite = async (id: string) => {
-    console.log(id);
-    // pass the id and the favorite button should be toggled between true or false.
-    // await favorite({ id, isFavorite: true });
+  const handleFavorite = async (id: string, isFavorite: boolean) => {
+    await favorite({ id, isFavorite })
+      .then(() => toast.success(""))
+      .catch(() => {
+        toast.error("An error occured. Please, try again later");
+      });
   };
 
   const handleOnDelete = async (id: string) => {
-    console.log(id);
     await removeCrop({ id })
       .then(() => toast.success("Crop successfully removed"))
       .catch(() => {

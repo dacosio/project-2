@@ -49,13 +49,23 @@ const CropDetail = (props: CropDetailProps): JSX.Element => {
           <TitleRightContainer>
             <Hidden xs sm md lg>
               {crop.isPlanted ? (
-                <Button
-                  variant="outline"
-                  iconPosition="before"
-                  icon={<Favorite fill={theme.btn.color.primary} />}
-                  text="Favorite"
-                  onClick={() => handleFavorite(crop._id)}
-                />
+                crop.isFavorite ? (
+                  <Button
+                    variant="outline"
+                    iconPosition="before"
+                    icon={<Favorite fill={theme.btn.color.primary} />}
+                    text="Unfavorite"
+                    onClick={() => handleFavorite(crop._id, false)}
+                  />
+                ) : (
+                  <Button
+                    variant="outline"
+                    iconPosition="before"
+                    icon={<Favorite fill={theme.btn.color.primary} />}
+                    text="Favorite"
+                    onClick={() => handleFavorite(crop._id, true)}
+                  />
+                )
               ) : (
                 <Button
                   text="Plant Now"
@@ -72,12 +82,21 @@ const CropDetail = (props: CropDetailProps): JSX.Element => {
             </Hidden>
             <Visible xs sm md lg>
               {crop.isPlanted ? (
-                <Button
-                  variant="outline"
-                  iconPosition="before"
-                  icon={<Favorite fill={theme.btn.color.primary} />}
-                  onClick={() => handleFavorite(crop._id)}
-                />
+                crop.isFavorite ? (
+                  <Button
+                    variant="outline"
+                    iconPosition="before"
+                    icon={<Favorite fill={theme.btn.color.primary} />}
+                    onClick={() => handleFavorite(crop._id, false)}
+                  />
+                ) : (
+                  <Button
+                    variant="outline"
+                    iconPosition="before"
+                    icon={<Favorite fill={theme.btn.color.primary} />}
+                    onClick={() => handleFavorite(crop._id, true)}
+                  />
+                )
               ) : (
                 <Button
                   text="Plant Now"
