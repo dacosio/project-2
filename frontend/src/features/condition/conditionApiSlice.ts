@@ -5,7 +5,7 @@ import { Crop } from "../../types/store/CropState";
 
 export const conditionApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getPredictCrop: builder.query<any[], void | any>({
+    getPredictCrop: builder.query<any, void | any>({
       query: ({
         city,
         month,
@@ -32,14 +32,13 @@ export const conditionApiSlice = apiSlice.injectEndpoints({
           ph,
         },
       }),
-      providesTags: (result) => {
-        console.log(result);
+      providesTags: (result: { _id: string | number }) => {
         if (result) {
           return [
-            ...result.map(({ _id }: { _id: string | number }) => ({
+            {
               type: TAG_TYPE.PREDICT,
-              id: _id,
-            })),
+              id: result._id,
+            },
             { type: TAG_TYPE.PREDICT, id: "LIST" },
           ];
         } else {

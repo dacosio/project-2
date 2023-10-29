@@ -41,41 +41,40 @@ const CropList = (props: CropListProps): JSX.Element => {
         />
       </TabContainer>
       <List>
-        {crops &&
-          crops
-            .filter((crop) =>
-              option?.value === "planted"
-                ? crop.isPlanted
-                : option?.value === "to-plant"
-                ? !crop.isPlanted
-                : true
-            )
-            .map((cropItem, index) => (
-              <Item
-                onClick={() => handleOnClickCrop(cropItem._id)}
-                key={index}
+        {crops
+          .filter((crop) =>
+            option?.value === "planted"
+              ? crop.isPlanted
+              : option?.value === "to-plant"
+              ? !crop.isPlanted
+              : true
+          )
+          .map((cropItem, index) => (
+            <Item
+              onClick={() => handleOnClickCrop(cropItem._id)}
+              key={index}
+              style={{
+                backgroundColor:
+                  cropItem._id === crop?._id
+                    ? theme.btn.color.outlineBg
+                    : undefined,
+              }}
+            >
+              <Typography variant="body" weight="700">
+                {cropItem.cropName}
+              </Typography>
+              <Typography
+                variant="small"
                 style={{
-                  backgroundColor:
-                    cropItem._id === crop?._id
-                      ? theme.btn.color.outlineBg
-                      : undefined,
+                  color: cropItem.isPlanted
+                    ? theme.btn.color.token
+                    : theme.btn.color.tokenHover,
                 }}
               >
-                <Typography variant="body" weight="700">
-                  {cropItem.cropName}
-                </Typography>
-                <Typography
-                  variant="small"
-                  style={{
-                    color: cropItem.isPlanted
-                      ? theme.btn.color.token
-                      : theme.btn.color.tokenHover,
-                  }}
-                >
-                  {cropItem.isPlanted ? "PLANTED" : "TO PLANT"}
-                </Typography>
-              </Item>
-            ))}
+                {cropItem.isPlanted ? "PLANTED" : "TO PLANT"}
+              </Typography>
+            </Item>
+          ))}
       </List>
       <div style={{ alignItems: "flex-end" }}>
         <Button

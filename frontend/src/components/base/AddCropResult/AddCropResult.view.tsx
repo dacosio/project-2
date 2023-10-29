@@ -7,18 +7,33 @@ import { useAppSelector } from "../../../app/hooks";
 import { selectCrop } from "../../../features/addSuggestion/addCropSlice";
 import Button from "../Button";
 import Typography from "../Typography";
+import { useAddCropMutation } from "../../../features/crops/cropApiSlice";
 
 const AddCropResult = (props: AddCropResultProps): JSX.Element => {
   const { onLater, onNow } = props;
 
   const [crop] = useState<Crop | undefined>(useAppSelector(selectCrop));
 
-  const handleLater = () => {
-    onLater();
+  const [addCrop] = useAddCropMutation();
+
+  const handleLater = async () => {
+    if (crop) {
+      const response = await addCrop({
+        cropId: crop._id,
+        plantNow: false,
+      }).unwrap();
+      onLater();
+    }
   };
 
-  const handleNow = () => {
-    onNow();
+  const handleNow = async () => {
+    if (crop) {
+      const response = await addCrop({
+        cropId: crop._id,
+        plantNow: true,
+      }).unwrap();
+      onNow();
+    }
   };
 
   return (

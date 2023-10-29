@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { AddSuggestionSecondProps } from "./AddSuggestionSecond.props";
 import { Body, Container, Footer, Header } from "./AddSuggestionSecond.style";
 import Typography from "../Typography";
-import TextField from "../TextField";
 import Button from "../Button";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import {
@@ -19,8 +18,9 @@ import {
 } from "../../../features/addSuggestion/addCropSlice";
 import { Crop } from "../../../types/store/CropState";
 import NumberField from "../NumberField";
-import { useGetPredictCropQuery } from "features/condition/conditionApiSlice";
-import { selectCity } from "features/location/locationSlice";
+import { useGetPredictCropQuery } from "../../../features/condition/conditionApiSlice";
+import { selectCity } from "../../../features/location/locationSlice";
+import { useGetCropAboutQuery } from "../../../features/cropEncyclopedia/cropEncyclopediaApiSlice";
 
 const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
   const { onNext } = props;
@@ -30,6 +30,7 @@ const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
   const city = useAppSelector(selectCity);
   const month = useAppSelector(selectMonth);
 
+  const [cropId, setCropId] = useState<string>("");
   const [nitrogen, setNitrogen] = useState<string | undefined>(
     useAppSelector(selectNitrogen)
   );
@@ -41,60 +42,28 @@ const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
   );
   const [ph, setPh] = useState<string | undefined>(useAppSelector(selectPh));
 
-  const { data: cropData } = useGetPredictCropQuery({
-    city: city,
-    month: month,
-    N: nitrogen,
-    P: phosphorus,
-    K: potassium,
-    ph: ph,
-  });
-
-  const getCrop = () => {
-    // const crop: Crop = {
-    //   _id: "id",
-    //   cropName: "Tomato",
-    //   description:
-    //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis quam vel risus accumsan iaculis. Nullam semper feugiat mi, non commodo massa fringilla sit amet. Aliquam efficitur quis metus semper posuere. Mauris dictum laoreet rhoncus. In mauris velit, laoreet eget augue et, posuere feugiat lectus. Proin blandit lacus nec velit tincidunt molestie. Integer et auctor urna.",
-    //   idealTemperature: {
-    //     fahrenheit: { min: 10, max: 20 },
-    //     celcius: { min: 10, max: 20 },
-    //   },
-    //   humidity: { min: 10, max: 20 },
-    //   growthDuration: { min: 2, max: 3 },
-    //   soilPh: { min: 5.5, max: 6.5 },
-    //   soilN: 5,
-    //   soilP: 8,
-    //   soilK: 6,
-    //   growingTips: [
-    //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    //     "Duis mollis quam vel risus accumsan iaculis.",
-    //     "Nullam semper feugiat mi, non commodo massa fringilla sit amet.",
-    //   ],
-    //   tools: [
-    //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    //     "Duis mollis quam vel risus accumsan iaculis.",
-    //     "Nullam semper feugiat mi, non commodo massa fringilla sit amet.",
-    //   ],
-    //   imageURL: "https://picsum.photos/300",
-    //   userId: "",
-    //   isFavorite: false,
-    //   isPlanted: false,
-    //   datePlanted: new Date(),
-    //   estimatedYield: "",
-    //   __v: 1,
-    //   createdAt: new Date(),
-    //   updatedAt: new Date(),
-    // };
-    // dispatch(storeCrop(crop));
-  };
+  const { data: predictData } = useGetPredictCropQuery(
+    nitrogen && phosphorus && potassium && ph
+      ? {
+          city: city,
+          month: month,
+          N: nitrogen,
+          P: phosphorus,
+          K: potassium,
+          ph: ph,
+        }
+      : {
+          city: city,
+          month: month,
+        }
+  );
+  const { data: cropData } = useGetCropAboutQuery(cropId);
 
   const handleSkip = () => {
     dispatch(storeNitrogen(null));
     dispatch(storePhosphorus(null));
     dispatch(storePotassium(null));
     dispatch(storePh(null));
-    getCrop();
     onNext();
   };
 
@@ -103,12 +72,21 @@ const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
     dispatch(storePhosphorus(phosphorus));
     dispatch(storePotassium(potassium));
     dispatch(storePh(ph));
-    getCrop();
     onNext();
   };
 
   useEffect(() => {
-    console.log(cropData);
+    if (predictData) {
+      const item = predictData as { cropId: string; cropName: string };
+      setCropId(item.cropId);
+    }
+  }, [predictData]);
+
+  useEffect(() => {
+    if (cropId && cropData) {
+      const item = cropData as Crop[];
+      dispatch(storeCrop(item[0]));
+    }
   }, [cropData]);
 
   return (

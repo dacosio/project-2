@@ -52,20 +52,22 @@ const YourCropView = (props: YourCropGeneratedProps) => {
               </Typography>
             </div>
           </Visible>
-          <CropList
-            crops={crops}
-            crop={crop}
-            options={[
-              { value: "all", label: "All" },
-              { value: "planted", label: "Planted" },
-              { value: "to-plant", label: "To Plant" },
-            ]}
-            option={option}
-            setOption={setOption}
-            handleOnClickCrop={handleOnClickCrop}
-            handleOnClickChoice={handleOnClickChoice}
-            handleOnClickSuggestion={handleOnClickSuggestion}
-          />
+          {crops && (
+            <CropList
+              crops={crops}
+              crop={crop}
+              options={[
+                { value: "all", label: "All" },
+                { value: "planted", label: "Planted" },
+                { value: "to-plant", label: "To Plant" },
+              ]}
+              option={option}
+              setOption={setOption}
+              handleOnClickCrop={handleOnClickCrop}
+              handleOnClickChoice={handleOnClickChoice}
+              handleOnClickSuggestion={handleOnClickSuggestion}
+            />
+          )}
         </ListColumnContainer>
         {crop && (
           <DetailColumnContainer
