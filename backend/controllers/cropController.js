@@ -7,7 +7,6 @@ const getAllCrops = async (req, res) => {
   try {
     const userId = req.id;
     const { isPlanted } = req.query;
-    console.log(typeof isPlanted);
     let crops;
     if (
       isPlanted !== undefined &&
@@ -29,11 +28,11 @@ const getAllCrops = async (req, res) => {
   }
 };
 
-const addCrop = async (req, res) => {
+//plant later/now from crop guide
+const plant = async (req, res) => {
   try {
     const userId = req.id;
     const { cropId, plantNow } = req.body;
-
     if (!ObjectId.isValid(cropId)) throw new Error("Invalid Id");
 
     if (!cropId && plantNow === undefined && typeof plantNow !== "boolean") {
@@ -73,7 +72,7 @@ const addCrop = async (req, res) => {
 
     res.status(200).json(cropData);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ message: "An error occured" });
   }
 };
 
@@ -94,6 +93,7 @@ const favoriteCrop = async (req, res) => {
   }
 };
 
+//plant now to be used in your crops
 const plantNow = async (req, res) => {
   try {
     const { id } = req.body;
@@ -131,5 +131,5 @@ module.exports = {
   favoriteCrop,
   removeCrop,
   plantNow,
-  addCrop,
+  plant,
 };
