@@ -17,11 +17,6 @@ const YourCrop = (): JSX.Element => {
     value: "all",
     label: "All",
   });
-
-  const [plantNow] = usePlantNowMutation();
-  const [favorite] = useFavoriteMutation();
-  const [removeCrop] = useRemoveCropMutation();
-  const { data, isLoading } = useGetPlantedCropsQuery("");
   const [crops, setCrops] = useState<Crop[]>([]);
   const [crop, setCrop] = useState<Crop | undefined>(undefined);
   const [choiceVisibility, setChoiceVisibility] = useState<boolean>(false);
@@ -29,6 +24,9 @@ const YourCrop = (): JSX.Element => {
     useState<boolean>(false);
   const [isOpenDrawer, setIsOpenDrawer] = useState<boolean>(false);
 
+  const [plantNow] = usePlantNowMutation();
+  const [favorite] = useFavoriteMutation();
+  const [removeCrop] = useRemoveCropMutation();
   const { data: cropsData } = useGetPlantedCropsQuery({
     isPlanted:
       option?.value === "planted"
@@ -93,15 +91,13 @@ const YourCrop = (): JSX.Element => {
   };
 
   useEffect(() => {
-    console.log(data);
-  }, []);
+    if (cropsData) {
+      const items = cropsData as Crop[];
 
-  useEffect(() => {
-    const items = cropsData as Crop[];
-
-    setCrops(items);
-    if (items && 0 < items.length) {
-      setCrop(items[0]);
+      setCrops(items);
+      if (items && 0 < items.length) {
+        setCrop(items[0]);
+      }
     }
   }, [cropsData]);
 

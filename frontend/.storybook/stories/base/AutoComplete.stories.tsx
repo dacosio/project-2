@@ -3,20 +3,21 @@ import type { Meta, StoryObj } from "@storybook/react";
 import AutoComplete from "../../../src/components/base/AutoComplete";
 import Container from "../../components/Container";
 import Wrapper from "../../components/Wrapper";
+import { Option } from "../../../src/components/base/AutoComplete/AutoComplete.props";
 
 const meta: Meta<typeof AutoComplete> = {
   title: "Base/AutoComplete",
   component: () => {
-    const options: string[] = [
-      "option1",
-      "option2",
-      "option3",
-      "option4",
-      "option5",
+    const options: Option[] = [
+      { value: "value1", label: "label1" },
+      { value: "value2", label: "label2" },
+      { value: "value3", label: "label3" },
+      { value: "value4", label: "label4" },
+      { value: "value5", label: "label5" },
     ];
 
-    const [value1, setValue1] = useState<string | undefined>("option1");
-    const [value2, setValue2] = useState<string | undefined>(undefined);
+    const [value1, setValue1] = useState<Option | undefined>(options[2]);
+    const [value2, setValue2] = useState<Option | undefined>(undefined);
 
     useEffect(() => {
       console.log(value1);
@@ -28,12 +29,12 @@ const meta: Meta<typeof AutoComplete> = {
 
     return (
       <Container>
-        <AutoComplete options={options} value={value1} setValue={setValue1} />
+        <AutoComplete options={options} option={value1} setOption={setValue1} />
         <AutoComplete
           options={options}
           placeholder="Select"
-          value={value2}
-          setValue={setValue2}
+          option={value2}
+          setOption={setValue2}
         />
       </Container>
     );

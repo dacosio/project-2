@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState } from "react";
-import { AutoCompleteProps } from "./AutoComplete.props";
+import { AutoCompleteProps, Option } from "./AutoComplete.props";
 import {
   Container,
   IconContainer,
@@ -11,46 +11,61 @@ import {
 } from "./AutoComplete.style";
 import { ArrowDown, ArrowUp } from "../SVG";
 import Typography from "../Typography";
+import { onFocus } from "@reduxjs/toolkit/dist/query/core/setupListeners";
 
 const AutoComplete = (props: AutoCompleteProps): JSX.Element => {
   const {
     name,
-    options,
     value,
-    setValue = () => null,
+    options,
+    option,
+    setOption = () => null,
     placeholder,
     error,
     onChange = () => null,
-    onBlur = () => null,
   } = props;
 
+  const [inputValue, setInputValue] = useState<string | undefined>(
+    options.find((optionItem) => optionItem?.value === option?.value || value)
+      ?.label || ""
+  );
   const [visibility, setVisibility] = useState<boolean>(false);
 
   const items = options
-    .filter((option) => option.includes(value || ""))
+    .filter((option) =>
+      option.label.toUpperCase().includes(inputValue?.toUpperCase() || "")
+    )
     .map((option, index) => (
       <ItemContainer onClick={() => handleSelect(option)} key={index}>
-        <Typography>{option}</Typography>
+        <Typography>{option.label}</Typography>
       </ItemContainer>
     ));
 
   const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
     setVisibility(true);
-    onChange(event);
-  };
-
-  const handleSelect = (option: string) => {
-    setValue(option);
-    setVisibility(false);
-    const event = {
+    setInputValue(event.target.value);
+    onChange({
       target: {
         type: "text",
-        value: option,
+        value:
+          options.find((option) => option?.label === event.target.value)
+            ?.value || "",
         name: name,
       },
-    } as React.ChangeEvent<HTMLInputElement>;
-    onChange(event);
+    } as React.ChangeEvent<HTMLInputElement>);
+  };
+
+  const handleSelect = (option: Option) => {
+    setVisibility(false);
+    setInputValue(option.label);
+    setOption(option);
+    onChange({
+      target: {
+        type: "text",
+        value: option.value,
+        name: name,
+      },
+    } as React.ChangeEvent<HTMLInputElement>);
   };
 
   const handleToggle = () => {
@@ -62,10 +77,9 @@ const AutoComplete = (props: AutoCompleteProps): JSX.Element => {
       <InputContainer>
         <InputText
           name={name}
-          value={value}
+          value={inputValue}
           placeholder={placeholder}
           onChange={handleInput}
-          onBlur={onBlur}
           onFocus={handleInput}
         />
         <IconContainer onClick={handleToggle}>

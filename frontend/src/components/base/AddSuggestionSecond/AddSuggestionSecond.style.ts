@@ -15,17 +15,12 @@ export const Header = styled.div`
 export const Body = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  align-items: start;
   column-gap: 48px;
   row-gap: 16px;
 
   > div {
     display: grid;
-    gap: 8px;
-  }
-
-  > div > div {
-    display: flex;
-    align-items: center;
     gap: 8px;
   }
 `;

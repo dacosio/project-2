@@ -15,7 +15,7 @@ export const Container = styled.div`
   gap: 8px;
 `;
 
-export const Number = styled.input`
+export const InputNumber = styled.input`
   ${fontStyle};
   width: 100%;
   border-radius: 4px;

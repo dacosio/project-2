@@ -6,8 +6,9 @@ import useGoogle from "react-google-autocomplete/lib/usePlacesAutocompleteServic
 import Typography from "../../base/Typography";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import {
-  selectLocation,
-  storeLocation,
+  selectAddress,
+  storeAddress,
+  storeCity,
 } from "../../../features/location/locationSlice";
 
 const LocationSearch = (props: LocationSearchProps): JSX.Element => {
@@ -25,7 +26,7 @@ const LocationSearch = (props: LocationSearchProps): JSX.Element => {
   });
 
   const [value, setValue] = useState<string | undefined>(
-    useAppSelector(selectLocation)?.formatted_address
+    useAppSelector(selectAddress)
   );
 
   const handleSelectPlace = (item: {
@@ -41,7 +42,8 @@ const LocationSearch = (props: LocationSearchProps): JSX.Element => {
         },
         (placeDetails) => {
           setValue(placeDetails?.formatted_address);
-          dispatch(storeLocation(placeDetails));
+          dispatch(storeAddress(placeDetails?.formatted_address));
+          dispatch(storeCity(placeDetails?.vicinity));
         }
       );
     }
@@ -52,7 +54,6 @@ const LocationSearch = (props: LocationSearchProps): JSX.Element => {
       <TextField
         value={value}
         onChange={(evt) => {
-          console.log("t");
           getPlacePredictions({ input: evt.target.value });
           setValue(evt.target.value);
         }}

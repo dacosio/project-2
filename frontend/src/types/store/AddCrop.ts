@@ -6,6 +6,7 @@ export interface AddSuggestion {
   phosphorus: string;
   potassium: string;
   ph: string;
-  name: string;
+  cropId: string;
+  cropName: string;
   crop?: Crop;
 }

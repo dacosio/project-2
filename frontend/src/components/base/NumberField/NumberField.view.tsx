@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from "react";
 import { NumberFieldProps } from "./NumberField.props";
-import { Container, Number, Error } from "./NumberField.style";
+import { Container, InputNumber, Error } from "./NumberField.style";
 import Typography from "../Typography";
 
 const NumberField = (props: NumberFieldProps): JSX.Element => {
@@ -15,18 +15,18 @@ const NumberField = (props: NumberFieldProps): JSX.Element => {
     onBlur = () => null,
   } = props;
 
+  const [inputValue, setInputValue] = useState<string>("");
   const [inputError, setInputError] = useState<string>("");
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
     onChange(event);
+    setInputValue(event.target.value);
 
-    if (
-      !isNaN(parseFloat(event.target.value)) &&
-      isFinite(parseFloat(event.target.value))
-    ) {
+    if (!isNaN(Number(event.target.value))) {
+      setValue(event.target.value);
       setInputError("");
     } else {
+      setValue("");
       setInputError("This field should be a number.");
     }
   };
@@ -38,14 +38,23 @@ const NumberField = (props: NumberFieldProps): JSX.Element => {
           {label}
         </Typography>
       )}
-      <Number
-        type="text"
-        name={name}
-        placeholder={placeholder}
-        value={value}
-        onChange={handleChange}
-        onBlur={onBlur}
-      ></Number>
+      {name ? (
+        <InputNumber
+          type="text"
+          name={name}
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+          onBlur={onBlur}
+        />
+      ) : (
+        <InputNumber
+          type="text"
+          placeholder={placeholder}
+          value={inputValue}
+          onChange={handleChange}
+        />
+      )}
       {(error || inputError) && (
         <Error variant="small" textColor="error">
           {error || inputError}

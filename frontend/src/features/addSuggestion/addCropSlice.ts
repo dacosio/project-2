@@ -9,7 +9,8 @@ const initialState: AddCrop = {
   phosphorus: "",
   potassium: "",
   ph: "",
-  name: "",
+  cropId: "",
+  cropName: "",
   crop: undefined,
 };
 
@@ -32,8 +33,11 @@ const addCropSlice = createSlice({
     storePh: (state, action) => {
       state.ph = action.payload;
     },
-    storeName: (state, action) => {
-      state.name = action.payload;
+    storeCropId: (state, action) => {
+      state.cropId = action.payload;
+    },
+    storeCropName: (state, action) => {
+      state.cropName = action.payload;
     },
     storeCrop: (state, action) => {
       state.crop = action.payload;
@@ -47,7 +51,8 @@ export const {
   storePhosphorus,
   storePotassium,
   storePh,
-  storeName,
+  storeCropId,
+  storeCropName,
   storeCrop,
 } = addCropSlice.actions;
 
@@ -58,5 +63,6 @@ export const selectNitrogen = (state: RootState) => state.addCrop.nitrogen;
 export const selectPhosphorus = (state: RootState) => state.addCrop.phosphorus;
 export const selectPotassium = (state: RootState) => state.addCrop.potassium;
 export const selectPh = (state: RootState) => state.addCrop.ph;
-export const selectName = (state: RootState) => state.addCrop.name;
+export const selectCropId = (state: RootState) => state.addCrop.cropId;
+export const selectCropName = (state: RootState) => state.addCrop.cropName;
 export const selectCrop = (state: RootState) => state.addCrop.crop;

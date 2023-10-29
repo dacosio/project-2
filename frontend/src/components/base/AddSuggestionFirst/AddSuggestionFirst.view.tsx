@@ -10,14 +10,14 @@ import {
   storeDate,
 } from "../../../features/addSuggestion/addCropSlice";
 import DateField from "../DateField";
-import { selectLocation } from "../../../features/location/locationSlice";
+import { selectAddress } from "../../../features/location/locationSlice";
 
 const AddSuggestionFirst = (props: AddSuggestionFirstProps): JSX.Element => {
   const { onNext } = props;
 
   const dispatch = useAppDispatch();
 
-  const location = useAppSelector(selectLocation);
+  const address = useAppSelector(selectAddress);
   const [date, setDate] = useState<string | undefined>(
     useAppSelector(selectDate)
   );
@@ -51,7 +51,7 @@ const AddSuggestionFirst = (props: AddSuggestionFirstProps): JSX.Element => {
         </div>
       </Body>
       <Footer>
-        {location && date ? (
+        {address && date ? (
           <Button text="Next" onClick={handleNext} />
         ) : (
           <Button text="Next" variant="disabled" />

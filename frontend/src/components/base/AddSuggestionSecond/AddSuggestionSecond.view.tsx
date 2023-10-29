@@ -17,22 +17,23 @@ import {
   storePotassium,
 } from "../../../features/addSuggestion/addCropSlice";
 import { Crop } from "../../../types/store/CropState";
+import NumberField from "../NumberField";
 
 const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
   const { onNext } = props;
 
   const dispatch = useAppDispatch();
 
-  const [nitrogen, setNitrogen] = useState<string>(
+  const [nitrogen, setNitrogen] = useState<string | undefined>(
     useAppSelector(selectNitrogen)
   );
-  const [phosphorus, setPhosphorus] = useState<string>(
+  const [phosphorus, setPhosphorus] = useState<string | undefined>(
     useAppSelector(selectPhosphorus)
   );
-  const [potassium, setPotassium] = useState<string>(
+  const [potassium, setPotassium] = useState<string | undefined>(
     useAppSelector(selectPotassium)
   );
-  const [ph, setPh] = useState<string>(useAppSelector(selectPh));
+  const [ph, setPh] = useState<string | undefined>(useAppSelector(selectPh));
 
   const getCrop = () => {
     const crop: Crop = {
@@ -74,6 +75,10 @@ const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
   };
 
   const handleSkip = () => {
+    dispatch(storeNitrogen(null));
+    dispatch(storePhosphorus(null));
+    dispatch(storePotassium(null));
+    dispatch(storePh(null));
     getCrop();
     onNext();
   };
@@ -101,30 +106,19 @@ const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
       <Body>
         <div>
           <Typography weight="500">Nitrogen (N)</Typography>
-          <div>
-            <TextField value={nitrogen} setValue={setNitrogen} />
-            <Typography weight="400">unit</Typography>
-          </div>
+          <NumberField value={nitrogen} setValue={setNitrogen} />
         </div>
         <div>
           <Typography weight="500">Phosphorus (P)</Typography>
-          <div>
-            <TextField value={phosphorus} setValue={setPhosphorus} />
-            <Typography weight="400">unit</Typography>
-          </div>
+          <NumberField value={phosphorus} setValue={setPhosphorus} />
         </div>
         <div>
           <Typography weight="500">Potassium (K)</Typography>
-          <div>
-            <TextField value={potassium} setValue={setPotassium} />
-            <Typography weight="400">unit</Typography>
-          </div>
+          <NumberField value={potassium} setValue={setPotassium} />
         </div>
         <div>
           <Typography weight="500">pH</Typography>
-          <div>
-            <TextField value={ph} setValue={setPh} />
-          </div>
+          <NumberField value={ph} setValue={setPh} />
         </div>
       </Body>
       <Footer>
