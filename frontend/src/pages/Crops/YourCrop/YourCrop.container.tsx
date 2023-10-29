@@ -2,8 +2,19 @@ import { useEffect, useState } from "react";
 
 import YourCropView from "./YourCrop.view";
 import { YourCropGeneratedProps } from "./YourCrop.props";
+import {
+  useFavoriteMutation,
+  useGetPlantedCropsQuery,
+  usePlantNowMutation,
+  useRemoveCropMutation,
+} from "../../../features/crops/cropApiSlice";
+import toast from "react-hot-toast";
 
 const YourCrop = (): JSX.Element => {
+  const [plantNow] = usePlantNowMutation();
+  const [favorite] = useFavoriteMutation();
+  const [removeCrop] = useRemoveCropMutation();
+  const { data, isLoading } = useGetPlantedCropsQuery("");
   const [crops, setCrops] = useState<
     { id: string; name: string; isPlanted: boolean }[]
   >([]);
@@ -35,17 +46,34 @@ const YourCrop = (): JSX.Element => {
     setSuggestionVisibility(true);
   };
 
-  const handlePlant = (id: string) => {
+  const handlePlant = async (id: string) => {
     console.log(id);
+
+    await plantNow({ id })
+      .then(() => toast.success("Crop successfully planted"))
+      .catch(() => {
+        toast.error("An error occured. Please, try again later");
+      });
+  };
+  //
+  const handleFavorite = async (id: string) => {
+    console.log(id);
+    // pass the id and the favorite button should be toggled between true or false.
+    // await favorite({ id, isFavorite: true });
   };
 
-  const handleFavorite = (id: string) => {
+  const handleOnDelete = async (id: string) => {
     console.log(id);
+    await removeCrop({ id })
+      .then(() => toast.success("Crop successfully removed"))
+      .catch(() => {
+        toast.error("An error occured. Please, try again later");
+      });
   };
 
-  const handleOnDelete = (id: string) => {
-    console.log(id);
-  };
+  useEffect(() => {
+    console.log(data);
+  }, []);
 
   useEffect(() => {
     const cropItems = [
