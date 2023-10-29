@@ -12,7 +12,7 @@ const meta: Meta<typeof AddChoice> = {
     return (
       <Container>
         <Provider store={store}>
-          <AddChoice />
+          <AddChoice onLater={() => null} onNow={() => null} />
         </Provider>
       </Container>
     );

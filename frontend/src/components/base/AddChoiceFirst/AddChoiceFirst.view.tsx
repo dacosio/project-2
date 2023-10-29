@@ -11,6 +11,7 @@ import {
 } from "../../../features/addSuggestion/addCropSlice";
 import Button from "../Button";
 import { Crop } from "../../../types/store/CropState";
+import { useGetCropAboutAllQuery } from "features/cropEncyclopedia/cropEncyclopediaApiSlice";
 
 const AddChoiceFirst = (props: AddChoiceFirstProps): JSX.Element => {
   const { onNext } = props;
@@ -20,6 +21,10 @@ const AddChoiceFirst = (props: AddChoiceFirstProps): JSX.Element => {
   const [name, setName] = useState<string | undefined>(
     useAppSelector(selectName)
   );
+
+  const { data } = useGetCropAboutAllQuery(null);
+
+  console.log(data);
 
   const getCrop = () => {
     const crop: Crop = {

@@ -1,8 +1,4 @@
-export type Crop = {
-  id: string;
-  name: string;
-  isPlanted: boolean;
-};
+import { Crop } from "../../../types/store/CropState";
 
 export interface CropDetailProps {
   crop: Crop;

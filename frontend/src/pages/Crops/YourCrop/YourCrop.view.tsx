@@ -16,6 +16,8 @@ import AddChoiceModal from "../../../components/module/AddChoiceModal";
 
 const YourCropView = (props: YourCropGeneratedProps) => {
   const {
+    option,
+    setOption,
     crops,
     crop,
     choiceVisibility,
@@ -26,6 +28,8 @@ const YourCropView = (props: YourCropGeneratedProps) => {
     handleOnClickCrop,
     handleOnClickChoice,
     handleOnClickSuggestion,
+    handleLater,
+    handleNow,
     handlePlant,
     handleFavorite,
     handleOnDelete,
@@ -50,6 +54,13 @@ const YourCropView = (props: YourCropGeneratedProps) => {
           <CropList
             crops={crops}
             crop={crop}
+            options={[
+              { value: "all", label: "All" },
+              { value: "planted", label: "Planted" },
+              { value: "to-plant", label: "To Plant" },
+            ]}
+            option={option}
+            setOption={setOption}
             handleOnClickCrop={handleOnClickCrop}
             handleOnClickChoice={handleOnClickChoice}
             handleOnClickSuggestion={handleOnClickSuggestion}
@@ -93,10 +104,14 @@ const YourCropView = (props: YourCropGeneratedProps) => {
       <AddSuggestionModal
         visibility={suggestionVisibility}
         setVisibility={setSuggestionVisibility}
+        onLater={handleLater}
+        onNow={handleNow}
       />
       <AddChoiceModal
         visibility={choiceVisibility}
         setVisibility={setChoiceVisibility}
+        onLater={handleLater}
+        onNow={handleNow}
       />
     </Container>
   );

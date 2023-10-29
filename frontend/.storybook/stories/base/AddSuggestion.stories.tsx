@@ -12,7 +12,7 @@ const meta: Meta<typeof AddSuggestion> = {
     return (
       <Container>
         <Provider store={store}>
-          <AddSuggestion />
+          <AddSuggestion onLater={() => null} onNow={() => null} />
         </Provider>
       </Container>
     );

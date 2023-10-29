@@ -18,6 +18,9 @@ const CropList = (props: CropListProps): JSX.Element => {
   const {
     crops,
     crop,
+    options,
+    option,
+    setOption,
     handleOnClickCrop,
     handleOnClickChoice,
     handleOnClickSuggestion,
@@ -25,58 +28,54 @@ const CropList = (props: CropListProps): JSX.Element => {
 
   const theme = useTheme();
 
-  const [option, setOption] = useState<string | undefined>("all");
   const [visibility, setVisibility] = useState<boolean>(false);
 
   return (
     <Container>
       <TabContainer>
         <Tab
-          options={[
-            { value: "all", label: "All" },
-            { value: "planted", label: "Planted" },
-            { value: "to-plant", label: "To Plant" },
-          ]}
+          options={options}
           value={option}
           setValue={setOption}
           name="category"
         />
       </TabContainer>
       <List>
-        {crops
-          .filter((crop) =>
-            option === "planted"
-              ? crop.isPlanted
-              : option === "to-plant"
-              ? !crop.isPlanted
-              : true
-          )
-          .map((cropItem, index) => (
-            <Item
-              onClick={() => handleOnClickCrop(cropItem.id)}
-              key={index}
-              style={{
-                backgroundColor:
-                  cropItem.id === crop?.id
-                    ? theme.btn.color.outlineBg
-                    : undefined,
-              }}
-            >
-              <Typography variant="body" weight="700">
-                {cropItem.name}
-              </Typography>
-              <Typography
-                variant="small"
+        {crops &&
+          crops
+            .filter((crop) =>
+              option?.value === "planted"
+                ? crop.isPlanted
+                : option?.value === "to-plant"
+                ? !crop.isPlanted
+                : true
+            )
+            .map((cropItem, index) => (
+              <Item
+                onClick={() => handleOnClickCrop(cropItem._id)}
+                key={index}
                 style={{
-                  color: cropItem.isPlanted
-                    ? theme.btn.color.token
-                    : theme.btn.color.tokenHover,
+                  backgroundColor:
+                    cropItem._id === crop?._id
+                      ? theme.btn.color.outlineBg
+                      : undefined,
                 }}
               >
-                {cropItem.isPlanted ? "PLANTED" : "TO PLANT"}
-              </Typography>
-            </Item>
-          ))}
+                <Typography variant="body" weight="700">
+                  {cropItem.cropName}
+                </Typography>
+                <Typography
+                  variant="small"
+                  style={{
+                    color: cropItem.isPlanted
+                      ? theme.btn.color.token
+                      : theme.btn.color.tokenHover,
+                  }}
+                >
+                  {cropItem.isPlanted ? "PLANTED" : "TO PLANT"}
+                </Typography>
+              </Item>
+            ))}
       </List>
       <div style={{ alignItems: "flex-end" }}>
         <Button

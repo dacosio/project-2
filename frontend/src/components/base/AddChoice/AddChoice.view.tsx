@@ -7,6 +7,8 @@ import AddCropResult from "../AddCropResult";
 import Typography from "../Typography";
 
 const AddChoice = (props: AddChoiceProps): JSX.Element => {
+  const { onLater, onNow } = props;
+
   const handleBack = () => {
     back();
   };
@@ -15,13 +17,9 @@ const AddChoice = (props: AddChoiceProps): JSX.Element => {
     next();
   };
 
-  const handleLater = () => {};
-
-  const handleNow = () => {};
-
   const { step, back, next, isFirstStep } = useMultistepForm([
     <AddChoiceFirst onNext={handleNext} />,
-    <AddCropResult onLater={handleLater} onNow={handleNow} />,
+    <AddCropResult onLater={onLater} onNow={onNow} />,
   ]);
 
   return (

@@ -23,6 +23,8 @@ const meta: Meta<typeof AddChoiceModal> = {
           <AddChoiceModal
             visibility={visibility}
             setVisibility={setVisibility}
+            onLater={() => null}
+            onNow={() => null}
           />
         </Provider>
       </Container>

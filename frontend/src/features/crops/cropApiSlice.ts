@@ -14,7 +14,6 @@ export const cropApiSlice = apiSlice.injectEndpoints({
         },
       }),
       providesTags: (result) => {
-        console.log(result);
         if (result) {
           return [
             ...result.map(({ _id }: { _id: string | number }) => ({
@@ -27,6 +26,23 @@ export const cropApiSlice = apiSlice.injectEndpoints({
           return [{ type: TAG_TYPE.CROP, id: "LIST" }];
         }
       },
+    }),
+    addCrop: builder.mutation({
+      query: ({
+        cropId,
+        isPlanted,
+      }: {
+        cropId: string;
+        isPlanted: boolean;
+      }) => ({
+        url: "/api/crops",
+        method: METHOD.POST,
+        params: {
+          cropId,
+          isPlanted,
+        },
+      }),
+      invalidatesTags: [{ type: TAG_TYPE.CROP, id: "LIST" }],
     }),
   }),
 });

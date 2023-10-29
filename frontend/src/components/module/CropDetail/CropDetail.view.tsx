@@ -44,7 +44,7 @@ const CropDetail = (props: CropDetailProps): JSX.Element => {
                 TO PLANT
               </Typography>
             )}
-            <Typography variant="title3">{crop.name}</Typography>
+            <Typography variant="title3">{crop.cropName}</Typography>
           </TitleLeftContainer>
           <TitleRightContainer>
             <Hidden xs sm md lg>
@@ -54,17 +54,20 @@ const CropDetail = (props: CropDetailProps): JSX.Element => {
                   iconPosition="before"
                   icon={<Favorite fill={theme.btn.color.primary} />}
                   text="Favorite"
-                  onClick={() => handleFavorite(crop.id)}
+                  onClick={() => handleFavorite(crop._id)}
                 />
               ) : (
-                <Button text="Plant Now" onClick={() => handlePlant(crop.id)} />
+                <Button
+                  text="Plant Now"
+                  onClick={() => handlePlant(crop._id)}
+                />
               )}
               <Button
                 variant="outline"
                 iconPosition="before"
                 icon={<Delete fill={theme.btn.color.primary} />}
                 text="Delete"
-                onClick={() => handleOnDelete(crop.id)}
+                onClick={() => handleOnDelete(crop._id)}
               />
             </Hidden>
             <Visible xs sm md lg>
@@ -73,16 +76,19 @@ const CropDetail = (props: CropDetailProps): JSX.Element => {
                   variant="outline"
                   iconPosition="before"
                   icon={<Favorite fill={theme.btn.color.primary} />}
-                  onClick={() => handleFavorite(crop.id)}
+                  onClick={() => handleFavorite(crop._id)}
                 />
               ) : (
-                <Button text="Plant Now" onClick={() => handlePlant(crop.id)} />
+                <Button
+                  text="Plant Now"
+                  onClick={() => handlePlant(crop._id)}
+                />
               )}
               <Button
                 variant="outline"
                 iconPosition="before"
                 icon={<Delete fill={theme.btn.color.primary} />}
-                onClick={() => handleOnDelete(crop.id)}
+                onClick={() => handleOnDelete(crop._id)}
               />
             </Visible>
           </TitleRightContainer>
@@ -102,13 +108,13 @@ const CropDetail = (props: CropDetailProps): JSX.Element => {
                 <Typography variant="body" weight="700">
                   Date Planted
                 </Typography>
-                <Typography variant="body">January 1, 2023</Typography>
+                <Typography variant="body">{crop.datePlanted}</Typography>
               </div>
               <div>
                 <Typography variant="body" weight="700">
                   Estimated Yield
                 </Typography>
-                <Typography variant="body">XX</Typography>
+                <Typography variant="body">{crop.estimatedYield}</Typography>
               </div>
             </DescriptionLeftContainer>
             <DescriptionRightContainer>
@@ -152,23 +158,15 @@ const CropDetail = (props: CropDetailProps): JSX.Element => {
           </DescriptionContainer>
         )}
         <CropInformation
-          temperature="10 - 15"
-          humidity="66 - 76"
-          growthDuration="1 - 2"
-          ph="0.0 - 0.0"
-          nitrogen="0"
-          phosphorus="0"
-          potassium="0"
-          suggestions={[
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "Phasellus aliquam metus nec nulla ullamcorper tempor.",
-            "Pellentesque vitae urna ut lectus mattis ullamcorper et ac felis.",
-          ]}
-          tips={[
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "Phasellus aliquam metus nec nulla ullamcorper tempor.",
-            "Pellentesque vitae urna ut lectus mattis ullamcorper et ac felis.",
-          ]}
+          temperature={`${crop.idealTemperature.celcius.min} - ${crop.idealTemperature.celcius.max}`}
+          humidity={`${crop.humidity.min} - ${crop.humidity.max}`}
+          growthDuration={`${crop.growthDuration.min} - ${crop.growthDuration.max}`}
+          ph={`${crop.soilPh.min} - ${crop.soilPh.max}`}
+          nitrogen={crop.soilN.toString()}
+          phosphorus={crop.soilP.toString()}
+          potassium={crop.soilK.toString()}
+          suggestions={crop.tools}
+          tips={crop.growingTips}
         />
       </div>
     </Container>
