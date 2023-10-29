@@ -21,6 +21,7 @@ const CropGuideView = (props: CropGuideGeneratedProps) => {
     data,
     searches,
     searchResults,
+    imageUrls,
     setSearchResults,
     searchTerm,
     setSearchTerm,
@@ -38,7 +39,7 @@ const CropGuideView = (props: CropGuideGeneratedProps) => {
       >
         <PlantResult
           key={i}
-          imageUrl={con.imageURL}
+          imageUrl={imageUrls[i]}
           imageAlt="random image"
           imgWidth="100%"
           imgHeight="100%"
