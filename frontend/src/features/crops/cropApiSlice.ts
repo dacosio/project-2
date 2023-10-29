@@ -29,7 +29,7 @@ export const cropApiSlice = apiSlice.injectEndpoints({
       },
     }),
     plant: builder.mutation({
-      //plantLater
+      //plantLater / plantnow if in crop guide page
       query: ({ cropId, plantNow }) => ({
         url,
         method: METHOD.POST,
@@ -37,12 +37,21 @@ export const cropApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [{ type: TAG_TYPE.CROP, id: "LIST" }],
     }),
-    plantNowFromGuide: builder.mutation({
-      // id is crop id
+    plantNow: builder.mutation({
+      //plantnow when coming from your crop
       query: ({ id }) => ({
-        url: `${url}/plant-now`,
-        method: METHOD.POST,
+        url: "api/plant-now",
+        method: METHOD.PUT,
         body: { id },
+      }),
+      invalidatesTags: [{ type: TAG_TYPE.CROP, id: "LIST" }],
+    }),
+    favorite: builder.mutation({
+      //plantnow when coming from your crop
+      query: ({ id, isFavorite }) => ({
+        url,
+        method: METHOD.PUT,
+        body: { id, isFavorite },
       }),
       invalidatesTags: [{ type: TAG_TYPE.CROP, id: "LIST" }],
     }),
@@ -60,6 +69,7 @@ export const cropApiSlice = apiSlice.injectEndpoints({
 export const {
   useGetPlantedCropsQuery,
   usePlantMutation,
-  usePlantNowFromGuideMutation,
   useRemoveCropMutation,
+  usePlantNowMutation,
+  useFavoriteMutation,
 } = cropApiSlice;

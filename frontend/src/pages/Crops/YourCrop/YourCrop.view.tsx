@@ -13,6 +13,7 @@ import CropDetail from "../../../components/module/CropDetail";
 import MobileDrawer from "./../../../components/base/MobileDrawer";
 import AddSuggestionModal from "../../../components/module/AddSuggestionModal";
 import AddChoiceModal from "../../../components/module/AddChoiceModal";
+import { Toaster } from "react-hot-toast";
 
 const YourCropView = (props: YourCropGeneratedProps) => {
   const {
@@ -98,6 +99,7 @@ const YourCropView = (props: YourCropGeneratedProps) => {
         visibility={choiceVisibility}
         setVisibility={setChoiceVisibility}
       />
+      <Toaster />
     </Container>
   );
 };

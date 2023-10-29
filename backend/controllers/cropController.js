@@ -97,7 +97,6 @@ const favoriteCrop = async (req, res) => {
 const plantNow = async (req, res) => {
   try {
     const { id } = req.body;
-    console.log("PLANT NOW", id);
     const updatedCrop = await Crops.findByIdAndUpdate(
       id,
       { $set: { isPlanted: true, datePlanted: new Date() } },
