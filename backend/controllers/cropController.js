@@ -7,7 +7,6 @@ const getAllCrops = async (req, res) => {
   try {
     const userId = req.id;
     const { isPlanted } = req.query;
-    console.log(typeof isPlanted);
     let crops;
     if (
       isPlanted !== undefined &&

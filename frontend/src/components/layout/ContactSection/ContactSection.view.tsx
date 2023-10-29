@@ -35,12 +35,10 @@ const ContactSection = (props: ContactSectionProps): JSX.Element => {
           "XjkLA79uvMpAgWV9B"
         )
         .then(
-          (result) => {
-            console.log(result.text);
+          () => {
             toast.success("Message sent");
           },
-          (error) => {
-            console.log("error.text");
+          () => {
             toast.error("unable to send your email");
           }
         );
