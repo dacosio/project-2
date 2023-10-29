@@ -4,7 +4,7 @@ import { theme } from "../../../utils/Theme";
 
 export const Container = styled.div`
     display: flex;
-    flex:0.25;
+    flex:1;
     flex-direction: column;
     // justify-content: space-between;
     gap:12px;

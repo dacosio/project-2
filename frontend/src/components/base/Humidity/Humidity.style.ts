@@ -6,8 +6,8 @@ export const Container = styled.div`
     display: flex;
     flex:0.25;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 1.3rem;
+    // justify-content: space-between;
+     gap: 0.8rem;
     padding: 16px 16px;
     box-shadow: 0 0 1px 1px ${theme.neutral.n20};
     border-radius: 1.3rem;

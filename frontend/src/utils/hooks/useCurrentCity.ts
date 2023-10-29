@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 type LocationData = {
-  currentCity: string | null;
+  currentCity: string | "Vancouver";
   errorMessage: string | null;
 };
 
@@ -25,12 +25,12 @@ const getCurrentCity = (): Promise<LocationData> => {
                 const city = data.results[0].components.city;
                 resolve({ currentCity: city, errorMessage: null });
               } else {
-                resolve({ currentCity: null, errorMessage: "City not found" });
+                resolve({ currentCity: "Vancouver", errorMessage: "City not found" });
               }
             })
             .catch((error) => {
               console.error("Error fetching city:", error);
-              resolve({ currentCity: null, errorMessage: "Error fetching city" });
+              resolve({ currentCity: "Vancouver", errorMessage: "Error fetching city" });
             });
         },
         (error) => {

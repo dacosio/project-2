@@ -54,6 +54,7 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
     gradientColor2,
     currentCondition,
     page,
+    onSelectedSearchLocation,
     ...currentWeatherProps
   } = props;
 
@@ -87,7 +88,11 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
               </DateForecastContainer>
 
               <SearchContainer>
-                <LocationSearch></LocationSearch>
+                <LocationSearch
+                  onClickControl={(value) => {
+                    onSelectedSearchLocation(value);
+                  }}
+                ></LocationSearch>
               </SearchContainer>
             </AddressDateForecastContainer>
             <SVGContainer>
@@ -242,7 +247,11 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
 
           <SearchTemperatureLowHighContainer>
             <SearchContainer>
-              <LocationSearch></LocationSearch>
+              <LocationSearch
+                onClickControl={(value) => {
+                  onSelectedSearchLocation(value);
+                }}
+              ></LocationSearch>
             </SearchContainer>
 
             <TemperatureLowHighContainer>

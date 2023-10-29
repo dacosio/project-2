@@ -11,6 +11,7 @@ export interface CurrentWeatherProps {
   gradientColor2: string;
   currentCondition: string;
   page : string;
+  onSelectedSearchLocation: (address: string) => void;
 }
 
 // Styles

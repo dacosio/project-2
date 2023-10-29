@@ -7,7 +7,7 @@ import Typography from "../../base/Typography";
 
 const LocationSearch = (props: LocationSearchProps): JSX.Element => {
   const apiKey: string | undefined = process.env.REACT_APP_PLACES_API;
-
+  const { onClickControl } = props;
   const {
     placesService,
     placePredictions,
@@ -29,7 +29,10 @@ const LocationSearch = (props: LocationSearchProps): JSX.Element => {
         {
           placeId: item.place_id,
         },
-        (placeDetails) => console.log(placeDetails)
+        (placeDetails) => {
+          console.log(placeDetails);
+          placeDetails && onClickControl(placeDetails.name || "Toronto");
+        }
       );
     }
   };

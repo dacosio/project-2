@@ -19,15 +19,16 @@ import Wind from "components/base/Wind";
 import Precipitation from "components/base/Precipitation";
 import Humidity from "../../components/base/Humidity";
 import WeatherAlert from "components/base/WeatherAlert";
+import { Col, Row } from "react-grid-system";
 
 const WeatherView = (props: WeatherGeneratedProps) => {
   const [weatherData, setWeatherData] = useState<{ [key: string]: any }>({});
-  const [weatherDataArray, setWeatherDataArray] = useState<{
-    [key: string]: any;
-  }>({});
   const MOCK_OPTIONS = ["Today", "15-day"];
   const [state, setState] = useState(MOCK_OPTIONS[0]);
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedAddress, setSelectedAddress] = useState(
+    useCurrentCity().currentCity
+  );
   let gradientColor1 = "";
   let gradientColor2 = "";
   let currentCondition = "";
@@ -43,11 +44,17 @@ const WeatherView = (props: WeatherGeneratedProps) => {
     thunderStormRain: ["#7148D5", "#C9A6C7"],
   });
   const date = new Date();
-  const { currentCity, errorMessage } = useCurrentCity();
-  console.log(`currentCity : ${currentCity}`);
-  const apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${currentCity}?unitGroup=metric&key=${process.env.REACT_APP_WEATHER_API_KEY}&contentType=json`;
+  // const { currentCity, errorMessage } = useCurrentCity();
+  // if (currentCity) {
+  //   setSelectedAddress(currentCity);
+  //   console.log(`selectedAddress : ${selectedAddress}`);
+  // }
+
+  console.log(`currentCity : ${selectedAddress}`);
   // console.log(`apiUrl : ${apiUrl}`);
   useEffect(() => {
+    const apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${selectedAddress}?unitGroup=metric&key=${process.env.REACT_APP_WEATHER_API_KEY}&contentType=json`;
+
     // get data from weather API and use the data on setWeatherData
     const onFetchWeather = () =>
       axios
@@ -64,11 +71,11 @@ const WeatherView = (props: WeatherGeneratedProps) => {
         });
 
     onFetchWeather();
-  }, []);
+  }, [selectedAddress]);
   console.log(weatherData);
 
   if (
-    currentCity &&
+    selectedAddress &&
     weatherData &&
     weatherData.days &&
     weatherData.days.length > 0
@@ -143,16 +150,9 @@ const WeatherView = (props: WeatherGeneratedProps) => {
     console.log(`currentCondition : ${currentCondition}`);
   }
 
-  const handleSegmentedState = (value: string) => {
-    if (value === MOCK_OPTIONS[0]) {
-      setWeatherDataArray(weatherData.days[0]);
-    }
-
-    if (value === MOCK_OPTIONS[1]) {
-      setWeatherDataArray(weatherData.days);
-    }
-
-    console.log(weatherDataArray);
+  const handleSelectedSearchLocation = (address: string) => {
+    console.log("Weather address " + address);
+    setSelectedAddress(address);
   };
 
   const handleSelectedWeatherIndex = (value: number) => {
@@ -162,13 +162,13 @@ const WeatherView = (props: WeatherGeneratedProps) => {
 
   return (
     <Container>
-      {currentCity &&
+      {selectedAddress &&
       weatherData &&
       weatherData.days &&
       weatherData.days.length > 0 ? (
         <>
           <CurrentWeather
-            currentLocation={currentCity}
+            currentLocation={selectedAddress}
             forecast={weatherData.currentConditions.conditions}
             currentTemperature={weatherData.currentConditions.temp}
             lowTemperature={weatherData.days[0]?.tempmin}
@@ -180,6 +180,7 @@ const WeatherView = (props: WeatherGeneratedProps) => {
             gradientColor2={gradientColor2}
             currentCondition={currentCondition}
             page="weather"
+            onSelectedSearchLocation={handleSelectedSearchLocation}
           />
           <SegmentedControl
             options={MOCK_OPTIONS}
@@ -187,7 +188,6 @@ const WeatherView = (props: WeatherGeneratedProps) => {
             onClickControl={(value: string) => {
               console.log(value);
               setState(value);
-              handleSegmentedState(value);
               console.log(state);
             }}
           />
@@ -199,8 +199,8 @@ const WeatherView = (props: WeatherGeneratedProps) => {
             onSelectedWeatherIndex={handleSelectedWeatherIndex}
           ></HourlyDaily>
 
-          <BottomContainer>
-            <WindContainer>
+          <Row>
+            <Col md={6} lg={3} style={{ gap: "20px" }}>
               <Wind
                 windSpeed={
                   state === MOCK_OPTIONS[0]
@@ -218,8 +218,8 @@ const WeatherView = (props: WeatherGeneratedProps) => {
                     : weatherData.days[selectedIndex].winddir
                 }
               ></Wind>
-            </WindContainer>
-            <PrecipitationContainer>
+            </Col>
+            <Col md={6} lg={3} style={{ gap: "20px" }}>
               <Precipitation
                 precip={
                   state === MOCK_OPTIONS[0]
@@ -228,8 +228,8 @@ const WeatherView = (props: WeatherGeneratedProps) => {
                 }
                 nextExpectedRainfall="monday"
               ></Precipitation>
-            </PrecipitationContainer>
-            <HumidityContainer>
+            </Col>
+            <Col md={6} lg={3} style={{ gap: "20px" }}>
               <Humidity
                 humidity={
                   state === MOCK_OPTIONS[0]
@@ -242,11 +242,11 @@ const WeatherView = (props: WeatherGeneratedProps) => {
                     : weatherData.days[selectedIndex].dew
                 }
               ></Humidity>
-            </HumidityContainer>
-            <WeatherAlertContainer>
+            </Col>
+            <Col md={6} lg={3} style={{ gap: "20px" }}>
               <WeatherAlert alert="National Weather Service: SEVERE STORM WARNING in effect in this area until 6:30 PM CST for destructive 80mph winds. "></WeatherAlert>
-            </WeatherAlertContainer>
-          </BottomContainer>
+            </Col>
+          </Row>
         </>
       ) : (
         <Typography>Loading weather data.</Typography>
