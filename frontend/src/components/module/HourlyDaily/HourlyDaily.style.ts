@@ -21,16 +21,20 @@ border-bottom : 1px solid ${({ theme }) => theme.neutral.n20};
 
 export const WeatherDataContainer = styled.div`
 display:flex;
+//  border: 2px solid red;
+// background-color : #8ECCEF";
 overflow-x: scroll;
- padding-bottom: 2rem;
+overflow-y: hidden;
+   padding-bottom: 2rem;
+  padding-top:1rem;
 
-//border-radius: 20px;
+border-radius: 20px;
 // border: 1px solid red;
 
 
 // ::-webkit-scrollbar {
 //     display: none; 
-//   }
+  }
   ::-webkit-scrollbar {
     height: 4px;  
     margin-top: 2rem;

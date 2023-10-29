@@ -14,7 +14,7 @@ export const Container = styled.div`
    display:flex;
    max-width: 1021px;
    // border:2px solid red;
-   box-sizing: border-box;
+   // box-sizing: border-box;
    `
 
 

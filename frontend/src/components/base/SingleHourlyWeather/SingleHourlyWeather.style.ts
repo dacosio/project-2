@@ -14,11 +14,16 @@ export const Container = styled.button<{ active: boolean }>`
   justify-content: space-between;
   text-align: center;
   border: none;
-  // border-radius: ${(props) => (props.active ? "20px" : "none")};
+    border-radius: ${(props) => (props.active ? "20px" : "0")};
   //  height : ${(props) => (props.active ? "160px" : "132px")};
-  //  position: ${(props) => (props.active ? "relative" : "none")};
+  // position: ${(props) => (props.active ? "absolute" : "none")};
   //  bottom : ${(props) => (props.active ? "100px" : "none")};
-   z-index : 9999999;
+  transition: transform 0.5s;
+  transform: scale(${(props) => (props.active ? 1.14 : 1)}); 
+  z-index: ${(props) => (props.active ? 2 : 0)};
+
+
+  
 
   &:hover {
     background-color: #FFFFFF;

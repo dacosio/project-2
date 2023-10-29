@@ -66,16 +66,16 @@ width: 64px;
     border-color: transparent transparent transparent black;
   }
 
-  :before {
-    content: '';
-    position: absolute;
-    top: -2.4px; 
-    left: -3.4px; 
-    border-width: 3.4px;
-    border-style: solid;
-    border-radius:50%;
-    border-color: black black black black;
-  }
+  // :before {
+  //   content: '';
+  //   position: absolute;
+  //   top: -2.4px; 
+  //   left: -3.4px; 
+  //   border-width: 3.4px;
+  //   border-style: solid;
+  //   border-radius:50%;
+  //   border-color: black black black black;
+  // }
 
 `
 
