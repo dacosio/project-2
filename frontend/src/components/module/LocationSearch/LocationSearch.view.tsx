@@ -4,8 +4,15 @@ import { Container, ResultsContainer } from "./LocationSearch.style";
 import TextField from "../../base/TextField";
 import useGoogle from "react-google-autocomplete/lib/usePlacesAutocompleteService";
 import Typography from "../../base/Typography";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import {
+  selectLocation,
+  storeLocation,
+} from "../../../features/location/locationSlice";
 
 const LocationSearch = (props: LocationSearchProps): JSX.Element => {
+  const dispatch = useAppDispatch();
+
   const apiKey: string | undefined = process.env.REACT_APP_PLACES_API;
   const { onClickControl } = props;
   const {
@@ -17,19 +24,24 @@ const LocationSearch = (props: LocationSearchProps): JSX.Element => {
     apiKey,
   });
 
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState<string | undefined>(
+    useAppSelector(selectLocation)?.formatted_address
+  );
+
   const handleSelectPlace = (item: {
     description: string;
     place_id: string;
   }) => {
     getPlacePredictions({ input: "" });
-    setValue(item.description);
     if (placesService && item.place_id) {
       placesService.getDetails(
         {
           placeId: item.place_id,
+          language: "en",
         },
         (placeDetails) => {
+          setValue(placeDetails?.formatted_address);
+          dispatch(storeLocation(placeDetails));
           console.log(placeDetails);
           placeDetails && onClickControl(placeDetails.name || "Toronto");
         }
@@ -40,11 +52,13 @@ const LocationSearch = (props: LocationSearchProps): JSX.Element => {
   return (
     <Container>
       <TextField
+        value={value}
         onChange={(evt) => {
+          console.log("t");
           getPlacePredictions({ input: evt.target.value });
           setValue(evt.target.value);
         }}
-        placeholder="City, Province, etc"
+        placeholder="Type in your city, province, etc..."
       />
       <ResultsContainer>
         {!isPlacePredictionsLoading &&

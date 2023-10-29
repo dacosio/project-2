@@ -45,9 +45,7 @@ const HomeNavigation = (props: HomeNavigationProps): JSX.Element => {
           </ul>
         </NavOptions>
         <LoginOptions>
-          <Hidebutton>
             <LoginModal />
-          </Hidebutton>
           <SignupModal />
         </LoginOptions>
       </Nav>

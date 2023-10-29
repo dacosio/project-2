@@ -5,24 +5,42 @@ import {
   useGetCropAboutQuery,
   useGetCropAboutAllQuery,
 } from "./../../../features/cropEncyclopedia/cropEncyclopediaApiSlice";
+import {
+  usePlantMutation,
+  // usePlantNowMutation,
+} from "features/crops/cropApiSlice";
+import toast from "react-hot-toast";
 
 const CropAbout = (): JSX.Element => {
   const { id } = useParams();
   const { data } = useGetCropAboutQuery(`${id}`);
   const crops = data || [];
-
-  const handlePlantNow = () => {
-    console.log("Plant Now");
+  const [plant] = usePlantMutation();
+  const handlePlantLater = async () => {
+    try {
+      await plant({ cropId: id, plantNow: false }).then(() =>
+        toast.success("Plant saved for later.")
+      );
+    } catch (error) {
+      console.log(error);
+      toast.error("An error occured. Please try again later");
+    }
   };
-
-  const handlePlantLater = () => {
-    console.log("Plant Later");
+  const handlePlantNow = async () => {
+    try {
+      await plant({ cropId: id, plantNow: true }).then(() =>
+        toast.success("Planted now.")
+      );
+    } catch (error) {
+      console.log(error);
+      toast.error("An error occured. Please try again later");
+    }
   };
 
   const generatedProps = {
-    crops: crops,
-    handlePlantNow: handlePlantNow,
-    handlePlantLater: handlePlantLater,
+    crops,
+    handlePlantNow,
+    handlePlantLater,
   };
   return <CropAboutView {...generatedProps} />;
 };

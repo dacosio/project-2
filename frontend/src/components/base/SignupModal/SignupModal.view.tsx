@@ -1,6 +1,6 @@
 import React from "react";
 import { SignupModalProps } from "./SignupModal.props";
-import { Container } from "./SignupModal.style";
+import { Container, Hidebutton } from "./SignupModal.style";
 import Button from "../Button";
 import Modal from "../Modal";
 import Signup from "../Signup";
@@ -26,19 +26,22 @@ const SignupModal = (props: SignupModalProps): JSX.Element => {
   const onClose = () => {
     dispatch(toggleSignUp(false));
     dispatch(toggleSignIn(false));
-  }
+  };
   return (
     <Container>
-      <Button
-        text="Sign up"
-        variant="primary"
-        onClick={toggleModal}
-        style={matches ? { width: "160px" } : { width: "100px" }}
-      />
+      <Hidebutton>
+        <Button
+          text="Sign up"
+          variant="primary"
+          onClick={toggleModal}
+          style={matches ? { width: "160px" } : { width: "100px" }}
+        />
+      </Hidebutton>
       <Modal
         title={"This is my modal"}
         isOpen={signUpModalState}
-        onClose={onClose}>
+        onClose={onClose}
+      >
         <Signup />
       </Modal>
     </Container>

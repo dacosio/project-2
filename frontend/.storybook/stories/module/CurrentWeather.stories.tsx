@@ -21,6 +21,10 @@ const meta: Meta<typeof CurrentWeather> = {
       thunderStormRain: ["#4D54D5", "#C29EC9"],
     });
 
+    const handleSelectedSearchLocation = (address: string) => {
+      console.log("Weather address " + address);
+    };
+
     return (
       <Container>
         <div
@@ -43,6 +47,7 @@ const meta: Meta<typeof CurrentWeather> = {
             gradientColor2={gradientObject.thunderStormRain[1]}
             currentCondition="thunderStormRain"
             page="dashboard"
+            onSelectedSearchLocation={handleSelectedSearchLocation}
           />
           <div
             style={{
@@ -66,6 +71,7 @@ const meta: Meta<typeof CurrentWeather> = {
               gradientColor2={gradientObject.clear[1]}
               currentCondition="clear"
               page="weather"
+              onSelectedSearchLocation={handleSelectedSearchLocation}
             />
 
             <CurrentWeather
@@ -81,6 +87,7 @@ const meta: Meta<typeof CurrentWeather> = {
               gradientColor2={gradientObject.partiallyCloudy[1]}
               currentCondition="partiallyCloudy"
               page="weather"
+              onSelectedSearchLocation={handleSelectedSearchLocation}
             />
 
             <CurrentWeather
@@ -96,6 +103,7 @@ const meta: Meta<typeof CurrentWeather> = {
               gradientColor2={gradientObject.overcast[1]}
               currentCondition="overcast"
               page="weather"
+              onSelectedSearchLocation={handleSelectedSearchLocation}
             />
 
             <CurrentWeather
@@ -111,6 +119,7 @@ const meta: Meta<typeof CurrentWeather> = {
               gradientColor2={gradientObject.rain[1]}
               currentCondition="rain"
               page="weather"
+              onSelectedSearchLocation={handleSelectedSearchLocation}
             />
 
             <CurrentWeather
@@ -126,6 +135,7 @@ const meta: Meta<typeof CurrentWeather> = {
               gradientColor2={gradientObject.thunderStorm[1]}
               currentCondition="thunderStorm"
               page="weather"
+              onSelectedSearchLocation={handleSelectedSearchLocation}
             />
 
             <CurrentWeather
@@ -141,6 +151,7 @@ const meta: Meta<typeof CurrentWeather> = {
               gradientColor2={gradientObject.snow[1]}
               currentCondition="snow"
               page="weather"
+              onSelectedSearchLocation={handleSelectedSearchLocation}
             />
 
             <CurrentWeather
@@ -156,6 +167,7 @@ const meta: Meta<typeof CurrentWeather> = {
               gradientColor2={gradientObject.snowRain[1]}
               currentCondition="snowRain"
               page="weather"
+              onSelectedSearchLocation={handleSelectedSearchLocation}
             />
 
             <CurrentWeather
@@ -171,6 +183,7 @@ const meta: Meta<typeof CurrentWeather> = {
               gradientColor2={gradientObject.thunderStormRain[1]}
               currentCondition="thunderStormRain"
               page="weather"
+              onSelectedSearchLocation={handleSelectedSearchLocation}
             />
           </div>
         </div>

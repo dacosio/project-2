@@ -14,7 +14,17 @@ import Accordion from "../../../components/base/Accordion";
 import CropCondition from "../../../components/base/CropCondition";
 
 const CropInformation = (props: CropInformationProps): JSX.Element => {
-  const { ph, nitrogen, phosphorus, potassium, suggestions, tips } = props;
+  const {
+    temperature,
+    humidity,
+    growthDuration,
+    ph,
+    nitrogen,
+    phosphorus,
+    potassium,
+    suggestions,
+    tips,
+  } = props;
 
   const Fertilizers = (
     <>
@@ -85,10 +95,10 @@ const CropInformation = (props: CropInformationProps): JSX.Element => {
       <InformationContainer>
         <Typography variant="title5">Crop Information</Typography>
         <div>
-          <CropCondition title="Temperature" output="0.0 - 0.0°C" />
-          <CropCondition title="Humidity" output="00 - 00%" />
-          <CropCondition title="Growth" output="0 - 0 months" />
-          <CropCondition title="Soil pH" output="0 - 0 months" />
+          <CropCondition title="Temperature" output={`${temperature}℃`} />
+          <CropCondition title="Humidity" output={`${humidity}%`} />
+          <CropCondition title="Growth" output={`${growthDuration}months`} />
+          <CropCondition title="Soil pH" output={`${ph}`} />
         </div>
       </InformationContainer>
       <FertilizerContainer>

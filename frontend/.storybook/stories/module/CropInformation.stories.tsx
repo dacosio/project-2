@@ -10,7 +10,10 @@ const meta: Meta<typeof CropInformation> = {
     return (
       <Container>
         <CropInformation
-          ph="0.0 - 0.0"
+          temperature="10 - 15"
+          humidity="66 - 76"
+          growthDuration="1 - 2"
+          ph="5.6 - 6.5"
           nitrogen="0"
           phosphorus="0"
           potassium="0"

@@ -18,7 +18,7 @@ import CircleProgress from "./../../base/CircleProgress";
 import CropInformation from "../CropInformation";
 
 const CropDetail = (props: CropDetailProps): JSX.Element => {
-  const { crop, handlePlant, handleOnDelete } = props;
+  const { crop, handlePlant, handleFavorite, handleOnDelete } = props;
 
   const theme = useTheme();
 
@@ -48,14 +48,16 @@ const CropDetail = (props: CropDetailProps): JSX.Element => {
           </TitleLeftContainer>
           <TitleRightContainer>
             <Hidden xs sm md lg>
-              {!crop.isPlanted && (
+              {crop.isPlanted ? (
                 <Button
                   variant="outline"
                   iconPosition="before"
                   icon={<Favorite fill={theme.btn.color.primary} />}
-                  text="Plant"
-                  onClick={() => handlePlant(crop.id)}
+                  text="Favorite"
+                  onClick={() => handleFavorite(crop.id)}
                 />
+              ) : (
+                <Button text="Plant Now" onClick={() => handlePlant(crop.id)} />
               )}
               <Button
                 variant="outline"
@@ -66,13 +68,15 @@ const CropDetail = (props: CropDetailProps): JSX.Element => {
               />
             </Hidden>
             <Visible xs sm md lg>
-              {!crop.isPlanted && (
+              {crop.isPlanted ? (
                 <Button
                   variant="outline"
                   iconPosition="before"
                   icon={<Favorite fill={theme.btn.color.primary} />}
-                  onClick={() => handlePlant(crop.id)}
+                  onClick={() => handleFavorite(crop.id)}
                 />
+              ) : (
+                <Button text="Plant Now" onClick={() => handlePlant(crop.id)} />
               )}
               <Button
                 variant="outline"
@@ -148,6 +152,9 @@ const CropDetail = (props: CropDetailProps): JSX.Element => {
           </DescriptionContainer>
         )}
         <CropInformation
+          temperature="10 - 15"
+          humidity="66 - 76"
+          growthDuration="1 - 2"
           ph="0.0 - 0.0"
           nitrogen="0"
           phosphorus="0"
