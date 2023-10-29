@@ -1,6 +1,6 @@
-import { apiSlice } from "app/api/apiSlice";
-import { METHOD } from "const/methods";
-import { TAG_TYPE } from "const/tags";
+import { apiSlice } from "../../app/api/apiSlice";
+import { METHOD } from "../../const/methods";
+import { TAG_TYPE } from "../../const/tags";
 const url = "api/crops";
 
 export const cropApiSlice = apiSlice.injectEndpoints({
