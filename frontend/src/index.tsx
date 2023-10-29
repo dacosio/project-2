@@ -9,6 +9,7 @@ import { disableReactDevTools } from "@fvilers/disable-react-devtools";
 import { ThemeProvider } from "@emotion/react";
 import theme from "./utils/Theme";
 import { Theme } from "types/Theme";
+import { cropEncyclopediaApiSlice } from "features/cropEncyclopedia/cropEncyclopediaApiSlice";
 // import { Theme } from "@emotion/react";
 
 // if (process.env.NODE_ENV === "production") disableReactDevTools();
@@ -17,7 +18,11 @@ const container = document.getElementById("root")!;
 const root = createRoot(container);
 
 // this is for future prefetch necessities
-// store.dispatch(todosApiSlice.endpoints.getTodos.initiate());
+store.dispatch(
+  cropEncyclopediaApiSlice.endpoints.getCropAboutAll.initiate({
+    forceRefetch: true,
+  })
+);
 
 root.render(
   <React.StrictMode>

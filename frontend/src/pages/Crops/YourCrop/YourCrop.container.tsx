@@ -2,15 +2,26 @@ import { useEffect, useState } from "react";
 
 import YourCropView from "./YourCrop.view";
 import { YourCropGeneratedProps } from "./YourCrop.props";
-import { useGetPlantedCropsQuery } from "features/crops/cropApiSlice";
+import {
+  useFavoriteMutation,
+  useGetPlantedCropsQuery,
+  usePlantNowMutation,
+  useRemoveCropMutation,
+} from "../../../features/crops/cropApiSlice";
 import { Crop } from "../../../types/store/CropState";
 import { Option } from "components/base/Tab/Tab.props";
+import toast from "react-hot-toast";
 
 const YourCrop = (): JSX.Element => {
   const [option, setOption] = useState<Option | undefined>({
     value: "all",
     label: "All",
   });
+
+  const [plantNow] = usePlantNowMutation();
+  const [favorite] = useFavoriteMutation();
+  const [removeCrop] = useRemoveCropMutation();
+  const { data, isLoading } = useGetPlantedCropsQuery("");
   const [crops, setCrops] = useState<Crop[]>([]);
   const [crop, setCrop] = useState<Crop | undefined>(undefined);
   const [choiceVisibility, setChoiceVisibility] = useState<boolean>(false);
@@ -30,6 +41,7 @@ const YourCrop = (): JSX.Element => {
   const handleDrawerOpen = () => {
     setIsOpenDrawer(true);
   };
+
   const handleDrawerClose = () => {
     setIsOpenDrawer(false);
   };
@@ -55,17 +67,34 @@ const YourCrop = (): JSX.Element => {
     console.log("Now");
   };
 
-  const handlePlant = (id: string) => {
+  const handlePlant = async (id: string) => {
     console.log(id);
+
+    await plantNow({ id })
+      .then(() => toast.success("Crop successfully planted"))
+      .catch(() => {
+        toast.error("An error occured. Please, try again later");
+      });
+  };
+  //
+  const handleFavorite = async (id: string) => {
+    console.log(id);
+    // pass the id and the favorite button should be toggled between true or false.
+    // await favorite({ id, isFavorite: true });
   };
 
-  const handleFavorite = (id: string) => {
+  const handleOnDelete = async (id: string) => {
     console.log(id);
+    await removeCrop({ id })
+      .then(() => toast.success("Crop successfully removed"))
+      .catch(() => {
+        toast.error("An error occured. Please, try again later");
+      });
   };
 
-  const handleOnDelete = (id: string) => {
-    console.log(id);
-  };
+  useEffect(() => {
+    console.log(data);
+  }, []);
 
   useEffect(() => {
     const items = cropsData as Crop[];

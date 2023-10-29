@@ -15,6 +15,7 @@ import Button from "components/base/Button";
 import { Container, Row, Col, Hidden, Visible } from "react-grid-system";
 import CropCondition from "components/base/CropCondition";
 import Accordion from "../../../components/base/Accordion";
+import { Toaster } from "react-hot-toast";
 
 const CropAboutView = (props: CropAboutProps) => {
   const { crops, handlePlantLater, handlePlantNow } = props;
@@ -107,6 +108,8 @@ const CropAboutView = (props: CropAboutProps) => {
   return (
     <Wrapper>
       <Container className="container">
+        <Toaster />
+
         <Row gutterWidth={20}>
           <Col>
             <Typography variant="title3">{crop?.cropName}</Typography>
