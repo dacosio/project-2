@@ -37,6 +37,7 @@ export interface CropGuideGeneratedProps {
     fetchSearchResult: any;
     data: any;
     imageUrls: any;
+    loading: boolean;
 }
 
 export type YourSearchItemType = {

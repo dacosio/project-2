@@ -22,6 +22,7 @@ const CropGuideView = (props: CropGuideGeneratedProps) => {
     searches,
     searchResults,
     imageUrls,
+    loading,
     setSearchResults,
     searchTerm,
     setSearchTerm,
@@ -81,7 +82,9 @@ const CropGuideView = (props: CropGuideGeneratedProps) => {
               delay={delay}
             />
           ) : (
-            <AllCrop>{displayAllCrop()}</AllCrop>
+            <AllCrop>
+              {loading ? <div>Loading...</div> : displayAllCrop()}
+            </AllCrop>
           )}
         </Body>
       </Container>
