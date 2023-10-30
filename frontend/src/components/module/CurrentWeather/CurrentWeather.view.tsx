@@ -113,7 +113,7 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
               ) : currentCondition === "thunderStormRain" ? (
                 <ThunderStormRain width={160} height={160} />
               ) : (
-                <Cloudy width={160} height={160} />
+                <PartiallyCloudy width={160} height={160} />
               )}
             </SVGContainer>
           </AddressDateForecastSVGContainer>

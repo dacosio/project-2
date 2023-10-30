@@ -8,7 +8,8 @@ export const Container = styled.button<{ active: boolean }>`
   padding: 8px;
   justify-items: stretch;
   align-items: center;
-  background: ${(props) => (props.active ? "#FFFFFF" : "#8ECCEF")};
+  // background: ${(props) => (props.active ? "#FFFFFF" : "#8ECCEF")};
+   background: ${(props) => (props.active ? "#FFFFFF" : "#1FB4F4")};
   color: ${(props) => (props.active ? "#000000" : "#FFFFFF")};
   row-gap:1rem;
   justify-content: space-between;

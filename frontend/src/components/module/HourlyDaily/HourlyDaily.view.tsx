@@ -13,6 +13,7 @@ const HourlyDaily = (props: HourlyDailyProps): JSX.Element => {
     weatherDataArray,
     state,
     onSelectedWeatherIndex,
+    index,
     ...hourlyDailyProps
   } = props;
   let weatherDataFilteredArray: Array<{ [key: string]: any }>;
@@ -28,7 +29,7 @@ const HourlyDaily = (props: HourlyDailyProps): JSX.Element => {
     description = weatherDataArray.description;
   } else {
     weatherDataFilteredArray = weatherDataArray.days;
-    description = weatherDataFilteredArray[0].description;
+    description = weatherDataFilteredArray[index].description;
   }
 
   const getTime = (datetime: string, state: string) => {
