@@ -15,6 +15,7 @@ import Typography from "components/base/Typography";
 import Search from "components/base/Search";
 import SearchResult from "components/base/SearchResult";
 import { Link } from "react-router-dom";
+import Loading from "components/base/Loading";
 
 const CropGuideView = (props: CropGuideGeneratedProps) => {
   const {
@@ -82,9 +83,7 @@ const CropGuideView = (props: CropGuideGeneratedProps) => {
               delay={delay}
             />
           ) : (
-            <AllCrop>
-              {loading ? <div>Loading...</div> : displayAllCrop()}
-            </AllCrop>
+            <AllCrop>{loading ? <Loading /> : displayAllCrop()}</AllCrop>
           )}
         </Body>
       </Container>
