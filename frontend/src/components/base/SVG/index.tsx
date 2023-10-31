@@ -1,4 +1,6 @@
 /* PLOP_INJECT_IMPORT */
+export { default as WindCompass } from './WindCompass';
+export { default as WeatherAlertSVG } from "./WeatherAlertSVG";
 export { default as DrawerHandle } from "./DrawerHandle";
 export { default as ThunderStormRainInactive } from "./ThunderStormRainInactive";
 export { default as Suggestion } from "./Suggestion";
