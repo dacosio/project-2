@@ -60,7 +60,7 @@ const predictYield = async (req, res) => {
     if (!city && !cropName) {
       return res.status(400).json({ message: "All fields are required." });
     }
-    
+
     const temperature = await Temperature.find({ city }).select("mean").lean();
 
     const precipitation = await Precipitation.find({ city })
@@ -83,7 +83,7 @@ const predictYield = async (req, res) => {
     };
     const result = await axios.post(url, data);
 
-    res.status(200).json({ message: result.data });
+    res.status(200).json({ yield: result.data });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
