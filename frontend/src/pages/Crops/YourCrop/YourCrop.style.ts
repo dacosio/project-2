@@ -8,10 +8,12 @@ export const Container = styled.div`
   padding: 16px;
   background-color: white;
   gap: 32px;
+  height: 100%;
 
   @media (min-width: 768px) {
     background-color: inherit;
     padding: 32px;
+    height: auto;
   }
 `;
 
@@ -36,12 +38,6 @@ export const ListColumnContainer = styled(Col)`
 
 export const DetailColumnContainer = styled(Col)`
   width: 100%;
-
-  > div {
-    display: grid;
-    gap: 16px;
-    overflow-y: auto;
-  }
 
   @media (min-width: 768px) {
     padding: 0 8px;

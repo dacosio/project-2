@@ -26,7 +26,7 @@ const AutoComplete = (props: AutoCompleteProps): JSX.Element => {
   } = props;
 
   const [inputValue, setInputValue] = useState<string | undefined>(
-    options.find((optionItem) => optionItem?.value === option?.value || value)
+    options.find((optionItem) => optionItem.value === option?.value || value)
       ?.label || ""
   );
   const [visibility, setVisibility] = useState<boolean>(false);
@@ -44,11 +44,16 @@ const AutoComplete = (props: AutoCompleteProps): JSX.Element => {
   const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
     setVisibility(true);
     setInputValue(event.target.value);
+    if (options.find((option) => option.label === event.target.value)) {
+      setOption(options.find((option) => option.label === event.target.value));
+    } else {
+      setOption(undefined);
+    }
     onChange({
       target: {
         type: "text",
         value:
-          options.find((option) => option?.label === event.target.value)
+          options.find((option) => option.label === event.target.value)
             ?.value || "",
         name: name,
       },

@@ -77,7 +77,7 @@ const YourCrop = (): JSX.Element => {
   //
   const handleFavorite = async (id: string, isFavorite: boolean) => {
     await favorite({ id, isFavorite })
-      .then(() => toast.success(""))
+      .then(() => (isFavorite ? toast.success("") : toast.success("")))
       .catch(() => {
         toast.error("An error occured. Please, try again later");
       });

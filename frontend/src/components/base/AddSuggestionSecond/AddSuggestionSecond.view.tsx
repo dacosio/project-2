@@ -53,8 +53,6 @@ const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
       month: month,
     }).unwrap();
 
-    console.log(response);
-
     if (response && response.cropId && response.cropName) {
       dispatch(storeCropId(response.cropId));
       dispatch(storeCropName(response.cropName));

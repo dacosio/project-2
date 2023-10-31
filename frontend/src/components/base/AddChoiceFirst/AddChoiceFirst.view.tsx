@@ -22,7 +22,7 @@ const AddChoiceFirst = (props: AddChoiceFirstProps): JSX.Element => {
   const cropId = useAppSelector(selectCropId);
   const cropName = useAppSelector(selectCropName);
 
-  const [options, setOptions] = useState<Option[]>([]);
+  const [options, setOptions] = useState<Option[] | undefined>(undefined);
   const [crop, setCrop] = useState<Option | undefined>(
     cropId && cropName
       ? {
@@ -64,12 +64,14 @@ const AddChoiceFirst = (props: AddChoiceFirstProps): JSX.Element => {
         </Typography>
       </Header>
       <Body>
-        <AutoComplete
-          options={options}
-          option={crop}
-          setOption={setCrop}
-          placeholder="Tomato, Potato, Carrots, etc..."
-        />
+        {options && (
+          <AutoComplete
+            options={options}
+            option={crop}
+            setOption={setCrop}
+            placeholder="Tomato, Potato, Carrots, etc..."
+          />
+        )}
       </Body>
       <Footer>
         {crop ? (
