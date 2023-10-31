@@ -13,7 +13,7 @@ import Button from "../../base/Button";
 import { Add, Choice, Suggestion } from "../../base/SVG";
 import { useTheme } from "../../../utils/Theme";
 import { Hidden, Visible } from "react-grid-system";
-import MobileDrawer from "components/base/MobileDrawer";
+import MobileDrawer from "../../../components/base/MobileDrawer";
 
 const CropList = (props: CropListProps): JSX.Element => {
   const {
