@@ -9,7 +9,7 @@ export const Container = styled.div`
     gap: 1.3rem;
     padding: 1rem;
     box-shadow: 0 0 1px 1px ${theme.neutral.n20};
-    border-radius: 1.3rem;
+    border-radius: 20px;
     background-color: ${theme.grey.noshade};
 `
 

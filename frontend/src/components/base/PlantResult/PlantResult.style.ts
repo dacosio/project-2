@@ -4,7 +4,7 @@ import { theme } from "../../../utils/Theme";
 
 export const Container = styled.div`
     background-color: ${theme.grey.noshade};
-    border-radius: 1rem;
+    border-radius: 20px;
     width: fit-content; 
     overflow: hidden;
     cursor: pointer;

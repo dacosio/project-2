@@ -35,6 +35,7 @@ const CropGuideView = (props: CropGuideGeneratedProps) => {
         key={i}
         to={`/crop-guide/${con._id}`}
         style={{ textDecoration: "none" }}
+        className="crop"
       >
         <PlantResult
           key={i}
@@ -52,9 +53,6 @@ const CropGuideView = (props: CropGuideGeneratedProps) => {
     <Wrapper>
       <Container>
         <Header>
-          <Typography variant="title2" textColor="noshade">
-            Crop Guide
-          </Typography>
           <Typography variant="subtitle" weight="200" textColor="noshade">
             Have a crop or two you want to plant?
             <br />
