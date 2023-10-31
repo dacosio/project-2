@@ -4,6 +4,7 @@ const Precipitation = require("../models/Precipitation");
 const axios = require("axios");
 const CropEncyclopedia = require("./../models/CropEncyclopedia");
 const { capitalizeFirstLetter } = require("../helpers/formatter");
+const calculateAverageCondition = require("../helpers/calculator");
 
 const predictCrop = async (req, res) => {
   try {
@@ -50,6 +51,44 @@ const predictCrop = async (req, res) => {
   }
 };
 
+const predictYield = async (req, res) => {
+  try {
+    let { cropName, city } = req.body;
+
+    city = city.toLowerCase();
+
+    if (!city && !cropName) {
+      return res.status(400).json({ message: "All fields are required." });
+    }
+    
+    const temperature = await Temperature.find({ city }).select("mean").lean();
+
+    const precipitation = await Precipitation.find({ city })
+      .select("precipitation")
+      .lean();
+
+    const aveYearlyRainfall = calculateAverageCondition(
+      precipitation,
+      "precipitation"
+    );
+
+    const aveTemp = calculateAverageCondition(temperature, "mean");
+    cropName = capitalizeFirstLetter(cropName);
+
+    const url = "https://crpo-ml.onrender.com/predict-yield";
+    const data = {
+      item: cropName,
+      average_rain_fall_mm_per_year: aveYearlyRainfall,
+      avg_temp: aveTemp,
+    };
+    const result = await axios.post(url, data);
+
+    res.status(200).json({ message: result.data });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 module.exports = {
   predictCrop,
+  predictYield,
 };
