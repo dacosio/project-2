@@ -5,7 +5,7 @@ import { Crop } from "../../types/store/CropState";
 
 export const conditionApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getPredictCrop: builder.query<any, void | any>({
+    getPredictCrop: builder.mutation({
       query: ({
         city,
         month,
@@ -16,10 +16,10 @@ export const conditionApiSlice = apiSlice.injectEndpoints({
       }: {
         city: string;
         month: string;
-        N: string;
-        P: string;
-        K: string;
-        ph: string;
+        N?: string;
+        P?: string;
+        K?: string;
+        ph?: string;
       }) => ({
         url: "/api/predict-crop",
         method: METHOD.POST,
@@ -32,21 +32,9 @@ export const conditionApiSlice = apiSlice.injectEndpoints({
           ph,
         },
       }),
-      providesTags: (result: { _id: string | number }) => {
-        if (result) {
-          return [
-            {
-              type: TAG_TYPE.PREDICT,
-              id: result._id,
-            },
-            { type: TAG_TYPE.PREDICT, id: "LIST" },
-          ];
-        } else {
-          return [{ type: TAG_TYPE.PREDICT, id: "LIST" }];
-        }
-      },
+      invalidatesTags: [{ type: TAG_TYPE.PREDICT, id: "LIST" }],
     }),
   }),
 });
 
-export const { useGetPredictCropQuery } = conditionApiSlice;
+export const { useGetPredictCropMutation } = conditionApiSlice;

@@ -22,6 +22,45 @@ const CropDetail = (props: CropDetailProps): JSX.Element => {
 
   const theme = useTheme();
 
+  const getDate = (date: Date) => {
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    const day = date.getDate();
+    const month = months[date.getMonth()];
+    const year = date.getFullYear();
+
+    return `${month} ${day}, ${year}`;
+  };
+
+  const addDays = (date: Date, days: number) => {
+    const tempDate = new Date(date);
+    tempDate.setDate(tempDate.getDate() + days);
+    return tempDate;
+  };
+
+  const getDays = (previousDate: Date, nextDate: Date) => {
+    const milliseconds = Math.abs(nextDate.getTime() - previousDate.getTime());
+    const days = Math.ceil(milliseconds / (24 * 60 * 60 * 1000));
+    return days;
+  };
+
+  const dateToday = new Date();
+  const datePlanted = new Date(crop.datePlanted);
+  const dateEstimated = addDays(datePlanted, crop.growthDuration.max);
+
   return (
     <Container>
       <div>
@@ -121,13 +160,13 @@ const CropDetail = (props: CropDetailProps): JSX.Element => {
                 <Typography variant="body" weight="700">
                   Estimated Harvest
                 </Typography>
-                <Typography variant="body">February 9, 2023</Typography>
+                <Typography variant="body">{getDate(dateEstimated)}</Typography>
               </div>
               <div>
                 <Typography variant="body" weight="700">
                   Date Planted
                 </Typography>
-                <Typography variant="body">{crop.datePlanted}</Typography>
+                <Typography variant="body">{getDate(datePlanted)}</Typography>
               </div>
               <div>
                 <Typography variant="body" weight="700">
@@ -139,10 +178,12 @@ const CropDetail = (props: CropDetailProps): JSX.Element => {
             <DescriptionRightContainer>
               <Hidden xs sm md lg>
                 <CircleProgress
-                  value={40}
-                  maxValue={55}
+                  value={
+                    crop.growthDuration.max - getDays(dateToday, dateEstimated)
+                  }
+                  maxValue={crop.growthDuration.max}
                   size="desktop"
-                  title="40"
+                  title={getDays(dateToday, dateEstimated).toString()}
                   subtitle="days"
                   id="progress"
                   style={{ height: 145, width: 145 }}

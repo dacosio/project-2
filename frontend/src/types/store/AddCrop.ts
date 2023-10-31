@@ -1,5 +1,3 @@
-import { Crop } from "./CropState";
-
 export interface AddSuggestion {
   date: string;
   month: string;
@@ -9,5 +7,4 @@ export interface AddSuggestion {
   ph: string;
   cropId: string;
   cropName: string;
-  crop?: Crop;
 }

@@ -10,17 +10,16 @@ import {
   selectPh,
   selectPhosphorus,
   selectPotassium,
-  storeCrop,
+  storeCropId,
+  storeCropName,
   storeNitrogen,
   storePh,
   storePhosphorus,
   storePotassium,
 } from "../../../features/addSuggestion/addCropSlice";
-import { Crop } from "../../../types/store/CropState";
 import NumberField from "../NumberField";
-import { useGetPredictCropQuery } from "../../../features/condition/conditionApiSlice";
+import { useGetPredictCropMutation } from "../../../features/condition/conditionApiSlice";
 import { selectCity } from "../../../features/location/locationSlice";
-import { useGetCropAboutQuery } from "../../../features/cropEncyclopedia/cropEncyclopediaApiSlice";
 
 const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
   const { onNext } = props;
@@ -30,7 +29,6 @@ const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
   const city = useAppSelector(selectCity);
   const month = useAppSelector(selectMonth);
 
-  const [cropId, setCropId] = useState<string>("");
   const [nitrogen, setNitrogen] = useState<string | undefined>(
     useAppSelector(selectNitrogen)
   );
@@ -42,52 +40,51 @@ const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
   );
   const [ph, setPh] = useState<string | undefined>(useAppSelector(selectPh));
 
-  const { data: predictData } = useGetPredictCropQuery(
-    nitrogen && phosphorus && potassium && ph
-      ? {
-          city: city,
-          month: month,
-          N: nitrogen,
-          P: phosphorus,
-          K: potassium,
-          ph: ph,
-        }
-      : {
-          city: city,
-          month: month,
-        }
-  );
-  const { data: cropData } = useGetCropAboutQuery(cropId);
+  const [predict] = useGetPredictCropMutation();
 
-  const handleSkip = () => {
+  const handleSkip = async () => {
     dispatch(storeNitrogen(null));
     dispatch(storePhosphorus(null));
     dispatch(storePotassium(null));
     dispatch(storePh(null));
-    onNext();
+
+    const response = await predict({
+      city: city,
+      month: month,
+    }).unwrap();
+
+    console.log(response);
+
+    if (response && response.cropId && response.cropName) {
+      dispatch(storeCropId(response.cropId));
+      dispatch(storeCropName(response.cropName));
+      onNext();
+    }
   };
 
-  const handleNext = () => {
-    dispatch(storeNitrogen(nitrogen));
-    dispatch(storePhosphorus(phosphorus));
-    dispatch(storePotassium(potassium));
-    dispatch(storePh(ph));
-    onNext();
+  const handleNext = async () => {
+    if (nitrogen && phosphorus && potassium && ph) {
+      dispatch(storeNitrogen(nitrogen));
+      dispatch(storePhosphorus(phosphorus));
+      dispatch(storePotassium(potassium));
+      dispatch(storePh(ph));
+
+      const response = await predict({
+        city: city,
+        month: month,
+        N: nitrogen,
+        P: phosphorus,
+        K: potassium,
+        ph: ph,
+      }).unwrap();
+
+      if (response && response.cropId && response.cropName) {
+        dispatch(storeCropId(response.cropId));
+        dispatch(storeCropName(response.cropName));
+        onNext();
+      }
+    }
   };
-
-  useEffect(() => {
-    if (predictData) {
-      const item = predictData as { cropId: string; cropName: string };
-      setCropId(item.cropId);
-    }
-  }, [predictData]);
-
-  useEffect(() => {
-    if (cropId && cropData) {
-      const item = cropData as Crop[];
-      dispatch(storeCrop(item[0]));
-    }
-  }, [cropData]);
 
   return (
     <Container>

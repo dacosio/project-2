@@ -19,6 +19,7 @@ const AddSuggestionFirst = (props: AddSuggestionFirstProps): JSX.Element => {
   const dispatch = useAppDispatch();
 
   const address = useAppSelector(selectAddress);
+
   const [date, setDate] = useState<string | undefined>(
     useAppSelector(selectDate)
   );

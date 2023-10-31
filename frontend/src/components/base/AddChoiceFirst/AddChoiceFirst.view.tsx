@@ -7,16 +7,12 @@ import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import {
   selectCropId,
   selectCropName,
-  storeCrop,
   storeCropId,
   storeCropName,
 } from "../../../features/addSuggestion/addCropSlice";
 import Button from "../Button";
 import { Crop } from "../../../types/store/CropState";
-import {
-  useGetCropAboutQuery,
-  useGetCropAboutAllQuery,
-} from "../../../features/cropEncyclopedia/cropEncyclopediaApiSlice";
+import { useGetCropAboutAllQuery } from "../../../features/cropEncyclopedia/cropEncyclopediaApiSlice";
 
 const AddChoiceFirst = (props: AddChoiceFirstProps): JSX.Element => {
   const { onNext } = props;
@@ -26,7 +22,7 @@ const AddChoiceFirst = (props: AddChoiceFirstProps): JSX.Element => {
   const cropId = useAppSelector(selectCropId);
   const cropName = useAppSelector(selectCropName);
 
-  const [options, setOptions] = useState<Option[] | undefined>(undefined);
+  const [options, setOptions] = useState<Option[]>([]);
   const [crop, setCrop] = useState<Option | undefined>(
     cropId && cropName
       ? {
@@ -37,12 +33,13 @@ const AddChoiceFirst = (props: AddChoiceFirstProps): JSX.Element => {
   );
 
   const { data: cropsData } = useGetCropAboutAllQuery("");
-  const { data: cropData } = useGetCropAboutQuery(crop?.value || "");
 
   const handleNext = () => {
-    dispatch(storeCropId(crop?.value));
-    dispatch(storeCropName(crop?.label));
-    onNext();
+    if (crop && crop.value && crop.label) {
+      dispatch(storeCropId(crop.value));
+      dispatch(storeCropName(crop.label));
+      onNext();
+    }
   };
 
   useEffect(() => {
@@ -54,13 +51,6 @@ const AddChoiceFirst = (props: AddChoiceFirstProps): JSX.Element => {
       );
     }
   }, [cropsData]);
-
-  useEffect(() => {
-    if (cropData) {
-      const item = cropData as Crop[];
-      dispatch(storeCrop(item[0]));
-    }
-  }, [cropData]);
 
   return (
     <Container>
@@ -74,14 +64,12 @@ const AddChoiceFirst = (props: AddChoiceFirstProps): JSX.Element => {
         </Typography>
       </Header>
       <Body>
-        {options && (
-          <AutoComplete
-            options={options}
-            option={crop}
-            setOption={setCrop}
-            placeholder="Tomato, Potato, Carrots, etc..."
-          />
-        )}
+        <AutoComplete
+          options={options}
+          option={crop}
+          setOption={setCrop}
+          placeholder="Tomato, Potato, Carrots, etc..."
+        />
       </Body>
       <Footer>
         {crop ? (

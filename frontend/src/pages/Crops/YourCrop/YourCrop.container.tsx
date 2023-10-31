@@ -58,11 +58,13 @@ const YourCrop = (): JSX.Element => {
   };
 
   const handleLater = () => {
-    console.log("Later");
+    setChoiceVisibility(false);
+    setSuggestionVisibility(false);
   };
 
   const handleNow = () => {
-    console.log("Now");
+    setChoiceVisibility(false);
+    setSuggestionVisibility(false);
   };
 
   const handlePlant = async (id: string) => {
