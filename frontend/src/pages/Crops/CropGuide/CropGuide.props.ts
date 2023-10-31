@@ -36,6 +36,8 @@ export interface CropGuideGeneratedProps {
     handleSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
     fetchSearchResult: any;
     data: any;
+    imageUrls: any;
+    loading: boolean;
 }
 
 export type YourSearchItemType = {
