@@ -17,6 +17,7 @@ import { Toaster } from "react-hot-toast";
 
 const YourCropView = (props: YourCropGeneratedProps) => {
   const {
+    ref,
     option,
     setOption,
     crops,
@@ -54,6 +55,7 @@ const YourCropView = (props: YourCropGeneratedProps) => {
           </Visible>
           {crops && (
             <CropList
+              ref={ref}
               crops={crops}
               crop={crop}
               options={[

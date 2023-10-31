@@ -17,6 +17,7 @@ import MobileDrawer from "../../../components/base/MobileDrawer";
 
 const CropList = (props: CropListProps): JSX.Element => {
   const {
+    ref,
     crops,
     crop,
     options,
@@ -89,7 +90,7 @@ const CropList = (props: CropListProps): JSX.Element => {
       {visibility && (
         <>
           <Hidden xs sm>
-            <PopupContainer>
+            <PopupContainer ref={ref}>
               <div>
                 <div>
                   <div

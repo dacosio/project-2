@@ -3,6 +3,7 @@ import { Dispatch, SetStateAction } from "react";
 import { Crop } from "../../../types/store/CropState";
 
 export interface YourCropGeneratedProps {
+  ref: React.MutableRefObject<HTMLDivElement | null>;
   option: Option | undefined;
   setOption: Dispatch<SetStateAction<Option | undefined>>;
   crops: Crop[];

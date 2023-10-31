@@ -18,7 +18,7 @@ import {
   storePotassium,
 } from "../../../features/addSuggestion/addCropSlice";
 import NumberField from "../NumberField";
-import { useGetPredictCropMutation } from "../../../features/condition/conditionApiSlice";
+import { usePredictCropMutation } from "../../../features/condition/conditionApiSlice";
 import { selectCity } from "../../../features/location/locationSlice";
 
 const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
@@ -40,7 +40,7 @@ const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
   );
   const [ph, setPh] = useState<string | undefined>(useAppSelector(selectPh));
 
-  const [predict] = useGetPredictCropMutation();
+  const [predict] = usePredictCropMutation();
 
   const handleSkip = async () => {
     dispatch(storeNitrogen(null));
@@ -51,6 +51,10 @@ const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
     const response = await predict({
       city: city,
       month: month,
+      N: null,
+      P: null,
+      K: null,
+      ph: null,
     }).unwrap();
 
     if (response && response.cropId && response.cropName) {

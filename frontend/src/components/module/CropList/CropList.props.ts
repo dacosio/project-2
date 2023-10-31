@@ -7,6 +7,7 @@ export type Option = {
 };
 
 export interface CropListProps {
+  ref: React.MutableRefObject<HTMLDivElement | null>;
   crops: Crop[];
   crop?: Crop;
   options: Option[];

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import YourCropView from "./YourCrop.view";
 import { YourCropGeneratedProps } from "./YourCrop.props";
@@ -11,8 +11,14 @@ import {
 import { Crop } from "../../../types/store/CropState";
 import { Option } from "components/base/Tab/Tab.props";
 import toast from "react-hot-toast";
+import { useOnClickOutside } from "../../../utils/hooks/useOnClickOutside";
 
 const YourCrop = (): JSX.Element => {
+  const ref = useRef<HTMLDivElement | null>(null);
+  useOnClickOutside(ref, (event: MouseEvent) => {
+    console.log("in");
+  });
+
   const [option, setOption] = useState<Option | undefined>({
     value: "all",
     label: "All",
@@ -74,7 +80,7 @@ const YourCrop = (): JSX.Element => {
         toast.error("An error occured. Please, try again later");
       });
   };
-  //
+
   const handleFavorite = async (id: string, isFavorite: boolean) => {
     await favorite({ id, isFavorite })
       .then(() => (isFavorite ? toast.success("") : toast.success("")))
@@ -103,6 +109,7 @@ const YourCrop = (): JSX.Element => {
   }, [cropsData]);
 
   const generatedProps: YourCropGeneratedProps = {
+    ref,
     option,
     setOption,
     crops,
