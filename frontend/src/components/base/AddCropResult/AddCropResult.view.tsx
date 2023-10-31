@@ -1,24 +1,62 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AddCropResultProps } from "./AddCropResult.props";
 import { Body, Container, Footer, Image } from "./AddCropResult.style";
 import CropInformation from "../../module/CropInformation";
 import { Crop } from "../../../types/store/CropState";
 import { useAppSelector } from "../../../app/hooks";
-import { selectCrop } from "../../../features/addSuggestion/addCropSlice";
+import {
+  selectCropId,
+  selectCropName,
+} from "../../../features/addSuggestion/addCropSlice";
 import Button from "../Button";
 import Typography from "../Typography";
+import { useAddCropMutation } from "../../../features/crops/cropApiSlice";
+import { useGetCropAboutQuery } from "../../../features/cropEncyclopedia/cropEncyclopediaApiSlice";
 
 const AddCropResult = (props: AddCropResultProps): JSX.Element => {
   const { onLater, onNow } = props;
 
-  const [crop] = useState<Crop | undefined>(useAppSelector(selectCrop));
+  const cropId = useAppSelector(selectCropId);
+  const cropName = useAppSelector(selectCropName);
 
-  const handleLater = () => {
-    onLater();
+  const [crop, setCrop] = useState<Crop | undefined>(undefined);
+
+  const [addCrop] = useAddCropMutation();
+  const { data: cropData } = useGetCropAboutQuery(useAppSelector(selectCropId));
+
+  useEffect(() => {
+    if (cropData && cropId && cropName) {
+      const item = cropData as Crop[];
+
+      if (
+        item &&
+        0 < item.length &&
+        item[0]._id === cropId &&
+        item[0].cropName === cropName
+      ) {
+        setCrop(item[0]);
+      }
+    }
+  }, [cropData]);
+
+  const handleLater = async () => {
+    if (crop) {
+      const response = await addCrop({
+        cropId: crop._id,
+        plantNow: false,
+      }).unwrap();
+      onLater();
+    }
   };
 
-  const handleNow = () => {
-    onNow();
+  const handleNow = async () => {
+    if (crop) {
+      const response = await addCrop({
+        cropId: crop._id,
+        plantNow: true,
+      }).unwrap();
+      onNow();
+    }
   };
 
   return (

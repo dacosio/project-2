@@ -1,6 +1,6 @@
-import { apiSlice } from "app/api/apiSlice";
-import { METHOD } from "const/methods";
-import { TAG_TYPE } from "const/tags";
+import { apiSlice } from "../../app/api/apiSlice";
+import { METHOD } from "../../const/methods";
+import { TAG_TYPE } from "../../const/tags";
 const url = "api/crops";
 
 export const cropApiSlice = apiSlice.injectEndpoints({
@@ -14,7 +14,6 @@ export const cropApiSlice = apiSlice.injectEndpoints({
         },
       }),
       providesTags: (result) => {
-        console.log(result);
         if (result) {
           return [
             ...result.map(({ _id }: { _id: string | number }) => ({
@@ -63,6 +62,17 @@ export const cropApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [{ type: TAG_TYPE.CROP, id: "LIST" }],
     }),
+    addCrop: builder.mutation({
+      query: ({ cropId, plantNow }: { cropId: string; plantNow: boolean }) => ({
+        url: "/api/crops",
+        method: METHOD.POST,
+        body: {
+          cropId,
+          plantNow,
+        },
+      }),
+      invalidatesTags: [{ type: TAG_TYPE.CROP, id: "LIST" }],
+    }),
   }),
 });
 
@@ -72,4 +82,5 @@ export const {
   useRemoveCropMutation,
   usePlantNowMutation,
   useFavoriteMutation,
+  useAddCropMutation,
 } = cropApiSlice;

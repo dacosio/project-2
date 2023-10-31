@@ -1,72 +1,56 @@
-import React, { useState } from "react";
-import { AddChoiceFirstProps } from "./AddChoiceFirst.props";
+import React, { useEffect, useState } from "react";
+import { Option, AddChoiceFirstProps } from "./AddChoiceFirst.props";
 import { Body, Container, Footer, Header } from "./AddChoiceFirst.style";
 import Typography from "../Typography";
 import AutoComplete from "../AutoComplete";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import {
-  selectName,
-  storeCrop,
-  storeName,
+  selectCropId,
+  selectCropName,
+  storeCropId,
+  storeCropName,
 } from "../../../features/addSuggestion/addCropSlice";
 import Button from "../Button";
 import { Crop } from "../../../types/store/CropState";
+import { useGetCropAboutAllQuery } from "../../../features/cropEncyclopedia/cropEncyclopediaApiSlice";
 
 const AddChoiceFirst = (props: AddChoiceFirstProps): JSX.Element => {
   const { onNext } = props;
 
   const dispatch = useAppDispatch();
 
-  const [name, setName] = useState<string | undefined>(
-    useAppSelector(selectName)
+  const cropId = useAppSelector(selectCropId);
+  const cropName = useAppSelector(selectCropName);
+
+  const [options, setOptions] = useState<Option[] | undefined>(undefined);
+  const [crop, setCrop] = useState<Option | undefined>(
+    cropId && cropName
+      ? {
+          value: cropId,
+          label: cropName,
+        }
+      : undefined
   );
 
-  const getCrop = () => {
-    const crop: Crop = {
-      _id: "id",
-      cropName: "Tomato",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis quam vel risus accumsan iaculis. Nullam semper feugiat mi, non commodo massa fringilla sit amet. Aliquam efficitur quis metus semper posuere. Mauris dictum laoreet rhoncus. In mauris velit, laoreet eget augue et, posuere feugiat lectus. Proin blandit lacus nec velit tincidunt molestie. Integer et auctor urna.",
-      idealTemperature: {
-        fahrenheit: { min: 10, max: 20 },
-        celcius: { min: 10, max: 20 },
-      },
-      humidity: { min: 10, max: 20 },
-      growthDuration: { min: 2, max: 3 },
-      soilPh: { min: 5.5, max: 6.5 },
-      soilN: 5,
-      soilP: 8,
-      soilK: 6,
-      growingTips: [
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        "Duis mollis quam vel risus accumsan iaculis.",
-        "Nullam semper feugiat mi, non commodo massa fringilla sit amet.",
-      ],
-      tools: [
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        "Duis mollis quam vel risus accumsan iaculis.",
-        "Nullam semper feugiat mi, non commodo massa fringilla sit amet.",
-      ],
-      imageURL: "https://picsum.photos/300",
-      userId: "",
-      isFavorite: false,
-      isPlanted: false,
-      datePlanted: new Date(),
-      estimatedYield: "",
-      __v: 1,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    };
-    dispatch(storeCrop(crop));
-  };
-
-  const options = ["Apple", "Orange", "Strawberry", "Tomato"];
+  const { data: cropsData } = useGetCropAboutAllQuery("");
 
   const handleNext = () => {
-    dispatch(storeName(name));
-    getCrop();
-    onNext();
+    if (crop && crop.value && crop.label) {
+      dispatch(storeCropId(crop.value));
+      dispatch(storeCropName(crop.label));
+      onNext();
+    }
   };
+
+  useEffect(() => {
+    if (cropsData) {
+      const items = cropsData as Crop[];
+
+      setOptions(
+        items.map((item) => ({ value: item._id, label: item.cropName }))
+      );
+    }
+  }, [cropsData]);
 
   return (
     <Container>
@@ -80,15 +64,17 @@ const AddChoiceFirst = (props: AddChoiceFirstProps): JSX.Element => {
         </Typography>
       </Header>
       <Body>
-        <AutoComplete
-          options={options}
-          value={name}
-          setValue={setName}
-          placeholder="Tomato, Potato, Carrots, etc..."
-        />
+        {options && (
+          <AutoComplete
+            options={options}
+            option={crop}
+            setOption={setCrop}
+            placeholder="Tomato, Potato, Carrots, etc..."
+          />
+        )}
       </Body>
       <Footer>
-        {name ? (
+        {crop ? (
           <Button text="Next" onClick={handleNext} />
         ) : (
           <Button text="Next" variant="disabled" />

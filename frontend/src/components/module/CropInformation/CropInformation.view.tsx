@@ -82,9 +82,7 @@ const CropInformation = (props: CropInformationProps): JSX.Element => {
     <>
       {suggestions.map((suggestion, index) => (
         <div key={index}>
-          <Typography variant="body" weight="700">
-            {suggestion}
-          </Typography>
+          <Typography variant="body">{suggestion}</Typography>
         </div>
       ))}
     </>

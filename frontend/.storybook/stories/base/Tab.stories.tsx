@@ -16,8 +16,11 @@ const meta: Meta<typeof Tab> = {
       { value: "value5", label: "label5" },
     ];
 
-    const [value1, setValue1] = useState<string | undefined>("value3");
-    const [value2, setValue2] = useState<string | undefined>(undefined);
+    const [value1, setValue1] = useState<Option | undefined>({
+      value: "value3",
+      label: "label3",
+    });
+    const [value2, setValue2] = useState<Option | undefined>(undefined);
 
     useEffect(() => {
       console.log(value1);

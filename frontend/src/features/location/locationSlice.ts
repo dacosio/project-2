@@ -3,21 +3,26 @@ import { RootState } from "app/store";
 import { Location } from "types/store/Location";
 
 const initialState: Location = {
-  location: undefined,
+  address: "",
+  city: "",
 };
 
 const locationSlice = createSlice({
   name: "location",
   initialState,
   reducers: {
-    storeLocation: (state, action) => {
-      state.location = action.payload;
+    storeAddress: (state, action) => {
+      state.address = action.payload;
+    },
+    storeCity: (state, action) => {
+      state.city = action.payload;
     },
   },
 });
 
-export const { storeLocation } = locationSlice.actions;
+export const { storeAddress, storeCity } = locationSlice.actions;
 
 export default locationSlice.reducer;
 
-export const selectLocation = (state: RootState) => state.location.location;
+export const selectAddress = (state: RootState) => state.location.address;
+export const selectCity = (state: RootState) => state.location.city;

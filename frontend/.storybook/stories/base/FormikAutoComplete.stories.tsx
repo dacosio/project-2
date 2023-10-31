@@ -6,16 +6,17 @@ import Wrapper from "../../components/Wrapper";
 import { Form, Formik } from "formik";
 import Button from "../../../src/components/base/Button";
 import { object, string } from "yup";
+import { Option } from "../../../src/components/base/FormikAutoComplete/FormikAutoComplete.props";
 
 const meta: Meta<typeof FormikAutoComplete> = {
   title: "Base/FormikAutoComplete",
   component: () => {
-    const options: string[] = [
-      "option1",
-      "option2",
-      "option3",
-      "option4",
-      "option5",
+    const options: Option[] = [
+      { value: "value1", label: "label1" },
+      { value: "value2", label: "label2" },
+      { value: "value3", label: "label3" },
+      { value: "value4", label: "label4" },
+      { value: "value5", label: "label5" },
     ];
 
     const validationSchema = object({
@@ -30,7 +31,7 @@ const meta: Meta<typeof FormikAutoComplete> = {
     return (
       <Container>
         <Formik
-          initialValues={{ select1: "", select2: "option3" }}
+          initialValues={{ select1: "", select2: "value3" }}
           validationSchema={validationSchema}
           onSubmit={handleOnSubtmit}
         >

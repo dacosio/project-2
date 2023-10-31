@@ -5,7 +5,7 @@ import Modal from "../../../components/base/Modal";
 import AddChoice from "../../../components/base/AddChoice";
 
 const AddChoiceModal = (props: AddChoiceModalProps): JSX.Element => {
-  const { visibility, setVisibility } = props;
+  const { visibility, setVisibility, onLater, onNow } = props;
 
   const handleClose = () => {
     setVisibility(false);
@@ -14,7 +14,7 @@ const AddChoiceModal = (props: AddChoiceModalProps): JSX.Element => {
   return (
     <Modal isOpen={visibility} onClose={handleClose}>
       <Container>
-        <AddChoice />
+        <AddChoice onLater={onLater} onNow={onNow} />
       </Container>
     </Modal>
   );
