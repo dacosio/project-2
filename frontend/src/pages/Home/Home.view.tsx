@@ -24,7 +24,8 @@ import TextField from "components/base/TextField";
 import Button from "components/base/Button";
 import axios from "axios";
 import { Col, Row, Visible, Hidden } from "react-grid-system";
-import HomeNavigation from "components/layout/HomeNavigation";
+import HomeNavigation from "./../../components/layout/HomeNavigation";
+import ContactSection from "./../../components/layout/ContactSection";
 
 //Images
 import headerImg from "images/headerImg.png";
@@ -178,6 +179,7 @@ const HomeView = (props: HomeGeneratedProps) => {
           </Details>
         </AboutDetails>
       </About>
+      <ContactSection />
 
       {/* <Contact align="center">
         <Hide md sm xs>

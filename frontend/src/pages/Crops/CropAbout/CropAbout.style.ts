@@ -6,7 +6,7 @@ export const ButtonWrapper = styled.div`
     justify-content: space-between;
     gap: 1rem;
     width: 100%;
-    padding: 0 20px;
+    padding: 0 10px;
 
     button {
         flex: 1;
@@ -26,6 +26,7 @@ export const Wrapper = styled.div`
     img {
         width: 100%;
         height: 100%;
+        max-height: 278px;
         object-fit: cover;
         border-radius: 20px;
     }
@@ -38,18 +39,42 @@ export const Wrapper = styled.div`
         padding-top: 1rem;
 
         > div {
-            padding-top: 10px;
-            padding-bottom: 10px;
-        }        
+            padding-top: 16px;
+            padding-bottom: 16px;
+        }
+        
+        a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
     }
 
     .box-container {  
         border-radius: 20px;
-        height: calc(100% - 2rem);
+        height: calc(100% - 48px);
         display: grid;
-        gap: 1rem;
+        gap: 32px;
         align-content: flex-start;
-    }    
+    }
+
+    .box-container.header {
+        gap: 16px;
+    }
+
+    .title {
+        margin-bottom: 8px;
+    }
+
+    hr {
+        display: none;
+    }
 
     @media screen and (min-width: 578px) {
         .container {
@@ -59,18 +84,59 @@ export const Wrapper = styled.div`
         .box-container {
             background-color: ${theme.neutral.n0};
             border: 1px solid ${theme.neutral.n20};
-            padding: 1rem;
+            padding: 24px;
+        }
+
+        .box-container.header {
+            gap: 32px;
+        }
+
+        CropInformation {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .title {
+            margin-bottom: 32px;
+        }
+
+        hr {
+            width: 100%;
+            height: 1px;
+            background-color: ${theme.neutral.n20};
+            border: none;
+            margin: 0;
+            display: block;
         }
     }
+
+    @media screen and (max-width: 708px) {
+        .box-container,
+        .box-container.header {
+            gap: 16px;
+        }
+
+        .title {
+            margin-bottom: 16px;
+        }
+    }
+`
+
+export const Header = styled.div`
+    display: flex;
+    align-items: center;
 `
 
 export const CropInformation = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    gap: 16px;
 
     > p {
         grid-column: 1/-1;
+    }
+
+    @media screen and (min-width: 578px) {
+        grid-template-columns: repeat(4, 1fr);
     }
 `
 

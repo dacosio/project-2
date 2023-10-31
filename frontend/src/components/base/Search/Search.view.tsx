@@ -43,6 +43,7 @@ const Search = (props: SearchProps): JSX.Element => {
         value={searchTerm}
         onChange={handleSearch}
         placeholder={dynamicPlaceholder}
+        labelVariant="body"
       ></TextField>
     </Container>
   );

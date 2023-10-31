@@ -8,6 +8,8 @@ import AddCropResult from "../AddCropResult";
 import Typography from "../Typography";
 
 const AddSuggestion = (props: AddSuggestionProps): JSX.Element => {
+  const { onLater, onNow } = props;
+
   const handleBack = () => {
     back();
   };
@@ -16,14 +18,10 @@ const AddSuggestion = (props: AddSuggestionProps): JSX.Element => {
     next();
   };
 
-  const handleLater = () => {};
-
-  const handleNow = () => {};
-
   const { step, back, next, isFirstStep } = useMultistepForm([
     <AddSuggestionFirst onNext={handleNext} />,
     <AddSuggestionSecond onNext={handleNext} />,
-    <AddCropResult onLater={handleLater} onNow={handleNow} />,
+    <AddCropResult onLater={onLater} onNow={onNow} />,
   ]);
 
   return (

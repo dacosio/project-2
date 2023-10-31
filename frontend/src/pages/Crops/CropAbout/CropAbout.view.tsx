@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import {
   ButtonWrapper,
   Wrapper,
+  Header,
   CropInformation,
   TipsContainer,
   FertilizerContainer,
@@ -16,6 +17,8 @@ import { Container, Row, Col, Hidden, Visible } from "react-grid-system";
 import CropCondition from "components/base/CropCondition";
 import Accordion from "../../../components/base/Accordion";
 import { Toaster } from "react-hot-toast";
+import { IoChevronBack } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const CropAboutView = (props: CropAboutProps) => {
   const { crops, handlePlantLater, handlePlantNow } = props;
@@ -109,47 +112,51 @@ const CropAboutView = (props: CropAboutProps) => {
     <Wrapper>
       <Container className="container">
         <Toaster />
-
+        <Link to={"/crop-guide"}>
+          <IoChevronBack />
+          <Typography variant="body">Prev</Typography>
+        </Link>
         <Row gutterWidth={20}>
           <Col>
-            <Typography variant="title3">{crop?.cropName}</Typography>
-          </Col>
-          <Col>
-            <Hidden xs>
-              <ButtonWrapper>
-                <Button
-                  text="Plant Later"
-                  variant="outline"
-                  onClick={() => handlePlantLater()}
-                />
-                <Button
-                  text="Plant Now"
-                  variant="primary"
-                  onClick={() => handlePlantNow()}
-                />
-              </ButtonWrapper>
-            </Hidden>
+            <div className="box-container header">
+              <Header>
+                <Typography variant="title3">{crop?.cropName}</Typography>
+                <Hidden xs>
+                  <ButtonWrapper>
+                    <Button
+                      text="Plant Later"
+                      variant="outline"
+                      onClick={() => handlePlantLater()}
+                    />
+                    <Button
+                      text="Plant Now"
+                      variant="primary"
+                      onClick={() => handlePlantNow()}
+                    />
+                  </ButtonWrapper>
+                </Hidden>
+              </Header>
+              <img src={crop?.imageURL} />
+              <hr />
+              <div>
+                <Typography variant="title5" className="title">
+                  About
+                </Typography>
+                <Typography variant="body">{crop?.description}</Typography>
+              </div>
+            </div>
           </Col>
         </Row>
-        <Row gutterWidth={20} style={{ rowGap: "20px" }}>
-          <Col xl={4} lg={6}>
-            <img src={crop?.imageURL} />
-          </Col>
-          <Col xl={4} lg={6}>
+        <Row gutterWidth={20}>
+          <Col>
             <div className="box-container">
-              <Typography variant="title5">About</Typography>
-              <Typography variant="body">{crop?.description}</Typography>
+              <Typography variant="title5">Crop Information</Typography>
+              <CropInformation>{getCondition()}</CropInformation>
             </div>
           </Col>
-          <Col xl={4} lg={6}>
-            <div className="box-container">
-              <CropInformation>
-                <Typography variant="title5">Crop Information</Typography>
-                {getCondition()}
-              </CropInformation>
-            </div>
-          </Col>
-          <Col xl={4} lg={6}>
+        </Row>
+        <Row gutterWidth={20}>
+          <Col>
             <FertilizerContainer className="box-container">
               <Hidden xs>
                 <Typography variant="title5">Fertilizer Composition</Typography>
@@ -162,7 +169,9 @@ const CropAboutView = (props: CropAboutProps) => {
               </Visible>
             </FertilizerContainer>
           </Col>
-          <Col xl={4} lg={6}>
+        </Row>
+        <Row gutterWidth={20}>
+          <Col>
             <TipsContainer className="box-container">
               <Hidden xs>
                 <Typography variant="title5">Growing Tips</Typography>
@@ -173,7 +182,9 @@ const CropAboutView = (props: CropAboutProps) => {
               </Visible>
             </TipsContainer>
           </Col>
-          <Col xl={4} lg={6}>
+        </Row>
+        <Row gutterWidth={20}>
+          <Col>
             <SuggestionsContainer className="box-container">
               <Hidden xs>
                 <Typography variant="title5">You will need</Typography>
@@ -185,7 +196,7 @@ const CropAboutView = (props: CropAboutProps) => {
             </SuggestionsContainer>
           </Col>
         </Row>
-        <Row>
+        <Row gutterWidth={20}>
           <Visible xs>
             <ButtonWrapper>
               <Button

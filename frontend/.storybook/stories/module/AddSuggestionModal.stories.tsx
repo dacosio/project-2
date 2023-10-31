@@ -23,6 +23,8 @@ const meta: Meta<typeof AddSuggestionModal> = {
           <AddSuggestionModal
             visibility={visibility}
             setVisibility={setVisibility}
+            onLater={() => null}
+            onNow={() => null}
           />
         </Provider>
       </Container>

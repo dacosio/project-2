@@ -15,12 +15,15 @@ import Typography from "components/base/Typography";
 import Search from "components/base/Search";
 import SearchResult from "components/base/SearchResult";
 import { Link } from "react-router-dom";
+import Loading from "components/base/Loading";
 
 const CropGuideView = (props: CropGuideGeneratedProps) => {
   const {
     data,
     searches,
     searchResults,
+    imageUrls,
+    loading,
     setSearchResults,
     searchTerm,
     setSearchTerm,
@@ -35,10 +38,11 @@ const CropGuideView = (props: CropGuideGeneratedProps) => {
         key={i}
         to={`/crop-guide/${con._id}`}
         style={{ textDecoration: "none" }}
+        className="crop"
       >
         <PlantResult
           key={i}
-          imageUrl={con.imageURL}
+          imageUrl={imageUrls[i]}
           imageAlt="random image"
           imgWidth="100%"
           imgHeight="100%"
@@ -52,9 +56,6 @@ const CropGuideView = (props: CropGuideGeneratedProps) => {
     <Wrapper>
       <Container>
         <Header>
-          <Typography variant="title2" textColor="noshade">
-            Crop Guide
-          </Typography>
           <Typography variant="subtitle" weight="200" textColor="noshade">
             Have a crop or two you want to plant?
             <br />
@@ -80,7 +81,7 @@ const CropGuideView = (props: CropGuideGeneratedProps) => {
               delay={delay}
             />
           ) : (
-            <AllCrop>{displayAllCrop()}</AllCrop>
+            <AllCrop>{loading ? <Loading /> : displayAllCrop()}</AllCrop>
           )}
         </Body>
       </Container>

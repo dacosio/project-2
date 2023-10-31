@@ -1,1 +1,4 @@
-export interface AddSuggestionProps {}
+export interface AddSuggestionProps {
+  onLater: () => void;
+  onNow: () => void;
+}

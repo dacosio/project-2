@@ -4,6 +4,7 @@ export interface TagTypeProps {
   TODO: "TODO";
   GETCROP: "GETCROP";
   CROP: "CROP";
+  PREDICT: "PREDICT";
 }
 
 export const TAG_TYPE: TagTypeProps = {
@@ -11,4 +12,5 @@ export const TAG_TYPE: TagTypeProps = {
   TODO: "TODO",
   GETCROP: "GETCROP",
   CROP: "CROP",
+  PREDICT: "PREDICT",
 };

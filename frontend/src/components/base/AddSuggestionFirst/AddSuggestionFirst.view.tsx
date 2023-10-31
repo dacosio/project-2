@@ -8,23 +8,42 @@ import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import {
   selectDate,
   storeDate,
+  storeMonth,
 } from "../../../features/addSuggestion/addCropSlice";
 import DateField from "../DateField";
-import { selectLocation } from "../../../features/location/locationSlice";
+import { selectAddress } from "../../../features/location/locationSlice";
 
 const AddSuggestionFirst = (props: AddSuggestionFirstProps): JSX.Element => {
   const { onNext } = props;
 
   const dispatch = useAppDispatch();
 
-  const location = useAppSelector(selectLocation);
+  const address = useAppSelector(selectAddress);
+
   const [date, setDate] = useState<string | undefined>(
     useAppSelector(selectDate)
   );
 
   const handleNext = () => {
-    dispatch(storeDate(date));
-    onNext();
+    if (address && date) {
+      dispatch(storeDate(date));
+      const months: { [key: string]: string } = {
+        "01": "January",
+        "02": "February",
+        "03": "March",
+        "04": "April",
+        "05": "May",
+        "06": "June",
+        "07": "July",
+        "08": "August",
+        "09": "September",
+        "10": "October",
+        "11": "November",
+        "12": "December",
+      };
+      dispatch(storeMonth(months[date.split("-")[1]]));
+      onNext();
+    }
   };
 
   return (
@@ -51,7 +70,7 @@ const AddSuggestionFirst = (props: AddSuggestionFirstProps): JSX.Element => {
         </div>
       </Body>
       <Footer>
-        {location && date ? (
+        {address && date ? (
           <Button text="Next" onClick={handleNext} />
         ) : (
           <Button text="Next" variant="disabled" />

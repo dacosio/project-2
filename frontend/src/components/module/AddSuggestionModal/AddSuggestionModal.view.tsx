@@ -5,7 +5,7 @@ import Modal from "../../base/Modal";
 import AddSuggestion from "../../../components/base/AddSuggestion";
 
 const AddSuggestionModal = (props: AddSuggestionModalProps): JSX.Element => {
-  const { visibility, setVisibility } = props;
+  const { visibility, setVisibility, onLater, onNow } = props;
 
   const handleClose = () => {
     setVisibility(false);
@@ -14,7 +14,7 @@ const AddSuggestionModal = (props: AddSuggestionModalProps): JSX.Element => {
   return (
     <Modal isOpen={visibility} onClose={handleClose}>
       <Container>
-        <AddSuggestion />
+        <AddSuggestion onLater={onLater} onNow={onNow} />
       </Container>
     </Modal>
   );

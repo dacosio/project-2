@@ -1,8 +1,13 @@
 import React, { useState } from "react";
-import Drawer from "react-modern-drawer";
 import "react-modern-drawer/dist/index.css";
 import { MobileDrawerProps, TouchEventHandler } from "./MobileDrawer.props";
-import { Container, Header, InnerDrawer, Body } from "./MobileDrawer.style";
+import {
+  Container,
+  DrawerContainer,
+  Header,
+  InnerDrawer,
+  Body,
+} from "./MobileDrawer.style";
 import DrawerHandle from "./../SVG/DrawerHandle";
 
 const MobileDrawer = (props: MobileDrawerProps): JSX.Element => {
@@ -26,13 +31,12 @@ const MobileDrawer = (props: MobileDrawerProps): JSX.Element => {
 
   return (
     <Container>
-      <Drawer
+      <DrawerContainer
         open={isOpenDrawer}
         onClose={handleDrawerClose}
         direction={direction}
-        className="mobile-drawer"
         lockBackgroundScroll={true}
-        size={drawerSize}
+        size="auto"
       >
         <InnerDrawer
           onTouchStart={(event: React.TouchEvent<HTMLDivElement>) =>
@@ -50,7 +54,7 @@ const MobileDrawer = (props: MobileDrawerProps): JSX.Element => {
           </Header>
           <Body>{children}</Body>
         </InnerDrawer>
-      </Drawer>
+      </DrawerContainer>
     </Container>
   );
 };

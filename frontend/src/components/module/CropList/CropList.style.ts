@@ -76,52 +76,58 @@ export const Item = styled.div`
 `;
 
 export const PopupContainer = styled.div`
-  position: absolute;
-  bottom: 98px;
-  right: 0;
-  width: 393.39px;
-  display: flex;
-  align-items: flex-end;
-  transform: translateX(calc(375.39px - 123.09px));
-  z-index: 1;
-  border-radius: 20px;
-
-  > div {
-    padding-right: 16px;
-  }
-
-  > div > div {
-    display: grid;
-    background-color: white;
-    margin: 1px;
-    border-radius: 20px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-  }
-
   > div > div > div {
     cursor: pointer;
-    padding: 32px 16px;
     display: flex;
-    gap: 8px;
+    gap: 16px;
     align-items: center;
+    padding: 16px 0;
 
     :hover {
       background-color: ${({ theme }) => theme.btn.color.lightest};
     }
   }
 
-  > div > div > div:first-of-type {
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-  }
+  @media (min-width: 768px) {
+    position: absolute;
+    bottom: 98px;
+    right: 0;
+    width: 393.39px;
+    display: flex;
+    align-items: flex-end;
+    transform: translateX(calc(375.39px - 123.09px));
+    z-index: 1;
+    border-radius: 20px;
 
-  > div > div > div:last-of-type {
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-  }
+    > div {
+      padding-right: 16px;
+    }
 
-  > div > div > div:not(:last-of-type) {
-    border-bottom: 1px solid ${({ theme }) => theme.neutral.n20};
+    > div > div {
+      display: grid;
+      background-color: white;
+      margin: 1px;
+      border-radius: 20px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    > div > div > div {
+      padding: 32px 16px;
+    }
+
+    > div > div > div:first-of-type {
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+    }
+
+    > div > div > div:last-of-type {
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+
+    > div > div > div:not(:last-of-type) {
+      border-bottom: 1px solid ${({ theme }) => theme.neutral.n20};
+    }
   }
 
   @media (min-width: 1200px) {

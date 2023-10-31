@@ -1,30 +1,35 @@
 import styled from "@emotion/styled";
+import Drawer from "react-modern-drawer";
 import { theme } from "../../../utils/Theme";
 
+export const Container = styled.div``;
 
-export const Container = styled.div`
-    .mobile-drawer {
-        display: flex;
-        border-radius: 20px 20px 0 0;
-    }
-`
+export const DrawerContainer = styled(Drawer)`
+  display: flex;
+  border-radius: 20px 20px 0 0;
+`;
 
 export const InnerDrawer = styled.div`
-    overflow: scroll;
-    width: 100%;
-`
+  width: 100%;
+
+  > div:last-of-type > div {
+    max-height: 85vh;
+    overflow: auto;
+    padding: 0 16px;
+  }
+`;
 
 export const Body = styled.div`
-    padding: 3rem 1rem 2rem 1rem;
-`
+  padding: 3rem 0 2rem 0;
+`;
 export const Header = styled.div`
-    display: flex;
-    justify-content: center;
-    padding-bottom: 1.5rem;
-    padding-top: 1rem;
-    position: fixed;
-    width: 100%;
-    z-index: 10000;
-    background-color: white;
-    border-radius: 20px 20px 0 0;
-`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  position: fixed;
+  width: 100%;
+  z-index: 10000;
+  background-color: white;
+  border-radius: 20px 20px 0 0;
+`;

@@ -52,6 +52,10 @@ export const ItemContainer = styled.div`
   :not(:last-child) {
     border-bottom: 1px solid ${({ theme }) => theme.neutral.n10};
   }
+
+  :hover {
+    background-color: ${({ theme }) => theme.btn.color.lightest};
+  }
 `;
 
 export const Error = styled(Typography)`

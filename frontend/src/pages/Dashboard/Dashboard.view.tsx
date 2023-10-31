@@ -47,6 +47,11 @@ const DashboardView = (props: DashboardGeneratedProps) => {
     thunderStormRain: ["#4D54D5", "#C29EC9"],
   });
 
+  const handleSelectedSearchLocation = (address: string) => {
+    console.log("Weather address " + address);
+    // setSelectedIndex(value);
+  };
+
   return (
     <Wrapper>
       <Top>
@@ -64,6 +69,7 @@ const DashboardView = (props: DashboardGeneratedProps) => {
             gradientColor2={gradientObject.clear[1]}
             currentCondition="clear"
             page="dashboard"
+            onSelectedSearchLocation={handleSelectedSearchLocation}
           />
         </Weather>
         <Segment md={6}>
@@ -87,7 +93,8 @@ const DashboardView = (props: DashboardGeneratedProps) => {
             weight="700"
             textColor="shade5"
             onClick={() => navigate("/your-crops")}
-            style={{ cursor: "pointer" }}>
+            style={{ cursor: "pointer" }}
+          >
             see more
           </Typography>
         </Title>

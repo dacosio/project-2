@@ -4,7 +4,6 @@ import { theme } from "../../../utils/Theme";
 export const Container = styled.div`
   background-color: white;
   display: grid;
-  grid-template-rows: auto 1fr;
   gap: 16px;
   box-sizing: border-box;
 
@@ -13,33 +12,40 @@ export const Container = styled.div`
     gap: 16px;
     overflow-y: auto;
     flex-direction: column;
-
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: #f1f1f1;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: #888;
-      border-radius: 6px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: #555;
-    }
   }
 
   @media (min-width: 768px) {
+    grid-template-rows: auto 1fr;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
     padding: 32px 20px;
     border-radius: 20px;
     height: 100%;
 
+    > div {
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 6px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+    }
+
+    > div:first-of-type {
+      padding: 0;
+    }
+
     > div:last-of-type {
-      padding-right: 16px;
+      padding: 0 16px 0 0;
     }
   }
 `;

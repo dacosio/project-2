@@ -7,7 +7,7 @@ export type Option = {
 
 export interface TabProps {
   options: Option[];
-  value: string | undefined;
-  setValue: Dispatch<SetStateAction<string | undefined>>;
+  value: Option | undefined;
+  setValue: Dispatch<SetStateAction<Option | undefined>>;
   name: string;
 }

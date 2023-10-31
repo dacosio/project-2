@@ -7,7 +7,7 @@ const { capitalizeFirstLetter } = require("../helpers/formatter");
 
 const predictCrop = async (req, res) => {
   try {
-    let { city, month } = req.body;
+    let { city, month, N, P, K, ph } = req.body;
     city = city.toLowerCase();
     month = month[0].toUpperCase() + month.slice(1);
 
@@ -25,13 +25,17 @@ const predictCrop = async (req, res) => {
       .select("precipitation")
       .lean();
 
+    // const url = "http://127.0.0.1:5000/predict-crop";
     const url = "https://crpo-ml.onrender.com/predict-crop";
     const data = {
       humidity: humidity[0]["humidity"],
       temperature: temperature[0]["mean"],
       rainfall: precipitation[0]["precipitation"],
+      N,
+      P,
+      K,
+      ph,
     };
-
     const result = await axios.post(url, data);
     const predictedCrop = result.data.prediction;
     const cropName = capitalizeFirstLetter(predictedCrop[0]);

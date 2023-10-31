@@ -9,14 +9,10 @@ import { Provider } from "react-redux";
 const meta: Meta<typeof AddCropResult> = {
   title: "Base/AddSuggestionThird",
   component: () => {
-    const handleLater = () => {};
-
-    const handleNow = () => {};
-
     return (
       <Container>
         <Provider store={store}>
-          <AddCropResult onLater={handleLater} onNow={handleNow} />
+          <AddCropResult onLater={() => null} onNow={() => null} />
         </Provider>
       </Container>
     );

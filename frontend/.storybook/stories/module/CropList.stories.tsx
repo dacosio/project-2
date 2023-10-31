@@ -3,43 +3,65 @@ import type { Meta, StoryObj } from "@storybook/react";
 import CropList from "../../../src/components/module/CropList";
 import Container from "../../components/Container";
 import Wrapper from "../../components/Wrapper";
+import { Crop } from "../../../src/types/store/CropState";
 
 const meta: Meta<typeof CropList> = {
   title: "Module/CropList",
   component: () => {
-    const crops: { id: string; name: string; isPlanted: boolean }[] = [
-      { id: "1", name: "Crop1", isPlanted: true },
-      { id: "2", name: "Crop2", isPlanted: false },
-      { id: "3", name: "Crop3", isPlanted: true },
-      { id: "4", name: "Crop4", isPlanted: true },
-      { id: "5", name: "Crop5", isPlanted: true },
-      { id: "6", name: "Crop6", isPlanted: false },
-      { id: "7", name: "Crop7", isPlanted: true },
-      { id: "8", name: "Crop8", isPlanted: true },
-      { id: "9", name: "Crop9", isPlanted: true },
-      { id: "10", name: "Crop10", isPlanted: false },
-      { id: "11", name: "Crop11", isPlanted: true },
-      { id: "12", name: "Crop12", isPlanted: true },
-      { id: "13", name: "Crop13", isPlanted: false },
-      { id: "14", name: "Crop14", isPlanted: true },
+    const crops: Crop[] = [
+      {
+        _id: "id",
+        cropName: "Lorem",
+        description: "Lorem ipsum.",
+        idealTemperature: {
+          fahrenheit: {
+            min: 45,
+            max: 70,
+          },
+          celcius: {
+            min: 5,
+            max: 20,
+          },
+        },
+        humidity: {
+          min: 80,
+          max: 90,
+        },
+        growthDuration: {
+          min: 42,
+          max: 56,
+        },
+        soilPh: {
+          min: 6.5,
+          max: 7,
+        },
+        soilN: 10,
+        soilP: 10,
+        soilK: 10,
+        growingTips: ["Lorem ipsum.", "dolor sit amet."],
+        tools: ["Lorem", "Ipsum"],
+        imageURL:
+          "https://res.cloudinary.com/dqkmua29w/image/upload/v1697606726/crops/xpsdnskowld9pjbt3sla.webp",
+        userId: "user",
+        isFavorite: false,
+        isPlanted: true,
+        datePlanted: new Date(),
+        estimatedYield: "10",
+        __v: 0,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
     ];
-
-    const handleOnClickCrop = (id: string) => {
-      console.log(id);
-    };
-
-    const handleOnCreateCrop = () => {
-      console.log("Create");
-    };
 
     return (
       <Container>
         <div style={{ flexGrow: "1" }}>
           <CropList
             crops={crops}
-            crop={{ id: "1", name: "Crop1", isPlanted: true }}
-            handleOnClickCrop={handleOnClickCrop}
-            handleOnCreateCrop={handleOnCreateCrop}
+            crop={crops[0]}
+            handleOnClickCrop={() => null}
+            handleOnClickChoice={() => null}
+            handleOnClickSuggestion={() => null}
           />
         </div>
       </Container>

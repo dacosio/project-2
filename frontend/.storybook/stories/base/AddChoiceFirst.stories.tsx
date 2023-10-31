@@ -9,12 +9,10 @@ import { store } from "../../../src/app/store";
 const meta: Meta<typeof AddChoiceFirst> = {
   title: "Base/AddChoiceFirst",
   component: () => {
-    const handleNext = () => {};
-
     return (
       <Container>
         <Provider store={store}>
-          <AddChoiceFirst onNext={handleNext} />
+          <AddChoiceFirst onNext={() => null} />
         </Provider>
       </Container>
     );

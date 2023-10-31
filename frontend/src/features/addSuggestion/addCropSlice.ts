@@ -5,12 +5,13 @@ import { Crop } from "types/store/CropState";
 
 const initialState: AddCrop = {
   date: "",
+  month: "",
   nitrogen: "",
   phosphorus: "",
   potassium: "",
   ph: "",
-  name: "",
-  crop: undefined,
+  cropId: "",
+  cropName: "",
 };
 
 const addCropSlice = createSlice({
@@ -19,6 +20,9 @@ const addCropSlice = createSlice({
   reducers: {
     storeDate: (state, action) => {
       state.date = action.payload;
+    },
+    storeMonth: (state, action) => {
+      state.month = action.payload;
     },
     storeNitrogen: (state, action) => {
       state.nitrogen = action.payload;
@@ -32,31 +36,33 @@ const addCropSlice = createSlice({
     storePh: (state, action) => {
       state.ph = action.payload;
     },
-    storeName: (state, action) => {
-      state.name = action.payload;
+    storeCropId: (state, action) => {
+      state.cropId = action.payload;
     },
-    storeCrop: (state, action) => {
-      state.crop = action.payload;
+    storeCropName: (state, action) => {
+      state.cropName = action.payload;
     },
   },
 });
 
 export const {
   storeDate,
+  storeMonth,
   storeNitrogen,
   storePhosphorus,
   storePotassium,
   storePh,
-  storeName,
-  storeCrop,
+  storeCropId,
+  storeCropName,
 } = addCropSlice.actions;
 
 export default addCropSlice.reducer;
 
 export const selectDate = (state: RootState) => state.addCrop.date;
+export const selectMonth = (state: RootState) => state.addCrop.month;
 export const selectNitrogen = (state: RootState) => state.addCrop.nitrogen;
 export const selectPhosphorus = (state: RootState) => state.addCrop.phosphorus;
 export const selectPotassium = (state: RootState) => state.addCrop.potassium;
 export const selectPh = (state: RootState) => state.addCrop.ph;
-export const selectName = (state: RootState) => state.addCrop.name;
-export const selectCrop = (state: RootState) => state.addCrop.crop;
+export const selectCropId = (state: RootState) => state.addCrop.cropId;
+export const selectCropName = (state: RootState) => state.addCrop.cropName;
