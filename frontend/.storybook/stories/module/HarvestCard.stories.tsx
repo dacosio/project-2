@@ -19,7 +19,7 @@ const meta: Meta<typeof HarvestCard> = {
             size="desktop"
             id="1"
             datePlanted="Jan 1, 2023"
-            estYield="xx lb/plant"
+            estYield="10"
             height={137}
             width={137}
           />
@@ -32,7 +32,7 @@ const meta: Meta<typeof HarvestCard> = {
             size="desktop"
             id="2"
             datePlanted="Jan 1, 2023"
-            estYield="xx lb/plant"
+            estYield="20"
             height={82}
             width={82}
             mobile
