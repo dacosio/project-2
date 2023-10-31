@@ -17,7 +17,9 @@ import { Toaster } from "react-hot-toast";
 
 const YourCropView = (props: YourCropGeneratedProps) => {
   const {
-    ref,
+    popupRef,
+    popupVisibility,
+    setPopupVisibility,
     option,
     setOption,
     crops,
@@ -55,7 +57,9 @@ const YourCropView = (props: YourCropGeneratedProps) => {
           </Visible>
           {crops && (
             <CropList
-              ref={ref}
+              popupRef={popupRef}
+              popupVisibility={popupVisibility}
+              setPopupVisibility={setPopupVisibility}
               crops={crops}
               crop={crop}
               options={[

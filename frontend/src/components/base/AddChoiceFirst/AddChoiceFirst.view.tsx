@@ -9,16 +9,19 @@ import {
   selectCropName,
   storeCropId,
   storeCropName,
-} from "../../../features/addSuggestion/addCropSlice";
+} from "../../../features/addCrop/addCropSlice";
 import Button from "../Button";
 import { Crop } from "../../../types/store/CropState";
 import { useGetCropAboutAllQuery } from "../../../features/cropEncyclopedia/cropEncyclopediaApiSlice";
+import LocationSearch from "../../../components/module/LocationSearch";
+import { selectAddress } from "../../../features/location/locationSlice";
 
 const AddChoiceFirst = (props: AddChoiceFirstProps): JSX.Element => {
   const { onNext } = props;
 
   const dispatch = useAppDispatch();
 
+  const address = useAppSelector(selectAddress);
   const cropId = useAppSelector(selectCropId);
   const cropName = useAppSelector(selectCropName);
 
@@ -35,7 +38,7 @@ const AddChoiceFirst = (props: AddChoiceFirstProps): JSX.Element => {
   const { data: cropsData } = useGetCropAboutAllQuery("");
 
   const handleNext = () => {
-    if (crop && crop.value && crop.label) {
+    if (address && crop && crop.value && crop.label) {
       dispatch(storeCropId(crop.value));
       dispatch(storeCropName(crop.label));
       onNext();
@@ -64,17 +67,25 @@ const AddChoiceFirst = (props: AddChoiceFirstProps): JSX.Element => {
         </Typography>
       </Header>
       <Body>
+        <div>
+          <Typography weight="500">
+            Where is your planting area located?
+          </Typography>
+          <LocationSearch />
+        </div>
         {options && (
-          <AutoComplete
-            options={options}
-            option={crop}
-            setOption={setCrop}
-            placeholder="Tomato, Potato, Carrots, etc..."
-          />
+          <div>
+            <AutoComplete
+              options={options}
+              option={crop}
+              setOption={setCrop}
+              placeholder="Tomato, Potato, Carrots, etc..."
+            />
+          </div>
         )}
       </Body>
       <Footer>
-        {crop ? (
+        {address && crop && crop.value && crop.label ? (
           <Button text="Next" onClick={handleNext} />
         ) : (
           <Button text="Next" variant="disabled" />

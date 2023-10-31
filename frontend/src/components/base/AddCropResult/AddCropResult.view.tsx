@@ -3,19 +3,24 @@ import { AddCropResultProps } from "./AddCropResult.props";
 import { Body, Container, Footer, Image } from "./AddCropResult.style";
 import CropInformation from "../../module/CropInformation";
 import { Crop } from "../../../types/store/CropState";
-import { useAppSelector } from "../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import {
   selectCropId,
   selectCropName,
-} from "../../../features/addSuggestion/addCropSlice";
+} from "../../../features/addCrop/addCropSlice";
 import Button from "../Button";
 import Typography from "../Typography";
 import { useAddCropMutation } from "../../../features/crops/cropApiSlice";
 import { useGetCropAboutQuery } from "../../../features/cropEncyclopedia/cropEncyclopediaApiSlice";
+import { selectCity } from "../../../features/location/locationSlice";
+import { storeSelectedCropId } from "../../../features/crops/cropSlice";
 
 const AddCropResult = (props: AddCropResultProps): JSX.Element => {
   const { onLater, onNow } = props;
 
+  const dispatch = useAppDispatch();
+
+  const cityName = useAppSelector(selectCity);
   const cropId = useAppSelector(selectCropId);
   const cropName = useAppSelector(selectCropName);
 
@@ -41,20 +46,24 @@ const AddCropResult = (props: AddCropResultProps): JSX.Element => {
 
   const handleLater = async () => {
     if (crop) {
-      const response = await addCrop({
+      const response = (await addCrop({
+        city: cityName,
         cropId: crop._id,
         plantNow: false,
-      }).unwrap();
+      }).unwrap()) as Crop;
+      dispatch(storeSelectedCropId(response._id));
       onLater();
     }
   };
 
   const handleNow = async () => {
     if (crop) {
-      const response = await addCrop({
+      const response = (await addCrop({
+        city: cityName,
         cropId: crop._id,
         plantNow: true,
-      }).unwrap();
+      }).unwrap()) as Crop;
+      dispatch(storeSelectedCropId(response._id));
       onNow();
     }
   };

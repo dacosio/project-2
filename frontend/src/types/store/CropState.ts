@@ -31,3 +31,7 @@ export interface IdealTemperature {
   fahrenheit: GrowthDuration;
   celcius: GrowthDuration;
 }
+
+export interface SelectedCropProps {
+  selectedCropId: string;
+}

@@ -16,7 +16,7 @@ import {
   storePh,
   storePhosphorus,
   storePotassium,
-} from "../../../features/addSuggestion/addCropSlice";
+} from "../../../features/addCrop/addCropSlice";
 import NumberField from "../NumberField";
 import { usePredictCropMutation } from "../../../features/condition/conditionApiSlice";
 import { selectCity } from "../../../features/location/locationSlice";

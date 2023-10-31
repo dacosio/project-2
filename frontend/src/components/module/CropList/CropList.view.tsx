@@ -17,7 +17,9 @@ import MobileDrawer from "../../../components/base/MobileDrawer";
 
 const CropList = (props: CropListProps): JSX.Element => {
   const {
-    ref,
+    popupRef,
+    popupVisibility,
+    setPopupVisibility,
     crops,
     crop,
     options,
@@ -29,8 +31,6 @@ const CropList = (props: CropListProps): JSX.Element => {
   } = props;
 
   const theme = useTheme();
-
-  const [visibility, setVisibility] = useState<boolean>(false);
 
   return (
     <Container>
@@ -84,18 +84,18 @@ const CropList = (props: CropListProps): JSX.Element => {
           icon={<Add fill={theme.btn.text.white} />}
           text="New Crop"
           style={{ justifySelf: "end" }}
-          onClick={() => setVisibility(true)}
+          onClick={() => setPopupVisibility(true)}
         />
       </div>
-      {visibility && (
+      {popupVisibility && (
         <>
           <Hidden xs sm>
-            <PopupContainer ref={ref}>
+            <PopupContainer ref={popupRef}>
               <div>
                 <div>
                   <div
                     onClick={() => {
-                      setVisibility(false);
+                      setPopupVisibility(false);
                       handleOnClickChoice();
                     }}
                   >
@@ -111,7 +111,7 @@ const CropList = (props: CropListProps): JSX.Element => {
                   </div>
                   <div
                     onClick={() => {
-                      setVisibility(false);
+                      setPopupVisibility(false);
                       handleOnClickSuggestion();
                     }}
                   >
@@ -132,8 +132,8 @@ const CropList = (props: CropListProps): JSX.Element => {
           <Visible xs sm>
             <MobileDrawer
               direction="bottom"
-              isOpenDrawer={visibility}
-              handleDrawerClose={() => setVisibility(false)}
+              isOpenDrawer={popupVisibility}
+              handleDrawerClose={() => setPopupVisibility(false)}
               drawerSize="auto"
             >
               <PopupContainer>
@@ -141,7 +141,7 @@ const CropList = (props: CropListProps): JSX.Element => {
                   <div>
                     <div
                       onClick={() => {
-                        setVisibility(false);
+                        setPopupVisibility(false);
                         handleOnClickChoice();
                       }}
                     >
@@ -157,7 +157,7 @@ const CropList = (props: CropListProps): JSX.Element => {
                     </div>
                     <div
                       onClick={() => {
-                        setVisibility(false);
+                        setPopupVisibility(false);
                         handleOnClickSuggestion();
                       }}
                     >

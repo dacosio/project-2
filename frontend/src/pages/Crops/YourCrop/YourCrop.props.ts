@@ -3,7 +3,9 @@ import { Dispatch, SetStateAction } from "react";
 import { Crop } from "../../../types/store/CropState";
 
 export interface YourCropGeneratedProps {
-  ref: React.MutableRefObject<HTMLDivElement | null>;
+  popupRef: React.MutableRefObject<HTMLDivElement | null>;
+  popupVisibility: boolean;
+  setPopupVisibility: Dispatch<SetStateAction<boolean>>;
   option: Option | undefined;
   setOption: Dispatch<SetStateAction<Option | undefined>>;
   crops: Crop[];
