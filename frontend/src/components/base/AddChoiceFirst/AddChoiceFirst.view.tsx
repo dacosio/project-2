@@ -75,6 +75,7 @@ const AddChoiceFirst = (props: AddChoiceFirstProps): JSX.Element => {
         </div>
         {options && (
           <div>
+            <Typography weight="500">Which crop are you planting?</Typography>
             <AutoComplete
               options={options}
               option={crop}
