@@ -12,10 +12,11 @@ import {
 } from "../../../features/location/locationSlice";
 
 const LocationSearch = (props: LocationSearchProps): JSX.Element => {
+  const { onClickControl = () => null } = props;
+
   const dispatch = useAppDispatch();
 
   const apiKey: string | undefined = process.env.REACT_APP_PLACES_API;
-  const { onClickControl } = props;
   const {
     placesService,
     placePredictions,

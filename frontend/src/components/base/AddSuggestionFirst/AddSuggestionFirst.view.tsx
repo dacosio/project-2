@@ -62,11 +62,7 @@ const AddSuggestionFirst = (props: AddSuggestionFirstProps): JSX.Element => {
           <Typography weight="500">
             Where is your planting area located?
           </Typography>
-          <LocationSearch
-            onClickControl={(value) => {
-              console.log(`AddSuggestionFirst : ${value}`);
-            }}
-          />
+          <LocationSearch />
         </div>
         <div>
           <Typography weight="500">When are you planting the crop?</Typography>

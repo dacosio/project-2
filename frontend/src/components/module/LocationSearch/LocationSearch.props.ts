@@ -1,3 +1,3 @@
-export interface LocationSearchProps { 
-    onClickControl: (address: string) => void;
+export interface LocationSearchProps {
+  onClickControl?: (address: string) => void;
 }
