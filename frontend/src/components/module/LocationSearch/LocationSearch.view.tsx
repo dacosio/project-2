@@ -15,7 +15,7 @@ const LocationSearch = (props: LocationSearchProps): JSX.Element => {
   const dispatch = useAppDispatch();
 
   const apiKey: string | undefined = process.env.REACT_APP_PLACES_API;
-
+  const { onClickControl } = props;
   const {
     placesService,
     placePredictions,
@@ -44,6 +44,8 @@ const LocationSearch = (props: LocationSearchProps): JSX.Element => {
           setValue(placeDetails?.formatted_address);
           dispatch(storeAddress(placeDetails?.formatted_address));
           dispatch(storeCity(placeDetails?.vicinity));
+          console.log(placeDetails);
+          placeDetails && onClickControl(placeDetails.name || "Toronto");
         }
       );
     }

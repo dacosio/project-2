@@ -106,7 +106,7 @@ const SingleHourlyWeather = (props: SingleHourlyWeatherProps): JSX.Element => {
         ) : currentCondition === "thunderStormRain" ? (
           <ThunderStormInactive width={30} height={30} />
         ) : (
-          <Cloudy width={30} height={30} />
+          <PartiallyCloudyInactive width={30} height={30} />
         )}
       </WeatherContainer>
       <TemperatureContainer>

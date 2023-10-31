@@ -22,6 +22,25 @@ const meta: Meta<typeof SingleHourlyWeather> = {
             condition="clear"
             temperature={18}
             state="Today"
+            selectedIndex={0}
+            index={0}
+            onClickControl={(value) => {
+              console.log("yo");
+            }}
+          />
+
+          <SingleHourlyWeather
+            time="2PM"
+            dayName="Wednesday"
+            dayDate="20 Oct"
+            condition="clear"
+            temperature={18}
+            state="Today"
+            selectedIndex={0}
+            index={1}
+            onClickControl={(value) => {
+              console.log("yo");
+            }}
           />
         </div>
       </Container>

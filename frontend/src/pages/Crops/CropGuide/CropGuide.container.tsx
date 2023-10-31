@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import CropGuideView from "./CropGuide.view";
 import { CropGuideGeneratedProps, YourSearchItemType } from "./CropGuide.props";
@@ -29,10 +29,36 @@ const CropGuide = (): JSX.Element => {
     setSearchResults(filteredSearches || []);
   };
 
+  // for images
+  const getImageUrl = (cropName: any) => `/assets/${cropName}.webp`;
+  const [imageUrls, setImageUrls] = useState<string[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const urls = searches.map((con) => getImageUrl(con.cropName));
+    const loadedImagesCount = urls.length;
+    let imagesLoaded = 0;
+
+    urls.forEach((url) => {
+      const img = new Image();
+      img.src = url;
+      img.onload = () => {
+        imagesLoaded++;
+        if (imagesLoaded === loadedImagesCount) {
+          setLoading(false);
+        }
+      };
+    });
+
+    setImageUrls(urls);
+  }, [searches]);
+
   const generatedProps = {
     data: data,
     searches: searches,
     searchResults: searchResults,
+    imageUrls: imageUrls,
+    loading: loading,
     setSearchResults: setSearchResults,
     searchTerm: searchTerm,
     setSearchTerm: setSearchTerm,

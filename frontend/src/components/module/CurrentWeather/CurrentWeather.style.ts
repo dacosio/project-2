@@ -10,8 +10,8 @@ const widthSize: Record<string, string> = {
   
 };
 export const Container = styled.div<CurrentWeatherStyleProps>`
-max-width: 70vw;
-width: 100%;
+// max-width: 70vw;
+// width: 100%;
   background-image: linear-gradient(
     to right,
     ${({ gradientColor1 }) => gradientColor1},
