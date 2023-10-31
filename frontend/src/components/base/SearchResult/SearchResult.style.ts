@@ -26,9 +26,13 @@ export const ResultCount = styled.div`
 export const SearchResultList = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    gap: 16px;
     row-gap: 1rem;
     margin: 2rem 0;
+
+    @media screen and (min-width: 768px) {
+        gap: 24px;
+    }
 
     @media screen and (min-width: 768px) {
         grid-template-columns: repeat(3, 1fr);
