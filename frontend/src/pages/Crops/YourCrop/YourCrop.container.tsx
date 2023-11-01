@@ -139,7 +139,7 @@ const YourCrop = (): JSX.Element => {
     );
 
     const filteredCrop = filteredCrops.find(
-      (crop) => selectedCropId === crop._id
+      (cropItem) => selectedCropId === cropItem._id
     );
 
     if (filteredCrop) {
