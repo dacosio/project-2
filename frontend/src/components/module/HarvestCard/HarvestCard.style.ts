@@ -11,6 +11,7 @@ export const Container = styled.div`
   flex-direction: column;
   gap: 10px;
   justify-content: center;
+  margin-bottom: 16px;
 `;
 
 export const Progress = styled.div`

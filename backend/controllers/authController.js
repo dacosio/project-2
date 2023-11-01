@@ -101,7 +101,12 @@ const login = async (req, res) => {
     });
 
     // Send accessToken containing email and roles
-    res.json({ accessToken });
+    res.json({
+      accessToken,
+      firstName: foundUser.firstName,
+      lastName: foundUser.lastName,
+      imageUrl: foundUser.imageUrl,
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -140,7 +145,13 @@ const refresh = (req, res) => {
           { expiresIn: "1d" }
         );
 
-        res.json({ accessToken });
+        // res.json({ accessToken });
+        res.json({
+          accessToken,
+          firstName: foundUser.firstName,
+          lastName: foundUser.lastName,
+          imageUrl: foundUser.imageUrl,
+        });
       }
     );
   } catch (error) {

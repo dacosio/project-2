@@ -7,7 +7,8 @@ import {
   Segment,
   Weather,
   Title,
-  Carousel,
+  Crops,
+  // Carousel,
 } from "./Dashboard.style";
 import WeatherCard from "../../components/base/WeatherCard";
 import axios from "axios";
@@ -29,7 +30,8 @@ import { useMediaQuery } from "utils/hooks/useMediaQuery";
 import CurrentWeather from "components/module/CurrentWeather";
 import { calculateDaysPassed, formatDate } from "utils/Date";
 import Loading from "../../components/base/Loading";
-
+import { Container, Row, Col, Hidden, Visible } from "react-grid-system";
+import { useElementSize } from "utils/hooks/useElementSize";
 const DashboardView = (props: DashboardGeneratedProps) => {
   const { crops, isLoading } = props;
   const MOCK_OPTIONS = ["Today", "15-day"];
@@ -52,10 +54,14 @@ const DashboardView = (props: DashboardGeneratedProps) => {
     // setSelectedIndex(value);
   };
 
+  const [squareRef, { width, height }] = useElementSize();
+  console.log(width);
   return (
     <Wrapper>
       <Top>
         <Weather md={6}>
+          Weather here
+          {/*
           <CurrentWeather
             currentLocation="Vancouver"
             forecast="Clear"
@@ -70,7 +76,7 @@ const DashboardView = (props: DashboardGeneratedProps) => {
             currentCondition="clear"
             page="dashboard"
             onSelectedSearchLocation={handleSelectedSearchLocation}
-          />
+          /> */}
         </Weather>
         <Segment md={6}>
           <SegmentedControl
@@ -101,48 +107,34 @@ const DashboardView = (props: DashboardGeneratedProps) => {
         {isLoading ? (
           <Loading />
         ) : (
-          <>
-            <CarouselSwiper
-              slidesPerView={1}
-              breakpoints={{
-                500: {
-                  width: 500,
-                  slidesPerView: 2,
-                  spaceBetween: 20,
-                },
-                1024: {
-                  width: 1024,
-                  slidesPerView: 4,
-                  spaceBetween: 20,
-                },
-              }}
-              slides={crops?.map((crop, idx) => {
-                let maxValue =
-                  (crop.growthDuration.max + crop.growthDuration.min) / 2;
+          <Crops ref={squareRef}>
+            {crops?.slice(0, 4).map((crop, idx) => {
+              let maxValue =
+                (crop.growthDuration.max + crop.growthDuration.min) / 2;
 
-                const targetDate = new Date(crop.datePlanted);
-                const daysPassed = calculateDaysPassed(targetDate);
-                const remainingDays = maxValue - daysPassed;
-                const formattedDate = formatDate(new Date(crop.datePlanted));
-                return (
-                  <HarvestCard
-                    key={idx}
-                    cropName={crop.cropName}
-                    maxValue={maxValue}
-                    value={daysPassed}
-                    title={remainingDays.toString()}
-                    subtitle="days"
-                    size="desktop"
-                    id={idx.toString()}
-                    datePlanted={formattedDate}
-                    estYield="xx lb/plant"
-                    height={82}
-                    width={82}
-                  />
-                );
-              })}
-            />
-          </>
+              const targetDate = new Date(crop.datePlanted);
+              const daysPassed = calculateDaysPassed(targetDate);
+              const remainingDays = maxValue - daysPassed;
+              const formattedDate = formatDate(new Date(crop.datePlanted));
+              return (
+                <HarvestCard
+                  key={idx}
+                  cropName={crop.cropName}
+                  maxValue={maxValue}
+                  value={daysPassed}
+                  title={remainingDays.toString()}
+                  subtitle="days"
+                  size={width < 800 ? "mobile" : "desktop"}
+                  id={idx.toString()}
+                  datePlanted={formattedDate}
+                  estYield="10"
+                  height={width < 800 ? 85 : 120}
+                  width={width < 800 ? 85 : 120}
+                  mobile={width < 800 ? true : false}
+                />
+              );
+            })}
+          </Crops>
         )}
       </Middle>
     </Wrapper>

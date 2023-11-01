@@ -32,8 +32,8 @@ const Signin = (props: SigninProps): JSX.Element => {
   const handleOnSubmit = async (v: { email: string; password: string }) => {
     const { email, password } = v;
     try {
-      const { accessToken } = await login({ email, password }).unwrap();
-      dispatch(setCredentials({ accessToken }));
+      const payload = await login({ email, password }).unwrap();
+      dispatch(setCredentials(payload));
 
       navigate("/dashboard");
     } catch (err: any) {
@@ -61,7 +61,8 @@ const Signin = (props: SigninProps): JSX.Element => {
           variant="title2"
           weight="700"
           textColor="primary"
-          align="center">
+          align="center"
+        >
           Welcome back, Let's farm!
         </Typography>
       </Header>
@@ -71,7 +72,8 @@ const Signin = (props: SigninProps): JSX.Element => {
           initialValues={{ email: "", password: "" }}
           validationSchema={validationSchema}
           onSubmit={handleOnSubmit}
-          enableReinitialize>
+          enableReinitialize
+        >
           <Form>
             <FormStyle>
               <FormikTextField
@@ -100,7 +102,8 @@ const Signin = (props: SigninProps): JSX.Element => {
             <SignUpButton
               variant="subtitle"
               textColor="n90"
-              onClick={handleSignUpModal}>
+              onClick={handleSignUpModal}
+            >
               Sign Up
             </SignUpButton>
           </Bottom>
