@@ -32,8 +32,8 @@ const Signin = (props: SigninProps): JSX.Element => {
   const handleOnSubmit = async (v: { email: string; password: string }) => {
     const { email, password } = v;
     try {
-      const { accessToken } = await login({ email, password }).unwrap();
-      dispatch(setCredentials({ accessToken }));
+      const payload = await login({ email, password }).unwrap();
+      dispatch(setCredentials(payload));
 
       navigate("/dashboard");
     } catch (err: any) {
