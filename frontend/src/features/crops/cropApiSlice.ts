@@ -29,16 +29,16 @@ export const cropApiSlice = apiSlice.injectEndpoints({
     }),
     plant: builder.mutation({
       //plantLater / plantnow if in crop guide page
-      query: ({ cropId, plantNow }) => ({
+      query: ({ cropId, plantNow, estimatedYield }) => ({
         url,
         method: METHOD.POST,
-        body: { cropId, plantNow },
+        body: { cropId, plantNow, estimatedYield },
       }),
       invalidatesTags: [{ type: TAG_TYPE.CROP, id: "LIST" }],
     }),
     plantNow: builder.mutation({
       //plantnow when coming from your crop
-      query: ({ id }) => ({
+      query: ({ id, estimatedYield }) => ({
         url: "api/plant-now",
         method: METHOD.PUT,
         body: { id },
