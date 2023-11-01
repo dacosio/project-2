@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { HomeGeneratedProps } from "./Home.props";
 import {
   Container,
@@ -39,6 +39,8 @@ import { SproutLogo } from "components/base/SVG";
 import WeatherCard from "./../../components/base/WeatherCard";
 import Search from "./../../components/base/Search";
 import LocationSearch from "components/module/LocationSearch";
+import { useAppDispatch } from "app/hooks";
+import { forwardEmail, toggleSignUp } from "features/authModal/authModalSlice";
 
 // import emailjs from '@emailjs/browser';
 
@@ -59,6 +61,11 @@ import LocationSearch from "components/module/LocationSearch";
 const HomeView = (props: HomeGeneratedProps) => {
   const [email, setEmail] = useState<string>("");
   const [name, setName] = useState<string>("");
+  const dispatch = useAppDispatch();
+
+  // useEffect(() => {
+  //   dispatch(forwardEmail(email));
+  // }, [email, dispatch]);
 
   return (
     <Container>
@@ -92,7 +99,12 @@ const HomeView = (props: HomeGeneratedProps) => {
               text="Farm with us"
               variant="primary"
               size="md"
-              takeFullWidth={false}></Button>
+              takeFullWidth={false}
+              onClick={() => {
+                dispatch(toggleSignUp(true));
+                dispatch(forwardEmail(email));
+              }}
+            />
           </div>
         </HeaderContents>
         <HeaderContents xxl={4} xl={4} lg={6} md={6}>
