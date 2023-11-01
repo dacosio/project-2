@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { HomeNavigationMobileProps } from "./HomeNavigationMobile.props";
 import {
   Container,
@@ -6,16 +6,22 @@ import {
   NavContainer,
   NavOptions,
 } from "./HomeNavigationMobile.style";
+import { useOnClickOutside } from "utils/hooks/useOnClickOutside";
 
 const HomeNavigationMobile = (
   props: HomeNavigationMobileProps
 ): JSX.Element => {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState("hidden");
+  useOnClickOutside(ref, () => {
+    // console.log(props.open);
+    if (props.open) setVisible("hidden");
+    else setVisible("visible");
+  });
   return (
     <Container>
-      <NavBackground
-        className={props.open ? "visible" : "hidden"}
-      ></NavBackground>
-      <NavContainer className={props.open ? "visible" : "hidden"}>
+      <NavBackground className={visible}></NavBackground>
+      <NavContainer className={visible} ref={ref}>
         <NavOptions>
           <ul>
             <li>

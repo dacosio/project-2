@@ -21,8 +21,6 @@ const HomeNavigation = (props: HomeNavigationProps): JSX.Element => {
 
   const matches = useMediaQuery("(min-width: 992px)");
 
-  console.log(matches);
-
   return (
     <Container>
       <Nav>
@@ -45,7 +43,7 @@ const HomeNavigation = (props: HomeNavigationProps): JSX.Element => {
           </ul>
         </NavOptions>
         <LoginOptions>
-            <LoginModal />
+          <LoginModal />
           <SignupModal />
         </LoginOptions>
       </Nav>
