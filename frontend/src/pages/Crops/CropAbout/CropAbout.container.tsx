@@ -16,6 +16,9 @@ const CropAbout = (): JSX.Element => {
   const { data } = useGetCropAboutQuery(`${id}`);
   const crops = data || [];
   const [plant] = usePlantMutation();
+  // city -> hit predict endpoint
+  // const estimatedYield
+
   const handlePlantLater = async () => {
     try {
       await plant({ cropId: id, plantNow: false }).then(() =>
@@ -26,6 +29,8 @@ const CropAbout = (): JSX.Element => {
       toast.error("An error occured. Please try again later");
     }
   };
+  
+  // add the estimated here only
   const handlePlantNow = async () => {
     try {
       await plant({ cropId: id, plantNow: true }).then(() =>
