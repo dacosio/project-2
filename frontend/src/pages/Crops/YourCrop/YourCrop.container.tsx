@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from "react";
-
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import YourCropView from "./YourCrop.view";
-import { YourCropGeneratedProps } from "./YourCrop.props";
+import { YourCropGeneratedProps, Option } from "./YourCrop.props";
 import {
   useFavoriteMutation,
   useGetPlantedCropsQuery,
@@ -9,32 +9,23 @@ import {
   useRemoveCropMutation,
 } from "../../../features/crops/cropApiSlice";
 import { Crop } from "../../../types/store/CropState";
-import { Option } from "../../../components/base/Tab/Tab.props";
-import toast from "react-hot-toast";
-import { useOnClickOutside } from "../../../utils/hooks/useOnClickOutside";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import {
   selectSelectedCropId,
+  selectSelectedOption,
   storeSelectedCropId,
+  storeSelectedOption,
 } from "../../../features/crops/cropSlice";
 
 const YourCrop = (): JSX.Element => {
-  const popupRef = useRef<HTMLDivElement | null>(null);
-  useOnClickOutside(popupRef, (event: MouseEvent) => {
-    setPopupVisibility(false);
-  });
-
   const dispatch = useAppDispatch();
 
+  const selectedOption = useAppSelector(selectSelectedOption);
   const selectedCropId = useAppSelector(selectSelectedCropId);
 
-  const [option, setOption] = useState<Option | undefined>({
-    value: "all",
-    label: "All",
-  });
+  const [option, setOption] = useState<Option | undefined>(selectedOption);
   const [crops, setCrops] = useState<Crop[]>([]);
   const [crop, setCrop] = useState<Crop | undefined>(undefined);
-  const [popupVisibility, setPopupVisibility] = useState<boolean>(false);
   const [choiceVisibility, setChoiceVisibility] = useState<boolean>(false);
   const [suggestionVisibility, setSuggestionVisibility] =
     useState<boolean>(false);
@@ -43,11 +34,15 @@ const YourCrop = (): JSX.Element => {
   const [plantNow] = usePlantNowMutation();
   const [favorite] = useFavoriteMutation();
   const [removeCrop] = useRemoveCropMutation();
-  const { data: cropsData } = useGetPlantedCropsQuery({
+  const {
+    data: cropsData,
+    isSuccess,
+    refetch,
+  } = useGetPlantedCropsQuery({
     isPlanted:
-      option?.value === "planted"
+      selectedOption?.value === "planted"
         ? true
-        : option?.value === "to-plant"
+        : selectedOption?.value === "to-plant"
         ? false
         : undefined,
   });
@@ -85,7 +80,13 @@ const YourCrop = (): JSX.Element => {
 
   const handlePlant = async (id: string) => {
     await plantNow({ id })
-      .then(() => toast.success("Crop successfully planted"))
+      .then(() => {
+        toast.success("Crop successfully planted");
+        setOption({
+          value: "planted",
+          label: "Planted",
+        });
+      })
       .catch(() => {
         toast.error("An error occured. Please, try again later");
       });
@@ -93,11 +94,11 @@ const YourCrop = (): JSX.Element => {
 
   const handleFavorite = async (id: string, isFavorite: boolean) => {
     await favorite({ id, isFavorite })
-      .then(() =>
+      .then(() => {
         isFavorite
           ? toast.success("Crop successfully added to favorite list")
-          : toast.success("Crop successfully removed from favorite list")
-      )
+          : toast.success("Crop successfully removed from favorite list");
+      })
       .catch(() => {
         toast.error("An error occured. Please, try again later");
       });
@@ -107,7 +108,6 @@ const YourCrop = (): JSX.Element => {
     await removeCrop({ id })
       .then(() => {
         toast.success("Crop successfully removed");
-        dispatch(storeSelectedCropId(""));
       })
       .catch(() => {
         toast.error("An error occured. Please, try again later");
@@ -115,28 +115,33 @@ const YourCrop = (): JSX.Element => {
   };
 
   useEffect(() => {
-    if (cropsData) {
-      const items = cropsData as Crop[];
+    if (isSuccess) {
+      if (cropsData) {
+        const items = cropsData as Crop[];
 
-      setCrops(items);
-
-      if (!selectedCropId) {
-        if (items && 0 < items.length) {
-          dispatch(storeSelectedCropId(items[0]._id));
-        }
+        setCrops(items);
       }
+    } else {
+      setCrops([]);
     }
-  }, [cropsData]);
+  }, [isSuccess, cropsData]);
 
   useEffect(() => {
-    setCrop(crops.find((crop) => selectedCropId === crop._id));
+    dispatch(storeSelectedOption(option));
+  }, [option]);
+
+  useEffect(() => {
+    if (crops.find((crop) => selectedCropId === crop._id)) {
+      setCrop(crops.find((crop) => selectedCropId === crop._id));
+    } else {
+      if (0 < crops.length) {
+        setCrop(crops[0]);
+      }
+    }
   }, [crops, selectedCropId]);
 
   const generatedProps: YourCropGeneratedProps = {
-    popupRef,
-    popupVisibility,
-    setPopupVisibility,
-    option,
+    option: selectedOption,
     setOption,
     crops,
     crop,

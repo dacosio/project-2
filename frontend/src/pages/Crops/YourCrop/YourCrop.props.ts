@@ -1,11 +1,12 @@
-import { Option } from "components/base/Tab/Tab.props";
 import { Dispatch, SetStateAction } from "react";
 import { Crop } from "../../../types/store/CropState";
 
+export type Option = {
+  value: string;
+  label: string;
+};
+
 export interface YourCropGeneratedProps {
-  popupRef: React.MutableRefObject<HTMLDivElement | null>;
-  popupVisibility: boolean;
-  setPopupVisibility: Dispatch<SetStateAction<boolean>>;
   option: Option | undefined;
   setOption: Dispatch<SetStateAction<Option | undefined>>;
   crops: Crop[];

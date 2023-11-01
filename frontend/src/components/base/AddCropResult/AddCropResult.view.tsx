@@ -13,7 +13,10 @@ import Typography from "../Typography";
 import { useAddCropMutation } from "../../../features/crops/cropApiSlice";
 import { useGetCropAboutQuery } from "../../../features/cropEncyclopedia/cropEncyclopediaApiSlice";
 import { selectCity } from "../../../features/location/locationSlice";
-import { storeSelectedCropId } from "../../../features/crops/cropSlice";
+import {
+  storeSelectedCropId,
+  storeSelectedOption,
+} from "../../../features/crops/cropSlice";
 
 const AddCropResult = (props: AddCropResultProps): JSX.Element => {
   const { onLater, onNow } = props;
@@ -51,6 +54,12 @@ const AddCropResult = (props: AddCropResultProps): JSX.Element => {
         cropId: crop._id,
         plantNow: false,
       }).unwrap()) as Crop;
+      dispatch(
+        storeSelectedOption({
+          value: "to-plant",
+          label: "To Plant",
+        })
+      );
       dispatch(storeSelectedCropId(response._id));
       onLater();
     }
@@ -63,6 +72,12 @@ const AddCropResult = (props: AddCropResultProps): JSX.Element => {
         cropId: crop._id,
         plantNow: true,
       }).unwrap()) as Crop;
+      dispatch(
+        storeSelectedOption({
+          value: "planted",
+          label: "Planted",
+        })
+      );
       dispatch(storeSelectedCropId(response._id));
       onNow();
     }

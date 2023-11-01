@@ -7,9 +7,6 @@ export type Option = {
 };
 
 export interface CropListProps {
-  popupRef: React.MutableRefObject<HTMLDivElement | null>;
-  popupVisibility: boolean;
-  setPopupVisibility: Dispatch<SetStateAction<boolean>>;
   crops: Crop[];
   crop?: Crop;
   options: Option[];
