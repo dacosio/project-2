@@ -7,6 +7,7 @@ export type Option = {
 };
 
 export interface YourCropGeneratedProps {
+  isLoading: boolean;
   option: Option | undefined;
   setOption: Dispatch<SetStateAction<Option | undefined>>;
   crops: Crop[];

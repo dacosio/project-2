@@ -36,15 +36,10 @@ const YourCrop = (): JSX.Element => {
   const [removeCrop] = useRemoveCropMutation();
   const {
     data: cropsData,
+    isLoading,
     isSuccess,
-    refetch,
   } = useGetPlantedCropsQuery({
-    isPlanted:
-      selectedOption?.value === "planted"
-        ? true
-        : selectedOption?.value === "to-plant"
-        ? false
-        : undefined,
+    isPlanted: undefined,
   });
 
   const handleDrawerOpen = () => {
@@ -120,9 +115,13 @@ const YourCrop = (): JSX.Element => {
         const items = cropsData as Crop[];
 
         setCrops(items);
+      } else {
+        setCrops([]);
+        setCrop(undefined);
       }
     } else {
       setCrops([]);
+      setCrop(undefined);
     }
   }, [isSuccess, cropsData]);
 
@@ -131,16 +130,31 @@ const YourCrop = (): JSX.Element => {
   }, [option]);
 
   useEffect(() => {
-    if (crops.find((crop) => selectedCropId === crop._id)) {
-      setCrop(crops.find((crop) => selectedCropId === crop._id));
+    const filteredCrops = crops.filter((cropItem) =>
+      option?.value === "planted"
+        ? cropItem.isPlanted
+        : option?.value === "to-plant"
+        ? !cropItem.isPlanted
+        : true
+    );
+
+    const filteredCrop = filteredCrops.find(
+      (crop) => selectedCropId === crop._id
+    );
+
+    if (filteredCrop) {
+      setCrop(filteredCrop);
     } else {
-      if (0 < crops.length) {
-        setCrop(crops[0]);
+      if (0 < filteredCrops.length) {
+        setCrop(filteredCrops[0]);
+      } else {
+        setCrop(undefined);
       }
     }
-  }, [crops, selectedCropId]);
+  }, [crops, selectedOption, selectedCropId]);
 
   const generatedProps: YourCropGeneratedProps = {
+    isLoading,
     option: selectedOption,
     setOption,
     crops,

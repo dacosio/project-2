@@ -48,32 +48,40 @@ const CropList = (props: CropListProps): JSX.Element => {
         />
       </TabContainer>
       <List>
-        {crops.map((cropItem, index) => (
-          <Item
-            onClick={() => handleOnClickCrop(cropItem._id)}
-            key={index}
-            style={{
-              backgroundColor:
-                cropItem._id === crop?._id
-                  ? theme.btn.color.outlineBg
-                  : undefined,
-            }}
-          >
-            <Typography variant="body" weight="700">
-              {cropItem.cropName}
-            </Typography>
-            <Typography
-              variant="small"
+        {crops
+          .filter((cropItem) =>
+            option?.value === "planted"
+              ? cropItem.isPlanted
+              : option?.value === "to-plant"
+              ? !cropItem.isPlanted
+              : true
+          )
+          .map((cropItem, index) => (
+            <Item
+              onClick={() => handleOnClickCrop(cropItem._id)}
+              key={index}
               style={{
-                color: cropItem.isPlanted
-                  ? theme.btn.color.token
-                  : theme.btn.color.tokenHover,
+                backgroundColor:
+                  cropItem._id === crop?._id
+                    ? theme.btn.color.outlineBg
+                    : undefined,
               }}
             >
-              {cropItem.isPlanted ? "PLANTED" : "TO PLANT"}
-            </Typography>
-          </Item>
-        ))}
+              <Typography variant="body" weight="700">
+                {cropItem.cropName}
+              </Typography>
+              <Typography
+                variant="small"
+                style={{
+                  color: cropItem.isPlanted
+                    ? theme.btn.color.token
+                    : theme.btn.color.tokenHover,
+                }}
+              >
+                {cropItem.isPlanted ? "PLANTED" : "TO PLANT"}
+              </Typography>
+            </Item>
+          ))}
       </List>
       <div style={{ alignItems: "flex-end" }}>
         <Button
