@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction, TextareaHTMLAttributes } from "react";
+import { Variants } from "../Typography/Typography.props";
 
 export interface FormikTextAreaProps
   extends TextareaHTMLAttributes<HTMLTextAreaElement> {
@@ -6,4 +7,6 @@ export interface FormikTextAreaProps
   setValue?: Dispatch<SetStateAction<string>>;
   error?: string;
   name: string;
+  labelVariant?: Variants 
+  labelWeight: string;
 }

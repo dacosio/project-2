@@ -61,7 +61,8 @@ const Signin = (props: SigninProps): JSX.Element => {
           variant="title2"
           weight="700"
           textColor="primary"
-          align="center">
+          align="center"
+        >
           Welcome back, Let's farm!
         </Typography>
       </Header>
@@ -71,16 +72,21 @@ const Signin = (props: SigninProps): JSX.Element => {
           initialValues={{ email: "", password: "" }}
           validationSchema={validationSchema}
           onSubmit={handleOnSubmit}
-          enableReinitialize>
+          enableReinitialize
+        >
           <Form>
             <FormStyle>
               <FormikTextField
                 label="Email"
+                labelVariant="small"
+                labelWeight="400"
                 name="email"
                 placeholder="user@nomail.com"
               />
               <FormikTextField
                 label="Password"
+                labelVariant="small"
+                labelWeight="400"
                 name="password"
                 placeholder="******"
                 secured
@@ -100,7 +106,8 @@ const Signin = (props: SigninProps): JSX.Element => {
             <SignUpButton
               variant="subtitle"
               textColor="n90"
-              onClick={handleSignUpModal}>
+              onClick={handleSignUpModal}
+            >
               Sign Up
             </SignUpButton>
           </Bottom>

@@ -31,11 +31,15 @@ const meta: Meta<typeof FormikTextField> = {
           <Form>
             <FormikTextField
               label="Email"
+              labelVariant="subtitle"
+              labelWeight="400"
               name="email"
               placeholder="user@nomail.com"
             />
             <FormikTextField
               label="Password"
+              labelVariant="subtitle"
+              labelWeight="400"
               name="password"
               placeholder="******"
               secured

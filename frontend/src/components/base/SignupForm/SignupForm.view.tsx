@@ -22,22 +22,29 @@ const SignupForm = (props: SignupFormProps): JSX.Element => {
     <Formik
       initialValues={{ email: "", password: "" }}
       validationSchema={validationSchema}
-      onSubmit={handleOnSubtmit}>
+      onSubmit={handleOnSubtmit}
+    >
       <Form>
         <FormStyle>
           <FormikTextField
             label="Email"
+            labelVariant="small"
+            labelWeight="400"
             name="email"
             placeholder="Enter email"
           />
           <FormikTextField
             label="Password"
+            labelVariant="small"
+            labelWeight="400"
             name="password"
             placeholder="******"
             secured
           />
           <FormikTextField
             label="Confirm Password"
+            labelVariant="small"
+            labelWeight="400"
             name="password"
             placeholder="******"
             secured
