@@ -16,13 +16,18 @@ const SignupForm = (props: SignupFormProps): JSX.Element => {
       .email("Invalid email format")
       .required("Your email is required"),
     password: Yup.string().required("Your password is required"),
+    confirmPassword: Yup.string().oneOf(
+      [Yup.ref("password"), ""],
+      "Your password does not match"
+    ),
   });
 
   return (
     <Formik
       initialValues={{ email: "", password: "" }}
       validationSchema={validationSchema}
-      onSubmit={handleOnSubtmit}>
+      onSubmit={handleOnSubtmit}
+    >
       <Form>
         <FormStyle>
           <FormikTextField
@@ -38,7 +43,7 @@ const SignupForm = (props: SignupFormProps): JSX.Element => {
           />
           <FormikTextField
             label="Confirm Password"
-            name="password"
+            name="confirmPassword"
             placeholder="******"
             secured
           />
