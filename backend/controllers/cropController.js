@@ -52,7 +52,7 @@ const plant = async (req, res) => {
           isFavorite: false,
           isPlanted: plantNow,
           datePlanted: new Date(),
-          estimatedYield: 0,
+          estimatedYield: 10,
           ...cropEnc,
         });
       } else {
@@ -60,7 +60,7 @@ const plant = async (req, res) => {
           userId,
           isFavorite: false,
           isPlanted: plantNow,
-          estimatedYield: 0,
+          estimatedYield: 10,
           ...cropEnc,
         });
       }
