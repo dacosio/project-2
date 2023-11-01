@@ -101,3 +101,14 @@ input[type="search"]::-webkit-search-results-decoration {
     width: 768px;
   }
 }
+
+/* the slides */
+.slick-slide {
+  margin: 0 15px;
+  flex-wrap: nowrap;
+}
+
+/* the parent */
+.slick-list {
+  /* margin: 0 -27px; */
+}

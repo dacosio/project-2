@@ -34,8 +34,7 @@ const HarvestCard = (props: HarvestCardProps): JSX.Element => {
         <Typography
           variant={mobile ? "small" : "body"}
           weight="700"
-          textColor="secondary"
-        >
+          textColor="secondary">
           {cropName}
         </Typography>
         <ThreeDots />
@@ -67,7 +66,7 @@ const HarvestCard = (props: HarvestCardProps): JSX.Element => {
             Est. Yield
           </Typography>
           <Typography variant={textVariant} textColor="secondary">
-            {estYield}
+            {estYield} g/m²
           </Typography>
         </Yield>
       </Bottom>
