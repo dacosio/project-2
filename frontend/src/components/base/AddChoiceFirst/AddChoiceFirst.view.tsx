@@ -59,7 +59,7 @@ const AddChoiceFirst = (props: AddChoiceFirstProps): JSX.Element => {
           What crop do you want to plant?
         </Typography>
         <Typography>
-          We can give you information about the crop, tips, and tools you’ll
+          We can give you information about the crop, tips, and tools you'll
           need to grow it
         </Typography>
       </Header>

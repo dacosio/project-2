@@ -22,7 +22,7 @@ export interface YourCropGeneratedProps {
   handleOnClickSuggestion: () => void;
   handleLater: () => void;
   handleNow: () => void;
-  handlePlant: (id: string) => void;
+  handleConfirmPlant: () => void;
   handleFavorite: (id: string, isFavorite: boolean) => void;
   handleOnDelete: (id: string) => void;
   handleDrawerOpen: () => void;

@@ -73,18 +73,18 @@ const YourCrop = (): JSX.Element => {
     setSuggestionVisibility(false);
   };
 
-  const handlePlant = async (id: string) => {
-    await plantNow({ id })
-      .then(() => {
-        toast.success("Crop successfully planted");
-        setOption({
-          value: "planted",
-          label: "Planted",
-        });
-      })
-      .catch(() => {
-        toast.error("An error occured. Please, try again later");
-      });
+  const handleConfirmPlant = async () => {
+    // await plantNow({ id })
+    //   .then(() => {
+    toast.success("Crop successfully planted");
+    // setOption({
+    //   value: "planted",
+    //   label: "Planted",
+    // });
+    // })
+    // .catch(() => {
+    //   toast.error("An error occured. Please, try again later");
+    // });
   };
 
   const handleFavorite = async (id: string, isFavorite: boolean) => {
@@ -169,7 +169,7 @@ const YourCrop = (): JSX.Element => {
     handleOnClickSuggestion,
     handleLater,
     handleNow,
-    handlePlant,
+    handleConfirmPlant,
     handleFavorite,
     handleOnDelete,
     handleDrawerOpen,
