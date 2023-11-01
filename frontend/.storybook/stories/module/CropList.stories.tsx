@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import CropList from "../../../src/components/module/CropList";
 import Container from "../../components/Container";
@@ -8,9 +8,6 @@ import { Crop } from "../../../src/types/store/CropState";
 const meta: Meta<typeof CropList> = {
   title: "Module/CropList",
   component: () => {
-    const popupRef = useRef<HTMLDivElement | null>(null);
-    const [visibility, setVisibility] = useState<boolean>(false);
-
     const crops: Crop[] = [
       {
         _id: "id",
@@ -60,9 +57,6 @@ const meta: Meta<typeof CropList> = {
       <Container>
         <div style={{ flexGrow: "1" }}>
           <CropList
-            popupRef={popupRef}
-            popupVisibility={visibility}
-            setPopupVisibility={setVisibility}
             crops={crops}
             crop={crops[0]}
             options={[
