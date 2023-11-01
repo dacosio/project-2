@@ -28,17 +28,22 @@ const getAllCrops = async (req, res) => {
   }
 };
 
-//plant later/now from crop guide
+//plant later/now from crop guide or from your-crops (new-crop)
 const plant = async (req, res) => {
   try {
     const userId = req.id;
-    const { cropId, plantNow } = req.body;
+    const { cropId, plantNow, estimatedYield } = req.body;
     if (!ObjectId.isValid(cropId)) throw new Error("Invalid Id");
 
     if (!cropId && plantNow === undefined && typeof plantNow !== "boolean") {
-      throw new Error("Crop Id and plant now is required");
+      return res
+        .status(400)
+        .json({ message: "Crop Id and plant now is required" });
     }
 
+    if (plantNow && !estimatedYield) {
+      return res.status(400).json({ message: "Estimated yield is required" });
+    }
     const cropEnc = await CropEncyclopedia.findById(cropId)
       .select("-_id -createdAt -updatedAt")
       .lean();
@@ -52,7 +57,7 @@ const plant = async (req, res) => {
           isFavorite: false,
           isPlanted: plantNow,
           datePlanted: new Date(),
-          estimatedYield: 10,
+          estimatedYield,
           ...cropEnc,
         });
       } else {
@@ -60,7 +65,7 @@ const plant = async (req, res) => {
           userId,
           isFavorite: false,
           isPlanted: plantNow,
-          estimatedYield: 10,
+          // estimatedYield: estimatedYield,
           ...cropEnc,
         });
       }
@@ -70,7 +75,7 @@ const plant = async (req, res) => {
         .json({ message: "Crop from encylopedia not found" });
     }
 
-    res.status(200).json(cropData);
+    res.status(201).json(cropData);
   } catch (error) {
     res.status(500).json({ message: "An error occured" });
   }
@@ -93,13 +98,16 @@ const favoriteCrop = async (req, res) => {
   }
 };
 
-//plant now to be used in your crops
+//plant now to be used in your crops when the plant is currently on plant later
 const plantNow = async (req, res) => {
   try {
-    const { id } = req.body;
+    const { id, estimatedYield } = req.body;
+    if (!id && !estimatedYield) {
+      return res.status(400).json({ message: "Estimated Yield is required." });
+    }
     const updatedCrop = await Crops.findByIdAndUpdate(
       id,
-      { $set: { isPlanted: true, datePlanted: new Date() } },
+      { $set: { isPlanted: true, estimatedYield, datePlanted: new Date() } },
       { new: true }
     );
     if (!updatedCrop) {
@@ -120,7 +128,7 @@ const removeCrop = async (req, res) => {
       return res.status(404).json({ message: "Crop not found" });
     }
 
-    return res.json({ message: "Crop deleted successfully" });
+    return res.status(204).json({ message: "Crop deleted successfully" });
   } catch (error) {
     return res.status(500).json({ error: "Server error" });
   }
