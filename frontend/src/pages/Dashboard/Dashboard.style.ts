@@ -32,7 +32,19 @@ export const Title = styled.div`
   margin-bottom: 24px;
 `;
 
-export const Carousel = styled.div`
-  border: 1px solid red;
-`;
+// export const Carousel = styled.div`
+//   border: 1px solid red;
+// `;
 
+export const Crops = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  @media (max-width: 540px) {
+    justify-content: center;
+    flex-direction: column;
+  }
+`;

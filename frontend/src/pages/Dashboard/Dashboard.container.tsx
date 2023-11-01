@@ -6,7 +6,6 @@ import { useGetPlantedCropsQuery } from "features/crops/cropApiSlice";
 const Dashboard = (): JSX.Element => {
   const { data, isLoading } = useGetPlantedCropsQuery({ isPlanted: true }); //or isFavorite??
 
-  console.log(isLoading);
   const generatedProps = {
     crops: data,
     isLoading,

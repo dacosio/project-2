@@ -224,7 +224,7 @@ const Navigation = (props: NavigationProps): JSX.Element => {
                 weight="500"
                 textColor={textColor("/weather")}
               >
-                Weather **todo
+                Weather
               </Typography>
             </MenuItem>
           </Menu>
