@@ -10,7 +10,7 @@ import {
 } from "../../../features/addCrop/addCropSlice";
 import Button from "../Button";
 import Typography from "../Typography";
-import { useAddCropMutation } from "../../../features/crops/cropApiSlice";
+import { usePlantMutation } from "../../../features/crops/cropApiSlice";
 import { useGetCropAboutQuery } from "../../../features/cropEncyclopedia/cropEncyclopediaApiSlice";
 import { selectCity } from "../../../features/location/locationSlice";
 import {
@@ -29,7 +29,7 @@ const AddCropResult = (props: AddCropResultProps): JSX.Element => {
 
   const [crop, setCrop] = useState<Crop | undefined>(undefined);
 
-  const [addCrop] = useAddCropMutation();
+  const [addCrop] = usePlantMutation();
   const { data: cropData } = useGetCropAboutQuery(useAppSelector(selectCropId));
 
   useEffect(() => {

@@ -13,15 +13,12 @@ import {
 import Button from "../Button";
 import { Crop } from "../../../types/store/CropState";
 import { useGetCropAboutAllQuery } from "../../../features/cropEncyclopedia/cropEncyclopediaApiSlice";
-import LocationSearch from "../../../components/module/LocationSearch";
-import { selectAddress } from "../../../features/location/locationSlice";
 
 const AddChoiceFirst = (props: AddChoiceFirstProps): JSX.Element => {
   const { onNext } = props;
 
   const dispatch = useAppDispatch();
 
-  const address = useAppSelector(selectAddress);
   const cropId = useAppSelector(selectCropId);
   const cropName = useAppSelector(selectCropName);
 
@@ -38,7 +35,7 @@ const AddChoiceFirst = (props: AddChoiceFirstProps): JSX.Element => {
   const { data: cropsData } = useGetCropAboutAllQuery("");
 
   const handleNext = () => {
-    if (address && crop && crop.value && crop.label) {
+    if (crop && crop.value && crop.label) {
       dispatch(storeCropId(crop.value));
       dispatch(storeCropName(crop.label));
       onNext();
@@ -67,12 +64,6 @@ const AddChoiceFirst = (props: AddChoiceFirstProps): JSX.Element => {
         </Typography>
       </Header>
       <Body>
-        <div>
-          <Typography weight="500">
-            Where is your planting area located?
-          </Typography>
-          <LocationSearch />
-        </div>
         {options && (
           <div>
             <Typography weight="500">Which crop are you planting?</Typography>
@@ -86,7 +77,7 @@ const AddChoiceFirst = (props: AddChoiceFirstProps): JSX.Element => {
         )}
       </Body>
       <Footer>
-        {address && crop && crop.value && crop.label ? (
+        {crop && crop.value && crop.label ? (
           <Button text="Next" onClick={handleNext} />
         ) : (
           <Button text="Next" variant="disabled" />

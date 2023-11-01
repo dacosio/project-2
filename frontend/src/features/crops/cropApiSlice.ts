@@ -62,26 +62,6 @@ export const cropApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [{ type: TAG_TYPE.CROP, id: "LIST" }],
     }),
-    addCrop: builder.mutation({
-      query: ({
-        city,
-        cropId,
-        plantNow,
-      }: {
-        city: string;
-        cropId: string;
-        plantNow: boolean;
-      }) => ({
-        url: "/api/crops",
-        method: METHOD.POST,
-        body: {
-          city,
-          cropId,
-          plantNow,
-        },
-      }),
-      invalidatesTags: [{ type: TAG_TYPE.CROP, id: "LIST" }],
-    }),
   }),
 });
 
@@ -91,5 +71,4 @@ export const {
   useRemoveCropMutation,
   usePlantNowMutation,
   useFavoriteMutation,
-  useAddCropMutation,
 } = cropApiSlice;
