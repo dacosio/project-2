@@ -20,8 +20,9 @@ const HomeNavigationMobile = (
   });
   return (
     <Container>
-      <NavBackground className={visible}></NavBackground>
-      <NavContainer className={visible} ref={ref}>
+      <NavBackground
+        className={props.open ? "visible" : "hidden"}></NavBackground>
+      <NavContainer className={props.open ? "visible" : "hidden"} ref={ref}>
         <NavOptions>
           <ul>
             <li>

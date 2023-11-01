@@ -12,7 +12,7 @@ const Hamburger = (props: HamburgerProps): JSX.Element => {
     toggleOpen();
   };
 
-  useOnClickOutside(ref, handleBurgerClick);
+  // useOnClickOutside(ref, handleBurgerClick);
 
   return (
     <Container ref={ref}>
