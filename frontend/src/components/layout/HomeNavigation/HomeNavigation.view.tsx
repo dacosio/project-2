@@ -16,7 +16,6 @@ import SignupModal from "../../base/SignupModal";
 import LoginModal from "../../base/LoginModal";
 import { SproutLogo } from "../../base/SVG";
 import { Link } from "react-router-dom";
-import { scroller } from "react-scroll";
 
 const HomeNavigation = (props: HomeNavigationProps): JSX.Element => {
   const [open, setOpen] = useState(false);
