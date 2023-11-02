@@ -16,7 +16,7 @@ import {
   storeSelectedCropId,
   storeSelectedOption,
 } from "../../../features/crops/cropSlice";
-import PlantCropModal from "components/module/PlantCropModal";
+import PlantCropModal from "../../../components/module/PlantCropModal";
 
 const AddCropResult = (props: AddCropResultProps): JSX.Element => {
   const { onLater, onNow } = props;
