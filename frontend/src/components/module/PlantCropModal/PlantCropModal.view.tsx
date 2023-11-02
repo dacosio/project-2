@@ -23,6 +23,7 @@ import {
   storeSelectedOption,
 } from "../../../features/crops/cropSlice";
 import { usePredictYieldMutation } from "../../../features/condition/conditionApiSlice";
+import Loading from "components/base/Loading";
 
 const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
   const {
@@ -49,6 +50,8 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
   };
 
   const handleConfirm = async () => {
+    setIsLoading(true);
+    setVisibility(false);
     if (city) {
       predict({
         city: city,
@@ -71,7 +74,6 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
                   })
                 );
                 dispatch(storeSelectedCropId(response._id));
-                setVisibility(false);
                 onConfirm(false);
               })
               .catch((error) => {
@@ -92,7 +94,6 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
                   })
                 );
                 dispatch(storeSelectedCropId(response._id));
-                setVisibility(false);
                 onConfirm(false);
               })
               .catch((error) => {
@@ -100,35 +101,40 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
                 onConfirm(true);
               });
           }
+          setIsLoading(false);
         })
         .catch((error) => {
+          setIsLoading(false);
           onConfirm(true);
         });
     }
   };
 
   return (
-    <Modal isOpen={visibility} onClose={handleClose}>
-      <Container>
-        <Wrapper>
-          <Header>
-            <Typography variant="title3" weight="700">
-              Where is your planting area located?
-            </Typography>
-          </Header>
-          <Body>
-            <LocationSearch />
-          </Body>
-          <Footer>
-            {city ? (
-              <Button text="Confirm" onClick={handleConfirm} />
-            ) : (
-              <Button text="Confirm" variant="disabled" />
-            )}
-          </Footer>
-        </Wrapper>
-      </Container>
-    </Modal>
+    <>
+      {isLoading && <Loading />}
+      <Modal isOpen={visibility} onClose={handleClose}>
+        <Container>
+          <Wrapper>
+            <Header>
+              <Typography variant="title3" weight="700">
+                Where is your planting area located?
+              </Typography>
+            </Header>
+            <Body>
+              <LocationSearch />
+            </Body>
+            <Footer>
+              {city ? (
+                <Button text="Confirm" onClick={handleConfirm} />
+              ) : (
+                <Button text="Confirm" variant="disabled" />
+              )}
+            </Footer>
+          </Wrapper>
+        </Container>
+      </Modal>
+    </>
   );
 };
 
