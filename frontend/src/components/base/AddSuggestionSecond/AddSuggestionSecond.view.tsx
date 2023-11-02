@@ -29,6 +29,7 @@ const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
   const city = useAppSelector(selectCity);
   const month = useAppSelector(selectMonth);
 
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [nitrogen, setNitrogen] = useState<string | undefined>(
     useAppSelector(selectNitrogen)
   );
@@ -43,6 +44,7 @@ const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
   const [predict] = usePredictCropMutation();
 
   const handleSkip = async () => {
+    setIsLoading(true);
     dispatch(storeNitrogen(null));
     dispatch(storePhosphorus(null));
     dispatch(storePotassium(null));
@@ -57,6 +59,8 @@ const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
       ph: null,
     }).unwrap();
 
+    console.log(response);
+
     if (response && response.cropId && response.cropName) {
       dispatch(storeCropId(response.cropId));
       dispatch(storeCropName(response.cropName));
@@ -66,6 +70,7 @@ const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
 
   const handleNext = async () => {
     if (nitrogen && phosphorus && potassium && ph) {
+      setIsLoading(true);
       dispatch(storeNitrogen(nitrogen));
       dispatch(storePhosphorus(phosphorus));
       dispatch(storePotassium(potassium));
@@ -118,8 +123,14 @@ const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
         </div>
       </Body>
       <Footer>
-        <Button text="Skip" variant="outline" onClick={handleSkip} />
-        {nitrogen && phosphorus && potassium && ph ? (
+        {isLoading ? (
+          <Button text="Skip" variant="disabled" loading />
+        ) : (
+          <Button text="Skip" variant="outline" onClick={handleSkip} />
+        )}
+        {isLoading ? (
+          <Button text="Next" variant="disabled" loading />
+        ) : nitrogen && phosphorus && potassium && ph ? (
           <Button text="Next" onClick={handleNext} />
         ) : (
           <Button text="Next" variant="disabled" />

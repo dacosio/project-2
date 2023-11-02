@@ -22,6 +22,7 @@ const AddChoiceFirst = (props: AddChoiceFirstProps): JSX.Element => {
   const cropId = useAppSelector(selectCropId);
   const cropName = useAppSelector(selectCropName);
 
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [options, setOptions] = useState<Option[] | undefined>(undefined);
   const [crop, setCrop] = useState<Option | undefined>(
     cropId && cropName
@@ -36,6 +37,7 @@ const AddChoiceFirst = (props: AddChoiceFirstProps): JSX.Element => {
 
   const handleNext = () => {
     if (crop && crop.value && crop.label) {
+      setIsLoading(true);
       dispatch(storeCropId(crop.value));
       dispatch(storeCropName(crop.label));
       onNext();
@@ -77,7 +79,9 @@ const AddChoiceFirst = (props: AddChoiceFirstProps): JSX.Element => {
         )}
       </Body>
       <Footer>
-        {crop && crop.value && crop.label ? (
+        {isLoading ? (
+          <Button text="Next" variant="disabled" loading />
+        ) : crop && crop.value && crop.label ? (
           <Button text="Next" onClick={handleNext} />
         ) : (
           <Button text="Next" variant="disabled" />

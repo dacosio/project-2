@@ -25,14 +25,8 @@ import {
 import { usePredictYieldMutation } from "../../../features/condition/conditionApiSlice";
 
 const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
-  const {
-    isNew = true,
-    visibility,
-    setVisibility,
-    cropId,
-    cropName,
-    onConfirm,
-  } = props;
+  const { isNew, visibility, setVisibility, cropId, cropName, onConfirm } =
+    props;
 
   const dispatch = useAppDispatch();
 
@@ -50,6 +44,7 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
 
   const handleConfirm = async () => {
     if (city) {
+      setIsLoading(true);
       predict({
         city: city,
         cropName: cropName,
@@ -120,7 +115,9 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
             <LocationSearch />
           </Body>
           <Footer>
-            {city ? (
+            {isLoading ? (
+              <Button text="Confirm" variant="disabled" loading />
+            ) : city ? (
               <Button text="Confirm" onClick={handleConfirm} />
             ) : (
               <Button text="Confirm" variant="disabled" />

@@ -56,8 +56,8 @@ const meta: Meta<typeof CropDetail> = {
         <div style={{ flexGrow: "1" }}>
           <CropDetail
             crop={crop}
+            onConfirm={() => null}
             handleFavorite={() => null}
-            handlePlant={() => null}
             handleOnDelete={() => null}
           />
         </div>
