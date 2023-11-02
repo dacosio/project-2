@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { CurrentWeatherProps } from "./CurrentWeather.props";
 import {
   Container,
@@ -18,11 +18,14 @@ import {
   HighContainer,
   SearchContainer,
   DashboardContainer,
-  DashboardTemperatureLowHighWindContainer,
+  LowHighMTContainer,
   DashboardTemperatureLowHighContainer,
-  DashboardPrecipitationContainer,
+  DashboardSearchContainer,
   DashboardHumidityContainer,
+  DashboardPrecipitationContainer,
   DashboardWindContainer,
+  DashboardPrecipitationHumidityWindContainer,
+  DashboardSVGContainer,
 } from "./CurrentWeather.style";
 import {
   Clear,
@@ -58,6 +61,52 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
     ...currentWeatherProps
   } = props;
 
+  const [size, setSize] = useState(
+    page === "weather"
+      ? window.innerWidth > 1200
+        ? 182
+        : window.innerWidth > 768
+        ? 154
+        : window.innerWidth > 550
+        ? 120
+        : 80
+      : window.innerWidth > 1200
+      ? 160
+      : window.innerWidth > 991
+      ? 122
+      : window.innerWidth > 768
+      ? 120
+      : 80
+  );
+
+  useEffect(() => {
+    const handleResize = () => {
+      setSize(
+        page === "weather"
+          ? window.innerWidth > 1200
+            ? 182
+            : window.innerWidth > 768
+            ? 154
+            : window.innerWidth > 550
+            ? 120
+            : 80
+          : window.innerWidth > 1200
+          ? 160
+          : window.innerWidth > 991
+          ? 122
+          : window.innerWidth > 768
+          ? 120
+          : 80
+      );
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  });
+
   return (
     <>
       {page === "dashboard" ? (
@@ -86,89 +135,111 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
                   </Typography>
                 </ForecastContainer>
               </DateForecastContainer>
+              <DashboardTemperatureLowHighContainer>
+                <TemperatureContainer>
+                  <Typography
+                    variant="body"
+                    style={
+                      size === 120
+                        ? {
+                            fontSize: "54px",
+                            fontStyle: "normal",
+                            fontWeight: 700,
+                            lineHeight: "76px",
+                            letterSpacing: "-1.4px",
+                          }
+                        : {
+                            fontSize: "70px",
+                            fontStyle: "normal",
+                            fontWeight: 700,
+                            lineHeight: "76px",
+                            letterSpacing: "-1.4px",
+                          }
+                    }
+                    textColor="white"
+                  >
+                    {currentTemperature}°C
+                  </Typography>{" "}
+                </TemperatureContainer>
+                <LowHighMTContainer>
+                  <LowContainer>
+                    <Typography variant="small" textColor="white">
+                      Low
+                    </Typography>{" "}
+                    <Typography variant="title5" textColor="white">
+                      {lowTemperature}°C
+                    </Typography>{" "}
+                  </LowContainer>
+                  <HighContainer>
+                    <Typography variant="small" textColor="white">
+                      High
+                    </Typography>{" "}
+                    <Typography variant="title5" textColor="white">
+                      {highTemperature}°C
+                    </Typography>{" "}
+                  </HighContainer>
+                </LowHighMTContainer>
+              </DashboardTemperatureLowHighContainer>
 
-              <SearchContainer>
-                <LocationSearch
-                  onClickControl={(value) => {
-                    onSelectedSearchLocation(value);
-                  }}
-                ></LocationSearch>
-              </SearchContainer>
+              <DashboardPrecipitationHumidityWindContainer>
+                <DashboardPrecipitationContainer>
+                  <Typography variant="small" textColor="white">
+                    Precipitation
+                  </Typography>{" "}
+                  <Typography variant="body" textColor="white">
+                    {precipitation}%
+                  </Typography>{" "}
+                </DashboardPrecipitationContainer>
+                <DashboardHumidityContainer>
+                  <Typography variant="small" textColor="white">
+                    Humidity
+                  </Typography>{" "}
+                  <Typography variant="body" textColor="white">
+                    {humidity}%
+                  </Typography>{" "}
+                </DashboardHumidityContainer>
+                <DashboardWindContainer>
+                  <Typography variant="small" textColor="white">
+                    Wind
+                  </Typography>{" "}
+                  <Typography variant="body" textColor="white">
+                    {wind}km/h
+                  </Typography>{" "}
+                </DashboardWindContainer>
+              </DashboardPrecipitationHumidityWindContainer>
             </AddressDateForecastContainer>
-            <SVGContainer>
+            <DashboardSVGContainer>
               {currentCondition === "clear" ? (
-                <Clear width={160} height={160} />
+                <Clear width={size} height={size} />
               ) : currentCondition === "partiallyCloudy" ? (
-                <PartiallyCloudy width={160} height={160} />
+                <PartiallyCloudy width={size} height={size} />
               ) : currentCondition === "overcast" ? (
-                <Overcast width={160} height={160} />
+                <Overcast width={size} height={size} />
               ) : currentCondition === "rain" ? (
-                <Rain width={160} height={160} />
+                <Rain width={size} height={size} />
               ) : currentCondition === "thunderStorm" ? (
-                <ThunderStorm width={160} height={160} />
+                <ThunderStorm width={size} height={size} />
               ) : currentCondition === "snow" ? (
-                <Snow width={160} height={160} />
+                <Snow width={size} height={size} />
               ) : currentCondition === "snowRain" ? (
-                <SnowRain width={160} height={160} />
+                <SnowRain width={size} height={size} />
               ) : currentCondition === "thunderStormRain" ? (
-                <ThunderStormRain width={160} height={160} />
+                <ThunderStormRain width={size} height={size} />
               ) : (
-                <PartiallyCloudy width={160} height={160} />
+                <PartiallyCloudy width={size} height={size} />
               )}
-            </SVGContainer>
+            </DashboardSVGContainer>
           </AddressDateForecastSVGContainer>
 
-          <DashboardTemperatureLowHighWindContainer>
-            <DashboardTemperatureLowHighContainer>
-              <TemperatureContainer>
-                <Typography variant="title1" textColor="white">
-                  {currentTemperature}°C
-                </Typography>{" "}
-              </TemperatureContainer>
-              <LowHighContainer>
-                <LowContainer>
-                  <Typography variant="small" textColor="white">
-                    Low
-                  </Typography>{" "}
-                  <Typography variant="title4" textColor="white">
-                    {lowTemperature}°C
-                  </Typography>{" "}
-                </LowContainer>
-                <HighContainer>
-                  <Typography variant="small" textColor="white">
-                    High
-                  </Typography>{" "}
-                  <Typography variant="title4" textColor="white">
-                    {highTemperature}°C
-                  </Typography>{" "}
-                </HighContainer>
-              </LowHighContainer>
-            </DashboardTemperatureLowHighContainer>
-            <DashboardPrecipitationContainer>
-              <Typography variant="small" textColor="white">
-                Precipitation
-              </Typography>{" "}
-              <Typography variant="body" textColor="white">
-                {precipitation}%
-              </Typography>{" "}
-            </DashboardPrecipitationContainer>
-            <DashboardHumidityContainer>
-              <Typography variant="small" textColor="white">
-                Humidity
-              </Typography>{" "}
-              <Typography variant="body" textColor="white">
-                {humidity}%
-              </Typography>{" "}
-            </DashboardHumidityContainer>
-            <DashboardWindContainer>
-              <Typography variant="small" textColor="white">
-                Wind
-              </Typography>{" "}
-              <Typography variant="body" textColor="white">
-                {wind}km/h
-              </Typography>{" "}
-            </DashboardWindContainer>
-          </DashboardTemperatureLowHighWindContainer>
+          <DashboardSearchContainer>
+            <SearchContainer>
+              <LocationSearch
+                onClickControl={(value) => {
+                  onSelectedSearchLocation(value);
+                }}
+              ></LocationSearch>
+            </SearchContainer>
+          </DashboardSearchContainer>
         </DashboardContainer>
       ) : (
         <Container
@@ -198,11 +269,31 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
               </DateForecastContainer>
               <TemperatureLowHighMTContainer>
                 <TemperatureContainer>
-                  <Typography variant="title3" textColor="white">
+                  <Typography
+                    variant="body"
+                    style={
+                      size === 80
+                        ? {
+                            fontSize: "50px",
+                            fontStyle: "normal",
+                            fontWeight: 700,
+                            lineHeight: "76px",
+                            letterSpacing: "-1.4px",
+                          }
+                        : {
+                            fontSize: "70px",
+                            fontStyle: "normal",
+                            fontWeight: 700,
+                            lineHeight: "76px",
+                            letterSpacing: "-1.4px",
+                          }
+                    }
+                    textColor="white"
+                  >
                     {currentTemperature}°C
                   </Typography>{" "}
                 </TemperatureContainer>
-                <LowHighContainer>
+                <LowHighMTContainer>
                   <LowContainer>
                     <Typography variant="small" textColor="white">
                       Low
@@ -219,28 +310,28 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
                       {highTemperature}°C
                     </Typography>{" "}
                   </HighContainer>
-                </LowHighContainer>
+                </LowHighMTContainer>
               </TemperatureLowHighMTContainer>
             </AddressDateForecastContainer>
             <SVGContainer>
               {currentCondition === "clear" ? (
-                <Clear width={160} height={160} />
+                <Clear width={size} height={size} />
               ) : currentCondition === "partiallyCloudy" ? (
-                <PartiallyCloudy width={160} height={160} />
+                <PartiallyCloudy width={size} height={size} />
               ) : currentCondition === "overcast" ? (
-                <Overcast width={160} height={160} />
+                <Overcast width={size} height={size} />
               ) : currentCondition === "rain" ? (
-                <Rain width={160} height={160} />
+                <Rain width={size} height={size} />
               ) : currentCondition === "thunderStorm" ? (
-                <ThunderStorm width={160} height={160} />
+                <ThunderStorm width={size} height={size} />
               ) : currentCondition === "snow" ? (
-                <Snow width={160} height={160} />
+                <Snow width={size} height={size} />
               ) : currentCondition === "snowRain" ? (
-                <SnowRain width={160} height={160} />
+                <SnowRain width={size} height={size} />
               ) : currentCondition === "thunderStormRain" ? (
-                <ThunderStormRain width={160} height={160} />
+                <ThunderStormRain width={size} height={size} />
               ) : (
-                <Cloudy width={160} height={160} />
+                <PartiallyCloudy width={size} height={size} />
               )}
             </SVGContainer>
           </AddressDateForecastSVGContainer>
@@ -256,7 +347,17 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
 
             <TemperatureLowHighContainer>
               <TemperatureContainer>
-                <Typography variant="title1" textColor="white">
+                <Typography
+                  variant="body"
+                  style={{
+                    fontSize: "70px",
+                    fontStyle: "normal",
+                    fontWeight: 700,
+                    lineHeight: "76px",
+                    letterSpacing: "-1.4px",
+                  }}
+                  textColor="white"
+                >
                   {currentTemperature}°C
                 </Typography>{" "}
               </TemperatureContainer>

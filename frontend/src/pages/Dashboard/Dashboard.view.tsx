@@ -29,11 +29,32 @@ import { useMediaQuery } from "utils/hooks/useMediaQuery";
 import CurrentWeather from "components/module/CurrentWeather";
 import { calculateDaysPassed, formatDate } from "utils/Date";
 import Loading from "../../components/base/Loading";
+import HourlyDaily from "components/module/HourlyDaily";
 
 const DashboardView = (props: DashboardGeneratedProps) => {
-  const { crops, isLoading } = props;
-  const MOCK_OPTIONS = ["Today", "15-day"];
-  const [state, setState] = useState(MOCK_OPTIONS[0]);
+  const {
+    crops,
+    isLoading,
+    currentLocation,
+    forecast,
+    currentTemperature,
+    lowTemperature,
+    highTemperature,
+    precipitation = 0,
+    humidity = 0,
+    wind = 0,
+    gradientColor1,
+    gradientColor2,
+    currentCondition,
+    page,
+    onSelectedSearchLocationWeather,
+    MOCK_OPTIONS,
+    state,
+    onSetState,
+    weatherData,
+    onSelectedWeatherIndexWeather,
+    selectedIndex,
+  } = props;
   const navigate = useNavigate();
 
   const [gradientObject, setGradientObject] = useState({
@@ -49,7 +70,12 @@ const DashboardView = (props: DashboardGeneratedProps) => {
 
   const handleSelectedSearchLocation = (address: string) => {
     console.log("Weather address " + address);
-    // setSelectedIndex(value);
+    onSelectedSearchLocationWeather(address);
+  };
+
+  const handleSelectedWeatherIndex = (value: number) => {
+    console.log("Weather " + value);
+    onSelectedWeatherIndexWeather(value);
   };
 
   return (
@@ -57,17 +83,17 @@ const DashboardView = (props: DashboardGeneratedProps) => {
       <Top>
         <Weather md={6}>
           <CurrentWeather
-            currentLocation="Vancouver"
-            forecast="Clear"
-            currentTemperature={24}
-            lowTemperature={18}
-            highTemperature={26}
-            precipitation={0}
-            humidity={65}
-            wind={18}
-            gradientColor1={gradientObject.clear[0]}
-            gradientColor2={gradientObject.clear[1]}
-            currentCondition="clear"
+            currentLocation={currentLocation}
+            forecast={forecast}
+            currentTemperature={currentTemperature}
+            lowTemperature={lowTemperature}
+            highTemperature={highTemperature}
+            precipitation={precipitation}
+            humidity={humidity}
+            wind={wind}
+            gradientColor1={gradientColor1}
+            gradientColor2={gradientColor2}
+            currentCondition={currentCondition}
             page="dashboard"
             onSelectedSearchLocation={handleSelectedSearchLocation}
           />
@@ -78,9 +104,17 @@ const DashboardView = (props: DashboardGeneratedProps) => {
             selectedOption={state}
             onClickControl={(value: string) => {
               console.log(value);
-              setState(value);
+              onSetState(value);
             }}
           />
+          <HourlyDaily
+            weatherDataArray={
+              state === MOCK_OPTIONS[0] ? weatherData.days[0] : weatherData
+            }
+            state={state}
+            onSelectedWeatherIndex={handleSelectedWeatherIndex}
+            index={selectedIndex}
+          ></HourlyDaily>
         </Segment>
       </Top>
       <Middle>

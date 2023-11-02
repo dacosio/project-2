@@ -11,15 +11,22 @@ export const Top = styled(Row)`
   // display: flex;
   // justify-content: space-between;
   // gap: 16px;
+  margin-bottom: 100px;
 `;
 
 export const Segment = styled(Col)`
   // flex: 0.5;
-  height: 300px;
+  display:flex;
+  flex-direction: column;
+  height: 340px;
+   row-gap: 2rem;
 `;
 export const Weather = styled(Col)`
   // flex: 0.5;
   height: 300px;
+  @media screen and (max-width: 768px) {
+    margin-bottom: 100px;
+  }
 `;
 
 export const Middle = styled.div`

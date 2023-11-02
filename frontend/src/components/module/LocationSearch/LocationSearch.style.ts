@@ -8,6 +8,8 @@ export const ResultsContainer = styled.div`
   border-radius: 4px;
   background-color: ${({ theme }) => theme.bg.primary};
   margin-top: 6px;
+  position : absolute;
+  z-index : 9999;
 
   > div {
     cursor: pointer;
