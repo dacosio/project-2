@@ -9,7 +9,7 @@ import {
   selectCropName,
   storeCropId,
   storeCropName,
-} from "../../../features/addSuggestion/addCropSlice";
+} from "../../../features/addCrop/addCropSlice";
 import Button from "../Button";
 import { Crop } from "../../../types/store/CropState";
 import { useGetCropAboutAllQuery } from "../../../features/cropEncyclopedia/cropEncyclopediaApiSlice";
@@ -59,22 +59,25 @@ const AddChoiceFirst = (props: AddChoiceFirstProps): JSX.Element => {
           What crop do you want to plant?
         </Typography>
         <Typography>
-          We can give you information about the crop, tips, and tools you’ll
+          We can give you information about the crop, tips, and tools you'll
           need to grow it
         </Typography>
       </Header>
       <Body>
         {options && (
-          <AutoComplete
-            options={options}
-            option={crop}
-            setOption={setCrop}
-            placeholder="Tomato, Potato, Carrots, etc..."
-          />
+          <div>
+            <Typography weight="500">Which crop are you planting?</Typography>
+            <AutoComplete
+              options={options}
+              option={crop}
+              setOption={setCrop}
+              placeholder="Tomato, Potato, Carrots, etc..."
+            />
+          </div>
         )}
       </Body>
       <Footer>
-        {crop ? (
+        {crop && crop.value && crop.label ? (
           <Button text="Next" onClick={handleNext} />
         ) : (
           <Button text="Next" variant="disabled" />

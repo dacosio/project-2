@@ -4,7 +4,7 @@ import { TAG_TYPE } from "../../const/tags";
 
 export const conditionApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getPredictCrop: builder.mutation({
+    predictCrop: builder.mutation({
       query: ({
         city,
         month,
@@ -15,10 +15,10 @@ export const conditionApiSlice = apiSlice.injectEndpoints({
       }: {
         city: string;
         month: string;
-        N?: string;
-        P?: string;
-        K?: string;
-        ph?: string;
+        N: string | null;
+        P: string | null;
+        K: string | null;
+        ph: string | null;
       }) => ({
         url: "/api/predict-crop",
         method: METHOD.POST,
@@ -44,5 +44,5 @@ export const conditionApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useGetPredictCropMutation, usePredictYieldMutation } =
+export const { usePredictCropMutation, usePredictYieldMutation } =
   conditionApiSlice;

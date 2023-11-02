@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { CropListProps } from "./CropList.props";
 import {
   Container,
@@ -14,6 +14,7 @@ import { Add, Choice, Suggestion } from "../../base/SVG";
 import { useTheme } from "../../../utils/Theme";
 import { Hidden, Visible } from "react-grid-system";
 import MobileDrawer from "../../../components/base/MobileDrawer";
+import { useOnClickOutside } from "../../../utils/hooks/useOnClickOutside";
 
 const CropList = (props: CropListProps): JSX.Element => {
   const {
@@ -27,9 +28,14 @@ const CropList = (props: CropListProps): JSX.Element => {
     handleOnClickSuggestion,
   } = props;
 
+  const [visibility, setVisibility] = useState<boolean>(false);
+
   const theme = useTheme();
 
-  const [visibility, setVisibility] = useState<boolean>(false);
+  const popupRef = useRef<HTMLDivElement | null>(null);
+  useOnClickOutside(popupRef, (event: MouseEvent) => {
+    setVisibility(false);
+  });
 
   return (
     <Container>
@@ -43,11 +49,11 @@ const CropList = (props: CropListProps): JSX.Element => {
       </TabContainer>
       <List>
         {crops
-          .filter((crop) =>
+          .filter((cropItem) =>
             option?.value === "planted"
-              ? crop.isPlanted
+              ? cropItem.isPlanted
               : option?.value === "to-plant"
-              ? !crop.isPlanted
+              ? !cropItem.isPlanted
               : true
           )
           .map((cropItem, index) => (
@@ -89,7 +95,7 @@ const CropList = (props: CropListProps): JSX.Element => {
       {visibility && (
         <>
           <Hidden xs sm>
-            <PopupContainer>
+            <PopupContainer ref={popupRef}>
               <div>
                 <div>
                   <div

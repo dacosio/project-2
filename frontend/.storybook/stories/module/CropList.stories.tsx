@@ -59,6 +59,13 @@ const meta: Meta<typeof CropList> = {
           <CropList
             crops={crops}
             crop={crops[0]}
+            options={[
+              { value: "all", label: "All" },
+              { value: "planted", label: "Planted" },
+              { value: "to-plant", label: "To Plant" },
+            ]}
+            option={undefined}
+            setOption={() => null}
             handleOnClickCrop={() => null}
             handleOnClickChoice={() => null}
             handleOnClickSuggestion={() => null}

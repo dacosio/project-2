@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SignupFormProps } from "./SignupForm.props";
 import { Container, FormStyle } from "./SignupForm.style";
 import TextField from "../TextField";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import FormikTextField from "../FormikTextField";
+import { useAppSelector } from "app/hooks";
+import { selectForwardEmail } from "features/authModal/authModalSlice";
 
 const SignupForm = (props: SignupFormProps): JSX.Element => {
   const handleOnSubtmit = (values: { email: string }) => {
@@ -22,12 +24,16 @@ const SignupForm = (props: SignupFormProps): JSX.Element => {
     ),
   });
 
+  const forwardedEmail = useAppSelector(selectForwardEmail);
+
   return (
     <Formik
-      initialValues={{ email: "", password: "" }}
+      initialValues={{
+        email: forwardedEmail ? forwardedEmail : "",
+        password: "",
+      }}
       validationSchema={validationSchema}
-      onSubmit={handleOnSubtmit}
-    >
+      onSubmit={handleOnSubtmit}>
       <Form>
         <FormStyle>
           <FormikTextField

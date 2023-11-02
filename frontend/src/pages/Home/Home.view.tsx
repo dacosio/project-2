@@ -41,6 +41,8 @@ import { SproutLogo } from "components/base/SVG";
 import WeatherCard from "./../../components/base/WeatherCard";
 import Search from "./../../components/base/Search";
 import LocationSearch from "components/module/LocationSearch";
+import { useAppDispatch } from "app/hooks";
+import { forwardEmail, toggleSignUp } from "features/authModal/authModalSlice";
 
 // import emailjs from '@emailjs/browser';
 
@@ -74,6 +76,11 @@ const HomeView = (props: HomeGeneratedProps) => {
       }
     }
   }, [location]);
+  const dispatch = useAppDispatch();
+
+  // useEffect(() => {
+  //   dispatch(forwardEmail(email));
+  // }, [email, dispatch]);
 
   return (
     <Container>
@@ -102,6 +109,10 @@ const HomeView = (props: HomeGeneratedProps) => {
               size="md"
               takeFullWidth={false}
               style={{ boxShadow: `5px 5px ${theme.btn.color.token}` }}
+              onClick={() => {
+                dispatch(toggleSignUp(true));
+                dispatch(forwardEmail(email));
+              }}
             ></Button>
           </div>
         </HeaderContents>

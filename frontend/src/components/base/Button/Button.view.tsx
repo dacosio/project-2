@@ -9,6 +9,7 @@ import {
   LoadingContainer,
   IconContainer,
 } from "./Button.style";
+import Loading from "../Loading";
 const Button = (props: ButtonProps): JSX.Element => {
   // const theme = useTheme();
   const {
@@ -55,7 +56,7 @@ const Button = (props: ButtonProps): JSX.Element => {
     textVariant = "btn";
     textWeight = "700";
   } else {
-    textWeight = "400"
+    textWeight = "400";
   }
 
   const hasText = text && text?.length > 0 ? true : false;
@@ -68,8 +69,7 @@ const Button = (props: ButtonProps): JSX.Element => {
       hasText={hasText}
       iconPosition={iconPosition}
       takeFullWidth={takeFullWidth}
-      {...buttonProps}
-    >
+      {...buttonProps}>
       {iconPosition === "before" && (
         <IconContainer hasText={hasText} iconPosition={iconPosition}>
           {icon}
@@ -80,10 +80,14 @@ const Button = (props: ButtonProps): JSX.Element => {
         <Typography
           variant={textVariant}
           textColor={textColor}
-          weight={textWeight}
-        >
+          weight={textWeight}>
           {text}
         </Typography>
+      )}
+      {loading && (
+        <LoadingContainer>
+          <Loading height="4rem" width="4rem" />
+        </LoadingContainer>
       )}
 
       {iconPosition === "after" && !loading && (
