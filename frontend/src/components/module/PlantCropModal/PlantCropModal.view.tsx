@@ -23,7 +23,7 @@ import {
   storeSelectedOption,
 } from "../../../features/crops/cropSlice";
 import { usePredictYieldMutation } from "../../../features/condition/conditionApiSlice";
-import Loading from "components/base/Loading";
+import Loading from "../../../components/base/Loading";
 
 const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
   const {
