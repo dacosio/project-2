@@ -6,7 +6,7 @@ import * as animation from ".././../../const/loading.json";
 
 const Loading = (props: LoadingProps): JSX.Element => {
   return (
-    <Container>
+    <Container {...props}>
       <Lottie animationData={animation} loop />
     </Container>
   );
