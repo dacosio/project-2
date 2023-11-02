@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import CropAboutView from "./CropAbout.view";
 import {
@@ -18,6 +18,8 @@ const CropAbout = (): JSX.Element => {
   const crops = data || [];
   const [plant] = usePlantMutation();
   const [predictYield] = usePredictYieldMutation();
+  const [visibility, setVisibility] = useState<boolean>(false);
+
   // city -> hit predict endpoint
   // const estimatedYield
 
@@ -33,25 +35,26 @@ const CropAbout = (): JSX.Element => {
   };
 
   // add the estimated here only
-  const handlePlantNow = async () => {
-    try {
-      // const estimatedYield = await predictYield({cropName, city});
-      // await plant({ cropId: id, plantNow: true, estimatedYield }).then(() =>
-      //   toast.success("Planted now.")
-      // );
-      await plant({ cropId: id, plantNow: true }).then(() =>
-        toast.success("Planted now.")
-      );
-    } catch (error) {
-      console.log(error);
-      toast.error("An error occured. Please try again later");
+  const handlePlant = (isError: boolean) => {
+    if (isError) {
+      toast.error("An error occured. Please, try again later");
+    } else {
+      setVisibility(false);
+      toast.success("Crop successfully planted");
     }
+  };
+
+  const handlePlantNow = async () => {
+    setVisibility(true);
   };
 
   const generatedProps = {
     crops,
     handlePlantNow,
     handlePlantLater,
+    visibility,
+    setVisibility,
+    handlePlant,
   };
   return <CropAboutView {...generatedProps} />;
 };
