@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from 'react';
+
 interface IdealTemperature {
     fahrenheit: {
       min: number;
@@ -38,4 +40,7 @@ export interface CropAboutProps {
     crops: Crop[];
     handlePlantLater: () => void;
     handlePlantNow:  () => void;
+    visibility: boolean;
+    setVisibility: Dispatch<SetStateAction<boolean>>;
+    handlePlant: (isError: boolean) => void;
 }
