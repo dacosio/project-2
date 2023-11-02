@@ -9,7 +9,7 @@ import {
   selectDate,
   storeDate,
   storeMonth,
-} from "../../../features/addSuggestion/addCropSlice";
+} from "../../../features/addCrop/addCropSlice";
 import DateField from "../DateField";
 import { selectAddress } from "../../../features/location/locationSlice";
 

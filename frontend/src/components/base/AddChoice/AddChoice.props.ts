@@ -1,4 +1,4 @@
 export interface AddChoiceProps {
-  onLater: () => void;
-  onNow: () => void;
+  onLater: (isError: boolean) => void;
+  onNow: (isError: boolean) => void;
 }

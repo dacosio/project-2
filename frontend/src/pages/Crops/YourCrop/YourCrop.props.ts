@@ -1,8 +1,13 @@
-import { Option } from "components/base/Tab/Tab.props";
 import { Dispatch, SetStateAction } from "react";
 import { Crop } from "../../../types/store/CropState";
 
+export type Option = {
+  value: string;
+  label: string;
+};
+
 export interface YourCropGeneratedProps {
+  isLoading: boolean;
   option: Option | undefined;
   setOption: Dispatch<SetStateAction<Option | undefined>>;
   crops: Crop[];
@@ -15,9 +20,9 @@ export interface YourCropGeneratedProps {
   handleOnClickCrop: (id: string) => void;
   handleOnClickChoice: () => void;
   handleOnClickSuggestion: () => void;
-  handleLater: () => void;
-  handleNow: () => void;
-  handlePlant: (id: string) => void;
+  handleLater: (isError: boolean) => void;
+  handleNow: (isError: boolean) => void;
+  handlePlant: (isError: boolean) => void;
   handleFavorite: (id: string, isFavorite: boolean) => void;
   handleOnDelete: (id: string) => void;
   handleDrawerOpen: () => void;
