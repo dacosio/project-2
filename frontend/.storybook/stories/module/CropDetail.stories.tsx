@@ -4,6 +4,8 @@ import CropDetail from "../../../src/components/module/CropDetail";
 import Container from "../../components/Container";
 import Wrapper from "../../components/Wrapper";
 import { Crop } from "../../../src/types/store/CropState";
+import { Provider } from "react-redux";
+import { store } from "../../../src/app/store";
 
 const meta: Meta<typeof CropDetail> = {
   title: "Module/CropDetail",
@@ -53,14 +55,16 @@ const meta: Meta<typeof CropDetail> = {
 
     return (
       <Container>
-        <div style={{ flexGrow: "1" }}>
-          <CropDetail
-            crop={crop}
-            onConfirm={() => null}
-            handleFavorite={() => null}
-            handleOnDelete={() => null}
-          />
-        </div>
+        <Provider store={store}>
+          <div style={{ flexGrow: "1" }}>
+            <CropDetail
+              crop={crop}
+              onConfirm={() => null}
+              handleFavorite={() => null}
+              handleOnDelete={() => null}
+            />
+          </div>
+        </Provider>
       </Container>
     );
   },

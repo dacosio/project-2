@@ -33,6 +33,7 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
   const city = useAppSelector(selectCity);
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isCloseable, setIsCloseable] = useState<boolean>(true);
 
   const [plant] = usePlantMutation();
   const [plantNow] = usePlantNowMutation();
@@ -45,6 +46,7 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
   const handleConfirm = async () => {
     if (city) {
       setIsLoading(true);
+      setIsCloseable(false);
       predict({
         city: city,
         cropName: cropName,
@@ -103,7 +105,7 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
   };
 
   return (
-    <Modal isOpen={visibility} onClose={handleClose}>
+    <Modal isOpen={visibility} onClose={handleClose} uncloseable={!isCloseable}>
       <Container>
         <Wrapper>
           <Header>

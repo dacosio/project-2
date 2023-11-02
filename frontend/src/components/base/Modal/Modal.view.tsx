@@ -10,13 +10,19 @@ import {
   ModalBack,
 } from "./Modal.style";
 
-const Modal: FC<ModalProps> = ({ isOpen, onClose, onBack, children }) => {
+const Modal: FC<ModalProps> = ({
+  isOpen,
+  uncloseable,
+  onClose,
+  onBack,
+  children,
+}) => {
   const outsideRef = React.useRef(null);
 
   const handleCloseOnOverlay = (
     e: React.MouseEvent<HTMLElement, MouseEvent>
   ) => {
-    if (e.target === outsideRef.current) {
+    if (!uncloseable && e.target === outsideRef.current) {
       onClose();
     }
   };
@@ -29,9 +35,11 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, onBack, children }) => {
         {onBack && ( // Render back button only if onBack function is provided
           <ModalBack onClick={onBack}>Back</ModalBack>
         )}
-        <ModalClose onClick={onClose}>
-          <Close width={20} height={20} />
-        </ModalClose>
+        {!uncloseable && (
+          <ModalClose onClick={onClose}>
+            <Close width={20} height={20} />
+          </ModalClose>
+        )}
 
         <ModalContent>{children}</ModalContent>
       </ModalBox>
