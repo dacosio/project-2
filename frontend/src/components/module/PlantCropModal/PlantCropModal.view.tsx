@@ -25,15 +25,20 @@ import {
 import { usePredictYieldMutation } from "../../../features/condition/conditionApiSlice";
 
 const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
-  const { isNew, visibility, setVisibility, cropId, cropName, onConfirm } =
-    props;
+  const {
+    isNew = true,
+    visibility,
+    setVisibility,
+    cropId,
+    cropName,
+    onConfirm,
+  } = props;
 
   const dispatch = useAppDispatch();
 
   const city = useAppSelector(selectCity);
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isCloseable, setIsCloseable] = useState<boolean>(true);
 
   const [plant] = usePlantMutation();
   const [plantNow] = usePlantNowMutation();
@@ -45,8 +50,6 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
 
   const handleConfirm = async () => {
     if (city) {
-      setIsLoading(true);
-      setIsCloseable(false);
       predict({
         city: city,
         cropName: cropName,
@@ -105,7 +108,7 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
   };
 
   return (
-    <Modal isOpen={visibility} onClose={handleClose} uncloseable={!isCloseable}>
+    <Modal isOpen={visibility} onClose={handleClose}>
       <Container>
         <Wrapper>
           <Header>
@@ -117,9 +120,7 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
             <LocationSearch />
           </Body>
           <Footer>
-            {isLoading ? (
-              <Button text="Confirm" variant="disabled" loading />
-            ) : city ? (
+            {city ? (
               <Button text="Confirm" onClick={handleConfirm} />
             ) : (
               <Button text="Confirm" variant="disabled" />
