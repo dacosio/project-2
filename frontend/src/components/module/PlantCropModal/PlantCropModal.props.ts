@@ -6,5 +6,5 @@ export interface PlantCropModalProps {
   setVisibility: Dispatch<SetStateAction<boolean>>;
   cropId: string;
   cropName: string;
-  onConfirm: () => void;
+  onConfirm: (isError: boolean) => void;
 }

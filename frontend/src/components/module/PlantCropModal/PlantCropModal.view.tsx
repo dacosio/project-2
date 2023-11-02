@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { PlantCropModalProps } from "./PlantCropModal.props";
 import {
   Body,
@@ -38,6 +38,8 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
 
   const city = useAppSelector(selectCity);
 
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const [plant] = usePlantMutation();
   const [plantNow] = usePlantNowMutation();
   const [predict] = usePredictYieldMutation();
@@ -48,42 +50,60 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
 
   const handleConfirm = async () => {
     if (city) {
-      const predictResponse = await predict({
+      predict({
         city: city,
         cropName: cropName,
-      }).unwrap();
-
-      if (isNew) {
-        const response = (await plant({
-          cropId: cropId,
-          plantNow: true,
-          estimatedYield: predictResponse.yield,
-        }).unwrap()) as Crop;
-
-        dispatch(
-          storeSelectedOption({
-            value: "planted",
-            label: "Planted",
-          })
-        );
-        dispatch(storeSelectedCropId(response._id));
-      } else {
-        const response = (await plantNow({
-          id: cropId,
-          estimatedYield: predictResponse.yield,
-        }).unwrap()) as Crop;
-
-        dispatch(
-          storeSelectedOption({
-            value: "planted",
-            label: "Planted",
-          })
-        );
-        dispatch(storeSelectedCropId(response._id));
-      }
-
-      setVisibility(false);
-      onConfirm();
+      })
+        .unwrap()
+        .then((predictResponse) => {
+          if (isNew) {
+            plant({
+              cropId: cropId,
+              plantNow: true,
+              estimatedYield: predictResponse.yield,
+            })
+              .unwrap()
+              .then((response: Crop) => {
+                dispatch(
+                  storeSelectedOption({
+                    value: "planted",
+                    label: "Planted",
+                  })
+                );
+                dispatch(storeSelectedCropId(response._id));
+                setVisibility(false);
+                onConfirm(false);
+              })
+              .catch((error) => {
+                setVisibility(false);
+                onConfirm(true);
+              });
+          } else {
+            plantNow({
+              id: cropId,
+              estimatedYield: predictResponse.yield,
+            })
+              .unwrap()
+              .then((response: Crop) => {
+                dispatch(
+                  storeSelectedOption({
+                    value: "planted",
+                    label: "Planted",
+                  })
+                );
+                dispatch(storeSelectedCropId(response._id));
+                setVisibility(false);
+                onConfirm(false);
+              })
+              .catch((error) => {
+                setVisibility(false);
+                onConfirm(true);
+              });
+          }
+        })
+        .catch((error) => {
+          onConfirm(true);
+        });
     }
   };
 
@@ -93,11 +113,7 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
         <Wrapper>
           <Header>
             <Typography variant="title3" weight="700">
-              What crop do you want to plant?
-            </Typography>
-            <Typography>
-              We can give you information about the crop, tips, and tools you'll
-              need to grow it
+              Where is your planting area located?
             </Typography>
           </Header>
           <Body>

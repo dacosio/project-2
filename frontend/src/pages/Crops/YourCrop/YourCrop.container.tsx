@@ -5,7 +5,6 @@ import { YourCropGeneratedProps, Option } from "./YourCrop.props";
 import {
   useFavoriteMutation,
   useGetPlantedCropsQuery,
-  usePlantNowMutation,
   useRemoveCropMutation,
 } from "../../../features/crops/cropApiSlice";
 import { Crop } from "../../../types/store/CropState";
@@ -31,7 +30,6 @@ const YourCrop = (): JSX.Element => {
     useState<boolean>(false);
   const [isOpenDrawer, setIsOpenDrawer] = useState<boolean>(false);
 
-  const [plantNow] = usePlantNowMutation();
   const [favorite] = useFavoriteMutation();
   const [removeCrop] = useRemoveCropMutation();
   const {
@@ -63,28 +61,34 @@ const YourCrop = (): JSX.Element => {
     setSuggestionVisibility(true);
   };
 
-  const handleLater = () => {
+  const handleLater = (isError: boolean) => {
     setChoiceVisibility(false);
     setSuggestionVisibility(false);
+
+    if (isError) {
+      toast.error("An error occured. Please, try again later");
+    } else {
+      toast.success("Crop successfully added");
+    }
   };
 
-  const handleNow = () => {
+  const handleNow = (isError: boolean) => {
     setChoiceVisibility(false);
     setSuggestionVisibility(false);
+
+    if (isError) {
+      toast.error("An error occured. Please, try again later");
+    } else {
+      toast.success("Crop successfully planted");
+    }
   };
 
-  const handleConfirmPlant = async () => {
-    // await plantNow({ id })
-    //   .then(() => {
-    toast.success("Crop successfully planted");
-    // setOption({
-    //   value: "planted",
-    //   label: "Planted",
-    // });
-    // })
-    // .catch(() => {
-    //   toast.error("An error occured. Please, try again later");
-    // });
+  const handlePlant = (isError: boolean) => {
+    if (isError) {
+      toast.error("An error occured. Please, try again later");
+    } else {
+      toast.success("Crop successfully planted");
+    }
   };
 
   const handleFavorite = async (id: string, isFavorite: boolean) => {
@@ -169,7 +173,7 @@ const YourCrop = (): JSX.Element => {
     handleOnClickSuggestion,
     handleLater,
     handleNow,
-    handleConfirmPlant,
+    handlePlant,
     handleFavorite,
     handleOnDelete,
     handleDrawerOpen,

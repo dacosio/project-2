@@ -31,7 +31,7 @@ const YourCropView = (props: YourCropGeneratedProps) => {
     handleOnClickSuggestion,
     handleLater,
     handleNow,
-    handleConfirmPlant,
+    handlePlant,
     handleFavorite,
     handleOnDelete,
     handleDrawerOpen,
@@ -88,7 +88,7 @@ const YourCropView = (props: YourCropGeneratedProps) => {
               <Hidden xs sm>
                 <CropDetail
                   crop={crop}
-                  onConfirm={handleConfirmPlant}
+                  onConfirm={handlePlant}
                   handleFavorite={handleFavorite}
                   handleOnDelete={handleOnDelete}
                 />
@@ -102,7 +102,7 @@ const YourCropView = (props: YourCropGeneratedProps) => {
                 >
                   <CropDetail
                     crop={crop}
-                    onConfirm={handleConfirmPlant}
+                    onConfirm={handlePlant}
                     handleFavorite={handleFavorite}
                     handleOnDelete={handleOnDelete}
                   />

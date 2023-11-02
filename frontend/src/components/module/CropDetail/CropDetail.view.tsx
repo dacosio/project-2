@@ -30,8 +30,8 @@ const CropDetail = (props: CropDetailProps): JSX.Element => {
     setVisibility(true);
   };
 
-  const handleConfirm = () => {
-    onConfirm();
+  const handleConfirm = (isError: boolean) => {
+    onConfirm(isError);
   };
 
   const getDate = (date: Date) => {
@@ -240,16 +240,14 @@ const CropDetail = (props: CropDetailProps): JSX.Element => {
           />
         </div>
       </Container>
-      {visibility && (
-        <PlantCropModal
-          isNew={false}
-          visibility={visibility}
-          setVisibility={setVisibility}
-          cropId={crop._id}
-          cropName={crop.cropName}
-          onConfirm={handleConfirm}
-        />
-      )}
+      <PlantCropModal
+        isNew={false}
+        visibility={visibility}
+        setVisibility={setVisibility}
+        cropId={crop._id}
+        cropName={crop.cropName}
+        onConfirm={handleConfirm}
+      />
     </>
   );
 };

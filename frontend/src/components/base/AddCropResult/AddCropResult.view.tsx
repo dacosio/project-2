@@ -47,20 +47,26 @@ const AddCropResult = (props: AddCropResultProps): JSX.Element => {
     }
   }, [cropData]);
 
-  const handleLater = async () => {
+  const handleLater = () => {
     if (crop) {
-      const response = (await plant({
+      plant({
         cropId: crop._id,
         plantNow: false,
-      }).unwrap()) as Crop;
-      dispatch(
-        storeSelectedOption({
-          value: "to-plant",
-          label: "To Plant",
+      })
+        .unwrap()
+        .then((response: Crop) => {
+          dispatch(
+            storeSelectedOption({
+              value: "to-plant",
+              label: "To Plant",
+            })
+          );
+          dispatch(storeSelectedCropId(response._id));
+          onLater(false);
         })
-      );
-      dispatch(storeSelectedCropId(response._id));
-      onLater();
+        .catch((error) => {
+          onLater(true);
+        });
     }
   };
 
@@ -70,8 +76,8 @@ const AddCropResult = (props: AddCropResultProps): JSX.Element => {
     }
   };
 
-  const handleConfirm = () => {
-    onNow();
+  const handleConfirm = (isError: boolean) => {
+    onNow(isError);
   };
 
   return (
@@ -113,15 +119,13 @@ const AddCropResult = (props: AddCropResultProps): JSX.Element => {
           <Button text="Plant Now" onClick={handleNow} />
         </Footer>
       </Container>
-      {visibility && (
-        <PlantCropModal
-          visibility={visibility}
-          setVisibility={setVisibility}
-          cropId={cropId}
-          cropName={cropName}
-          onConfirm={handleConfirm}
-        />
-      )}
+      <PlantCropModal
+        visibility={visibility}
+        setVisibility={setVisibility}
+        cropId={cropId}
+        cropName={cropName}
+        onConfirm={handleConfirm}
+      />
     </>
   );
 };
