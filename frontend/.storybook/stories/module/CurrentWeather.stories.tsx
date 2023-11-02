@@ -27,7 +27,7 @@ const meta: Meta<typeof CurrentWeather> = {
 
     return (
       <Container>
-        <div
+        {/* <div
           style={{
             display: "flex",
             flexDirection: "column",
@@ -186,7 +186,8 @@ const meta: Meta<typeof CurrentWeather> = {
               onSelectedSearchLocation={handleSelectedSearchLocation}
             />
           </div>
-        </div>
+        </div> */}
+        Current Weather Story
       </Container>
     );
   },
