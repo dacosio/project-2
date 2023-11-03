@@ -21,15 +21,23 @@ const MemberCard = (props: MemberCardProps): JSX.Element => {
       <HeaderContainer>
         <ImageContainer>
           <Background />
-          <Image src={source} />
+          {url ? (
+            <Link to={url} target="_blank">
+              <Image src={source} />
+            </Link>
+          ) : (
+            <Image src={source} />
+          )}
           <IconContainer>
-            {url?.includes("linkedin") ? (
+            {url ? (
               <Link to={url} target="_blank">
-                <LinkedIn />
-              </Link>
-            ) : url?.includes("github") ? (
-              <Link to={url} target="_blank">
-                <GitHub />
+                {url.includes("linkedin") ? (
+                  <LinkedIn />
+                ) : url.includes("github") ? (
+                  <GitHub />
+                ) : (
+                  <Leaf />
+                )}
               </Link>
             ) : (
               <Leaf />
@@ -38,7 +46,7 @@ const MemberCard = (props: MemberCardProps): JSX.Element => {
         </ImageContainer>
       </HeaderContainer>
       <FooterContainer>
-        <Typography variant="title4" align="center">
+        <Typography variant="title5" align="center">
           {name}
         </Typography>
         <Typography variant="body" align="center">
