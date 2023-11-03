@@ -38,5 +38,5 @@ export const ListContainer = styled(Row)`
 `;
 
 export const ItemContainer = styled(Col)`
-  padding: 32px;
+  padding: 24px;
 `;

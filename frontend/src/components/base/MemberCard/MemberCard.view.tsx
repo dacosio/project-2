@@ -10,10 +10,11 @@ import {
   ImageContainer,
 } from "./MemberCard.style";
 import Typography from "../Typography";
-import { Leaf } from "../SVG";
+import { GitHub, Leaf, LinkedIn } from "../SVG";
+import { Link } from "react-router-dom";
 
 const MemberCard = (props: MemberCardProps): JSX.Element => {
-  const { source, name, role } = props;
+  const { source, name, role, url } = props;
 
   return (
     <Container>
@@ -22,7 +23,17 @@ const MemberCard = (props: MemberCardProps): JSX.Element => {
           <Background />
           <Image src={source} />
           <IconContainer>
-            <Leaf />
+            {url?.includes("linkedin") ? (
+              <Link to={url} target="_blank">
+                <LinkedIn />
+              </Link>
+            ) : url?.includes("github") ? (
+              <Link to={url} target="_blank">
+                <GitHub />
+              </Link>
+            ) : (
+              <Leaf />
+            )}
           </IconContainer>
         </ImageContainer>
       </HeaderContainer>

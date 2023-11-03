@@ -33,12 +33,14 @@ const TeamView = (props: TeamGeneratedProps) => {
                 style={{
                   padding: undefined,
                   display: "grid",
+                  maxWidth: "300px",
                 }}
               >
                 <MemberCard
                   source={member.source}
                   name={member.name}
                   role={member.role}
+                  url={member.url}
                   key={index}
                 />
               </ItemContainer>

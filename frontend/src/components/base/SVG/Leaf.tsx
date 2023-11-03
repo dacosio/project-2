@@ -12,8 +12,8 @@ const Leaf = (props: SVGProps): JSX.Element => {
   // https://react-svgr.com/playground/?typescript=true
   return (
     <svg
-      width={width || 50}
-      height={height || 50}
+      width={width || 52}
+      height={height || 52}
       viewBox="0 0 52 52"
       fill="none"
     >
