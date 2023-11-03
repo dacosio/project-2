@@ -20,6 +20,7 @@ import {
 import NumberField from "../NumberField";
 import { usePredictCropMutation } from "../../../features/condition/conditionApiSlice";
 import { selectCity } from "../../../features/location/locationSlice";
+import Loading from "../Loading";
 
 const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
   const { onNext } = props;
@@ -94,49 +95,50 @@ const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
   };
 
   return (
-    <Container>
-      <Header>
-        <Typography variant="title3" weight="700">
-          Your Planting Conditions
-        </Typography>
-        <Typography>
-          This step is optional but we can give you a more precise crop
-          suggestion if it's done!
-        </Typography>
-      </Header>
-      <Body>
-        <div>
-          <Typography weight="500">Nitrogen (N)</Typography>
-          <NumberField value={nitrogen} setValue={setNitrogen} />
-        </div>
-        <div>
-          <Typography weight="500">Phosphorus (P)</Typography>
-          <NumberField value={phosphorus} setValue={setPhosphorus} />
-        </div>
-        <div>
-          <Typography weight="500">Potassium (K)</Typography>
-          <NumberField value={potassium} setValue={setPotassium} />
-        </div>
-        <div>
-          <Typography weight="500">pH</Typography>
-          <NumberField value={ph} setValue={setPh} />
-        </div>
-      </Body>
-      <Footer>
-        {isLoading ? (
-          <Button text="Skip" variant="disabled" loading />
-        ) : (
-          <Button text="Skip" variant="outline" onClick={handleSkip} />
-        )}
-        {isLoading ? (
-          <Button text="Next" variant="disabled" loading />
-        ) : nitrogen && phosphorus && potassium && ph ? (
-          <Button text="Next" onClick={handleNext} />
-        ) : (
-          <Button text="Next" variant="disabled" />
-        )}
-      </Footer>
-    </Container>
+    <>
+      {isLoading && <Loading />}
+      <Container>
+        <Header>
+          <Typography variant="title3" weight="700">
+            Your Planting Conditions
+          </Typography>
+          <Typography>
+            This step is optional but we can give you a more precise crop
+            suggestion if it's done!
+          </Typography>
+        </Header>
+        <Body>
+          <div>
+            <Typography weight="500">Nitrogen (N)</Typography>
+            <NumberField value={nitrogen} setValue={setNitrogen} />
+          </div>
+          <div>
+            <Typography weight="500">Phosphorus (P)</Typography>
+            <NumberField value={phosphorus} setValue={setPhosphorus} />
+          </div>
+          <div>
+            <Typography weight="500">Potassium (K)</Typography>
+            <NumberField value={potassium} setValue={setPotassium} />
+          </div>
+          <div>
+            <Typography weight="500">pH</Typography>
+            <NumberField value={ph} setValue={setPh} />
+          </div>
+        </Body>
+        <Footer>
+          {isLoading ? (
+            <Button text="Skip" variant="disabled" />
+          ) : (
+            <Button text="Skip" variant="outline" onClick={handleSkip} />
+          )}
+          {isLoading || !(nitrogen && phosphorus && potassium && ph) ? (
+            <Button text="Next" variant="disabled" />
+          ) : (
+            <Button text="Next" onClick={handleNext} />
+          )}
+        </Footer>
+      </Container>
+    </>
   );
 };
 

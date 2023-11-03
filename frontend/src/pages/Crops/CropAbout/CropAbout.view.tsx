@@ -226,7 +226,7 @@ const CropAboutView = (props: CropAboutProps) => {
         </Container>
       </Wrapper>
       <PlantCropModal
-        isNew={true}
+        adding
         visibility={visibility}
         setVisibility={setVisibility}
         cropId={crop?._id}

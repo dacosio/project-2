@@ -13,6 +13,7 @@ import {
 import Button from "../Button";
 import { Crop } from "../../../types/store/CropState";
 import { useGetCropAboutAllQuery } from "../../../features/cropEncyclopedia/cropEncyclopediaApiSlice";
+import Loading from "../Loading";
 
 const AddChoiceFirst = (props: AddChoiceFirstProps): JSX.Element => {
   const { onNext } = props;
@@ -55,39 +56,40 @@ const AddChoiceFirst = (props: AddChoiceFirstProps): JSX.Element => {
   }, [cropsData]);
 
   return (
-    <Container>
-      <Header>
-        <Typography variant="title3" weight="700">
-          What crop do you want to plant?
-        </Typography>
-        <Typography>
-          We can give you information about the crop, tips, and tools you'll
-          need to grow it
-        </Typography>
-      </Header>
-      <Body>
-        {options && (
-          <div>
-            <Typography weight="500">Which crop are you planting?</Typography>
-            <AutoComplete
-              options={options}
-              option={crop}
-              setOption={setCrop}
-              placeholder="Tomato, Potato, Carrots, etc..."
-            />
-          </div>
-        )}
-      </Body>
-      <Footer>
-        {isLoading ? (
-          <Button text="Next" variant="disabled" loading />
-        ) : crop && crop.value && crop.label ? (
-          <Button text="Next" onClick={handleNext} />
-        ) : (
-          <Button text="Next" variant="disabled" />
-        )}
-      </Footer>
-    </Container>
+    <>
+      {isLoading && <Loading />}
+      <Container>
+        <Header>
+          <Typography variant="title3" weight="700">
+            What crop do you want to plant?
+          </Typography>
+          <Typography>
+            We can give you information about the crop, tips, and tools you'll
+            need to grow it
+          </Typography>
+        </Header>
+        <Body>
+          {options && (
+            <div>
+              <Typography weight="500">Which crop are you planting?</Typography>
+              <AutoComplete
+                options={options}
+                option={crop}
+                setOption={setCrop}
+                placeholder="Tomato, Potato, Carrots, etc..."
+              />
+            </div>
+          )}
+        </Body>
+        <Footer>
+          {isLoading || !(crop && crop.value && crop.label) ? (
+            <Button text="Next" variant="disabled" />
+          ) : (
+            <Button text="Next" onClick={handleNext} />
+          )}
+        </Footer>
+      </Container>
+    </>
   );
 };
 

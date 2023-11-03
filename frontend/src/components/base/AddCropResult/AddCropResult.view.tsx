@@ -19,6 +19,7 @@ import {
 import PlantCropModal from "../../../components/module/PlantCropModal";
 import { selectCity } from "../../../features/location/locationSlice";
 import { usePredictYieldMutation } from "../../../features/condition/conditionApiSlice";
+import Loading from "../Loading";
 
 const AddCropResult = (props: AddCropResultProps): JSX.Element => {
   const { suggested, onLater, onNow } = props;
@@ -37,6 +38,10 @@ const AddCropResult = (props: AddCropResultProps): JSX.Element => {
   const [predict] = usePredictYieldMutation();
   const { data: cropData } = useGetCropAboutQuery(useAppSelector(selectCropId));
 
+  const handleLoading = (isLoading: boolean) => {
+    setIsLoading(isLoading);
+  };
+
   useEffect(() => {
     if (cropData && cropId && cropName) {
       const item = cropData as Crop[];
@@ -52,9 +57,9 @@ const AddCropResult = (props: AddCropResultProps): JSX.Element => {
     }
   }, [cropData]);
 
-  const handleLater = () => {
+  const handleLater = async () => {
     if (crop) {
-      plant({
+      await plant({
         cropId: crop._id,
         plantNow: false,
       })
@@ -79,14 +84,13 @@ const AddCropResult = (props: AddCropResultProps): JSX.Element => {
     if (crop) {
       if (suggested) {
         setIsLoading(true);
-        setIsLoading(true);
-        predict({
+        await predict({
           city: city,
           cropName: cropName,
         })
           .unwrap()
-          .then((predictResponse) => {
-            plant({
+          .then(async (predictResponse) => {
+            await plant({
               cropId: cropId,
               plantNow: true,
               estimatedYield: predictResponse.yield,
@@ -109,6 +113,7 @@ const AddCropResult = (props: AddCropResultProps): JSX.Element => {
           .catch((error) => {
             onNow(true);
           });
+        setIsLoading(false);
       } else {
         setVisibility(true);
       }
@@ -121,6 +126,7 @@ const AddCropResult = (props: AddCropResultProps): JSX.Element => {
 
   return (
     <>
+      {isLoading && <Loading />}
       <Container>
         <Body>
           {crop && (
@@ -154,10 +160,10 @@ const AddCropResult = (props: AddCropResultProps): JSX.Element => {
           )}
         </Body>
         <Footer>
-          {isLoading ? (
+          {isLoading || visibility ? (
             <>
-              <Button text="Plant Later" variant="disabled" loading />
-              <Button text="Plant Now" variant="disabled" loading />
+              <Button text="Plant Later" variant="disabled" />
+              <Button text="Plant Now" variant="disabled" />
             </>
           ) : (
             <>
@@ -177,7 +183,8 @@ const AddCropResult = (props: AddCropResultProps): JSX.Element => {
         cropId={cropId}
         cropName={cropName}
         onConfirm={handleConfirm}
-        isNew
+        onLoading={handleLoading}
+        adding
       />
     </>
   );
