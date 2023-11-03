@@ -63,6 +63,21 @@ export const About = styled(Row)`
   }
 `;
 
+export const Discover = styled(Row)`
+  padding: 1rem;
+  background-color: #fff;
+  @media (max-width: 992px) {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    gap: 3rem;
+  }
+`;
+
+export const DiscoverContent = styled.div`
+max-width: 760px;
+padding: 4rem 0;
+`;
+
 export const AboutDisplay = styled(Col)`
   display: flex;
   flex-flow: column;

@@ -4,6 +4,8 @@ import {
   Container,
   Header,
   HeaderContents,
+  Discover,
+  DiscoverContent,
   About,
   Details,
   AboutDisplay,
@@ -86,7 +88,12 @@ const HomeView = (props: HomeGeneratedProps) => {
     <Container>
       <HomeNavigation />
 
-      <Header justify="center" align="center" style={{ marginLeft: 0, marginRight: 0 }} id="header">
+      <Header
+        justify="center"
+        align="center"
+        style={{ marginLeft: 0, marginRight: 0 }}
+        id="header"
+      >
         <HeaderContents xxl={4} xl={4} lg={6} md={6}>
           <Typography variant="title1" weight="700" textColor="accent">
             Sow and grow your farming <span className="line-break">goals</span>
@@ -118,7 +125,52 @@ const HomeView = (props: HomeGeneratedProps) => {
         </HeaderContents>
       </Header>
 
-      <About justify="center" align="center" id="about" style={{ marginLeft: 0, marginRight: 0 }}>
+      <Discover
+        id="about"
+        justify="center"
+        style={{ marginLeft: 0, marginRight: 0 }}
+      >
+        <DiscoverContent>
+          <Hide md sm xs>
+            <Typography
+              variant="title1"
+              weight="700"
+              textColor="accent"
+              align="left"
+            >
+              Discover your best farming buddy
+            </Typography>
+          </Hide>
+          <Visible md sm xs>
+            <Typography
+              variant="title1"
+              weight="700"
+              textColor="accent"
+              align="center"
+            >
+              Discover your best farming buddy
+            </Typography>
+          </Visible>
+          <Typography variant="subtitle" weight="400" textColor="n80">
+            Different crops have different needs, and these can make or break how
+            you kickstart your farming journey. But don't worry! With Sprout’s
+            data-backed features, you can discover, plant, and nurture the perfect
+            crop for your unique growing conditions.
+          </Typography>
+          <Typography variant="subtitle" weight="400" textColor="n80">
+            Already have a crop to grow mind? We got you! Sprout provides the info
+            you’ll need to create the best environment to plant and cultivate it.
+          </Typography>
+        </DiscoverContent>
+
+      </Discover>
+
+      <About
+        justify="center"
+        align="center"
+        id="about"
+        style={{ marginLeft: 0, marginRight: 0 }}
+      >
         <AboutDisplay xxl={5} xl={5} lg={5}>
           <Hide md sm xs>
             <AboutTypography>
@@ -197,6 +249,7 @@ const HomeView = (props: HomeGeneratedProps) => {
           </Details>
         </AboutDetails>
       </About>
+
       <ContactSection />
     </Container>
   );
