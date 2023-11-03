@@ -86,7 +86,7 @@ const Button = (props: ButtonProps): JSX.Element => {
       )}
       {loading && (
         <LoadingContainer>
-          <Loading height="4rem" width="4rem" />
+          <Loading height="4rem" width="4rem" btnLoading />
         </LoadingContainer>
       )}
 

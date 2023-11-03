@@ -6,11 +6,19 @@ import * as animation from ".././../../const/loading.json";
 
 const Loading = (props: LoadingProps): JSX.Element => {
   return (
-    <Wrapper>
-      <Container {...props}>
-        <Lottie animationData={animation} loop />
-      </Container>
-    </Wrapper>
+    <>
+      {!props.btnLoading ? (
+        <Wrapper>
+          <Container {...props}>
+            <Lottie animationData={animation} loop />
+          </Container>
+        </Wrapper>
+      ) : (
+        <Container {...props}>
+          <Lottie animationData={animation} loop />
+        </Container>
+      )}
+    </>
   );
 };
 
