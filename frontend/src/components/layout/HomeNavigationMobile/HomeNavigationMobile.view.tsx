@@ -14,16 +14,18 @@ const HomeNavigationMobile = (
 ): JSX.Element => {
   const ref = useRef(null);
   const [visible, setVisible] = useState("hidden");
-  useOnClickOutside(ref, () => {
-    // console.log(props.open);
-    if (props.open) setVisible("hidden");
-    else setVisible("visible");
-  });
+
+  // useOnClickOutside(ref, () => {
+  //   // console.log(props.open);
+  //   if (props.open) setVisible("hidden");
+  //   else setVisible("visible");
+  // });
   return (
     <Container>
-      <NavBackground
+      
+      {/* <NavBackground
         className={props.open ? "visible" : "hidden"}
-      ></NavBackground>
+      ></NavBackground> */}
       <NavContainer className={props.open ? "visible" : "hidden"} ref={ref}>
         <NavOptions>
           <ul>

@@ -9,6 +9,7 @@ import {
   Logo,
 } from "./HomeNavigation.style";
 import Hamburger from "../../base/Hamburger";
+import MobileNavBackground from "../../base/MobileNavBackground";
 import Button from "../../base/Button";
 import { useMediaQuery } from "../../../utils/hooks/useMediaQuery";
 import HomeNavigationMobile from "../HomeNavigationMobile";
@@ -54,6 +55,7 @@ const HomeNavigation = (props: HomeNavigationProps): JSX.Element => {
         </LoginOptions>
       </Nav>
       <HomeNavigationMobile open={open} />
+      <MobileNavBackground open={open} toggleOpen={() => setOpen(!open)} />
     </Container>
   );
 };

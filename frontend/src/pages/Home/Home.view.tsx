@@ -84,11 +84,6 @@ const HomeView = (props: HomeGeneratedProps) => {
 
   return (
     <Container>
-      {/* <Header>
-        <Column sm={4}>One of three columns</Column>
-        <Sacolumn sm={4}>One of three columns</Sacolumn>
-        <Column sm={4}>One of three columns</Column>
-      </Header> */}
       <HomeNavigation />
 
       <Header justify="center" align="center" style={{ marginLeft: 0, marginRight: 0 }} id="header">
