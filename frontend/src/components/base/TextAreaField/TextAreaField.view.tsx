@@ -8,6 +8,8 @@ const TextAreaField = (props: TextAreaFieldProps): JSX.Element => {
   const {
     name,
     label,
+    labelVariant,
+    labelWeight,
     children,
     setValue = () => null,
     placeholder,
@@ -25,7 +27,11 @@ const TextAreaField = (props: TextAreaFieldProps): JSX.Element => {
 
   return (
     <Container className={className} style={style}>
-      <Typography variant="small" textColor="shade9">
+      <Typography
+        variant={labelVariant || "body"}
+        weight={labelWeight || "500"}
+        textColor="shade9"
+      >
         {label}
       </Typography>
       <TextArea

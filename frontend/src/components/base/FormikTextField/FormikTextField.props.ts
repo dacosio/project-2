@@ -1,4 +1,5 @@
 import { InputHTMLAttributes } from "react";
+import { Variants } from "../Typography/Typography.props";
 
 export interface FormikTextFieldProps
   extends InputHTMLAttributes<HTMLInputElement> {
@@ -8,4 +9,6 @@ export interface FormikTextFieldProps
   alert?: string;
   prefix?: string;
   name: string;
+  labelVariant?: Variants 
+  labelWeight: string;
 }

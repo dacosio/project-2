@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useEffect} from "react";
 import Layout from "../components/layout/Layout";
 import Home from "../pages/Home";
 import Team from "../pages/Team";
@@ -8,7 +8,17 @@ import YourCrop from "../pages/Crops/YourCrop";
 import CropGuide from "../pages/Crops/CropGuide";
 import Weather from "../pages/Weather";
 import CropAbout from "../pages/Crops/CropAbout";
-import { useRoutes } from "react-router-dom";
+import { useRoutes, useLocation } from "react-router-dom";
+
+export function ScrollToTop({ children }) {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return children;
+}
 
 export default function Router() {
   let element = useRoutes([
@@ -51,5 +61,9 @@ export default function Router() {
       path: "team",
     },
   ]);
-  return element;
+  return (
+    <ScrollToTop>
+      {element}
+    </ScrollToTop>
+  );
 }

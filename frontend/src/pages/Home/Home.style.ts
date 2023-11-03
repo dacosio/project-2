@@ -5,7 +5,19 @@ import Typography from "components/base/Typography";
 import TextField from "components/base/TextField";
 
 export const Container = styled.div`
-box-sizing: border-box;
+  box-sizing: border-box;
+
+  .text {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    > div {
+      width: 45%;
+      outline: 2px solid ${theme.text.accent};
+      border-radius: 4px;
+    }
+  }
 `;
 
 export const Header = styled(Row)`
