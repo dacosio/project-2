@@ -21,6 +21,7 @@ import * as Yup from "yup";
 import HomeFooter from "../HomeFooter";
 
 const ContactSection = (props: ContactSectionProps): JSX.Element => {
+  const { style } = props;
   const form = useRef<HTMLFormElement>(null);
 
   const sendEmail = (e: React.FormEvent) => {
@@ -62,22 +63,23 @@ const ContactSection = (props: ContactSectionProps): JSX.Element => {
   });
 
   return (
-    <Container>
-      <Row align="center" style={{ margin: "0" }}>
-        <Hide md sm xs>
-          <ContactImage
-            xxl={6}
-            xl={6}
-            lg={6}
-            style={{
-              paddingLeft: "0",
-            }}
-          >
-            <img src={contact} alt="" />
-          </ContactImage>
-        </Hide>
-        <Col xxl={5} xl={5} lg={5} md={12}>
-          {/* <form onSubmit={sendEmail} ref={form}>
+    <div id="contact">
+      <Container>
+        <Row align="center" style={{ margin: "0" }}>
+          <Hide md sm xs>
+            <ContactImage
+              xxl={6}
+              xl={6}
+              lg={6}
+              style={{
+                paddingLeft: "0",
+              }}
+            >
+              <img src={contact} alt="" />
+            </ContactImage>
+          </Hide>
+          <Col xxl={5} xl={5} lg={5} md={12}>
+            {/* <form onSubmit={sendEmail} ref={form}>
               <label>Name</label>
               <input type="text" name="name" />
               <label>Email</label>
@@ -86,45 +88,51 @@ const ContactSection = (props: ContactSectionProps): JSX.Element => {
               <textarea name="message" />
               <input type="submit" value="Send" />
             </form> */}
-          <Formik
-            initialValues={{ name: "", email: "", message: "" }}
-            validationSchema={validationSchema}
-            onSubmit={handleOnSubtmit}
-            enableReinitialize
-          >
-            <Form
-              ref={form}
-              onSubmit={sendEmail}
-              style={{ display: "grid", gap: "32px" }}
+            <Formik
+              initialValues={{ name: "", email: "", message: "" }}
+              validationSchema={validationSchema}
+              onSubmit={handleOnSubtmit}
+              enableReinitialize
             >
-              <UserInfo>
-                <FormikTextField
-                  label="Name"
-                  name="name"
-                  placeholder="Juan Dela Cruz"
-                  style={{ flexGrow: "1" }}
+              <Form
+                ref={form}
+                onSubmit={sendEmail}
+                style={{ display: "grid", gap: "32px" }}
+              >
+                <UserInfo>
+                  <FormikTextField
+                    label="Name"
+                    labelVariant="subtitle"
+                    labelWeight="bold"
+                    name="name"
+                    placeholder="Juan Dela Cruz"
+                    style={{ flexGrow: "1" }}
+                  />
+                  <FormikTextField
+                    label="Email"
+                    labelVariant="subtitle"
+                    labelWeight="bold"
+                    name="email"
+                    placeholder="user@nomail.com"
+                    style={{ flexGrow: "1" }}
+                  />
+                </UserInfo>
+                <FormikTextArea
+                  label="Your Message"
+                  labelVariant="subtitle"
+                  labelWeight="bold"
+                  name="message"
+                  placeholder="message"
                 />
-                <FormikTextField
-                  label="Email"
-                  name="email"
-                  placeholder="user@nomail.com"
-                  style={{ flexGrow: "1" }}
-                />
-              </UserInfo>
-              <FormikTextArea
-                label="Your Message"
-                name="message"
-                placeholder="message"
-              />
-              <Button type="submit" text="Submit" variant="tonal" />
-            </Form>
-          </Formik>
-        </Col>
-        <Toaster />
-      </Row>
-    <HomeFooter></HomeFooter>
-    </Container>
-    
+                <Button type="submit" text="Submit" variant="tonal" />
+              </Form>
+            </Formik>
+          </Col>
+          <Toaster />
+        </Row>
+        <HomeFooter></HomeFooter>
+      </Container>
+    </div>
   );
 };
 

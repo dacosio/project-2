@@ -28,6 +28,8 @@ const meta: Meta<typeof FormikTextArea> = {
           <Form style={{ display: "grid", gap: "32px" }}>
             <FormikTextArea
               label="Comment"
+              labelVariant="subtitle"
+              labelWeight="bold"
               name="comment"
               placeholder="comment"
             />

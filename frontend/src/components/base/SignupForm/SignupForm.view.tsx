@@ -38,17 +38,23 @@ const SignupForm = (props: SignupFormProps): JSX.Element => {
         <FormStyle>
           <FormikTextField
             label="Email"
+            labelVariant="small"
+            labelWeight="400"
             name="email"
             placeholder="Enter email"
           />
           <FormikTextField
             label="Password"
+            labelVariant="small"
+            labelWeight="400"
             name="password"
             placeholder="******"
             secured
           />
           <FormikTextField
             label="Confirm Password"
+            labelVariant="small"
+            labelWeight="400"
             name="confirmPassword"
             placeholder="******"
             secured
