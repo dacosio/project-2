@@ -26,6 +26,7 @@ import {
   DashboardWindContainer,
   DashboardPrecipitationHumidityWindContainer,
   DashboardSVGContainer,
+  DashboardLowHighMTContainer,
 } from "./CurrentWeather.style";
 import {
   Clear,
@@ -74,7 +75,7 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
       ? 160
       : window.innerWidth > 991
       ? 122
-      : window.innerWidth > 768
+      : window.innerWidth > 767
       ? 120
       : 80
   );
@@ -94,7 +95,7 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
           ? 160
           : window.innerWidth > 991
           ? 122
-          : window.innerWidth > 768
+          : window.innerWidth > 767
           ? 120
           : 80
       );
@@ -161,7 +162,7 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
                     {currentTemperature}°C
                   </Typography>{" "}
                 </TemperatureContainer>
-                <LowHighMTContainer>
+                <DashboardLowHighMTContainer>
                   <LowContainer>
                     <Typography variant="small" textColor="white">
                       Low
@@ -178,7 +179,7 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
                       {highTemperature}°C
                     </Typography>{" "}
                   </HighContainer>
-                </LowHighMTContainer>
+                </DashboardLowHighMTContainer>
               </DashboardTemperatureLowHighContainer>
 
               <DashboardPrecipitationHumidityWindContainer>
