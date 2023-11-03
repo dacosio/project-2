@@ -91,7 +91,7 @@ const HomeView = (props: HomeGeneratedProps) => {
       </Header> */}
       <HomeNavigation />
 
-      <Header justify="center" align="center" style={{ margin: 0 }} id="header">
+      <Header justify="center" align="center" style={{ marginLeft: 0, marginRight: 0 }} id="header">
         <HeaderContents xxl={4} xl={4} lg={6} md={6}>
           <Typography variant="title1" weight="700" textColor="accent">
             Sow and grow your farming <span className="line-break">goals</span>
@@ -123,7 +123,7 @@ const HomeView = (props: HomeGeneratedProps) => {
         </HeaderContents>
       </Header>
 
-      <About justify="center" align="center" id="about" style={{ margin: 0 }}>
+      <About justify="center" align="center" id="about" style={{ marginLeft: 0, marginRight: 0 }}>
         <AboutDisplay xxl={5} xl={5} lg={5}>
           <Hide md sm xs>
             <AboutTypography>

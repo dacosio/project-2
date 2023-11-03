@@ -13,6 +13,7 @@ export const Container = styled.div`
     gap: 0;
     flex-flow: row;
     max-width: 725px;
+    
   }
 `;
 

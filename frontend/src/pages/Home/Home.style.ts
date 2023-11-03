@@ -8,14 +8,26 @@ export const Container = styled.div`
   box-sizing: border-box;
 
   .text {
+    margin-top: 1rem;
     display: flex;
     gap: 16px;
     align-items: center;
+    justify-content: center;
+    flex-flow: column;
+
+    @media (min-width: 768px) {
+      justify-content: flex-start;
+      flex-flow: row;
+    }
 
     > div {
-      width: 45%;
+      width: 100%;
       outline: 2px solid ${theme.text.accent};
       border-radius: 4px;
+      overflow: hidden;
+      @media (min-width: 768px) {
+        width: 40%;
+      }
     }
   }
 `;
@@ -23,6 +35,9 @@ export const Container = styled.div`
 export const Header = styled(Row)`
   height: 100vh;
   padding: 1rem;
+  @media (max-width: 768px) {
+    margin-top: 3rem;
+  }
 `;
 
 export const HeaderContents = styled(Col)`
@@ -93,49 +108,48 @@ export const Contact = styled(Row)`
 `;
 
 export const ContactImage = styled(Col)`
-img {
+  img {
     max-width: 100%;
     height: auto;
   }
 `;
 
 export const Form = styled.form`
-display: flex;
-flex-flow: column;
-gap: 1.5rem;
-p {
-  color: white;
-}
-textarea{
-  height: 200px;
-  width: 100%;
-  border-radius: 8px;
-  padding: 1rem .25rem;
-  box-sizing: border-box;
-  border: 1px solid black;
-}
-textarea::placeholder{
-  font-family: "Lexend", sans-serif;
-  font-size: 14px;
-  font-weight: light;
-}
+  display: flex;
+  flex-flow: column;
+  gap: 1.5rem;
+  p {
+    color: white;
+  }
+  textarea {
+    height: 200px;
+    width: 100%;
+    border-radius: 8px;
+    padding: 1rem 0.25rem;
+    box-sizing: border-box;
+    border: 1px solid black;
+  }
+  textarea::placeholder {
+    font-family: "Lexend", sans-serif;
+    font-size: 14px;
+    font-weight: light;
+  }
 `;
 
 export const UserInfo = styled.div`
-display: flex;
-gap: .5rem;
-@media (max-width: 768px) {
-  flex-flow: column;
-  gap: 1.5rem;
-}
+  display: flex;
+  gap: 0.5rem;
+  @media (max-width: 768px) {
+    flex-flow: column;
+    gap: 1.5rem;
+  }
 `;
 
-export const Message = styled.div`
-`;
+export const Message = styled.div``;
 
 export const ContactForm = styled(Col)`
-display: grid;
-gap: 2rem;
+  display: grid;
+  gap: 2rem;
 `;
 
 // export const About = styled.div`
