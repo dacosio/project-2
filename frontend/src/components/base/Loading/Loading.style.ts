@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { theme } from "../../../utils/Theme";
+import { css } from "@emotion/react";
 
 export const Wrapper = styled.div`
   position: fixed;
@@ -12,12 +13,22 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 9999;
-`
-export const Container = styled.div<{ width?: string; height?: string }>`
+`;
+export const Container = styled.div<{
+  width?: string;
+  height?: string;
+  btnLoading?: boolean;
+}>`
   height: ${({ height }) => (height ? height : "8rem")};
   width: ${({ width }) => (width ? width : "8rem")};
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+
+  ${({ btnLoading }) =>
+    !btnLoading
+      ? css`
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        `
+      : null};
 `;
