@@ -60,11 +60,11 @@ const Signup = (props: SignupProps): JSX.Element => {
         {isLastStep ? null : (
           <Option>
             <Bottom>
-              <Typography variant="subtitle" align="center" textColor="n70">
+              <Typography variant="mobile" align="center" textColor="n70">
                 Already a member?
               </Typography>
               <SignUpButton
-                variant="subtitle"
+                variant="mobile"
                 textColor="n90"
                 onClick={handleSignUpModal}>
                 Sign In
@@ -73,49 +73,6 @@ const Signup = (props: SignupProps): JSX.Element => {
           </Option>
         )}
       </SingupForm>
-
-      {/* <Header>
-          <Typography
-            variant="title2"
-            weight="700"
-            textColor="primary"
-            align="center"
-          >
-            Welcome back, let’s farm!
-          </Typography>
-        </Header>
-
-        <SingupDetails>
-          <SingupForm>
-            <TextField
-              label="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="user@nomail.com"
-              style={{ width: "100%" }}
-            />
-            <TextField
-              label="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              secured
-              placeholder="******"
-              style={{ width: "100%" }}
-            />
-
-            <SubmitButton type="button" value="submit" />
-            <a href="">Forgot Password?</a>
-          </SingupForm>
-
-          <Typography
-            variant="small"
-            weight="400"
-            textColor="n90"
-            align="center"
-          >
-            Don’t have an account? <a href="">Sign Up</a>
-          </Typography>
-        </SingupDetails> */}
     </Container>
   );
 };
