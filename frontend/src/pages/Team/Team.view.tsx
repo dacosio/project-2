@@ -1,6 +1,6 @@
 import React from "react";
 import { TeamGeneratedProps } from "./Team.props";
-import { Container, ListContainer, Wrapper } from "./Team.style";
+import { Container, ItemContainer, ListContainer, Wrapper } from "./Team.style";
 import Typography from "components/base/Typography";
 import { Col } from "react-grid-system";
 import MemberCard from "components/base/MemberCard";
@@ -26,23 +26,23 @@ const TeamView = (props: TeamGeneratedProps) => {
         >
           {members &&
             members.map((member, index) => (
-              <Col
+              <ItemContainer
                 sm={6}
                 md={4}
                 lg={3}
                 style={{
-                  padding: "16px",
+                  padding: undefined,
                   display: "grid",
-                  maxWidth: "300px",
                 }}
               >
                 <MemberCard
                   source={member.source}
                   name={member.name}
                   role={member.role}
+                  url={member.url}
                   key={index}
                 />
-              </Col>
+              </ItemContainer>
             ))}
         </ListContainer>
       </Wrapper>
