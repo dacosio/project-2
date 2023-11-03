@@ -251,3 +251,29 @@ export const DashboardSVGContainer = styled.div`
   }
 `;
 
+export const DashboardLowHighMTContainer = styled.div`
+  display: flex;
+  flex-direction : column;
+  align-items:center;
+  row-gap: 4px;
+  align-items: center;
+
+  @media screen and (max-width: 500px) {
+    position: absolute;
+    right: 4rem;
+  }
+
+  @media screen and (min-width: 500px) and (max-width: 600px) {
+    position: absolute;
+    right: 6rem;
+  }
+
+  @media screen and (min-width: 600px) and (max-width: 768px) {
+    position: absolute;
+    right: 4rem;
+  }
+
+
+  
+`;
+
