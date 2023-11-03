@@ -12,7 +12,6 @@ const Layout = (props: LayoutProps): JSX.Element => {
   const location = useLocation();
   const currentUrl = location.pathname;
   const userInfo = useAppSelector(selectUserInfo);
-  console.log(userInfo);
   const formatPath = (path: string) => {
     path = path.replace(/^\//, "");
     path = path.replace(/-+/g, " ");

@@ -17,7 +17,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import UserAvatar from "components/base/UserAvatar";
 import { useOnClickOutside } from "utils/hooks/useOnClickOutside";
 import Typography from "components/base/Typography";
-import { logOut } from "features/auth/authSlice";
+import { logOut, selectUserInfo } from "features/auth/authSlice";
 import { useSendLogoutMutation } from "features/auth/authApiSlice";
 import { useNavigate } from "react-router";
 import { Bell } from "components/base/SVG";
@@ -31,6 +31,9 @@ const NavigationHeader = ({
   const handleToggle = () => {
     dispatch(sendToggle(!toggleState));
   };
+
+  const userInfo = useAppSelector(selectUserInfo);
+
   const [logOutOpen, setLogOutOpen] = useState<boolean>(false);
   const [sendLogout] = useSendLogoutMutation();
   const navigate = useNavigate();
@@ -79,7 +82,8 @@ const NavigationHeader = ({
             email="sprout@langara.ca"
             size="36"
             round="8px"
-            imageUrl="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50"
+            displayName={`${userInfo?.firstName} ${userInfo.lastName}`}
+            imageUrl={userInfo.imageUrl}
             onClick={handleClickInside}
           />
         </AvatarWrapper>
