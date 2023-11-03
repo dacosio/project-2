@@ -4,7 +4,7 @@ import {
   Container,
   Header,
   HeaderContents,
-  Discover,
+  Features,
   DiscoverContent,
   About,
   Details,
@@ -126,9 +126,10 @@ const HomeView = (props: HomeGeneratedProps) => {
         </HeaderContents>
       </Header>
 
-      <Discover
+      <About
         justify="center"
         style={{ marginLeft: 0, marginRight: 0 }}
+        id="about"
       >
         <DiscoverContent>
           <div style={{ marginBottom: "1rem" }}>
@@ -180,12 +181,12 @@ const HomeView = (props: HomeGeneratedProps) => {
             </Typography>
           </Visible>
         </DiscoverContent>
-      </Discover>
+      </About>
 
-      <About
+      <Features
         justify="center"
         align="center"
-        id="about"
+        id="features"
         style={{ marginLeft: 0, marginRight: 0 }}
       >
         <AboutDisplay xxl={5} xl={5} lg={5}>
@@ -339,7 +340,7 @@ const HomeView = (props: HomeGeneratedProps) => {
             </div>
           </Details>
         </AboutDetails>
-      </About>
+      </Features>
 
       <ContactSection />
     </Container>

@@ -53,7 +53,7 @@ export const HeaderContents = styled(Col)`
 
 export const Hide = styled(Hidden)``;
 
-export const About = styled(Row)`
+export const Features = styled(Row)`
   background-color: #fff;
   padding-top: 4rem;
   padding-bottom: 4rem;
@@ -63,7 +63,7 @@ export const About = styled(Row)`
   }
 `;
 
-export const Discover = styled(Row)`
+export const About = styled(Row)`
   padding: 1rem;
   background-color: #fff;
   @media (max-width: 992px) {
