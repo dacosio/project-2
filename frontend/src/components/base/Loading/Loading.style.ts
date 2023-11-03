@@ -1,6 +1,4 @@
 import styled from "@emotion/styled";
-import { theme } from "../../../utils/Theme";
-import { css } from "@emotion/react";
 
 export const Wrapper = styled.div`
   position: fixed;
@@ -21,14 +19,11 @@ export const Container = styled.div<{
 }>`
   height: ${({ height }) => (height ? height : "8rem")};
   width: ${({ width }) => (width ? width : "8rem")};
-
   ${({ btnLoading }) =>
     !btnLoading
-      ? css`
-          position: absolute;
+      ? ` position: absolute;
           top: 50%;
           left: 50%;
-          transform: translate(-50%, -50%);
-        `
-      : null};
+          transform: translate(-50%, -50%)`
+      : null}
 `;
