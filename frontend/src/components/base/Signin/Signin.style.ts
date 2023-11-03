@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 import { theme } from "../../../utils/Theme";
 import Typography from "../Typography";
+import Button from "../Button";
+
 
 export const Container = styled.div`
   border-radius: 24px;
@@ -49,6 +51,10 @@ export const SigninForm = styled.div`
 export const FormStyle = styled.div`
   display: grid;
   gap: 1rem;
+  p:first-child {
+    font-size: 14px;
+    color: ${theme.neutral.n80};
+  }
 `;
 
 export const Option = styled.div`
@@ -75,4 +81,10 @@ export const SignUpButton = styled(Typography)`
   &:hover {
     color: ${(props) => props.theme.btn.text.accent};
   }
+`;
+
+export const StyledButton = styled(Button)`
+p{
+  color: white !important;
+}
 `;

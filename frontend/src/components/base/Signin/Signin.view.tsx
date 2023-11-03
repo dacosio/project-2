@@ -9,6 +9,7 @@ import {
   Option,
   Bottom,
   SignUpButton,
+  StyledButton
 } from "./Signin.style";
 import Typography from "../Typography";
 import { Form, Formik } from "formik";
@@ -91,7 +92,7 @@ const Signin = (props: SigninProps): JSX.Element => {
                 placeholder="******"
                 secured
               />
-              <Button type="submit" text="Submit" variant="primary" />
+              <StyledButton type="submit" text="Submit" variant="primary"/>
             </FormStyle>
           </Form>
         </Formik>

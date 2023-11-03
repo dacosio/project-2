@@ -4,7 +4,7 @@ import { theme } from "../../../utils/Theme";
 export const Container = styled.div``;
 
 export const FormStyle = styled.div`
-  p {
+  p:first-child {
     font-size: 14px;
     color: ${theme.neutral.n80};
   }
