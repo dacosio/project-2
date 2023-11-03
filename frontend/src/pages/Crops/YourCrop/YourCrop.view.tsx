@@ -113,7 +113,7 @@ const YourCropView = (props: YourCropGeneratedProps) => {
         </Wrapper>
       ) : (
         <div>
-          <Typography>Wala crops</Typography>
+          <Typography>No crops to display</Typography>
         </div>
       )}
       <AddSuggestionModal
