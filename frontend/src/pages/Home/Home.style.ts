@@ -54,12 +54,11 @@ export const HeaderContents = styled(Col)`
 export const Hide = styled(Hidden)``;
 
 export const About = styled(Row)`
-  padding: 1rem;
   background-color: #fff;
-  gap: 3rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
   @media (max-width: 992px) {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding-top: 0rem;
     gap: 1rem;
   }
 `;
@@ -70,7 +69,6 @@ export const Discover = styled(Row)`
   @media (max-width: 992px) {
     padding-top: 4rem;
     padding-bottom: 4rem;
-    gap: 3rem;
   }
 `;
 
@@ -115,7 +113,10 @@ export const AboutTypography = styled.div`
 export const AboutDetails = styled(Col)`
   display: flex;
   flex-flow: column;
-  gap: 3rem;
+  gap: 1rem;
+  @media (min-width: 576px) {
+    gap: 3rem;
+  }
 `;
 
 export const Details = styled.div`

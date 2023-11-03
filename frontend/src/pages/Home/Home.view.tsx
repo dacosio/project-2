@@ -127,12 +127,11 @@ const HomeView = (props: HomeGeneratedProps) => {
       </Header>
 
       <Discover
-        id="about"
         justify="center"
         style={{ marginLeft: 0, marginRight: 0 }}
       >
         <DiscoverContent>
-          <div style={{marginBottom: "1rem"}}>
+          <div style={{ marginBottom: "1rem" }}>
             <Hide md sm xs>
               <Typography
                 variant="title1"
@@ -145,7 +144,7 @@ const HomeView = (props: HomeGeneratedProps) => {
             </Hide>
             <Visible md sm xs>
               <Typography
-                variant="title1"
+                variant="title2"
                 weight="700"
                 textColor="accent"
                 align="center"
@@ -154,18 +153,33 @@ const HomeView = (props: HomeGeneratedProps) => {
               </Typography>
             </Visible>
           </div>
-          <Typography variant="subtitle" weight="400" textColor="n80">
-            Different crops have different needs, and these can make or break how
-            you kickstart your farming journey. But don't worry! With Sprout’s
-            data-backed features, you can discover, plant, and nurture the perfect
-            crop for your unique growing conditions.
-          </Typography>
-          <Typography variant="subtitle" weight="400" textColor="n80">
-            Already have a crop to grow mind? We got you! Sprout provides the info
-            you’ll need to create the best environment to plant and cultivate it.
-          </Typography>
+          <Hide xs>
+            <Typography variant="subtitle" weight="400" textColor="n80">
+              Different crops have different needs, and these can make or break
+              how you kickstart your farming journey. But don't worry! With
+              Sprout’s data-backed features, you can discover, plant, and
+              nurture the perfect crop for your unique growing conditions.
+            </Typography>
+            <Typography variant="subtitle" weight="400" textColor="n80">
+              Already have a crop to grow mind? We got you! Sprout provides the
+              info you’ll need to create the best environment to plant and
+              cultivate it.
+            </Typography>
+          </Hide>
+          <Visible xs>
+            <Typography variant="body" weight="400" textColor="n80">
+              Different crops have different needs, and these can make or break
+              how you kickstart your farming journey. But don't worry! With
+              Sprout’s data-backed features, you can discover, plant, and
+              nurture the perfect crop for your unique growing conditions.
+            </Typography>
+            <Typography variant="body" weight="400" textColor="n80">
+              Already have a crop to grow mind? We got you! Sprout provides the
+              info you’ll need to create the best environment to plant and
+              cultivate it.
+            </Typography>
+          </Visible>
         </DiscoverContent>
-
       </Discover>
 
       <About
@@ -196,7 +210,7 @@ const HomeView = (props: HomeGeneratedProps) => {
 
           <Visible md sm xs>
             <Typography
-              variant="title1"
+              variant="title2"
               weight="700"
               textColor="accent"
               align="center"
@@ -213,13 +227,37 @@ const HomeView = (props: HomeGeneratedProps) => {
             </Hide>
 
             <div>
-              <Typography variant="title2" weight="700" textColor="n90">
-                Get our tailor-made recs
-              </Typography>
-              <Typography variant="subtitle" weight="400" textColor="n80">
-                Know which crops are best for your planting and weather
-                conditions and also get a yield estimate
-              </Typography>
+              <Hide md sm xs>
+                <Typography variant="title2" weight="700" textColor="n90">
+                  Get our tailor-made recs
+                </Typography>
+              </Hide>
+
+              <Visible md sm>
+                <Typography variant="title3" weight="700" textColor="n90">
+                  Get our tailor-made recs
+                </Typography>
+              </Visible>
+
+              <Visible xs>
+                <Typography variant="title4" weight="700" textColor="n90">
+                  Get our tailor-made recs
+                </Typography>
+              </Visible>
+
+              <Hide xs>
+                <Typography variant="subtitle" weight="400" textColor="n80">
+                  Know which crops are best for your planting and weather
+                  conditions and also get a yield estimate
+                </Typography>
+              </Hide>
+
+              <Visible xs>
+                <Typography variant="body" weight="400" textColor="n80">
+                  Know which crops are best for your planting and weather
+                  conditions and also get a yield estimate
+                </Typography>
+              </Visible>
             </div>
           </Details>
 
@@ -228,13 +266,37 @@ const HomeView = (props: HomeGeneratedProps) => {
               <img src={icon2} alt="" />
             </Hide>
             <div>
-              <Typography variant="title2" weight="700" textColor="n90">
-                Know your crops
-              </Typography>
-              <Typography variant="subtitle" weight="400" textColor="n80">
-                With our crop database, you’ll get the necessary info about your
-                crops and resources needed to grow ‘em
-              </Typography>
+              <Hide md sm xs>
+                <Typography variant="title2" weight="700" textColor="n90">
+                  Know your crops
+                </Typography>
+              </Hide>
+
+              <Visible md sm>
+                <Typography variant="title3" weight="700" textColor="n90">
+                  Know your crops
+                </Typography>
+              </Visible>
+
+              <Visible xs>
+                <Typography variant="title4" weight="700" textColor="n90">
+                  Know your crops
+                </Typography>
+              </Visible>
+
+              <Hide xs>
+                <Typography variant="subtitle" weight="400" textColor="n80">
+                  With our crop database, you’ll get the necessary info about
+                  your crops and resources needed to grow ‘em
+                </Typography>
+              </Hide>
+
+              <Visible xs>
+                <Typography variant="body" weight="400" textColor="n80">
+                  With our crop database, you’ll get the necessary info about
+                  your crops and resources needed to grow ‘em
+                </Typography>
+              </Visible>
             </div>
           </Details>
 
@@ -243,13 +305,37 @@ const HomeView = (props: HomeGeneratedProps) => {
               <img src={icon3} alt="" />
             </Hide>
             <div>
-              <Typography variant="title2" weight="700" textColor="n90">
-                Be ready, rain or shine
-              </Typography>
-              <Typography variant="subtitle" weight="400" textColor="n80">
-                Always stay ahead of any weather situation with our long-range
-                weather forecast
-              </Typography>
+              <Hide md sm xs>
+                <Typography variant="title2" weight="700" textColor="n90">
+                  Be ready, rain or shine
+                </Typography>
+              </Hide>
+
+              <Visible md sm>
+                <Typography variant="title3" weight="700" textColor="n90">
+                  Be ready, rain or shine
+                </Typography>
+              </Visible>
+
+              <Visible xs>
+                <Typography variant="title4" weight="700" textColor="n90">
+                  Be ready, rain or shine
+                </Typography>
+              </Visible>
+
+              <Hide xs>
+                <Typography variant="subtitle" weight="400" textColor="n80">
+                  Always stay ahead of any weather situation with our long-range
+                  weather forecast
+                </Typography>
+              </Hide>
+
+              <Visible xs>
+                <Typography variant="body" weight="400" textColor="n80">
+                  Know which crops are best for your planting and weather
+                  conditions and also get a yield estimate
+                </Typography>
+              </Visible>
             </div>
           </Details>
         </AboutDetails>
