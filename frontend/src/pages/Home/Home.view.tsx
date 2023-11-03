@@ -9,6 +9,7 @@ import {
   About,
   Details,
   AboutDisplay,
+  AboutFrame,
   AboutTypography,
   AboutDetails,
   Contact,
@@ -131,26 +132,28 @@ const HomeView = (props: HomeGeneratedProps) => {
         style={{ marginLeft: 0, marginRight: 0 }}
       >
         <DiscoverContent>
-          <Hide md sm xs>
-            <Typography
-              variant="title1"
-              weight="700"
-              textColor="accent"
-              align="left"
-            >
-              Discover your best farming buddy
-            </Typography>
-          </Hide>
-          <Visible md sm xs>
-            <Typography
-              variant="title1"
-              weight="700"
-              textColor="accent"
-              align="center"
-            >
-              Discover your best farming buddy
-            </Typography>
-          </Visible>
+          <div style={{marginBottom: "1rem"}}>
+            <Hide md sm xs>
+              <Typography
+                variant="title1"
+                weight="700"
+                textColor="accent"
+                align="left"
+              >
+                Discover your best farming buddy
+              </Typography>
+            </Hide>
+            <Visible md sm xs>
+              <Typography
+                variant="title1"
+                weight="700"
+                textColor="accent"
+                align="center"
+              >
+                Discover your best farming buddy
+              </Typography>
+            </Visible>
+          </div>
           <Typography variant="subtitle" weight="400" textColor="n80">
             Different crops have different needs, and these can make or break how
             you kickstart your farming journey. But don't worry! With Sprout’s
@@ -173,20 +176,22 @@ const HomeView = (props: HomeGeneratedProps) => {
       >
         <AboutDisplay xxl={5} xl={5} lg={5}>
           <Hide md sm xs>
-            <AboutTypography>
-              <Typography
-                variant="title1"
-                weight="700"
-                textColor="accent"
-                style={{
-                  position: "relative",
-                  zIndex: "1",
-                }}
-              >
-                Farming<br></br>simplified
-              </Typography>
-            </AboutTypography>
-            <img src={aboutimg} alt="" />
+            <AboutFrame>
+              <AboutTypography>
+                <Typography
+                  variant="title1"
+                  weight="700"
+                  textColor="accent"
+                  style={{
+                    position: "relative",
+                    zIndex: "1",
+                  }}
+                >
+                  Farming<br></br>simplified
+                </Typography>
+              </AboutTypography>
+              <img src={aboutimg} alt="" />
+            </AboutFrame>
           </Hide>
 
           <Visible md sm xs>

@@ -56,10 +56,11 @@ export const Hide = styled(Hidden)``;
 export const About = styled(Row)`
   padding: 1rem;
   background-color: #fff;
+  gap: 3rem;
   @media (max-width: 992px) {
     padding-top: 4rem;
     padding-bottom: 4rem;
-    gap: 3rem;
+    gap: 1rem;
   }
 `;
 
@@ -76,22 +77,39 @@ export const Discover = styled(Row)`
 export const DiscoverContent = styled.div`
 max-width: 760px;
 padding: 4rem 0;
+
+@media (min-width: 992px) {
+}
 `;
 
 export const AboutDisplay = styled(Col)`
   display: flex;
   flex-flow: column;
+  align-items: center;
   img {
-    max-width: 100%;
+    max-width: 400px;
     position: relative;
-    top: -150px;
+    @media (min-width: 1100px) {
+      max-width: 500px;
+    }
+  }
+  @media (min-width: 992px) {
+    align-items: flex-end;
   }
 `;
 
+export const AboutFrame = styled.div`
+  position: static;
+`;
+
 export const AboutTypography = styled.div`
-  position: relative;
-  top: 250px;
-  left: 125px;
+  position: absolute;
+  top: 7rem;
+  right: 10rem;
+  @media (min-width: 1100px) {
+    top: 10rem;
+    right: 12rem;
+  }
 `;
 
 export const AboutDetails = styled(Col)`
