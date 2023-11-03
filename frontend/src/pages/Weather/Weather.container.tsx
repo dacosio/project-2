@@ -4,6 +4,7 @@ import WeatherView from "./Weather.view";
 import axios from "axios";
 import { useCurrentCity } from "utils/hooks/useCurrentCity";
 import Typography from "components/base/Typography";
+import Button from "components/base/Button";
 
 const Weather = (): JSX.Element => {
   const [weatherData, setWeatherData] = useState<{ [key: string]: any }>({});
@@ -176,7 +177,7 @@ const Weather = (): JSX.Element => {
           selectedIndex={selectedIndex}
         />
       ) : (
-        <Typography>Loading weather data.</Typography>
+        <Button loading variant="disabled" />
       )}
     </>
   );

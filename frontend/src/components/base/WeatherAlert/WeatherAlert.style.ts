@@ -13,6 +13,15 @@ export const Container = styled.div`
     background-color: ${theme.grey.noshade};
     width: 212px;
     height:212px;
+
+    @media screen and (max-width: 1200px) {
+        width: 256px;
+      height:254px;
+      }
+
+      @media screen and (min-width: 1200px) {
+        gap: 1.3rem;
+      }
 `
 
 export const TitleContainer = styled.div`
