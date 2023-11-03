@@ -86,8 +86,6 @@ const DashboardView = (props: DashboardGeneratedProps) => {
     <Wrapper>
       <Top>
         <Weather md={6}>
-          Weather here
-          {/*
           <CurrentWeather
             currentLocation={currentLocation}
             forecast={forecast}
@@ -102,7 +100,7 @@ const DashboardView = (props: DashboardGeneratedProps) => {
             currentCondition={currentCondition}
             page="dashboard"
             onSelectedSearchLocation={handleSelectedSearchLocation}
-          /> */}
+          />
         </Weather>
         <Segment md={6}>
           <SegmentedControl

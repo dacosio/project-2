@@ -5,6 +5,7 @@ import { useGetPlantedCropsQuery } from "features/crops/cropApiSlice";
 import Typography from "components/base/Typography";
 import axios from "axios";
 import { useCurrentCity } from "utils/hooks/useCurrentCity";
+import Button from "components/base/Button";
 
 const Dashboard = (): JSX.Element => {
   const { data, isLoading } = useGetPlantedCropsQuery({ isPlanted: true }); //or isFavorite??
@@ -186,7 +187,7 @@ const Dashboard = (): JSX.Element => {
           selectedIndex={selectedIndex}
         />
       ) : (
-        <Typography>Loading weather data.</Typography>
+        <Button loading variant="disabled" />
       )}
     </>
   );

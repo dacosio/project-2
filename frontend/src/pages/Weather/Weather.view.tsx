@@ -132,7 +132,7 @@ const WeatherView = (props: WeatherGeneratedProps) => {
         ></Humidity>
 
         {weatherData.alerts.length > 0 ? (
-          <WeatherAlert alert="National Weather Service: SEVERE STORM WARNING in effect in this area until 6:30 PM CST for destructive 80mph winds. "></WeatherAlert>
+          <WeatherAlert alert={weatherData.alerts[0].headline}></WeatherAlert>
         ) : (
           <WeatherTip
             condition={

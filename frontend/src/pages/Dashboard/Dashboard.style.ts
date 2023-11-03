@@ -19,7 +19,12 @@ export const Segment = styled(Col)`
   display:flex;
   flex-direction: column;
   height: 340px;
-   row-gap: 2rem;
+   row-gap: 1.84rem;
+
+   @media screen and (min-width: 768px) and (max-width: 992px){
+     row-gap: 0.4rem;
+  }
+
 `;
 export const Weather = styled(Col)`
   // flex: 0.5;
