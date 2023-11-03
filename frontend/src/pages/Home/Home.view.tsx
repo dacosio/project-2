@@ -123,7 +123,7 @@ const HomeView = (props: HomeGeneratedProps) => {
         </HeaderContents>
       </Header>
 
-      <About justify="center" align="center" id="about">
+      <About justify="center" align="center" id="about" style={{ margin: 0 }}>
         <AboutDisplay xxl={5} xl={5} lg={5}>
           <Hide md sm xs>
             <AboutTypography>
@@ -203,83 +203,6 @@ const HomeView = (props: HomeGeneratedProps) => {
         </AboutDetails>
       </About>
       <ContactSection />
-
-      {/* <Contact align="center">
-        <Hide md sm xs>
-          <ContactImage
-            xxl={6}
-            xl={6}
-            lg={6}
-            style={{
-              paddingLeft: "0",
-            }}
-          >
-            <img src={contact} alt="" />
-          </ContactImage>
-        </Hide>
-
-        <ContactForm xxl={5} xl={5} lg={5}>
-          <Hide md sm xs>
-            <Typography variant="title2" weight="700" textColor="n0">
-              We’d love to hear from you!
-            </Typography>
-          </Hide>
-
-          <Visible md sm xs>
-            <Typography
-              variant="title2"
-              weight="700"
-              textColor="n0"
-              align="center"
-            >
-              We’d love to hear from you!
-            </Typography>
-          </Visible>
-
-          <Form ref={form} onSubmit={sendEmail}>
-            <UserInfo>
-              <TextField
-                label="Name"
-                value={name}
-                setValue={setName}
-                placeholder="Juan Dela Cruz"
-                style={{ flexGrow: "1", flexBasis: "0" }}
-              />
-              <TextField
-                label="Email"
-                value={email}
-                setValue={setEmail}
-                placeholder="user@nomail.com"
-                style={{ flexGrow: "1", flexBasis: "0" }}
-              />
-            </UserInfo>
-
-            <Message>
-              <label htmlFor="Comments">
-                <Typography variant="title4" weight="700" textColor="n0">
-                  Comments
-                </Typography>
-              </label>
-              <textarea
-                name="Comments"
-                id="Comments"
-                placeholder="comments"
-                style={{
-                  resize: "none",
-                }}
-              ></textarea>
-            </Message>
-
-            <Button
-              text="Farm with us"
-              variant="tonal"
-              size="md"
-              takeFullWidth={true}
-            ></Button>
-          </Form>
-        </ContactForm>
-      </Contact> */}
-      {/* <Footer today=""></Footer> */}
     </Container>
   );
 };
