@@ -38,5 +38,17 @@ export const ListContainer = styled(Row)`
 `;
 
 export const ItemContainer = styled(Col)`
-  padding: 24px;
-`;
+  padding: 64px;
+
+  @media (min-width: 576px) {
+    padding: 32px;
+  }
+
+  @media (min-width: 768px) {
+    padding: 42px;
+  }
+  
+  @media (min-width: 992px) {
+    padding: 52px;
+  ]
+  `;

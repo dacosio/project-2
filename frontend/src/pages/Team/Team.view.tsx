@@ -33,7 +33,7 @@ const TeamView = (props: TeamGeneratedProps) => {
                 style={{
                   padding: undefined,
                   display: "grid",
-                  maxWidth: "300px",
+                  // maxWidth: undefined,
                 }}
               >
                 <MemberCard
