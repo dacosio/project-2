@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Row } from "react-grid-system";
+import { Col, Row } from "react-grid-system";
 import { theme } from "utils/Theme";
 
 export const Container = styled.div`
@@ -12,7 +12,7 @@ export const Container = styled.div`
 
 export const Wrapper = styled.div`
   width: 100%;
-  max-width: 1300px;
+  max-width: 1200px;
   margin: auto;
   padding: 16px;
   padding-top: 128px;
@@ -35,4 +35,8 @@ export const ListContainer = styled(Row)`
   @media (min-width: 992px) {
     justify-content: space-between;
   }
+`;
+
+export const ItemContainer = styled(Col)`
+  padding: 32px;
 `;
