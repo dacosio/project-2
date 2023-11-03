@@ -8,44 +8,48 @@ import {
   Hidebutton,
   Logo,
 } from "./HomeNavigation.style";
-
 import Hamburger from "../../base/Hamburger";
 import Button from "../../base/Button";
 import { useMediaQuery } from "../../../utils/hooks/useMediaQuery";
 import HomeNavigationMobile from "../HomeNavigationMobile";
 import SignupModal from "../../base/SignupModal";
 import LoginModal from "../../base/LoginModal";
+import { SproutLogo } from "../../base/SVG";
+import { Link } from "react-router-dom";
 
 const HomeNavigation = (props: HomeNavigationProps): JSX.Element => {
   const [open, setOpen] = useState(false);
 
   const matches = useMediaQuery("(min-width: 992px)");
 
-  console.log(matches);
-
   return (
     <Container>
       <Nav>
         <Hamburger open={open} toggleOpen={() => setOpen(!open)} />
         <NavOptions>
-          <Logo width={matches ? 200 : 99} />
+          <Link to={"/"}>
+            <SproutLogo width={matches ? 200 : 99} />
+          </Link>
           <ul>
             <li>
-              <a href="#">About</a>
+              <Link to="/#header">Home</Link>
             </li>
             <li>
-              <a href="#">Features</a>
+              <Link to="/#about">About</Link>
             </li>
             <li>
-              <a href="#">Team</a>
+              <Link to="/#features">Features</Link>
             </li>
             <li>
-              <a href="#">Contact</a>
+              <Link to="/team">Team</Link>
+            </li>
+            <li>
+              <Link to="/#contact">Contact</Link>
             </li>
           </ul>
         </NavOptions>
         <LoginOptions>
-            <LoginModal />
+          <LoginModal />
           <SignupModal />
         </LoginOptions>
       </Nav>

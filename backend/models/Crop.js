@@ -90,7 +90,7 @@ const CropSchema = new mongoose.Schema(
     },
     estimatedYield: {
       type: String,
-      required: true,
+      // required: true,
     },
   },
   {

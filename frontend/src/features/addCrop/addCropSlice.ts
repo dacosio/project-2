@@ -1,9 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { RootState } from "app/store";
-import { AddSuggestion as AddCrop } from "types/store/AddCrop";
-import { Crop } from "types/store/CropState";
+import { RootState } from "../../app/store";
+import { AddCropProps } from "../../types/store/AddCropState";
 
-const initialState: AddCrop = {
+const initialState: AddCropProps = {
   date: "",
   month: "",
   nitrogen: "",

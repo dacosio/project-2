@@ -16,10 +16,11 @@ import {
   storePh,
   storePhosphorus,
   storePotassium,
-} from "../../../features/addSuggestion/addCropSlice";
+} from "../../../features/addCrop/addCropSlice";
 import NumberField from "../NumberField";
-import { useGetPredictCropMutation } from "../../../features/condition/conditionApiSlice";
+import { usePredictCropMutation } from "../../../features/condition/conditionApiSlice";
 import { selectCity } from "../../../features/location/locationSlice";
+import Loading from "../Loading";
 
 const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
   const { onNext } = props;
@@ -29,6 +30,7 @@ const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
   const city = useAppSelector(selectCity);
   const month = useAppSelector(selectMonth);
 
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [nitrogen, setNitrogen] = useState<string | undefined>(
     useAppSelector(selectNitrogen)
   );
@@ -40,9 +42,10 @@ const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
   );
   const [ph, setPh] = useState<string | undefined>(useAppSelector(selectPh));
 
-  const [predict] = useGetPredictCropMutation();
+  const [predict] = usePredictCropMutation();
 
   const handleSkip = async () => {
+    setIsLoading(true);
     dispatch(storeNitrogen(null));
     dispatch(storePhosphorus(null));
     dispatch(storePotassium(null));
@@ -51,7 +54,13 @@ const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
     const response = await predict({
       city: city,
       month: month,
+      N: null,
+      P: null,
+      K: null,
+      ph: null,
     }).unwrap();
+
+    console.log(response);
 
     if (response && response.cropId && response.cropName) {
       dispatch(storeCropId(response.cropId));
@@ -62,6 +71,7 @@ const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
 
   const handleNext = async () => {
     if (nitrogen && phosphorus && potassium && ph) {
+      setIsLoading(true);
       dispatch(storeNitrogen(nitrogen));
       dispatch(storePhosphorus(phosphorus));
       dispatch(storePotassium(potassium));
@@ -85,43 +95,50 @@ const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
   };
 
   return (
-    <Container>
-      <Header>
-        <Typography variant="title3" weight="700">
-          Your Planting Conditions
-        </Typography>
-        <Typography>
-          This step is optional but we can give you a more precise crop
-          suggestion if it's done!
-        </Typography>
-      </Header>
-      <Body>
-        <div>
-          <Typography weight="500">Nitrogen (N)</Typography>
-          <NumberField value={nitrogen} setValue={setNitrogen} />
-        </div>
-        <div>
-          <Typography weight="500">Phosphorus (P)</Typography>
-          <NumberField value={phosphorus} setValue={setPhosphorus} />
-        </div>
-        <div>
-          <Typography weight="500">Potassium (K)</Typography>
-          <NumberField value={potassium} setValue={setPotassium} />
-        </div>
-        <div>
-          <Typography weight="500">pH</Typography>
-          <NumberField value={ph} setValue={setPh} />
-        </div>
-      </Body>
-      <Footer>
-        <Button text="Skip" variant="outline" onClick={handleSkip} />
-        {nitrogen && phosphorus && potassium && ph ? (
-          <Button text="Next" onClick={handleNext} />
-        ) : (
-          <Button text="Next" variant="disabled" />
-        )}
-      </Footer>
-    </Container>
+    <>
+      {isLoading && <Loading />}
+      <Container>
+        <Header>
+          <Typography variant="title3" weight="700">
+            Your Planting Conditions
+          </Typography>
+          <Typography>
+            This step is optional but we can give you a more precise crop
+            suggestion if it's done!
+          </Typography>
+        </Header>
+        <Body>
+          <div>
+            <Typography weight="500">Nitrogen (N)</Typography>
+            <NumberField value={nitrogen} setValue={setNitrogen} />
+          </div>
+          <div>
+            <Typography weight="500">Phosphorus (P)</Typography>
+            <NumberField value={phosphorus} setValue={setPhosphorus} />
+          </div>
+          <div>
+            <Typography weight="500">Potassium (K)</Typography>
+            <NumberField value={potassium} setValue={setPotassium} />
+          </div>
+          <div>
+            <Typography weight="500">pH</Typography>
+            <NumberField value={ph} setValue={setPh} />
+          </div>
+        </Body>
+        <Footer>
+          {isLoading ? (
+            <Button text="Skip" variant="disabled" />
+          ) : (
+            <Button text="Skip" variant="outline" onClick={handleSkip} />
+          )}
+          {isLoading || !(nitrogen && phosphorus && potassium && ph) ? (
+            <Button text="Next" variant="disabled" />
+          ) : (
+            <Button text="Next" onClick={handleNext} />
+          )}
+        </Footer>
+      </Container>
+    </>
   );
 };
 

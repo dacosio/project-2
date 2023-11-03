@@ -1,4 +1,5 @@
 export interface AddCropResultProps {
-  onLater: () => void;
-  onNow: () => void;
+  suggested?: boolean;
+  onLater: (isError: boolean) => void;
+  onNow: (isError: boolean) => void;
 }

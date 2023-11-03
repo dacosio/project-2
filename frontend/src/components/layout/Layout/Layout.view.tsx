@@ -5,11 +5,14 @@ import { Container, Main, Side } from "./Layout.style";
 import Navigation from "../Navigation";
 import NavigationHeader from "../NavigationHeader";
 import { useLocation } from "react-router-dom";
+import { selectUserInfo } from "features/auth/authSlice";
+import { useAppSelector } from "app/hooks";
 
 const Layout = (props: LayoutProps): JSX.Element => {
   const location = useLocation();
   const currentUrl = location.pathname;
-
+  const userInfo = useAppSelector(selectUserInfo);
+  console.log(userInfo);
   const formatPath = (path: string) => {
     path = path.replace(/^\//, "");
     path = path.replace(/-+/g, " ");
@@ -29,7 +32,7 @@ const Layout = (props: LayoutProps): JSX.Element => {
         <NavigationHeader
           sectionName={
             modifiedPath === "Dashboard"
-              ? "Hello User, let's farm!"
+              ? `Hello ${userInfo.firstName}, let's farm!`
               : modifiedPath
           }
         />

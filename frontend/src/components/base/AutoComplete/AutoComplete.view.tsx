@@ -44,8 +44,18 @@ const AutoComplete = (props: AutoCompleteProps): JSX.Element => {
   const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
     setVisibility(true);
     setInputValue(event.target.value);
-    if (options.find((option) => option.label === event.target.value)) {
-      setOption(options.find((option) => option.label === event.target.value));
+    if (
+      options.find(
+        (option) =>
+          option.label.toUpperCase() === event.target.value.toUpperCase()
+      )
+    ) {
+      setOption(
+        options.find(
+          (option) =>
+            option.label.toUpperCase() === event.target.value.toUpperCase()
+        )
+      );
     } else {
       setOption(undefined);
     }

@@ -1,11 +1,10 @@
 import { apiSlice } from "../../app/api/apiSlice";
 import { METHOD } from "../../const/methods";
 import { TAG_TYPE } from "../../const/tags";
-import { Crop } from "../../types/store/CropState";
 
 export const conditionApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getPredictCrop: builder.mutation({
+    predictCrop: builder.mutation({
       query: ({
         city,
         month,
@@ -16,10 +15,10 @@ export const conditionApiSlice = apiSlice.injectEndpoints({
       }: {
         city: string;
         month: string;
-        N?: string;
-        P?: string;
-        K?: string;
-        ph?: string;
+        N: string | null;
+        P: string | null;
+        K: string | null;
+        ph: string | null;
       }) => ({
         url: "/api/predict-crop",
         method: METHOD.POST,
@@ -34,7 +33,16 @@ export const conditionApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [{ type: TAG_TYPE.PREDICT, id: "LIST" }],
     }),
+    predictYield: builder.mutation({
+      query: ({ city, cropName }) => ({
+        url: "/api/predict-yield",
+        method: METHOD.POST,
+        body: { city, cropName },
+      }),
+      invalidatesTags: [{ type: TAG_TYPE.YIELD, id: "LIST" }],
+    }),
   }),
 });
 
-export const { useGetPredictCropMutation } = conditionApiSlice;
+export const { usePredictCropMutation, usePredictYieldMutation } =
+  conditionApiSlice;

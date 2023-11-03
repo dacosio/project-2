@@ -1,1 +1,3 @@
-export interface ContactSectionProps {}
+export interface ContactSectionProps {
+    style?: React.CSSProperties;
+}

@@ -1,3 +1,5 @@
+import { Visible, Hidden } from "react-grid-system";
+import { Toaster } from "react-hot-toast";
 import { YourCropGeneratedProps } from "./YourCrop.props";
 import {
   Container,
@@ -5,18 +7,16 @@ import {
   DetailColumnContainer,
   Wrapper,
 } from "./YourCrop.style";
-import { Visible, Hidden } from "react-grid-system";
-import "react-circular-progressbar/dist/styles.css";
 import Typography from "../../../components/base/Typography";
 import CropList from "../../../components/module/CropList";
 import CropDetail from "../../../components/module/CropDetail";
 import MobileDrawer from "./../../../components/base/MobileDrawer";
 import AddSuggestionModal from "../../../components/module/AddSuggestionModal";
 import AddChoiceModal from "../../../components/module/AddChoiceModal";
-import { Toaster } from "react-hot-toast";
 
 const YourCropView = (props: YourCropGeneratedProps) => {
   const {
+    isLoading,
     option,
     setOption,
     crops,
@@ -40,19 +40,27 @@ const YourCropView = (props: YourCropGeneratedProps) => {
 
   return (
     <Container>
-      <Wrapper nogutter style={{ justifyContent: undefined }}>
-        <ListColumnContainer
-          md={crop ? 5 : 8}
-          style={{ padding: undefined, width: undefined, maxWidth: undefined }}
-        >
-          <Visible xs sm>
-            <div style={{ paddingBottom: "48px" }}>
-              <Typography variant="title3" weight="700">
-                Your Crops
-              </Typography>
-            </div>
-          </Visible>
-          {crops && (
+      {isLoading ? (
+        <div style={{ display: "grid", justifyItems: "center" }}>
+          {/* Loading... */}
+        </div>
+      ) : 0 < crops.length ? (
+        <Wrapper nogutter style={{ justifyContent: undefined }}>
+          <ListColumnContainer
+            md={crop ? 5 : 8}
+            style={{
+              padding: undefined,
+              width: undefined,
+              maxWidth: undefined,
+            }}
+          >
+            <Visible xs sm>
+              <div style={{ paddingBottom: "48px" }}>
+                <Typography variant="title3" weight="700">
+                  Your Crops
+                </Typography>
+              </div>
+            </Visible>
             <CropList
               crops={crops}
               crop={crop}
@@ -67,43 +75,47 @@ const YourCropView = (props: YourCropGeneratedProps) => {
               handleOnClickChoice={handleOnClickChoice}
               handleOnClickSuggestion={handleOnClickSuggestion}
             />
-          )}
-        </ListColumnContainer>
-        {crop && (
-          <DetailColumnContainer
-            md={7}
-            style={{
-              padding: undefined,
-              width: undefined,
-              maxWidth: undefined,
-            }}
-          >
-            <Hidden xs sm>
-              <CropDetail
-                crop={crop}
-                handlePlant={handlePlant}
-                handleFavorite={handleFavorite}
-                handleOnDelete={handleOnDelete}
-              />
-            </Hidden>
-            <Visible xs sm>
-              <MobileDrawer
-                direction="bottom"
-                isOpenDrawer={isOpenDrawer}
-                handleDrawerClose={handleDrawerClose}
-                drawerSize="98%"
-              >
+          </ListColumnContainer>
+          {crop && (
+            <DetailColumnContainer
+              md={7}
+              style={{
+                padding: undefined,
+                width: undefined,
+                maxWidth: undefined,
+              }}
+            >
+              <Hidden xs sm>
                 <CropDetail
                   crop={crop}
-                  handlePlant={handlePlant}
+                  onConfirm={handlePlant}
                   handleFavorite={handleFavorite}
                   handleOnDelete={handleOnDelete}
                 />
-              </MobileDrawer>
-            </Visible>
-          </DetailColumnContainer>
-        )}
-      </Wrapper>
+              </Hidden>
+              <Visible xs sm>
+                <MobileDrawer
+                  direction="bottom"
+                  isOpenDrawer={isOpenDrawer}
+                  handleDrawerClose={handleDrawerClose}
+                  drawerSize="98%"
+                >
+                  <CropDetail
+                    crop={crop}
+                    onConfirm={handlePlant}
+                    handleFavorite={handleFavorite}
+                    handleOnDelete={handleOnDelete}
+                  />
+                </MobileDrawer>
+              </Visible>
+            </DetailColumnContainer>
+          )}
+        </Wrapper>
+      ) : (
+        <div>
+          <Typography>No crops to display</Typography>
+        </div>
+      )}
       <AddSuggestionModal
         visibility={suggestionVisibility}
         setVisibility={setSuggestionVisibility}

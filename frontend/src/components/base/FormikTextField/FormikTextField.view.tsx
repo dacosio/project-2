@@ -5,10 +5,17 @@ import TextField from "../TextField";
 import { useField } from "formik";
 
 const FormikTextField = (props: FormikTextFieldProps): JSX.Element => {
+  const { labelWeight, labelVariant } = props;
   const [field, meta] = useField(props);
 
   return (
-    <TextField {...field} {...props} error={meta.touched ? meta.error : ""} />
+    <TextField
+      {...field}
+      {...props}
+      error={meta.touched ? meta.error : ""}
+      labelVariant={labelVariant}
+      labelWeight={labelWeight}
+    />
   );
 };
 
