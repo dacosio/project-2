@@ -4,9 +4,12 @@ import {
   Container,
   Header,
   HeaderContents,
+  Features,
+  DiscoverContent,
   About,
   Details,
   AboutDisplay,
+  AboutFrame,
   AboutTypography,
   AboutDetails,
   Contact,
@@ -84,14 +87,14 @@ const HomeView = (props: HomeGeneratedProps) => {
 
   return (
     <Container>
-      {/* <Header>
-        <Column sm={4}>One of three columns</Column>
-        <Sacolumn sm={4}>One of three columns</Sacolumn>
-        <Column sm={4}>One of three columns</Column>
-      </Header> */}
       <HomeNavigation />
 
-      <Header justify="center" align="center" style={{ margin: 0 }} id="header">
+      <Header
+        justify="center"
+        align="center"
+        style={{ marginLeft: 0, marginRight: 0 }}
+        id="header"
+      >
         <HeaderContents xxl={4} xl={4} lg={6} md={6}>
           <Typography variant="title1" weight="700" textColor="accent">
             Sow and grow your farming <span className="line-break">goals</span>
@@ -123,28 +126,92 @@ const HomeView = (props: HomeGeneratedProps) => {
         </HeaderContents>
       </Header>
 
-      <About justify="center" align="center" id="about">
-        <AboutDisplay xxl={5} xl={5} lg={5}>
-          <Hide md sm xs>
-            <AboutTypography>
+      <About
+        justify="center"
+        style={{ marginLeft: 0, marginRight: 0 }}
+        id="about"
+      >
+        <DiscoverContent>
+          <div style={{ marginBottom: "1rem" }}>
+            <Hide md sm xs>
               <Typography
                 variant="title1"
                 weight="700"
                 textColor="accent"
-                style={{
-                  position: "relative",
-                  zIndex: "1",
-                }}
+                align="left"
               >
-                Farming<br></br>simplified
+                Discover your best farming buddy
               </Typography>
-            </AboutTypography>
-            <img src={aboutimg} alt="" />
+            </Hide>
+            <Visible md sm xs>
+              <Typography
+                variant="title2"
+                weight="700"
+                textColor="accent"
+                align="center"
+              >
+                Discover your best farming buddy
+              </Typography>
+            </Visible>
+          </div>
+          <Hide xs>
+            <Typography variant="subtitle" weight="400" textColor="n80">
+              Different crops have different needs, and these can make or break
+              how you kickstart your farming journey. But don't worry! With
+              Sprout’s data-backed features, you can discover, plant, and
+              nurture the perfect crop for your unique growing conditions.
+            </Typography>
+            <Typography variant="subtitle" weight="400" textColor="n80">
+              Already have a crop to grow mind? We got you! Sprout provides the
+              info you’ll need to create the best environment to plant and
+              cultivate it.
+            </Typography>
+          </Hide>
+          <Visible xs>
+            <Typography variant="body" weight="400" textColor="n80">
+              Different crops have different needs, and these can make or break
+              how you kickstart your farming journey. But don't worry! With
+              Sprout’s data-backed features, you can discover, plant, and
+              nurture the perfect crop for your unique growing conditions.
+            </Typography>
+            <Typography variant="body" weight="400" textColor="n80">
+              Already have a crop to grow mind? We got you! Sprout provides the
+              info you’ll need to create the best environment to plant and
+              cultivate it.
+            </Typography>
+          </Visible>
+        </DiscoverContent>
+      </About>
+
+      <Features
+        justify="center"
+        align="center"
+        id="features"
+        style={{ marginLeft: 0, marginRight: 0 }}
+      >
+        <AboutDisplay xxl={5} xl={5} lg={5}>
+          <Hide md sm xs>
+            <AboutFrame>
+              <AboutTypography>
+                <Typography
+                  variant="title1"
+                  weight="700"
+                  textColor="accent"
+                  style={{
+                    position: "relative",
+                    zIndex: "1",
+                  }}
+                >
+                  Farming<br></br>simplified
+                </Typography>
+              </AboutTypography>
+              <img src={aboutimg} alt="" />
+            </AboutFrame>
           </Hide>
 
           <Visible md sm xs>
             <Typography
-              variant="title1"
+              variant="title2"
               weight="700"
               textColor="accent"
               align="center"
@@ -161,13 +228,37 @@ const HomeView = (props: HomeGeneratedProps) => {
             </Hide>
 
             <div>
-              <Typography variant="title2" weight="700" textColor="n90">
-                Get our tailor-made recs
-              </Typography>
-              <Typography variant="subtitle" weight="400" textColor="n80">
-                Know which crops are best for your planting and weather
-                conditions and also get a yield estimate
-              </Typography>
+              <Hide md sm xs>
+                <Typography variant="title2" weight="700" textColor="n90">
+                  Get our tailor-made recs
+                </Typography>
+              </Hide>
+
+              <Visible md sm>
+                <Typography variant="title3" weight="700" textColor="n90">
+                  Get our tailor-made recs
+                </Typography>
+              </Visible>
+
+              <Visible xs>
+                <Typography variant="title4" weight="700" textColor="n90">
+                  Get our tailor-made recs
+                </Typography>
+              </Visible>
+
+              <Hide xs>
+                <Typography variant="subtitle" weight="400" textColor="n80">
+                  Know which crops are best for your planting and weather
+                  conditions and also get a yield estimate
+                </Typography>
+              </Hide>
+
+              <Visible xs>
+                <Typography variant="body" weight="400" textColor="n80">
+                  Know which crops are best for your planting and weather
+                  conditions and also get a yield estimate
+                </Typography>
+              </Visible>
             </div>
           </Details>
 
@@ -176,13 +267,37 @@ const HomeView = (props: HomeGeneratedProps) => {
               <img src={icon2} alt="" />
             </Hide>
             <div>
-              <Typography variant="title2" weight="700" textColor="n90">
-                Know your crops
-              </Typography>
-              <Typography variant="subtitle" weight="400" textColor="n80">
-                With our crop database, you’ll get the necessary info about your
-                crops and resources needed to grow ‘em
-              </Typography>
+              <Hide md sm xs>
+                <Typography variant="title2" weight="700" textColor="n90">
+                  Know your crops
+                </Typography>
+              </Hide>
+
+              <Visible md sm>
+                <Typography variant="title3" weight="700" textColor="n90">
+                  Know your crops
+                </Typography>
+              </Visible>
+
+              <Visible xs>
+                <Typography variant="title4" weight="700" textColor="n90">
+                  Know your crops
+                </Typography>
+              </Visible>
+
+              <Hide xs>
+                <Typography variant="subtitle" weight="400" textColor="n80">
+                  With our crop database, you’ll get the necessary info about
+                  your crops and resources needed to grow ‘em
+                </Typography>
+              </Hide>
+
+              <Visible xs>
+                <Typography variant="body" weight="400" textColor="n80">
+                  With our crop database, you’ll get the necessary info about
+                  your crops and resources needed to grow ‘em
+                </Typography>
+              </Visible>
             </div>
           </Details>
 
@@ -191,95 +306,43 @@ const HomeView = (props: HomeGeneratedProps) => {
               <img src={icon3} alt="" />
             </Hide>
             <div>
-              <Typography variant="title2" weight="700" textColor="n90">
-                Be ready, rain or shine
-              </Typography>
-              <Typography variant="subtitle" weight="400" textColor="n80">
-                Always stay ahead of any weather situation with our long-range
-                weather forecast
-              </Typography>
+              <Hide md sm xs>
+                <Typography variant="title2" weight="700" textColor="n90">
+                  Be ready, rain or shine
+                </Typography>
+              </Hide>
+
+              <Visible md sm>
+                <Typography variant="title3" weight="700" textColor="n90">
+                  Be ready, rain or shine
+                </Typography>
+              </Visible>
+
+              <Visible xs>
+                <Typography variant="title4" weight="700" textColor="n90">
+                  Be ready, rain or shine
+                </Typography>
+              </Visible>
+
+              <Hide xs>
+                <Typography variant="subtitle" weight="400" textColor="n80">
+                  Always stay ahead of any weather situation with our long-range
+                  weather forecast
+                </Typography>
+              </Hide>
+
+              <Visible xs>
+                <Typography variant="body" weight="400" textColor="n80">
+                  Know which crops are best for your planting and weather
+                  conditions and also get a yield estimate
+                </Typography>
+              </Visible>
             </div>
           </Details>
         </AboutDetails>
-      </About>
+      </Features>
+
       <ContactSection />
-
-      {/* <Contact align="center">
-        <Hide md sm xs>
-          <ContactImage
-            xxl={6}
-            xl={6}
-            lg={6}
-            style={{
-              paddingLeft: "0",
-            }}
-          >
-            <img src={contact} alt="" />
-          </ContactImage>
-        </Hide>
-
-        <ContactForm xxl={5} xl={5} lg={5}>
-          <Hide md sm xs>
-            <Typography variant="title2" weight="700" textColor="n0">
-              We’d love to hear from you!
-            </Typography>
-          </Hide>
-
-          <Visible md sm xs>
-            <Typography
-              variant="title2"
-              weight="700"
-              textColor="n0"
-              align="center"
-            >
-              We’d love to hear from you!
-            </Typography>
-          </Visible>
-
-          <Form ref={form} onSubmit={sendEmail}>
-            <UserInfo>
-              <TextField
-                label="Name"
-                value={name}
-                setValue={setName}
-                placeholder="Juan Dela Cruz"
-                style={{ flexGrow: "1", flexBasis: "0" }}
-              />
-              <TextField
-                label="Email"
-                value={email}
-                setValue={setEmail}
-                placeholder="user@nomail.com"
-                style={{ flexGrow: "1", flexBasis: "0" }}
-              />
-            </UserInfo>
-
-            <Message>
-              <label htmlFor="Comments">
-                <Typography variant="title4" weight="700" textColor="n0">
-                  Comments
-                </Typography>
-              </label>
-              <textarea
-                name="Comments"
-                id="Comments"
-                placeholder="comments"
-                style={{
-                  resize: "none",
-                }}
-              ></textarea>
-            </Message>
-
-            <Button
-              text="Farm with us"
-              variant="tonal"
-              size="md"
-              takeFullWidth={true}
-            ></Button>
-          </Form>
-        </ContactForm>
-      </Contact> */}
-      {/* <Footer today=""></Footer> */}
     </Container>
   );
 };

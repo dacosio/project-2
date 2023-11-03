@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { theme } from "../../../utils/Theme";
 
 export const Container = styled.div`
+cursor: pointer;
 position: relative;
 z-index: 1000;
   width: 1.5rem;
@@ -42,5 +43,6 @@ export const StyledBurger = styled.div<{ open: boolean }>`
     }
   }
 `;
+
 
 

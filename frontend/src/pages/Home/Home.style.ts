@@ -8,14 +8,26 @@ export const Container = styled.div`
   box-sizing: border-box;
 
   .text {
+    margin-top: 1rem;
     display: flex;
     gap: 16px;
     align-items: center;
+    justify-content: center;
+    flex-flow: column;
+
+    @media (min-width: 768px) {
+      justify-content: flex-start;
+      flex-flow: row;
+    }
 
     > div {
-      width: 45%;
+      width: 100%;
       outline: 2px solid ${theme.text.accent};
       border-radius: 4px;
+      overflow: hidden;
+      @media (min-width: 768px) {
+        width: 40%;
+      }
     }
   }
 `;
@@ -23,6 +35,9 @@ export const Container = styled.div`
 export const Header = styled(Row)`
   height: 100vh;
   padding: 1rem;
+  @media (max-width: 768px) {
+    margin-top: 3rem;
+  }
 `;
 
 export const HeaderContents = styled(Col)`
@@ -38,36 +53,70 @@ export const HeaderContents = styled(Col)`
 
 export const Hide = styled(Hidden)``;
 
+export const Features = styled(Row)`
+  background-color: #fff;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  @media (max-width: 992px) {
+    padding-top: 0rem;
+    gap: 1rem;
+  }
+`;
+
 export const About = styled(Row)`
   padding: 1rem;
   background-color: #fff;
   @media (max-width: 992px) {
     padding-top: 4rem;
     padding-bottom: 4rem;
-    gap: 3rem;
   }
+`;
+
+export const DiscoverContent = styled.div`
+max-width: 760px;
+padding: 4rem 0;
+
+@media (min-width: 992px) {
+}
 `;
 
 export const AboutDisplay = styled(Col)`
   display: flex;
   flex-flow: column;
+  align-items: center;
   img {
-    max-width: 100%;
+    max-width: 400px;
     position: relative;
-    top: -150px;
+    @media (min-width: 1100px) {
+      max-width: 500px;
+    }
+  }
+  @media (min-width: 992px) {
+    align-items: flex-end;
   }
 `;
 
+export const AboutFrame = styled.div`
+  position: static;
+`;
+
 export const AboutTypography = styled.div`
-  position: relative;
-  top: 250px;
-  left: 125px;
+  position: absolute;
+  top: 7rem;
+  right: 10rem;
+  @media (min-width: 1100px) {
+    top: 10rem;
+    right: 12rem;
+  }
 `;
 
 export const AboutDetails = styled(Col)`
   display: flex;
   flex-flow: column;
-  gap: 3rem;
+  gap: 1rem;
+  @media (min-width: 576px) {
+    gap: 3rem;
+  }
 `;
 
 export const Details = styled.div`
@@ -93,49 +142,48 @@ export const Contact = styled(Row)`
 `;
 
 export const ContactImage = styled(Col)`
-img {
+  img {
     max-width: 100%;
     height: auto;
   }
 `;
 
 export const Form = styled.form`
-display: flex;
-flex-flow: column;
-gap: 1.5rem;
-p {
-  color: white;
-}
-textarea{
-  height: 200px;
-  width: 100%;
-  border-radius: 8px;
-  padding: 1rem .25rem;
-  box-sizing: border-box;
-  border: 1px solid black;
-}
-textarea::placeholder{
-  font-family: "Lexend", sans-serif;
-  font-size: 14px;
-  font-weight: light;
-}
+  display: flex;
+  flex-flow: column;
+  gap: 1.5rem;
+  p {
+    color: white;
+  }
+  textarea {
+    height: 200px;
+    width: 100%;
+    border-radius: 8px;
+    padding: 1rem 0.25rem;
+    box-sizing: border-box;
+    border: 1px solid black;
+  }
+  textarea::placeholder {
+    font-family: "Lexend", sans-serif;
+    font-size: 14px;
+    font-weight: light;
+  }
 `;
 
 export const UserInfo = styled.div`
-display: flex;
-gap: .5rem;
-@media (max-width: 768px) {
-  flex-flow: column;
-  gap: 1.5rem;
-}
+  display: flex;
+  gap: 0.5rem;
+  @media (max-width: 768px) {
+    flex-flow: column;
+    gap: 1.5rem;
+  }
 `;
 
-export const Message = styled.div`
-`;
+export const Message = styled.div``;
 
 export const ContactForm = styled(Col)`
-display: grid;
-gap: 2rem;
+  display: grid;
+  gap: 2rem;
 `;
 
 // export const About = styled.div`
