@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { HomeGeneratedProps } from "./Home.props";
 import {
   Container,
@@ -26,6 +26,8 @@ import axios from "axios";
 import { Col, Row, Visible, Hidden } from "react-grid-system";
 import HomeNavigation from "./../../components/layout/HomeNavigation";
 import ContactSection from "./../../components/layout/ContactSection";
+import { useLocation } from "react-router-dom";
+import { theme } from "utils/Theme";
 
 //Images
 import headerImg from "images/headerImg.png";
@@ -39,6 +41,8 @@ import { SproutLogo } from "components/base/SVG";
 import WeatherCard from "./../../components/base/WeatherCard";
 import Search from "./../../components/base/Search";
 import LocationSearch from "components/module/LocationSearch";
+import { useAppDispatch } from "app/hooks";
+import { forwardEmail, toggleSignUp } from "features/authModal/authModalSlice";
 
 // import emailjs from '@emailjs/browser';
 
@@ -59,6 +63,24 @@ import LocationSearch from "components/module/LocationSearch";
 const HomeView = (props: HomeGeneratedProps) => {
   const [email, setEmail] = useState<string>("");
   const [name, setName] = useState<string>("");
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const targetId = location.hash.substring(1);
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: "smooth" });
+        //window.scrollTo(0, targetElement.offsetTop);
+      }
+    }
+  }, [location]);
+  const dispatch = useAppDispatch();
+
+  // useEffect(() => {
+  //   dispatch(forwardEmail(email));
+  // }, [email, dispatch]);
 
   return (
     <Container>
@@ -69,30 +91,29 @@ const HomeView = (props: HomeGeneratedProps) => {
       </Header> */}
       <HomeNavigation />
 
-      <Header justify="center" align="center" style={{ margin: 0 }}>
+      <Header justify="center" align="center" style={{ margin: 0 }} id="header">
         <HeaderContents xxl={4} xl={4} lg={6} md={6}>
           <Typography variant="title1" weight="700" textColor="accent">
-            Sow and grow your farming goals
+            Sow and grow your farming <span className="line-break">goals</span>
           </Typography>
 
-          <div
-            className="text"
-            style={{
-              display: "flex",
-              gap: ".5rem",
-              alignItems: "center",
-            }}>
+          <div className="text">
             <TextField
               value={email}
               setValue={setEmail}
               placeholder="Type in your email"
-              style={{ flexGrow: "1" }}
             />
             <Button
               text="Farm with us"
               variant="primary"
               size="md"
-              takeFullWidth={false}></Button>
+              takeFullWidth={false}
+              style={{ boxShadow: `5px 5px ${theme.btn.color.token}` }}
+              onClick={() => {
+                dispatch(toggleSignUp(true));
+                dispatch(forwardEmail(email));
+              }}
+            ></Button>
           </div>
         </HeaderContents>
         <HeaderContents xxl={4} xl={4} lg={6} md={6}>
@@ -102,7 +123,7 @@ const HomeView = (props: HomeGeneratedProps) => {
         </HeaderContents>
       </Header>
 
-      <About justify="center" align="center">
+      <About justify="center" align="center" id="about">
         <AboutDisplay xxl={5} xl={5} lg={5}>
           <Hide md sm xs>
             <AboutTypography>
@@ -113,7 +134,8 @@ const HomeView = (props: HomeGeneratedProps) => {
                 style={{
                   position: "relative",
                   zIndex: "1",
-                }}>
+                }}
+              >
                 Farming<br></br>simplified
               </Typography>
             </AboutTypography>
@@ -125,7 +147,8 @@ const HomeView = (props: HomeGeneratedProps) => {
               variant="title1"
               weight="700"
               textColor="accent"
-              align="center">
+              align="center"
+            >
               Farming simplified
             </Typography>
           </Visible>

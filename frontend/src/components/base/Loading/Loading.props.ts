@@ -1,1 +1,6 @@
-export interface LoadingProps {}
+import { CSSProperties } from "react";
+
+export interface LoadingProps {
+  height?: string;
+  width?: string;
+}

@@ -1,4 +1,4 @@
-export interface AddSuggestion {
+export interface AddCropProps {
   date: string;
   month: string;
   nitrogen: string;

@@ -78,11 +78,15 @@ const Signin = (props: SigninProps): JSX.Element => {
             <FormStyle>
               <FormikTextField
                 label="Email"
+                labelVariant="small"
+                labelWeight="400"
                 name="email"
                 placeholder="user@nomail.com"
               />
               <FormikTextField
                 label="Password"
+                labelVariant="small"
+                labelWeight="400"
                 name="password"
                 placeholder="******"
                 secured

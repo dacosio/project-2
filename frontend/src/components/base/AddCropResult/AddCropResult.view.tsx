@@ -3,25 +3,33 @@ import { AddCropResultProps } from "./AddCropResult.props";
 import { Body, Container, Footer, Image } from "./AddCropResult.style";
 import CropInformation from "../../module/CropInformation";
 import { Crop } from "../../../types/store/CropState";
-import { useAppSelector } from "../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import {
   selectCropId,
   selectCropName,
-} from "../../../features/addSuggestion/addCropSlice";
+} from "../../../features/addCrop/addCropSlice";
 import Button from "../Button";
 import Typography from "../Typography";
-import { useAddCropMutation } from "../../../features/crops/cropApiSlice";
+import { usePlantMutation } from "../../../features/crops/cropApiSlice";
 import { useGetCropAboutQuery } from "../../../features/cropEncyclopedia/cropEncyclopediaApiSlice";
+import {
+  storeSelectedCropId,
+  storeSelectedOption,
+} from "../../../features/crops/cropSlice";
+import PlantCropModal from "../../../components/module/PlantCropModal";
 
 const AddCropResult = (props: AddCropResultProps): JSX.Element => {
   const { onLater, onNow } = props;
 
+  const dispatch = useAppDispatch();
+
   const cropId = useAppSelector(selectCropId);
   const cropName = useAppSelector(selectCropName);
 
+  const [visibility, setVisibility] = useState<boolean>(false);
   const [crop, setCrop] = useState<Crop | undefined>(undefined);
 
-  const [addCrop] = useAddCropMutation();
+  const [plant] = usePlantMutation();
   const { data: cropData } = useGetCropAboutQuery(useAppSelector(selectCropId));
 
   useEffect(() => {
@@ -39,64 +47,86 @@ const AddCropResult = (props: AddCropResultProps): JSX.Element => {
     }
   }, [cropData]);
 
-  const handleLater = async () => {
+  const handleLater = () => {
     if (crop) {
-      const response = await addCrop({
+      plant({
         cropId: crop._id,
         plantNow: false,
-      }).unwrap();
-      onLater();
+      })
+        .unwrap()
+        .then((response: Crop) => {
+          dispatch(
+            storeSelectedOption({
+              value: "to-plant",
+              label: "To Plant",
+            })
+          );
+          dispatch(storeSelectedCropId(response._id));
+          onLater(false);
+        })
+        .catch((error) => {
+          onLater(true);
+        });
     }
   };
 
   const handleNow = async () => {
     if (crop) {
-      const response = await addCrop({
-        cropId: crop._id,
-        plantNow: true,
-      }).unwrap();
-      onNow();
+      setVisibility(true);
     }
   };
 
+  const handleConfirm = (isError: boolean) => {
+    onNow(isError);
+  };
+
   return (
-    <Container>
-      <Body>
-        {crop && (
-          <>
-            <div>
+    <>
+      <Container>
+        <Body>
+          {crop && (
+            <>
               <div>
-                <Typography variant="small">
-                  Our suggested crop is...
-                </Typography>
-                <Typography variant="title3" weight="700">
-                  {crop.cropName}
-                </Typography>
+                <div>
+                  <Typography variant="small">
+                    Our suggested crop is...
+                  </Typography>
+                  <Typography variant="title3" weight="700">
+                    {crop.cropName}
+                  </Typography>
+                </div>
+                <Image src={crop.imageURL} alt="crop" />
+                <Typography>{crop.description}</Typography>
               </div>
-              <Image src={crop.imageURL} alt="crop" />
-              <Typography>{crop.description}</Typography>
-            </div>
-            <div>
-              <CropInformation
-                temperature={`${crop.idealTemperature.celcius.min} - ${crop.idealTemperature.celcius.max}`}
-                humidity={`${crop.humidity.min} - ${crop.humidity.max}`}
-                growthDuration={`${crop.growthDuration.min} - ${crop.growthDuration.max}`}
-                ph={`${crop.soilPh.min} - ${crop.soilPh.max}`}
-                nitrogen={crop.soilN.toString()}
-                phosphorus={crop.soilP.toString()}
-                potassium={crop.soilK.toString()}
-                suggestions={crop.tools}
-                tips={crop.growingTips}
-              />
-            </div>
-          </>
-        )}
-      </Body>
-      <Footer>
-        <Button text="Plant Later" variant="outline" onClick={handleLater} />
-        <Button text="Plant Now" onClick={handleNow} />
-      </Footer>
-    </Container>
+              <div>
+                <CropInformation
+                  temperature={`${crop.idealTemperature.celcius.min} - ${crop.idealTemperature.celcius.max}`}
+                  humidity={`${crop.humidity.min} - ${crop.humidity.max}`}
+                  growthDuration={`${crop.growthDuration.min} - ${crop.growthDuration.max}`}
+                  ph={`${crop.soilPh.min} - ${crop.soilPh.max}`}
+                  nitrogen={crop.soilN.toString()}
+                  phosphorus={crop.soilP.toString()}
+                  potassium={crop.soilK.toString()}
+                  suggestions={crop.tools}
+                  tips={crop.growingTips}
+                />
+              </div>
+            </>
+          )}
+        </Body>
+        <Footer>
+          <Button text="Plant Later" variant="outline" onClick={handleLater} />
+          <Button text="Plant Now" onClick={handleNow} />
+        </Footer>
+      </Container>
+      <PlantCropModal
+        visibility={visibility}
+        setVisibility={setVisibility}
+        cropId={cropId}
+        cropName={cropName}
+        onConfirm={handleConfirm}
+      />
+    </>
   );
 };
 

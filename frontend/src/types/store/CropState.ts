@@ -31,3 +31,13 @@ export interface IdealTemperature {
   fahrenheit: GrowthDuration;
   celcius: GrowthDuration;
 }
+
+export interface Option {
+  value: string;
+  label: string;
+}
+
+export interface SelectedCropProps {
+  selectedOption: Option;
+  selectedCropId: string;
+}

@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { theme } from "../../../utils/Theme";
 import Button from "../../base/Button";
-import { SproutLogo } from "../../base/SVG";
+
 
 export const Container = styled.div`
   position: fixed;
@@ -35,7 +35,7 @@ export const NavOptions = styled.div`
   }
   @media (min-width: 768px) {
     display: flex;
-    gap: 1rem;
+    gap: 2rem;
     align-items: center;
     ul {
       list-style: none;
@@ -52,7 +52,7 @@ export const NavOptions = styled.div`
 export const LoginOptions = styled.div`
   @media (min-width: 768px) {
     display: flex;
-    gap: 1rem;
+    gap: 2rem;
   }
 `;
 
@@ -64,4 +64,6 @@ export const Hidebutton = styled.div`
   }
 `;
 
-export const Logo = styled(SproutLogo)``;
+export const Logo = styled.a`
+  display: flex;
+`;

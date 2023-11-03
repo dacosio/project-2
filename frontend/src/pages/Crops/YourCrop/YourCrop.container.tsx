@@ -1,22 +1,28 @@
 import { useEffect, useState } from "react";
-
+import toast from "react-hot-toast";
 import YourCropView from "./YourCrop.view";
-import { YourCropGeneratedProps } from "./YourCrop.props";
+import { YourCropGeneratedProps, Option } from "./YourCrop.props";
 import {
   useFavoriteMutation,
   useGetPlantedCropsQuery,
-  usePlantNowMutation,
   useRemoveCropMutation,
 } from "../../../features/crops/cropApiSlice";
 import { Crop } from "../../../types/store/CropState";
-import { Option } from "components/base/Tab/Tab.props";
-import toast from "react-hot-toast";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import {
+  selectSelectedCropId,
+  selectSelectedOption,
+  storeSelectedCropId,
+  storeSelectedOption,
+} from "../../../features/crops/cropSlice";
 
 const YourCrop = (): JSX.Element => {
-  const [option, setOption] = useState<Option | undefined>({
-    value: "all",
-    label: "All",
-  });
+  const dispatch = useAppDispatch();
+
+  const selectedOption = useAppSelector(selectSelectedOption);
+  const selectedCropId = useAppSelector(selectSelectedCropId);
+
+  const [option, setOption] = useState<Option | undefined>(selectedOption);
   const [crops, setCrops] = useState<Crop[]>([]);
   const [crop, setCrop] = useState<Crop | undefined>(undefined);
   const [choiceVisibility, setChoiceVisibility] = useState<boolean>(false);
@@ -24,16 +30,14 @@ const YourCrop = (): JSX.Element => {
     useState<boolean>(false);
   const [isOpenDrawer, setIsOpenDrawer] = useState<boolean>(false);
 
-  const [plantNow] = usePlantNowMutation();
   const [favorite] = useFavoriteMutation();
   const [removeCrop] = useRemoveCropMutation();
-  const { data: cropsData } = useGetPlantedCropsQuery({
-    isPlanted:
-      option?.value === "planted"
-        ? true
-        : option?.value === "to-plant"
-        ? false
-        : undefined,
+  const {
+    data: cropsData,
+    isLoading,
+    isSuccess,
+  } = useGetPlantedCropsQuery({
+    isPlanted: undefined,
   });
 
   const handleDrawerOpen = () => {
@@ -45,7 +49,7 @@ const YourCrop = (): JSX.Element => {
   };
 
   const handleOnClickCrop = (id: string) => {
-    setCrop(crops.find((crop) => id === crop._id));
+    dispatch(storeSelectedCropId(id));
     handleDrawerOpen();
   };
 
@@ -57,27 +61,43 @@ const YourCrop = (): JSX.Element => {
     setSuggestionVisibility(true);
   };
 
-  const handleLater = () => {
+  const handleLater = (isError: boolean) => {
     setChoiceVisibility(false);
     setSuggestionVisibility(false);
+
+    if (isError) {
+      toast.error("An error occured. Please, try again later");
+    } else {
+      toast.success("Crop successfully added");
+    }
   };
 
-  const handleNow = () => {
+  const handleNow = (isError: boolean) => {
     setChoiceVisibility(false);
     setSuggestionVisibility(false);
+
+    if (isError) {
+      toast.error("An error occured. Please, try again later");
+    } else {
+      toast.success("Crop successfully planted");
+    }
   };
 
-  const handlePlant = async (id: string) => {
-    await plantNow({ id })
-      .then(() => toast.success("Crop successfully planted"))
-      .catch(() => {
-        toast.error("An error occured. Please, try again later");
-      });
+  const handlePlant = (isError: boolean) => {
+    if (isError) {
+      toast.error("An error occured. Please, try again later");
+    } else {
+      toast.success("Crop successfully planted");
+    }
   };
-  //
+
   const handleFavorite = async (id: string, isFavorite: boolean) => {
     await favorite({ id, isFavorite })
-      .then(() => (isFavorite ? toast.success("") : toast.success("")))
+      .then(() => {
+        isFavorite
+          ? toast.success("Crop successfully added to favorite list")
+          : toast.success("Crop successfully removed from favorite list");
+      })
       .catch(() => {
         toast.error("An error occured. Please, try again later");
       });
@@ -85,25 +105,61 @@ const YourCrop = (): JSX.Element => {
 
   const handleOnDelete = async (id: string) => {
     await removeCrop({ id })
-      .then(() => toast.success("Crop successfully removed"))
+      .then(() => {
+        toast.success("Crop successfully removed");
+      })
       .catch(() => {
         toast.error("An error occured. Please, try again later");
       });
   };
 
   useEffect(() => {
-    if (cropsData) {
-      const items = cropsData as Crop[];
+    if (isSuccess) {
+      if (cropsData) {
+        const items = cropsData as Crop[];
 
-      setCrops(items);
-      if (items && 0 < items.length) {
-        setCrop(items[0]);
+        setCrops(items);
+      } else {
+        setCrops([]);
+        setCrop(undefined);
+      }
+    } else {
+      setCrops([]);
+      setCrop(undefined);
+    }
+  }, [isSuccess, cropsData]);
+
+  useEffect(() => {
+    dispatch(storeSelectedOption(option));
+  }, [option]);
+
+  useEffect(() => {
+    const filteredCrops = crops.filter((cropItem) =>
+      option?.value === "planted"
+        ? cropItem.isPlanted
+        : option?.value === "to-plant"
+        ? !cropItem.isPlanted
+        : true
+    );
+
+    const filteredCrop = filteredCrops.find(
+      (cropItem) => selectedCropId === cropItem._id
+    );
+
+    if (filteredCrop) {
+      setCrop(filteredCrop);
+    } else {
+      if (0 < filteredCrops.length) {
+        setCrop(filteredCrops[0]);
+      } else {
+        setCrop(undefined);
       }
     }
-  }, [cropsData]);
+  }, [crops, selectedOption, selectedCropId]);
 
   const generatedProps: YourCropGeneratedProps = {
-    option,
+    isLoading,
+    option: selectedOption,
     setOption,
     crops,
     crop,

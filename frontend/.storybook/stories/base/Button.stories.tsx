@@ -12,6 +12,29 @@ const meta: Meta<typeof Button> = {
         <div style={{ display: "flex", flexWrap: "wrap" }}>
           <div style={{ marginRight: "20px", marginBottom: "30px" }}>
             <Button
+              style={{ marginBottom: "5px" }}
+              loading
+              disabled
+              variant="disabled"
+              onClick={() => console.log("disabled")}
+            />
+            <Button
+              text="Primary Button with Icon"
+              style={{ marginBottom: "5px" }}
+              loading
+              variant="disabled"
+            />
+            <Button
+              text="Primary Button with Icon"
+              icon={<Eye fill="white" height={15} width={20} />}
+              iconPosition="before"
+              style={{ marginBottom: "5px" }}
+              loading
+              variant="disabled"
+            />
+          </div>
+          <div style={{ marginRight: "20px", marginBottom: "30px" }}>
+            <Button
               text="Button"
               variant="primary"
               style={{ marginBottom: "5px" }}

@@ -1,27 +1,27 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { HamburgerProps } from "./Hamburger.props";
 import { Container, StyledBurger } from "./Hamburger.style";
 import HomeNavigationMobile from "components/layout/HomeNavigationMobile";
+import { useOnClickOutside } from "utils/hooks/useOnClickOutside";
 
 const Hamburger = (props: HamburgerProps): JSX.Element => {
   const { open, toggleOpen } = props;
+  const ref = useRef(null);
 
   const handleBurgerClick = () => {
-    // Call the toggleOpen function to update the state
     toggleOpen();
-    console.log("Burger status:", open ? "open" : "closed");
   };
 
+  // useOnClickOutside(ref, handleBurgerClick);
 
   return (
-    <Container>
+    <Container ref={ref}>
       <StyledBurger open={open} onClick={handleBurgerClick}>
         <div></div>
         <div></div>
         <div></div>
       </StyledBurger>
     </Container>
-
   );
 };
 

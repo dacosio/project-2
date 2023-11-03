@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { RootState } from "app/store";
-import { Location } from "types/store/Location";
+import { RootState } from "../../app/store";
+import { LocationProps } from "../../types/store/LocationState";
 
-const initialState: Location = {
+const initialState: LocationProps = {
   address: "",
   city: "",
 };
