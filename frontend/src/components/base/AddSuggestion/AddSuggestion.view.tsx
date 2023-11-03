@@ -21,7 +21,7 @@ const AddSuggestion = (props: AddSuggestionProps): JSX.Element => {
   const { step, back, next, isFirstStep } = useMultistepForm([
     <AddSuggestionFirst onNext={handleNext} />,
     <AddSuggestionSecond onNext={handleNext} />,
-    <AddCropResult onLater={onLater} onNow={onNow} />,
+    <AddCropResult onLater={onLater} onNow={onNow} suggested />,
   ]);
 
   return (

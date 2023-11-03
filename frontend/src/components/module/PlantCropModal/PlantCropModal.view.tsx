@@ -27,11 +27,12 @@ import Loading from "../../../components/base/Loading";
 
 const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
   const {
-    isNew = true,
+    adding,
     visibility,
     setVisibility,
     cropId,
     cropName,
+    onLoading = () => null,
     onConfirm,
   } = props;
 
@@ -50,17 +51,18 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
   };
 
   const handleConfirm = async () => {
-    setIsLoading(true);
     setVisibility(false);
+    onLoading(true);
+    setIsLoading(true);
     if (city) {
-      predict({
+      await predict({
         city: city,
         cropName: cropName,
       })
         .unwrap()
-        .then((predictResponse) => {
-          if (isNew) {
-            plant({
+        .then(async (predictResponse) => {
+          if (adding) {
+            await plant({
               cropId: cropId,
               plantNow: true,
               estimatedYield: predictResponse.yield,
@@ -77,11 +79,10 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
                 onConfirm(false);
               })
               .catch((error) => {
-                setVisibility(false);
                 onConfirm(true);
               });
           } else {
-            plantNow({
+            await plantNow({
               id: cropId,
               estimatedYield: predictResponse.yield,
             })
@@ -97,17 +98,16 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
                 onConfirm(false);
               })
               .catch((error) => {
-                setVisibility(false);
                 onConfirm(true);
               });
           }
-          setIsLoading(false);
         })
         .catch((error) => {
-          setIsLoading(false);
           onConfirm(true);
         });
     }
+    setIsLoading(false);
+    onLoading(false);
   };
 
   return (
@@ -120,15 +120,19 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
               <Typography variant="title3" weight="700">
                 Where is your planting area located?
               </Typography>
+              <Typography>
+                We'll need this information so we can give you an estimated
+                yield of your crop.
+              </Typography>
             </Header>
             <Body>
               <LocationSearch />
             </Body>
             <Footer>
-              {city ? (
-                <Button text="Confirm" onClick={handleConfirm} />
-              ) : (
+              {isLoading || !city ? (
                 <Button text="Confirm" variant="disabled" />
+              ) : (
+                <Button text="Confirm" onClick={handleConfirm} />
               )}
             </Footer>
           </Wrapper>

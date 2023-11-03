@@ -241,7 +241,7 @@ const CropDetail = (props: CropDetailProps): JSX.Element => {
         </div>
       </Container>
       <PlantCropModal
-        isNew={false}
+        adding={false}
         visibility={visibility}
         setVisibility={setVisibility}
         cropId={crop._id}
