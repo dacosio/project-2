@@ -21,7 +21,7 @@ import * as Yup from "yup";
 import HomeFooter from "../HomeFooter";
 
 const ContactSection = (props: ContactSectionProps): JSX.Element => {
-  const { style } = props;
+  // const { style } = props;
   const form = useRef<HTMLFormElement>(null);
 
   const sendEmail = (e: React.FormEvent) => {
