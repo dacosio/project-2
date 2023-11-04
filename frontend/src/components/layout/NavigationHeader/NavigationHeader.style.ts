@@ -15,7 +15,7 @@ export const AvatarWrapper = styled.div`
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 8px;
 `;
 
 export const LogOutContainer = styled.div`

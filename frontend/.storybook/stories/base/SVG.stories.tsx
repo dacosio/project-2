@@ -2,6 +2,7 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import {
   /* PLOP_INJECT_IMPORT */
+  WeatherSvg,
   GitHub,
   LinkedIn,
   WindCompass,
@@ -78,6 +79,9 @@ const meta: Meta = {
   component: () => (
     <Container background="white" style={{ flexWrap: "wrap" }}>
       {/* PLOP_INJECT_INSTANCE*/}
+        <Wrapper label="WeatherSvg">
+          <WeatherSvg width={30} height={30} />
+        </Wrapper>
         <Wrapper label="GitHub">
           <GitHub width={30} height={30} />
         </Wrapper>
