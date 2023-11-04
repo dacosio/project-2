@@ -9,17 +9,17 @@ export interface DashboardGeneratedProps {
   lowTemperature: number;
   highTemperature: number;
   precipitation: number;
-  humidity : number;
-  wind : number;
+  humidity: number;
+  wind: number;
   gradientColor1: string;
   gradientColor2: string;
   currentCondition: string;
-  page : string;
+  page: string;
   onSelectedSearchLocationWeather: (address: string) => void;
-  MOCK_OPTIONS:string[];
+  MOCK_OPTIONS: string[];
   state: string;
   onSetState: (state: string) => void;
-  weatherData : { [key: string]: any };
+  weatherData: { [key: string]: any };
   onSelectedWeatherIndexWeather: (value: number) => void;
-  selectedIndex : number;
+  selectedIndex: number;
 }

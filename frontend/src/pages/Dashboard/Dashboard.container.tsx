@@ -10,11 +10,6 @@ import Button from "components/base/Button";
 const Dashboard = (): JSX.Element => {
   const { data, isLoading } = useGetPlantedCropsQuery({ isPlanted: true }); //or isFavorite??
 
-  const generatedProps = {
-    crops: data,
-    isLoading,
-    // generated props here
-  };
   const [weatherData, setWeatherData] = useState<{ [key: string]: any }>({});
   const MOCK_OPTIONS = ["Today", "15-day"];
   const [state, setState] = useState(MOCK_OPTIONS[0]);
@@ -157,40 +152,63 @@ const Dashboard = (): JSX.Element => {
     console.log("state " + state);
     setState(state);
   };
-  return (
-    <>
-      {selectedAddress &&
-      weatherData &&
-      weatherData.days &&
-      weatherData.days.length > 0 ? (
-        <DashboardView
-          crops={data}
-          isLoading={isLoading}
-          currentLocation={selectedAddress}
-          forecast={weatherData.currentConditions.conditions}
-          currentTemperature={weatherData.currentConditions.temp}
-          lowTemperature={weatherData.days[0]?.tempmin}
-          highTemperature={weatherData.days[0]?.tempmax}
-          precipitation={weatherData.currentConditions.precip}
-          humidity={weatherData.currentConditions.humidity}
-          wind={weatherData.currentConditions.windspeed}
-          gradientColor1={gradientColor1}
-          gradientColor2={gradientColor2}
-          currentCondition={currentCondition}
-          page="weather"
-          onSelectedSearchLocationWeather={handleSelectedSearchLocation}
-          MOCK_OPTIONS={MOCK_OPTIONS}
-          state={state}
-          onSetState={handleSetState}
-          weatherData={weatherData}
-          onSelectedWeatherIndexWeather={handleSelectedWeatherIndex}
-          selectedIndex={selectedIndex}
-        />
-      ) : (
-        <Button loading variant="disabled" />
-      )}
-    </>
-  );
+
+  const page = "weather";
+
+  const generatedProps = {
+    crops: data,
+    isLoading: isLoading,
+    currentLocation: selectedAddress,
+    forecast: weatherData.currentConditions.conditions,
+    currentTemperature: weatherData.currentConditions.temp,
+    lowTemperature: weatherData.days[0]?.tempmin,
+    highTemperature: weatherData.days[0]?.tempmax,
+    precipitation: weatherData.currentConditions.precip,
+    humidity: weatherData.currentConditions.humidity,
+    wind: weatherData.currentConditions.windspeed,
+    gradientColor1: gradientColor1,
+    gradientColor2: gradientColor2,
+    currentCondition: currentCondition,
+    page,
+    onSelectedSearchLocationWeather: handleSelectedSearchLocation,
+    MOCK_OPTIONS: MOCK_OPTIONS,
+    state: state,
+    onSetState: handleSetState,
+    weatherData: weatherData,
+    onSelectedWeatherIndexWeather: handleSelectedWeatherIndex,
+    selectedIndex: selectedIndex,
+  };
+  return <DashboardView {...generatedProps} />;
+  {
+    /* {selectedAddress &&
+        weatherData &&
+        weatherData.days &&
+        weatherData.days.length && (
+          <DashboardView
+            crops={data}
+            isLoading={isLoading}
+            currentLocation={selectedAddress}
+            forecast={weatherData.currentConditions.conditions}
+            currentTemperature={weatherData.currentConditions.temp}
+            lowTemperature={weatherData.days[0]?.tempmin}
+            highTemperature={weatherData.days[0]?.tempmax}
+            precipitation={weatherData.currentConditions.precip}
+            humidity={weatherData.currentConditions.humidity}
+            wind={weatherData.currentConditions.windspeed}
+            gradientColor1={gradientColor1}
+            gradientColor2={gradientColor2}
+            currentCondition={currentCondition}
+            page="weather"
+            onSelectedSearchLocationWeather={handleSelectedSearchLocation}
+            MOCK_OPTIONS={MOCK_OPTIONS}
+            state={state}
+            onSetState={handleSetState}
+            weatherData={weatherData}
+            onSelectedWeatherIndexWeather={handleSelectedWeatherIndex}
+            selectedIndex={selectedIndex}
+          />
+        )} */
+  }
 };
 
 export default Dashboard;
