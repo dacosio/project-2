@@ -3,16 +3,23 @@ import React from "react";
 import TeamView from "./Team.view";
 
 const Team = (): JSX.Element => {
-  const members: { name: string; role: string; source: string }[] = [
+  const members: {
+    name: string;
+    role: string;
+    source: string;
+    url?: string;
+  }[] = [
     {
       name: "Guia Chavez",
       role: "Project Manager, Developer",
       source: "https://placehold.co/50x100/FFFFFF/png",
+      url: "https://www.linkedin.com/",
     },
     {
-      name: "Don Apollo Cosio",
+      name: "Don Cosio",
       role: "Lead Developer",
       source: "https://placehold.co/50x100/FFFFFF/png",
+      url: "https://github.com/",
     },
     {
       name: "Monica Esquivel",
@@ -30,7 +37,7 @@ const Team = (): JSX.Element => {
       source: "https://placehold.co/50x100/FFFFFF/png",
     },
     {
-      name: "Philippe Gabriel Hernandez",
+      name: "Philippe Hernandez",
       role: "Developer",
       source: "https://placehold.co/50x100/FFFFFF/png",
     },

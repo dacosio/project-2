@@ -90,64 +90,59 @@ const WeatherView = (props: WeatherGeneratedProps) => {
         index={selectedIndex}
       ></HourlyDaily>
 
-      <Row>
-        <Col md={6} lg={3} style={{ gap: "14px" }}>
-          <Wind
-            windSpeed={
+      <BottomContainer>
+        <Wind
+          windSpeed={
+            state === MOCK_OPTIONS[0]
+              ? weatherData.days[0].hours[selectedIndex].windspeed
+              : weatherData.days[selectedIndex].windspeed
+          }
+          gustSpeed={
+            state === MOCK_OPTIONS[0]
+              ? weatherData.days[0].hours[selectedIndex].windgust
+              : weatherData.days[selectedIndex].windgust
+          }
+          windDirection={
+            state === MOCK_OPTIONS[0]
+              ? weatherData.days[0].hours[selectedIndex].winddir
+              : weatherData.days[selectedIndex].winddir
+          }
+        ></Wind>
+
+        <Precipitation
+          precip={
+            state === MOCK_OPTIONS[0]
+              ? weatherData.days[0].hours[selectedIndex].precip
+              : weatherData.days[selectedIndex].precip
+          }
+          nextExpectedRainfall="monday"
+        ></Precipitation>
+
+        <Humidity
+          humidity={
+            state === MOCK_OPTIONS[0]
+              ? weatherData.days[0].hours[selectedIndex].humidity
+              : weatherData.days[selectedIndex].humidity
+          }
+          dew={
+            state === MOCK_OPTIONS[0]
+              ? weatherData.days[0].hours[selectedIndex].dew
+              : weatherData.days[selectedIndex].dew
+          }
+        ></Humidity>
+
+        {weatherData.alerts.length > 0 ? (
+          <WeatherAlert alert={weatherData.alerts[0].headline}></WeatherAlert>
+        ) : (
+          <WeatherTip
+            condition={
               state === MOCK_OPTIONS[0]
-                ? weatherData.days[0].hours[selectedIndex].windspeed
-                : weatherData.days[selectedIndex].windspeed
+                ? weatherData.days[0].hours[selectedIndex].conditions
+                : weatherData.days[selectedIndex].conditions
             }
-            gustSpeed={
-              state === MOCK_OPTIONS[0]
-                ? weatherData.days[0].hours[selectedIndex].windgust
-                : weatherData.days[selectedIndex].windgust
-            }
-            windDirection={
-              state === MOCK_OPTIONS[0]
-                ? weatherData.days[0].hours[selectedIndex].winddir
-                : weatherData.days[selectedIndex].winddir
-            }
-          ></Wind>
-        </Col>
-        <Col md={6} lg={3} style={{ gap: "20px" }}>
-          <Precipitation
-            precip={
-              state === MOCK_OPTIONS[0]
-                ? weatherData.days[0].hours[selectedIndex].precip
-                : weatherData.days[selectedIndex].precip
-            }
-            nextExpectedRainfall="monday"
-          ></Precipitation>
-        </Col>
-        <Col md={6} lg={3} style={{ gap: "20px" }}>
-          <Humidity
-            humidity={
-              state === MOCK_OPTIONS[0]
-                ? weatherData.days[0].hours[selectedIndex].humidity
-                : weatherData.days[selectedIndex].humidity
-            }
-            dew={
-              state === MOCK_OPTIONS[0]
-                ? weatherData.days[0].hours[selectedIndex].dew
-                : weatherData.days[selectedIndex].dew
-            }
-          ></Humidity>
-        </Col>
-        <Col md={6} lg={3} style={{ gap: "20px" }}>
-          {weatherData.alerts.length > 0 ? (
-            <WeatherAlert alert="National Weather Service: SEVERE STORM WARNING in effect in this area until 6:30 PM CST for destructive 80mph winds. "></WeatherAlert>
-          ) : (
-            <WeatherTip
-              condition={
-                state === MOCK_OPTIONS[0]
-                  ? weatherData.days[0].hours[selectedIndex].conditions
-                  : weatherData.days[selectedIndex].conditions
-              }
-            ></WeatherTip>
-          )}
-        </Col>
-      </Row>
+          ></WeatherTip>
+        )}
+      </BottomContainer>
     </Container>
   );
 };

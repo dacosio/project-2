@@ -9,7 +9,7 @@ const meta: Meta<typeof WeatherTip> = {
   component: () => {
     return (
       <Container>
-        <WeatherTip></WeatherTip>
+        <WeatherTip condition="storm" />
       </Container>
     );
   },

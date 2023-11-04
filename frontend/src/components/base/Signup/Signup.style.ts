@@ -3,7 +3,6 @@ import { theme } from "../../../utils/Theme";
 import Typography from "../Typography";
 
 export const Container = styled.div`
-  min-width: 300px;
   border-radius: 24px;
   overflow: hidden;
   display: flex;

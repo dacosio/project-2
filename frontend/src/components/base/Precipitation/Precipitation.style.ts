@@ -7,13 +7,22 @@ export const Container = styled.div`
     flex:1;
     flex-direction: column;
     // justify-content: space-between;
-    gap:12px;
+    gap:24px;
     padding: 16px 16px;
     box-shadow: 0 0 1px 1px ${theme.neutral.n20};
     border-radius: 1.3rem;
     background-color: ${theme.grey.noshade};
     width: 212px;
     height:212px;
+
+    @media screen and (max-width: 1200px) {
+        width: 254px;
+      height:254px;
+      }
+
+      @media screen and (min-width: 1200px) {
+        gap:12px;
+      }
 `
 
 

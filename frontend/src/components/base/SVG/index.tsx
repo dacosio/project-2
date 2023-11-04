@@ -1,4 +1,6 @@
 /* PLOP_INJECT_IMPORT */
+export { default as GitHub } from './GitHub';
+export { default as LinkedIn } from './LinkedIn';
 export { default as WindCompass } from './WindCompass';
 export { default as WeatherAlertSVG } from "./WeatherAlertSVG";
 export { default as DrawerHandle } from "./DrawerHandle";

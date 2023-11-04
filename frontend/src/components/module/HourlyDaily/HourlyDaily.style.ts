@@ -4,6 +4,9 @@ import { theme } from "../../../utils/Theme";
 
 
 export const Container = styled.div`
+// max-width: 58vw;
+ width: 100%;
+ box-sizing: border-box;
 display:flex;
 flex-direction:column;
 border: 1px solid ${({ theme }) => theme.neutral.n20};

@@ -123,6 +123,7 @@ const ContactSection = (props: ContactSectionProps): JSX.Element => {
                   labelWeight="bold"
                   name="message"
                   placeholder="message"
+                  style={{width: "100%"}}
                 />
                 <Button type="submit" text="Submit" variant="tonal" />
               </Form>

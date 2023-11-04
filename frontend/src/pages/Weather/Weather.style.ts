@@ -3,7 +3,9 @@ import { theme } from "utils/Theme";
 
 
 export const Container = styled.div`
-   max-width: 1021px;
+    max-width: 1021px;
+   width: 80vw;
+//    border: 2px solid black;
    margin: auto;
    padding: 1.5rem;
    display:flex;
@@ -11,10 +13,21 @@ export const Container = styled.div`
    row-gap: 2rem;`
 
    export const BottomContainer = styled.div`
-   display:flex;
+   display:grid;
    max-width: 1021px;
-   // border:2px solid red;
-   // box-sizing: border-box;
+   
+    margin: 2rem 0;
+    row-gap:16px;
+     justify-items: center;
+
+    @media screen and (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (min-width: 1200px) {
+        grid-template-columns: repeat(4, 1fr);
+       
+    }
    `
 
 
