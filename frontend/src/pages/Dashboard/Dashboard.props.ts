@@ -22,4 +22,5 @@ export interface DashboardGeneratedProps {
   weatherData : { [key: string]: any };
   onSelectedWeatherIndexWeather: (value: number) => void;
   selectedIndex : number;
+  handleOpenCard: (id: string) => void;
 }

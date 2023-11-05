@@ -6,6 +6,12 @@ import Typography from "components/base/Typography";
 import axios from "axios";
 import { useCurrentCity } from "utils/hooks/useCurrentCity";
 import Button from "components/base/Button";
+import { useNavigate } from "react-router-dom";
+import {
+  storeSelectedCropId,
+  storeSelectedOption,
+} from "./../../features/crops/cropSlice";
+import { useAppDispatch } from "./../../app/hooks";
 
 const Dashboard = (): JSX.Element => {
   const { data, isLoading } = useGetPlantedCropsQuery({ isPlanted: true }); //or isFavorite??
@@ -15,6 +21,9 @@ const Dashboard = (): JSX.Element => {
     isLoading,
     // generated props here
   };
+
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const [weatherData, setWeatherData] = useState<{ [key: string]: any }>({});
   const MOCK_OPTIONS = ["Today", "15-day"];
   const [state, setState] = useState(MOCK_OPTIONS[0]);
@@ -165,6 +174,18 @@ const Dashboard = (): JSX.Element => {
     console.log("state " + state);
     setState(state);
   };
+
+  const handleOpenCard = (id: string) => {
+    navigate("/your-crops");
+    dispatch(
+      storeSelectedOption({
+        value: "planted",
+        label: "Planted",
+      })
+    );
+    dispatch(storeSelectedCropId(id));
+  };
+
   return (
     <>
       {selectedAddress &&
@@ -193,6 +214,7 @@ const Dashboard = (): JSX.Element => {
           weatherData={weatherData}
           onSelectedWeatherIndexWeather={handleSelectedWeatherIndex}
           selectedIndex={selectedIndex}
+          handleOpenCard={handleOpenCard}
         />
       ) : (
         <Button loading variant="disabled" />
