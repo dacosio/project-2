@@ -16,15 +16,14 @@ export const Top = styled(Row)`
 
 export const Segment = styled(Col)`
   // flex: 0.5;
-  display:flex;
+  display: flex;
   flex-direction: column;
   height: 340px;
-   row-gap: 1.84rem;
+  row-gap: 1.84rem;
 
-   @media screen and (min-width: 768px) and (max-width: 992px){
-     row-gap: 0.4rem;
+  @media screen and (min-width: 768px) and (max-width: 992px) {
+    row-gap: 0.4rem;
   }
-
 `;
 export const Weather = styled(Col)`
   // flex: 0.5;
@@ -44,19 +43,8 @@ export const Title = styled.div`
   margin-bottom: 24px;
 `;
 
-// export const Carousel = styled.div`
-//   border: 1px solid red;
-// `;
-
 export const Crops = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-
-  @media (max-width: 540px) {
-    justify-content: center;
-    flex-direction: column;
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+  gap: 16px;
 `;
