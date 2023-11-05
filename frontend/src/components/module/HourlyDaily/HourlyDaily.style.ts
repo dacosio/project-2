@@ -11,9 +11,9 @@ display:flex;
 flex-direction:column;
 border: 1px solid ${({ theme }) => theme.neutral.n20};
 border-radius: 24px;
-padding:1rem;
+padding:1rem 1rem 2rem 1rem;
 row-gap:2rem;
-
+background-color: ${theme.grey.noshade};
 
 `
 
@@ -28,8 +28,8 @@ display:flex;
 // background-color : #8ECCEF";
 overflow-x: scroll;
 overflow-y: hidden;
-   padding-bottom: 2rem;
-  padding-top:1rem;
+  //  padding-bottom: 2rem;
+  // padding-top:1rem;
 
 border-radius: 20px;
 // border: 1px solid red;
@@ -38,11 +38,11 @@ border-radius: 20px;
 // ::-webkit-scrollbar {
 //     display: none; 
   }
-  ::-webkit-scrollbar {
-    height: 4px;  
-    margin-top: 2rem;
+  // ::-webkit-scrollbar {
+  //   height: 4px;  
+  //   margin-top: 2rem;
     
-  }
+  // }
 
   ::-webkit-scrollbar-track {
     background: #f1f1f1;  
