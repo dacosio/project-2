@@ -154,18 +154,17 @@ const Dashboard = (): JSX.Element => {
   };
 
   const page = "weather";
-
-  const generatedProps = {
+  let generatedProps = {
     crops: data,
     isLoading: isLoading,
     currentLocation: selectedAddress,
-    forecast: weatherData.currentConditions.conditions,
-    currentTemperature: weatherData.currentConditions.temp,
-    lowTemperature: weatherData.days[0]?.tempmin,
-    highTemperature: weatherData.days[0]?.tempmax,
-    precipitation: weatherData.currentConditions.precip,
-    humidity: weatherData.currentConditions.humidity,
-    wind: weatherData.currentConditions.windspeed,
+    forecast: "Test Forecast",
+    currentTemperature: 0,
+    lowTemperature: 0,
+    highTemperature: 0,
+    precipitation: 0,
+    humidity: 0,
+    wind: 0,
     gradientColor1: gradientColor1,
     gradientColor2: gradientColor2,
     currentCondition: currentCondition,
@@ -178,6 +177,37 @@ const Dashboard = (): JSX.Element => {
     onSelectedWeatherIndexWeather: handleSelectedWeatherIndex,
     selectedIndex: selectedIndex,
   };
+  if (
+    selectedAddress &&
+    weatherData &&
+    weatherData.days &&
+    weatherData.days.length > 0
+  ) {
+    generatedProps = {
+      crops: data,
+      isLoading: isLoading,
+      currentLocation: selectedAddress,
+      forecast: weatherData.currentConditions.conditions,
+      currentTemperature: weatherData.currentConditions.temp,
+      lowTemperature: weatherData.days[0]?.tempmin,
+      highTemperature: weatherData.days[0]?.tempmax,
+      precipitation: weatherData.currentConditions.precip,
+      humidity: weatherData.currentConditions.humidity,
+      wind: weatherData.currentConditions.windspeed,
+      gradientColor1: gradientColor1,
+      gradientColor2: gradientColor2,
+      currentCondition: currentCondition,
+      page,
+      onSelectedSearchLocationWeather: handleSelectedSearchLocation,
+      MOCK_OPTIONS: MOCK_OPTIONS,
+      state: state,
+      onSetState: handleSetState,
+      weatherData: weatherData,
+      onSelectedWeatherIndexWeather: handleSelectedWeatherIndex,
+      selectedIndex: selectedIndex,
+    };
+  }
+
   return <DashboardView {...generatedProps} />;
   {
     /* {selectedAddress &&

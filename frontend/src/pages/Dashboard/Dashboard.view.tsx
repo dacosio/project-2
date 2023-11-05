@@ -94,7 +94,8 @@ const DashboardView = (props: DashboardGeneratedProps) => {
                 }
                 state={state}
                 onSelectedWeatherIndex={handleSelectedWeatherIndex}
-                index={selectedIndex}></HourlyDaily>
+                index={selectedIndex}
+              ></HourlyDaily>
             </Segment>
           </Top>
         )}
@@ -108,7 +109,8 @@ const DashboardView = (props: DashboardGeneratedProps) => {
             weight="700"
             textColor="shade5"
             onClick={() => navigate("/your-crops")}
-            style={{ cursor: "pointer" }}>
+            style={{ cursor: "pointer" }}
+          >
             see more
           </Typography>
         </Title>
