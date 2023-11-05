@@ -8,21 +8,26 @@ import {
   Title,
   Crops,
   MiddleRight,
+  PopupContainer,
 } from "./Dashboard.style";
 import Typography from "components/base/Typography";
 
 import SegmentedControl from "../../components/base/SegmentedControl";
+import MobileDrawer from "../../components/base/MobileDrawer";
 import { useNavigate } from "react-router-dom";
 import HarvestCard from "../../components/module/HarvestCard";
 import { useMediaQuery } from "utils/hooks/useMediaQuery";
+import { useOnClickOutside } from "utils/hooks/useOnClickOutside";
 import CurrentWeather from "components/module/CurrentWeather";
 import { calculateDaysPassed, formatDate } from "utils/Date";
 import Loading from "../../components/base/Loading";
 import HourlyDaily from "components/module/HourlyDaily";
 import { useElementSize } from "utils/hooks/useElementSize";
 import Button from "components/base/Button";
-import { Add, ViewAllSvg } from "components/base/SVG";
+import { Add, Choice, Suggestion, ViewAllSvg } from "components/base/SVG";
 import { useTheme } from "@emotion/react";
+import { Hidden, Visible } from "react-grid-system";
+import { useRef } from "react";
 
 const DashboardView = (props: DashboardGeneratedProps) => {
   const {
@@ -47,6 +52,7 @@ const DashboardView = (props: DashboardGeneratedProps) => {
     onSelectedWeatherIndexWeather,
     selectedIndex,
     setVisibility,
+    visibility,
   } = props;
   const navigate = useNavigate();
   const theme = useTheme();
@@ -60,6 +66,10 @@ const DashboardView = (props: DashboardGeneratedProps) => {
   };
   const [squareRef, { width }] = useElementSize();
   const matches = useMediaQuery("(min-width: 768px)");
+  const popupRef = useRef<HTMLDivElement | null>(null);
+  useOnClickOutside(popupRef, (event: MouseEvent) => {
+    setVisibility(false);
+  });
 
   return (
     <Wrapper>
@@ -123,6 +133,48 @@ const DashboardView = (props: DashboardGeneratedProps) => {
               onClick={() => setVisibility(true)}
             />
           </MiddleRight>
+          {visibility && (
+            <>
+              <Hidden xs sm>
+                <PopupContainer ref={popupRef}>
+                  <div>
+                    <div>
+                      <div
+                        onClick={() => {
+                          setVisibility(false);
+                          // handleOnClickChoice();
+                        }}>
+                        <Choice />
+                        <div>
+                          <Typography variant="title4" weight="700">
+                            Your Choice
+                          </Typography>
+                          <Typography>
+                            We'll give you info and tips on growing
+                          </Typography>
+                        </div>
+                      </div>
+                      <div
+                        onClick={() => {
+                          setVisibility(false);
+                          // handleOnClickSuggestion();
+                        }}>
+                        <Suggestion />
+                        <div>
+                          <Typography variant="title4" weight="700">
+                            Our Suggestion
+                          </Typography>
+                          <Typography>
+                            We'll suggest which crop suits your soil
+                          </Typography>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </PopupContainer>
+              </Hidden>
+            </>
+          )}
         </Title>
         {isLoading ? (
           <Loading />
@@ -157,6 +209,52 @@ const DashboardView = (props: DashboardGeneratedProps) => {
           </Crops>
         )}
       </Middle>
+      {visibility && (
+        <Visible xs sm>
+          <MobileDrawer
+            direction="bottom"
+            isOpenDrawer={visibility}
+            handleDrawerClose={() => setVisibility(false)}
+            drawerSize="auto">
+            <PopupContainer>
+              <div>
+                <div>
+                  <div
+                    onClick={() => {
+                      setVisibility(false);
+                      // handleOnClickChoice();
+                    }}>
+                    <Choice />
+                    <div>
+                      <Typography variant="title4" weight="700">
+                        Your Choice
+                      </Typography>
+                      <Typography>
+                        We'll give you info and tips on growing
+                      </Typography>
+                    </div>
+                  </div>
+                  <div
+                    onClick={() => {
+                      setVisibility(false);
+                      // handleOnClickSuggestion();
+                    }}>
+                    <Suggestion />
+                    <div>
+                      <Typography variant="title4" weight="700">
+                        Our Suggestion
+                      </Typography>
+                      <Typography>
+                        We'll suggest which crop suits your soil
+                      </Typography>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </PopupContainer>
+          </MobileDrawer>
+        </Visible>
+      )}
     </Wrapper>
   );
 };
