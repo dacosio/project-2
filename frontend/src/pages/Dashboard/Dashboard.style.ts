@@ -41,6 +41,7 @@ export const Title = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
+  position: relative;
 `;
 
 export const Crops = styled.div`
@@ -56,6 +57,7 @@ export const MiddleRight = styled.div`
 `;
 
 export const PopupContainer = styled.div`
+  position: absolute;
   > div > div > div {
     cursor: pointer;
     display: flex;
@@ -68,49 +70,85 @@ export const PopupContainer = styled.div`
     }
   }
 
-  @media (min-width: 768px) {
-    position: absolute;
-    top: 20%;
-    right: 3%;
-    width: 393.39px;
-    display: flex;
-    align-items: flex-end;
-    transform: translateX(calc(375.39px - 123.09px));
-    z-index: 1;
-    border-radius: 20px;
+  // @media (min-width: 768px) {
+  //   position: absolute;
+  //   // top: 20%;
+  //   // right: 3%;
+  //   width: 393.39px;
+  //   display: flex;
+  //   align-items: flex-end;
+  //   transform: translateX(calc(375.39px - 123.09px));
+  //   z-index: 1;
+  //   border-radius: 20px;
 
-    > div {
-      padding-right: 16px;
-    }
+  //   > div {
+  //     padding-right: 16px;
+  //   }
 
-    > div > div {
-      display: grid;
-      background-color: white;
-      margin: 1px;
-      border-radius: 20px;
-      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    }
+  //   > div > div {
+  //     display: grid;
+  //     background-color: white;
+  //     margin: 1px;
+  //     border-radius: 20px;
+  //     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  //   }
 
-    > div > div > div {
-      padding: 32px 16px;
-    }
+  //   > div > div > div {
+  //     padding: 32px 16px;
+  //   }
 
-    > div > div > div:first-of-type {
-      border-top-left-radius: 20px;
-      border-top-right-radius: 20px;
-    }
+  //   > div > div > div:first-of-type {
+  //     border-top-left-radius: 20px;
+  //     border-top-right-radius: 20px;
+  //   }
 
-    > div > div > div:last-of-type {
-      border-bottom-left-radius: 20px;
-      border-bottom-right-radius: 20px;
-    }
+  //   > div > div > div:last-of-type {
+  //     border-bottom-left-radius: 20px;
+  //     border-bottom-right-radius: 20px;
+  //   }
 
-    > div > div > div:not(:last-of-type) {
-      border-bottom: 1px solid ${({ theme }) => theme.neutral.n20};
-    }
+  //   > div > div > div:not(:last-of-type) {
+  //     border-bottom: 1px solid ${({ theme }) => theme.neutral.n20};
+  //   }
+  // }
+
+  // @media (min-width: 1200px) {
+  //   transform: unset;
+  // }
+`;
+
+export const OptionWrapper = styled.div`
+  position: absolute;
+  bottom: 120%;
+  right: 2%;
+  background-color: ${(props) => props.theme.btn.text.white};
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0);
+
+  border-radius: 20px;
+
+  z-index: 5;
+`;
+
+export const Option = styled.div`
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 32px;
+  cursor: pointer;
+  &:nth-of-type(1) {
+    padding-top: 32px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom: 1px solid ${({ theme }) => theme.neutral.n20};
   }
-
-  @media (min-width: 1200px) {
-    transform: unset;
+  &:nth-of-type(2) {
+    padding-bottom: 32px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+  &:hover {
+    background-color: ${({ theme }) => theme.btn.color.lightest};
   }
 `;
+
+export const OptionLabel = styled.div``;

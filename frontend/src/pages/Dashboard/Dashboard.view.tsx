@@ -9,6 +9,9 @@ import {
   Crops,
   MiddleRight,
   PopupContainer,
+  OptionWrapper,
+  Option,
+  OptionLabel,
 } from "./Dashboard.style";
 import Typography from "components/base/Typography";
 
@@ -106,7 +109,8 @@ const DashboardView = (props: DashboardGeneratedProps) => {
             }
             state={state}
             onSelectedWeatherIndex={handleSelectedWeatherIndex}
-            index={selectedIndex}></HourlyDaily>
+            index={selectedIndex}
+          ></HourlyDaily>
         </Segment>
       </Top>
       <Middle>
@@ -115,7 +119,7 @@ const DashboardView = (props: DashboardGeneratedProps) => {
             Your Planted Crops
           </Typography>
 
-          <MiddleRight>
+          <MiddleRight ref={popupRef}>
             <Button
               text={matches ? "View All" : ""}
               variant="outline"
@@ -132,49 +136,33 @@ const DashboardView = (props: DashboardGeneratedProps) => {
               text={matches ? "New Crop" : ""}
               onClick={() => setVisibility(true)}
             />
+            {visibility && (
+              <OptionWrapper>
+                <Option>
+                  <Choice />
+                  <OptionLabel>
+                    <Typography variant="title4" weight="700">
+                      Your Choice
+                    </Typography>
+                    <Typography>
+                      We'll give you info and tips on growing
+                    </Typography>
+                  </OptionLabel>
+                </Option>
+                <Option>
+                  <Suggestion />
+                  <OptionLabel>
+                    <Typography variant="title4" weight="700">
+                      Our Suggestion
+                    </Typography>
+                    <Typography>
+                      We'll suggest which crop suits your soil
+                    </Typography>
+                  </OptionLabel>
+                </Option>
+              </OptionWrapper>
+            )}
           </MiddleRight>
-          {visibility && (
-            <>
-              <Hidden xs sm>
-                <PopupContainer ref={popupRef}>
-                  <div>
-                    <div>
-                      <div
-                        onClick={() => {
-                          setVisibility(false);
-                          // handleOnClickChoice();
-                        }}>
-                        <Choice />
-                        <div>
-                          <Typography variant="title4" weight="700">
-                            Your Choice
-                          </Typography>
-                          <Typography>
-                            We'll give you info and tips on growing
-                          </Typography>
-                        </div>
-                      </div>
-                      <div
-                        onClick={() => {
-                          setVisibility(false);
-                          // handleOnClickSuggestion();
-                        }}>
-                        <Suggestion />
-                        <div>
-                          <Typography variant="title4" weight="700">
-                            Our Suggestion
-                          </Typography>
-                          <Typography>
-                            We'll suggest which crop suits your soil
-                          </Typography>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </PopupContainer>
-              </Hidden>
-            </>
-          )}
         </Title>
         {isLoading ? (
           <Loading />
@@ -209,13 +197,14 @@ const DashboardView = (props: DashboardGeneratedProps) => {
           </Crops>
         )}
       </Middle>
-      {visibility && (
+      {/* {visibility && (
         <Visible xs sm>
           <MobileDrawer
             direction="bottom"
             isOpenDrawer={visibility}
             handleDrawerClose={() => setVisibility(false)}
-            drawerSize="auto">
+            drawerSize="auto"
+          >
             <PopupContainer>
               <div>
                 <div>
@@ -223,7 +212,8 @@ const DashboardView = (props: DashboardGeneratedProps) => {
                     onClick={() => {
                       setVisibility(false);
                       // handleOnClickChoice();
-                    }}>
+                    }}
+                  >
                     <Choice />
                     <div>
                       <Typography variant="title4" weight="700">
@@ -238,7 +228,8 @@ const DashboardView = (props: DashboardGeneratedProps) => {
                     onClick={() => {
                       setVisibility(false);
                       // handleOnClickSuggestion();
-                    }}>
+                    }}
+                  >
                     <Suggestion />
                     <div>
                       <Typography variant="title4" weight="700">
@@ -254,7 +245,7 @@ const DashboardView = (props: DashboardGeneratedProps) => {
             </PopupContainer>
           </MobileDrawer>
         </Visible>
-      )}
+      )} */}
     </Wrapper>
   );
 };
