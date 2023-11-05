@@ -23,7 +23,12 @@ export interface DashboardGeneratedProps {
   weatherData: { [key: string]: any };
   onSelectedWeatherIndexWeather: (value: number) => void;
   selectedIndex: number;
-
   visibility: boolean;
   setVisibility: Dispatch<SetStateAction<boolean>>;
+  choiceVisibility: boolean;
+  setChoiceVisibility: Dispatch<SetStateAction<boolean>>;
+  suggestionVisibility: boolean;
+  setSuggestionVisibility: Dispatch<SetStateAction<boolean>>;
+  handleLater: (isError: boolean) => void;
+  handleNow: (isError: boolean) => void;
 }

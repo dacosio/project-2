@@ -13,6 +13,7 @@ import {
   Option,
   OptionLabel,
 } from "./Dashboard.style";
+import { Toaster } from "react-hot-toast";
 import Typography from "components/base/Typography";
 
 import SegmentedControl from "../../components/base/SegmentedControl";
@@ -31,6 +32,8 @@ import { Add, Choice, Suggestion, ViewAllSvg } from "components/base/SVG";
 import { useTheme } from "@emotion/react";
 import { Hidden, Visible } from "react-grid-system";
 import { useRef } from "react";
+import AddChoiceModal from "components/module/AddChoiceModal";
+import AddSuggestionModal from "components/module/AddSuggestionModal";
 
 const DashboardView = (props: DashboardGeneratedProps) => {
   const {
@@ -56,6 +59,12 @@ const DashboardView = (props: DashboardGeneratedProps) => {
     selectedIndex,
     setVisibility,
     visibility,
+    choiceVisibility,
+    setChoiceVisibility,
+    handleLater,
+    handleNow,
+    suggestionVisibility,
+    setSuggestionVisibility,
   } = props;
   const navigate = useNavigate();
   const theme = useTheme();
@@ -134,11 +143,11 @@ const DashboardView = (props: DashboardGeneratedProps) => {
               iconPosition="before"
               icon={<Add fill={theme.btn.text.white} />}
               text={matches ? "New Crop" : ""}
-              onClick={() => setVisibility(true)}
+              onClick={() => setVisibility((prev) => !prev)}
             />
             {visibility && (
               <OptionWrapper>
-                <Option>
+                <Option onClick={() => setChoiceVisibility(true)}>
                   <Choice />
                   <OptionLabel>
                     <Typography variant="title4" weight="700">
@@ -149,7 +158,7 @@ const DashboardView = (props: DashboardGeneratedProps) => {
                     </Typography>
                   </OptionLabel>
                 </Option>
-                <Option>
+                <Option onClick={() => setSuggestionVisibility(true)}>
                   <Suggestion />
                   <OptionLabel>
                     <Typography variant="title4" weight="700">
@@ -197,55 +206,19 @@ const DashboardView = (props: DashboardGeneratedProps) => {
           </Crops>
         )}
       </Middle>
-      {/* {visibility && (
-        <Visible xs sm>
-          <MobileDrawer
-            direction="bottom"
-            isOpenDrawer={visibility}
-            handleDrawerClose={() => setVisibility(false)}
-            drawerSize="auto"
-          >
-            <PopupContainer>
-              <div>
-                <div>
-                  <div
-                    onClick={() => {
-                      setVisibility(false);
-                      // handleOnClickChoice();
-                    }}
-                  >
-                    <Choice />
-                    <div>
-                      <Typography variant="title4" weight="700">
-                        Your Choice
-                      </Typography>
-                      <Typography>
-                        We'll give you info and tips on growing
-                      </Typography>
-                    </div>
-                  </div>
-                  <div
-                    onClick={() => {
-                      setVisibility(false);
-                      // handleOnClickSuggestion();
-                    }}
-                  >
-                    <Suggestion />
-                    <div>
-                      <Typography variant="title4" weight="700">
-                        Our Suggestion
-                      </Typography>
-                      <Typography>
-                        We'll suggest which crop suits your soil
-                      </Typography>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </PopupContainer>
-          </MobileDrawer>
-        </Visible>
-      )} */}
+      <AddChoiceModal
+        visibility={choiceVisibility}
+        setVisibility={setChoiceVisibility}
+        onLater={handleLater}
+        onNow={handleNow}
+      />
+      <AddSuggestionModal
+        visibility={suggestionVisibility}
+        setVisibility={setSuggestionVisibility}
+        onLater={handleLater}
+        onNow={handleNow}
+      />
+      <Toaster />
     </Wrapper>
   );
 };

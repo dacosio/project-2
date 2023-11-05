@@ -7,6 +7,7 @@ import axios from "axios";
 import { useCurrentCity } from "utils/hooks/useCurrentCity";
 import Button from "components/base/Button";
 import Loading from "components/base/Loading";
+import toast from "react-hot-toast";
 
 const Dashboard = (): JSX.Element => {
   const { data, isLoading } = useGetPlantedCropsQuery({ isPlanted: true }); //or isFavorite??
@@ -168,7 +169,31 @@ const Dashboard = (): JSX.Element => {
   };
 
   const [visibility, setVisibility] = useState<boolean>(false);
+  const [choiceVisibility, setChoiceVisibility] = useState<boolean>(false);
+  const [suggestionVisibility, setSuggestionVisibility] =
+    useState<boolean>(false);
 
+  const handleLater = (isError: boolean) => {
+    setChoiceVisibility(false);
+    setSuggestionVisibility(false);
+
+    if (isError) {
+      toast.error("An error occured. Please, try again later");
+    } else {
+      toast.success("Crop successfully added");
+    }
+  };
+
+  const handleNow = (isError: boolean) => {
+    setChoiceVisibility(false);
+    setSuggestionVisibility(false);
+
+    if (isError) {
+      toast.error("An error occured. Please, try again later");
+    } else {
+      toast.success("Crop successfully planted");
+    }
+  };
   return (
     <>
       {selectedAddress &&
@@ -199,6 +224,12 @@ const Dashboard = (): JSX.Element => {
           selectedIndex={selectedIndex}
           visibility={visibility}
           setVisibility={setVisibility}
+          suggestionVisibility={suggestionVisibility}
+          setSuggestionVisibility={setSuggestionVisibility}
+          choiceVisibility={choiceVisibility}
+          setChoiceVisibility={setChoiceVisibility}
+          handleLater={handleLater}
+          handleNow={handleNow}
         />
       ) : (
         <Loading />
