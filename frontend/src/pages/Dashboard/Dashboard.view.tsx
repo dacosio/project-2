@@ -7,6 +7,7 @@ import {
   Weather,
   Title,
   Crops,
+  MiddleRight,
 } from "./Dashboard.style";
 import Typography from "components/base/Typography";
 
@@ -20,7 +21,8 @@ import Loading from "../../components/base/Loading";
 import HourlyDaily from "components/module/HourlyDaily";
 import { useElementSize } from "utils/hooks/useElementSize";
 import Button from "components/base/Button";
-import { ViewAllSvg } from "components/base/SVG";
+import { Add, ViewAllSvg } from "components/base/SVG";
+import { useTheme } from "@emotion/react";
 
 const DashboardView = (props: DashboardGeneratedProps) => {
   const {
@@ -44,8 +46,10 @@ const DashboardView = (props: DashboardGeneratedProps) => {
     weatherData,
     onSelectedWeatherIndexWeather,
     selectedIndex,
+    setVisibility,
   } = props;
   const navigate = useNavigate();
+  const theme = useTheme();
 
   const handleSelectedSearchLocation = (address: string) => {
     onSelectedSearchLocationWeather(address);
@@ -101,13 +105,24 @@ const DashboardView = (props: DashboardGeneratedProps) => {
             Your Planted Crops
           </Typography>
 
-          <Button
-            text={matches ? "View All" : ""}
-            variant="outline"
-            icon={<ViewAllSvg />}
-            iconPosition="before"
-            onClick={() => navigate("/your-crops")}
-          />
+          <MiddleRight>
+            <Button
+              text={matches ? "View All" : ""}
+              variant="outline"
+              icon={<ViewAllSvg />}
+              iconPosition="before"
+              style={
+                !matches ? { padding: "17.5px 16px" } : { padding: "16px" }
+              }
+              onClick={() => navigate("/your-crops")}
+            />
+            <Button
+              iconPosition="before"
+              icon={<Add fill={theme.btn.text.white} />}
+              text={matches ? "New Crop" : ""}
+              onClick={() => setVisibility(true)}
+            />
+          </MiddleRight>
         </Title>
         {isLoading ? (
           <Loading />

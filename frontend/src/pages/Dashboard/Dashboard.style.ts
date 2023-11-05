@@ -48,3 +48,9 @@ export const Crops = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
   gap: 16px;
 `;
+
+export const MiddleRight = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;

@@ -165,6 +165,9 @@ const Dashboard = (): JSX.Element => {
     console.log("state " + state);
     setState(state);
   };
+
+  const [visibility, setVisibility] = useState<boolean>(false);
+
   return (
     <>
       {selectedAddress &&
@@ -193,6 +196,8 @@ const Dashboard = (): JSX.Element => {
           weatherData={weatherData}
           onSelectedWeatherIndexWeather={handleSelectedWeatherIndex}
           selectedIndex={selectedIndex}
+          visibility={visibility}
+          setVisibility={setVisibility}
         />
       ) : (
         <Button loading variant="disabled" />
