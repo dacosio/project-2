@@ -16,7 +16,7 @@ import Button from "components/base/Button";
 import {
   CropGuideSvg,
   DashboardSvg,
-  Smile,
+  WeatherSvg,
   YourCropsSvg,
 } from "components/base/SVG";
 // import theme from "utils/Theme";
@@ -211,7 +211,7 @@ const Navigation = (props: NavigationProps): JSX.Element => {
           <Menu menuItemStyles={menuItemStyles}>
             <MenuItem
               icon={
-                <YourCropsSvg
+                <WeatherSvg
                   fill={iconColor("/weather")}
                   stroke={iconColor("/weather")}
                 />

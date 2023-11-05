@@ -77,29 +77,25 @@ const Dashboard = (): JSX.Element => {
       `Current Condition : ${weatherData.currentConditions.conditions.toLowerCase()}`
     );
     if (
-      weatherData.currentConditions.conditions.toLowerCase() ===
-      "clear".toLowerCase()
+      weatherData.currentConditions.conditions
+        .toLowerCase()
+        .includes("clear".toLowerCase())
     ) {
       gradientColor1 = gradientObject.clear[0];
       gradientColor2 = gradientObject.clear[1];
       currentCondition = "clear";
     } else if (
-      weatherData.currentConditions.conditions.toLowerCase() ===
-      "Partially cloudy".toLowerCase()
+      weatherData.currentConditions.conditions
+        .toLowerCase()
+        .includes("Snow".toLowerCase())
     ) {
-      gradientColor1 = gradientObject.partiallyCloudy[0];
-      gradientColor2 = gradientObject.partiallyCloudy[1];
-      currentCondition = "partiallyCloudy";
+      gradientColor1 = gradientObject.snow[0];
+      gradientColor2 = gradientObject.snow[1];
+      currentCondition = "snow";
     } else if (
-      weatherData.currentConditions.conditions.toLowerCase() ===
-      "Overcast".toLowerCase()
-    ) {
-      gradientColor1 = gradientObject.overcast[0];
-      gradientColor2 = gradientObject.overcast[1];
-      currentCondition = "overcast";
-    } else if (
-      weatherData.currentConditions.conditions.toLowerCase() ===
-        "Rain".toLowerCase() ||
+      weatherData.currentConditions.conditions
+        .toLowerCase()
+        .includes("Rain".toLowerCase()) ||
       weatherData.currentConditions.conditions.toLowerCase() ===
         "rain, partially cloudy".toLowerCase() ||
       weatherData.currentConditions.conditions.toLowerCase() ===
@@ -109,29 +105,41 @@ const Dashboard = (): JSX.Element => {
       gradientColor2 = gradientObject.rain[1];
       currentCondition = "rain";
     } else if (
-      weatherData.currentConditions.conditions.toLowerCase() ===
-      "Thunderstorm".toLowerCase()
+      weatherData.currentConditions.conditions
+        .toLowerCase()
+        .includes("Partially cloudy".toLowerCase())
+    ) {
+      gradientColor1 = gradientObject.partiallyCloudy[0];
+      gradientColor2 = gradientObject.partiallyCloudy[1];
+      currentCondition = "partiallyCloudy";
+    } else if (
+      weatherData.currentConditions.conditions
+        .toLowerCase()
+        .includes("Overcast".toLowerCase())
+    ) {
+      gradientColor1 = gradientObject.overcast[0];
+      gradientColor2 = gradientObject.overcast[1];
+      currentCondition = "overcast";
+    } else if (
+      weatherData.currentConditions.conditions
+        .toLowerCase()
+        .includes("Thunderstorm".toLowerCase())
     ) {
       gradientColor1 = gradientObject.thunderStorm[0];
       gradientColor2 = gradientObject.thunderStorm[1];
       currentCondition = "thunderStorm";
     } else if (
-      weatherData.currentConditions.conditions.toLowerCase() ===
-      "Snow".toLowerCase()
-    ) {
-      gradientColor1 = gradientObject.snow[0];
-      gradientColor2 = gradientObject.snow[1];
-      currentCondition = "snow";
-    } else if (
-      weatherData.currentConditions.conditions.toLowerCase() ===
-      "Heavy Rain and Snow".toLowerCase()
+      weatherData.currentConditions.conditions
+        .toLowerCase()
+        .includes("Heavy Rain and Snow".toLowerCase())
     ) {
       gradientColor1 = gradientObject.snowRain[0];
       gradientColor2 = gradientObject.snowRain[1];
       currentCondition = "snowRain";
     } else if (
-      weatherData.currentConditions.conditions.toLowerCase() ===
-      "Thunderstorm and rain".toLowerCase()
+      weatherData.currentConditions.conditions
+        .toLowerCase()
+        .includes("Thunderstorm and rain".toLowerCase())
     ) {
       gradientColor1 = gradientObject.thunderStormRain[0];
       gradientColor2 = gradientObject.thunderStormRain[1];
