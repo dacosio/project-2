@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import { DashboardGeneratedProps } from "./Dashboard.props";
 import {
   Wrapper,
@@ -8,31 +7,21 @@ import {
   Weather,
   Title,
   Crops,
-  // Carousel,
 } from "./Dashboard.style";
-import WeatherCard from "../../components/base/WeatherCard";
-import axios from "axios";
 import Typography from "components/base/Typography";
 
 import SegmentedControl from "../../components/base/SegmentedControl";
 import { useNavigate } from "react-router-dom";
 import HarvestCard from "../../components/module/HarvestCard";
-import CarouselSwiper from "../../components/module/CarouselSwiper";
-
-import { Swiper, SwiperSlide } from "swiper/react";
-import { useAppSelector } from "app/hooks";
-import {
-  selectBroken,
-  selectCollapse,
-  selectToggle,
-} from "features/sidebar/sidebarSlice";
 import { useMediaQuery } from "utils/hooks/useMediaQuery";
 import CurrentWeather from "components/module/CurrentWeather";
 import { calculateDaysPassed, formatDate } from "utils/Date";
 import Loading from "../../components/base/Loading";
 import HourlyDaily from "components/module/HourlyDaily";
-import { Container, Row, Col, Hidden, Visible } from "react-grid-system";
 import { useElementSize } from "utils/hooks/useElementSize";
+import Button from "components/base/Button";
+import { ViewAllSvg } from "components/base/SVG";
+
 const DashboardView = (props: DashboardGeneratedProps) => {
   const {
     crops,
@@ -48,7 +37,6 @@ const DashboardView = (props: DashboardGeneratedProps) => {
     gradientColor1,
     gradientColor2,
     currentCondition,
-    page,
     onSelectedSearchLocationWeather,
     MOCK_OPTIONS,
     state,
@@ -59,28 +47,15 @@ const DashboardView = (props: DashboardGeneratedProps) => {
   } = props;
   const navigate = useNavigate();
 
-  const [gradientObject, setGradientObject] = useState({
-    clear: ["#1DAEFF", "#8ECCEF"],
-    partiallyCloudy: ["#6DDFFC", "#89B4E7"],
-    overcast: ["#83D3EF", "#4A629B"],
-    rain: ["#37528C", "#9BACD0"],
-    thunderStorm: ["#7148D5", "#C9A6C7"],
-    snow: ["#1DACF0", "#202C4C"],
-    snowRain: ["#524E8B", "#2A3259"],
-    thunderStormRain: ["#4D54D5", "#C29EC9"],
-  });
-
   const handleSelectedSearchLocation = (address: string) => {
-    console.log("Weather address " + address);
     onSelectedSearchLocationWeather(address);
   };
 
   const handleSelectedWeatherIndex = (value: number) => {
-    console.log("Weather " + value);
     onSelectedWeatherIndexWeather(value);
   };
-  const [squareRef, { width, height }] = useElementSize();
-  console.log(width);
+  const [squareRef, { width }] = useElementSize();
+  const matches = useMediaQuery("(min-width: 768px)");
 
   return (
     <Wrapper>
@@ -125,14 +100,14 @@ const DashboardView = (props: DashboardGeneratedProps) => {
           <Typography variant="title3" weight="700">
             Your Planted Crops
           </Typography>
-          <Typography
-            variant="subtitle"
-            weight="700"
-            textColor="shade5"
+
+          <Button
+            text={matches ? "View All" : ""}
+            variant="outline"
+            icon={<ViewAllSvg />}
+            iconPosition="before"
             onClick={() => navigate("/your-crops")}
-            style={{ cursor: "pointer" }}>
-            see more
-          </Typography>
+          />
         </Title>
         {isLoading ? (
           <Loading />

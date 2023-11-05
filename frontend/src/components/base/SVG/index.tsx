@@ -1,4 +1,5 @@
 /* PLOP_INJECT_IMPORT */
+export { default as ViewAllSvg } from './ViewAllSvg';
 export { default as WeatherSvg } from './WeatherSvg';
 export { default as GitHub } from './GitHub';
 export { default as LinkedIn } from './LinkedIn';
