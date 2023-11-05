@@ -8,9 +8,16 @@ import { useCurrentCity } from "utils/hooks/useCurrentCity";
 import Button from "components/base/Button";
 import Loading from "components/base/Loading";
 import toast from "react-hot-toast";
+import { storeAddress, storeCity } from "features/location/locationSlice";
+import { useAppDispatch } from "app/hooks";
 
 const Dashboard = (): JSX.Element => {
   const { data, isLoading } = useGetPlantedCropsQuery({ isPlanted: true }); //or isFavorite??
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(storeAddress(""));
+    dispatch(storeCity(""));
+  }, []);
 
   const generatedProps = {
     crops: data,
