@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import DashboardView from "./Dashboard.view";
-import { useGetPlantedCropsQuery } from "features/crops/cropApiSlice";
-import Typography from "components/base/Typography";
+import { useGetPlantedCropsQuery } from "./../../features/crops/cropApiSlice";
+import Typography from "./../../components/base/Typography";
 import axios from "axios";
-import { useCurrentCity } from "utils/hooks/useCurrentCity";
-import Button from "components/base/Button";
+import { useCurrentCity } from "./../../utils/hooks/useCurrentCity";
+import Button from "./../../components/base/Button";
 import { useNavigate } from "react-router-dom";
 import {
   storeSelectedCropId,
