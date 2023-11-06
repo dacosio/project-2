@@ -1,1 +1,3 @@
-export interface AccountFormProps {}
+export interface AccountFormProps {
+  onBack: () => void;
+}
