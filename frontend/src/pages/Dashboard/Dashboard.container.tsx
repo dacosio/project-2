@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from "react";
-
 import DashboardView from "./Dashboard.view";
 import { useGetPlantedCropsQuery } from "features/crops/cropApiSlice";
 import Typography from "components/base/Typography";
 import axios from "axios";
 import { useCurrentCity } from "utils/hooks/useCurrentCity";
 import Button from "components/base/Button";
-
 import { useNavigate } from "react-router-dom";
 import {
   storeSelectedCropId,
   storeSelectedOption,
 } from "./../../features/crops/cropSlice";
 import { useAppDispatch } from "./../../app/hooks";
-import Loading from "components/base/Loading";
+import Loading from "./../../components/base/Loading";
 import toast from "react-hot-toast";
-import { storeAddress, storeCity } from "features/location/locationSlice";
+import {
+  storeAddress,
+  storeCity,
+} from "./../../features/location/locationSlice";
 
 const Dashboard = (): JSX.Element => {
   const { data, isLoading } = useGetPlantedCropsQuery({ isPlanted: true }); //or isFavorite??
@@ -31,7 +32,6 @@ const Dashboard = (): JSX.Element => {
     // generated props here
   };
 
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [weatherData, setWeatherData] = useState<{ [key: string]: any }>({});
   const MOCK_OPTIONS = ["Today", "15-day"];
@@ -194,7 +194,6 @@ const Dashboard = (): JSX.Element => {
     );
     dispatch(storeSelectedCropId(id));
   };
-
 
   const [visibility, setVisibility] = useState<boolean>(false);
   const [choiceVisibility, setChoiceVisibility] = useState<boolean>(false);
