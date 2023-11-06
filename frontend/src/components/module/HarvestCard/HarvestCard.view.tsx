@@ -37,7 +37,7 @@ const HarvestCard = (props: HarvestCardProps): JSX.Element => {
           textColor="secondary">
           {cropName}
         </Typography>
-        <ThreeDots />
+        {/* <ThreeDots /> */}
       </Title>
       <Progress>
         <CircleProgress

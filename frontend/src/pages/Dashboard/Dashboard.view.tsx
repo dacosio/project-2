@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import { DashboardGeneratedProps } from "./Dashboard.props";
 import {
   Wrapper,
@@ -8,31 +7,34 @@ import {
   Weather,
   Title,
   Crops,
-  // Carousel,
+  MiddleRight,
+  PopupContainer,
+  OptionWrapper,
+  Option,
+  OptionLabel,
 } from "./Dashboard.style";
-import WeatherCard from "../../components/base/WeatherCard";
-import axios from "axios";
+import { Toaster } from "react-hot-toast";
 import Typography from "components/base/Typography";
 
 import SegmentedControl from "../../components/base/SegmentedControl";
+import MobileDrawer from "../../components/base/MobileDrawer";
 import { useNavigate } from "react-router-dom";
 import HarvestCard from "../../components/module/HarvestCard";
-import CarouselSwiper from "../../components/module/CarouselSwiper";
-
-import { Swiper, SwiperSlide } from "swiper/react";
-import { useAppSelector } from "app/hooks";
-import {
-  selectBroken,
-  selectCollapse,
-  selectToggle,
-} from "features/sidebar/sidebarSlice";
 import { useMediaQuery } from "utils/hooks/useMediaQuery";
+import { useOnClickOutside } from "utils/hooks/useOnClickOutside";
 import CurrentWeather from "components/module/CurrentWeather";
 import { calculateDaysPassed, formatDate } from "utils/Date";
 import Loading from "../../components/base/Loading";
 import HourlyDaily from "components/module/HourlyDaily";
-import { Container, Row, Col, Hidden, Visible } from "react-grid-system";
 import { useElementSize } from "utils/hooks/useElementSize";
+import Button from "components/base/Button";
+import { Add, Choice, Suggestion, ViewAllSvg } from "components/base/SVG";
+import { useTheme } from "@emotion/react";
+import { Hidden, Visible } from "react-grid-system";
+import { useRef } from "react";
+import AddChoiceModal from "components/module/AddChoiceModal";
+import AddSuggestionModal from "components/module/AddSuggestionModal";
+
 const DashboardView = (props: DashboardGeneratedProps) => {
   const {
     crops,
@@ -48,7 +50,6 @@ const DashboardView = (props: DashboardGeneratedProps) => {
     gradientColor1,
     gradientColor2,
     currentCondition,
-    page,
     onSelectedSearchLocationWeather,
     MOCK_OPTIONS,
     state,
@@ -56,31 +57,31 @@ const DashboardView = (props: DashboardGeneratedProps) => {
     weatherData,
     onSelectedWeatherIndexWeather,
     selectedIndex,
+    setVisibility,
+    visibility,
+    choiceVisibility,
+    setChoiceVisibility,
+    handleLater,
+    handleNow,
+    suggestionVisibility,
+    setSuggestionVisibility,
   } = props;
   const navigate = useNavigate();
-
-  const [gradientObject, setGradientObject] = useState({
-    clear: ["#1DAEFF", "#8ECCEF"],
-    partiallyCloudy: ["#6DDFFC", "#89B4E7"],
-    overcast: ["#83D3EF", "#4A629B"],
-    rain: ["#37528C", "#9BACD0"],
-    thunderStorm: ["#7148D5", "#C9A6C7"],
-    snow: ["#1DACF0", "#202C4C"],
-    snowRain: ["#524E8B", "#2A3259"],
-    thunderStormRain: ["#4D54D5", "#C29EC9"],
-  });
+  const theme = useTheme();
 
   const handleSelectedSearchLocation = (address: string) => {
-    console.log("Weather address " + address);
     onSelectedSearchLocationWeather(address);
   };
 
   const handleSelectedWeatherIndex = (value: number) => {
-    console.log("Weather " + value);
     onSelectedWeatherIndexWeather(value);
   };
-  const [squareRef, { width, height }] = useElementSize();
-  console.log(width);
+  const [squareRef, { width }] = useElementSize();
+  const matches = useMediaQuery("(min-width: 768px)");
+  const popupRef = useRef<HTMLDivElement | null>(null);
+  useOnClickOutside(popupRef, (event: MouseEvent) => {
+    setVisibility(false);
+  });
 
   return (
     <Wrapper>
@@ -117,7 +118,8 @@ const DashboardView = (props: DashboardGeneratedProps) => {
             }
             state={state}
             onSelectedWeatherIndex={handleSelectedWeatherIndex}
-            index={selectedIndex}></HourlyDaily>
+            index={selectedIndex}
+          ></HourlyDaily>
         </Segment>
       </Top>
       <Middle>
@@ -125,14 +127,51 @@ const DashboardView = (props: DashboardGeneratedProps) => {
           <Typography variant="title3" weight="700">
             Your Planted Crops
           </Typography>
-          <Typography
-            variant="subtitle"
-            weight="700"
-            textColor="shade5"
-            onClick={() => navigate("/your-crops")}
-            style={{ cursor: "pointer" }}>
-            see more
-          </Typography>
+
+          <MiddleRight ref={popupRef}>
+            <Button
+              text={matches ? "View All" : ""}
+              variant="outline"
+              icon={<ViewAllSvg />}
+              iconPosition="before"
+              style={
+                !matches ? { padding: "17.5px 16px" } : { padding: "16px" }
+              }
+              onClick={() => navigate("/your-crops")}
+            />
+            <Button
+              iconPosition="before"
+              icon={<Add fill={theme.btn.text.white} />}
+              text={matches ? "New Crop" : ""}
+              onClick={() => setVisibility((prev) => !prev)}
+            />
+            {visibility && (
+              <OptionWrapper>
+                <Option onClick={() => setChoiceVisibility(true)}>
+                  <Choice />
+                  <OptionLabel>
+                    <Typography variant="title4" weight="700">
+                      Your Choice
+                    </Typography>
+                    <Typography>
+                      We'll give you info and tips on growing
+                    </Typography>
+                  </OptionLabel>
+                </Option>
+                <Option onClick={() => setSuggestionVisibility(true)}>
+                  <Suggestion />
+                  <OptionLabel>
+                    <Typography variant="title4" weight="700">
+                      Our Suggestion
+                    </Typography>
+                    <Typography>
+                      We'll suggest which crop suits your soil
+                    </Typography>
+                  </OptionLabel>
+                </Option>
+              </OptionWrapper>
+            )}
+          </MiddleRight>
         </Title>
         {isLoading ? (
           <Loading />
@@ -167,6 +206,19 @@ const DashboardView = (props: DashboardGeneratedProps) => {
           </Crops>
         )}
       </Middle>
+      <AddChoiceModal
+        visibility={choiceVisibility}
+        setVisibility={setChoiceVisibility}
+        onLater={handleLater}
+        onNow={handleNow}
+      />
+      <AddSuggestionModal
+        visibility={suggestionVisibility}
+        setVisibility={setSuggestionVisibility}
+        onLater={handleLater}
+        onNow={handleNow}
+      />
+      <Toaster />
     </Wrapper>
   );
 };
