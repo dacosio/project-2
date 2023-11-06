@@ -12,6 +12,11 @@ export const Container = styled.div`
   gap: 10px;
   justify-content: center;
   margin-bottom: 16px;
+  cursor: pointer;
+
+  :hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
 `;
 
 export const Progress = styled.div`

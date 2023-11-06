@@ -15,6 +15,7 @@ import CircleProgress from "../../base/CircleProgress";
 
 const HarvestCard = (props: HarvestCardProps): JSX.Element => {
   const {
+    cropId,
     cropName,
     value,
     maxValue,
@@ -23,18 +24,20 @@ const HarvestCard = (props: HarvestCardProps): JSX.Element => {
     height,
     width,
     mobile = false,
+    handleOpenCard,
     ...rest
   } = props;
 
   const ready = value / maxValue;
   const textVariant = mobile ? "crop" : "small";
   return (
-    <Container>
+    <Container onClick={() => handleOpenCard(cropId)}>
       <Title>
         <Typography
           variant={mobile ? "small" : "body"}
           weight="700"
-          textColor="secondary">
+          textColor="secondary"
+        >
           {cropName}
         </Typography>
         {/* <ThreeDots /> */}
