@@ -1,8 +1,9 @@
 import styled from "@emotion/styled";
 import { theme } from "utils/Theme";
+import { WeatherGeneratedStyleProps } from "./Weather.props";
 
 
-export const Container = styled.div`
+export const Container = styled.div<WeatherGeneratedStyleProps>`
     max-width: 1021px;
    width: 80vw;
 //    border: 2px solid black;
@@ -10,7 +11,12 @@ export const Container = styled.div`
    padding: 1.5rem;
    display:flex;
    flex-direction: column;
-   row-gap: 2rem;`
+   row-gap: 2rem;
+
+   @media screen and (min-width: 993px) and  (max-width: 1360px){
+    width: ${({ collapseState }) => collapseState ? "80vw" : "calc(80vw - 150px)"};
+}  
+   `
 
    export const BottomContainer = styled.div`
    display:grid;

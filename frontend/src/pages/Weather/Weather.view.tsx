@@ -43,6 +43,7 @@ const WeatherView = (props: WeatherGeneratedProps) => {
     weatherData,
     onSelectedWeatherIndexWeather,
     selectedIndex,
+    collapseState,
     ...weatherGeneratedProps
   } = props;
 
@@ -57,7 +58,8 @@ const WeatherView = (props: WeatherGeneratedProps) => {
   };
 
   return (
-    <Container>
+    <Container collapseState={collapseState}>
+      {/* {collapseState ? "true" : "false"} */}
       <CurrentWeather
         currentLocation={currentLocation}
         forecast={forecast}

@@ -18,4 +18,9 @@ export interface WeatherGeneratedProps {
   weatherData : { [key: string]: any };
   onSelectedWeatherIndexWeather: (value: number) => void;
   selectedIndex : number;
+  collapseState: Boolean;
+}
+
+export interface WeatherGeneratedStyleProps {
+collapseState: Boolean;
 }

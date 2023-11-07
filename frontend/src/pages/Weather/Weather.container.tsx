@@ -6,6 +6,8 @@ import { useCurrentCity } from "utils/hooks/useCurrentCity";
 import Typography from "components/base/Typography";
 import Button from "components/base/Button";
 import Loading from "components/base/Loading";
+import { useAppSelector } from "app/hooks";
+import { selectCollapse } from "features/sidebar/sidebarSlice";
 
 const Weather = (): JSX.Element => {
   const [weatherData, setWeatherData] = useState<{ [key: string]: any }>({});
@@ -158,6 +160,8 @@ const Weather = (): JSX.Element => {
     console.log("state " + state);
     setState(state);
   };
+
+  const collapseState = useAppSelector(selectCollapse);
   return (
     <>
       {selectedAddress &&
@@ -184,6 +188,7 @@ const Weather = (): JSX.Element => {
           weatherData={weatherData}
           onSelectedWeatherIndexWeather={handleSelectedWeatherIndex}
           selectedIndex={selectedIndex}
+          collapseState={collapseState}
         />
       ) : (
         <Loading />
