@@ -93,7 +93,7 @@ export const SearchContainer = styled.div`
 @media screen and (min-width: 1200px) {
   position: relative;
   bottom: -20px;
-   width: 96%;
+   width: 90%;
 }
 `;
 
