@@ -30,7 +30,7 @@ overflow-x: scroll;
 overflow-y: hidden;
   //  padding-bottom: 2rem;
   // padding-top:1rem;
-
+padding: 1rem;
 border-radius: 20px;
 // border: 1px solid red;
 
