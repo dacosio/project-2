@@ -18,7 +18,7 @@ export const Container = styled.div<WeatherGeneratedStyleProps>`
 }  
    `
 
-   export const BottomContainer = styled.div`
+   export const BottomContainer = styled.div<WeatherGeneratedStyleProps>`
    display:grid;
    max-width: 1021px;
    
@@ -30,7 +30,11 @@ export const Container = styled.div<WeatherGeneratedStyleProps>`
         grid-template-columns: repeat(2, 1fr);
     }
 
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 1200px) and  (max-width: 1360px){
+        grid-template-columns: ${({ collapseState }) => collapseState ? "repeat(4, 1fr)" : "repeat(2, 1fr)"};
+    } 
+
+    @media screen and (min-width: 1361px) {
         grid-template-columns: repeat(4, 1fr);
        
     }

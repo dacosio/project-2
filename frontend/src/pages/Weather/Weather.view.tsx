@@ -92,7 +92,7 @@ const WeatherView = (props: WeatherGeneratedProps) => {
         index={selectedIndex}
       ></HourlyDaily>
 
-      <BottomContainer>
+      <BottomContainer collapseState={collapseState}>
         <Wind
           windSpeed={
             state === MOCK_OPTIONS[0]
