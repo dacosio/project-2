@@ -5,23 +5,30 @@ import { WindStyleProps } from "./Wind.props";
 
 export const Container = styled.div`
     display: flex;
-    flex:0.25;
+    flex:1;
     flex-direction: column;
     gap: 3.4rem;
     padding: 16px 16px;
     box-shadow: 0 0 1px 1px ${theme.neutral.n20};
     border-radius: 1.3rem;
     background-color: ${theme.grey.noshade};
-    width: 212px;
-    height:212px;
+    // width: 212px;
+    // height:212px;
 
-    @media screen and (max-width: 1200px) {
-      width: 254px;
-    height:254px;
+    @media screen and (max-width: 768px) {
+     width: 94%;
+     height:254px;
     }
+
+    @media screen and (min-width: 768px) and (max-width: 1200px) {
+         width: 254px;
+        height:254px;
+        }
 
     @media screen and (min-width: 1200px) {
       gap: 1.3rem;
+      width: 212px;
+    height:212px;
     }
     
 `

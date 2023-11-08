@@ -24,10 +24,12 @@ export const Container = styled.div<WeatherGeneratedStyleProps>`
    
     margin: 2rem 0;
     row-gap:16px;
+    
      justify-items: center;
 
     @media screen and (min-width: 768px) {
         grid-template-columns: repeat(2, 1fr);
+        // column-gap : 3rem;
     }
 
     @media screen and (min-width: 1200px) and  (max-width: 1360px){

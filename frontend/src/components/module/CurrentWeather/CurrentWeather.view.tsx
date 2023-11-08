@@ -70,7 +70,9 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
         ? 154
         : window.innerWidth > 550
         ? 120
-        : 80
+        : window.innerWidth > 350
+        ? 80
+        : 60
       : window.innerWidth > 1200
       ? 160
       : window.innerWidth > 991
@@ -90,7 +92,9 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
             ? 154
             : window.innerWidth > 550
             ? 120
-            : 80
+            : window.innerWidth > 350
+            ? 80
+            : 60
           : window.innerWidth > 1200
           ? 160
           : window.innerWidth > 991
@@ -273,7 +277,15 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
                   <Typography
                     variant="body"
                     style={
-                      size === 80
+                      size === 60
+                        ? {
+                            fontSize: "44px",
+                            fontStyle: "normal",
+                            fontWeight: 700,
+                            lineHeight: "76px",
+                            letterSpacing: "-1.4px",
+                          }
+                        : size === 80
                         ? {
                             fontSize: "50px",
                             fontStyle: "normal",
