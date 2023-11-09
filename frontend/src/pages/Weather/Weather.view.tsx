@@ -74,6 +74,7 @@ const WeatherView = (props: WeatherGeneratedProps) => {
         currentCondition={currentCondition}
         page="weather"
         onSelectedSearchLocation={handleSelectedSearchLocation}
+        collapseState={collapseState}
       />
       <SegmentedControl
         options={MOCK_OPTIONS}

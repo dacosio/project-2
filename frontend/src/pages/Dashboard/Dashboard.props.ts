@@ -32,4 +32,9 @@ export interface DashboardGeneratedProps {
   setSuggestionVisibility: Dispatch<SetStateAction<boolean>>;
   handleLater: (isError: boolean) => void;
   handleNow: (isError: boolean) => void;
+  collapseState: Boolean;
+}
+
+export interface DashboardGeneratedStyleProps {
+  collapseState: Boolean;
 }

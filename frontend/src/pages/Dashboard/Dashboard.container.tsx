@@ -10,13 +10,14 @@ import {
   storeSelectedCropId,
   storeSelectedOption,
 } from "./../../features/crops/cropSlice";
-import { useAppDispatch } from "./../../app/hooks";
+import { useAppDispatch, useAppSelector } from "./../../app/hooks";
 import Loading from "./../../components/base/Loading";
 import toast from "react-hot-toast";
 import {
   storeAddress,
   storeCity,
 } from "./../../features/location/locationSlice";
+import { selectCollapse } from "features/sidebar/sidebarSlice";
 
 const Dashboard = (): JSX.Element => {
   const { data, isLoading } = useGetPlantedCropsQuery({ isPlanted: true }); //or isFavorite??
@@ -222,6 +223,8 @@ const Dashboard = (): JSX.Element => {
     }
   };
 
+  const collapseState = useAppSelector(selectCollapse);
+
   return (
     <>
       {selectedAddress &&
@@ -259,6 +262,7 @@ const Dashboard = (): JSX.Element => {
           setChoiceVisibility={setChoiceVisibility}
           handleLater={handleLater}
           handleNow={handleNow}
+          collapseState={collapseState}
         />
       ) : (
         <Loading />

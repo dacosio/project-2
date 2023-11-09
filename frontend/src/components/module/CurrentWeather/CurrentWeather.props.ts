@@ -12,6 +12,7 @@ export interface CurrentWeatherProps {
   currentCondition: string;
   page : string;
   onSelectedSearchLocation: (address: string) => void;
+  collapseState: Boolean;
 }
 
 // Styles

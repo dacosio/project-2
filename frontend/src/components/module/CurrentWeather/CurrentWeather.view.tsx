@@ -59,6 +59,7 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
     currentCondition,
     page,
     onSelectedSearchLocation,
+    collapseState,
     ...currentWeatherProps
   } = props;
 
@@ -73,12 +74,18 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
         : window.innerWidth > 350
         ? 80
         : 60
-      : window.innerWidth > 1200
+      : window.innerWidth > 1200 && collapseState
       ? 160
-      : window.innerWidth > 991
+      : window.innerWidth > 1200
+      ? 110
+      : window.innerWidth > 992 && collapseState
       ? 122
+      : window.innerWidth > 992
+      ? 121
       : window.innerWidth > 767
       ? 120
+      : window.innerWidth < 432
+      ? 60
       : 80
   );
 
@@ -95,12 +102,18 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
             : window.innerWidth > 350
             ? 80
             : 60
-          : window.innerWidth > 1200
+          : window.innerWidth > 1200 && collapseState
           ? 160
-          : window.innerWidth > 991
+          : window.innerWidth > 1200
+          ? 110
+          : window.innerWidth > 992 && collapseState
           ? 122
+          : window.innerWidth > 992
+          ? 121
           : window.innerWidth > 767
           ? 120
+          : window.innerWidth < 432
+          ? 60
           : 80
       );
     };
@@ -145,9 +158,33 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
                   <Typography
                     variant="body"
                     style={
-                      size === 120
+                      size === 110
                         ? {
                             fontSize: "54px",
+                            fontStyle: "normal",
+                            fontWeight: 700,
+                            lineHeight: "76px",
+                            letterSpacing: "-1.4px",
+                          }
+                        : size === 121
+                        ? {
+                            fontSize: "54px",
+                            fontStyle: "normal",
+                            fontWeight: 700,
+                            lineHeight: "76px",
+                            letterSpacing: "-1.4px",
+                          }
+                        : size === 120
+                        ? {
+                            fontSize: "54px",
+                            fontStyle: "normal",
+                            fontWeight: 700,
+                            lineHeight: "76px",
+                            letterSpacing: "-1.4px",
+                          }
+                        : size === 60
+                        ? {
+                            fontSize: "44px",
                             fontStyle: "normal",
                             fontWeight: 700,
                             lineHeight: "76px",

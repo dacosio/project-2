@@ -66,6 +66,7 @@ const DashboardView = (props: DashboardGeneratedProps) => {
     handleNow,
     suggestionVisibility,
     setSuggestionVisibility,
+    collapseState,
   } = props;
   const navigate = useNavigate();
   const theme = useTheme();
@@ -85,7 +86,7 @@ const DashboardView = (props: DashboardGeneratedProps) => {
   });
 
   return (
-    <Wrapper>
+    <Wrapper collapseState={collapseState}>
       <Top>
         <Weather md={6}>
           <CurrentWeather
@@ -102,6 +103,7 @@ const DashboardView = (props: DashboardGeneratedProps) => {
             currentCondition={currentCondition}
             page="dashboard"
             onSelectedSearchLocation={handleSelectedSearchLocation}
+            collapseState={collapseState}
           />
         </Weather>
         <Segment md={6}>

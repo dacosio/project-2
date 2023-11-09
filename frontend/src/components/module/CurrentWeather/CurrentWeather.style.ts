@@ -207,11 +207,21 @@ export const DashboardSearchContainer = styled.div`
 export const DashboardPrecipitationHumidityWindContainer = styled.div`
 display : flex;
 justify-content : space-between;
+// border:2px solid red;
 align-item : center;
 column-gap :2rem;
 
-@media screen and (max-width: 768px) {
-  column-gap :6rem;
+
+@media screen and (max-width: 400px) {
+   column-gap :0.7rem;
+  border: 2px solid red;
+ }
+
+@media screen and (min-width: 400px) and (max-width: 480px) {
+  column-gap :3rem;
+ }
+@media screen and (min-width: 480px) and (max-width: 768px) {
+ column-gap :5rem;
 }
 `;
 
