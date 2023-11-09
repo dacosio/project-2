@@ -19,6 +19,7 @@ import {
   storeLastName,
 } from "../../../features/authModal/authModalSlice";
 import { useNavigate } from "react-router-dom";
+import Loading from "../Loading";
 
 const AccountForm = (props: AccountFormProps): JSX.Element => {
   const { onBack } = props;
@@ -28,6 +29,7 @@ const AccountForm = (props: AccountFormProps): JSX.Element => {
 
   const [register] = useRegisterMutation();
 
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const email = useAppSelector(selectEmail);
   const password = useAppSelector(selectPassword);
   const [image, setImage] = useState<ImageType | undefined>(undefined);
@@ -38,25 +40,29 @@ const AccountForm = (props: AccountFormProps): JSX.Element => {
     firstName: string;
     lastName: string;
   }) => {
-    if (image && image.file) {
-      const formData = new FormData();
-      formData.append("file", image.file);
-      formData.append("email", email);
-      formData.append("password", password);
-      formData.append("firstName", values.firstName);
-      formData.append("lastName", values.lastName);
+    setIsLoading(true);
 
-      await register(formData)
-        .unwrap()
-        .then((response) => {
-          toast.success("Signup success");
-          navigate("/");
-          window.location.reload();
-        })
-        .catch((error) => {
-          toast.error(error.data.message);
-        });
+    const formData = new FormData();
+    if (image && image.file) {
+      formData.append("file", image.file);
     }
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("firstName", values.firstName);
+    formData.append("lastName", values.lastName);
+
+    await register(formData)
+      .unwrap()
+      .then((response) => {
+        setIsLoading(false);
+        toast.success("Signup success");
+        navigate("/");
+        window.location.reload();
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        toast.error(error.data.message);
+      });
   };
 
   const handleChange = (event: ChangeEvent<HTMLFormElement>) => {
@@ -73,46 +79,62 @@ const AccountForm = (props: AccountFormProps): JSX.Element => {
   });
 
   return (
-    <Formik
-      initialValues={{
-        firstName: firstName ? firstName : "",
-        lastName: lastName ? lastName : "",
-      }}
-      validationSchema={validationSchema}
-      onSubmit={handleSubmit}
-    >
-      <Form onChange={handleChange}>
-        <FormContainer>
-          <SingleImageInput
-            image={image}
-            sizing="mobile"
-            setImage={setImage}
-            style={{ width: "150px" }}
-          />
-          <FormikTextField
-            label="First Name"
-            name="firstName"
-            placeholder="Lumpia"
-            style={{ width: "100%" }}
-          />
-          <FormikTextField
-            label="Last Name"
-            name="lastName"
-            placeholder="Shanghai"
-            style={{ width: "100%" }}
-          />
-          <ButtonContainer>
-            <Button
-              text="Back"
-              variant="outline"
-              onClick={onBack}
-              style={{ flexGrow: "1" }}
+    <>
+      {isLoading && <Loading />}
+      <Formik
+        initialValues={{
+          firstName: firstName ? firstName : "",
+          lastName: lastName ? lastName : "",
+        }}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+      >
+        <Form onChange={handleChange}>
+          <FormContainer>
+            <SingleImageInput
+              image={image}
+              sizing="mobile"
+              setImage={setImage}
+              style={{ width: "150px" }}
             />
-            <Button type="submit" text="Test" />
-          </ButtonContainer>
-        </FormContainer>
-      </Form>
-    </Formik>
+            <FormikTextField
+              label="First Name"
+              name="firstName"
+              placeholder="Lumpia"
+              style={{ width: "100%" }}
+            />
+            <FormikTextField
+              label="Last Name"
+              name="lastName"
+              placeholder="Shanghai"
+              style={{ width: "100%" }}
+            />
+            <ButtonContainer>
+              {isLoading ? (
+                <>
+                  <Button
+                    text="Back"
+                    variant="disabled"
+                    style={{ flexGrow: "1" }}
+                  />
+                  <Button text="Sign Up" variant="disabled" />
+                </>
+              ) : (
+                <>
+                  <Button
+                    text="Back"
+                    variant="outline"
+                    onClick={onBack}
+                    style={{ flexGrow: "1" }}
+                  />
+                  <Button type="submit" text="Sign Up" />
+                </>
+              )}
+            </ButtonContainer>
+          </FormContainer>
+        </Form>
+      </Formik>
+    </>
   );
 };
 
