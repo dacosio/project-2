@@ -57,6 +57,7 @@ const DashboardView = (props: DashboardGeneratedProps) => {
     weatherData,
     onSelectedWeatherIndexWeather,
     selectedIndex,
+    handleOpenCard,
     setVisibility,
     visibility,
     choiceVisibility,
@@ -188,6 +189,7 @@ const DashboardView = (props: DashboardGeneratedProps) => {
               return (
                 <HarvestCard
                   key={idx}
+                  cropId={crop._id}
                   cropName={crop.cropName}
                   maxValue={maxValue}
                   value={daysPassed}
@@ -200,6 +202,7 @@ const DashboardView = (props: DashboardGeneratedProps) => {
                   height={width < 800 ? 85 : 120}
                   width={width < 800 ? 85 : 120}
                   mobile={width < 800 ? true : false}
+                  handleOpenCard={() => handleOpenCard(crop._id)}
                 />
               );
             })}

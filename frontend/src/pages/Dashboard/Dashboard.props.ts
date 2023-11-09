@@ -22,7 +22,8 @@ export interface DashboardGeneratedProps {
   onSetState: (state: string) => void;
   weatherData: { [key: string]: any };
   onSelectedWeatherIndexWeather: (value: number) => void;
-  selectedIndex: number;
+  selectedIndex : number;
+  handleOpenCard: (id: string) => void;
   visibility: boolean;
   setVisibility: Dispatch<SetStateAction<boolean>>;
   choiceVisibility: boolean;
