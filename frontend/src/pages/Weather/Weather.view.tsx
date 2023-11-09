@@ -110,6 +110,7 @@ const WeatherView = (props: WeatherGeneratedProps) => {
               ? weatherData.days[0].hours[selectedIndex].winddir
               : weatherData.days[selectedIndex].winddir
           }
+          collapseState={collapseState}
         ></Wind>
 
         <Precipitation
@@ -119,6 +120,7 @@ const WeatherView = (props: WeatherGeneratedProps) => {
               : weatherData.days[selectedIndex].precip
           }
           nextExpectedRainfall="monday"
+          collapseState={collapseState}
         ></Precipitation>
 
         <Humidity
@@ -132,10 +134,14 @@ const WeatherView = (props: WeatherGeneratedProps) => {
               ? weatherData.days[0].hours[selectedIndex].dew
               : weatherData.days[selectedIndex].dew
           }
+          collapseState={collapseState}
         ></Humidity>
 
         {weatherData.alerts.length > 0 ? (
-          <WeatherAlert alert={weatherData.alerts[0].headline}></WeatherAlert>
+          <WeatherAlert
+            alert={weatherData.alerts[0].headline}
+            collapseState={collapseState}
+          ></WeatherAlert>
         ) : (
           <WeatherTip
             condition={
@@ -143,6 +149,7 @@ const WeatherView = (props: WeatherGeneratedProps) => {
                 ? weatherData.days[0].hours[selectedIndex].conditions
                 : weatherData.days[selectedIndex].conditions
             }
+            collapseState={collapseState}
           ></WeatherTip>
         )}
       </BottomContainer>

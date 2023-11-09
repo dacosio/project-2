@@ -44,7 +44,8 @@ export const Container = styled.div<WeatherGeneratedStyleProps>`
 
 
    export const WindContainer = styled.div`
-   flex:0.25;`
+   flex:0.25;
+   `
 
    export const PrecipitationContainer = styled.div`
    flex:0.25;`

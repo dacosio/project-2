@@ -6,7 +6,7 @@ import Typography from "../Typography";
 import { Rain } from "../SVG";
 
 const Precipitation = (props: PrecipitationProps): JSX.Element => {
-  const { precip, nextExpectedRainfall } = props;
+  const { precip, nextExpectedRainfall, collapseState } = props;
 
   const generalStyle: CSSProperties = {
     fontSize: "14px",
@@ -28,7 +28,7 @@ const Precipitation = (props: PrecipitationProps): JSX.Element => {
     lineHeight: "25px",
   };
   return (
-    <Container>
+    <Container collapseState={collapseState}>
       <Typography
         variant="body"
         weight="700"

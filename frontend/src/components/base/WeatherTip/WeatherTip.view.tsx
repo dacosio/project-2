@@ -14,7 +14,7 @@ import {
 } from "../SVG";
 
 const WeatherTip = (props: WeatherTipProps): JSX.Element => {
-  const { condition, ...weatherTipProps } = props;
+  const { condition, collapseState, ...weatherTipProps } = props;
   let currentTip = "";
   let currentCondition = "";
   console.log(`Weather tip : ${condition}`);
@@ -36,31 +36,35 @@ const WeatherTip = (props: WeatherTipProps): JSX.Element => {
       "When covering your plants, weigh these covers so they can stay in place despite harsh winds.",
   };
 
-  if (condition.toLowerCase() === "clear".toLowerCase()) {
+  if (condition.toLowerCase().includes("clear".toLowerCase())) {
     currentCondition = "clear";
-  } else if (condition.toLowerCase() === "Partially cloudy".toLowerCase()) {
-    currentCondition = "partiallyCloudy";
-  } else if (condition.toLowerCase() === "Overcast".toLowerCase()) {
-    currentCondition = "overcast";
+  } else if (condition.toLowerCase().includes("Snow".toLowerCase())) {
+    currentCondition = "snow";
   } else if (
-    condition.toLowerCase() === "Rain".toLowerCase() ||
+    condition.toLowerCase().includes("Rain".toLowerCase()) ||
     condition.toLowerCase() === "rain, partially cloudy".toLowerCase() ||
     condition.toLowerCase() === "Rain, Overcast".toLowerCase()
   ) {
     currentCondition = "rain";
-  } else if (condition.toLowerCase() === "Thunderstorm".toLowerCase()) {
+  } else if (
+    condition.toLowerCase().includes("Partially cloudy".toLowerCase())
+  ) {
+    currentCondition = "partiallyCloudy";
+  } else if (condition.toLowerCase().includes("Overcast".toLowerCase())) {
+    currentCondition = "overcast";
+  } else if (condition.toLowerCase().includes("Thunderstorm".toLowerCase())) {
     currentCondition = "thunderStorm";
-  } else if (condition.toLowerCase() === "Snow".toLowerCase()) {
-    currentCondition = "snow";
-  } else if (condition.toLowerCase() === "Heavy Rain and Snow".toLowerCase()) {
+  } else if (
+    condition.toLowerCase().includes("Heavy Rain and Snow".toLowerCase())
+  ) {
     currentCondition = "snowRain";
   } else if (
-    condition.toLowerCase() === "Thunderstorm and rain".toLowerCase()
+    condition.toLowerCase().includes("Thunderstorm and rain".toLowerCase())
   ) {
     currentCondition = "thunderStormRain";
   }
   return (
-    <Container>
+    <Container collapseState={collapseState}>
       {" "}
       <TopContainer>
         <Typography

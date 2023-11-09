@@ -27,6 +27,8 @@ import {
   DashboardPrecipitationHumidityWindContainer,
   DashboardSVGContainer,
   DashboardLowHighMTContainer,
+  DashboardDateForecastContainer,
+  DashboardForecastContainer,
 } from "./CurrentWeather.style";
 import {
   Clear,
@@ -140,19 +142,19 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
                   {currentLocation}{" "}
                 </Typography>
               </AddressContainer>
-              <DateForecastContainer>
+              <DashboardDateForecastContainer>
                 <DateContainer>
                   {" "}
                   <Typography variant="body" textColor="white">
                     <CurrentDate />
                   </Typography>
                 </DateContainer>
-                <ForecastContainer>
+                <DashboardForecastContainer>
                   <Typography variant="body" textColor="white">
                     {forecast}
                   </Typography>
-                </ForecastContainer>
-              </DateForecastContainer>
+                </DashboardForecastContainer>
+              </DashboardDateForecastContainer>
               <DashboardTemperatureLowHighContainer>
                 <TemperatureContainer>
                   <Typography
