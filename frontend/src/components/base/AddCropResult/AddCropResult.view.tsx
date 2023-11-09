@@ -133,9 +133,11 @@ const AddCropResult = (props: AddCropResultProps): JSX.Element => {
             <>
               <div>
                 <div>
-                  <Typography variant="small">
-                    Our suggested crop is...
-                  </Typography>
+                  {suggested && (
+                    <Typography variant="small">
+                      Our suggested crop is...
+                    </Typography>
+                  )}
                   <Typography variant="title3" weight="700">
                     {crop.cropName}
                   </Typography>
