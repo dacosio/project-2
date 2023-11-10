@@ -34,28 +34,5 @@ overflow-y: hidden;
 
 border-radius: 20px;
 // border: 1px solid red;
-
-
-//  ::-webkit-scrollbar {
-//      display: none; 
-//   }
-  ::-webkit-scrollbar {
-    height: 4px;  
-    margin-top: 2rem;
-    
-  }
-
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1;  
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #888;  
-    border-radius: 2px;  
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555;  
-  }  
   
   `
