@@ -14,17 +14,20 @@ import Typography from "../../base/Typography";
 import Button from "../../base/Button";
 import { useTheme } from "../../../utils/Theme";
 import { Hidden, Visible } from "react-grid-system";
-import { Delete, Favorite } from "../../base/SVG";
+import { Add, Delete, Favorite } from "../../base/SVG";
 import CircleProgress from "./../../base/CircleProgress";
 import CropInformation from "../CropInformation";
 import PlantCropModal from "../PlantCropModal";
+import Modal from "../../../components/base/Modal";
 
 const CropDetail = (props: CropDetailProps): JSX.Element => {
-  const { crop, onConfirm, handleFavorite, handleOnDelete } = props;
+  const { crop, onConfirm, handleFavorite, onDelete } = props;
 
   const theme = useTheme();
 
   const [visibility, setVisibility] = useState<boolean>(false);
+  const [isDeleting, setIsDeleting] = useState<boolean>(false);
+  const [cropId, setCropId] = useState<string>("");
 
   const handleOpen = () => {
     setVisibility(true);
@@ -32,6 +35,26 @@ const CropDetail = (props: CropDetailProps): JSX.Element => {
 
   const handleConfirm = (isError: boolean) => {
     onConfirm(isError);
+  };
+
+  const handleOpenDelete = (cropId: string) => {
+    setCropId(cropId);
+    setIsDeleting(true);
+  };
+
+  const handleCloseDelete = () => {
+    setIsDeleting(false);
+    if (cropId) {
+      setCropId("");
+    }
+  };
+
+  const handleConfirmDelete = () => {
+    setIsDeleting(false);
+    if (cropId) {
+      setCropId("");
+      onDelete(cropId);
+    }
   };
 
   const getDate = (date: Date) => {
@@ -119,14 +142,19 @@ const CropDetail = (props: CropDetailProps): JSX.Element => {
                     />
                   )
                 ) : (
-                  <Button text="Plant Now" onClick={handleOpen} />
+                  <Button
+                    iconPosition="before"
+                    icon={<Add fill={theme.btn.text.white} />}
+                    text="Plant Now"
+                    onClick={handleOpen}
+                  />
                 )}
                 <Button
                   variant="outline"
                   iconPosition="before"
                   icon={<Delete fill={theme.btn.color.primary} />}
                   text="Delete"
-                  onClick={() => handleOnDelete(crop._id)}
+                  onClick={() => handleOpenDelete(crop._id)}
                 />
               </Hidden>
               <Visible xs sm md lg>
@@ -147,13 +175,17 @@ const CropDetail = (props: CropDetailProps): JSX.Element => {
                     />
                   )
                 ) : (
-                  <Button text="Plant Now" onClick={handleOpen} />
+                  <Button
+                    iconPosition="before"
+                    icon={<Add fill={theme.btn.text.white} />}
+                    onClick={handleOpen}
+                  />
                 )}
                 <Button
                   variant="outline"
                   iconPosition="before"
                   icon={<Delete fill={theme.btn.color.primary} />}
-                  onClick={() => handleOnDelete(crop._id)}
+                  onClick={() => handleOpenDelete(crop._id)}
                 />
               </Visible>
             </TitleRightContainer>
@@ -181,7 +213,9 @@ const CropDetail = (props: CropDetailProps): JSX.Element => {
                   <Typography variant="body" weight="700">
                     Estimated Yield
                   </Typography>
-                  <Typography variant="body">{crop.estimatedYield}</Typography>
+                  <Typography variant="body">
+                    {`${Number(crop.estimatedYield).toFixed(2)}g/m²`}
+                  </Typography>
                 </div>
               </DescriptionLeftContainer>
               <DescriptionRightContainer>
@@ -248,6 +282,37 @@ const CropDetail = (props: CropDetailProps): JSX.Element => {
         cropName={crop.cropName}
         onConfirm={handleConfirm}
       />
+      <Modal isOpen={isDeleting} onClose={handleCloseDelete}>
+        <div
+          style={{
+            padding: "64px 16px 16px 20px",
+            display: "grid",
+            gap: "16px",
+          }}
+        >
+          <div>
+            <Typography align="center" weight="700">
+              Are you sure you want to delete this crop?
+            </Typography>
+            <Typography align="center">You cannot undo this action.</Typography>
+          </div>
+          <div
+            style={{ display: "flex", gap: "10px", justifyContent: "center" }}
+          >
+            <Button
+              text="Cancel"
+              variant="outline"
+              onClick={handleCloseDelete}
+              style={{ width: "100px" }}
+            />
+            <Button
+              text="Delete"
+              onClick={handleConfirmDelete}
+              style={{ width: "100px" }}
+            />
+          </div>
+        </div>
+      </Modal>
     </>
   );
 };
