@@ -162,39 +162,92 @@ const Weather = (): JSX.Element => {
   };
 
   const collapseState = useAppSelector(selectCollapse);
-  return (
-    <>
-      {selectedAddress &&
-      weatherData &&
-      weatherData.days &&
-      weatherData.days.length > 0 ? (
-        <WeatherView
-          currentLocation={selectedAddress}
-          forecast={weatherData.currentConditions.conditions}
-          currentTemperature={weatherData.currentConditions.temp}
-          lowTemperature={weatherData.days[0]?.tempmin}
-          highTemperature={weatherData.days[0]?.tempmax}
-          precipitation={weatherData.currentConditions.precip}
-          humidity={weatherData.currentConditions.humidity}
-          wind={weatherData.currentConditions.windspeed}
-          gradientColor1={gradientColor1}
-          gradientColor2={gradientColor2}
-          currentCondition={currentCondition}
-          page="weather"
-          onSelectedSearchLocationWeather={handleSelectedSearchLocation}
-          MOCK_OPTIONS={MOCK_OPTIONS}
-          state={state}
-          onSetState={handleSetState}
-          weatherData={weatherData}
-          onSelectedWeatherIndexWeather={handleSelectedWeatherIndex}
-          selectedIndex={selectedIndex}
-          collapseState={collapseState}
-        />
-      ) : (
-        <Loading />
-      )}
-    </>
-  );
+
+  const page = "weather";
+
+  let generatedProps = {
+    currentLocation: selectedAddress,
+    forecast: "Test Forecast",
+    currentTemperature: 0,
+    lowTemperature: 0,
+    highTemperature: 0,
+    precipitation: 0,
+    humidity: 0,
+    wind: 0,
+    gradientColor1: gradientColor1,
+    gradientColor2: gradientColor2,
+    currentCondition: currentCondition,
+    page: page,
+    onSelectedSearchLocationWeather: handleSelectedSearchLocation,
+    MOCK_OPTIONS: MOCK_OPTIONS,
+    state: state,
+    onSetState: handleSetState,
+    weatherData: weatherData,
+    onSelectedWeatherIndexWeather: handleSelectedWeatherIndex,
+    selectedIndex: selectedIndex,
+    collapseState: collapseState,
+  };
+  if (
+    selectedAddress &&
+    weatherData &&
+    weatherData.days &&
+    weatherData.days.length > 0
+  ) {
+    generatedProps = {
+      currentLocation: selectedAddress,
+      forecast: weatherData.currentConditions.conditions,
+      currentTemperature: weatherData.currentConditions.temp,
+      lowTemperature: weatherData.days[0]?.tempmin,
+      highTemperature: weatherData.days[0]?.tempmax,
+      precipitation: weatherData.currentConditions.precip,
+      humidity: weatherData.currentConditions.humidity,
+      wind: weatherData.currentConditions.windspeed,
+      gradientColor1: gradientColor1,
+      gradientColor2: gradientColor2,
+      currentCondition: currentCondition,
+      page: page,
+      onSelectedSearchLocationWeather: handleSelectedSearchLocation,
+      MOCK_OPTIONS: MOCK_OPTIONS,
+      state: state,
+      onSetState: handleSetState,
+      weatherData: weatherData,
+      onSelectedWeatherIndexWeather: handleSelectedWeatherIndex,
+      selectedIndex: selectedIndex,
+      collapseState: collapseState,
+    };
+  }
+  return <WeatherView {...generatedProps} />;
+  // <>
+  //   {selectedAddress &&
+  //   weatherData &&
+  //   weatherData.days &&
+  //   weatherData.days.length > 0 ? (
+  //     <WeatherView
+  //       currentLocation={selectedAddress}
+  //       forecast={weatherData.currentConditions.conditions}
+  //       currentTemperature={weatherData.currentConditions.temp}
+  //       lowTemperature={weatherData.days[0]?.tempmin}
+  //       highTemperature={weatherData.days[0]?.tempmax}
+  //       precipitation={weatherData.currentConditions.precip}
+  //       humidity={weatherData.currentConditions.humidity}
+  //       wind={weatherData.currentConditions.windspeed}
+  //       gradientColor1={gradientColor1}
+  //       gradientColor2={gradientColor2}
+  //       currentCondition={currentCondition}
+  //       page="weather"
+  //       onSelectedSearchLocationWeather={handleSelectedSearchLocation}
+  //       MOCK_OPTIONS={MOCK_OPTIONS}
+  //       state={state}
+  //       onSetState={handleSetState}
+  //       weatherData={weatherData}
+  //       onSelectedWeatherIndexWeather={handleSelectedWeatherIndex}
+  //       selectedIndex={selectedIndex}
+  //       collapseState={collapseState}
+  //     />
+  //   ) : (
+  //     <Loading />
+  //   )}
+  // </>;
 };
 
 export default Weather;

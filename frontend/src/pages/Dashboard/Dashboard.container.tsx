@@ -27,11 +27,11 @@ const Dashboard = (): JSX.Element => {
     dispatch(storeCity(""));
   }, []);
 
-  const generatedProps = {
-    crops: data,
-    isLoading,
-    // generated props here
-  };
+  // const generatedProps = {
+  //   crops: data,
+  //   isLoading,
+  //   generated props here
+  // };
 
   const navigate = useNavigate();
   const [weatherData, setWeatherData] = useState<{ [key: string]: any }>({});
@@ -224,51 +224,127 @@ const Dashboard = (): JSX.Element => {
   };
 
   const collapseState = useAppSelector(selectCollapse);
+  const page = "dashboard";
 
-  return (
-    <>
-      {selectedAddress &&
-      weatherData &&
-      weatherData.days &&
-      weatherData.days.length > 0 ? (
-        <DashboardView
-          crops={data}
-          isLoading={isLoading}
-          currentLocation={selectedAddress}
-          forecast={weatherData.currentConditions.conditions}
-          currentTemperature={weatherData.currentConditions.temp}
-          lowTemperature={weatherData.days[0]?.tempmin}
-          highTemperature={weatherData.days[0]?.tempmax}
-          precipitation={weatherData.currentConditions.precip}
-          humidity={weatherData.currentConditions.humidity}
-          wind={weatherData.currentConditions.windspeed}
-          gradientColor1={gradientColor1}
-          gradientColor2={gradientColor2}
-          currentCondition={currentCondition}
-          page="weather"
-          onSelectedSearchLocationWeather={handleSelectedSearchLocation}
-          MOCK_OPTIONS={MOCK_OPTIONS}
-          state={state}
-          onSetState={handleSetState}
-          weatherData={weatherData}
-          onSelectedWeatherIndexWeather={handleSelectedWeatherIndex}
-          selectedIndex={selectedIndex}
-          handleOpenCard={handleOpenCard}
-          visibility={visibility}
-          setVisibility={setVisibility}
-          suggestionVisibility={suggestionVisibility}
-          setSuggestionVisibility={setSuggestionVisibility}
-          choiceVisibility={choiceVisibility}
-          setChoiceVisibility={setChoiceVisibility}
-          handleLater={handleLater}
-          handleNow={handleNow}
-          collapseState={collapseState}
-        />
-      ) : (
-        <Loading />
-      )}
-    </>
-  );
+  let generatedProps = {
+    crops: data,
+    isLoading: isLoading,
+    currentLocation: selectedAddress,
+    forecast: "Test Forecast",
+    currentTemperature: 0,
+    lowTemperature: 0,
+    highTemperature: 0,
+    precipitation: 0,
+    humidity: 0,
+    wind: 0,
+    gradientColor1: gradientColor1,
+    gradientColor2: gradientColor2,
+    currentCondition: currentCondition,
+    page,
+    onSelectedSearchLocationWeather: handleSelectedSearchLocation,
+    MOCK_OPTIONS: MOCK_OPTIONS,
+    state: state,
+    onSetState: handleSetState,
+    weatherData: weatherData,
+    onSelectedWeatherIndexWeather: handleSelectedWeatherIndex,
+    selectedIndex: selectedIndex,
+    handleOpenCard: handleOpenCard,
+    visibility: visibility,
+    setVisibility: setVisibility,
+    suggestionVisibility: suggestionVisibility,
+    setSuggestionVisibility: setSuggestionVisibility,
+    choiceVisibility: choiceVisibility,
+    setChoiceVisibility: setChoiceVisibility,
+    handleLater: handleLater,
+    handleNow: handleNow,
+    collapseState: collapseState,
+  };
+  if (
+    selectedAddress &&
+    weatherData &&
+    weatherData.days &&
+    weatherData.days.length > 0
+  ) {
+    generatedProps = {
+      crops: data,
+      isLoading: isLoading,
+      currentLocation: selectedAddress,
+      forecast: weatherData.currentConditions.conditions,
+      currentTemperature: weatherData.currentConditions.temp,
+      lowTemperature: weatherData.days[0]?.tempmin,
+      highTemperature: weatherData.days[0]?.tempmax,
+      precipitation: weatherData.currentConditions.precip,
+      humidity: weatherData.currentConditions.humidity,
+      wind: weatherData.currentConditions.windspeed,
+      gradientColor1: gradientColor1,
+      gradientColor2: gradientColor2,
+      currentCondition: currentCondition,
+      page,
+      onSelectedSearchLocationWeather: handleSelectedSearchLocation,
+      MOCK_OPTIONS: MOCK_OPTIONS,
+      state: state,
+      onSetState: handleSetState,
+      weatherData: weatherData,
+      onSelectedWeatherIndexWeather: handleSelectedWeatherIndex,
+      selectedIndex: selectedIndex,
+      handleOpenCard: handleOpenCard,
+      visibility: visibility,
+      setVisibility: setVisibility,
+      suggestionVisibility: suggestionVisibility,
+      setSuggestionVisibility: setSuggestionVisibility,
+      choiceVisibility: choiceVisibility,
+      setChoiceVisibility: setChoiceVisibility,
+      handleLater: handleLater,
+      handleNow: handleNow,
+      collapseState: collapseState,
+    };
+  }
+
+  return <DashboardView {...generatedProps} />;
+  // (
+  //   <>
+  //     {selectedAddress &&
+  //     weatherData &&
+  //     weatherData.days &&
+  //     weatherData.days.length > 0 ? (
+  //       <DashboardView
+  //         crops={data}
+  //         isLoading={isLoading}
+  //         currentLocation={selectedAddress}
+  //         forecast={weatherData.currentConditions.conditions}
+  //         currentTemperature={weatherData.currentConditions.temp}
+  //         lowTemperature={weatherData.days[0]?.tempmin}
+  //         highTemperature={weatherData.days[0]?.tempmax}
+  //         precipitation={weatherData.currentConditions.precip}
+  //         humidity={weatherData.currentConditions.humidity}
+  //         wind={weatherData.currentConditions.windspeed}
+  //         gradientColor1={gradientColor1}
+  //         gradientColor2={gradientColor2}
+  //         currentCondition={currentCondition}
+  //         page="weather"
+  //         onSelectedSearchLocationWeather={handleSelectedSearchLocation}
+  //         MOCK_OPTIONS={MOCK_OPTIONS}
+  //         state={state}
+  //         onSetState={handleSetState}
+  //         weatherData={weatherData}
+  //         onSelectedWeatherIndexWeather={handleSelectedWeatherIndex}
+  //         selectedIndex={selectedIndex}
+  //         handleOpenCard={handleOpenCard}
+  //         visibility={visibility}
+  //         setVisibility={setVisibility}
+  //         suggestionVisibility={suggestionVisibility}
+  //         setSuggestionVisibility={setSuggestionVisibility}
+  //         choiceVisibility={choiceVisibility}
+  //         setChoiceVisibility={setChoiceVisibility}
+  //         handleLater={handleLater}
+  //         handleNow={handleNow}
+  //         collapseState={collapseState}
+  //       />
+  //     ) : (
+  //       <Loading />
+  //     )}
+  //   </>
+  // );
 };
 
 export default Dashboard;

@@ -87,44 +87,51 @@ const DashboardView = (props: DashboardGeneratedProps) => {
 
   return (
     <Wrapper collapseState={collapseState}>
-      <Top>
-        <Weather md={6}>
-          <CurrentWeather
-            currentLocation={currentLocation}
-            forecast={forecast}
-            currentTemperature={currentTemperature}
-            lowTemperature={lowTemperature}
-            highTemperature={highTemperature}
-            precipitation={precipitation}
-            humidity={humidity}
-            wind={wind}
-            gradientColor1={gradientColor1}
-            gradientColor2={gradientColor2}
-            currentCondition={currentCondition}
-            page="dashboard"
-            onSelectedSearchLocation={handleSelectedSearchLocation}
-            collapseState={collapseState}
-          />
-        </Weather>
-        <Segment md={6}>
-          <SegmentedControl
-            options={MOCK_OPTIONS}
-            selectedOption={state}
-            onClickControl={(value: string) => {
-              console.log(value);
-              onSetState(value);
-            }}
-          />
-          <HourlyDaily
-            weatherDataArray={
-              state === MOCK_OPTIONS[0] ? weatherData.days[0] : weatherData
-            }
-            state={state}
-            onSelectedWeatherIndex={handleSelectedWeatherIndex}
-            index={selectedIndex}
-          ></HourlyDaily>
-        </Segment>
-      </Top>
+      {currentLocation &&
+      weatherData &&
+      weatherData.days &&
+      weatherData.days.length > 0 ? (
+        <Top>
+          <Weather md={6}>
+            <CurrentWeather
+              currentLocation={currentLocation}
+              forecast={forecast}
+              currentTemperature={currentTemperature}
+              lowTemperature={lowTemperature}
+              highTemperature={highTemperature}
+              precipitation={precipitation}
+              humidity={humidity}
+              wind={wind}
+              gradientColor1={gradientColor1}
+              gradientColor2={gradientColor2}
+              currentCondition={currentCondition}
+              page="dashboard"
+              onSelectedSearchLocation={handleSelectedSearchLocation}
+              collapseState={collapseState}
+            />
+          </Weather>
+          <Segment md={6}>
+            <SegmentedControl
+              options={MOCK_OPTIONS}
+              selectedOption={state}
+              onClickControl={(value: string) => {
+                console.log(value);
+                onSetState(value);
+              }}
+            />
+            <HourlyDaily
+              weatherDataArray={
+                state === MOCK_OPTIONS[0] ? weatherData.days[0] : weatherData
+              }
+              state={state}
+              onSelectedWeatherIndex={handleSelectedWeatherIndex}
+              index={selectedIndex}
+            ></HourlyDaily>
+          </Segment>
+        </Top>
+      ) : (
+        <Loading />
+      )}
       <Middle>
         <Title>
           <Typography variant="title3" weight="700">

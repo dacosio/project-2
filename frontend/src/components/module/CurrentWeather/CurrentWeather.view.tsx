@@ -231,7 +231,7 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
                     Precipitation
                   </Typography>{" "}
                   <Typography variant="body" textColor="white">
-                    {precipitation}%
+                    {precipitation}mm
                   </Typography>{" "}
                 </DashboardPrecipitationContainer>
                 <DashboardHumidityContainer>
