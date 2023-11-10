@@ -19,7 +19,7 @@ export const Container = styled.div<HumidityStyleProps>`
     @media screen and (max-width: 768px) {
       width: 94%;
       height:254px;
-      align-items: center;
+      // align-items: center;
       // padding: 32px 32px;
      }
  

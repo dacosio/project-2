@@ -7,6 +7,9 @@ export const Wrapper = styled(Container)<DashboardGeneratedStyleProps>`
   width:88vw;
   margin: 32px auto;
   padding: 0 16px;
+//   ::-webkit-scrollbar {
+//     display: none; 
+//  }
 
   @media screen and (min-width: 993px) and  (max-width: 1436px){
     width: ${({ collapseState }) => collapseState ? "88vw" : "calc(88vw - 200px)"};

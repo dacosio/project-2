@@ -12,6 +12,10 @@ export const Container = styled.div<WeatherGeneratedStyleProps>`
    display:flex;
    flex-direction: column;
    row-gap: 2rem;
+//    ::-webkit-scrollbar {
+//     display: none; 
+//  }
+
 
    @media screen and (min-width: 993px) and  (max-width: 1360px){
     width: ${({ collapseState }) => collapseState ? "80vw" : "calc(80vw - 150px)"};

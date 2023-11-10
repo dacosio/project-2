@@ -13,6 +13,7 @@ border: 1px solid ${({ theme }) => theme.neutral.n20};
 border-radius: 24px;
 padding:1rem;
 row-gap:2rem;
+background : ${({ theme }) => theme.neutral.n0};
 
 
 `
@@ -35,9 +36,9 @@ border-radius: 20px;
 // border: 1px solid red;
 
 
-// ::-webkit-scrollbar {
-//     display: none; 
-  }
+//  ::-webkit-scrollbar {
+//      display: none; 
+//   }
   ::-webkit-scrollbar {
     height: 4px;  
     margin-top: 2rem;
