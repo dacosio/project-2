@@ -33,7 +33,7 @@ export const Header = styled.div`
   }
 `;
 
-export const SingupForm = styled.form`
+export const SingupForm = styled.div`
   padding: 0 1rem 2rem 1rem;
   flex-grow: 1;
   display: flex;
@@ -43,15 +43,6 @@ export const SingupForm = styled.form`
   @media (min-width: 768px) {
     padding: 4rem 2rem 2rem 2rem;
   }
-`;
-
-export const SingupDetails = styled.form`
-  padding: 0 1rem 2rem 1rem;
-  flex-grow: 1;
-  display: flex;
-  flex-flow: column;
-  gap: 1rem;
-  justify-content: center;
 `;
 
 export const Option = styled.div`
