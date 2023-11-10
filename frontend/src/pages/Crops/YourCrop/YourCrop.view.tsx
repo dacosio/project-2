@@ -90,7 +90,7 @@ const YourCropView = (props: YourCropGeneratedProps) => {
                   crop={crop}
                   onConfirm={handlePlant}
                   handleFavorite={handleFavorite}
-                  handleOnDelete={handleOnDelete}
+                  onDelete={handleOnDelete}
                 />
               </Hidden>
               <Visible xs sm>
@@ -104,7 +104,7 @@ const YourCropView = (props: YourCropGeneratedProps) => {
                     crop={crop}
                     onConfirm={handlePlant}
                     handleFavorite={handleFavorite}
-                    handleOnDelete={handleOnDelete}
+                    onDelete={handleOnDelete}
                   />
                 </MobileDrawer>
               </Visible>
