@@ -1,10 +1,19 @@
 import styled from "@emotion/styled";
 import { Col, Container, Row } from "react-grid-system";
+import { DashboardGeneratedStyleProps } from "./Dashboard.props";
 
-export const Wrapper = styled(Container)`
+export const Wrapper = styled(Container)<DashboardGeneratedStyleProps>`
   max-width: 1021px;
+  width:88vw;
   margin: 32px auto;
   padding: 0 16px;
+//   ::-webkit-scrollbar {
+//     display: none; 
+//  }
+
+  @media screen and (min-width: 993px) and  (max-width: 1436px){
+    width: ${({ collapseState }) => collapseState ? "88vw" : "calc(88vw - 200px)"};
+}  
 `;
 
 export const Top = styled(Row)`

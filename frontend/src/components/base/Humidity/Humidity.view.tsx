@@ -7,7 +7,7 @@ import CircleProgress from "../CircleProgress";
 import CircleProgressHumidity from "../CircleProgressHumidity";
 
 const Humidity = (props: HumidityProps): JSX.Element => {
-  const { humidity, dew, ...rest } = props;
+  const { humidity, dew, collapseState, ...rest } = props;
   const height = 130;
   const width = 130;
 
@@ -18,7 +18,7 @@ const Humidity = (props: HumidityProps): JSX.Element => {
   };
 
   return (
-    <Container>
+    <Container collapseState={collapseState}>
       {" "}
       <Typography
         variant="body"

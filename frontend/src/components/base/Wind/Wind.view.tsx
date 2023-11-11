@@ -13,7 +13,7 @@ import Typography from "../Typography";
 import { WindCompass } from "../SVG";
 
 const Wind = (props: WindProps): JSX.Element => {
-  const { windSpeed, gustSpeed, windDirection } = props;
+  const { windSpeed, gustSpeed, windDirection, collapseState } = props;
 
   const generalStyle: CSSProperties = {
     fontSize: "14px",
@@ -28,7 +28,7 @@ const Wind = (props: WindProps): JSX.Element => {
     lineHeight: "46px",
   };
   return (
-    <Container>
+    <Container windDirection={windDirection} collapseState={collapseState}>
       <Typography
         variant="body"
         weight="600"
@@ -86,8 +86,12 @@ const Wind = (props: WindProps): JSX.Element => {
           </GustContainer>
         </LeftContainer>
         <RightContainer>
-          <WindCompass width={94} height={100}></WindCompass>
-          <Arrow windDirection={windDirection}></Arrow>
+          <WindCompass width={122} height={136}></WindCompass>
+          {/* <WindCompass width={150} height={140}></WindCompass> */}
+          <Arrow
+            windDirection={windDirection}
+            collapseState={collapseState}
+          ></Arrow>
         </RightContainer>
       </ContentContainer>
     </Container>
