@@ -9,43 +9,87 @@ import {
   Logo,
 } from "./HomeNavigation.style";
 import Hamburger from "../../base/Hamburger";
-import MobileNavBackground from "../../base/MobileNavBackground";
 import Button from "../../base/Button";
 import { useMediaQuery } from "../../../utils/hooks/useMediaQuery";
 import HomeNavigationMobile from "../HomeNavigationMobile";
 import SignupModal from "../../base/SignupModal";
 import LoginModal from "../../base/LoginModal";
 import { SproutLogo } from "../../base/SVG";
-import { Link } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const HomeNavigation = (props: HomeNavigationProps): JSX.Element => {
   const [open, setOpen] = useState(false);
-
   const matches = useMediaQuery("(min-width: 992px)");
+  const location = useLocation();
 
   return (
     <Container>
       <Nav>
         <Hamburger open={open} toggleOpen={() => setOpen(!open)} />
         <NavOptions>
-          <Link to={"/"}>
+          <NavLink to="/">
             <SproutLogo width={matches ? 200 : 99} />
-          </Link>
+          </NavLink>
           <ul>
             <li>
-              <Link to="/#header">Home</Link>
+              <NavLink
+                to="/#header"
+                className={
+                  location.pathname === "/#header"
+                    ? "active-link"
+                    : "inactive-link"
+                }
+              >
+                Home
+              </NavLink>
             </li>
             <li>
-              <Link to="/#about">About</Link>
+              <NavLink
+                to="/#about"
+                className={
+                  location.pathname === "/#about"
+                    ? "active-link"
+                    : "inactive-link"
+                }
+              >
+                About
+              </NavLink>
             </li>
             <li>
-              <Link to="/#features">Features</Link>
+              <NavLink
+                to="/#features"
+                className={
+                  location.pathname === "/#features"
+                    ? "active-link"
+                    : "inactive-link"
+                }
+              >
+                Features
+              </NavLink>
             </li>
             <li>
-              <Link to="/team">Team</Link>
+              <NavLink
+                to="/team"
+                className={
+                  location.pathname === "/team"
+                    ? "active-link"
+                    : "inactive-link"
+                }
+              >
+                Team
+              </NavLink>
             </li>
             <li>
-              <Link to="/#contact">Contact</Link>
+              <NavLink
+                to="/#contact"
+                className={
+                  location.pathname === "/#contact"
+                    ? "active-link"
+                    : "inactive-link"
+                }
+              >
+                Contact
+              </NavLink>
             </li>
           </ul>
         </NavOptions>
@@ -55,7 +99,6 @@ const HomeNavigation = (props: HomeNavigationProps): JSX.Element => {
         </LoginOptions>
       </Nav>
       <HomeNavigationMobile open={open} />
-      <MobileNavBackground open={open} toggleOpen={() => setOpen(!open)} />
     </Container>
   );
 };

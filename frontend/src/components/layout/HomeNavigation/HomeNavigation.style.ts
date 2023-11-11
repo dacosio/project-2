@@ -34,6 +34,14 @@ export const NavOptions = styled.div`
     display: none;
     padding-left: 0;
   }
+  .active-link {
+    color: #6C57ED;
+  }
+  
+  .inactive-link {
+    color: #57cb62;
+  }
+  
   @media (min-width: 768px) {
     display: flex;
     gap: 2rem;
@@ -42,13 +50,6 @@ export const NavOptions = styled.div`
       list-style: none;
       display: flex;
       gap: 2rem;
-    }
-    a {
-      text-decoration: none;
-      color: #57cb62;
-    }
-    a:hover {
-      color: #1DAEFF;
     }
   }
 `;
@@ -71,3 +72,5 @@ export const Hidebutton = styled.div`
 export const Logo = styled.a`
   display: flex;
 `;
+
+
