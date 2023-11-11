@@ -5,4 +5,5 @@ export interface CropDetailProps {
   onConfirm: (isError: boolean) => void;
   handleFavorite: (id: string, isFavorite: boolean) => void;
   onDelete: (id: string) => void;
+  setIsModalVisible: (newvalue: boolean) => void;
 }

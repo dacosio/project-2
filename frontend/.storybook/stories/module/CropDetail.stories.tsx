@@ -61,7 +61,8 @@ const meta: Meta<typeof CropDetail> = {
               crop={crop}
               onConfirm={() => null}
               handleFavorite={() => null}
-              handleOnDelete={() => null}
+              onDelete={() => null}
+              setIsModalVisible={() => null}
             />
           </div>
         </Provider>

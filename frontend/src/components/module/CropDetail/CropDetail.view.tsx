@@ -21,7 +21,8 @@ import PlantCropModal from "../PlantCropModal";
 import Modal from "../../../components/base/Modal";
 
 const CropDetail = (props: CropDetailProps): JSX.Element => {
-  const { crop, onConfirm, handleFavorite, onDelete } = props;
+  const { crop, onConfirm, handleFavorite, onDelete, setIsModalVisible } =
+    props;
 
   const theme = useTheme();
 
@@ -31,6 +32,7 @@ const CropDetail = (props: CropDetailProps): JSX.Element => {
 
   const handleOpen = () => {
     setVisibility(true);
+    setIsModalVisible(true);
   };
 
   const handleConfirm = (isError: boolean) => {
@@ -281,6 +283,7 @@ const CropDetail = (props: CropDetailProps): JSX.Element => {
         cropId={crop._id}
         cropName={crop.cropName}
         onConfirm={handleConfirm}
+        setIsModalVisible={setIsModalVisible}
       />
       <Modal isOpen={isDeleting} onClose={handleCloseDelete}>
         <div
