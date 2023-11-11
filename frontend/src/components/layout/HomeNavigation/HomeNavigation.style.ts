@@ -2,12 +2,11 @@ import styled from "@emotion/styled";
 import { theme } from "../../../utils/Theme";
 import Button from "../../base/Button";
 
-
 export const Container = styled.div`
   position: fixed;
   width: 100%;
   z-index: 1000;
-  top:0;
+  top: 0;
 `;
 
 export const Nav = styled.nav`
@@ -38,17 +37,18 @@ export const NavOptions = styled.div`
     text-decoration: none;
     color: #57cb62;
   }
-  a:hover{
-    color: #1DAEFF;
+  a:hover {
+    color: #1daeff;
   }
   .active-link {
-    color: #6C57ED;
+    color: #6c57ed;
+    font-weight: bold;
   }
-  
+
   .inactive-link {
     color: #57cb62;
   }
-  
+
   @media (min-width: 768px) {
     display: flex;
     gap: 2rem;
@@ -79,5 +79,3 @@ export const Hidebutton = styled.div`
 export const Logo = styled.a`
   display: flex;
 `;
-
-
