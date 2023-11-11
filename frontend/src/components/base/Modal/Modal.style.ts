@@ -20,7 +20,7 @@ export const ModalOverlay = styled.div`
   width: 100%;
   height: 100%;
   background-color: ${theme.neutral.n70};
-  opacity: 80%;
+  opacity: 70%;
   cursor: pointer;
 `;
 
