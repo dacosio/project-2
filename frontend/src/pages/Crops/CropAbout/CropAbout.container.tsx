@@ -27,6 +27,7 @@ const CropAbout = (): JSX.Element => {
   const [visibility, setVisibility] = useState<boolean>(false);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
   // city -> hit predict endpoint
   // const estimatedYield
 
@@ -77,6 +78,7 @@ const CropAbout = (): JSX.Element => {
     visibility,
     setVisibility,
     handlePlant,
+    setIsModalVisible,
   };
   return <CropAboutView {...generatedProps} />;
 };
