@@ -22,7 +22,7 @@ export const Container = styled.button<{ active: boolean }>`
   transition: transform 0.5s;
   transform: scale(${(props) => (props.active ? 1.14 : 1)}); 
   z-index: ${(props) => (props.active ? 2 : 0)};
-
+  box-shadow: ${(props) => (props.active ? `3px 3px 3px ${theme.neutral.n30}` : 0)};
 
   
 

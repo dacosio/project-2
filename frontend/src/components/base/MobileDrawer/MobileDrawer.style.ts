@@ -2,11 +2,27 @@ import styled from "@emotion/styled";
 import Drawer from "react-modern-drawer";
 import { theme } from "../../../utils/Theme";
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  .EZDrawer__container.modal-active {
+    height: 100vh !important;
+  }
+
+  .header-display {
+    position: relative;
+    z-index: 0;
+  }
+
+  .modal-overlay {
+    > div:last-of-type > div {
+      max-height: 100vh;
+    }
+  }
+`;
 
 export const DrawerContainer = styled(Drawer)`
   display: flex;
   border-radius: 20px 20px 0 0;
+
 `;
 
 export const InnerDrawer = styled.div`
@@ -15,13 +31,13 @@ export const InnerDrawer = styled.div`
   > div:last-of-type > div {
     max-height: 85vh;
     overflow: auto;
-    padding: 0 16px;
   }
 `;
 
 export const Body = styled.div`
-  padding: 3rem 0 2rem 0;
+  padding: 3rem 1rem 2rem 1rem;
 `;
+
 export const Header = styled.div`
   display: flex;
   align-items: center;

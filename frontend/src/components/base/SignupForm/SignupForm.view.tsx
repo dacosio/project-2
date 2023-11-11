@@ -1,16 +1,36 @@
-import React, { useEffect, useState } from "react";
+import React, { ChangeEvent } from "react";
 import { SignupFormProps } from "./SignupForm.props";
 import { Container, FormStyle } from "./SignupForm.style";
-import TextField from "../TextField";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import FormikTextField from "../FormikTextField";
-import { useAppSelector } from "app/hooks";
-import { selectForwardEmail } from "features/authModal/authModalSlice";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import {
+  selectConfirmPassword,
+  selectEmail,
+  selectPassword,
+  storeConfirmPassword,
+  storeEmail,
+  storePassword,
+} from "../../../features/authModal/authModalSlice";
 
 const SignupForm = (props: SignupFormProps): JSX.Element => {
-  const handleOnSubtmit = (values: { email: string }) => {
-    console.log("Values: ", values);
+  const dispatch = useAppDispatch();
+
+  const handleSubmit = (values: {
+    email: string;
+    password: string;
+    confirmPassword: string;
+  }) => {};
+
+  const handleChange = (event: ChangeEvent<HTMLFormElement>) => {
+    if (event.target.name === "email") {
+      dispatch(storeEmail(event.target.value));
+    } else if (event.target.name === "password") {
+      dispatch(storePassword(event.target.value));
+    } else if (event.target.name === "confirmPassword") {
+      dispatch(storeConfirmPassword(event.target.value));
+    }
   };
 
   const validationSchema = Yup.object({
@@ -18,23 +38,26 @@ const SignupForm = (props: SignupFormProps): JSX.Element => {
       .email("Invalid email format")
       .required("Your email is required"),
     password: Yup.string().required("Your password is required"),
-    confirmPassword: Yup.string().oneOf(
-      [Yup.ref("password"), ""],
-      "Your password does not match"
-    ),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref("password"), ""], "Your password does not match")
+      .required("Your confirm password is required"),
   });
 
-  const forwardedEmail = useAppSelector(selectForwardEmail);
+  const email = useAppSelector(selectEmail);
+  const password = useAppSelector(selectPassword);
+  const confirmPassword = useAppSelector(selectConfirmPassword);
 
   return (
     <Formik
       initialValues={{
-        email: forwardedEmail ? forwardedEmail : "",
-        password: "",
+        email: email ? email : "",
+        password: password ? password : "",
+        confirmPassword: confirmPassword ? confirmPassword : "",
       }}
       validationSchema={validationSchema}
-      onSubmit={handleOnSubtmit}>
-      <Form>
+      onSubmit={handleSubmit}
+    >
+      <Form onChange={handleChange}>
         <FormStyle>
           <FormikTextField
             label="Email"

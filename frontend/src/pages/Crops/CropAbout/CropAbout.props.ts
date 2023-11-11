@@ -43,4 +43,5 @@ export interface CropAboutProps {
     visibility: boolean;
     setVisibility: Dispatch<SetStateAction<boolean>>;
     handlePlant: (isError: boolean) => void;
+    setIsModalVisible: (newvalue: boolean) => void;
 }

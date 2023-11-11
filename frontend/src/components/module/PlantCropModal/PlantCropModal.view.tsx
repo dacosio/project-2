@@ -34,6 +34,7 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
     cropName,
     onLoading = () => null,
     onConfirm,
+    setIsModalVisible,
   } = props;
 
   const dispatch = useAppDispatch();
@@ -48,6 +49,7 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
 
   const handleClose = () => {
     setVisibility(false);
+    setIsModalVisible(false);
   };
 
   const handleConfirm = async () => {
@@ -108,6 +110,7 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
     }
     setIsLoading(false);
     onLoading(false);
+    setIsModalVisible(false);
   };
 
   return (

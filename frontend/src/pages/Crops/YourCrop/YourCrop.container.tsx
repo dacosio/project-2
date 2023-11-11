@@ -29,6 +29,7 @@ const YourCrop = (): JSX.Element => {
   const [suggestionVisibility, setSuggestionVisibility] =
     useState<boolean>(false);
   const [isOpenDrawer, setIsOpenDrawer] = useState<boolean>(false);
+  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 
   const [favorite] = useFavoriteMutation();
   const [removeCrop] = useRemoveCropMutation();
@@ -178,6 +179,8 @@ const YourCrop = (): JSX.Element => {
     handleOnDelete,
     handleDrawerOpen,
     handleDrawerClose,
+    isModalVisible,
+    setIsModalVisible,
   };
   return <YourCropView {...generatedProps} />;
 };

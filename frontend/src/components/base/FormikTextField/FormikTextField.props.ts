@@ -9,6 +9,6 @@ export interface FormikTextFieldProps
   alert?: string;
   prefix?: string;
   name: string;
-  labelVariant?: Variants 
-  labelWeight: string;
+  labelVariant?: Variants;
+  labelWeight?: string;
 }

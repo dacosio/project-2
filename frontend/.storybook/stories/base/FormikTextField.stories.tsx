@@ -10,7 +10,7 @@ import * as Yup from "yup";
 const meta: Meta<typeof FormikTextField> = {
   title: "Base/FormikTextField",
   component: () => {
-    const handleOnSubtmit = (values: { email: string }) => {
+    const handleOnSubtmit = (values: { email: string; password: string }) => {
       console.log(values);
     };
 

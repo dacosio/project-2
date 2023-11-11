@@ -5,13 +5,18 @@ export const Container = styled.div`
   background-color: ${(props) => props.theme.bg.primary};
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
   padding: 16px;
-  max-width: 215px;
-  width: 100%;
+  // max-width: 215px;
+  // width: 100%;
   display: flex;
   flex-direction: column;
   gap: 10px;
   justify-content: center;
   margin-bottom: 16px;
+  cursor: pointer;
+
+  :hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
 `;
 
 export const Progress = styled.div`

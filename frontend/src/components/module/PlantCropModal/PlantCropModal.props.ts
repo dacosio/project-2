@@ -8,4 +8,5 @@ export interface PlantCropModalProps {
   cropName: string;
   onLoading?: (isLoading: boolean) => void;
   onConfirm: (isError: boolean) => void;
+  setIsModalVisible: (newvalue: boolean) => void;
 }

@@ -29,6 +29,7 @@ const CropList = (props: CropListProps): JSX.Element => {
   } = props;
 
   const [visibility, setVisibility] = useState<boolean>(false);
+  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 
   const theme = useTheme();
 
@@ -140,6 +141,7 @@ const CropList = (props: CropListProps): JSX.Element => {
               isOpenDrawer={visibility}
               handleDrawerClose={() => setVisibility(false)}
               drawerSize="auto"
+              isModalVisible={isModalVisible}
             >
               <PopupContainer>
                 <div>

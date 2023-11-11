@@ -37,6 +37,7 @@ const AddCropResult = (props: AddCropResultProps): JSX.Element => {
   const [plant] = usePlantMutation();
   const [predict] = usePredictYieldMutation();
   const { data: cropData } = useGetCropAboutQuery(useAppSelector(selectCropId));
+  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 
   const handleLoading = (isLoading: boolean) => {
     setIsLoading(isLoading);
@@ -133,9 +134,11 @@ const AddCropResult = (props: AddCropResultProps): JSX.Element => {
             <>
               <div>
                 <div>
-                  <Typography variant="small">
-                    Our suggested crop is...
-                  </Typography>
+                  {suggested && (
+                    <Typography variant="small">
+                      Our suggested crop is...
+                    </Typography>
+                  )}
                   <Typography variant="title3" weight="700">
                     {crop.cropName}
                   </Typography>
@@ -185,6 +188,7 @@ const AddCropResult = (props: AddCropResultProps): JSX.Element => {
         onConfirm={handleConfirm}
         onLoading={handleLoading}
         adding
+        setIsModalVisible={setIsModalVisible}
       />
     </>
   );

@@ -11,14 +11,14 @@ import { Row, Col } from "react-grid-system";
 import theme from "utils/Theme";
 
 const WeatherAlert = (props: WeatherAlertProps): JSX.Element => {
-  const { alert } = props;
+  const { alert, collapseState } = props;
   const generalStyle: CSSProperties = {
     fontSize: "16px",
     fontStyle: "normal",
     lineHeight: "22px",
   };
   return (
-    <Container>
+    <Container collapseState={collapseState}>
       <TitleContainer>
         <WeatherAlertSVG width={30} height={30}></WeatherAlertSVG>
         <Typography variant="body" weight="700" textColor="error">

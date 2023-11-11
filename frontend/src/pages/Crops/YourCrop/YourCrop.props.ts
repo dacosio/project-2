@@ -27,4 +27,6 @@ export interface YourCropGeneratedProps {
   handleOnDelete: (id: string) => void;
   handleDrawerOpen: () => void;
   handleDrawerClose: () => void;
+  isModalVisible: boolean;
+  setIsModalVisible: (newValue: boolean) => void;
 }

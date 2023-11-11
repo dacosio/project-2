@@ -91,7 +91,7 @@ const CropInformation = (props: CropInformationProps): JSX.Element => {
   return (
     <Container>
       <InformationContainer>
-        <Typography variant="title5">Crop Information</Typography>
+        <Typography variant="title5">Ideal Condition</Typography>
         <div>
           <CropCondition title="Temperature" output={`${temperature}℃`} />
           <CropCondition title="Humidity" output={`${humidity}%`} />
@@ -101,11 +101,11 @@ const CropInformation = (props: CropInformationProps): JSX.Element => {
       </InformationContainer>
       <FertilizerContainer>
         <Hidden xs sm>
-          <Typography variant="title5">Fertilizer Composition</Typography>
+          <Typography variant="title5">Ideal Fertilizer</Typography>
           <div>{Fertilizers}</div>
         </Hidden>
         <Visible xs sm>
-          <Accordion label="Fertilizer Composition">{Fertilizers}</Accordion>
+          <Accordion label="Ideal Fertilizer">{Fertilizers}</Accordion>
         </Visible>
       </FertilizerContainer>
       <TipContainer>

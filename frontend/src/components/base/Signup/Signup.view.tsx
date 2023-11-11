@@ -1,12 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { SignupProps } from "./Signup.props";
 import {
   Container,
   Header,
   SingupForm,
   ButtonDivs,
-  SubmitButton,
-  BackButton,
   Option,
   Bottom,
   SignUpButton,
@@ -15,23 +13,60 @@ import Typography from "../Typography";
 import { useMultistepForm } from "../../../utils/hooks/useMultistepForm";
 import SignupForm from "../SignupForm";
 import AccountForm from "../AccountForm";
-import { useAppDispatch } from "../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import {
+  selectConfirmPassword,
+  selectEmail,
+  selectPassword,
   toggleSignIn,
   toggleSignUp,
 } from "../../../features/authModal/authModalSlice";
+import * as Yup from "yup";
+import Button from "../Button";
 
 const Signup = (props: SignupProps): JSX.Element => {
-  const { step, isFirstStep, isLastStep, back, next } = useMultistepForm([
-    <SignupForm />,
-    <AccountForm />,
-  ]);
-
   const dispatch = useAppDispatch();
+
+  const [isValid, setIsValid] = useState<boolean>(false);
+
+  const handleBack = () => {
+    back();
+  };
+
   const handleSignUpModal = () => {
     dispatch(toggleSignIn(true));
     dispatch(toggleSignUp(false));
   };
+
+  const { step, isFirstStep, isLastStep, back, next } = useMultistepForm([
+    <SignupForm />,
+    <AccountForm onBack={handleBack} />,
+  ]);
+
+  const email = useAppSelector(selectEmail);
+  const password = useAppSelector(selectPassword);
+  const confirmPassword = useAppSelector(selectConfirmPassword);
+
+  const schema = Yup.object().shape({
+    email: Yup.string().email().required(),
+    password: Yup.string().required(),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref("password"), ""])
+      .required(),
+  });
+
+  schema
+    .validate({
+      email: email,
+      password: password,
+      confirmPassword: confirmPassword,
+    })
+    .then((response) => {
+      setIsValid(true);
+    })
+    .catch((error) => {
+      setIsValid(false);
+    });
 
   return (
     <Container>
@@ -40,22 +75,31 @@ const Signup = (props: SignupProps): JSX.Element => {
           variant="title2"
           weight="700"
           textColor="primary"
-          align="center">
+          align="center"
+        >
           Sign up for free and start farming!
         </Typography>
       </Header>
 
-      <SingupForm action="">
+      <SingupForm>
         {step}
         <ButtonDivs>
-          {!isFirstStep && (
-            <BackButton type="button" onClick={back}>
-              Back
-            </BackButton>
-          )}
-          <SubmitButton type="button" onClick={next}>
-            {isLastStep ? "Signup" : "Next"}
-          </SubmitButton>
+          {isFirstStep &&
+            (isValid ? (
+              <Button
+                type="button"
+                text="Next"
+                onClick={next}
+                style={{ width: "100%" }}
+              />
+            ) : (
+              <Button
+                type="button"
+                variant="disabled"
+                text="Next"
+                style={{ width: "100%" }}
+              />
+            ))}
         </ButtonDivs>
         {isLastStep ? null : (
           <Option>
@@ -66,7 +110,8 @@ const Signup = (props: SignupProps): JSX.Element => {
               <SignUpButton
                 variant="mobile"
                 textColor="n90"
-                onClick={handleSignUpModal}>
+                onClick={handleSignUpModal}
+              >
                 Sign In
               </SignUpButton>
             </Bottom>

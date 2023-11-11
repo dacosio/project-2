@@ -93,7 +93,7 @@ export const SearchContainer = styled.div`
 @media screen and (min-width: 1200px) {
   position: relative;
   bottom: -20px;
-  width: 510px;
+   width: 90%;
 }
 `;
 
@@ -202,16 +202,30 @@ export const DashboardSearchContainer = styled.div`
    bottom: 10px;
   margin-top:1rem;
   // width:2px;
+
+  @media screen and (min-width: 1200px) and (max-width: 1250px) {
+    bottom: 26px;  
+  }
 `;
 
 export const DashboardPrecipitationHumidityWindContainer = styled.div`
 display : flex;
 justify-content : space-between;
+// border:2px solid red;
 align-item : center;
 column-gap :2rem;
 
-@media screen and (max-width: 768px) {
-  column-gap :6rem;
+
+@media screen and (max-width: 400px) {
+   column-gap :0.7rem;
+  // border: 2px solid red;
+ }
+
+@media screen and (min-width: 400px) and (max-width: 480px) {
+  column-gap :3rem;
+ }
+@media screen and (min-width: 480px) and (max-width: 768px) {
+ column-gap :5rem;
 }
 `;
 
@@ -272,8 +286,23 @@ export const DashboardLowHighMTContainer = styled.div`
     position: absolute;
     right: 4rem;
   }
+`;
 
+export const DashboardDateForecastContainer = styled.div`
+  margin-left: 3px;
+  @media screen and (min-width: 1250px) {
+    display: flex;
+  }
+`;
 
-  
+export const DashboardForecastContainer = styled.div`
+  display: flex;
+  @media screen and (min-width: 1250px) {
+    ::before {
+      content: "|";
+      margin-right: 8px;
+      margin-left: 8px;
+    }
+  }
 `;
 
