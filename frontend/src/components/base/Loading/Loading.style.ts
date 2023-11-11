@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Overlay background color */
+  background-color: rgba(91, 91, 96, 0.8); /* Overlay background color */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,8 +17,8 @@ export const Container = styled.div<{
   height?: string;
   btnLoading?: boolean;
 }>`
-  height: ${({ height }) => (height ? height : "8rem")};
-  width: ${({ width }) => (width ? width : "8rem")};
+  height: ${({ height }) => (height ? height : "16rem")};
+  width: ${({ width }) => (width ? width : "16rem")};
   ${({ btnLoading }) =>
     !btnLoading
       ? ` position: absolute;
