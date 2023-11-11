@@ -29,7 +29,6 @@ export const ModalBox = styled.div`
   border-radius: 24px;
   background-color: white;
   cursor: auto;
-  overflow: hidden;
 `;
 
 export const ModalContent = styled.div`

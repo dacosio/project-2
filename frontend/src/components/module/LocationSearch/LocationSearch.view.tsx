@@ -10,8 +10,6 @@ import {
   storeAddress,
   storeCity,
 } from "../../../features/location/locationSlice";
-import { AiOutlineCloseCircle } from "react-icons/ai";
-import { MagnifierSvg } from "../../../components/base/SVG";
 
 const LocationSearch = (props: LocationSearchProps): JSX.Element => {
   const { onClickControl = () => null } = props;
@@ -58,17 +56,6 @@ const LocationSearch = (props: LocationSearchProps): JSX.Element => {
     <Container>
       <TextField
         value={value}
-        RightComponent={
-          value ? (
-            <AiOutlineCloseCircle
-              size="20px"
-              style={{ cursor: "pointer" }}
-              onClick={() => setValue("")}
-            />
-          ) : (
-            <MagnifierSvg width={20} />
-          )
-        }
         onChange={(evt) => {
           getPlacePredictions({ input: evt.target.value });
           setValue(evt.target.value);
