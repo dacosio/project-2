@@ -31,63 +31,28 @@ const HomeNavigation = (props: HomeNavigationProps): JSX.Element => {
             <SproutLogo width={matches ? 200 : 99} />
           </NavLink>
           <ul>
-            <li>
-              <NavLink
-                to="/#header"
-                className={
-                  location.pathname === "/#header"
-                    ? "active-link"
-                    : "inactive-link"
-                }
-              >
+          <li>
+              <NavLink to="/#header" className={location.hash === "#header" ? "active-link" : "inactive-link"}>
                 Home
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to="/#about"
-                className={
-                  location.pathname === "/#about"
-                    ? "active-link"
-                    : "inactive-link"
-                }
-              >
+              <NavLink to="/#about" className={location.hash === "#about" ? "active-link" : "inactive-link"}>
                 About
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to="/#features"
-                className={
-                  location.pathname === "/#features"
-                    ? "active-link"
-                    : "inactive-link"
-                }
-              >
+              <NavLink to="/#features" className={location.hash === "#features" ? "active-link" : "inactive-link"}>
                 Features
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to="/team"
-                className={
-                  location.pathname === "/team"
-                    ? "active-link"
-                    : "inactive-link"
-                }
-              >
+              <NavLink to="/team" className={location.pathname === "/team" ? "active-link" : "inactive-link"}>
                 Team
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to="/#contact"
-                className={
-                  location.pathname === "/#contact"
-                    ? "active-link"
-                    : "inactive-link"
-                }
-              >
+              <NavLink to="/#contact" className={location.hash === "#contact" ? "active-link" : "inactive-link"}>
                 Contact
               </NavLink>
             </li>

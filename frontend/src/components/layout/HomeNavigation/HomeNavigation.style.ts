@@ -34,6 +34,13 @@ export const NavOptions = styled.div`
     display: none;
     padding-left: 0;
   }
+  a {
+    text-decoration: none;
+    color: #57cb62;
+  }
+  a:hover{
+    color: #1DAEFF;
+  }
   .active-link {
     color: #6C57ED;
   }

@@ -88,6 +88,47 @@ const HomeView = (props: HomeGeneratedProps) => {
   //   dispatch(forwardEmail(email));
   // }, [email, dispatch]);
 
+  const [activeSection, setActiveSection] = useState("");
+  const currentLocation = useLocation(); // Rename 'location' to 'currentLocation'
+
+  useEffect(() => {
+    // Listen for scroll events
+    const handleScroll = () => {
+      const header = document.getElementById("header");
+      const about = document.getElementById("about");
+      const features = document.getElementById("features");
+      const contact = document.getElementById("contact");
+
+      const scrollY = window.scrollY;
+
+      if (header && scrollY >= header.offsetTop && (!about || scrollY < about.offsetTop)) {
+        setActiveSection("header");
+      } else if (
+        about &&
+        scrollY >= about.offsetTop &&
+        (!features || scrollY < features.offsetTop)
+      ) {
+        setActiveSection("about");
+      } else if (features && scrollY >= features.offsetTop) {
+        setActiveSection("features");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []); // Empty dependency array to run the effect only once
+
+  useEffect(() => {
+    // Update URL hash when activeSection changes
+    if (activeSection && currentLocation.hash !== `#${activeSection}`) {
+      window.history.replaceState(null, "", `#${activeSection}`);
+    }
+  }, [activeSection, currentLocation.hash]);
+
   return (
     <Container>
       <HomeNavigation />
