@@ -11,7 +11,7 @@ import {
   storeCity,
 } from "../../../features/location/locationSlice";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import { MagnifierSvg } from "components/base/SVG";
+import { MagnifierSvg } from "../../../components/base/SVG";
 import { useLocation } from "react-router-dom";
 
 const LocationSearch = (props: LocationSearchProps): JSX.Element => {
