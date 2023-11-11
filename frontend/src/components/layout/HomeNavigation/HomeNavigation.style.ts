@@ -47,6 +47,9 @@ export const NavOptions = styled.div`
       text-decoration: none;
       color: #57cb62;
     }
+    a:hover {
+      color: #1DAEFF;
+    }
   }
 `;
 
