@@ -15,13 +15,10 @@ import emailjs from "@emailjs/browser";
 import Button from "../../base/Button";
 import FormikTextArea from "../../base/FormikTextAreaField";
 import FormikTextField from "../../base/FormikTextField";
-import { string } from "yup";
-import { Col, Row, Visible, Hidden } from "react-grid-system";
-import * as Yup from "yup";
+import { Col, Row } from "react-grid-system";
 import HomeFooter from "../HomeFooter";
 
 const ContactSection = (props: ContactSectionProps): JSX.Element => {
-  const { style } = props;
   const form = useRef<HTMLFormElement>(null);
 
   const sendEmail = (e: React.FormEvent) => {
@@ -35,32 +32,22 @@ const ContactSection = (props: ContactSectionProps): JSX.Element => {
           form.current,
           "XjkLA79uvMpAgWV9B"
         )
-        .then(
-          () => {
-            toast.success("Message sent");
-          },
-          () => {
-            toast.error("unable to send your email");
-          }
-        );
+        .then(() => {
+          toast.success("Message sent");
+        })
+        .catch(() => {
+          toast.error("Unable to send your email");
+        });
     }
   };
 
   const handleOnSubtmit = (values: {
     name: string;
     email: string;
-    message: string; // Add this line
+    message: string;
   }) => {
     console.log(values);
   };
-
-  const validationSchema = Yup.object({
-    name: Yup.string().required("Your name is required"),
-    email: Yup.string()
-      .email("Invalid email format")
-      .required("Your email is required"),
-    message: string().required("message is required."),
-  });
 
   return (
     <div id="contact">
@@ -73,32 +60,19 @@ const ContactSection = (props: ContactSectionProps): JSX.Element => {
               lg={6}
               style={{
                 paddingLeft: "0",
-              }}
-            >
+              }}>
               <img src={contact} alt="" />
             </ContactImage>
           </Hide>
           <Col xxl={5} xl={5} lg={5} md={12}>
-            {/* <form onSubmit={sendEmail} ref={form}>
-              <label>Name</label>
-              <input type="text" name="name" />
-              <label>Email</label>
-              <input type="email" name="email" />
-              <label>Message</label>
-              <textarea name="message" />
-              <input type="submit" value="Send" />
-            </form> */}
             <Formik
               initialValues={{ name: "", email: "", message: "" }}
-              validationSchema={validationSchema}
               onSubmit={handleOnSubtmit}
-              enableReinitialize
-            >
+              enableReinitialize>
               <Form
                 ref={form}
                 onSubmit={sendEmail}
-                style={{ display: "grid", gap: "32px" }}
-              >
+                style={{ display: "grid", gap: "32px" }}>
                 <UserInfo>
                   <FormikTextField
                     label="Name"
@@ -123,7 +97,7 @@ const ContactSection = (props: ContactSectionProps): JSX.Element => {
                   labelWeight="bold"
                   name="message"
                   placeholder="message"
-                  style={{width: "100%"}}
+                  style={{ width: "100%" }}
                 />
                 <Button type="submit" text="Submit" variant="tonal" />
               </Form>
