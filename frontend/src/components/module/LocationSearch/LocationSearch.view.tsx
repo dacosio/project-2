@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { LocationSearchProps } from "./LocationSearch.props";
 import { Container, ResultsContainer } from "./LocationSearch.style";
 import TextField from "../../base/TextField";
@@ -10,11 +10,20 @@ import {
   storeAddress,
   storeCity,
 } from "../../../features/location/locationSlice";
+import { AiOutlineCloseCircle } from "react-icons/ai";
+import { MagnifierSvg } from "components/base/SVG";
+import { useLocation } from "react-router-dom";
 
 const LocationSearch = (props: LocationSearchProps): JSX.Element => {
   const { onClickControl = () => null } = props;
-
+  const location = useLocation();
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    setValue("");
+    dispatch(storeAddress(""));
+    dispatch(storeCity(""));
+  }, [location.pathname, dispatch]);
 
   const apiKey: string | undefined = process.env.REACT_APP_PLACES_API;
   const {
@@ -40,12 +49,12 @@ const LocationSearch = (props: LocationSearchProps): JSX.Element => {
         {
           placeId: item.place_id,
           language: "en",
+          region: "ca",
         },
         (placeDetails) => {
           setValue(placeDetails?.formatted_address);
           dispatch(storeAddress(placeDetails?.formatted_address));
           dispatch(storeCity(placeDetails?.vicinity));
-          console.log(placeDetails);
           placeDetails && onClickControl(placeDetails.name || "Toronto");
         }
       );
@@ -60,6 +69,21 @@ const LocationSearch = (props: LocationSearchProps): JSX.Element => {
           getPlacePredictions({ input: evt.target.value });
           setValue(evt.target.value);
         }}
+        RightComponent={
+          value ? (
+            <AiOutlineCloseCircle
+              size="20px"
+              style={{ cursor: "pointer", color: "black" }}
+              onClick={() => {
+                setValue("");
+                dispatch(storeAddress(""));
+                dispatch(storeCity(""));
+              }}
+            />
+          ) : (
+            <MagnifierSvg width={20} />
+          )
+        }
         placeholder="Type in your city, province, etc..."
       />
       <ResultsContainer>
