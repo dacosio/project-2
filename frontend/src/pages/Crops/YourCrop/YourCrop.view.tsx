@@ -36,6 +36,8 @@ const YourCropView = (props: YourCropGeneratedProps) => {
     handleOnDelete,
     handleDrawerOpen,
     handleDrawerClose,
+    isModalVisible,
+    setIsModalVisible,
   } = props;
 
   return (
@@ -91,6 +93,7 @@ const YourCropView = (props: YourCropGeneratedProps) => {
                   onConfirm={handlePlant}
                   handleFavorite={handleFavorite}
                   onDelete={handleOnDelete}
+                  setIsModalVisible={setIsModalVisible}
                 />
               </Hidden>
               <Visible xs sm>
@@ -99,12 +102,14 @@ const YourCropView = (props: YourCropGeneratedProps) => {
                   isOpenDrawer={isOpenDrawer}
                   handleDrawerClose={handleDrawerClose}
                   drawerSize="98%"
+                  isModalVisible={isModalVisible}
                 >
                   <CropDetail
                     crop={crop}
                     onConfirm={handlePlant}
                     handleFavorite={handleFavorite}
                     onDelete={handleOnDelete}
+                    setIsModalVisible={setIsModalVisible}
                   />
                 </MobileDrawer>
               </Visible>
