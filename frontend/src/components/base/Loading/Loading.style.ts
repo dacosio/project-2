@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.2); /* Overlay background color */
+  background-color: rgba(0, 0, 0, 0.1); /* Overlay background color */
   display: flex;
   justify-content: center;
   align-items: center;
