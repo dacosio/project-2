@@ -20,20 +20,9 @@ const AddSuggestion = (props: AddSuggestionProps): JSX.Element => {
   };
 
   const { step, back, next, isFirstStep } = useMultistepForm([
-    <Modal isOpen={visibility} onClose={() => setVisibility(false)} padded>
-      <AddSuggestionFirst onNext={handleNext} />
-    </Modal>,
-    <Modal
-      isOpen={visibility}
-      onBack={() => handleBack()}
-      onClose={() => setVisibility(false)}
-      padded
-    >
-      <AddSuggestionSecond onNext={handleNext} />
-    </Modal>,
-    <Modal isOpen={visibility} onClose={() => setVisibility(false)} padded>
-      <AddCropResult onLater={onLater} onNow={onNow} suggested />
-    </Modal>,
+    <AddSuggestionFirst onNext={handleNext} />,
+    <AddSuggestionSecond onNext={handleNext} />,
+    <AddCropResult onLater={onLater} onNow={onNow} suggested />,
   ]);
 
   return (
@@ -43,7 +32,20 @@ const AddSuggestion = (props: AddSuggestionProps): JSX.Element => {
           <Typography>&lt; Prev</Typography>
         </Back>
       )}
-      {step}
+      {isFirstStep ? (
+        <Modal isOpen={visibility} onClose={() => setVisibility(false)} padded>
+          {step}
+        </Modal>
+      ) : (
+        <Modal
+          isOpen={visibility}
+          onBack={() => handleBack()}
+          onClose={() => setVisibility(false)}
+          padded
+        >
+          {step}
+        </Modal>
+      )}
     </Container>
   );
 };

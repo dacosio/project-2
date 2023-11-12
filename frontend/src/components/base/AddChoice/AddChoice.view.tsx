@@ -19,17 +19,8 @@ const AddChoice = (props: AddChoiceProps): JSX.Element => {
   };
 
   const { step, back, next, isFirstStep } = useMultistepForm([
-    <Modal isOpen={visibility} onClose={() => setVisibility(false)} padded>
-      <AddChoiceFirst onNext={handleNext} />
-    </Modal>,
-    <Modal
-      isOpen={visibility}
-      onBack={() => back()}
-      onClose={() => setVisibility(false)}
-      padded
-    >
-      <AddCropResult onLater={onLater} onNow={onNow} />
-    </Modal>,
+    <AddChoiceFirst onNext={handleNext} />,
+    <AddCropResult onLater={onLater} onNow={onNow} />,
   ]);
 
   return (
@@ -39,7 +30,20 @@ const AddChoice = (props: AddChoiceProps): JSX.Element => {
           <Typography>&lt; Prev</Typography>
         </Back>
       )}
-      {step}
+      {isFirstStep ? (
+        <Modal isOpen={visibility} onClose={() => setVisibility(false)} padded>
+          {step}
+        </Modal>
+      ) : (
+        <Modal
+          isOpen={visibility}
+          onBack={() => handleBack()}
+          onClose={() => setVisibility(false)}
+          padded
+        >
+          {step}
+        </Modal>
+      )}
     </Container>
   );
 };
