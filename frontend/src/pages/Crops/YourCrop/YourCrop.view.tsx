@@ -11,8 +11,6 @@ import Typography from "../../../components/base/Typography";
 import CropList from "../../../components/module/CropList";
 import CropDetail from "../../../components/module/CropDetail";
 import MobileDrawer from "./../../../components/base/MobileDrawer";
-import AddSuggestionModal from "../../../components/module/AddSuggestionModal";
-import AddChoiceModal from "../../../components/module/AddChoiceModal";
 import AddChoice from "../../../components/base/AddChoice";
 import AddSuggestion from "../../../components/base/AddSuggestion";
 
