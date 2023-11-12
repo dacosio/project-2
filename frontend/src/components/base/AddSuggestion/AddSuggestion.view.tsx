@@ -26,12 +26,7 @@ const AddSuggestion = (props: AddSuggestionProps): JSX.Element => {
   ]);
 
   return (
-    <Container>
-      {!isFirstStep && (
-        <Back onClick={handleBack}>
-          <Typography>&lt; Prev</Typography>
-        </Back>
-      )}
+    <>
       {isFirstStep ? (
         <Modal isOpen={visibility} onClose={() => setVisibility(false)} padded>
           {step}
@@ -46,7 +41,7 @@ const AddSuggestion = (props: AddSuggestionProps): JSX.Element => {
           {step}
         </Modal>
       )}
-    </Container>
+    </>
   );
 };
 
