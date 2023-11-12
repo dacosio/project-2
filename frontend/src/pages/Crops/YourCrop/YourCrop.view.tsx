@@ -11,8 +11,8 @@ import Typography from "../../../components/base/Typography";
 import CropList from "../../../components/module/CropList";
 import CropDetail from "../../../components/module/CropDetail";
 import MobileDrawer from "./../../../components/base/MobileDrawer";
-import AddSuggestionModal from "../../../components/module/AddSuggestionModal";
-import AddChoiceModal from "../../../components/module/AddChoiceModal";
+import AddChoice from "../../../components/base/AddChoice";
+import AddSuggestion from "../../../components/base/AddSuggestion";
 
 const YourCropView = (props: YourCropGeneratedProps) => {
   const {
@@ -121,18 +121,22 @@ const YourCropView = (props: YourCropGeneratedProps) => {
           <Typography>No crops to display</Typography>
         </div>
       )}
-      <AddSuggestionModal
-        visibility={suggestionVisibility}
-        setVisibility={setSuggestionVisibility}
-        onLater={handleLater}
-        onNow={handleNow}
-      />
-      <AddChoiceModal
-        visibility={choiceVisibility}
-        setVisibility={setChoiceVisibility}
-        onLater={handleLater}
-        onNow={handleNow}
-      />
+      {choiceVisibility && (
+        <AddChoice
+          visibility={choiceVisibility}
+          setVisibility={setChoiceVisibility}
+          onLater={handleLater}
+          onNow={handleNow}
+        />
+      )}
+      {suggestionVisibility && (
+        <AddSuggestion
+          visibility={suggestionVisibility}
+          setVisibility={setSuggestionVisibility}
+          onLater={handleLater}
+          onNow={handleNow}
+        />
+      )}
       <Toaster />
     </Container>
   );

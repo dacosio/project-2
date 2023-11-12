@@ -6,9 +6,10 @@ import AddSuggestionFirst from "../../base/AddSuggestionFirst";
 import AddSuggestionSecond from "../../base/AddSuggestionSecond";
 import AddCropResult from "../AddCropResult";
 import Typography from "../Typography";
+import Modal from "../Modal";
 
 const AddSuggestion = (props: AddSuggestionProps): JSX.Element => {
-  const { onLater, onNow } = props;
+  const { visibility, setVisibility, onLater, onNow } = props;
 
   const handleBack = () => {
     back();
@@ -25,14 +26,22 @@ const AddSuggestion = (props: AddSuggestionProps): JSX.Element => {
   ]);
 
   return (
-    <Container>
-      {!isFirstStep && (
-        <Back onClick={handleBack}>
-          <Typography>&lt; Prev</Typography>
-        </Back>
+    <>
+      {isFirstStep ? (
+        <Modal isOpen={visibility} onClose={() => setVisibility(false)} padded>
+          {step}
+        </Modal>
+      ) : (
+        <Modal
+          isOpen={visibility}
+          onBack={() => handleBack()}
+          onClose={() => setVisibility(false)}
+          padded
+        >
+          {step}
+        </Modal>
       )}
-      {step}
-    </Container>
+    </>
   );
 };
 

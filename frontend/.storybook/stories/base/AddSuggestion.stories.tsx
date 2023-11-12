@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import AddSuggestion from "../../../src/components/base/AddSuggestion";
 import Container from "../../components/Container";
@@ -9,10 +9,17 @@ import { store } from "../../../src/app/store";
 const meta: Meta<typeof AddSuggestion> = {
   title: "Base/AddSuggestion",
   component: () => {
+    const [visibility, setVisibility] = useState<boolean>(false);
+
     return (
       <Container>
         <Provider store={store}>
-          <AddSuggestion onLater={() => null} onNow={() => null} />
+          <AddSuggestion
+            visibility={visibility}
+            setVisibility={setVisibility}
+            onLater={() => null}
+            onNow={() => null}
+          />
         </Provider>
       </Container>
     );

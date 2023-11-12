@@ -14,7 +14,12 @@ const AddChoiceModal = (props: AddChoiceModalProps): JSX.Element => {
   return (
     <Modal isOpen={visibility} onClose={handleClose}>
       <Container>
-        <AddChoice onLater={onLater} onNow={onNow} />
+        <AddChoice
+          visibility={visibility}
+          setVisibility={setVisibility}
+          onLater={onLater}
+          onNow={onNow}
+        />
       </Container>
     </Modal>
   );

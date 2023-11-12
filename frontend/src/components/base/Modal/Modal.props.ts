@@ -5,5 +5,6 @@ export interface ModalProps extends HTMLAttributes<HTMLElement> {
   uncloseable?: boolean;
   onClose: () => void;
   onBack?: () => void;
+  padded?: boolean;
   children: ReactNode;
 }

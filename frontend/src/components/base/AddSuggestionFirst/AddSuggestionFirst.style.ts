@@ -5,6 +5,7 @@ export const Container = styled.div`
   display: grid;
   gap: 32px;
   justify-items: start;
+  padding: 0 16px 16px 20px;
 `;
 
 export const Header = styled.div`
