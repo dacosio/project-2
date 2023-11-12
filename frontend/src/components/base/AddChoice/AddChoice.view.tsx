@@ -5,9 +5,10 @@ import { useMultistepForm } from "../../../utils/hooks/useMultistepForm";
 import AddChoiceFirst from "../AddChoiceFirst";
 import AddCropResult from "../AddCropResult";
 import Typography from "../Typography";
+import Modal from "../Modal";
 
 const AddChoice = (props: AddChoiceProps): JSX.Element => {
-  const { onLater, onNow } = props;
+  const { visibility, setVisibility, onLater, onNow } = props;
 
   const handleBack = () => {
     back();
@@ -18,8 +19,17 @@ const AddChoice = (props: AddChoiceProps): JSX.Element => {
   };
 
   const { step, back, next, isFirstStep } = useMultistepForm([
-    <AddChoiceFirst onNext={handleNext} />,
-    <AddCropResult onLater={onLater} onNow={onNow} />,
+    <Modal isOpen={visibility} onClose={() => setVisibility(false)} padded>
+      <AddChoiceFirst onNext={handleNext} />
+    </Modal>,
+    <Modal
+      isOpen={visibility}
+      onBack={() => back()}
+      onClose={() => setVisibility(false)}
+      padded
+    >
+      <AddCropResult onLater={onLater} onNow={onNow} />
+    </Modal>,
   ]);
 
   return (

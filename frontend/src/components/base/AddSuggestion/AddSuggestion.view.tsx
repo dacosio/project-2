@@ -6,9 +6,10 @@ import AddSuggestionFirst from "../../base/AddSuggestionFirst";
 import AddSuggestionSecond from "../../base/AddSuggestionSecond";
 import AddCropResult from "../AddCropResult";
 import Typography from "../Typography";
+import Modal from "../Modal";
 
 const AddSuggestion = (props: AddSuggestionProps): JSX.Element => {
-  const { onLater, onNow } = props;
+  const { visibility, setVisibility, onLater, onNow } = props;
 
   const handleBack = () => {
     back();
@@ -19,9 +20,20 @@ const AddSuggestion = (props: AddSuggestionProps): JSX.Element => {
   };
 
   const { step, back, next, isFirstStep } = useMultistepForm([
-    <AddSuggestionFirst onNext={handleNext} />,
-    <AddSuggestionSecond onNext={handleNext} />,
-    <AddCropResult onLater={onLater} onNow={onNow} suggested />,
+    <Modal isOpen={visibility} onClose={() => setVisibility(false)} padded>
+      <AddSuggestionFirst onNext={handleNext} />
+    </Modal>,
+    <Modal
+      isOpen={visibility}
+      onBack={() => handleBack()}
+      onClose={() => setVisibility(false)}
+      padded
+    >
+      <AddSuggestionSecond onNext={handleNext} />
+    </Modal>,
+    <Modal isOpen={visibility} onClose={() => setVisibility(false)} padded>
+      <AddCropResult onLater={onLater} onNow={onNow} suggested />
+    </Modal>,
   ]);
 
   return (

@@ -14,7 +14,12 @@ const AddSuggestionModal = (props: AddSuggestionModalProps): JSX.Element => {
   return (
     <Modal isOpen={visibility} onClose={handleClose}>
       <Container>
-        <AddSuggestion onLater={onLater} onNow={onNow} />
+        <AddSuggestion
+          visibility={visibility}
+          setVisibility={setVisibility}
+          onLater={onLater}
+          onNow={onNow}
+        />
       </Container>
     </Modal>
   );
