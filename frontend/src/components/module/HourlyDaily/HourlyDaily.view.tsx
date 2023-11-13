@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { HourlyDailyProps } from "./HourlyDaily.props";
 import {
   Container,
@@ -19,7 +19,7 @@ const HourlyDaily = (props: HourlyDailyProps): JSX.Element => {
   let weatherDataFilteredArray: Array<{ [key: string]: any }>;
 
   const MOCK_OPTIONS = ["Today", "15-day"];
-  const [selectedIndex, setSelectedIndex] = useState(0);
+
   let description = "";
   console.log(state);
   console.log(weatherDataArray);
@@ -31,6 +31,31 @@ const HourlyDaily = (props: HourlyDailyProps): JSX.Element => {
     weatherDataFilteredArray = weatherDataArray.days;
     description = weatherDataFilteredArray[index].description;
   }
+
+  const getCurrentHour24Format = () => {
+    const now = new Date();
+    // console.log(now);
+    const options: Intl.DateTimeFormatOptions = {
+      hour: "2-digit",
+      hour12: false,
+    };
+    const hour24 = new Intl.DateTimeFormat("en-GB", options).format(now);
+    // console.log(datetime);
+    return hour24; // This will return the hour part only, like "03" or "15"
+  };
+
+  const getIndex = () => {
+    if (state === MOCK_OPTIONS[0]) {
+      const currentTimeIndex = parseInt(getCurrentHour24Format());
+      return currentTimeIndex;
+    } else {
+      return 0;
+    }
+  };
+  const [selectedIndex, setSelectedIndex] = useState(getIndex());
+  useEffect(() => {
+    setSelectedIndex(getIndex());
+  }, [state]);
 
   const getTime = (datetime: string, state: string) => {
     if (state === MOCK_OPTIONS[0]) {
