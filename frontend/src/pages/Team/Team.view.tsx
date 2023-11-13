@@ -40,6 +40,7 @@ const TeamView = (props: TeamGeneratedProps) => {
                   name={member.name}
                   role={member.role}
                   url={member.url}
+                  portfolio={member.portfolio}
                   key={index}
                 />
               </ItemContainer>

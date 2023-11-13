@@ -3,11 +3,6 @@ import { Col, Row } from "react-grid-system";
 import { theme } from "utils/Theme";
 
 export const Container = styled.div`
-  background-color: ${({ theme }) => theme.btn.color.lightest};
-
-  > div > nav {
-    background-color: ${({ theme }) => theme.btn.color.lightest};
-  }
 `;
 
 export const Wrapper = styled.div`

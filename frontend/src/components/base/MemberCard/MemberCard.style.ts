@@ -30,7 +30,11 @@ export const Image = styled.img`
   position: absolute;
   top: 0;
   width: 100%;
+  max-width: 100%;
+  height: auto;
   aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover;
   border-radius: 50%;
   background-color: ${({ theme }) => theme.bg.secondary};
 
@@ -48,6 +52,6 @@ export const IconContainer = styled.div`
 `;
 
 export const FooterContainer = styled.div`
-  display: grid;
-  grid-template-rows: auto 1fr;
+  display: flex;
+  flex-flow: column;
 `;
