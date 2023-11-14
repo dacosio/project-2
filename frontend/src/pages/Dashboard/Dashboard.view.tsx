@@ -8,7 +8,6 @@ import {
   Title,
   Crops,
   MiddleRight,
-  PopupContainer,
   OptionWrapper,
   Option,
   OptionLabel,
@@ -17,7 +16,6 @@ import { Toaster } from "react-hot-toast";
 import Typography from "components/base/Typography";
 
 import SegmentedControl from "../../components/base/SegmentedControl";
-import MobileDrawer from "../../components/base/MobileDrawer";
 import { useNavigate } from "react-router-dom";
 import HarvestCard from "../../components/module/HarvestCard";
 import { useMediaQuery } from "utils/hooks/useMediaQuery";
@@ -30,7 +28,6 @@ import { useElementSize } from "utils/hooks/useElementSize";
 import Button from "components/base/Button";
 import { Add, Choice, Suggestion, ViewAllSvg } from "components/base/SVG";
 import { useTheme } from "@emotion/react";
-import { Hidden, Visible } from "react-grid-system";
 import { useRef } from "react";
 import AddChoiceModal from "components/module/AddChoiceModal";
 import AddSuggestionModal from "components/module/AddSuggestionModal";
