@@ -126,7 +126,7 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
 
     return () => window.removeEventListener("resize", handleResize);
   });
-
+  let forecastTrimmed = forecast.split(",").map((part) => part.trim());
   return (
     <>
       {page === "dashboard" ? (
@@ -151,7 +151,7 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
                 </DateContainer>
                 <DashboardForecastContainer>
                   <Typography variant="body" textColor="white">
-                    {forecast}
+                    {forecastTrimmed[0]}
                   </Typography>
                 </DashboardForecastContainer>
               </DashboardDateForecastContainer>

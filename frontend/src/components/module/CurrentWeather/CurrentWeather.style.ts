@@ -203,7 +203,7 @@ export const DashboardSearchContainer = styled.div`
   margin-top:1rem;
   // width:2px;
 
-  @media screen and (min-width: 1200px) and (max-width: 1250px) {
+  @media screen and (min-width: 1200px) and (max-width: 1280px) {
     bottom: 26px;  
   }
 `;
@@ -290,14 +290,14 @@ export const DashboardLowHighMTContainer = styled.div`
 
 export const DashboardDateForecastContainer = styled.div`
   margin-left: 3px;
-  @media screen and (min-width: 1250px) {
+  @media screen and (min-width: 1281px) {
     display: flex;
   }
 `;
 
 export const DashboardForecastContainer = styled.div`
   display: flex;
-  @media screen and (min-width: 1250px) {
+  @media screen and (min-width: 1281px) {
     ::before {
       content: "|";
       margin-right: 8px;
