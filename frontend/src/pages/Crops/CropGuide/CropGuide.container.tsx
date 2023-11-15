@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import CropGuideView from "./CropGuide.view";
-import { CropGuideGeneratedProps, YourSearchItemType } from "./CropGuide.props";
-import {
-  useGetCropAboutQuery,
-  useGetCropAboutAllQuery,
-} from "./../../../features/cropEncyclopedia/cropEncyclopediaApiSlice";
+import { YourSearchItemType } from "./CropGuide.props";
+import { useGetCropAboutAllQuery } from "./../../../features/cropEncyclopedia/cropEncyclopediaApiSlice";
 
 const CropGuide = (): JSX.Element => {
   const { data } = useGetCropAboutAllQuery("");
