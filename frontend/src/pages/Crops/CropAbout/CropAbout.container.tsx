@@ -1,16 +1,9 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import CropAboutView from "./CropAbout.view";
-import {
-  useGetCropAboutQuery,
-  useGetCropAboutAllQuery,
-} from "./../../../features/cropEncyclopedia/cropEncyclopediaApiSlice";
-import {
-  usePlantMutation,
-  // usePlantNowMutation,
-} from "features/crops/cropApiSlice";
+import { useGetCropAboutQuery } from "./../../../features/cropEncyclopedia/cropEncyclopediaApiSlice";
+import { usePlantMutation } from "features/crops/cropApiSlice";
 import toast from "react-hot-toast";
-import { usePredictYieldMutation } from "features/condition/conditionApiSlice";
 import { Crop } from "./../../../types/store/CropState";
 import {
   storeSelectedCropId,
@@ -23,13 +16,10 @@ const CropAbout = (): JSX.Element => {
   const { data } = useGetCropAboutQuery(`${id}`);
   const crops = data || [];
   const [plant] = usePlantMutation();
-  const [predictYield] = usePredictYieldMutation();
   const [visibility, setVisibility] = useState<boolean>(false);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
-  // city -> hit predict endpoint
-  // const estimatedYield
 
   const handlePlantLater = async () => {
     try {
@@ -54,7 +44,6 @@ const CropAbout = (): JSX.Element => {
     }
   };
 
-  // add the estimated here only
   const handlePlant = (isError: boolean) => {
     if (isError) {
       toast.error("An error occured. Please, try again later");

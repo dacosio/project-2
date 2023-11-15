@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { CropGuideGeneratedProps } from "./CropGuide.props";
 import {
   Wrapper,
@@ -6,8 +5,6 @@ import {
   Header,
   SearchContainer,
   Body,
-  Conditions,
-  GridLayout,
   AllCrop,
 } from "./CropGuide.style";
 import PlantResult from "components/base/PlantResult";
@@ -19,12 +16,10 @@ import Loading from "components/base/Loading";
 
 const CropGuideView = (props: CropGuideGeneratedProps) => {
   const {
-    data,
     searches,
     searchResults,
     imageUrls,
     loading,
-    setSearchResults,
     searchTerm,
     setSearchTerm,
     delay,

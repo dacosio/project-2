@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { SearchProps } from "./Search.props";
 import { Container } from "./Search.style";
 import TextField from "./../TextField";
 import useDebounce from "./../../../utils/hooks/useDebounce";
-import SearchResult from "./../SearchResult";
 import { AiOutlineCloseCircle, AiOutlineSearch } from "react-icons/ai";
 import { MagnifierSvg } from "../SVG";
 
