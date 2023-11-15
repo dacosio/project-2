@@ -97,6 +97,7 @@ const WeatherView = (props: WeatherGeneratedProps) => {
             state={state}
             onSelectedWeatherIndex={handleSelectedWeatherIndex}
             index={selectedIndex}
+            page="weather"
           ></HourlyDaily>
 
           <BottomContainer collapseState={collapseState}>

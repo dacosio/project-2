@@ -64,7 +64,7 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
     collapseState,
     ...currentWeatherProps
   } = props;
-
+  console.log(page);
   const [size, setSize] = useState(
     page === "weather"
       ? window.innerWidth > 1200
