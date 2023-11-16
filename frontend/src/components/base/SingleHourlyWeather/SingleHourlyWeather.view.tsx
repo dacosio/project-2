@@ -69,27 +69,13 @@ const SingleHourlyWeather = (props: SingleHourlyWeatherProps): JSX.Element => {
       active={index === selectedIndex}
       onClick={() => onClickControl(index)}
     >
-      {state === MOCK_OPTIONS[0] && (
-        <TimeContainer>
-          {/* <Typography variant="body" align="center" textColor="white"> */}
-          {time}
-          {/* </Typography> */}
-        </TimeContainer>
-      )}
+      {state === MOCK_OPTIONS[0] && <TimeContainer>{time}</TimeContainer>}
 
       {state === MOCK_OPTIONS[1] && (
         <DayNameDateContainer>
-          <DayNameContainer>
-            {/* <Typography variant="body" align="center" textColor="white"> */}
-            {dayName}
-            {/* </Typography> */}
-          </DayNameContainer>
+          <DayNameContainer>{dayName}</DayNameContainer>
 
-          <DayDateContainer>
-            {/* <Typography variant="body" align="center" textColor="white"> */}
-            {dayDate}
-            {/* </Typography> */}
-          </DayDateContainer>
+          <DayDateContainer>{dayDate}</DayDateContainer>
         </DayNameDateContainer>
       )}
 
@@ -114,10 +100,7 @@ const SingleHourlyWeather = (props: SingleHourlyWeatherProps): JSX.Element => {
           <PartiallyCloudy width={30} height={30} />
         )}
       </WeatherContainer>
-      <TemperatureContainer>
-        {/* <Typography variant="body" align="center" textColor="white"> */}
-        {temperature}°{/* </Typography> */}
-      </TemperatureContainer>
+      <TemperatureContainer>{temperature}°</TemperatureContainer>
     </Container>
   );
 };

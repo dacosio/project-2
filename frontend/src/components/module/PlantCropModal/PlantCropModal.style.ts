@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { theme } from "../../../utils/Theme";
 
 export const Container = styled.div`
-  padding: 64px 16px 16px 20px;
+  padding: 0 16px 16px 20px;
 `;
 
 export const Wrapper = styled.div`
@@ -19,11 +19,6 @@ export const Header = styled.div`
 export const Body = styled.div`
   display: grid;
   gap: 36px;
-
-  > div {
-    display: grid;
-    gap: 8px;
-  }
 `;
 export const Footer = styled.div`
   justify-self: end;

@@ -84,13 +84,17 @@ const meta: Meta<typeof HourlyDaily> = {
             index={0}
             weatherDataArray={weatherDataHourly}
             state={MOCK_OPTIONS[0]}
-            onSelectedWeatherIndex={handleSelectedWeatherIndex}></HourlyDaily>
+            onSelectedWeatherIndex={handleSelectedWeatherIndex}
+            page="weather"
+          ></HourlyDaily>
 
           <HourlyDaily
             index={0}
             weatherDataArray={weatherDataDaily}
             state={MOCK_OPTIONS[1]}
-            onSelectedWeatherIndex={handleSelectedWeatherIndex}></HourlyDaily>
+            onSelectedWeatherIndex={handleSelectedWeatherIndex}
+            page="weather"
+          ></HourlyDaily>
         </div>
       </Container>
     );

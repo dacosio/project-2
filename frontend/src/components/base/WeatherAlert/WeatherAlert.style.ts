@@ -12,13 +12,10 @@ export const Container = styled.div<WeatherAlertStyleProps>`
     box-shadow: 0 0 1px 1px ${theme.brand.error};
     border-radius: 1.3rem;
     background-color: ${theme.grey.noshade};
-    //width: 212px;
-   // height:212px;
 
    @media screen and (max-width: 768px) {
     width: 94%;
     height:254px;
-    // padding: 32px 32px;
    }
 
    @media screen and (min-width: 768px) and (max-width: 1200px) {
@@ -51,7 +48,6 @@ align-items: center;
 `
 
 export const ContentContainer = styled.div`
-// margin-left : 14px;
 margin-top : 18px
 `
 
