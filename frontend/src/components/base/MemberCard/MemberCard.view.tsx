@@ -10,11 +10,28 @@ import {
   ImageContainer,
 } from "./MemberCard.style";
 import Typography from "../Typography";
-import { GitHub, Leaf, LinkedIn } from "../SVG";
+import {
+  GitHub,
+  Leaf,
+  LinkedIn,
+  Designer,
+  Developer,
+  Behance,
+  LinkedinIcon,
+  GithubIcon,
+  Website,
+} from "../SVG";
 import { Link } from "react-router-dom";
 
 const MemberCard = (props: MemberCardProps): JSX.Element => {
-  const { source, name, role, url, portfolio } = props;
+  const { source, name, role, icon, url, link } = props;
+
+  const socialMediaIcons = {
+    linkedin: LinkedinIcon,
+    behance: Behance,
+    github: GithubIcon,
+    website: Website,
+  };
 
   return (
     <Container>
@@ -29,16 +46,10 @@ const MemberCard = (props: MemberCardProps): JSX.Element => {
             <Image src={source} />
           )}
           <IconContainer>
-            {url ? (
-              <Link to={url} target="_blank">
-                {url.includes("linkedin") ? (
-                  <LinkedIn />
-                ) : url.includes("github") ? (
-                  <GitHub />
-                ) : (
-                  <Leaf />
-                )}
-              </Link>
+            {icon === "designer" ? (
+              <Designer />
+            ) : icon === "developer" ? (
+              <Developer />
             ) : (
               <Leaf />
             )}
@@ -52,30 +63,54 @@ const MemberCard = (props: MemberCardProps): JSX.Element => {
         <Typography variant="body" align="center" textColor="n70">
           {role}
         </Typography>
-        {portfolio ? (
+        {link && (
           <div
-            style={{ display: "flex", justifyContent: "center", gap: ".5rem", marginTop: ".5rem" }}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              gap: ".5rem",
+              marginTop: ".8rem",
+            }}
           >
-            {Array.isArray(portfolio) ? (
-              portfolio.map((item, index) => (
-                <Typography
-                  key={index}
-                  variant="mobile"
-                  weight="bold"
-                  align="center"
-                  textColor="green"
-                  style={{textDecoration: "underline"}}
-                >
-                  {item.includes("github") ? "github" : "behance"}
-                </Typography>
-              ))
+            {Array.isArray(link) ? (
+              link.map((item, index) => {
+                const platform = item.includes("linkedin")
+                  ? "linkedin"
+                  : item.includes("behance")
+                  ? "behance"
+                  : item.includes("github")
+                  ? "github"
+                  : null;
+
+                return (
+                  <Link to={item} target="_blank" key={index}>
+                    {platform ? (
+                      React.createElement(socialMediaIcons[platform])
+                    ) : (
+                      <Website />
+                    )}
+                  </Link>
+                );
+              })
+            ) : link.includes("linkedin") ? (
+              <Link to={link} target="_blank">
+                {React.createElement(LinkedinIcon)}
+              </Link>
+            ) : link.includes("behance") ? (
+              <Link to={link} target="_blank">
+                {React.createElement(Behance)}
+              </Link>
+            ) : link.includes("github") ? (
+              <Link to={link} target="_blank">
+                {React.createElement(GithubIcon)}
+              </Link>
             ) : (
-              <Typography variant="small" align="center" textColor="n70">
-                {portfolio.includes("github") ? "github" : "behance"}
-              </Typography>
+              <Link to={link} target="_blank">
+                <Website />
+              </Link>
             )}
           </div>
-        ) : null}
+        )}
       </FooterContainer>
     </Container>
   );

@@ -16,64 +16,73 @@ const Team = (): JSX.Element => {
     name: string;
     role: string;
     source: string;
+    icon: string;
     url?: string;
-    portfolio: string | string[];
+    link: string | string[];
   }[] = [
     {
       name: "Guia Chavez",
       role: "Project Manager, Developer",
       source: Guia,
+      icon: "developer",
       url: "https://www.linkedin.com/in/guia-chavez/",
-      portfolio: ["https://www.github.com/", "https://www.behance.net/"],
+      link: ["https://www.linkedin.com/in/guia-chavez/", "https://github.com/guiachavez"],
     },
     {
       name: "Don Cosio",
       role: "Lead Developer",
       source: Don,
+      icon: "developer",
       url: "https://www.linkedin.com/in/don-apollo-cosio-0a41b296/",
-      portfolio: ["https://www.github.com/"],
+      link: ["https://www.linkedin.com/in/don-apollo-cosio-0a41b296/", "https://github.com/dacosio", "https://don-cosio-info.vercel.app"],
     },
     {
       name: "Monica Esquivel",
       role: "Lead UX/UI Designer",
       source: Monica,
+      icon: "designer",
       url: "https://www.linkedin.com/in/monica-esquivel-8b02666a/",
-      portfolio: ["https://www.behance.net/"],
+      link: ["https://www.linkedin.com/in/monica-esquivel-8b02666a/"],
     },
     {
       name: "Yuhwan Ban",
       role: "Developer",
       source: Yuhwan,
+      icon: "developer",
       url: "https://www.linkedin.com/in/yuhwan-ban-082467269/",
-      portfolio: ["https://www.github.com/"],
+      link: ["https://www.linkedin.com/in/yuhwan-lucas-ban/", "https://github.com/laubana"],
     },
     {
       name: "Pujan Shakya",
       role: "Developer",
       source: "https://placehold.co/50x100/FFFFFF/png",
+      icon: "developer",
       url: "https://www.linkedin.com/in/pujan-shakya/",
-      portfolio: ["https://www.github.com/"],
+      link: ["https://www.linkedin.com/in/pujan-shakya/", "hhttps://github.com/puzannshakya"],
     },
     {
       name: "Philippe Hernandez",
       role: "Developer",
       source: JB,
+      icon: "developer",
       url: "https://www.linkedin.com/in/jbhern/",
-      portfolio: ["https://www.behance.net/"],
+      link: ["https://www.linkedin.com/in/jbhern/", "https://www.behance.net/jbhern",  "https://www.github.com/jbhern-34"],
     },
     {
       name: "Kanin Phuvanatnaranubala",
       role: "UX/UI Designer",
       source: Kanin,
+      icon: "designer",
       url: "https://www.linkedin.com/in/jumpchill/",
-      portfolio: ["https://www.behance.net/"],
+      link: ["https://www.linkedin.com/in/jumpchill/"],
     },
     {
       name: "Mugdha Gupta",
       role: "UX/UI Designer",
       source: "https://placehold.co/50x100/FFFFFF/png",
+      icon: "designer",
       url: "https://www.linkedin.com/",
-      portfolio: ["https://www.behance.net/"],
+      link: ["https://www.linkedin.com/", "https://www.behance.net/"],
     },
   ];
 

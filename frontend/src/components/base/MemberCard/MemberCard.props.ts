@@ -2,6 +2,7 @@ export interface MemberCardProps {
   source: string;
   name: string;
   role: string;
+  icon: string;
   url?: string;
-  portfolio: string | string[];
+  link: string | string[];
 }

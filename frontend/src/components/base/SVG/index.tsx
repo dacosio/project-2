@@ -1,4 +1,10 @@
 /* PLOP_INJECT_IMPORT */
+export { default as Website } from './Website';
+export { default as GithubIcon } from './GithubIcon';
+export { default as LinkedinIcon } from './LinkedinIcon';
+export { default as Behance } from './Behance';
+export { default as Developer } from './Developer';
+export { default as Designer } from './Designer';
 export { default as ViewAllSvg } from './ViewAllSvg';
 export { default as WeatherSvg } from './WeatherSvg';
 export { default as GitHub } from './GitHub';

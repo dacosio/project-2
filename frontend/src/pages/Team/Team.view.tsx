@@ -5,6 +5,7 @@ import Typography from "components/base/Typography";
 import { Col } from "react-grid-system";
 import MemberCard from "components/base/MemberCard";
 import HomeNavigation from "components/layout/HomeNavigation";
+import ContactSection from "./../../components/layout/ContactSection";
 
 const TeamView = (props: TeamGeneratedProps) => {
   const { members } = props;
@@ -13,10 +14,10 @@ const TeamView = (props: TeamGeneratedProps) => {
     <Container>
       <HomeNavigation />
       <Wrapper>
-        <Typography variant="title1" textColor="accent" weight="700">
+        <Typography variant="title1" textColor="accent" weight="700" align="center">
           Meet the team that made this platform sprout
         </Typography>
-        <Typography variant="subtitle">
+        <Typography variant="subtitle" align="center">
           Check out these passionate developers, designers, and creative problem
           solvers
         </Typography>
@@ -39,14 +40,16 @@ const TeamView = (props: TeamGeneratedProps) => {
                   source={member.source}
                   name={member.name}
                   role={member.role}
+                  icon={member.icon}
                   url={member.url}
-                  portfolio={member.portfolio}
+                  link={member.link}
                   key={index}
                 />
               </ItemContainer>
             ))}
         </ListContainer>
       </Wrapper>
+      <ContactSection />
     </Container>
   );
 };
