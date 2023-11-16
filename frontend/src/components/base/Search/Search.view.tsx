@@ -15,7 +15,6 @@ const Search = (props: SearchProps): JSX.Element => {
     handleSearch,
     setSearchTerm,
   } = props;
-  console.log(searchTerm);
   const debouncedSearchTerm = useDebounce(searchTerm, delay);
 
   useEffect(() => {

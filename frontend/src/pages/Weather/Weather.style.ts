@@ -6,15 +6,12 @@ import { WeatherGeneratedStyleProps } from "./Weather.props";
 export const Container = styled.div<WeatherGeneratedStyleProps>`
     max-width: 1021px;
    width: 80vw;
-//    border: 2px solid black;
    margin: auto;
    padding: 1.5rem;
    display:flex;
    flex-direction: column;
    row-gap: 2rem;
-//    ::-webkit-scrollbar {
-//     display: none; 
-//  }
+
 
 
    @media screen and (min-width: 993px) and  (max-width: 1360px){
@@ -33,7 +30,6 @@ export const Container = styled.div<WeatherGeneratedStyleProps>`
 
     @media screen and (min-width: 768px) {
         grid-template-columns: repeat(2, 1fr);
-        // column-gap : 3rem;
     }
 
     @media screen and (min-width: 1200px) and  (max-width: 1360px){

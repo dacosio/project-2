@@ -10,8 +10,6 @@ const widthSize: Record<string, string> = {
   
 };
 export const Container = styled.div<CurrentWeatherStyleProps>`
-// max-width: 70vw;
-  //  width: 60vw;
   background-image: linear-gradient(
     to right,
     ${({ gradientColor1 }) => gradientColor1},
@@ -20,7 +18,6 @@ export const Container = styled.div<CurrentWeatherStyleProps>`
   border-radius: 12px;
   color: white;
   padding: 24px;
-  // border: 2px solid red;
   box-sizing: border-box;
 
   height: 280px;
@@ -30,7 +27,7 @@ export const Container = styled.div<CurrentWeatherStyleProps>`
   }
 
   @media screen and (min-width: 1200px) {
-    // height: 210px;
+
   }
 `;
 export const AddressDateForecastSVGContainer = styled.div`
@@ -114,9 +111,7 @@ export const TemperatureLowHighMTContainer = styled.div`
    column-gap:2rem;
   justify-content: space-between;
   align-items:center;
-  // margin-bottom:2rem;
-  //  column-gap : 10rem;
-  //  border: 2px solid red;
+
   @media screen and (min-width: 1200px) {
     display: none;
   }
@@ -201,7 +196,6 @@ export const DashboardSearchContainer = styled.div`
   position: relative;
    bottom: 10px;
   margin-top:1rem;
-  // width:2px;
 
   @media screen and (min-width: 1200px) and (max-width: 1280px) {
     bottom: 26px;  
@@ -211,14 +205,12 @@ export const DashboardSearchContainer = styled.div`
 export const DashboardPrecipitationHumidityWindContainer = styled.div`
 display : flex;
 justify-content : space-between;
-// border:2px solid red;
 align-item : center;
 column-gap :2rem;
 
 
 @media screen and (max-width: 400px) {
    column-gap :0.7rem;
-  // border: 2px solid red;
  }
 
 @media screen and (min-width: 400px) and (max-width: 480px) {

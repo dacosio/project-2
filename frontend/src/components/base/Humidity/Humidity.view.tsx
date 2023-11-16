@@ -2,8 +2,6 @@ import React, { CSSProperties } from "react";
 import { HumidityProps } from "./Humidity.props";
 import { Container, SvgContainer } from "./Humidity.style";
 import Typography from "../Typography";
-import { Rain } from "../SVG";
-import CircleProgress from "../CircleProgress";
 import CircleProgressHumidity from "../CircleProgressHumidity";
 
 const Humidity = (props: HumidityProps): JSX.Element => {

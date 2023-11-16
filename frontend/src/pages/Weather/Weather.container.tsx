@@ -21,6 +21,9 @@ const Weather = (): JSX.Element => {
   let gradientColor2 = "";
   let currentCondition = "";
 
+  /**
+   * Intialising the current weather component's background color gradient values for different weather conditions
+   */
   const [gradientObject, setGradientObject] = useState({
     clear: ["#1DAEFF", "#8ECCEF"],
     partiallyCloudy: ["#6DDFFC", "#89B4E7"],
@@ -32,14 +35,8 @@ const Weather = (): JSX.Element => {
     thunderStormRain: ["#7148D5", "#C9A6C7"],
   });
   const date = new Date();
-  // const { currentCity, errorMessage } = useCurrentCity();
-  // if (currentCity) {
-  //   setSelectedAddress(currentCity);
-  //   console.log(`selectedAddress : ${selectedAddress}`);
-  // }
 
   console.log(`currentCity : ${selectedAddress}`);
-  // console.log(`apiUrl : ${apiUrl}`);
   useEffect(() => {
     const apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${selectedAddress}?unitGroup=metric&key=${process.env.REACT_APP_WEATHER_API_KEY}&contentType=json`;
 
@@ -50,7 +47,6 @@ const Weather = (): JSX.Element => {
         .then((response) => {
           // Set the response data in the component's state
           setWeatherData(response.data);
-          console.log(weatherData);
         })
         .catch((error) => {
           // Handle any errors and set the error in the component's state
@@ -60,8 +56,10 @@ const Weather = (): JSX.Element => {
 
     onFetchWeather();
   }, [selectedAddress]);
-  console.log(weatherData);
 
+  /**
+   * Checking if weather data has been fetched .If true , we compare the weather condition to finalise the gradient values
+   */
   if (
     selectedAddress &&
     weatherData &&
@@ -140,24 +138,29 @@ const Weather = (): JSX.Element => {
       gradientColor2 = gradientObject.thunderStormRain[1];
       currentCondition = "thunderStormRain";
     }
-
-    console.log(`gradientColor1 : ${gradientColor1}`);
-    console.log(`gradientColor2 : ${gradientColor2}`);
-    console.log(`currentCondition : ${currentCondition}`);
   }
 
+  /**
+   * Sets the values of selected address from the location search input
+   * @param address
+   */
   const handleSelectedSearchLocation = (address: string) => {
-    console.log("Weather address " + address);
     setSelectedAddress(address);
   };
 
+  /**
+   * Sets the current selected weather index of the hourly daily component
+   * @param value
+   */
   const handleSelectedWeatherIndex = (value: number) => {
-    console.log("Weather " + value);
     setSelectedIndex(value);
   };
 
+  /**
+   * Sets what state Hourly Component is now i.e either Today or 15 Days
+   * @param state
+   */
   const handleSetState = (state: string) => {
-    console.log("state " + state);
     setState(state);
   };
 
@@ -187,6 +190,10 @@ const Weather = (): JSX.Element => {
     selectedIndex: selectedIndex,
     collapseState: collapseState,
   };
+
+  /**
+   * Checking if weather data has been fetched .If true , setting up the generated Props to be sent to Weather View.
+   */
   if (
     selectedAddress &&
     weatherData &&
@@ -217,37 +224,6 @@ const Weather = (): JSX.Element => {
     };
   }
   return <WeatherView {...generatedProps} />;
-  // <>
-  //   {selectedAddress &&
-  //   weatherData &&
-  //   weatherData.days &&
-  //   weatherData.days.length > 0 ? (
-  //     <WeatherView
-  //       currentLocation={selectedAddress}
-  //       forecast={weatherData.currentConditions.conditions}
-  //       currentTemperature={weatherData.currentConditions.temp}
-  //       lowTemperature={weatherData.days[0]?.tempmin}
-  //       highTemperature={weatherData.days[0]?.tempmax}
-  //       precipitation={weatherData.currentConditions.precip}
-  //       humidity={weatherData.currentConditions.humidity}
-  //       wind={weatherData.currentConditions.windspeed}
-  //       gradientColor1={gradientColor1}
-  //       gradientColor2={gradientColor2}
-  //       currentCondition={currentCondition}
-  //       page="weather"
-  //       onSelectedSearchLocationWeather={handleSelectedSearchLocation}
-  //       MOCK_OPTIONS={MOCK_OPTIONS}
-  //       state={state}
-  //       onSetState={handleSetState}
-  //       weatherData={weatherData}
-  //       onSelectedWeatherIndexWeather={handleSelectedWeatherIndex}
-  //       selectedIndex={selectedIndex}
-  //       collapseState={collapseState}
-  //     />
-  //   ) : (
-  //     <Loading />
-  //   )}
-  // </>;
 };
 
 export default Weather;

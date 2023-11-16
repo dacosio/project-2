@@ -6,7 +6,6 @@ import Dashboard from "pages/Dashboard";
 
 
 export const Container = styled.div<HourlyDailyStyleProps>`
-// max-width: 58vw;
  width: 100%;
  box-sizing: border-box;
 display:flex;
@@ -27,14 +26,11 @@ border-bottom : 1px solid ${({ theme }) => theme.neutral.n20};
 
 export const WeatherDataContainer = styled.div`
 display:flex;
-//  border: 2px solid red;
-// background-color : #8ECCEF";
 overflow-x: scroll;
 overflow-y: hidden;
    padding-bottom: 2rem;
   padding-top:1rem;
 
 border-radius: 20px;
-// border: 1px solid red;
   
   `

@@ -12,13 +12,10 @@ export const Container = styled.div<WindStyleProps>`
     box-shadow: 0 0 1px 1px ${theme.neutral.n20};
     border-radius: 1.3rem;
     background-color: ${theme.grey.noshade};
-    // width: 212px;
-    // height:212px;
 
     @media screen and (max-width: 768px) {
      width: 94%;
      height:254px;
-    //  padding: 32px 32px;
     }
 
     @media screen and (min-width: 768px) and (max-width: 1200px) {
@@ -92,17 +89,6 @@ width: 64px;
     border-style: solid;
     border-color: transparent transparent transparent black;
   }
-
-  // :before {
-  //   content: '';
-  //   position: absolute;
-  //   top: -2.4px; 
-  //   left: -3.4px; 
-  //   border-width: 3.4px;
-  //   border-style: solid;
-  //   border-radius:50%;
-  //   border-color: black black black black;
-  // }
 
 `
 

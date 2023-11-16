@@ -21,7 +21,6 @@ export const Segment = styled(Col)`
   display: flex;
   flex-direction: column;
   height: 336px;
-  // row-gap: 1.84rem;
   justify-content: space-between;
 
   @media screen and (min-width: 768px) and (max-width: 992px) {
