@@ -123,6 +123,7 @@ const DashboardView = (props: DashboardGeneratedProps) => {
               state={state}
               onSelectedWeatherIndex={handleSelectedWeatherIndex}
               index={selectedIndex}
+              page="dashboard"
             ></HourlyDaily>
           </Segment>
         </Top>

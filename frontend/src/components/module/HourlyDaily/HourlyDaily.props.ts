@@ -3,4 +3,10 @@ export interface HourlyDailyProps {
     state: string;
     onSelectedWeatherIndex: (value: number) => void;
     index : number;
+    page: string;
+}
+
+
+export interface HourlyDailyStyleProps {
+    page: string;
 }

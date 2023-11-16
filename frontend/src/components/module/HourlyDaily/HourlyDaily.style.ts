@@ -1,9 +1,11 @@
 import styled from "@emotion/styled";
 import { theme } from "../../../utils/Theme";
+import { HourlyDailyStyleProps } from "./HourlyDaily.props";
+import Dashboard from "pages/Dashboard";
 
 
 
-export const Container = styled.div`
+export const Container = styled.div<HourlyDailyStyleProps>`
 // max-width: 58vw;
  width: 100%;
  box-sizing: border-box;
@@ -12,7 +14,7 @@ flex-direction:column;
 border: 1px solid ${({ theme }) => theme.neutral.n20};
 border-radius: 24px;
 padding:1rem;
-row-gap:2rem;
+row-gap:${({ page }) => page === "dashboard" ? "0.2rem" : "2rem"};
 background : ${({ theme }) => theme.neutral.n0};
 
 

@@ -64,7 +64,7 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
     collapseState,
     ...currentWeatherProps
   } = props;
-
+  console.log(page);
   const [size, setSize] = useState(
     page === "weather"
       ? window.innerWidth > 1200
@@ -126,7 +126,7 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
 
     return () => window.removeEventListener("resize", handleResize);
   });
-
+  let forecastTrimmed = forecast.split(",").map((part) => part.trim());
   return (
     <>
       {page === "dashboard" ? (
@@ -151,7 +151,7 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
                 </DateContainer>
                 <DashboardForecastContainer>
                   <Typography variant="body" textColor="white">
-                    {forecast}
+                    {forecastTrimmed[0]}
                   </Typography>
                 </DashboardForecastContainer>
               </DashboardDateForecastContainer>

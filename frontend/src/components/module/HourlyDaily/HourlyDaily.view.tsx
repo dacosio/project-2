@@ -14,6 +14,7 @@ const HourlyDaily = (props: HourlyDailyProps): JSX.Element => {
     state,
     onSelectedWeatherIndex,
     index,
+    page,
     ...hourlyDailyProps
   } = props;
   let weatherDataFilteredArray: Array<{ [key: string]: any }>;
@@ -121,7 +122,7 @@ const HourlyDaily = (props: HourlyDailyProps): JSX.Element => {
   };
 
   return (
-    <Container>
+    <Container page={page}>
       <TypographyContainer>
         <Typography variant="body">{description}</Typography>
       </TypographyContainer>
