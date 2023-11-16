@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import { Col, Row } from "react-grid-system";
-import { theme } from "utils/Theme";
 
 export const Container = styled.div`
   display: grid;

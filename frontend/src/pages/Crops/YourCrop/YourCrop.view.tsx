@@ -13,7 +13,7 @@ import CropDetail from "../../../components/module/CropDetail";
 import MobileDrawer from "./../../../components/base/MobileDrawer";
 import AddChoice from "../../../components/base/AddChoice";
 import AddSuggestion from "../../../components/base/AddSuggestion";
-import Loading from "components/base/Loading";
+import Loading from "../../../components/base/Loading";
 
 const YourCropView = (props: YourCropGeneratedProps) => {
   const {
@@ -35,7 +35,6 @@ const YourCropView = (props: YourCropGeneratedProps) => {
     handlePlant,
     handleFavorite,
     handleOnDelete,
-    handleDrawerOpen,
     handleDrawerClose,
     isModalVisible,
     setIsModalVisible,
