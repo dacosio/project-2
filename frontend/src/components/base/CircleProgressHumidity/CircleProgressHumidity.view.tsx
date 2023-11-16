@@ -17,9 +17,6 @@ const CircleProgressHumidity = (
     let stroke: string = "";
     const res = value / maxValue;
     stroke = "#1FB4F4";
-    // if (res <= 0.25) stroke = theme.prog.quarter;
-    // else if (res >= 0.5 && res < 1) stroke = theme.prog.half;
-    // else if (res === 1) stroke = theme.prog.full;
     return stroke;
   };
   return (

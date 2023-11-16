@@ -7,19 +7,15 @@ export const Container = styled.div<PrecipitationStyleProps>`
     display: flex;
     flex:1;
     flex-direction: column;
-    // justify-content: space-between;
     gap:24px;
     padding: 16px 16px;
     box-shadow: 0 0 1px 1px ${theme.neutral.n20};
     border-radius: 1.3rem;
     background-color: ${theme.grey.noshade};
-    //width: 212px;
-    //height:212px;
 
     @media screen and (max-width: 768px) {
       width: 94%;
       height:254px;
-      // padding: 32px 32px;
      }
  
      @media screen and (min-width: 768px) and (max-width: 1200px) {

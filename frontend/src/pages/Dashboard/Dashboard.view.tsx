@@ -112,7 +112,6 @@ const DashboardView = (props: DashboardGeneratedProps) => {
               options={MOCK_OPTIONS}
               selectedOption={state}
               onClickControl={(value: string) => {
-                console.log(value);
                 onSetState(value);
               }}
             />

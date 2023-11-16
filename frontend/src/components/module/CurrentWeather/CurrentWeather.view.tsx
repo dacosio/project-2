@@ -83,9 +83,9 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
       : window.innerWidth > 992 && collapseState
       ? 122
       : window.innerWidth > 992
-      ? 121
+      ? 96
       : window.innerWidth > 767
-      ? 120
+      ? 98
       : window.innerWidth < 432
       ? 60
       : 80
@@ -111,9 +111,9 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
           : window.innerWidth > 992 && collapseState
           ? 122
           : window.innerWidth > 992
-          ? 121
+          ? 96
           : window.innerWidth > 767
-          ? 120
+          ? 98
           : window.innerWidth < 432
           ? 60
           : 80
@@ -168,7 +168,7 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
                             lineHeight: "76px",
                             letterSpacing: "-1.4px",
                           }
-                        : size === 121
+                        : size === 96
                         ? {
                             fontSize: "54px",
                             fontStyle: "normal",
@@ -176,7 +176,7 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
                             lineHeight: "76px",
                             letterSpacing: "-1.4px",
                           }
-                        : size === 120
+                        : size === 98
                         ? {
                             fontSize: "54px",
                             fontStyle: "normal",

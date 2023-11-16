@@ -25,7 +25,7 @@ const meta: Meta<typeof SingleHourlyWeather> = {
             selectedIndex={0}
             index={0}
             onClickControl={(value) => {
-              console.log("yo");
+              console.log("Single Hourly Weather");
             }}
           />
 
@@ -39,7 +39,7 @@ const meta: Meta<typeof SingleHourlyWeather> = {
             selectedIndex={0}
             index={1}
             onClickControl={(value) => {
-              console.log("yo");
+              console.log("Single Hourly Weather");
             }}
           />
         </div>
