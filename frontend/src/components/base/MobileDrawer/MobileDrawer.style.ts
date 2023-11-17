@@ -22,15 +22,14 @@ export const Container = styled.div`
 export const DrawerContainer = styled(Drawer)`
   display: flex;
   border-radius: 20px 20px 0 0;
-
 `;
 
 export const InnerDrawer = styled.div`
   width: 100%;
+  overflow: auto;
 
   > div:last-of-type > div {
     max-height: 85vh;
-    overflow: auto;
   }
 `;
 
