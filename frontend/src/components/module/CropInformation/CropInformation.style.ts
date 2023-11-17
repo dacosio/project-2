@@ -27,12 +27,6 @@ export const InformationContainer = styled.div`
       padding-top: unset;
     }
   }
-
-  @media (min-width: 1200px) {
-    > div {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  }
 `;
 
 export const FertilizerContainer = styled.div`
