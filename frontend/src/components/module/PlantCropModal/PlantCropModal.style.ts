@@ -8,7 +8,7 @@ export const Container = styled.div`
 export const Wrapper = styled.div`
   display: grid;
   gap: 32px;
-  justify-items: start;
+  justify-items: stretch;
 `;
 
 export const Header = styled.div`

@@ -20,6 +20,7 @@ export const InputContainer = styled.div`
   display: flex;
   gap: 8px;
   box-sizing: border-box;
+  justify-content: space-between;
 `;
 
 export const InputText = styled.input`
@@ -36,6 +37,7 @@ export const IconContainer = styled.div`
 `;
 
 export const ListContainer = styled.div`
+  position: absolute;
   width: 100%;
   margin-top: 6px;
   border-radius: 4px;
