@@ -1,12 +1,12 @@
 import React from "react";
 
 import TeamView from "./Team.view";
-import Guia from "../../images/teamImg/Guia-Farmer.png"
-import Don from "../../images/teamImg/Don-Farmer.png"
-import Monica from "../../images/teamImg/Monica-Farmer.png"
-import Yuhwan from "../../images/teamImg/Yuhwan-Farmer.png"
-import JB from "../../images/teamImg/JB-Farmer.png"
-import Kanin from "../../images/teamImg/Jump-Farmer.png"
+import Guia from "../../../public/assets/teamImg/Guia-Farmer.png"
+import Don from "../../../public/assets/teamImg/Don-Farmer.png"
+import Monica from "../../../public/assets/teamImg/Monica-Farmer.png"
+import Yuhwan from "../../../public/assets/teamImg/Yuhwan-Farmer.png"
+import JB from "../../../public/assets/teamImg/JB-Farmer.png"
+import Kanin from "../../../public/assets/teamImg/Jump-Farmer.png"
 // import Pujan from "../../images/teamImg/-Farmer.png"
 // import Mugdha from "../../images/teamImg/Don-Farmer.png"
 
@@ -23,7 +23,7 @@ const Team = (): JSX.Element => {
     {
       name: "Guia Chavez",
       role: "Project Manager | Full Stack Developer",
-      source: Guia,
+      source: "assets/teamImg/Guia-Farmer.png",
       icon: "developer",
       url: "https://www.linkedin.com/in/guia-chavez/",
       link: ["https://www.linkedin.com/in/guia-chavez/", "https://github.com/guiachavez"],
@@ -31,7 +31,7 @@ const Team = (): JSX.Element => {
     {
       name: "Don Cosio",
       role: "Project Manager | Lead Full stack | ML developer",
-      source: Don,
+      source: "assets/teamImg/Don-Farmer.png",
       icon: "developer",
       url: "https://www.linkedin.com/in/don-apollo-cosio-0a41b296/",
       link: ["https://www.linkedin.com/in/don-apollo-cosio-0a41b296/", "https://github.com/dacosio", "https://don-cosio-info.vercel.app"],
@@ -39,7 +39,7 @@ const Team = (): JSX.Element => {
     {
       name: "Monica Esquivel",
       role: "Lead UX/UI Designer",
-      source: Monica,
+      source: "assets/teamImg/Monica-Farmer.png",
       icon: "designer",
       url: "https://www.linkedin.com/in/monica-esquivel-8b02666a/",
       link: ["https://www.linkedin.com/in/monica-esquivel-8b02666a/"],
@@ -47,7 +47,7 @@ const Team = (): JSX.Element => {
     {
       name: "Yuhwan Ban",
       role: "Frontend Developer",
-      source: Yuhwan,
+      source: "assets/teamImg/Yuhwan-Farmer.png",
       icon: "developer",
       url: "https://www.linkedin.com/in/yuhwan-ban-082467269/",
       link: ["https://www.linkedin.com/in/yuhwan-lucas-ban/", "https://github.com/laubana"],
@@ -63,7 +63,7 @@ const Team = (): JSX.Element => {
     {
       name: "Philippe Hernandez",
       role: "Frontend Developer | UI/UX Designer",
-      source: JB,
+      source: "assets/teamImg/JB-Farmer.png",
       icon: "developer",
       url: "https://www.linkedin.com/in/jbhern/",
       link: ["https://www.linkedin.com/in/jbhern/", "https://www.behance.net/jbhern",  "https://www.github.com/jbhern-34"],
@@ -71,7 +71,7 @@ const Team = (): JSX.Element => {
     {
       name: "Kanin Phuvanatnaranubala",
       role: "UX/UI Designer",
-      source: Kanin,
+      source: "assets/teamImg/Jump-Farmer.png",
       icon: "designer",
       url: "https://www.linkedin.com/in/jumpchill/",
       link: ["https://www.linkedin.com/in/jumpchill/"],
