@@ -60,7 +60,7 @@ const MemberCard = (props: MemberCardProps): JSX.Element => {
         <Typography variant="title5" align="center">
           {name}
         </Typography>
-        <Typography variant="body" align="center" textColor="n70">
+        <Typography variant="tag" align="center" textColor="n60" style={{textTransform: "uppercase", marginTop: ".2rem"}}>
           {role}
         </Typography>
         {link && (

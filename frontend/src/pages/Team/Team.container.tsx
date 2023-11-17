@@ -22,7 +22,7 @@ const Team = (): JSX.Element => {
   }[] = [
     {
       name: "Guia Chavez",
-      role: "Project Manager, Developer",
+      role: "Project Manager | Full Stack Developer",
       source: Guia,
       icon: "developer",
       url: "https://www.linkedin.com/in/guia-chavez/",
@@ -30,7 +30,7 @@ const Team = (): JSX.Element => {
     },
     {
       name: "Don Cosio",
-      role: "Lead Developer",
+      role: "Project Manager | Lead Full stack | ML developer",
       source: Don,
       icon: "developer",
       url: "https://www.linkedin.com/in/don-apollo-cosio-0a41b296/",
@@ -46,7 +46,7 @@ const Team = (): JSX.Element => {
     },
     {
       name: "Yuhwan Ban",
-      role: "Developer",
+      role: "Frontend Developer",
       source: Yuhwan,
       icon: "developer",
       url: "https://www.linkedin.com/in/yuhwan-ban-082467269/",
@@ -54,7 +54,7 @@ const Team = (): JSX.Element => {
     },
     {
       name: "Pujan Shakya",
-      role: "Developer",
+      role: "Frontend Developer",
       source: "https://placehold.co/50x100/FFFFFF/png",
       icon: "developer",
       url: "https://www.linkedin.com/in/pujan-shakya/",
@@ -62,7 +62,7 @@ const Team = (): JSX.Element => {
     },
     {
       name: "Philippe Hernandez",
-      role: "Developer",
+      role: "Frontend Developer | UI/UX Designer",
       source: JB,
       icon: "developer",
       url: "https://www.linkedin.com/in/jbhern/",
