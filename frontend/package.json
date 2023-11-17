@@ -56,13 +56,6 @@
     "serve-storybook": "serve storybook-static",
     "chromatic": "npx chromatic --project-token=chpt_f072533b8761f01"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest",
-      "plugin:storybook/recommended"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -90,7 +83,6 @@
     "@types/react-slick": "^0.23.11",
     "babel-plugin-named-exports-order": "^0.0.2",
     "chromatic": "^7.4.0",
-    "eslint-plugin-storybook": "^0.6.13",
     "plop": "^3.1.2",
     "prettier": "3.0.2",
     "prop-types": "^15.8.1",
