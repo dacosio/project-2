@@ -24,6 +24,7 @@ export const InputContainer = styled.div`
 `;
 
 export const InputText = styled.input`
+  width: 100%;
   border: none;
   ${fontStyle}
 
@@ -39,6 +40,8 @@ export const IconContainer = styled.div`
 export const ListContainer = styled.div`
   position: absolute;
   width: 100%;
+  max-height: 150px;
+  overflow-y: auto;
   margin-top: 6px;
   border-radius: 4px;
   background-color: white;
