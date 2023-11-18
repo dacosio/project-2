@@ -91,7 +91,7 @@ const HomeView = (props: HomeGeneratedProps) => {
         </HeaderContents>
         <HeaderContents xxl={4} xl={4} lg={6} md={6}>
           <Hide sm xs>
-            <img src={headerImg} alt="" style={{ maxWidth: "100%" }} />
+            <img src={headerImg} alt="" className="image" style={{ maxWidth: "100%" }} />
           </Hide>
         </HeaderContents>
       </Header>

@@ -5,6 +5,20 @@ import Typography from "components/base/Typography";
 import TextField from "components/base/TextField";
 
 export const Container = styled.div`
+  @keyframes box {
+    0% {
+      opacity: 1;
+      border-radius: 0;
+      transform: translateY(0) rotate(0deg);
+    }
+
+    100% {
+      opacity: 0;
+      border-radius: 50%;
+      transform: translateY(-1000px) rotate(720deg);
+    }
+  }
+  
   box-sizing: border-box;
 
   .text {
@@ -73,11 +87,11 @@ export const About = styled(Row)`
 `;
 
 export const DiscoverContent = styled.div`
-max-width: 760px;
-padding: 4rem 0;
+  max-width: 760px;
+  padding: 4rem 0;
 
-@media (min-width: 992px) {
-}
+  @media (min-width: 992px) {
+  }
 `;
 
 export const AboutDisplay = styled(Col)`
@@ -128,7 +142,6 @@ export const Details = styled.div`
     height: auto;
   }
 `;
-
 
 export const Column = styled(Col)`
   background-color: red;
