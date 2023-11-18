@@ -16,6 +16,7 @@ import SignupModal from "../../base/SignupModal";
 import LoginModal from "../../base/LoginModal";
 import { SproutLogo } from "../../base/SVG";
 import { NavLink, useLocation } from "react-router-dom";
+import MobileNavBackground from "../../base/MobileNavBackground";
 
 const HomeNavigation = (props: HomeNavigationProps): JSX.Element => {
   const [open, setOpen] = useState(false);
@@ -64,6 +65,7 @@ const HomeNavigation = (props: HomeNavigationProps): JSX.Element => {
         </LoginOptions>
       </Nav>
       <HomeNavigationMobile open={open} />
+      <MobileNavBackground open={open} toggleOpen={() => setOpen(!open)} />
     </Container>
   );
 };
