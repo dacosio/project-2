@@ -1,5 +1,11 @@
 import styled from "@emotion/styled";
 import { theme } from "../../../utils/Theme";
+import {
+  Behance,
+  LinkedinIcon,
+  GithubIcon,
+  Website,
+} from "../SVG";
 
 export const Container = styled.div`
   display: grid;
@@ -30,7 +36,11 @@ export const Image = styled.img`
   position: absolute;
   top: 0;
   width: 100%;
+  max-width: 100%;
+  height: auto;
   aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover;
   border-radius: 50%;
   background-color: ${({ theme }) => theme.bg.secondary};
 
@@ -45,9 +55,13 @@ export const IconContainer = styled.div`
   width: 100%;
   display: grid;
   justify-items: end;
+
 `;
 
 export const FooterContainer = styled.div`
-  display: grid;
-  grid-template-rows: auto 1fr;
+  display: flex;
+  flex-flow: column;
+  a:hover {
+    color: blue; // Change this to the desired hover color
+  }
 `;
