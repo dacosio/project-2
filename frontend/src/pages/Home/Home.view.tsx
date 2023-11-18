@@ -30,12 +30,13 @@ import aboutimg from "images/aboutimg.png";
 import icon1 from "images/icon1.png";
 import icon2 from "images/icon2.png";
 import icon3 from "images/icon3.png";
+import tomato from "images/Tomato.png";
+
 import { useAppDispatch } from "../../app/hooks";
 import {
   storeEmail,
   toggleSignUp,
 } from "../../features/authModal/authModalSlice";
-
 
 const HomeView = (props: HomeGeneratedProps) => {
   const [email, setEmail] = useState<string>("");
@@ -65,6 +66,9 @@ const HomeView = (props: HomeGeneratedProps) => {
         style={{ marginLeft: 0, marginRight: 0 }}
         id="header"
       >
+        <div style={{position: "static", top: "0", bottom: "0", right: "0", left: "0", backgroundColor: "pink"}}>
+          <img src={tomato} alt="" className="tomato" />
+        </div>
         <HeaderContents xxl={4} xl={4} lg={6} md={6}>
           <Typography variant="title1" weight="700" textColor="accent">
             Sow and grow your farming <span className="line-break">goals</span>
@@ -91,7 +95,12 @@ const HomeView = (props: HomeGeneratedProps) => {
         </HeaderContents>
         <HeaderContents xxl={4} xl={4} lg={6} md={6}>
           <Hide sm xs>
-            <img src={headerImg} alt="" className="image" style={{ maxWidth: "100%" }} />
+            <img
+              src={headerImg}
+              alt=""
+              className="image"
+              style={{ maxWidth: "100%" }}
+            />
           </Hide>
         </HeaderContents>
       </Header>
@@ -131,7 +140,12 @@ const HomeView = (props: HomeGeneratedProps) => {
               Sprout’s data-backed features, you can discover, plant, and
               nurture the perfect crop for your unique growing conditions.
             </Typography>
-            <Typography variant="subtitle" weight="400" textColor="n80" style={{marginTop: "1rem"}}>
+            <Typography
+              variant="subtitle"
+              weight="400"
+              textColor="n80"
+              style={{ marginTop: "1rem" }}
+            >
               Already have a crop to grow mind? We got you! Sprout provides the
               info you’ll need to create the best environment to plant and
               cultivate it.
