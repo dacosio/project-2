@@ -23,7 +23,7 @@ export const Container = styled.div<WeatherGeneratedStyleProps>`
    display:grid;
    max-width: 1021px;
    
-    margin: 2rem 0;
+    margin: 0 0;
     row-gap:16px;
     
      justify-items: center;
