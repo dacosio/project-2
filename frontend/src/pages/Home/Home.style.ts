@@ -69,6 +69,14 @@ export const Header = styled(Row)`
     z-index: 5;
     animation: fruits 5s linear infinite;
   }
+  img.tomato1{
+    position: absolute;
+    top: 2rem;
+    right: 20rem;
+    display: block;
+    z-index: 5;
+    animation: fruits 5s linear infinite;
+  }
 `;
 
 export const HeaderContents = styled(Col)`

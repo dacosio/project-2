@@ -68,6 +68,7 @@ const HomeView = (props: HomeGeneratedProps) => {
       >
         <div style={{position: "static", top: "0", bottom: "0", right: "0", left: "0", backgroundColor: "pink"}}>
           <img src={tomato} alt="" className="tomato" />
+          <img src={tomato} alt="" className="tomato1" />
         </div>
         <HeaderContents xxl={4} xl={4} lg={6} md={6}>
           <Typography variant="title1" weight="700" textColor="accent">
