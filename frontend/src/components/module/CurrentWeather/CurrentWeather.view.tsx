@@ -29,6 +29,8 @@ import {
   DashboardLowHighMTContainer,
   DashboardDateForecastContainer,
   DashboardForecastContainer,
+  DashboardAddressDateForecastContainer,
+  DashSearchContainer,
 } from "./CurrentWeather.style";
 import {
   Clear,
@@ -73,7 +75,7 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
         ? 154
         : window.innerWidth > 550
         ? 120
-        : window.innerWidth > 350
+        : window.innerWidth > 370
         ? 80
         : 60
       : window.innerWidth > 1200 && collapseState
@@ -101,7 +103,7 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
             ? 154
             : window.innerWidth > 550
             ? 120
-            : window.innerWidth > 350
+            : window.innerWidth > 370
             ? 80
             : 60
           : window.innerWidth > 1200 && collapseState
@@ -135,10 +137,13 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
           gradientColor2={gradientColor2}
         >
           <AddressDateForecastSVGContainer>
-            <AddressDateForecastContainer>
+            <DashboardAddressDateForecastContainer>
               <AddressContainer>
                 <LocationSvg width={22} height={22} fill="#FFFFFF" />
-                <Typography variant="title3" textColor="white">
+                <Typography
+                  variant={size === 60 ? "title4" : "title3"}
+                  textColor="white"
+                >
                   {currentLocation}{" "}
                 </Typography>
               </AddressContainer>
@@ -186,7 +191,7 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
                           }
                         : size === 60
                         ? {
-                            fontSize: "44px",
+                            fontSize: "40px",
                             fontStyle: "normal",
                             fontWeight: 700,
                             lineHeight: "76px",
@@ -251,7 +256,7 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
                   </Typography>{" "}
                 </DashboardWindContainer>
               </DashboardPrecipitationHumidityWindContainer>
-            </AddressDateForecastContainer>
+            </DashboardAddressDateForecastContainer>
             <DashboardSVGContainer>
               {currentCondition === "clear" ? (
                 <Clear width={size} height={size} />
@@ -276,13 +281,13 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
           </AddressDateForecastSVGContainer>
 
           <DashboardSearchContainer>
-            <SearchContainer>
+            <DashSearchContainer>
               <LocationSearch
                 onClickControl={(value) => {
                   onSelectedSearchLocation(value);
                 }}
               ></LocationSearch>
-            </SearchContainer>
+            </DashSearchContainer>
           </DashboardSearchContainer>
         </DashboardContainer>
       ) : (
@@ -294,7 +299,10 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
             <AddressDateForecastContainer>
               <AddressContainer>
                 <LocationSvg width={22} height={22} fill="#FFFFFF" />
-                <Typography variant="title3" textColor="white">
+                <Typography
+                  variant={size === 60 ? "title4" : "title3"}
+                  textColor="white"
+                >
                   {currentLocation}{" "}
                 </Typography>
               </AddressContainer>
@@ -318,7 +326,7 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
                     style={
                       size === 60
                         ? {
-                            fontSize: "44px",
+                            fontSize: "38px",
                             fontStyle: "normal",
                             fontWeight: 700,
                             lineHeight: "76px",
@@ -342,7 +350,8 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
                     }
                     textColor="white"
                   >
-                    {currentTemperature}°C
+                    {/* {currentTemperature}°C */}
+                    10.8°C
                   </Typography>{" "}
                 </TemperatureContainer>
                 <LowHighMTContainer>

@@ -124,7 +124,12 @@ export const LowHighMTContainer = styled.div`
   row-gap: 4px;
   align-items: center;
 
-  @media screen and (max-width: 500px) {
+  @media screen  and (max-width: 380px) {
+    position: absolute;
+    right: 3rem;
+  }
+
+  @media screen and (min-width: 380px) and (max-width: 500px) {
     position: absolute;
     right: 4rem;
   }
@@ -179,7 +184,11 @@ max-width: 660px;
   padding: 20px 20px;
 
   height: 294px;
-  margin-bottom:
+
+
+  @media screen and (max-width: 768px) {
+    height: fit-content;
+  }
 `;
 
 export const DashboardTemperatureLowHighContainer = styled.div`
@@ -197,9 +206,14 @@ export const DashboardSearchContainer = styled.div`
    bottom: 10px;
   margin-top:1rem;
 
+  @media screen and (max-width: 768px) {
+     bottom: 0;
+  }
+
   @media screen and (min-width: 1200px) and (max-width: 1280px) {
     bottom: 26px;  
   }
+
 `;
 
 export const DashboardPrecipitationHumidityWindContainer = styled.div`
@@ -264,9 +278,14 @@ export const DashboardLowHighMTContainer = styled.div`
   row-gap: 4px;
   align-items: center;
 
-  @media screen and (max-width: 500px) {
+  @media screen and  (max-width: 350px) {
     position: absolute;
-    right: 4rem;
+    right: 2rem;
+  }
+
+  @media screen and (min-width: 350px) and (max-width: 500px) {
+    position: absolute;
+    right: 3rem;
   }
 
   @media screen and (min-width: 500px) and (max-width: 600px) {
@@ -296,5 +315,24 @@ export const DashboardForecastContainer = styled.div`
       margin-left: 8px;
     }
   }
+`;
+
+export const DashboardAddressDateForecastContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+
+  @media screen and (max-width: 768px) {
+    gap: 0.2rem;
+  }
+`;
+
+
+export const DashSearchContainer = styled.div`
+@media screen and (min-width: 1200px) {
+  position: relative;
+  bottom: -20px;
+   width: 100%;
+}
 `;
 

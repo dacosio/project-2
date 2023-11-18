@@ -13,7 +13,18 @@ export const Container = styled.div<WindStyleProps>`
     border-radius: 1.3rem;
     background-color: ${theme.grey.noshade};
 
-    @media screen and (max-width: 768px) {
+
+    @media screen and (max-width: 400px) {
+      width: 88%;
+      height:254px;
+     }  
+
+    @media screen and (min-width: 400px) and (max-width: 528px) {
+      width: 90%;
+      height:254px;
+     }
+
+    @media screen and (min-width: 528px) and (max-width: 768px) {
      width: 94%;
      height:254px;
     }
