@@ -94,97 +94,95 @@ const CropList = (props: CropListProps): JSX.Element => {
         />
       </div>
       {visibility && (
-        <>
-          <Hidden xs sm>
-            <PopupContainer ref={popupRef}>
+        <Hidden xs sm>
+          <PopupContainer ref={popupRef}>
+            <div>
               <div>
-                <div>
-                  <div
-                    onClick={() => {
-                      setVisibility(false);
-                      handleOnClickChoice();
-                    }}
-                  >
-                    <Choice />
-                    <div>
-                      <Typography variant="title4" weight="700">
-                        Your Choice
-                      </Typography>
-                      <Typography>
-                        We'll give you info and tips on growing
-                      </Typography>
-                    </div>
+                <div
+                  onClick={() => {
+                    setVisibility(false);
+                    handleOnClickChoice();
+                  }}
+                >
+                  <Choice />
+                  <div>
+                    <Typography variant="title4" weight="700">
+                      Your Choice
+                    </Typography>
+                    <Typography>
+                      We'll give you info and tips on growing
+                    </Typography>
                   </div>
-                  <div
-                    onClick={() => {
-                      setVisibility(false);
-                      handleOnClickSuggestion();
-                    }}
-                  >
-                    <Suggestion />
-                    <div>
-                      <Typography variant="title4" weight="700">
-                        Our Suggestion
-                      </Typography>
-                      <Typography>
-                        We'll suggest which crop suits your soil
-                      </Typography>
-                    </div>
+                </div>
+                <div
+                  onClick={() => {
+                    setVisibility(false);
+                    handleOnClickSuggestion();
+                  }}
+                >
+                  <Suggestion />
+                  <div>
+                    <Typography variant="title4" weight="700">
+                      Our Suggestion
+                    </Typography>
+                    <Typography>
+                      We'll suggest which crop suits your soil
+                    </Typography>
                   </div>
                 </div>
               </div>
-            </PopupContainer>
-          </Hidden>
-          <Visible xs sm>
-            <MobileDrawer
-              direction="bottom"
-              isOpenDrawer={visibility}
-              handleDrawerClose={() => setVisibility(false)}
-              drawerSize="auto"
-              isModalVisible={isModalVisible}
-            >
-              <PopupContainer>
-                <div>
+            </div>
+          </PopupContainer>
+        </Hidden>
+      )}
+      <Visible xs sm>
+        <MobileDrawer
+          direction="bottom"
+          isOpenDrawer={visibility}
+          handleDrawerClose={() => setVisibility(false)}
+          drawerSize="auto"
+          isModalVisible={isModalVisible}
+        >
+          <PopupContainer>
+            <div>
+              <div>
+                <div
+                  onClick={() => {
+                    setVisibility(false);
+                    handleOnClickChoice();
+                  }}
+                >
+                  <Choice />
                   <div>
-                    <div
-                      onClick={() => {
-                        setVisibility(false);
-                        handleOnClickChoice();
-                      }}
-                    >
-                      <Choice />
-                      <div>
-                        <Typography variant="title4" weight="700">
-                          Your Choice
-                        </Typography>
-                        <Typography>
-                          We'll give you info and tips on growing
-                        </Typography>
-                      </div>
-                    </div>
-                    <div
-                      onClick={() => {
-                        setVisibility(false);
-                        handleOnClickSuggestion();
-                      }}
-                    >
-                      <Suggestion />
-                      <div>
-                        <Typography variant="title4" weight="700">
-                          Our Suggestion
-                        </Typography>
-                        <Typography>
-                          We'll suggest which crop suits your soil
-                        </Typography>
-                      </div>
-                    </div>
+                    <Typography variant="title4" weight="700">
+                      Your Choice
+                    </Typography>
+                    <Typography>
+                      We'll give you info and tips on growing
+                    </Typography>
                   </div>
                 </div>
-              </PopupContainer>
-            </MobileDrawer>
-          </Visible>
-        </>
-      )}
+                <div
+                  onClick={() => {
+                    setVisibility(false);
+                    handleOnClickSuggestion();
+                  }}
+                >
+                  <Suggestion />
+                  <div>
+                    <Typography variant="title4" weight="700">
+                      Our Suggestion
+                    </Typography>
+                    <Typography>
+                      We'll suggest which crop suits your soil
+                    </Typography>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </PopupContainer>
+        </MobileDrawer>
+      </Visible>
     </Container>
   );
 };
