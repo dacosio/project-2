@@ -26,11 +26,17 @@ const AddChoice = (props: AddChoiceProps): JSX.Element => {
   return (
     <>
       {isFirstStep ? (
-        <Modal isOpen={visibility} onClose={() => setVisibility(false)} padded>
+        <Modal
+          width="25vw"
+          isOpen={visibility}
+          onClose={() => setVisibility(false)}
+          padded
+        >
           {step}
         </Modal>
       ) : (
         <Modal
+          width="25vw"
           isOpen={visibility}
           onBack={() => handleBack()}
           onClose={() => setVisibility(false)}
