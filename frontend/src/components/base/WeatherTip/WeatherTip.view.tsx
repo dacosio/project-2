@@ -17,7 +17,6 @@ const WeatherTip = (props: WeatherTipProps): JSX.Element => {
   const { condition, collapseState, ...weatherTipProps } = props;
   let currentTip = "";
   let currentCondition = "";
-  console.log(`Weather tip : ${condition}`);
 
   const tips = {
     clear:

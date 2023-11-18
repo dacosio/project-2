@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from "react";
 import DashboardView from "./Dashboard.view";
 import { useGetPlantedCropsQuery } from "./../../features/crops/cropApiSlice";
-import Typography from "./../../components/base/Typography";
 import axios from "axios";
 import { useCurrentCity } from "./../../utils/hooks/useCurrentCity";
-import Button from "./../../components/base/Button";
 import { useNavigate } from "react-router-dom";
 import {
   storeSelectedCropId,
   storeSelectedOption,
 } from "./../../features/crops/cropSlice";
 import { useAppDispatch, useAppSelector } from "./../../app/hooks";
-import Loading from "./../../components/base/Loading";
 import toast from "react-hot-toast";
 import {
   storeAddress,
@@ -20,18 +17,12 @@ import {
 import { selectCollapse } from "features/sidebar/sidebarSlice";
 
 const Dashboard = (): JSX.Element => {
-  const { data, isLoading } = useGetPlantedCropsQuery({ isPlanted: true }); //or isFavorite??
+  const { data, isLoading } = useGetPlantedCropsQuery({ isPlanted: true });
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(storeAddress(""));
     dispatch(storeCity(""));
   }, []);
-
-  // const generatedProps = {
-  //   crops: data,
-  //   isLoading,
-  //   generated props here
-  // };
 
   const navigate = useNavigate();
   const [weatherData, setWeatherData] = useState<{ [key: string]: any }>({});
@@ -55,15 +46,7 @@ const Dashboard = (): JSX.Element => {
     snowRain: ["#524E8B", "#2A3259"],
     thunderStormRain: ["#7148D5", "#C9A6C7"],
   });
-  const date = new Date();
-  // const { currentCity, errorMessage } = useCurrentCity();
-  // if (currentCity) {
-  //   setSelectedAddress(currentCity);
-  //   console.log(`selectedAddress : ${selectedAddress}`);
-  // }
 
-  console.log(`currentCity : ${selectedAddress}`);
-  // console.log(`apiUrl : ${apiUrl}`);
   useEffect(() => {
     const apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${selectedAddress}?unitGroup=metric&key=${process.env.REACT_APP_WEATHER_API_KEY}&contentType=json`;
 
@@ -84,7 +67,6 @@ const Dashboard = (): JSX.Element => {
 
     onFetchWeather();
   }, [selectedAddress]);
-  console.log(weatherData);
 
   if (
     selectedAddress &&
@@ -92,9 +74,6 @@ const Dashboard = (): JSX.Element => {
     weatherData.days &&
     weatherData.days.length > 0
   ) {
-    console.log(
-      `Current Condition : ${weatherData.currentConditions.conditions.toLowerCase()}`
-    );
     if (
       weatherData.currentConditions.conditions
         .toLowerCase()
@@ -164,24 +143,17 @@ const Dashboard = (): JSX.Element => {
       gradientColor2 = gradientObject.thunderStormRain[1];
       currentCondition = "thunderStormRain";
     }
-
-    console.log(`gradientColor1 : ${gradientColor1}`);
-    console.log(`gradientColor2 : ${gradientColor2}`);
-    console.log(`currentCondition : ${currentCondition}`);
   }
 
   const handleSelectedSearchLocation = (address: string) => {
-    console.log("Weather address " + address);
     setSelectedAddress(address);
   };
 
   const handleSelectedWeatherIndex = (value: number) => {
-    console.log("Weather " + value);
     setSelectedIndex(value);
   };
 
   const handleSetState = (state: string) => {
-    console.log("state " + state);
     setState(state);
   };
 
@@ -301,50 +273,6 @@ const Dashboard = (): JSX.Element => {
   }
 
   return <DashboardView {...generatedProps} />;
-  // (
-  //   <>
-  //     {selectedAddress &&
-  //     weatherData &&
-  //     weatherData.days &&
-  //     weatherData.days.length > 0 ? (
-  //       <DashboardView
-  //         crops={data}
-  //         isLoading={isLoading}
-  //         currentLocation={selectedAddress}
-  //         forecast={weatherData.currentConditions.conditions}
-  //         currentTemperature={weatherData.currentConditions.temp}
-  //         lowTemperature={weatherData.days[0]?.tempmin}
-  //         highTemperature={weatherData.days[0]?.tempmax}
-  //         precipitation={weatherData.currentConditions.precip}
-  //         humidity={weatherData.currentConditions.humidity}
-  //         wind={weatherData.currentConditions.windspeed}
-  //         gradientColor1={gradientColor1}
-  //         gradientColor2={gradientColor2}
-  //         currentCondition={currentCondition}
-  //         page="weather"
-  //         onSelectedSearchLocationWeather={handleSelectedSearchLocation}
-  //         MOCK_OPTIONS={MOCK_OPTIONS}
-  //         state={state}
-  //         onSetState={handleSetState}
-  //         weatherData={weatherData}
-  //         onSelectedWeatherIndexWeather={handleSelectedWeatherIndex}
-  //         selectedIndex={selectedIndex}
-  //         handleOpenCard={handleOpenCard}
-  //         visibility={visibility}
-  //         setVisibility={setVisibility}
-  //         suggestionVisibility={suggestionVisibility}
-  //         setSuggestionVisibility={setSuggestionVisibility}
-  //         choiceVisibility={choiceVisibility}
-  //         setChoiceVisibility={setChoiceVisibility}
-  //         handleLater={handleLater}
-  //         handleNow={handleNow}
-  //         collapseState={collapseState}
-  //       />
-  //     ) : (
-  //       <Loading />
-  //     )}
-  //   </>
-  // );
 };
 
 export default Dashboard;

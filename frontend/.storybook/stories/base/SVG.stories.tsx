@@ -8,6 +8,7 @@ import {
   Behance,
   Developer,
   Designer,
+  ArrowLeft,
   ViewAllSvg,
   WeatherSvg,
   GitHub,
@@ -103,6 +104,8 @@ const meta: Meta = {
         </Wrapper>
         <Wrapper label="Designer">
           <Designer width={30} height={30} />
+        <Wrapper label="ArrowLeft">
+          <ArrowLeft width={30} height={30} />
         </Wrapper>
         <Wrapper label="ViewAllSvg">
           <ViewAllSvg width={30} height={30} />

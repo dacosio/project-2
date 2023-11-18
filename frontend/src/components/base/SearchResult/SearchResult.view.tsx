@@ -4,7 +4,6 @@ import { SearchResultProps } from "./SearchResult.props";
 import {
   Container,
   SearchResultList,
-  List,
   Result,
   Body,
   ResultCount,

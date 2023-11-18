@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { HourlyDailyProps } from "./HourlyDaily.props";
 import {
   Container,
@@ -14,15 +14,14 @@ const HourlyDaily = (props: HourlyDailyProps): JSX.Element => {
     state,
     onSelectedWeatherIndex,
     index,
+    page,
     ...hourlyDailyProps
   } = props;
   let weatherDataFilteredArray: Array<{ [key: string]: any }>;
 
   const MOCK_OPTIONS = ["Today", "15-day"];
-  const [selectedIndex, setSelectedIndex] = useState(0);
+
   let description = "";
-  console.log(state);
-  console.log(weatherDataArray);
 
   if (state === MOCK_OPTIONS[0]) {
     weatherDataFilteredArray = weatherDataArray.hours;
@@ -32,6 +31,35 @@ const HourlyDaily = (props: HourlyDailyProps): JSX.Element => {
     description = weatherDataFilteredArray[index].description;
   }
 
+  const getCurrentHour24Format = () => {
+    const now = new Date();
+    const options: Intl.DateTimeFormatOptions = {
+      hour: "2-digit",
+      hour12: false,
+    };
+    const hour24 = new Intl.DateTimeFormat("en-GB", options).format(now);
+    return hour24; // This will return the hour part only, like "03" or "15"
+  };
+
+  const getIndex = () => {
+    if (state === MOCK_OPTIONS[0]) {
+      const currentTimeIndex = parseInt(getCurrentHour24Format());
+      return currentTimeIndex;
+    } else {
+      return 0;
+    }
+  };
+  const [selectedIndex, setSelectedIndex] = useState(getIndex());
+  useEffect(() => {
+    setSelectedIndex(getIndex());
+  }, [state]);
+
+  /**
+   * function to get the current time in 12hour format
+   * @param datetime
+   * @param state
+   * @returns
+   */
   const getTime = (datetime: string, state: string) => {
     if (state === MOCK_OPTIONS[0]) {
       const [hour, minutes] = datetime.split(":");
@@ -60,6 +88,12 @@ const HourlyDaily = (props: HourlyDailyProps): JSX.Element => {
     }
   };
 
+  /**
+   * function to get the day name of the input date time
+   * @param datetime
+   * @param state
+   * @returns
+   */
   const getDayName = (datetime: string, state: string) => {
     if (state === MOCK_OPTIONS[1]) {
       // Assuming 'dateString' is in 'YYYY-MM-DD' format
@@ -77,6 +111,12 @@ const HourlyDaily = (props: HourlyDailyProps): JSX.Element => {
     }
   };
 
+  /**
+   * function to get the Date from input datetime  ( Nov 20 , Nov 24)
+   * @param datetime
+   * @param state
+   * @returns
+   */
   const getDayDate = (datetime: string, state: string) => {
     if (state === MOCK_OPTIONS[1]) {
       // Assuming 'dateString' is in 'YYYY-MM-DD' format
@@ -96,7 +136,7 @@ const HourlyDaily = (props: HourlyDailyProps): JSX.Element => {
   };
 
   return (
-    <Container>
+    <Container page={page}>
       <TypographyContainer>
         <Typography variant="body">{description}</Typography>
       </TypographyContainer>
@@ -106,7 +146,6 @@ const HourlyDaily = (props: HourlyDailyProps): JSX.Element => {
           (obj: { [key: string]: any }, index: any) => (
             <SingleHourlyWeather
               time={getTime(obj.datetime, state)}
-              // time={obj.datetime}
               dayName={getDayName(obj.datetime, state)}
               dayDate={getDayDate(obj.datetime, state)}
               condition={obj.conditions}

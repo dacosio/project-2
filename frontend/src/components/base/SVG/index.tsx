@@ -5,6 +5,7 @@ export { default as LinkedinIcon } from './LinkedinIcon';
 export { default as Behance } from './Behance';
 export { default as Developer } from './Developer';
 export { default as Designer } from './Designer';
+export { default as ArrowLeft } from './ArrowLeft';
 export { default as ViewAllSvg } from './ViewAllSvg';
 export { default as WeatherSvg } from './WeatherSvg';
 export { default as GitHub } from './GitHub';

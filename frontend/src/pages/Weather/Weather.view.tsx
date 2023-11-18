@@ -1,25 +1,12 @@
-import React, { useEffect, useState } from "react";
 import { WeatherGeneratedProps } from "./Weather.props";
-import {
-  BottomContainer,
-  Container,
-  HumidityContainer,
-  PrecipitationContainer,
-  WeatherAlertContainer,
-  WindContainer,
-} from "./Weather.style";
-import Chips from "components/base/Chips";
+import { BottomContainer, Container } from "./Weather.style";
 import CurrentWeather from "components/module/CurrentWeather";
-import Typography from "components/base/Typography";
-import axios from "axios";
-import { useCurrentCity } from "utils/hooks/useCurrentCity";
 import HourlyDaily from "components/module/HourlyDaily";
 import SegmentedControl from "components/base/SegmentedControl";
 import Wind from "components/base/Wind";
 import Precipitation from "components/base/Precipitation";
 import Humidity from "../../components/base/Humidity";
 import WeatherAlert from "components/base/WeatherAlert";
-import { Col, Row } from "react-grid-system";
 import WeatherTip from "components/base/WeatherTip";
 import Loading from "components/base/Loading";
 
@@ -48,19 +35,24 @@ const WeatherView = (props: WeatherGeneratedProps) => {
     ...weatherGeneratedProps
   } = props;
 
+  /**
+   * Handles Selected Search Location
+   * @param address
+   */
   const handleSelectedSearchLocation = (address: string) => {
-    console.log("Weather address " + address);
     onSelectedSearchLocationWeather(address);
   };
 
+  /**
+   * Handles Selected Weather Index
+   * @param value
+   */
   const handleSelectedWeatherIndex = (value: number) => {
-    console.log("Weather " + value);
     onSelectedWeatherIndexWeather(value);
   };
 
   return (
     <Container collapseState={collapseState}>
-      {/* {collapseState ? "true" : "false"} */}
       {currentLocation &&
       weatherData &&
       weatherData.days &&
@@ -86,7 +78,6 @@ const WeatherView = (props: WeatherGeneratedProps) => {
             options={MOCK_OPTIONS}
             selectedOption={state}
             onClickControl={(value: string) => {
-              console.log(value);
               onSetState(value);
             }}
           />
@@ -97,6 +88,7 @@ const WeatherView = (props: WeatherGeneratedProps) => {
             state={state}
             onSelectedWeatherIndex={handleSelectedWeatherIndex}
             index={selectedIndex}
+            page="weather"
           ></HourlyDaily>
 
           <BottomContainer collapseState={collapseState}>

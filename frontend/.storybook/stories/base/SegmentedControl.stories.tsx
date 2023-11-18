@@ -15,7 +15,6 @@ const meta: Meta<typeof SegmentedControl> = {
           options={MOCK_OPTIONS}
           selectedOption={state}
           onClickControl={(value) => {
-            console.log(value);
             setState(value);
           }}
         />

@@ -87,7 +87,6 @@ const Wind = (props: WindProps): JSX.Element => {
         </LeftContainer>
         <RightContainer>
           <WindCompass width={122} height={136}></WindCompass>
-          {/* <WindCompass width={150} height={140}></WindCompass> */}
           <Arrow
             windDirection={windDirection}
             collapseState={collapseState}
