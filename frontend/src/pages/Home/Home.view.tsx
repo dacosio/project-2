@@ -12,15 +12,7 @@ import {
   AboutFrame,
   AboutTypography,
   AboutDetails,
-  Contact,
-  ContactImage,
-  Form,
-  UserInfo,
-  Message,
-  ContactForm,
   Hide,
-  Column,
-  Sacolumn,
 } from "./Home.style";
 import Typography from "components/base/Typography";
 import TextField from "components/base/TextField";
@@ -38,33 +30,12 @@ import aboutimg from "images/aboutimg.png";
 import icon1 from "images/icon1.png";
 import icon2 from "images/icon2.png";
 import icon3 from "images/icon3.png";
-import contact from "images/contact.png";
-import Footer from "components/layout/Footer";
-import { SproutLogo } from "components/base/SVG";
-import WeatherCard from "./../../components/base/WeatherCard";
-import Search from "./../../components/base/Search";
-import LocationSearch from "components/module/LocationSearch";
 import { useAppDispatch } from "../../app/hooks";
 import {
   storeEmail,
   toggleSignUp,
 } from "../../features/authModal/authModalSlice";
 
-// import emailjs from '@emailjs/browser';
-
-// export const ContactUs = () => {
-//   const form = useRef();
-
-//   const sendEmail = (e) => {
-//     e.preventDefault();
-
-//     emailjs.sendForm('service_buhpmve', 'template_caubnyp', form.current, 'XjkLA79uvMpAgWV9B')
-//       .then((result) => {
-//           console.log(result.text);
-//       }, (error) => {
-//           console.log(error.text);
-//       });
-//   };
 
 const HomeView = (props: HomeGeneratedProps) => {
   const [email, setEmail] = useState<string>("");
@@ -83,52 +54,6 @@ const HomeView = (props: HomeGeneratedProps) => {
     }
   }, [location]);
   const dispatch = useAppDispatch();
-
-  // useEffect(() => {
-  //   dispatch(forwardEmail(email));
-  // }, [email, dispatch]);
-
-
-  // ======== Active section when SCROLLING ========== //
-  // const [activeSection, setActiveSection] = useState("");
-  // const currentLocation = useLocation(); // Rename 'location' to 'currentLocation'
-
-  // useEffect(() => {
-  //   // Listen for scroll events
-  //   const handleScroll = () => {
-  //     const header = document.getElementById("header");
-  //     const about = document.getElementById("about");
-  //     const features = document.getElementById("features");
-
-  //     const scrollY = window.scrollY;
-
-  //     if (header && scrollY >= header.offsetTop && (!about || scrollY < about.offsetTop)) {
-  //       setActiveSection("header");
-  //     } else if (
-  //       about &&
-  //       scrollY >= about.offsetTop &&
-  //       (!features || scrollY < features.offsetTop)
-  //     ) {
-  //       setActiveSection("about");
-  //     } else if (features && scrollY >= features.offsetTop) {
-  //       setActiveSection("features");
-  //     }
-  //   };
-
-  //   window.addEventListener("scroll", handleScroll);
-
-  //   // Cleanup event listener on component unmount
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, []); // Empty dependency array to run the effect only once
-
-  // useEffect(() => {
-  //   // Update URL hash when activeSection changes
-  //   if (activeSection && currentLocation.hash !== `#${activeSection}`) {
-  //     window.history.replaceState(null, "", `#${activeSection}`);
-  //   }
-  // }, [activeSection, currentLocation.hash]);
 
   return (
     <Container>
@@ -206,7 +131,7 @@ const HomeView = (props: HomeGeneratedProps) => {
               Sprout’s data-backed features, you can discover, plant, and
               nurture the perfect crop for your unique growing conditions.
             </Typography>
-            <Typography variant="subtitle" weight="400" textColor="n80">
+            <Typography variant="subtitle" weight="400" textColor="n80" style={{marginTop: "1rem"}}>
               Already have a crop to grow mind? We got you! Sprout provides the
               info you’ll need to create the best environment to plant and
               cultivate it.
