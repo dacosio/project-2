@@ -1,10 +1,8 @@
 import React from "react";
 import { AddChoiceProps } from "./AddChoice.props";
-import { Back, Container } from "./AddChoice.style";
 import { useMultistepForm } from "../../../utils/hooks/useMultistepForm";
 import AddChoiceFirst from "../AddChoiceFirst";
 import AddCropResult from "../AddCropResult";
-import Typography from "../Typography";
 import Modal from "../Modal";
 
 const AddChoice = (props: AddChoiceProps): JSX.Element => {
@@ -36,7 +34,7 @@ const AddChoice = (props: AddChoiceProps): JSX.Element => {
         </Modal>
       ) : (
         <Modal
-          width="25vw"
+          width="30vw"
           isOpen={visibility}
           onBack={() => handleBack()}
           onClose={() => setVisibility(false)}

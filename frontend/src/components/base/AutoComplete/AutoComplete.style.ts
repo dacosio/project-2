@@ -47,6 +47,23 @@ export const ListContainer = styled.div`
   background-color: white;
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
   box-sizing: border-box;
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 `;
 
 export const ItemContainer = styled.div`

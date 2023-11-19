@@ -33,6 +33,7 @@ export const ModalBox = styled.div<{ width?: string }>`
   width: 100%;
 
   @media (min-width: 992px) {
+    width: auto;
     max-width: ${({ width = "50vw" }) => width};
   }
 `;
