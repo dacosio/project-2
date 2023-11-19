@@ -75,9 +75,9 @@ const NavigationHeader = ({
 
       <div style={{ position: "relative" }}>
         <AvatarWrapper>
-          <BellWrapper>
+          {/* <BellWrapper>
             <Bell height={19} width={17.88} />
-          </BellWrapper>
+          </BellWrapper> */}
           <UserAvatar
             email="sprout@langara.ca"
             size="36"
