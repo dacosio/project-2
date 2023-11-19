@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { SingleHourlyWeatherProps } from "./SingleHourlyWeather.props";
 import {
   Container,
@@ -64,8 +64,23 @@ const SingleHourlyWeather = (props: SingleHourlyWeatherProps): JSX.Element => {
   ) {
     currentCondition = "thunderStormRain";
   }
+
+  // Create a ref for the container
+  const containerRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (index === selectedIndex && containerRef.current) {
+      // Scroll the element into view
+      containerRef.current.scrollIntoView({
+        behavior: "smooth", // Optional: defines the transition animation
+        block: "nearest", // Optional: vertical alignment
+        inline: "start", // Optional: horizontal alignment
+      });
+    }
+  }, [index, selectedIndex]);
   return (
     <Container
+      ref={containerRef} // Attach the ref to your container
       active={index === selectedIndex}
       onClick={() => onClickControl(index)}
     >
