@@ -50,22 +50,6 @@ import {
   toggleSignUp,
 } from "../../features/authModal/authModalSlice";
 
-// import emailjs from '@emailjs/browser';
-
-// export const ContactUs = () => {
-//   const form = useRef();
-
-//   const sendEmail = (e) => {
-//     e.preventDefault();
-
-//     emailjs.sendForm('service_buhpmve', 'template_caubnyp', form.current, 'XjkLA79uvMpAgWV9B')
-//       .then((result) => {
-//           console.log(result.text);
-//       }, (error) => {
-//           console.log(error.text);
-//       });
-//   };
-
 const HomeView = (props: HomeGeneratedProps) => {
   const [email, setEmail] = useState<string>("");
   const [name, setName] = useState<string>("");
@@ -91,51 +75,6 @@ const HomeView = (props: HomeGeneratedProps) => {
   }, [location]);
   const dispatch = useAppDispatch();
 
-  // useEffect(() => {
-  //   dispatch(forwardEmail(email));
-  // }, [email, dispatch]);
-
-  // ======== Active section when SCROLLING ========== //
-  // const [activeSection, setActiveSection] = useState("");
-  // const currentLocation = useLocation(); // Rename 'location' to 'currentLocation'
-
-  // useEffect(() => {
-  //   // Listen for scroll events
-  //   const handleScroll = () => {
-  //     const header = document.getElementById("header");
-  //     const about = document.getElementById("about");
-  //     const features = document.getElementById("features");
-
-  //     const scrollY = window.scrollY;
-
-  //     if (header && scrollY >= header.offsetTop && (!about || scrollY < about.offsetTop)) {
-  //       setActiveSection("header");
-  //     } else if (
-  //       about &&
-  //       scrollY >= about.offsetTop &&
-  //       (!features || scrollY < features.offsetTop)
-  //     ) {
-  //       setActiveSection("about");
-  //     } else if (features && scrollY >= features.offsetTop) {
-  //       setActiveSection("features");
-  //     }
-  //   };
-
-  //   window.addEventListener("scroll", handleScroll);
-
-  //   // Cleanup event listener on component unmount
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, []); // Empty dependency array to run the effect only once
-
-  // useEffect(() => {
-  //   // Update URL hash when activeSection changes
-  //   if (activeSection && currentLocation.hash !== `#${activeSection}`) {
-  //     window.history.replaceState(null, "", `#${activeSection}`);
-  //   }
-  // }, [activeSection, currentLocation.hash]);
-
   return (
     <Container>
       <HomeNavigation />
@@ -144,8 +83,7 @@ const HomeView = (props: HomeGeneratedProps) => {
         justify="center"
         align="center"
         style={{ marginLeft: 0, marginRight: 0 }}
-        id="header"
-      >
+        id="header">
         <HeaderContents xxl={4} xl={4} lg={6} md={6}>
           <Typography variant="title1" weight="700" textColor="accent">
             Sow and grow your farming <span className="line-break">goals</span>
@@ -166,8 +104,7 @@ const HomeView = (props: HomeGeneratedProps) => {
               onClick={() => {
                 dispatch(toggleSignUp(true));
                 dispatch(storeEmail(email));
-              }}
-            ></Button>
+              }}></Button>
           </div>
         </HeaderContents>
         <HeaderContents xxl={4} xl={4} lg={6} md={6}>
@@ -180,8 +117,7 @@ const HomeView = (props: HomeGeneratedProps) => {
       <About
         justify="center"
         style={{ marginLeft: 0, marginRight: 0 }}
-        id="about"
-      >
+        id="about">
         <DiscoverContent>
           <div style={{ marginBottom: "1rem" }}>
             <Hide md sm xs>
@@ -189,8 +125,7 @@ const HomeView = (props: HomeGeneratedProps) => {
                 variant="title1"
                 weight="700"
                 textColor="accent"
-                align="left"
-              >
+                align="left">
                 Discover your best farming buddy
               </Typography>
             </Hide>
@@ -199,8 +134,7 @@ const HomeView = (props: HomeGeneratedProps) => {
                 variant="title2"
                 weight="700"
                 textColor="accent"
-                align="center"
-              >
+                align="center">
                 Discover your best farming buddy
               </Typography>
             </Visible>
@@ -239,8 +173,7 @@ const HomeView = (props: HomeGeneratedProps) => {
         justify="center"
         align="center"
         id="features"
-        style={{ marginLeft: 0, marginRight: 0 }}
-      >
+        style={{ marginLeft: 0, marginRight: 0 }}>
         <AboutDisplay xxl={5} xl={5} lg={5}>
           <Hide md sm xs>
             <AboutFrame>
@@ -252,8 +185,7 @@ const HomeView = (props: HomeGeneratedProps) => {
                   style={{
                     position: "relative",
                     zIndex: "1",
-                  }}
-                >
+                  }}>
                   Farming<br></br>simplified
                 </Typography>
               </AboutTypography>
@@ -266,8 +198,7 @@ const HomeView = (props: HomeGeneratedProps) => {
               variant="title2"
               weight="700"
               textColor="accent"
-              align="center"
-            >
+              align="center">
               Farming simplified
             </Typography>
           </Visible>
