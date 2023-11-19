@@ -54,7 +54,7 @@ const CropGuideView = (props: CropGuideGeneratedProps) => {
           <Typography variant="subtitle" weight="200" textColor="noshade">
             Have a crop or two you want to plant?
             <br />
-            Get tips on growing them from us!
+            Get our tips on growing them!
           </Typography>
 
           <SearchContainer>
