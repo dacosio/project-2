@@ -72,22 +72,28 @@ const HomeView = (props: HomeGeneratedProps) => {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.hash) {
-      const targetId = location.hash.substring(1);
-      const targetElement = document.getElementById(targetId);
+    const handleHashChange = () => {
+      if (location.hash) {
+        const targetId = location.hash.substring(1);
+        const targetElement = document.getElementById(targetId);
 
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: "smooth" });
-        //window.scrollTo(0, targetElement.offsetTop);
+        if (targetElement) {
+          const navHeight = 92;
+
+          document.documentElement.style.scrollBehavior = "smooth";
+          window.scrollTo(0, targetElement.offsetTop - navHeight);
+          document.documentElement.style.scrollBehavior = "auto";
+        }
       }
-    }
+    };
+
+    handleHashChange();
   }, [location]);
   const dispatch = useAppDispatch();
 
   // useEffect(() => {
   //   dispatch(forwardEmail(email));
   // }, [email, dispatch]);
-
 
   // ======== Active section when SCROLLING ========== //
   // const [activeSection, setActiveSection] = useState("");
@@ -206,6 +212,7 @@ const HomeView = (props: HomeGeneratedProps) => {
               Sprout’s data-backed features, you can discover, plant, and
               nurture the perfect crop for your unique growing conditions.
             </Typography>
+            <br />
             <Typography variant="subtitle" weight="400" textColor="n80">
               Already have a crop to grow mind? We got you! Sprout provides the
               info you’ll need to create the best environment to plant and
