@@ -32,5 +32,5 @@ overflow-y: hidden;
   padding-top:1rem;
 
 border-radius: 20px;
-padding-left: 8px; 
+padding-left: 2px; 
   `
