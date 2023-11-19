@@ -1,8 +1,9 @@
 import styled from "@emotion/styled";
 import { theme } from "../../../utils/Theme";
+import { SingleHourlyWeatherStyleProps } from "./SingleHourlyWeather.props";
 
 
-export const Container = styled.button<{ active: boolean }>`
+export const Container = styled.button<SingleHourlyWeatherStyleProps>`
   display: flex;
   flex-direction: column;
   padding: 8px;
