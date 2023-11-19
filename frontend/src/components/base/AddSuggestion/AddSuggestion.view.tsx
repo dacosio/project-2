@@ -1,11 +1,9 @@
 import React from "react";
 import { AddSuggestionProps } from "./AddSuggestion.props";
-import { Back, Container } from "./AddSuggestion.style";
 import { useMultistepForm } from "../../../utils/hooks/useMultistepForm";
 import AddSuggestionFirst from "../../base/AddSuggestionFirst";
 import AddSuggestionSecond from "../../base/AddSuggestionSecond";
 import AddCropResult from "../AddCropResult";
-import Typography from "../Typography";
 import Modal from "../Modal";
 
 const AddSuggestion = (props: AddSuggestionProps): JSX.Element => {
@@ -28,11 +26,17 @@ const AddSuggestion = (props: AddSuggestionProps): JSX.Element => {
   return (
     <>
       {isFirstStep ? (
-        <Modal isOpen={visibility} onClose={() => setVisibility(false)} padded>
+        <Modal
+          width="25vw"
+          isOpen={visibility}
+          onClose={() => setVisibility(false)}
+          padded
+        >
           {step}
         </Modal>
       ) : (
         <Modal
+          width="30vw"
           isOpen={visibility}
           onBack={() => handleBack()}
           onClose={() => setVisibility(false)}
