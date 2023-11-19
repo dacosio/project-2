@@ -1,8 +1,9 @@
 import styled from "@emotion/styled";
 import { theme } from "../../../utils/Theme";
+import { SingleHourlyWeatherStyleProps } from "./SingleHourlyWeather.props";
 
 
-export const Container = styled.button<{ active: boolean }>`
+export const Container = styled.button<SingleHourlyWeatherStyleProps>`
   display: flex;
   flex-direction: column;
   padding: 8px;
@@ -10,7 +11,9 @@ export const Container = styled.button<{ active: boolean }>`
   align-items: center;
    background: ${(props) => (props.active ? "#FFFFFF" : "#1FB4F4")};
   color: ${(props) => (props.active ? "#000000" : "#FFFFFF")};
-  row-gap:1rem;
+  row-gap: ${(props) => (props.active ? "0.6rem" : "1rem")}; 
+  padding-top: ${(props) => (props.active ? "0.9rem" : "8px")}; 
+  padding-bottom: ${(props) => (props.active ? "0.9rem" : "8px")}; 
   justify-content: space-between;
   text-align: center;
   border: none;
@@ -18,7 +21,7 @@ export const Container = styled.button<{ active: boolean }>`
   transition: transform 0.5s;
   transform: scale(${(props) => (props.active ? 1.14 : 1)}); 
   z-index: ${(props) => (props.active ? 2 : 0)};
-  box-shadow: ${(props) => (props.active ? `3px 3px 3px ${theme.neutral.n30}` : 0)};
+  box-shadow: ${(props) => (props.active ? `3px 1px 5px ${theme.neutral.n30}` : 0)};
 
   
 

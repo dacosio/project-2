@@ -2,6 +2,12 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import {
   /* PLOP_INJECT_IMPORT */
+  Website,
+  GithubIcon,
+  LinkedinIcon,
+  Behance,
+  Developer,
+  Designer,
   ArrowLeft,
   ViewAllSvg,
   WeatherSvg,
@@ -81,6 +87,24 @@ const meta: Meta = {
   component: () => (
     <Container background="white" style={{ flexWrap: "wrap" }}>
       {/* PLOP_INJECT_INSTANCE*/}
+        <Wrapper label="Website">
+          <Website width={30} height={30} />
+        </Wrapper>
+        <Wrapper label="GithubIcon">
+          <GithubIcon width={30} height={30} />
+        </Wrapper>
+        <Wrapper label="LinkedinIcon">
+          <LinkedinIcon width={30} height={30} />
+        </Wrapper>
+        <Wrapper label="Behance">
+          <Behance width={30} height={30} />
+        </Wrapper>
+        <Wrapper label="Developer">
+          <Developer width={30} height={30} />
+        </Wrapper>
+        <Wrapper label="Designer">
+          <Designer width={30} height={30} />
+        </Wrapper>
         <Wrapper label="ArrowLeft">
           <ArrowLeft width={30} height={30} />
         </Wrapper>
