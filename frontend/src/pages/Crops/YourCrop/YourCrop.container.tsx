@@ -136,9 +136,9 @@ const YourCrop = (): JSX.Element => {
 
   useEffect(() => {
     const filteredCrops = crops.filter((cropItem) =>
-      option?.value === "planted"
+      selectedOption?.value === "planted"
         ? cropItem.isPlanted
-        : option?.value === "to-plant"
+        : selectedOption?.value === "to-plant"
         ? !cropItem.isPlanted
         : true
     );

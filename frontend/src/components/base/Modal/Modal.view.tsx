@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Close } from "../../../../src/components/base/SVG";
+import { ArrowLeft, Close } from "../../../../src/components/base/SVG";
 import { ModalProps } from "./Modal.props";
 import {
   Container,
@@ -11,6 +11,7 @@ import {
 } from "./Modal.style";
 
 const Modal: FC<ModalProps> = ({
+  width,
   isOpen,
   uncloseable,
   onClose,
@@ -32,10 +33,13 @@ const Modal: FC<ModalProps> = ({
     <Container>
       <ModalOverlay ref={outsideRef} onClick={handleCloseOnOverlay} />
 
-      <ModalBox>
+      <ModalBox width={width}>
         <div style={{ paddingTop: padded ? "64px" : undefined }}>
           {onBack && ( // Render back button only if onBack function is provided
-            <ModalBack onClick={onBack}>Back</ModalBack>
+            <ModalBack onClick={onBack}>
+              <ArrowLeft />
+              Prev
+            </ModalBack>
           )}
           {!uncloseable && (
             <ModalClose onClick={onClose}>

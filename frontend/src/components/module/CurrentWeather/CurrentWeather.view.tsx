@@ -29,10 +29,11 @@ import {
   DashboardLowHighMTContainer,
   DashboardDateForecastContainer,
   DashboardForecastContainer,
+  DashboardAddressDateForecastContainer,
+  DashSearchContainer,
 } from "./CurrentWeather.style";
 import {
   Clear,
-  Cloudy,
   LocationSvg,
   Overcast,
   PartiallyCloudy,
@@ -44,7 +45,6 @@ import {
 } from "../../base/SVG";
 import LocationSearch from "../LocationSearch";
 import Typography from "../../base/Typography";
-import CurrentDate from "../../base/CurrentDate";
 
 const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
   const {
@@ -64,7 +64,6 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
     collapseState,
     ...currentWeatherProps
   } = props;
-  console.log(page);
   const [size, setSize] = useState(
     page === "weather"
       ? window.innerWidth > 1200
@@ -73,7 +72,7 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
         ? 154
         : window.innerWidth > 550
         ? 120
-        : window.innerWidth > 350
+        : window.innerWidth > 370
         ? 80
         : 60
       : window.innerWidth > 1200 && collapseState
@@ -101,7 +100,7 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
             ? 154
             : window.innerWidth > 550
             ? 120
-            : window.innerWidth > 350
+            : window.innerWidth > 370
             ? 80
             : 60
           : window.innerWidth > 1200 && collapseState
@@ -127,6 +126,29 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
     return () => window.removeEventListener("resize", handleResize);
   });
   let forecastTrimmed = forecast.split(",").map((part) => part.trim());
+
+  const getCurrentDateFormatted = () => {
+    // Create a new Date object for the current date and time
+    const today = new Date();
+
+    // Options to format the date as "Day, Month Date, Year" (e.g., "Sat, Nov 18, 2023")
+    const options: Intl.DateTimeFormatOptions = {
+      weekday: "short", // 'short' gives the weekday in abbreviated form (e.g., "Sat")
+      year: "numeric",
+      month: "short", // 'short' gives the month in abbreviated form (e.g., "Nov")
+      day: "numeric",
+    };
+
+    console.log(
+      `today : ${new Intl.DateTimeFormat("en-US", options).format(today)}`
+    );
+    // Format the current date using the specified options and 'en-US' locale
+    return new Intl.DateTimeFormat("en-US", options).format(today);
+  };
+
+  const [currentDateFormatted, setCurrentDateFormatted] = useState(
+    getCurrentDateFormatted
+  );
   return (
     <>
       {page === "dashboard" ? (
@@ -135,10 +157,13 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
           gradientColor2={gradientColor2}
         >
           <AddressDateForecastSVGContainer>
-            <AddressDateForecastContainer>
+            <DashboardAddressDateForecastContainer>
               <AddressContainer>
                 <LocationSvg width={22} height={22} fill="#FFFFFF" />
-                <Typography variant="title3" textColor="white">
+                <Typography
+                  variant={size === 60 ? "title4" : "title3"}
+                  textColor="white"
+                >
                   {currentLocation}{" "}
                 </Typography>
               </AddressContainer>
@@ -146,7 +171,7 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
                 <DateContainer>
                   {" "}
                   <Typography variant="body" textColor="white">
-                    <CurrentDate />
+                    {currentDateFormatted}
                   </Typography>
                 </DateContainer>
                 <DashboardForecastContainer>
@@ -186,7 +211,7 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
                           }
                         : size === 60
                         ? {
-                            fontSize: "44px",
+                            fontSize: "40px",
                             fontStyle: "normal",
                             fontWeight: 700,
                             lineHeight: "76px",
@@ -251,7 +276,7 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
                   </Typography>{" "}
                 </DashboardWindContainer>
               </DashboardPrecipitationHumidityWindContainer>
-            </AddressDateForecastContainer>
+            </DashboardAddressDateForecastContainer>
             <DashboardSVGContainer>
               {currentCondition === "clear" ? (
                 <Clear width={size} height={size} />
@@ -276,13 +301,13 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
           </AddressDateForecastSVGContainer>
 
           <DashboardSearchContainer>
-            <SearchContainer>
+            <DashSearchContainer>
               <LocationSearch
                 onClickControl={(value) => {
                   onSelectedSearchLocation(value);
                 }}
               ></LocationSearch>
-            </SearchContainer>
+            </DashSearchContainer>
           </DashboardSearchContainer>
         </DashboardContainer>
       ) : (
@@ -294,7 +319,10 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
             <AddressDateForecastContainer>
               <AddressContainer>
                 <LocationSvg width={22} height={22} fill="#FFFFFF" />
-                <Typography variant="title3" textColor="white">
+                <Typography
+                  variant={size === 60 ? "title4" : "title3"}
+                  textColor="white"
+                >
                   {currentLocation}{" "}
                 </Typography>
               </AddressContainer>
@@ -302,7 +330,7 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
                 <DateContainer>
                   {" "}
                   <Typography variant="body" textColor="white">
-                    <CurrentDate />
+                    {currentDateFormatted}
                   </Typography>
                 </DateContainer>
                 <ForecastContainer>
@@ -318,7 +346,7 @@ const CurrentWeather = (props: CurrentWeatherProps): JSX.Element => {
                     style={
                       size === 60
                         ? {
-                            fontSize: "44px",
+                            fontSize: "38px",
                             fontStyle: "normal",
                             fontWeight: 700,
                             lineHeight: "76px",

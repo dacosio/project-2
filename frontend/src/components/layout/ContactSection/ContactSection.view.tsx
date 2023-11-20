@@ -79,7 +79,7 @@ const ContactSection = (props: ContactSectionProps): JSX.Element => {
                     labelVariant="subtitle"
                     labelWeight="bold"
                     name="name"
-                    placeholder="Juan Dela Cruz"
+                    placeholder="Type your name here..."
                     style={{ flexGrow: "1" }}
                   />
                   <FormikTextField
@@ -87,7 +87,7 @@ const ContactSection = (props: ContactSectionProps): JSX.Element => {
                     labelVariant="subtitle"
                     labelWeight="bold"
                     name="email"
-                    placeholder="user@nomail.com"
+                    placeholder="Type your email here..."
                     style={{ flexGrow: "1" }}
                   />
                 </UserInfo>
@@ -96,7 +96,7 @@ const ContactSection = (props: ContactSectionProps): JSX.Element => {
                   labelVariant="subtitle"
                   labelWeight="bold"
                   name="message"
-                  placeholder="message"
+                  placeholder="Type your message here..."
                   style={{ width: "100%" }}
                 />
                 <Button type="submit" text="Submit" variant="tonal" />

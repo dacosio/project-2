@@ -24,13 +24,18 @@ export const ModalOverlay = styled.div`
   cursor: pointer;
 `;
 
-export const ModalBox = styled.div`
+export const ModalBox = styled.div<{ width?: string }>`
   position: relative;
-  margin: 0 10%;
   box-sizing: border-box;
   border-radius: 24px;
   background-color: white;
   cursor: auto;
+  width: calc(100% - 32px);
+
+  @media (min-width: 992px) {
+    width: auto;
+    max-width: ${({ width = "50vw" }) => width};
+  }
 `;
 
 export const ModalContent = styled.div`
@@ -55,19 +60,17 @@ export const ModalContent = styled.div`
   ::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
-
-  @media (min-width: 768px) {
-    max-width: 50vw;
-  }
 `;
 
 export const ModalBack = styled.div`
   position: absolute;
+  display: flex;
+  align-items: center;
   top: 20px;
-  left: 28px;
+  left: 16px;
   background: transparent;
   border: none;
-  color: #6b6b6b;
+  color: #16161d;
   cursor: pointer;
   transition: color 0.3s ease-in-out;
 
@@ -81,7 +84,7 @@ export const ModalClose = styled.div`
   height: 20px;
   position: absolute;
   top: 20px;
-  right: 20px;
+  right: 16px;
   transition: transform 250ms ease-in-out;
   transform-origin: 50% 50%;
   display: flex;

@@ -285,7 +285,7 @@ const CropDetail = (props: CropDetailProps): JSX.Element => {
         onConfirm={handleConfirm}
         setIsModalVisible={setIsModalVisible}
       />
-      <Modal isOpen={isDeleting} onClose={handleCloseDelete}>
+      <Modal width="25vw" isOpen={isDeleting} onClose={handleCloseDelete}>
         <div
           style={{
             padding: "64px 16px 16px 20px",

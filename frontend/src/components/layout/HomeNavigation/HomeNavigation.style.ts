@@ -64,7 +64,7 @@ export const NavOptions = styled.div`
 export const LoginOptions = styled.div`
   @media (min-width: 768px) {
     display: flex;
-    gap: 2rem;
+    gap: .5rem;
   }
 `;
 
