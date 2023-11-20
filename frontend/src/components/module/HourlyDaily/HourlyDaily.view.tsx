@@ -41,17 +41,17 @@ const HourlyDaily = (props: HourlyDailyProps): JSX.Element => {
     return hour24; // This will return the hour part only, like "03" or "15"
   };
 
-  const getIndex = () => {
+  const getIndex = (datetime: string) => {
     if (state === MOCK_OPTIONS[0]) {
       const currentTimeIndex = parseInt(getCurrentHour24Format());
       return currentTimeIndex;
     } else {
-      return 0;
+      return 1;
     }
   };
-  const [selectedIndex, setSelectedIndex] = useState(getIndex());
+  const [selectedIndex, setSelectedIndex] = useState(getIndex("2023-11-22"));
   useEffect(() => {
-    setSelectedIndex(getIndex());
+    setSelectedIndex(getIndex("2023-11-22"));
   }, [state]);
 
   /**
@@ -125,7 +125,8 @@ const HourlyDaily = (props: HourlyDailyProps): JSX.Element => {
       // Options to return the day of the month and the short month name
       const options: Intl.DateTimeFormatOptions = {
         day: "numeric",
-        month: "short", // 'short' gives the month in abbreviated form (e.g., "Oct")
+        month: "short",
+        // timeZone: "America/Vancouver", // 'short' gives the month in abbreviated form (e.g., "Oct")
       };
 
       // 'en-US' locale. You can change this to another locale if you want the month name in another language.

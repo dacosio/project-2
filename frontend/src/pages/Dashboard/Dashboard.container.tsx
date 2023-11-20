@@ -197,7 +197,6 @@ const Dashboard = (): JSX.Element => {
 
   const collapseState = useAppSelector(selectCollapse);
   const page = "dashboard";
-
   let generatedProps = {
     crops: data,
     isLoading: isLoading,
