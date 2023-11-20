@@ -6,14 +6,14 @@ import { SingleHourlyWeatherStyleProps } from "./SingleHourlyWeather.props";
 export const Container = styled.button<SingleHourlyWeatherStyleProps>`
   display: flex;
   flex-direction: column;
-  padding: 8px;
+  padding: 16px 4px;
   justify-items: stretch;
   align-items: center;
    background: ${(props) => (props.active ? "#FFFFFF" : "#1FB4F4")};
   color: ${(props) => (props.active ? "#000000" : "#FFFFFF")};
   row-gap: ${(props) => (props.active ? "0.6rem" : "1rem")}; 
-  padding-top: ${(props) => (props.active ? "0.9rem" : "8px")}; 
-  padding-bottom: ${(props) => (props.active ? "0.9rem" : "8px")}; 
+  padding-top: ${(props) => (props.active ? "1.36rem" : "16px")}; 
+  padding-bottom: ${(props) => (props.active ? "1.36rem" : "16px")}; 
   justify-content: space-between;
   text-align: center;
   border: none;
