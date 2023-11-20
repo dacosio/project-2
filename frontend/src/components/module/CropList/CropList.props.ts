@@ -7,12 +7,12 @@ export type Option = {
 };
 
 export interface CropListProps {
-  crops: Crop[];
+  crops?: Crop[];
   crop?: Crop;
-  options: Option[];
-  option: Option | undefined;
-  setOption: Dispatch<SetStateAction<Option | undefined>>;
-  handleOnClickCrop: (id: string) => void;
+  options?: Option[];
+  option?: Option | undefined;
+  setOption?: Dispatch<SetStateAction<Option | undefined>>;
+  handleOnClickCrop?: (id: string) => void;
   handleOnClickChoice: () => void;
   handleOnClickSuggestion: () => void;
 }
