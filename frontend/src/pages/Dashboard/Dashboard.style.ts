@@ -106,4 +106,10 @@ export const Option = styled.div`
   }
 `;
 
+export const MobileOption = styled.div`
+  display: flex;
+  padding: 16px 0;
+  gap: 1rem;
+`
+
 export const OptionLabel = styled.div``;

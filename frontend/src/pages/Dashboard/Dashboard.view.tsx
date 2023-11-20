@@ -11,6 +11,7 @@ import {
   OptionWrapper,
   Option,
   OptionLabel,
+  MobileOption,
 } from "./Dashboard.style";
 import { Toaster } from "react-hot-toast";
 import Typography from "components/base/Typography";
@@ -31,6 +32,8 @@ import { useTheme } from "@emotion/react";
 import { useRef } from "react";
 import AddChoiceModal from "components/module/AddChoiceModal";
 import AddSuggestionModal from "components/module/AddSuggestionModal";
+import { Hidden, Visible } from "react-grid-system";
+import MobileDrawer from "./../../components/base/MobileDrawer";
 
 const DashboardView = (props: DashboardGeneratedProps) => {
   const {
@@ -64,6 +67,7 @@ const DashboardView = (props: DashboardGeneratedProps) => {
     suggestionVisibility,
     setSuggestionVisibility,
     collapseState,
+    isModalVisible,
   } = props;
   const navigate = useNavigate();
   const theme = useTheme();
@@ -136,26 +140,62 @@ const DashboardView = (props: DashboardGeneratedProps) => {
           </Typography>
 
           {crops?.length ? (
-            <MiddleRight ref={popupRef}>
-              <Button
-                text={matches ? "View All" : ""}
-                variant="outline"
-                icon={<ViewAllSvg />}
-                iconPosition="before"
-                style={
-                  !matches ? { padding: "17.5px 16px" } : { padding: "16px" }
-                }
-                onClick={() => navigate("/your-crops")}
-              />
-              <Button
-                iconPosition="before"
-                icon={<Add fill={theme.btn.text.white} />}
-                text={matches ? "New Crop" : ""}
-                onClick={() => setVisibility((prev) => !prev)}
-              />
-              {visibility && (
-                <OptionWrapper>
-                  <Option onClick={() => setChoiceVisibility(true)}>
+            <>
+              <MiddleRight ref={popupRef}>
+                <Button
+                  text={matches ? "View All" : ""}
+                  variant="outline"
+                  icon={<ViewAllSvg />}
+                  iconPosition="before"
+                  style={
+                    !matches ? { padding: "17.5px 16px" } : { padding: "16px" }
+                  }
+                  onClick={() => navigate("/your-crops")}
+                />
+                <Button
+                  iconPosition="before"
+                  icon={<Add fill={theme.btn.text.white} />}
+                  text={matches ? "New Crop" : ""}
+                  onClick={() => setVisibility((prev) => !prev)}
+                />
+                {visibility && (
+                  <Hidden xs sm>
+                    <OptionWrapper>
+                      <Option onClick={() => setChoiceVisibility(true)}>
+                        <Choice />
+                        <OptionLabel>
+                          <Typography variant="title4" weight="700">
+                            Your Choice
+                          </Typography>
+                          <Typography>
+                            We'll give you info and tips on growing
+                          </Typography>
+                        </OptionLabel>
+                      </Option>
+                      <Option onClick={() => setSuggestionVisibility(true)}>
+                        <Suggestion />
+                        <OptionLabel>
+                          <Typography variant="title4" weight="700">
+                            Our Suggestion
+                          </Typography>
+                          <Typography>
+                            We'll suggest which crop suits your soil
+                          </Typography>
+                        </OptionLabel>
+                      </Option>
+                    </OptionWrapper>
+                  </Hidden>
+                )}
+              </MiddleRight>
+              <Visible xs sm>
+                <MobileDrawer
+                  direction="bottom"
+                  isOpenDrawer={visibility}
+                  handleDrawerClose={() => setVisibility(false)}
+                  drawerSize="auto"
+                  isModalVisible={isModalVisible}
+                >
+                  <MobileOption onClick={() => setChoiceVisibility(true)}>
                     <Choice />
                     <OptionLabel>
                       <Typography variant="title4" weight="700">
@@ -165,8 +205,8 @@ const DashboardView = (props: DashboardGeneratedProps) => {
                         We'll give you info and tips on growing
                       </Typography>
                     </OptionLabel>
-                  </Option>
-                  <Option onClick={() => setSuggestionVisibility(true)}>
+                  </MobileOption>
+                  <MobileOption onClick={() => setSuggestionVisibility(true)}>
                     <Suggestion />
                     <OptionLabel>
                       <Typography variant="title4" weight="700">
@@ -176,10 +216,10 @@ const DashboardView = (props: DashboardGeneratedProps) => {
                         We'll suggest which crop suits your soil
                       </Typography>
                     </OptionLabel>
-                  </Option>
-                </OptionWrapper>
-              )}
-            </MiddleRight>
+                  </MobileOption>
+                </MobileDrawer>
+              </Visible>
+            </>
           ) : (
             ""
           )}
