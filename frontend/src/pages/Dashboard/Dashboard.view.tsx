@@ -67,7 +67,6 @@ const DashboardView = (props: DashboardGeneratedProps) => {
   } = props;
   const navigate = useNavigate();
   const theme = useTheme();
-
   const handleSelectedSearchLocation = (address: string) => {
     onSelectedSearchLocationWeather(address);
   };
@@ -122,8 +121,7 @@ const DashboardView = (props: DashboardGeneratedProps) => {
               state={state}
               onSelectedWeatherIndex={handleSelectedWeatherIndex}
               index={selectedIndex}
-              page="dashboard"
-            ></HourlyDaily>
+              page="dashboard"></HourlyDaily>
           </Segment>
         </Top>
       ) : (
@@ -208,7 +206,7 @@ const DashboardView = (props: DashboardGeneratedProps) => {
                   size={width < 800 ? "mobile" : "desktop"}
                   id={idx.toString()}
                   datePlanted={formattedDate}
-                  estYield="10"
+                  estYield={Number(crop.estimatedYield).toFixed(2)}
                   height={width < 800 ? 85 : 120}
                   width={width < 800 ? 85 : 120}
                   mobile={width < 800 ? true : false}
