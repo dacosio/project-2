@@ -30,7 +30,14 @@ import aboutimg from "images/aboutimg.png";
 import icon1 from "images/icon1.png";
 import icon2 from "images/icon2.png";
 import icon3 from "images/icon3.png";
-import tomato from "images/Tomato.png";
+import tomato from "images/fruits/tomato.png";
+import tomato2 from "images/fruits/tomato2.png";
+import blueberry from "images/fruits/blueberry.png";
+import cabbage from "images/fruits/cabbage.png";
+import carrots from "images/fruits/carrots.png";
+import cucumber from "images/fruits/cucumber.png";
+import grapes from "images/fruits/grapes.png";
+
 
 import { useAppDispatch } from "../../app/hooks";
 import {
@@ -67,8 +74,13 @@ const HomeView = (props: HomeGeneratedProps) => {
         id="header"
       >
         <div style={{position: "static", top: "0", bottom: "0", right: "0", left: "0", backgroundColor: "pink"}}>
-          <img src={tomato} alt="" className="tomato" />
-          <img src={tomato} alt="" className="tomato1" />
+          <img src={tomato} alt="" className="fruits tomato" />
+          <img src={tomato2} alt="" className="fruits tomato2" />
+          <img src={blueberry} alt="" className="fruits blueberry" />
+          <img src={cabbage} alt="" className="fruits cabbage" />
+          <img src={carrots} alt="" className="fruits carrots" />
+          <img src={cucumber} alt="" className="fruits cucumber" />
+          <img src={grapes} alt="" className="fruits grapes" />
         </div>
         <HeaderContents xxl={4} xl={4} lg={6} md={6}>
           <Typography variant="title1" weight="700" textColor="accent">

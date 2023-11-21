@@ -33,49 +33,53 @@ export const Container = styled.div`
 `;
 
 export const Header = styled(Row)`
-
-@keyframes fruits {
-  0% {
-    transform: translateY(0px) rotate(0deg);
-  }
-
-  25% {
-    transform: translateY(-100px) rotate(3deg);
-  }
-
-  50% {
-    transform: translateY(4px) rotate(0deg);
-  }
-
-  75% {
-    transform: translateY(4px) rotate(-3deg);
-  }
-
-  100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-}
-
   height: 100vh;
   padding: 1rem;
   @media (max-width: 768px) {
     margin-top: 3rem;
   }
 
-  img.tomato{
+  @keyframes tomato {
+    0% {
+      transform: translateY(0px) rotate(0deg);
+    }
+
+    25% {
+      transform: translateY(-100px) rotate(3deg);
+    }
+
+    50% {
+      transform: translateY(4px) rotate(0deg);
+    }
+
+    75% {
+      transform: translateY(4px) rotate(-3deg);
+    }
+
+    100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+  }
+
+  img.fruits {
+    position: absolute;
+    display: block;
+  }
+
+  img.tomato {
     position: absolute;
     right: 1rem;
     display: block;
     z-index: 5;
-    animation: fruits 5s linear infinite;
+    animation: tomato 5s linear infinite;
   }
-  img.tomato1{
+  img.tomato2 {
     position: absolute;
     top: 2rem;
     right: 20rem;
     display: block;
     z-index: 5;
-    animation: fruits 5s linear infinite;
+    animation: tomato 5s linear infinite;
   }
 `;
 
