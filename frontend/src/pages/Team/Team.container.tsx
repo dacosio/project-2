@@ -1,15 +1,6 @@
 import React from "react";
 
 import TeamView from "./Team.view";
-import Guia from "../../../public/assets/teamImg/Guia-Farmer.png"
-import Don from "../../../public/assets/teamImg/Don-Farmer.png"
-import Monica from "../../../public/assets/teamImg/Monica-Farmer.png"
-import Yuhwan from "../../../public/assets/teamImg/Yuhwan-Farmer.png"
-import JB from "../../../public/assets/teamImg/JB-Farmer.png"
-import Kanin from "../../../public/assets/teamImg/Jump-Farmer.png"
-// import Pujan from "../../images/teamImg/-Farmer.png"
-// import Mugdha from "../../images/teamImg/Don-Farmer.png"
-
 
 const Team = (): JSX.Element => {
   const members: {
