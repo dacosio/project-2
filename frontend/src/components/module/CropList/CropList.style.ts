@@ -56,7 +56,7 @@ export const TabContainer = styled.div`
 
 export const List = styled.div`
   @media (min-width: 768px) {
-    padding-right: 16px;
+    padding-right: 8px;
   }
 `;
 
@@ -90,18 +90,11 @@ export const PopupContainer = styled.div`
 
   @media (min-width: 768px) {
     position: absolute;
-    bottom: 98px;
-    right: 0;
-    width: 393.39px;
-    display: flex;
-    align-items: flex-end;
-    transform: translateX(calc(375.39px - 123.09px));
-    z-index: 1;
+    bottom: 65px;
+    width: 400px;
+    display: grid;
+    z-index: 10;
     border-radius: 20px;
-
-    > div {
-      padding-right: 16px;
-    }
 
     > div > div {
       display: grid;
@@ -131,6 +124,6 @@ export const PopupContainer = styled.div`
   }
 
   @media (min-width: 1200px) {
-    transform: unset;
+    right: 0;
   }
 `;
