@@ -13,7 +13,7 @@ const Team = (): JSX.Element => {
   }[] = [
     {
       name: "Guia Chavez",
-      role: "Project Manager | Full Stack Developer",
+      role: "Full Stack Developer | Project Manager",
       source: "assets/teamImg/Guia-Farmer.png",
       icon: "developer",
       url: "https://www.linkedin.com/in/guia-chavez/",
@@ -21,7 +21,7 @@ const Team = (): JSX.Element => {
     },
     {
       name: "Don Cosio",
-      role: "Project Manager | Lead Full stack | ML developer",
+      role: "Lead Full stack | ML developer | Project Manager",
       source: "assets/teamImg/Don-Farmer.png",
       icon: "developer",
       url: "https://www.linkedin.com/in/don-apollo-cosio-0a41b296/",
@@ -46,7 +46,7 @@ const Team = (): JSX.Element => {
     {
       name: "Pujan Shakya",
       role: "Frontend Developer",
-      source: "https://placehold.co/50x100/FFFFFF/png",
+      source: "assets/teamImg/Pujan-Farmer.png",
       icon: "developer",
       url: "https://www.linkedin.com/in/pujan-shakya/",
       link: ["https://www.linkedin.com/in/pujan-shakya/", "hhttps://github.com/puzannshakya"],
@@ -70,10 +70,10 @@ const Team = (): JSX.Element => {
     {
       name: "Mugdha Gupta",
       role: "UX/UI Designer",
-      source: "https://placehold.co/50x100/FFFFFF/png",
+      source: "assets/teamImg/Mugdha-Farmer.png",
       icon: "designer",
       url: "https://www.linkedin.com/",
-      link: ["https://www.linkedin.com/", "https://www.behance.net/"],
+      link: ["https://www.linkedin.com/"],
     },
   ];
 
