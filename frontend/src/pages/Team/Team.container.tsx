@@ -89,7 +89,7 @@ const Team = (): JSX.Element => {
       role: "UX/UI Designer",
       source: "assets/teamImg/Mugdha-Farmer.png",
       icon: "designer",
-      url: "https://www.linkedin.com/",
+      url: "https://www.linkedin.com/mugdhagupta7",
       link: ["https://www.linkedin.com/mugdhagupta7"],
     },
   ];
