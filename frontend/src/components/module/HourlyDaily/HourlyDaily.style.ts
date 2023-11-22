@@ -13,7 +13,7 @@ flex-direction:column;
 border: 1px solid ${({ theme }) => theme.neutral.n20};
 border-radius: 24px;
 padding:1rem;
-row-gap:${({ page }) => page === "dashboard" ? "0.2rem" : "2rem"};
+row-gap:${({ page }) => page === "dashboard" ? "0.2rem" : "0.5rem"};
 background : ${({ theme }) => theme.neutral.n0};
 
 
@@ -32,5 +32,5 @@ overflow-y: hidden;
   padding-top:1rem;
 
 border-radius: 20px;
-  
+padding-left: 4px; 
   `

@@ -51,15 +51,22 @@ const HomeView = (props: HomeGeneratedProps) => {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.hash) {
-      const targetId = location.hash.substring(1);
-      const targetElement = document.getElementById(targetId);
+    const handleHashChange = () => {
+      if (location.hash) {
+        const targetId = location.hash.substring(1);
+        const targetElement = document.getElementById(targetId);
 
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: "smooth" });
-        //window.scrollTo(0, targetElement.offsetTop);
+        if (targetElement) {
+          const navHeight = 92;
+
+          document.documentElement.style.scrollBehavior = "smooth";
+          window.scrollTo(0, targetElement.offsetTop - navHeight);
+          document.documentElement.style.scrollBehavior = "auto";
+        }
       }
-    }
+    };
+
+    handleHashChange();
   }, [location]);
   const dispatch = useAppDispatch();
 
@@ -102,8 +109,7 @@ const HomeView = (props: HomeGeneratedProps) => {
               onClick={() => {
                 dispatch(toggleSignUp(true));
                 dispatch(storeEmail(email));
-              }}
-            ></Button>
+              }}></Button>
           </div>
         </HeaderContents>
         <HeaderContents xxl={4} xl={4} lg={6} md={6}>
@@ -122,8 +128,7 @@ const HomeView = (props: HomeGeneratedProps) => {
       <About
         justify="center"
         style={{ marginLeft: 0, marginRight: 0 }}
-        id="about"
-      >
+        id="about">
         <DiscoverContent>
           <div style={{ marginBottom: "1rem" }}>
             <Hide md sm xs>
@@ -131,8 +136,7 @@ const HomeView = (props: HomeGeneratedProps) => {
                 variant="title1"
                 weight="700"
                 textColor="accent"
-                align="left"
-              >
+                align="left">
                 Discover your best farming buddy
               </Typography>
             </Hide>
@@ -141,8 +145,7 @@ const HomeView = (props: HomeGeneratedProps) => {
                 variant="title2"
                 weight="700"
                 textColor="accent"
-                align="center"
-              >
+                align="center">
                 Discover your best farming buddy
               </Typography>
             </Visible>
@@ -185,8 +188,7 @@ const HomeView = (props: HomeGeneratedProps) => {
         justify="center"
         align="center"
         id="features"
-        style={{ marginLeft: 0, marginRight: 0 }}
-      >
+        style={{ marginLeft: 0, marginRight: 0 }}>
         <AboutDisplay xxl={5} xl={5} lg={5}>
           <Hide md sm xs>
             <AboutFrame>
@@ -198,8 +200,7 @@ const HomeView = (props: HomeGeneratedProps) => {
                   style={{
                     position: "relative",
                     zIndex: "1",
-                  }}
-                >
+                  }}>
                   Farming<br></br>simplified
                 </Typography>
               </AboutTypography>
@@ -212,8 +213,7 @@ const HomeView = (props: HomeGeneratedProps) => {
               variant="title2"
               weight="700"
               textColor="accent"
-              align="center"
-            >
+              align="center">
               Farming simplified
             </Typography>
           </Visible>

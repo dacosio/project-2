@@ -45,7 +45,7 @@ export const Container = styled.div`
     }
 
     > div:last-of-type {
-      padding: 0 16px 0 0;
+      padding-right: 8px;
     }
   }
 `;
