@@ -12,15 +12,7 @@ import {
   AboutFrame,
   AboutTypography,
   AboutDetails,
-  Contact,
-  ContactImage,
-  Form,
-  UserInfo,
-  Message,
-  ContactForm,
   Hide,
-  Column,
-  Sacolumn,
 } from "./Home.style";
 import Typography from "components/base/Typography";
 import TextField from "components/base/TextField";
@@ -38,12 +30,15 @@ import aboutimg from "images/aboutimg.png";
 import icon1 from "images/icon1.png";
 import icon2 from "images/icon2.png";
 import icon3 from "images/icon3.png";
-import contact from "images/contact.png";
-import Footer from "components/layout/Footer";
-import { SproutLogo } from "components/base/SVG";
-import WeatherCard from "./../../components/base/WeatherCard";
-import Search from "./../../components/base/Search";
-import LocationSearch from "components/module/LocationSearch";
+import tomato from "images/fruits/tomato.png";
+import tomato2 from "images/fruits/tomato2.png";
+import blueberry from "images/fruits/blueberry.png";
+import cabbage from "images/fruits/cabbage.png";
+import carrots from "images/fruits/carrots.png";
+import cucumber from "images/fruits/cucumber.png";
+import grapes from "images/fruits/grapes.png";
+
+
 import { useAppDispatch } from "../../app/hooks";
 import {
   storeEmail,
@@ -83,7 +78,17 @@ const HomeView = (props: HomeGeneratedProps) => {
         justify="center"
         align="center"
         style={{ marginLeft: 0, marginRight: 0 }}
-        id="header">
+        id="header"
+      >
+        {/* <div style={{position: "static", top: "0", bottom: "0", right: "0", left: "0"}}>
+          <img src={tomato} alt="" className="fruits tomato" />
+          <img src={tomato2} alt="" className="fruits tomato2" />
+          <img src={blueberry} alt="" className="fruits blueberry" />
+          <img src={cabbage} alt="" className="fruits cabbage" />
+          <img src={carrots} alt="" className="fruits carrots" />
+          <img src={cucumber} alt="" className="fruits cucumber" />
+          <img src={grapes} alt="" className="fruits grapes" />
+        </div> */}
         <HeaderContents xxl={4} xl={4} lg={6} md={6}>
           <Typography variant="title1" weight="700" textColor="accent">
             Sow and grow your farming <span className="line-break">goals</span>
@@ -109,7 +114,13 @@ const HomeView = (props: HomeGeneratedProps) => {
         </HeaderContents>
         <HeaderContents xxl={4} xl={4} lg={6} md={6}>
           <Hide sm xs>
-            <img src={headerImg} alt="" style={{ maxWidth: "100%" }} />
+            <div style={{maxWidth: "400px"}}>
+              <img
+                src={headerImg}
+                alt=""
+                className="image"
+              />
+            </div>
           </Hide>
         </HeaderContents>
       </Header>
@@ -146,8 +157,12 @@ const HomeView = (props: HomeGeneratedProps) => {
               Sprout’s data-backed features, you can discover, plant, and
               nurture the perfect crop for your unique growing conditions.
             </Typography>
-            <br />
-            <Typography variant="subtitle" weight="400" textColor="n80">
+            <Typography
+              variant="subtitle"
+              weight="400"
+              textColor="n80"
+              style={{ marginTop: "1rem" }}
+            >
               Already have a crop to grow mind? We got you! Sprout provides the
               info you’ll need to create the best environment to plant and
               cultivate it.
