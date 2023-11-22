@@ -42,10 +42,12 @@ const CropDetail = (props: CropDetailProps): JSX.Element => {
   const handleOpenDelete = (cropId: string) => {
     setCropId(cropId);
     setIsDeleting(true);
+    setIsModalVisible(true);
   };
 
   const handleCloseDelete = () => {
     setIsDeleting(false);
+    setIsModalVisible(false);
     if (cropId) {
       setCropId("");
     }
@@ -53,6 +55,7 @@ const CropDetail = (props: CropDetailProps): JSX.Element => {
 
   const handleConfirmDelete = () => {
     setIsDeleting(false);
+    setIsModalVisible(false);
     if (cropId) {
       setCropId("");
       onDelete(cropId);

@@ -108,6 +108,7 @@ const YourCrop = (): JSX.Element => {
     await removeCrop({ id })
       .then(() => {
         toast.success("Crop successfully removed");
+        setIsOpenDrawer(false);
       })
       .catch(() => {
         toast.error("An error occured. Please, try again later");
@@ -169,6 +170,7 @@ const YourCrop = (): JSX.Element => {
     suggestionVisibility,
     setSuggestionVisibility,
     isOpenDrawer,
+    setIsOpenDrawer,
     handleOnClickCrop,
     handleOnClickChoice,
     handleOnClickSuggestion,
