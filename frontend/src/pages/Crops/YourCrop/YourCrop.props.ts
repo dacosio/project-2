@@ -17,6 +17,7 @@ export interface YourCropGeneratedProps {
   suggestionVisibility: boolean;
   setSuggestionVisibility: Dispatch<SetStateAction<boolean>>;
   isOpenDrawer: boolean;
+  setIsOpenDrawer: Dispatch<SetStateAction<boolean>>;
   handleOnClickCrop: (id: string) => void;
   handleOnClickChoice: () => void;
   handleOnClickSuggestion: () => void;
