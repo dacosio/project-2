@@ -24,16 +24,17 @@ export const ModalOverlay = styled.div`
   cursor: pointer;
 `;
 
-export const ModalBox = styled.div`
+export const ModalBox = styled.div<{ width?: string }>`
   position: relative;
   box-sizing: border-box;
   border-radius: 24px;
   background-color: white;
   cursor: auto;
-  width: 100%;
+  width: calc(100% - 32px);
 
   @media (min-width: 992px) {
-    max-width: 25vw;
+    width: auto;
+    max-width: ${({ width = "50vw" }) => width};
   }
 `;
 

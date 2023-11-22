@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import { useEventListener } from "./useEventListener";
 import { useIsomorphicLayoutEffect } from "./useIsomorphicLayoutEffect";
-
+// eslint-disable-next-line
 interface Size {
   width: number;
   height: number;
@@ -26,7 +26,6 @@ export function useElementSize<T extends HTMLElement = HTMLDivElement>(): [
       width: ref?.offsetWidth || 0,
       height: ref?.offsetHeight || 0,
     });
-
   }, [ref?.offsetHeight, ref?.offsetWidth]);
 
   useEventListener("resize", handleSize);

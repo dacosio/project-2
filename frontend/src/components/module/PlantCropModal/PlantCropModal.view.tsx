@@ -116,7 +116,7 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
   return (
     <>
       {isLoading && <Loading />}
-      <Modal isOpen={visibility} onClose={handleClose} padded>
+      <Modal width="25vw" isOpen={visibility} onClose={handleClose} padded>
         <Container>
           <Wrapper>
             <Header>

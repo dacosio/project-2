@@ -24,7 +24,7 @@ const Team = (): JSX.Element => {
     },
     {
       name: "Don Cosio",
-      role: "Lead Full stack | ML developer | Project Manager",
+      role: "Lead Full stack Web & ML developer",
       source: "assets/teamImg/Don-Farmer.png",
       icon: "developer",
       url: "https://www.linkedin.com/in/don-apollo-cosio-0a41b296/",

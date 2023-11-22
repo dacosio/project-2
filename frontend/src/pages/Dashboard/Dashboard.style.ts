@@ -14,7 +14,7 @@ export const Wrapper = styled(Container)<DashboardGeneratedStyleProps>`
 `;
 
 export const Top = styled(Row)`
-  margin-bottom: 100px;
+  margin-bottom: 32px;
 `;
 
 export const Segment = styled(Col)`
@@ -30,7 +30,7 @@ export const Segment = styled(Col)`
 export const Weather = styled(Col)`
   height: 300px;
   @media screen and (max-width: 768px) {
-    margin-bottom: 100px;
+    margin-bottom: 36px;
   }
 `;
 
@@ -105,5 +105,11 @@ export const Option = styled.div`
     background-color: ${({ theme }) => theme.btn.color.lightest};
   }
 `;
+
+export const MobileOption = styled.div`
+  display: flex;
+  padding: 16px 0;
+  gap: 1rem;
+`
 
 export const OptionLabel = styled.div``;
