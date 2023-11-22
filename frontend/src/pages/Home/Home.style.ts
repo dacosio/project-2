@@ -46,7 +46,7 @@ export const Features = styled(Row)`
 
 export const About = styled(Row)`
   padding: 1rem;
-  background-color: #fff;
+  background: linear-gradient(#f4f6f9,#fff);
   @media (max-width: 992px) {
     padding-top: 4rem;
     padding-bottom: 4rem;
@@ -183,7 +183,7 @@ export const Header = styled(Row)`
     bottom: -10%;
     left: -10%;
     max-width: 400px;
-    z-index: -1;
+    z-index: ;
     filter: blur(3rem);
     // animation: tomato 5s linear infinite;
   }
