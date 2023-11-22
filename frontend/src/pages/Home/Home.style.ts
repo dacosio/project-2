@@ -32,68 +32,6 @@ export const Container = styled.div`
   }
 `;
 
-export const Header = styled(Row)`
-  height: 100vh;
-  padding: 1rem;
-  @media (max-width: 768px) {
-    margin-top: 3rem;
-  }
-
-  @keyframes tomato {
-    0% {
-      transform: translateY(0px) rotate(0deg);
-    }
-
-    25% {
-      transform: translateY(-100px) rotate(3deg);
-    }
-
-    50% {
-      transform: translateY(4px) rotate(0deg);
-    }
-
-    75% {
-      transform: translateY(4px) rotate(-3deg);
-    }
-
-    100% {
-      transform: translateY(0px) rotate(0deg);
-    }
-  }
-
-  img.fruits {
-    position: absolute;
-    display: block;
-  }
-
-  img.tomato {
-    position: absolute;
-    right: 1rem;
-    display: block;
-    z-index: 5;
-    animation: tomato 5s linear infinite;
-  }
-  img.tomato2 {
-    position: absolute;
-    top: 2rem;
-    right: 20rem;
-    display: block;
-    z-index: 5;
-    animation: tomato 5s linear infinite;
-  }
-`;
-
-export const HeaderContents = styled(Col)`
-  @media (max-width: 768px) {
-    text-align: center; /* Center-align text for screens 768px or smaller */
-
-    /* Additional styles for the title1 Typography component */
-    & > :first-child {
-      text-align: center; /* Center-align the first Typography component */
-    }
-  }
-`;
-
 export const Hide = styled(Hidden)``;
 
 export const Features = styled(Row)`
@@ -178,4 +116,91 @@ export const Column = styled(Col)`
 
 export const Sacolumn = styled(Col)`
   background-color: white;
+`;
+
+export const Header = styled(Row)`
+  height: 100vh;
+  padding: 1rem;
+  @media (max-width: 768px) {
+    margin-top: 3rem;
+  }
+
+  @keyframes tomato {
+    0% {
+      transform: translateY(0px) rotate(0deg);
+    }
+
+    25% {
+      transform: translateY(-100px) rotate(3deg);
+    }
+
+    50% {
+      transform: translateY(4px) rotate(0deg);
+    }
+
+    75% {
+      transform: translateY(4px) rotate(-3deg);
+    }
+
+    100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+  }
+
+  @media (min-width: 768px) {
+  }
+
+  @media (min-width: 1100px) {
+  }
+
+  img.fruits {
+    position: absolute;
+    display: block;
+  }
+
+  img.tomato {
+    right: 5%;
+    z-index: 5;
+    max-width: 150px;
+    // animation: tomato 5s linear infinite;
+  }
+  img.carrots {
+    top: 15%;
+    right: 35%;
+    max-width: 120px;
+    rotate: 170deg;
+    // filter: blur(1rem);
+    // animation: tomato 5s linear infinite;
+  }
+  img.cucumber {
+    top: 15%;
+    left: 35%;
+    max-width: 120px;
+    // filter: blur(1rem);
+    // animation: tomato 5s linear infinite;
+  }
+  img.grapes {
+    bottom: -10%;
+    left: -10%;
+    max-width: 400px;
+    z-index: -1;
+    filter: blur(3rem);
+    // animation: tomato 5s linear infinite;
+  }
+  
+`;
+
+export const HeaderContents = styled(Col)`
+
+.image{
+  max-width:100%;
+}
+  @media (max-width: 767px) {
+    text-align: center; /* Center-align text for screens 768px or smaller */
+
+    /* Additional styles for the title1 Typography component */
+    & > :first-child {
+      text-align: center; /* Center-align the first Typography component */
+    }
+  }
 `;

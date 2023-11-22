@@ -73,7 +73,7 @@ const HomeView = (props: HomeGeneratedProps) => {
         style={{ marginLeft: 0, marginRight: 0 }}
         id="header"
       >
-        <div style={{position: "static", top: "0", bottom: "0", right: "0", left: "0", backgroundColor: "pink"}}>
+        <div style={{position: "static", top: "0", bottom: "0", right: "0", left: "0"}}>
           <img src={tomato} alt="" className="fruits tomato" />
           <img src={tomato2} alt="" className="fruits tomato2" />
           <img src={blueberry} alt="" className="fruits blueberry" />
@@ -108,12 +108,13 @@ const HomeView = (props: HomeGeneratedProps) => {
         </HeaderContents>
         <HeaderContents xxl={4} xl={4} lg={6} md={6}>
           <Hide sm xs>
-            <img
-              src={headerImg}
-              alt=""
-              className="image"
-              style={{ maxWidth: "100%" }}
-            />
+            <div style={{maxWidth: "400px"}}>
+              <img
+                src={headerImg}
+                alt=""
+                className="image"
+              />
+            </div>
           </Hide>
         </HeaderContents>
       </Header>
