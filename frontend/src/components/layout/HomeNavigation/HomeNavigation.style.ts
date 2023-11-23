@@ -18,9 +18,10 @@ export const Nav = styled.nav`
   align-items: center;
 
   border-bottom: 1px solid ${theme.neutral.n10};
-  background-color: rgb(255 255 255 / 10%);
-  backdrop-filter: blur(60px);
-  -webkit-backdrop-filter: blur(60px);
+  background-color: #f4f6f9;
+  // background-color: rgb(255 255 255 / 10%);
+  // backdrop-filter: blur(60px);
+  // -webkit-backdrop-filter: blur(60px);
 
   @media (min-width: 768px) {
     align-items: center;
