@@ -5,6 +5,8 @@ import Typography from "components/base/Typography";
 import TextField from "components/base/TextField";
 
 export const Container = styled.div`
+z-index: 2;
+position: relative;
 background-color: ${theme.brand.accent};
 padding: 2rem 0;
 p{

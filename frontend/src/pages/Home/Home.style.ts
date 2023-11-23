@@ -46,7 +46,7 @@ export const Features = styled(Row)`
 
 export const About = styled(Row)`
   padding: 1rem;
-  background: linear-gradient(#f4f6f9,#fff);
+  background: linear-gradient(#f4f6f9, #fff);
   @media (max-width: 992px) {
     padding-top: 4rem;
     padding-bottom: 4rem;
@@ -124,77 +124,12 @@ export const Header = styled(Row)`
   @media (max-width: 768px) {
     margin-top: 3rem;
   }
-
-  @keyframes tomato {
-    0% {
-      transform: translateY(0px) rotate(0deg);
-    }
-
-    25% {
-      transform: translateY(-100px) rotate(3deg);
-    }
-
-    50% {
-      transform: translateY(4px) rotate(0deg);
-    }
-
-    75% {
-      transform: translateY(4px) rotate(-3deg);
-    }
-
-    100% {
-      transform: translateY(0px) rotate(0deg);
-    }
-  }
-
-  @media (min-width: 768px) {
-  }
-
-  @media (min-width: 1100px) {
-  }
-
-  img.fruits {
-    position: absolute;
-    display: block;
-  }
-
-  img.tomato {
-    right: 5%;
-    z-index: 5;
-    max-width: 150px;
-    // animation: tomato 5s linear infinite;
-  }
-  img.carrots {
-    top: 15%;
-    right: 35%;
-    max-width: 120px;
-    rotate: 170deg;
-    // filter: blur(1rem);
-    // animation: tomato 5s linear infinite;
-  }
-  img.cucumber {
-    top: 15%;
-    left: 35%;
-    max-width: 120px;
-    // filter: blur(1rem);
-    // animation: tomato 5s linear infinite;
-  }
-  img.grapes {
-    bottom: -10%;
-    left: -10%;
-    max-width: 400px;
-    z-index: ;
-    filter: blur(3rem);
-    // animation: tomato 5s linear infinite;
-  }
-  
 `;
 
 export const HeaderContents = styled(Col)`
-
-.image{
-  max-width:100%;
-}
+  .image {
+    max-width: 100%;
+  }
   @media (max-width: 767px) {
     text-align: center; /* Center-align text for screens 768px or smaller */
 

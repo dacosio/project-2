@@ -14,6 +14,7 @@ import {
   AboutDetails,
   Hide,
 } from "./Home.style";
+import { Fruits } from "./Fruits";
 import Typography from "components/base/Typography";
 import TextField from "components/base/TextField";
 import Button from "components/base/Button";
@@ -37,7 +38,7 @@ import cabbage from "images/fruits/cabbage.png";
 import carrots from "images/fruits/carrots.png";
 import cucumber from "images/fruits/cucumber.png";
 import grapes from "images/fruits/grapes.png";
-
+import water from "images/fruits/water.png";
 
 import { useAppDispatch } from "../../app/hooks";
 import {
@@ -74,22 +75,28 @@ const HomeView = (props: HomeGeneratedProps) => {
     <Container>
       <HomeNavigation />
 
+      <Fruits>
+        <div className="fruit-images">
+          <img src={tomato} alt="" className="fruits tomato" />
+          <img src={tomato2} alt="" className="fruits tomato2" />
+          <img src={blueberry} alt="" className="fruits blueberry" />
+          <img src={cabbage} alt="" className="fruits cabbage" />
+          <img src={cabbage} alt="" className="fruits cabbage2" />
+          <img src={carrots} alt="" className="fruits carrots" />
+          <img src={carrots} alt="" className="fruits carrots2" />
+          <img src={cucumber} alt="" className="fruits cucumber" />
+          <img src={grapes} alt="" className="fruits grapes" />
+          <img src={water} alt="" className="fruits water" />
+        </div>
+      </Fruits>
+
       <Header
         justify="center"
         align="center"
         style={{ marginLeft: 0, marginRight: 0 }}
         id="header"
       >
-        {/* <div style={{position: "static", top: "0", bottom: "0", right: "0", left: "0"}}>
-          <img src={tomato} alt="" className="fruits tomato" />
-          <img src={tomato2} alt="" className="fruits tomato2" />
-          <img src={blueberry} alt="" className="fruits blueberry" />
-          <img src={cabbage} alt="" className="fruits cabbage" />
-          <img src={carrots} alt="" className="fruits carrots" />
-          <img src={cucumber} alt="" className="fruits cucumber" />
-          <img src={grapes} alt="" className="fruits grapes" />
-        </div> */}
-        <HeaderContents xxl={4} xl={4} lg={6} md={6}>
+        <HeaderContents xxl={4} xl={4} lg={6} md={6} style={{ zIndex: "1" }}>
           <Typography variant="title1" weight="700" textColor="accent">
             Sow and grow your farming <span className="line-break">goals</span>
           </Typography>
@@ -109,17 +116,14 @@ const HomeView = (props: HomeGeneratedProps) => {
               onClick={() => {
                 dispatch(toggleSignUp(true));
                 dispatch(storeEmail(email));
-              }}></Button>
+              }}
+            ></Button>
           </div>
         </HeaderContents>
-        <HeaderContents xxl={4} xl={4} lg={6} md={6}>
+        <HeaderContents xxl={4} xl={4} lg={6} md={6} style={{ zIndex: "1" }}>
           <Hide sm xs>
-            <div style={{maxWidth: "400px"}}>
-              <img
-                src={headerImg}
-                alt=""
-                className="image"
-              />
+            <div style={{ maxWidth: "400px" }}>
+              <img src={headerImg} alt="" className="image" />
             </div>
           </Hide>
         </HeaderContents>
@@ -128,15 +132,17 @@ const HomeView = (props: HomeGeneratedProps) => {
       <About
         justify="center"
         style={{ marginLeft: 0, marginRight: 0 }}
-        id="about">
-        <DiscoverContent>
+        id="about"
+      >
+        <DiscoverContent style={{ zIndex: "1" }}>
           <div style={{ marginBottom: "1rem" }}>
             <Hide md sm xs>
               <Typography
                 variant="title1"
                 weight="700"
                 textColor="accent"
-                align="left">
+                align="left"
+              >
                 Discover your best farming buddy
               </Typography>
             </Hide>
@@ -145,7 +151,8 @@ const HomeView = (props: HomeGeneratedProps) => {
                 variant="title2"
                 weight="700"
                 textColor="accent"
-                align="center">
+                align="center"
+              >
                 Discover your best farming buddy
               </Typography>
             </Visible>
@@ -188,8 +195,9 @@ const HomeView = (props: HomeGeneratedProps) => {
         justify="center"
         align="center"
         id="features"
-        style={{ marginLeft: 0, marginRight: 0 }}>
-        <AboutDisplay xxl={5} xl={5} lg={5}>
+        style={{ marginLeft: 0, marginRight: 0 }}
+      >
+        <AboutDisplay xxl={5} xl={5} lg={5} style={{ zIndex: "1" }}>
           <Hide md sm xs>
             <AboutFrame>
               <AboutTypography>
@@ -200,7 +208,8 @@ const HomeView = (props: HomeGeneratedProps) => {
                   style={{
                     position: "relative",
                     zIndex: "1",
-                  }}>
+                  }}
+                >
                   Farming<br></br>simplified
                 </Typography>
               </AboutTypography>
@@ -213,13 +222,14 @@ const HomeView = (props: HomeGeneratedProps) => {
               variant="title2"
               weight="700"
               textColor="accent"
-              align="center">
+              align="center"
+            >
               Farming simplified
             </Typography>
           </Visible>
         </AboutDisplay>
 
-        <AboutDetails xxl={5} xl={5} lg={5} md={11}>
+        <AboutDetails xxl={5} xl={5} lg={5} md={11} style={{ zIndex: "1" }}>
           <Details>
             <Hide sm xs>
               <img src={icon1} alt="" />
