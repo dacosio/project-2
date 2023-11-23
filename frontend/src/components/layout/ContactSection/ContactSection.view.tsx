@@ -27,10 +27,10 @@ const ContactSection = (props: ContactSectionProps): JSX.Element => {
     if (form.current) {
       emailjs
         .sendForm(
-          "service_buhpmve",
-          "template_caubnyp",
+          "service_0bmo5ue",
+          "template_oiwvyms",
           form.current,
-          "XjkLA79uvMpAgWV9B"
+          "o5W4uYwsvnrsR1u52"
         )
         .then(() => {
           toast.success("Message sent");
