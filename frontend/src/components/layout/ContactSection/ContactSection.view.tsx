@@ -20,6 +20,9 @@ import HomeFooter from "../HomeFooter";
 
 const ContactSection = (props: ContactSectionProps): JSX.Element => {
   const form = useRef<HTMLFormElement>(null);
+  const emailServiceID = process.env.REACT_APP_EMAIL_SERVICEID as string
+  const templateID = process.env.REACT_APP_EMAIL_TEMPID as string
+  const pubKey = process.env.REACT_APP_EMAIL_PUBKEY as string
 
   const sendEmail = (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,10 +30,10 @@ const ContactSection = (props: ContactSectionProps): JSX.Element => {
     if (form.current) {
       emailjs
         .sendForm(
-          "service_0bmo5ue",
-          "template_oiwvyms",
+          emailServiceID,
+          templateID,
           form.current,
-          "o5W4uYwsvnrsR1u52"
+          pubKey
         )
         .then(() => {
           toast.success("Message sent");
