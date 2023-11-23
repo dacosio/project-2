@@ -27,6 +27,7 @@ const YourCropView = (props: YourCropGeneratedProps) => {
     suggestionVisibility,
     setSuggestionVisibility,
     isOpenDrawer,
+    setIsOpenDrawer,
     handleOnClickCrop,
     handleOnClickChoice,
     handleOnClickSuggestion,
@@ -100,7 +101,7 @@ const YourCropView = (props: YourCropGeneratedProps) => {
                 <MobileDrawer
                   direction="bottom"
                   isOpenDrawer={isOpenDrawer}
-                  handleDrawerClose={handleDrawerClose}
+                  handleDrawerClose={() => setIsOpenDrawer(false)}
                   drawerSize="98%"
                   isModalVisible={isModalVisible}
                 >

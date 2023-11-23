@@ -33,6 +33,7 @@ export interface DashboardGeneratedProps {
   handleLater: (isError: boolean) => void;
   handleNow: (isError: boolean) => void;
   collapseState: Boolean;
+  isModalVisible: boolean;
 }
 
 export interface DashboardGeneratedStyleProps {

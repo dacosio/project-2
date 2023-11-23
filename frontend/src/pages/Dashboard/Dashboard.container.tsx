@@ -172,7 +172,7 @@ const Dashboard = (): JSX.Element => {
   const [choiceVisibility, setChoiceVisibility] = useState<boolean>(false);
   const [suggestionVisibility, setSuggestionVisibility] =
     useState<boolean>(false);
-
+  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
   const handleLater = (isError: boolean) => {
     setChoiceVisibility(false);
     setSuggestionVisibility(false);
@@ -229,6 +229,7 @@ const Dashboard = (): JSX.Element => {
     handleLater: handleLater,
     handleNow: handleNow,
     collapseState: collapseState,
+    isModalVisible: isModalVisible,
   };
   if (
     selectedAddress &&
@@ -268,6 +269,7 @@ const Dashboard = (): JSX.Element => {
       handleLater: handleLater,
       handleNow: handleNow,
       collapseState: collapseState,
+      isModalVisible: isModalVisible,
     };
   }
 

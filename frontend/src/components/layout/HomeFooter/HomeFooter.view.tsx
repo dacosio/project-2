@@ -7,7 +7,7 @@ const HomeFooter = (props: HomeFooterProps): JSX.Element => {
   return (
     <Container>
       <Typography variant="small" weight="700" textColor="n0" align="center">
-        ©Team Sprout 2023
+        &#169; Sprout 2023
       </Typography>
     </Container>
   );

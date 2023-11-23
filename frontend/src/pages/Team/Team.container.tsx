@@ -1,14 +1,6 @@
 import React from "react";
 
 import TeamView from "./Team.view";
-import Guia from "../../../public/assets/teamImg/Guia-Farmer.png";
-import Don from "../../../public/assets/teamImg/Don-Farmer.png";
-import Monica from "../../../public/assets/teamImg/Monica-Farmer.png";
-import Yuhwan from "../../../public/assets/teamImg/Yuhwan-Farmer.png";
-import JB from "../../../public/assets/teamImg/JB-Farmer.png";
-import Kanin from "../../../public/assets/teamImg/Jump-Farmer.png";
-// import Pujan from "../../images/teamImg/-Farmer.png"
-// import Mugdha from "../../images/teamImg/Don-Farmer.png"
 
 const Team = (): JSX.Element => {
   const members: {
@@ -64,7 +56,7 @@ const Team = (): JSX.Element => {
     {
       name: "Pujan Shakya",
       role: "Frontend Developer",
-      source: "https://placehold.co/50x100/FFFFFF/png",
+      source: "assets/teamImg/Pujan-Farmer.png",
       icon: "developer",
       url: "https://www.linkedin.com/in/pujan-shakya/",
       link: [
@@ -95,10 +87,10 @@ const Team = (): JSX.Element => {
     {
       name: "Mugdha Gupta",
       role: "UX/UI Designer",
-      source: "https://placehold.co/50x100/FFFFFF/png",
+      source: "assets/teamImg/Mugdha-Farmer.png",
       icon: "designer",
-      url: "https://www.linkedin.com/",
-      link: ["https://www.linkedin.com/", "https://www.behance.net/"],
+      url: "https://www.linkedin.com/mugdhagupta7",
+      link: ["https://www.linkedin.com/mugdhagupta7"],
     },
   ];
 
