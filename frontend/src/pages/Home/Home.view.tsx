@@ -81,11 +81,10 @@ const HomeView = (props: HomeGeneratedProps) => {
           <img src={tomato2} alt="" className="fruits tomato2" />
           <img src={blueberry} alt="" className="fruits blueberry" />
           <img src={cabbage} alt="" className="fruits cabbage" />
-          <img src={cabbage} alt="" className="fruits cabbage2" />
+          <img src={cabbage} alt="" className="fruits cabbage2 hide" />
           <img src={carrots} alt="" className="fruits carrots" />
-          <img src={carrots} alt="" className="fruits carrots2" />
-          <img src={cucumber} alt="" className="fruits cucumber" />
-          <img src={grapes} alt="" className="fruits grapes" />
+          <img src={cucumber} alt="" className="fruits cucumber hide" />
+          <img src={grapes} alt="" className="fruits grapes hide" />
           <img src={water} alt="" className="fruits water" />
         </div>
       </Fruits>

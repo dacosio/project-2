@@ -5,6 +5,8 @@ export const Fruits = styled.div`
     overflow: hidden;
   }
 
+  //Animations//
+
   @keyframes tomato {
     0% {
       transform: translateY(0px) rotate(0deg);
@@ -27,102 +29,179 @@ export const Fruits = styled.div`
     }
   }
 
+  //Images//
+
   img.fruits {
-    display: none;
     position: absolute;
   }
-  @media (min-width: 1199px){
-    img.fruits {
+
+  img.hide {
+    display: none;
+  }
+
+  img.tomato {
+    top: 30%;
+    left: -12%;
+    max-width: 120px;
+    transform: scaleX(-1);
+  }
+
+  img.tomato2 {
+    left: 45%;
+    bottom: 5%;
+    z-index: 0;
+    max-width: 60px;
+    filter: blur(1rem);
+  }
+
+  img.carrots {
+    top: 40%;
+    right: 10%;
+    opacity: 0.8;
+    width: 80px;
+    rotate: 170deg;
+    filter: blur(0.8rem);
+  }
+
+  img.blueberry {
+    left: 25%;
+    bottom: -25%;
+    z-index: 0;
+    max-width: 50px;
+    filter: blur(0.08rem);
+  }
+
+  img.cabbage {
+    bottom: -15%;
+    left: -50%;
+    max-width: 400px;
+    filter: blur(4rem);
+  }
+
+  img.water {
+    right: 4.5%;
+    bottom: -5%;
+    z-index: 5;
+    rotate: -30deg;
+    max-width: 130px;
+    transform: scaleX(-1);
+  }
+
+  @media (min-width: 450px) {
+    img.tomato {
+      top: 10%;
+      left: -12%;
+    }
+  }
+
+  @media (min-width: 620px) {
+    img.tomato {
+      top: 10%;
+      left: -1%;
+    }
+  }
+
+  @media (min-width: 768px) {
+    img.hide {
       display: unset;
     }
+
     img.tomato {
-      top: 15%;
+      top: 5%;
       left: 2%;
-      max-width: 160px;
-      transform: scaleX(-1);
-      // animation: tomato 5s linear infinite;
+      max-width: 100px;
     }
-  
-    img.tomato2 {
-      left: 45%;
-      bottom: 5%;
-      z-index: 5;
-      max-width: 60px;
-      filter: blur(1rem);
-      // animation: tomato 5s linear infinite;
+
+    img.water {
+      right: 3%;
+      bottom: 12%;
+      max-width: 220px;
     }
-  
+
     img.carrots {
       top: 25%;
       right: 45%;
-      width: 80px;
-      rotate: 170deg;
       filter: blur(0.4rem);
-      // animation: tomato 5s linear infinite;
     }
-  
+
+    img.blueberry {
+      left: 75%;
+      bottom: -25%;
+      transform: scaleX(-1);
+      max-width: 80px;
+    }
+
+    img.cabbage {
+      left: -5%;
+    }
+
+    img.cabbage2 {
+      left: 2%;
+      bottom: -60%;
+      z-index: 0;
+      max-width: 180px;
+    }
+
+    img.cucumber {
+      right: 2%;
+      bottom: -60%;
+      z-index: 0;
+      transform: scaleX(-1);
+      max-width: 200px;
+    }
+
     img.grapes {
       top: 0;
       right: 6%;
       width: 300px;
       rotate: 30deg;
       filter: blur(3rem);
-      // animation: tomato 5s linear infinite;
     }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
-    img.blueberry {
-      right: 25%;
-      bottom: -25%;
-      z-index: 0;
-      transform: scaleX(-1);
-      max-width: 80px;
-      filter: blur(0.08rem);
-      // animation: tomato 5s linear infinite;
+  @media (min-width: 951px) {
+    img.tomato {
+      max-width: 160px;
     }
-  
-    img.cucumber {
-      right: 2%;
-      bottom: -80%;
-      z-index: 0;
-      transform: scaleX(-1);
-      max-width: 200px;
-      // animation: tomato 5s linear infinite;
-    }
-  
-    img.cabbage2 {
-      left: 2%;
-      bottom: -60%;
-      z-index: 0;
-      max-width: 180px;
-      // animation: tomato 5s linear infinite;
-    }
-  
-    img.carrots2 {
-      left: 50%;
-      bottom: -200%;
-      z-index: 0;
-      max-width: 300px;
-      rotate: -25deg;
-      // animation: tomato 5s linear infinite;
-    }
-  
-    img.cabbage {
-      bottom: -15%;
-      left: -5%;
-      max-width: 400px;
-      filter: blur(4rem);
-      // animation: tomato 5s linear infinite;
-    }
-  
-    img.water {
-      right: 3%;
-      bottom: 12%;
+
+    img.tomato2 {
+      left: 45%;
+      bottom: 5%;
       z-index: 5;
-      rotate: -30deg;
-      max-width: 220px;
-      transform: scaleX(-1);
-      // filter: blur(.4rem);
-      // animation: tomato 5s linear infinite;
+      max-width: 60px;
+      filter: blur(1rem);
+    }
+
+    img.cabbage {
+      left: -5%;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    img.tomato {
+      top: 15%;
+    }
+
+    img.cabbage {
+      left: -5%;
     }
   }
 `;
