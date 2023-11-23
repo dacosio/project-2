@@ -35,7 +35,10 @@ export const Fruits = styled.div`
     position: absolute;
   }
 
-  img.hide {
+  img.hide,
+  img.cucumber,
+  img.cabbage2,
+  img.blueberry{
     display: none;
   }
 
@@ -61,14 +64,6 @@ export const Fruits = styled.div`
     width: 80px;
     rotate: 170deg;
     filter: blur(0.8rem);
-  }
-
-  img.blueberry {
-    left: 25%;
-    bottom: -25%;
-    z-index: 0;
-    max-width: 50px;
-    filter: blur(0.08rem);
   }
 
   img.cabbage {
@@ -102,10 +97,9 @@ export const Fruits = styled.div`
   }
 
   @media (min-width: 768px) {
-    img.hide {
+    img.hide{
       display: unset;
     }
-
     img.tomato {
       top: 5%;
       left: 2%;
@@ -124,15 +118,42 @@ export const Fruits = styled.div`
       filter: blur(0.4rem);
     }
 
-    img.blueberry {
-      left: 75%;
-      bottom: -25%;
-      transform: scaleX(-1);
-      max-width: 80px;
+    img.cabbage {
+      left: -5%;
+    }
+
+    img.grapes {
+      top: 0;
+      right: 6%;
+      width: 300px;
+      rotate: 30deg;
+      filter: blur(3rem);
+    }
+  }
+
+  @media (min-width: 951px) {
+    img.tomato {
+      max-width: 160px;
+    }
+
+    img.tomato2 {
+      left: 45%;
+      bottom: 5%;
+      z-index: 5;
+      max-width: 60px;
+      filter: blur(1rem);
     }
 
     img.cabbage {
       left: -5%;
+    }
+  }
+
+  @media (min-width: 1100px) {
+    img.cucumber,
+    img.cabbage2,
+    img.blueberry {
+      display: unset;
     }
 
     img.cabbage2 {
@@ -150,48 +171,11 @@ export const Fruits = styled.div`
       max-width: 200px;
     }
 
-    img.grapes {
-      top: 0;
-      right: 6%;
-      width: 300px;
-      rotate: 30deg;
-      filter: blur(3rem);
-    }
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  @media (min-width: 951px) {
-    img.tomato {
-      max-width: 160px;
-    }
-
-    img.tomato2 {
-      left: 45%;
-      bottom: 5%;
-      z-index: 5;
-      max-width: 60px;
-      filter: blur(1rem);
-    }
-
-    img.cabbage {
-      left: -5%;
+    img.blueberry {
+      left: 75%;
+      bottom: -25%;
+      transform: scaleX(-1);
+      max-width: 80px;
     }
   }
 
