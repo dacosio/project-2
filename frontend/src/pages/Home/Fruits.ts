@@ -9,36 +9,218 @@ export const Fruits = styled.div`
 
   @keyframes tomato {
     0% {
-      transform: translateY(0px) rotate(0deg);
+      transform: scaleX(-1) scale(1) translateY(0px) rotate(0deg);
     }
 
     25% {
-      transform: translateY(-100px) rotate(3deg);
+      transform: scaleX(-1) scale(1.03) translateY(-15px) rotate(3deg);
     }
 
     50% {
-      transform: translateY(4px) rotate(0deg);
+      transform: scaleX(-1) scale(1.06) translateY(0px) rotate(0deg);
     }
 
     75% {
-      transform: translateY(4px) rotate(-3deg);
+      transform: scaleX(-1) scale(1) translateY(15px) rotate(-3deg);
     }
 
     100% {
-      transform: translateY(0px) rotate(0deg);
+      transform: scaleX(-1) scale(1) translateY(0px) rotate(0deg);
     }
   }
+
+  @keyframes tomato2 {
+    0% {
+      transform: scale(1) translateX(0px) translateY(0px) rotate(0deg);
+      filter: blur(1rem);
+    }
+
+    35% {
+      transform: scale(.8) translateX(5px) translateY(7px) rotate(-3deg);
+      filter: blur(1.1rem);
+    }
+
+    75% {
+      transform: scale(.9) translateX(-3px) translateY(-5px) rotate(3deg);
+      filter: blur(1.4rem);
+    }
+
+    100% {
+      transform: scale(1) translateX(0px) scale(1) translateY(0px) rotate(0deg);
+      filter: blur(1rem);
+    }
+  }
+
+
+  @keyframes water {
+    0% {
+      transform: scaleX(-1) translateX(0px) translateY(0px) rotate(0deg);
+    }
+
+    25% {
+      transform: scaleX(-1) translateX(0px) translateY(-15px) rotate(-3deg);
+    }
+
+    50% {
+      transform: scaleX(-1) translateX(0px) translateY(0px) rotate(0deg);
+    }
+
+    75% {
+      transform: scaleX(-1) translateX(0px) translateY(15px) rotate(3deg);
+    }
+
+    100% {
+      transform: scaleX(-1) translateX(0px) scale(1) translateY(0px) rotate(0deg);
+    }
+  }
+
+
+
+  @keyframes cabbage {
+    0% {
+      transform: translateX(0px) translateY(0px) rotate(0deg);
+      filter: blur(2rem);
+    }
+
+    35% {
+      transform: translateX(-40px) translateY(-15px) rotate(-3deg);
+      filter: blur(4rem);
+    }
+
+    75% {
+      transform: translateX(0px) translateY(15px) rotate(3deg);
+      filter: blur(4rem);
+    }
+
+    100% {
+      transform: translateX(0px) scale(1) translateY(0px) rotate(0deg);
+      filter: blur(2rem);
+    }
+  }
+
+  @keyframes carrots {
+    0% {
+      transform: scale(.8) translateX(0px) translateY(0px) rotate(0deg);
+      filter: blur(0.8rem);
+    }
+
+    35% {
+      transform: scale(.9) translateX(-3px) translateY(-3px) rotate(-3deg);
+      filter: blur(0.6rem);
+    }
+
+    75% {
+      transform: scale(1) translateX(1px) translateY(1px) rotate(3deg);
+      filter: blur(0.4rem);
+    }
+
+    100% {
+      transform: scale(.9) translateX(0px) scale(1) translateY(0px) rotate(0deg);
+      filter: blur(0.8rem);
+    }
+  }
+
+  @keyframes grapes {
+    0% {
+      transform: scale(.8) translateX(0px) translateY(0px) rotate(0deg);
+      filter: blur(2rem);
+    }
+
+    35% {
+      transform: scale(.9) translateX(-3px) translateY(-3px) rotate(-3deg);
+      filter: blur(4rem);
+    }
+
+    35% {
+      transform: scale(.9) translateX(-3px) translateY(-3px) rotate(-3deg);
+      filter: blur(6rem);
+    }
+
+    75% {
+      transform: scale(1) translateX(1px) translateY(1px) rotate(3deg);
+      filter: blur(4.3rem);
+    }
+
+    100% {
+      transform: scale(.9) translateX(0px) scale(1) translateY(0px) rotate(0deg);
+      filter: blur(2rem);
+    }
+  }
+
+  @keyframes blueberry {
+    0% {
+      transform: scaleX(-1) scale(1) translateY(0px) rotate(0deg);
+    }
+
+    25% {
+      transform: scaleX(-1) scale(1.01) translateY(7px) rotate(6deg);
+    }
+
+    75% {
+      transform: scaleX(-1) scale(1) translateY(-3px) rotate(-2deg);
+    }
+
+    100% {
+      transform: scaleX(-1) scale(1) translateY(0px) rotate(0deg);
+    }
+  }
+
+  @keyframes cabbage2 {
+    0% {
+      transform: scaleX(-1) scale(1) translateY(0px) rotate(0deg);
+    }
+
+    25% {
+      transform: scaleX(-1) scale(1.01) translateY(7px) rotate(90deg);
+    }
+
+    75% {
+      transform: scaleX(-1) scale(1) translateY(-3px) rotate(180deg);
+    }
+
+    100% {
+      transform: scaleX(-1) scale(1) translateY(0px) rotate(360deg);
+    }
+  }
+
+  @keyframes cucumber {
+    0% {
+      transform: scaleX(-1) scale(1) translateY(0px) rotate(0deg);
+    }
+
+    25% {
+      transform: scaleX(-1) scale(1.01) translateY(7px) rotate(6deg);
+    }
+
+    75% {
+      transform: scaleX(-1) scale(1) translateY(-3px) rotate(-2deg);
+    }
+
+    100% {
+      transform: scaleX(-1) scale(1) translateY(0px) rotate(0deg);
+    }
+  }
+
+
+
+
+
+
+
+
+
 
   //Images//
 
   img.fruits {
     position: absolute;
+    z-index: 0;
   }
 
   img.hide,
   img.cucumber,
   img.cabbage2,
-  img.blueberry{
+  img.blueberry {
     display: none;
   }
 
@@ -46,7 +228,7 @@ export const Fruits = styled.div`
     top: 30%;
     left: -12%;
     max-width: 120px;
-    transform: scaleX(-1);
+    animation: tomato 5s linear infinite;
   }
 
   img.tomato2 {
@@ -54,7 +236,7 @@ export const Fruits = styled.div`
     bottom: 5%;
     z-index: 0;
     max-width: 60px;
-    filter: blur(1rem);
+    animation: tomato2 5s linear infinite;
   }
 
   img.carrots {
@@ -63,14 +245,15 @@ export const Fruits = styled.div`
     opacity: 0.8;
     width: 80px;
     rotate: 170deg;
-    filter: blur(0.8rem);
+    animation: carrots 5s linear infinite;
   }
 
   img.cabbage {
     bottom: -15%;
     left: -50%;
     max-width: 400px;
-    filter: blur(4rem);
+    // filter: blur(4rem);
+    animation: cabbage 5s linear infinite;
   }
 
   img.water {
@@ -79,7 +262,7 @@ export const Fruits = styled.div`
     z-index: 5;
     rotate: -30deg;
     max-width: 130px;
-    transform: scaleX(-1);
+    animation: water 5s linear infinite;
   }
 
   @media (min-width: 450px) {
@@ -97,9 +280,7 @@ export const Fruits = styled.div`
   }
 
   @media (min-width: 768px) {
-    img.hide{
-      display: unset;
-    }
+
     img.tomato {
       top: 5%;
       left: 2%;
@@ -115,7 +296,6 @@ export const Fruits = styled.div`
     img.carrots {
       top: 25%;
       right: 45%;
-      filter: blur(0.4rem);
     }
 
     img.cabbage {
@@ -127,7 +307,7 @@ export const Fruits = styled.div`
       right: 6%;
       width: 300px;
       rotate: 30deg;
-      filter: blur(3rem);
+      animation: grapes 5s linear infinite;
     }
   }
 
@@ -150,6 +330,7 @@ export const Fruits = styled.div`
   }
 
   @media (min-width: 1100px) {
+    img.grapes,
     img.cucumber,
     img.cabbage2,
     img.blueberry {
@@ -161,21 +342,22 @@ export const Fruits = styled.div`
       bottom: -60%;
       z-index: 0;
       max-width: 180px;
+      animation: cabbage2 100s linear infinite;
     }
 
     img.cucumber {
       right: 2%;
       bottom: -60%;
       z-index: 0;
-      transform: scaleX(-1);
       max-width: 200px;
+      animation: cucumber 5s linear infinite;
     }
 
     img.blueberry {
       left: 75%;
       bottom: -25%;
-      transform: scaleX(-1);
       max-width: 80px;
+      animation: blueberry 5s linear infinite;
     }
   }
 
