@@ -31,6 +31,16 @@ const CropList = (props: CropListProps): JSX.Element => {
   const [visibility, setVisibility] = useState<boolean>(false);
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 
+  const filteredCrops =
+    crops &&
+    crops.filter((cropItem) =>
+      option?.value === "planted"
+        ? cropItem.isPlanted
+        : option?.value === "to-plant"
+        ? !cropItem.isPlanted
+        : true
+    );
+
   const theme = useTheme();
 
   const popupRef = useRef<HTMLDivElement | null>(null);
@@ -42,6 +52,7 @@ const CropList = (props: CropListProps): JSX.Element => {
     <>
       {crops &&
       0 < crops.length &&
+      filteredCrops &&
       options &&
       option &&
       setOption &&
@@ -55,16 +66,9 @@ const CropList = (props: CropListProps): JSX.Element => {
               name="category"
             />
           </TabContainer>
-          <List>
-            {crops
-              .filter((cropItem) =>
-                option?.value === "planted"
-                  ? cropItem.isPlanted
-                  : option?.value === "to-plant"
-                  ? !cropItem.isPlanted
-                  : true
-              )
-              .map((cropItem, index) => (
+          {0 < filteredCrops.length ? (
+            <List>
+              {filteredCrops.map((cropItem, index) => (
                 <Item
                   onClick={() => handleOnClickCrop(cropItem._id)}
                   key={index}
@@ -90,7 +94,12 @@ const CropList = (props: CropListProps): JSX.Element => {
                   </Typography>
                 </Item>
               ))}
-          </List>
+            </List>
+          ) : (
+            <Typography variant="body" weight="700">
+              No crops in this tab
+            </Typography>
+          )}
           <div
             style={{
               position: "relative",
