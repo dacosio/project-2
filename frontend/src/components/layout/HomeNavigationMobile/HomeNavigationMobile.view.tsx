@@ -22,7 +22,6 @@ const HomeNavigationMobile = (
   // });
   return (
     <Container>
-      
       {/* <NavBackground
         className={props.open ? "visible" : "hidden"}
       ></NavBackground> */}
@@ -39,10 +38,10 @@ const HomeNavigationMobile = (
               <Link to="/#features">Features</Link>
             </li>
             <li>
-              <Link to="/team">Team</Link>
+              <Link to="/#contact">Contact</Link>
             </li>
             <li>
-              <Link to="/#contact">Contact</Link>
+              <Link to="/team">Team</Link>
             </li>
           </ul>
         </NavOptions>
