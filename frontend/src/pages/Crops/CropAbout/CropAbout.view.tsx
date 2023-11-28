@@ -159,7 +159,7 @@ const CropAboutView = (props: CropAboutProps) => {
           <Row gutterWidth={20}>
             <Col>
               <div className="box-container">
-                <Typography variant="title5">Crop Information</Typography>
+                <Typography variant="title5">Ideal Condition</Typography>
                 <CropInformation>{getCondition()}</CropInformation>
               </div>
             </Col>
@@ -168,15 +168,11 @@ const CropAboutView = (props: CropAboutProps) => {
             <Col>
               <FertilizerContainer className="box-container">
                 <Hidden xs>
-                  <Typography variant="title5">
-                    Fertilizer Composition
-                  </Typography>
+                  <Typography variant="title5">Ideal Fertilizer</Typography>
                   <div>{Fertilizers}</div>
                 </Hidden>
                 <Visible xs>
-                  <Accordion label="Fertilizer Composition">
-                    {Fertilizers}
-                  </Accordion>
+                  <Accordion label="Ideal Fertilizer">{Fertilizers}</Accordion>
                 </Visible>
               </FertilizerContainer>
             </Col>
