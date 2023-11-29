@@ -162,7 +162,7 @@ const HomeView = (props: HomeGeneratedProps) => {
               elevate your farming experience. With Sprout, this becomes a
               breeze with its data-backed features that can help you discover,
               plant, and nurture the perfect crop for your unique growing
-              conditions
+              conditions.
             </Typography>
             <Typography
               variant="subtitle"
@@ -181,7 +181,7 @@ const HomeView = (props: HomeGeneratedProps) => {
               elevate your farming experience. With Sprout, this becomes a
               breeze with its data-backed features that can help you discover,
               plant, and nurture the perfect crop for your unique growing
-              conditions
+              conditions.
             </Typography>
             <Typography variant="body" weight="400" textColor="n80">
               Already have a crop to grow mind? We got you! Sprout provides the
