@@ -62,7 +62,7 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
         cropName: cropName,
       })
         .unwrap()
-        .then(async (predictResponse) => {
+        .then(async (predictResponse: { yield: number }) => {
           if (adding) {
             await plant({
               cropId: cropId,
