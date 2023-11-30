@@ -29,7 +29,6 @@ const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
 
   const city = useAppSelector(selectCity);
   const month = useAppSelector(selectMonth);
-
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [nitrogen, setNitrogen] = useState<string | undefined>(
     useAppSelector(selectNitrogen)

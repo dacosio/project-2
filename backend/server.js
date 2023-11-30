@@ -16,12 +16,6 @@ connectDB();
 app.use(logger);
 app.use(cors(corsOptions));
 
-// const Temperature = require("./models/Temperature.js");
-// const Precipitation = require("./models/Precipitation.js");
-// const Humidity = require("./models/Humidity.js");
-// const Crop = require("./models/Crop");
-// const CropEncyclopedia = require("./models/CropEncyclopedia");
-
 const {
   temperature,
   precipitation,
@@ -32,7 +26,6 @@ const {
 
 // gives the ability to process json data from the frontend
 app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // this is to make the public static file accessible globally, ex. public/css/style.css can be called with css/styles.css
@@ -59,18 +52,15 @@ app.all("*", (req, res) => {
 // this middleware will catch whenever our routes/controllers has an error
 app.use(errorHandler);
 
+//this is executed once when the connection is successful
 mongoose.connection.once("open", () => {
   console.log("Connected to Database");
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
-    // Temperature.insertMany(temperature);
-    // Precipitation.insertMany(precipitation);
-    // Humidity.insertMany(humidity);
-    // Crop.insertMany(crop);
-    // CropEncyclopedia.insertMany(cropEncyclopedia)
   });
 });
 
+//this is executed once when an error occurs
 mongoose.connection.on("error", (err) => {
   console.log(err);
   logEvents(

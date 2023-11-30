@@ -26,6 +26,17 @@ const predictCrop = async (req, res) => {
       .select("precipitation")
       .lean();
 
+    if (
+      humidity.length == 0 ||
+      temperature.length == 0 ||
+      precipitation.lengt == 0
+    ) {
+      console.log(humidity, temperature, precipitation);
+      return res.status(400).json({
+        message:
+          "Sorry, this location is out of scope of Sprout. Please select different location.",
+      });
+    }
     // const url = "http://127.0.0.1:5000/predict-crop";
     const url = "https://crpo-ml.onrender.com/predict-crop";
     const data = {
