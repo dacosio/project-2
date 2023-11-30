@@ -48,7 +48,6 @@ const plant = async (req, res) => {
       .select("-_id -createdAt -updatedAt")
       .lean();
 
-    //   todo estimatedyield
     let cropData;
     if (cropEnc) {
       if (plantNow) {
@@ -65,7 +64,6 @@ const plant = async (req, res) => {
           userId,
           isFavorite: false,
           isPlanted: plantNow,
-          // estimatedYield: estimatedYield,
           ...cropEnc,
         });
       }
