@@ -61,7 +61,7 @@ const Team = (): JSX.Element => {
       url: "https://www.linkedin.com/in/pujan-shakya/",
       link: [
         "https://www.linkedin.com/in/pujan-shakya/",
-        "hhttps://github.com/puzannshakya",
+        "https://github.com/puzannshakya",
       ],
     },
     {
@@ -82,7 +82,10 @@ const Team = (): JSX.Element => {
       source: "assets/teamImg/Jump-Farmer.png",
       icon: "designer",
       url: "https://www.linkedin.com/in/jumpchill/",
-      link: ["https://www.linkedin.com/in/jumpchill/"],
+      link: [
+        "https://www.linkedin.com/in/jumpchill/",
+        "https://jumpcreativespace.com/",
+      ],
     },
     {
       name: "Mugdha Gupta",
