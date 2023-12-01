@@ -61,12 +61,14 @@ const AddCropResult = (props: AddCropResultProps): JSX.Element => {
 
   const handleLater = async () => {
     if (crop) {
+      setIsLoading(true);
       await plant({
         cropId: crop._id,
         plantNow: false,
       })
         .unwrap()
         .then((response: Crop) => {
+          toast.success("Crop successfully added");
           dispatch(
             storeSelectedOption({
               value: "to-plant",
@@ -77,8 +79,14 @@ const AddCropResult = (props: AddCropResultProps): JSX.Element => {
           onLater(false);
         })
         .catch((error) => {
+          if (error && error.data && error.data.message) {
+            toast.error(error.data.message);
+          } else {
+            toast.error("An error occured. Please, try again later");
+          }
           onLater(true);
         });
+      setIsLoading(false);
     }
   };
 

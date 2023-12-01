@@ -63,19 +63,17 @@ const YourCrop = (): JSX.Element => {
   };
 
   const handleLater = (isError: boolean) => {
-    setChoiceVisibility(false);
-    setSuggestionVisibility(false);
-
-    if (isError) {
-      toast.error("An error occured. Please, try again later");
-    } else {
-      toast.success("Crop successfully added");
+    if (!isError) {
+      setChoiceVisibility(false);
+      setSuggestionVisibility(false);
     }
   };
 
   const handleNow = (isError: boolean) => {
-    setChoiceVisibility(false);
-    setSuggestionVisibility(false);
+    if (!isError) {
+      setChoiceVisibility(false);
+      setSuggestionVisibility(false);
+    }
   };
 
   const handlePlant = (isError: boolean) => {};
