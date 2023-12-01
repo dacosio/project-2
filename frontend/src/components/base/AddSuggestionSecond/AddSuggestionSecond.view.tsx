@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { AddSuggestionSecondProps } from "./AddSuggestionSecond.props";
 import { Body, Container, Footer, Header } from "./AddSuggestionSecond.style";
+import toast, { Toaster } from "react-hot-toast";
 import Typography from "../Typography";
 import Button from "../Button";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
@@ -50,22 +51,26 @@ const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
     dispatch(storePotassium(null));
     dispatch(storePh(null));
 
-    const response = await predict({
+    await predict({
       city: city,
       month: month,
       N: null,
       P: null,
       K: null,
       ph: null,
-    }).unwrap();
-
-    console.log(response);
-
-    if (response && response.cropId && response.cropName) {
-      dispatch(storeCropId(response.cropId));
-      dispatch(storeCropName(response.cropName));
-      onNext();
-    }
+    })
+      .unwrap()
+      .then((response: { cropId: string; cropName: string }) => {
+        if (response && response.cropId && response.cropName) {
+          dispatch(storeCropId(response.cropId));
+          dispatch(storeCropName(response.cropName));
+          onNext();
+        }
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        toast.error(error.data.message);
+      });
   };
 
   const handleNext = async () => {
@@ -76,20 +81,26 @@ const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
       dispatch(storePotassium(potassium));
       dispatch(storePh(ph));
 
-      const response = await predict({
+      await predict({
         city: city,
         month: month,
         N: nitrogen,
         P: phosphorus,
         K: potassium,
         ph: ph,
-      }).unwrap();
-
-      if (response && response.cropId && response.cropName) {
-        dispatch(storeCropId(response.cropId));
-        dispatch(storeCropName(response.cropName));
-        onNext();
-      }
+      })
+        .unwrap()
+        .then((response: { cropId: string; cropName: string }) => {
+          if (response && response.cropId && response.cropName) {
+            dispatch(storeCropId(response.cropId));
+            dispatch(storeCropName(response.cropName));
+            onNext();
+          }
+        })
+        .catch((error) => {
+          setIsLoading(false);
+          toast.error(error.data.message);
+        });
     }
   };
 
@@ -136,6 +147,7 @@ const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
             <Button text="Next" onClick={handleNext} />
           )}
         </Footer>
+        <Toaster />
       </Container>
     </>
   );
