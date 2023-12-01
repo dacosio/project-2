@@ -19,7 +19,6 @@ const CropAbout = (): JSX.Element => {
   const [visibility, setVisibility] = useState<boolean>(false);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 
   const handlePlantLater = async () => {
     try {
@@ -63,7 +62,6 @@ const CropAbout = (): JSX.Element => {
     visibility,
     setVisibility,
     handlePlant,
-    setIsModalVisible,
   };
   return <CropAboutView {...generatedProps} />;
 };

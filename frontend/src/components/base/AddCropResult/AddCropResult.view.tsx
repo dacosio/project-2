@@ -38,7 +38,6 @@ const AddCropResult = (props: AddCropResultProps): JSX.Element => {
   const [plant] = usePlantMutation();
   const [predictYield] = usePredictYieldMutation();
   const { data: cropData } = useGetCropAboutQuery(useAppSelector(selectCropId));
-  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 
   const handleLoading = (isLoading: boolean) => {
     setIsLoading(isLoading);
@@ -208,7 +207,6 @@ const AddCropResult = (props: AddCropResultProps): JSX.Element => {
         onConfirm={handleConfirm}
         onLoading={handleLoading}
         adding
-        setIsModalVisible={setIsModalVisible}
       />
       <Toaster />
     </>

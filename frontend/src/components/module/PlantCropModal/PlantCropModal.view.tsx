@@ -35,7 +35,7 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
     cropName,
     onLoading = () => null,
     onConfirm,
-    setIsModalVisible,
+    setIsModalVisible = () => null,
   } = props;
 
   const dispatch = useAppDispatch();
