@@ -116,6 +116,7 @@ const DashboardView = (props: DashboardGeneratedProps) => {
               selectedOption={state}
               onClickControl={(value: string) => {
                 onSetState(value);
+                onSelectedWeatherIndexWeather(1);
               }}
             />
             <HourlyDaily

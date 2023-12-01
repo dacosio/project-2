@@ -13,7 +13,6 @@ const Weather = (): JSX.Element => {
   const [weatherData, setWeatherData] = useState<{ [key: string]: any }>({});
   const MOCK_OPTIONS = ["Today", "15-day"];
   const [state, setState] = useState(MOCK_OPTIONS[0]);
-  const [selectedIndex, setSelectedIndex] = useState(0);
   const [selectedAddress, setSelectedAddress] = useState(
     useCurrentCity().currentCity
   );
@@ -35,6 +34,26 @@ const Weather = (): JSX.Element => {
     thunderStormRain: ["#7148D5", "#C9A6C7"],
   });
   const date = new Date();
+
+  const getCurrentHour24Format = () => {
+    const now = new Date();
+    const options: Intl.DateTimeFormatOptions = {
+      hour: "2-digit",
+      hour12: false,
+    };
+    const hour24 = new Intl.DateTimeFormat("en-GB", options).format(now);
+    return hour24; // This will return the hour part only, like "03" or "15"
+  };
+
+  const getIndex = (datetime: string) => {
+    if (state === MOCK_OPTIONS[0]) {
+      const currentTimeIndex = parseInt(getCurrentHour24Format());
+      return currentTimeIndex;
+    } else {
+      return 1;
+    }
+  };
+  const [selectedIndex, setSelectedIndex] = useState(getIndex("2023-11-22"));
 
   console.log(`currentCity : ${selectedAddress}`);
   useEffect(() => {
@@ -146,6 +165,7 @@ const Weather = (): JSX.Element => {
    */
   const handleSelectedSearchLocation = (address: string) => {
     setSelectedAddress(address);
+    setSelectedIndex(getIndex("2023-11-22"));
   };
 
   /**
