@@ -45,11 +45,7 @@ const CropAbout = (): JSX.Element => {
   };
 
   const handlePlant = (isError: boolean) => {
-    if (isError) {
-      toast.error("An error occured. Please, try again later");
-    } else {
-      setVisibility(false);
-      toast.success("Crop successfully planted");
+    if (!isError) {
       setTimeout(() => {
         navigate("/your-crops");
       }, 500);

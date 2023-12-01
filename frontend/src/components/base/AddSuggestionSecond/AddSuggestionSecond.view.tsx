@@ -68,9 +68,13 @@ const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
         }
       })
       .catch((error) => {
-        setIsLoading(false);
-        toast.error(error.data.message);
+        if (error && error.data && error.data.message) {
+          toast.error(error.data.message);
+        } else {
+          toast.error("An error occured. Please, try again later");
+        }
       });
+    setIsLoading(false);
   };
 
   const handleNext = async () => {
@@ -98,9 +102,13 @@ const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
           }
         })
         .catch((error) => {
-          setIsLoading(false);
-          toast.error(error.data.message);
+          if (error && error.data && error.data.message) {
+            toast.error(error.data.message);
+          } else {
+            toast.error("An error occured. Please, try again later");
+          }
         });
+      setIsLoading(false);
     }
   };
 
@@ -147,8 +155,8 @@ const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
             <Button text="Next" onClick={handleNext} />
           )}
         </Footer>
-        <Toaster />
       </Container>
+      <Toaster />
     </>
   );
 };

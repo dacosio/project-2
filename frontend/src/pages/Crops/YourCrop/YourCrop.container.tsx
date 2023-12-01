@@ -76,21 +76,9 @@ const YourCrop = (): JSX.Element => {
   const handleNow = (isError: boolean) => {
     setChoiceVisibility(false);
     setSuggestionVisibility(false);
-
-    if (isError) {
-      toast.error("An error occured. Please, try again later");
-    } else {
-      toast.success("Crop successfully planted");
-    }
   };
 
-  const handlePlant = (isError: boolean) => {
-    if (isError) {
-      toast.error("An error occured. Please, try again later");
-    } else {
-      toast.success("Crop successfully planted");
-    }
-  };
+  const handlePlant = (isError: boolean) => {};
 
   const handleFavorite = async (id: string, isFavorite: boolean) => {
     await favorite({ id, isFavorite })

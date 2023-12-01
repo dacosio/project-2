@@ -7,6 +7,7 @@ import {
   Header,
   Wrapper,
 } from "./PlantCropModal.style";
+import toast, { Toaster } from "react-hot-toast";
 import Modal from "../../../components/base/Modal";
 import Typography from "../../../components/base/Typography";
 import LocationSearch from "../LocationSearch";
@@ -45,7 +46,7 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
 
   const [plant] = usePlantMutation();
   const [plantNow] = usePlantNowMutation();
-  const [predict] = usePredictYieldMutation();
+  const [predictYield] = usePredictYieldMutation();
 
   const handleClose = () => {
     setVisibility(false);
@@ -53,11 +54,10 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
   };
 
   const handleConfirm = async () => {
-    setVisibility(false);
     onLoading(true);
     setIsLoading(true);
     if (city) {
-      await predict({
+      await predictYield({
         city: city,
         cropName: cropName,
       })
@@ -71,6 +71,7 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
             })
               .unwrap()
               .then((response: Crop) => {
+                toast.success("Crop successfully planted");
                 dispatch(
                   storeSelectedOption({
                     value: "planted",
@@ -81,6 +82,11 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
                 onConfirm(false);
               })
               .catch((error) => {
+                if (error && error.data && error.data.message) {
+                  toast.error(error.data.message);
+                } else {
+                  toast.error("An error occured. Please, try again later");
+                }
                 onConfirm(true);
               });
           } else {
@@ -90,6 +96,7 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
             })
               .unwrap()
               .then((response: Crop) => {
+                toast.success("Crop successfully planted");
                 dispatch(
                   storeSelectedOption({
                     value: "planted",
@@ -100,16 +107,27 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
                 onConfirm(false);
               })
               .catch((error) => {
+                if (error && error.data && error.data.message) {
+                  toast.error(error.data.message);
+                } else {
+                  toast.error("An error occured. Please, try again later");
+                }
                 onConfirm(true);
               });
           }
         })
         .catch((error) => {
+          if (error && error.data && error.data.message) {
+            toast.error(error.data.message);
+          } else {
+            toast.error("An error occured. Please, try again later");
+          }
           onConfirm(true);
         });
     }
     setIsLoading(false);
     onLoading(false);
+    setVisibility(false);
     setIsModalVisible(false);
   };
 
@@ -141,6 +159,7 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
           </Wrapper>
         </Container>
       </Modal>
+      <Toaster />
     </>
   );
 };

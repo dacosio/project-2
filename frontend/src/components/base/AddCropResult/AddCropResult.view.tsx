@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { AddCropResultProps } from "./AddCropResult.props";
 import { Body, Container, Footer, Image } from "./AddCropResult.style";
+import toast, { Toaster } from "react-hot-toast";
 import CropInformation from "../../module/CropInformation";
 import { Crop } from "../../../types/store/CropState";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
@@ -35,7 +36,7 @@ const AddCropResult = (props: AddCropResultProps): JSX.Element => {
   const [crop, setCrop] = useState<Crop | undefined>(undefined);
 
   const [plant] = usePlantMutation();
-  const [predict] = usePredictYieldMutation();
+  const [predictYield] = usePredictYieldMutation();
   const { data: cropData } = useGetCropAboutQuery(useAppSelector(selectCropId));
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 
@@ -85,7 +86,7 @@ const AddCropResult = (props: AddCropResultProps): JSX.Element => {
     if (crop) {
       if (suggested) {
         setIsLoading(true);
-        await predict({
+        await predictYield({
           city: city,
           cropName: cropName,
         })
@@ -98,6 +99,7 @@ const AddCropResult = (props: AddCropResultProps): JSX.Element => {
             })
               .unwrap()
               .then((response: Crop) => {
+                toast.success("Crop successfully planted");
                 dispatch(
                   storeSelectedOption({
                     value: "planted",
@@ -108,10 +110,20 @@ const AddCropResult = (props: AddCropResultProps): JSX.Element => {
                 onNow(false);
               })
               .catch((error) => {
+                if (error && error.data && error.data.message) {
+                  toast.error(error.data.message);
+                } else {
+                  toast.error("An error occured. Please, try again later");
+                }
                 onNow(true);
               });
           })
           .catch((error) => {
+            if (error && error.data && error.data.message) {
+              toast.error(error.data.message);
+            } else {
+              toast.error("An error occured. Please, try again later");
+            }
             onNow(true);
           });
         setIsLoading(false);
@@ -190,6 +202,7 @@ const AddCropResult = (props: AddCropResultProps): JSX.Element => {
         adding
         setIsModalVisible={setIsModalVisible}
       />
+      <Toaster />
     </>
   );
 };
