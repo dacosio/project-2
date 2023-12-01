@@ -40,7 +40,10 @@ const Team = (): JSX.Element => {
       source: "assets/teamImg/Monica-Farmer.png",
       icon: "designer",
       url: "https://www.linkedin.com/in/monica-esquivel-8b02666a/",
-      link: ["https://www.linkedin.com/in/monica-esquivel-8b02666a/"],
+      link: [
+        "https://www.linkedin.com/in/monica-esquivel-8b02666a/",
+        "https://monica-esquivel.com/",
+      ],
     },
     {
       name: "Yuhwan Ban",
