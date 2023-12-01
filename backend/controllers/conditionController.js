@@ -9,12 +9,19 @@ const calculateAverageCondition = require("../helpers/calculator");
 const predictCrop = async (req, res) => {
   try {
     let { city, month, N, P, K, ph } = req.body;
-    city = city.toLowerCase();
-    month = month[0].toUpperCase() + month.slice(1);
+
+    if (city == undefined) {
+      return res.status(400).json({
+        message:
+          "Sorry, this location is out of scope of Sprout. Please select different location.",
+      });
+    }
 
     if (!city || !month) {
       return res.status(400).json({ message: "All fields are required." });
     }
+    city = city.toLowerCase();
+    month = month[0].toUpperCase() + month.slice(1);
 
     const humidity = await Humidity.find({ city, month })
       .select("humidity")
@@ -31,7 +38,6 @@ const predictCrop = async (req, res) => {
       temperature.length == 0 ||
       precipitation.lengt == 0
     ) {
-      console.log(humidity, temperature, precipitation);
       return res.status(400).json({
         message:
           "Sorry, this location is out of scope of Sprout. Please select different location.",
