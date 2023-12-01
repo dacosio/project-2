@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { AddCropResultProps } from "./AddCropResult.props";
 import { Body, Container, Footer, Image } from "./AddCropResult.style";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import CropInformation from "../../module/CropInformation";
 import { Crop } from "../../../types/store/CropState";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
@@ -208,7 +208,6 @@ const AddCropResult = (props: AddCropResultProps): JSX.Element => {
         onLoading={handleLoading}
         adding
       />
-      <Toaster />
     </>
   );
 };

@@ -7,12 +7,15 @@ import {
   Header,
   Wrapper,
 } from "./PlantCropModal.style";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import Modal from "../../../components/base/Modal";
 import Typography from "../../../components/base/Typography";
 import LocationSearch from "../LocationSearch";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import { selectCity } from "../../../features/location/locationSlice";
+import {
+  selectAddress,
+  selectCity,
+} from "../../../features/location/locationSlice";
 import Button from "../../../components/base/Button";
 import {
   usePlantMutation,
@@ -40,6 +43,7 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
 
   const dispatch = useAppDispatch();
 
+  const address = useAppSelector(selectAddress);
   const city = useAppSelector(selectCity);
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -147,7 +151,16 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
               </Typography>
             </Header>
             <Body>
-              <LocationSearch />
+              <div>
+                <LocationSearch />
+                {address && !city && (
+                  <div style={{ padding: "0 8px" }}>
+                    <Typography textColor="error">
+                      Please select a city
+                    </Typography>
+                  </div>
+                )}
+              </div>
             </Body>
             <Footer>
               {isLoading || !city ? (
@@ -159,7 +172,6 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
           </Wrapper>
         </Container>
       </Modal>
-      <Toaster />
     </>
   );
 };

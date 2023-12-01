@@ -11,7 +11,10 @@ import {
   storeMonth,
 } from "../../../features/addCrop/addCropSlice";
 import DateField from "../DateField";
-import { selectAddress } from "../../../features/location/locationSlice";
+import {
+  selectAddress,
+  selectCity,
+} from "../../../features/location/locationSlice";
 
 const AddSuggestionFirst = (props: AddSuggestionFirstProps): JSX.Element => {
   const { onNext } = props;
@@ -19,13 +22,14 @@ const AddSuggestionFirst = (props: AddSuggestionFirstProps): JSX.Element => {
   const dispatch = useAppDispatch();
 
   const address = useAppSelector(selectAddress);
+  const city = useAppSelector(selectCity);
 
   const [date, setDate] = useState<string | undefined>(
     useAppSelector(selectDate)
   );
 
   const handleNext = () => {
-    if (address && date) {
+    if (city && date) {
       dispatch(storeDate(date));
       const months: { [key: string]: string } = {
         "01": "January",
@@ -62,7 +66,14 @@ const AddSuggestionFirst = (props: AddSuggestionFirstProps): JSX.Element => {
           <Typography weight="500">
             Where is your planting area located?
           </Typography>
-          <LocationSearch />
+          <div>
+            <LocationSearch />
+            {address && !city && (
+              <div style={{ padding: "0 8px" }}>
+                <Typography textColor="error">Please select a city</Typography>
+              </div>
+            )}
+          </div>
         </div>
         <div>
           <Typography weight="500">When are you planting the crop?</Typography>
@@ -70,7 +81,7 @@ const AddSuggestionFirst = (props: AddSuggestionFirstProps): JSX.Element => {
         </div>
       </Body>
       <Footer>
-        {address && date ? (
+        {city && date ? (
           <Button text="Next" onClick={handleNext} />
         ) : (
           <Button text="Next" variant="disabled" />
