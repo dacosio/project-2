@@ -19,7 +19,6 @@ const CropAbout = (): JSX.Element => {
   const [visibility, setVisibility] = useState<boolean>(false);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 
   const handlePlantLater = async () => {
     try {
@@ -45,11 +44,7 @@ const CropAbout = (): JSX.Element => {
   };
 
   const handlePlant = (isError: boolean) => {
-    if (isError) {
-      toast.error("An error occured. Please, try again later");
-    } else {
-      setVisibility(false);
-      toast.success("Crop successfully planted");
+    if (!isError) {
       setTimeout(() => {
         navigate("/your-crops");
       }, 500);
@@ -67,7 +62,6 @@ const CropAbout = (): JSX.Element => {
     visibility,
     setVisibility,
     handlePlant,
-    setIsModalVisible,
   };
   return <CropAboutView {...generatedProps} />;
 };

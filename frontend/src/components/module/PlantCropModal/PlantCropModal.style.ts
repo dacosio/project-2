@@ -20,6 +20,7 @@ export const Body = styled.div`
   display: grid;
   gap: 36px;
 `;
+
 export const Footer = styled.div`
   justify-self: end;
 `;

@@ -7,11 +7,15 @@ import {
   Header,
   Wrapper,
 } from "./PlantCropModal.style";
+import toast from "react-hot-toast";
 import Modal from "../../../components/base/Modal";
 import Typography from "../../../components/base/Typography";
 import LocationSearch from "../LocationSearch";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import { selectCity } from "../../../features/location/locationSlice";
+import {
+  selectAddress,
+  selectCity,
+} from "../../../features/location/locationSlice";
 import Button from "../../../components/base/Button";
 import {
   usePlantMutation,
@@ -34,18 +38,19 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
     cropName,
     onLoading = () => null,
     onConfirm,
-    setIsModalVisible,
+    setIsModalVisible = () => null,
   } = props;
 
   const dispatch = useAppDispatch();
 
+  const address = useAppSelector(selectAddress);
   const city = useAppSelector(selectCity);
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const [plant] = usePlantMutation();
   const [plantNow] = usePlantNowMutation();
-  const [predict] = usePredictYieldMutation();
+  const [predictYield] = usePredictYieldMutation();
 
   const handleClose = () => {
     setVisibility(false);
@@ -53,11 +58,10 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
   };
 
   const handleConfirm = async () => {
-    setVisibility(false);
     onLoading(true);
     setIsLoading(true);
     if (city) {
-      await predict({
+      await predictYield({
         city: city,
         cropName: cropName,
       })
@@ -71,6 +75,7 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
             })
               .unwrap()
               .then((response: Crop) => {
+                toast.success("Crop successfully planted");
                 dispatch(
                   storeSelectedOption({
                     value: "planted",
@@ -81,6 +86,11 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
                 onConfirm(false);
               })
               .catch((error) => {
+                if (error && error.data && error.data.message) {
+                  toast.error(error.data.message);
+                } else {
+                  toast.error("An error occured. Please, try again later");
+                }
                 onConfirm(true);
               });
           } else {
@@ -90,6 +100,7 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
             })
               .unwrap()
               .then((response: Crop) => {
+                toast.success("Crop successfully planted");
                 dispatch(
                   storeSelectedOption({
                     value: "planted",
@@ -100,16 +111,27 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
                 onConfirm(false);
               })
               .catch((error) => {
+                if (error && error.data && error.data.message) {
+                  toast.error(error.data.message);
+                } else {
+                  toast.error("An error occured. Please, try again later");
+                }
                 onConfirm(true);
               });
           }
         })
         .catch((error) => {
+          if (error && error.data && error.data.message) {
+            toast.error(error.data.message);
+          } else {
+            toast.error("An error occured. Please, try again later");
+          }
           onConfirm(true);
         });
     }
     setIsLoading(false);
     onLoading(false);
+    setVisibility(false);
     setIsModalVisible(false);
   };
 
@@ -129,7 +151,16 @@ const PlantCropModal = (props: PlantCropModalProps): JSX.Element => {
               </Typography>
             </Header>
             <Body>
-              <LocationSearch />
+              <div>
+                <LocationSearch />
+                {address && !city && (
+                  <div style={{ padding: "0 8px" }}>
+                    <Typography textColor="error">
+                      Please select a city
+                    </Typography>
+                  </div>
+                )}
+              </div>
             </Body>
             <Footer>
               {isLoading || !city ? (

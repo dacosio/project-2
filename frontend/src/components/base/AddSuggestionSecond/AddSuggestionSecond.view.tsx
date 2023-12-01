@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { AddSuggestionSecondProps } from "./AddSuggestionSecond.props";
 import { Body, Container, Footer, Header } from "./AddSuggestionSecond.style";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import Typography from "../Typography";
 import Button from "../Button";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
@@ -51,43 +51,14 @@ const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
     dispatch(storePotassium(null));
     dispatch(storePh(null));
 
-    await predict({
-      city: city,
-      month: month,
-      N: null,
-      P: null,
-      K: null,
-      ph: null,
-    })
-      .unwrap()
-      .then((response: { cropId: string; cropName: string }) => {
-        if (response && response.cropId && response.cropName) {
-          dispatch(storeCropId(response.cropId));
-          dispatch(storeCropName(response.cropName));
-          onNext();
-        }
-      })
-      .catch((error) => {
-        setIsLoading(false);
-        toast.error(error.data.message);
-      });
-  };
-
-  const handleNext = async () => {
-    if (nitrogen && phosphorus && potassium && ph) {
-      setIsLoading(true);
-      dispatch(storeNitrogen(nitrogen));
-      dispatch(storePhosphorus(phosphorus));
-      dispatch(storePotassium(potassium));
-      dispatch(storePh(ph));
-
+    if (city && month) {
       await predict({
         city: city,
         month: month,
-        N: nitrogen,
-        P: phosphorus,
-        K: potassium,
-        ph: ph,
+        N: null,
+        P: null,
+        K: null,
+        ph: null,
       })
         .unwrap()
         .then((response: { cropId: string; cropName: string }) => {
@@ -98,9 +69,50 @@ const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
           }
         })
         .catch((error) => {
-          setIsLoading(false);
-          toast.error(error.data.message);
+          if (error && error.data && error.data.message) {
+            toast.error(error.data.message);
+          } else {
+            toast.error("An error occured. Please, try again later");
+          }
         });
+    }
+    setIsLoading(false);
+  };
+
+  const handleNext = async () => {
+    if (nitrogen && phosphorus && potassium && ph) {
+      setIsLoading(true);
+      dispatch(storeNitrogen(nitrogen));
+      dispatch(storePhosphorus(phosphorus));
+      dispatch(storePotassium(potassium));
+      dispatch(storePh(ph));
+
+      if (city && month && nitrogen && phosphorus && potassium && ph) {
+        await predict({
+          city: city,
+          month: month,
+          N: nitrogen,
+          P: phosphorus,
+          K: potassium,
+          ph: ph,
+        })
+          .unwrap()
+          .then((response: { cropId: string; cropName: string }) => {
+            if (response && response.cropId && response.cropName) {
+              dispatch(storeCropId(response.cropId));
+              dispatch(storeCropName(response.cropName));
+              onNext();
+            }
+          })
+          .catch((error) => {
+            if (error && error.data && error.data.message) {
+              toast.error(error.data.message);
+            } else {
+              toast.error("An error occured. Please, try again later");
+            }
+          });
+      }
+      setIsLoading(false);
     }
   };
 
@@ -147,7 +159,6 @@ const AddSuggestionSecond = (props: AddSuggestionSecondProps): JSX.Element => {
             <Button text="Next" onClick={handleNext} />
           )}
         </Footer>
-        <Toaster />
       </Container>
     </>
   );

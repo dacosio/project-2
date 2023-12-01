@@ -28,7 +28,6 @@ const CropAboutView = (props: CropAboutProps) => {
     visibility,
     setVisibility,
     handlePlant,
-    setIsModalVisible,
   } = props;
   const crop = crops[0];
   const conditions = [
@@ -228,7 +227,6 @@ const CropAboutView = (props: CropAboutProps) => {
         cropId={crop?._id}
         cropName={crop?.cropName}
         onConfirm={handlePlant}
-        setIsModalVisible={setIsModalVisible}
       />
     </>
   );
