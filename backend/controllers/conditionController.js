@@ -72,11 +72,18 @@ const predictYield = async (req, res) => {
   try {
     let { cropName, city } = req.body;
 
-    city = city.toLowerCase();
+    if (city == undefined) {
+      return res.status(400).json({
+        message:
+          "Sorry, this location is out of scope of Sprout. Please select different location.",
+      });
+    }
 
     if (!city && !cropName) {
       return res.status(400).json({ message: "All fields are required." });
     }
+
+    city = city.toLowerCase();
 
     const temperature = await Temperature.find({ city }).select("mean").lean();
 
@@ -84,6 +91,12 @@ const predictYield = async (req, res) => {
       .select("precipitation")
       .lean();
 
+    if (temperature.length == 0 || precipitation.lengt == 0) {
+      return res.status(400).json({
+        message:
+          "Sorry, this location is out of scope of Sprout. Please select different location.",
+      });
+    }
     const aveYearlyRainfall = calculateAverageCondition(
       precipitation,
       "precipitation"
