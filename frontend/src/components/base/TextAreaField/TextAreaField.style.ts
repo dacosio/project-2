@@ -5,9 +5,9 @@ import Typography from "../../base/Typography";
 
 const fontStyle = `
   font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 22px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
   font-family: "Inter";
 `;
 
@@ -17,7 +17,7 @@ export const Container = styled.div`
 `;
 
 export const TextArea = styled.textarea`
-  ${fontStyle};
+  ${fontStyle}
   width: 100%;
   min-width: 300px;
   border-radius: 4px;
@@ -29,7 +29,7 @@ export const TextArea = styled.textarea`
   resize: none;
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
 
-  ::placeholder {
+  :placeholder {
     color: ${({ theme }) => theme.btn.text.disabledToken};
   }
 

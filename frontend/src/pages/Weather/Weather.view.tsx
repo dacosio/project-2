@@ -51,6 +51,66 @@ const WeatherView = (props: WeatherGeneratedProps) => {
     onSelectedWeatherIndexWeather(value);
   };
 
+  const getCurrentHour24Format = () => {
+    const now = new Date();
+    const options: Intl.DateTimeFormatOptions = {
+      hour: "2-digit",
+      hour12: false,
+    };
+    const hour24 = new Intl.DateTimeFormat("en-GB", options).format(now);
+    return hour24; // This will return the hour part only, like "03" or "15"
+  };
+
+  const getIndex = () => {
+    if (state === MOCK_OPTIONS[1]) {
+      const currentTimeIndex = parseInt(getCurrentHour24Format());
+      return currentTimeIndex;
+    } else {
+      return 1;
+    }
+  };
+
+  /**
+   * function to get the day name of the input date time
+   * @param datetime
+   * @param state
+   * @returns
+   */
+  const getDayName = (datetime: string) => {
+    // Assuming 'dateString' is in 'YYYY-MM-DD' format
+    const date = new Date(datetime);
+
+    // Options to return the weekday
+    const options: Intl.DateTimeFormatOptions = {
+      weekday: "long", // 'long' represents the full name of the day
+    };
+
+    // 'en-US' locale. You can change this to another locale if you want the day in another language.
+    return new Intl.DateTimeFormat("en-US", options).format(date);
+  };
+
+  const getNextExpectedRainfall = () => {
+    let rainfallFlag = false;
+    let rainfallIndex = 0;
+    let nextExpectedRainfallDay = "sssss";
+    for (let i = 2; i < weatherData.days.length; i++) {
+      if (weatherData.days[i].precip > 0) {
+        rainfallFlag = true;
+        rainfallIndex = i;
+        break;
+      }
+    }
+
+    if (rainfallFlag) {
+      nextExpectedRainfallDay = getDayName(
+        weatherData.days[rainfallIndex].datetime
+      );
+      return `Next expected rain is on ${nextExpectedRainfallDay}`;
+    } else {
+      return `No rainfall for next 15 days`;
+    }
+  };
+
   return (
     <Container collapseState={collapseState}>
       {currentLocation &&
@@ -79,6 +139,7 @@ const WeatherView = (props: WeatherGeneratedProps) => {
             selectedOption={state}
             onClickControl={(value: string) => {
               onSetState(value);
+              onSelectedWeatherIndexWeather(getIndex());
             }}
           />
           <HourlyDaily
@@ -117,7 +178,7 @@ const WeatherView = (props: WeatherGeneratedProps) => {
                   ? weatherData.days[0].hours[selectedIndex].precip
                   : weatherData.days[selectedIndex].precip
               }
-              nextExpectedRainfall="monday"
+              nextExpectedRainfall={getNextExpectedRainfall()}
               collapseState={collapseState}
             ></Precipitation>
 

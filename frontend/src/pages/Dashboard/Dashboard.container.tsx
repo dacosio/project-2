@@ -57,7 +57,6 @@ const Dashboard = (): JSX.Element => {
         .then((response) => {
           // Set the response data in the component's state
           setWeatherData(response.data);
-          console.log(weatherData);
         })
         .catch((error) => {
           // Handle any errors and set the error in the component's state

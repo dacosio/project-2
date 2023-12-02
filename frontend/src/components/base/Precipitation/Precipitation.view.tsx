@@ -53,7 +53,7 @@ const Precipitation = (props: PrecipitationProps): JSX.Element => {
         textColor="n90"
         style={generalStyle}
       >
-        Next expected rain is on {nextExpectedRainfall}
+        {nextExpectedRainfall}
       </Typography>
     </Container>
   );

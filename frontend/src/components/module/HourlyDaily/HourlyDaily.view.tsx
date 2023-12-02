@@ -143,25 +143,23 @@ const HourlyDaily = (props: HourlyDailyProps): JSX.Element => {
       </TypographyContainer>
 
       <WeatherDataContainer>
-        {weatherDataFilteredArray.map(
-          (obj: { [key: string]: any }, index: any) => (
-            <SingleHourlyWeather
-              time={getTime(obj.datetime, state)}
-              dayName={getDayName(obj.datetime, state)}
-              dayDate={getDayDate(obj.datetime, state)}
-              condition={obj.conditions}
-              temperature={obj.temp}
-              state={state}
-              selectedIndex={selectedIndex}
-              index={index}
-              onClickControl={(value) => {
-                onSelectedWeatherIndex(value);
-                setSelectedIndex(value);
-                description = weatherDataFilteredArray[value].description;
-              }}
-            ></SingleHourlyWeather>
-          )
-        )}{" "}
+        {weatherDataFilteredArray.map((obj: { [key: string]: any }, i: any) => (
+          <SingleHourlyWeather
+            time={getTime(obj.datetime, state)}
+            dayName={getDayName(obj.datetime, state)}
+            dayDate={getDayDate(obj.datetime, state)}
+            condition={obj.conditions}
+            temperature={obj.temp}
+            state={state}
+            selectedIndex={selectedIndex}
+            index={i}
+            onClickControl={(value) => {
+              onSelectedWeatherIndex(value);
+              setSelectedIndex(value);
+              description = weatherDataFilteredArray[value].description;
+            }}
+          ></SingleHourlyWeather>
+        ))}{" "}
       </WeatherDataContainer>
     </Container>
   );

@@ -7,7 +7,8 @@ const fontStyle = `
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
-  line-height: 24px;  
+  line-height: 24px;
+  font-family: "Inter";
 `;
 
 export const Container = styled.div`
@@ -34,7 +35,7 @@ export const FieldContainer = styled.div<{ error: boolean }>`
 `;
 
 export const Field = styled.input`
-  ${fontStyle};
+  ${fontStyle}
   background-color: ${({ theme }) => theme.grey.noshade};
   color: ${({ theme }) => theme.text.primary};
   flex-grow: 1;
@@ -54,7 +55,7 @@ export const LeftComponentContainer = styled.div<{ focus?: boolean }>`
   align-items: center;
   & > svg > path {
     fill: ${({ theme, focus }) =>
-    focus ? theme.btn.color.primary : theme.text.disabled};
+      focus ? theme.btn.color.primary : theme.text.disabled};
   }
 `;
 
@@ -63,7 +64,7 @@ export const RightComponentContainer = styled.div`
   border-left: 1px solid ${({ theme }) => theme.grey.shade5};
   display: flex;
   align-items: center;
-`
+`;
 export const VisibilityContainer = styled.div`
   display: flex;
   cursor: pointer;
@@ -76,5 +77,5 @@ export const Error = styled(Typography)`
 
 export const Prefix = styled.span`
   color: ${(props) => props.theme.grey.shade8};
-  ${fontStyle};
+  ${fontStyle}
 `;
