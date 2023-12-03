@@ -49,6 +49,7 @@ const Modal: FC<ModalProps> = ({
         </div>
 
         <ModalContent>{children}</ModalContent>
+        <div style={{ paddingBottom: padded ? "16px" : undefined }}></div>
       </ModalBox>
     </Container>
   ) : null;

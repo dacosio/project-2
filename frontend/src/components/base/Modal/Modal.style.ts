@@ -20,7 +20,7 @@ export const ModalOverlay = styled.div`
   width: 100%;
   height: 100%;
   background-color: ${theme.neutral.n70};
-  opacity: 80%;
+  opacity: 50%;
   cursor: pointer;
 `;
 
@@ -43,23 +43,6 @@ export const ModalContent = styled.div`
   font-size: 16px;
   max-height: 75vh;
   overflow-y: auto;
-
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 6px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
 `;
 
 export const ModalBack = styled.div`
