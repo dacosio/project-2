@@ -40,13 +40,17 @@ export const IconContainer = styled.div`
 export const ListContainer = styled.div`
   position: absolute;
   width: 100%;
-  max-height: 150px;
-  overflow-y: auto;
   margin-top: 6px;
+  box-sizing: border-box;
+`;
+
+export const ListWrapper = styled.div`
+  width: 100%;
+  max-height: 150px;
   border-radius: 4px;
   background-color: white;
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
-  box-sizing: border-box;
+  overflow-y: auto;
 
   ::-webkit-scrollbar {
     width: 8px;
