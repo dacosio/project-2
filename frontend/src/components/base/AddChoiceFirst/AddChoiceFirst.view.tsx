@@ -77,6 +77,7 @@ const AddChoiceFirst = (props: AddChoiceFirstProps): JSX.Element => {
                 option={crop}
                 setOption={setCrop}
                 placeholder="Tomato, Potato, Carrots, etc..."
+                paddingRight="32px"
               />
             </div>
           )}

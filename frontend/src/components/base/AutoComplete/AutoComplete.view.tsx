@@ -7,11 +7,11 @@ import {
   InputText,
   ItemContainer,
   ListContainer,
+  ListWrapper,
   Error,
 } from "./AutoComplete.style";
 import { ArrowDown, ArrowUp } from "../SVG";
 import Typography from "../Typography";
-import { onFocus } from "@reduxjs/toolkit/dist/query/core/setupListeners";
 
 const AutoComplete = (props: AutoCompleteProps): JSX.Element => {
   const {
@@ -22,6 +22,7 @@ const AutoComplete = (props: AutoCompleteProps): JSX.Element => {
     setOption = () => null,
     placeholder,
     error,
+    paddingRight,
     onChange = () => null,
   } = props;
 
@@ -101,7 +102,13 @@ const AutoComplete = (props: AutoCompleteProps): JSX.Element => {
           {visibility ? <ArrowUp /> : <ArrowDown />}
         </IconContainer>
       </InputContainer>
-      {visibility && 0 < items.length && <ListContainer>{items}</ListContainer>}
+      {visibility && 0 < items.length && (
+        <ListContainer
+          style={{ paddingRight: paddingRight ? "32px" : undefined }}
+        >
+          <ListWrapper>{items}</ListWrapper>
+        </ListContainer>
+      )}
       {error && (
         <Error variant="small" textColor="error">
           {error}
