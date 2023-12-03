@@ -11,4 +11,5 @@ export interface AutoCompleteProps
   option?: Option | undefined;
   setOption?: Dispatch<SetStateAction<Option | undefined>>;
   error?: string;
+  paddingRight?: string;
 }
