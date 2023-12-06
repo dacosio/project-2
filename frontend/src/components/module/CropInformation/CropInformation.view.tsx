@@ -95,7 +95,7 @@ const CropInformation = (props: CropInformationProps): JSX.Element => {
         <div>
           <CropCondition title="Temperature" output={`${temperature}℃`} />
           <CropCondition title="Humidity" output={`${humidity}%`} />
-          <CropCondition title="Growth" output={`${growthDuration}months`} />
+          <CropCondition title="Growth" output={`${growthDuration} Days`} />
           <CropCondition title="Soil pH" output={`${ph}`} />
         </div>
       </InformationContainer>
