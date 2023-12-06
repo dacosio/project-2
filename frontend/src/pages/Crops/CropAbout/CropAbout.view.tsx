@@ -44,7 +44,7 @@ const CropAboutView = (props: CropAboutProps) => {
     {
       title: "Growth",
       output: crop
-        ? `${crop.growthDuration.min} - ${crop.growthDuration.max} days`
+        ? `${crop.growthDuration.min} - ${crop.growthDuration.max} Days`
         : "N/A",
     },
     {
