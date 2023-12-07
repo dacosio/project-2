@@ -4,13 +4,14 @@ import { DashboardGeneratedStyleProps } from "./Dashboard.props";
 
 export const Wrapper = styled(Container)<DashboardGeneratedStyleProps>`
   max-width: 1021px;
-  width:88vw;
+  width: 88vw;
   margin: 32px auto;
   padding: 0 16px;
 
-  @media screen and (min-width: 993px) and  (max-width: 1436px){
-    width: ${({ collapseState }) => collapseState ? "88vw" : "calc(88vw - 200px)"};
-}  
+  @media screen and (min-width: 993px) and (max-width: 1436px) {
+    width: ${({ collapseState }) =>
+      collapseState ? "88vw" : "calc(88vw - 200px)"};
+  }
 `;
 
 export const Top = styled(Row)`
@@ -47,7 +48,7 @@ export const Title = styled.div`
 
 export const Crops = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
   gap: 16px;
 `;
 
@@ -110,6 +111,6 @@ export const MobileOption = styled.div`
   display: flex;
   padding: 16px 0;
   gap: 1rem;
-`
+`;
 
 export const OptionLabel = styled.div``;
