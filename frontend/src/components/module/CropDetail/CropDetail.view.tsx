@@ -240,10 +240,13 @@ const CropDetail = (props: CropDetailProps): JSX.Element => {
                 </Hidden>
                 <Visible xs sm md lg>
                   <CircleProgress
-                    value={40}
-                    maxValue={55}
+                    value={
+                      crop.growthDuration.max -
+                      getDays(dateToday, dateEstimated)
+                    }
+                    maxValue={crop.growthDuration.max}
                     size="mobile"
-                    title="40"
+                    title={getDays(dateToday, dateEstimated).toString()}
                     subtitle="days"
                     id="progress"
                     style={{ height: 96, width: 96 }}
