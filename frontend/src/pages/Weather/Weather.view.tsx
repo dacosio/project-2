@@ -61,8 +61,8 @@ const WeatherView = (props: WeatherGeneratedProps) => {
     return hour24; // This will return the hour part only, like "03" or "15"
   };
 
-  const getIndex = () => {
-    if (state === MOCK_OPTIONS[1]) {
+  const getIndex = (value: string) => {
+    if (value === MOCK_OPTIONS[0]) {
       const currentTimeIndex = parseInt(getCurrentHour24Format());
       return currentTimeIndex;
     } else {
@@ -139,7 +139,7 @@ const WeatherView = (props: WeatherGeneratedProps) => {
             selectedOption={state}
             onClickControl={(value: string) => {
               onSetState(value);
-              onSelectedWeatherIndexWeather(getIndex());
+              onSelectedWeatherIndexWeather(getIndex(value));
             }}
           />
           <HourlyDaily
